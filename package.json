@@ -9,7 +9,7 @@
     "dev": "node server.js",
     "lint": "node --check server.js",
     "build": "echo 'No build step needed'",
-    "test": "node --test D-D_2024-main/testes/regras/unidade/*.test.mjs"
+    "test": "node --test Nexus/testes/regras/unidade/*.test.mjs"
   },
   "dependencies": {
     "express": "^4.19.2"
