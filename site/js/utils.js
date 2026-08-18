@@ -1,0 +1,894 @@
+// ============================================================
+// Utilitários de cálculo D&D 5.5 e helpers gerais
+// ============================================================
+import { ATRIBUTOS_KEYS, ATRIBUTO_NOME_PARA_KEY, PERICIAS, CLASSES_INFO } from './dados-classes.js';
+
+// --- Cálculos D&D ---
+
+/** Calcula modificador de atributo */
+export function calcMod(valor) {
+  return Math.floor((valor - 10) / 2);
+}
+
+/** Formata modificador com sinal (+/-) */
+export function fmtMod(mod) {
+  return mod >= 0 ? `+${mod}` : `${mod}`;
+}
+
+/** Bônus de proficiência por nível do personagem */
+export function bonusProficiencia(nivel) {
+  return Math.ceil(nivel / 4) + 1;
+}
+
+/** Calcula PV máximo no nível 1 */
+export function calcPVNivel1(dadoVida, modCon) {
+  return dadoVida + modCon;
+}
+
+/** Calcula PV máximo total (nível 1 + subida simples) */
+export function calcPVTotal(dadoVida, nivel, modCon) {
+  // Nível 1: dado de vida máximo + mod CON
+  // Níveis subsequentes: média do dado + mod CON por nível
+  const mediaSubida = Math.floor(dadoVida / 2) + 1;
+  return dadoVida + modCon + (nivel - 1) * (mediaSubida + modCon);
+}
+
+/**
+ * Verifica se uma magia registrada pelo nome pertence ao grimório do mago.
+ * @param {object} personagem
+ * @param {string} nome
+ * @returns {boolean}
+ */
+export function magiaMagoEstaNoGrimorio(personagem, nome) {
+  if (personagem?.classe !== 'Mago' || typeof nome !== 'string') return false;
+  return Array.isArray(personagem.grimorio) && personagem.grimorio.some(m => m?.nome === nome);
+}
+
+/**
+ * Retorna o conjunto de nomes de magias de 1º círculo que o personagem já
+ * conhece por qualquer fonte: magias atualmente preparadas, magias conhecidas
+ * de conjuradores espontâneos, e — para o Mago — todo o grimório (não apenas
+ * as magias preparadas no momento).
+ * @param {object} personagem
+ * @returns {Set<string>}
+ */
+export function nomesMagiaCirculo1Conhecidas(personagem) {
+  const nomes = new Set([
+    ...(personagem?.magias_preparadas || []).filter(m => Number(m?.circulo) === 1).map(m => m.nome),
+    ...(personagem?.magias_conhecidas || []).filter(m => Number(m?.circulo) === 1).map(m => m.nome)
+  ]);
+  if (personagem?.classe === 'Mago') {
+    (personagem.grimorio || []).forEach(m => {
+      if (Number(m?.circulo) === 1 && typeof m.nome === 'string') nomes.add(m.nome);
+    });
+  }
+  return nomes;
+}
+
+/**
+ * Normaliza o grimório de personagens Magos legados sem inventar magias.
+ * Magias preparadas normais de 1º círculo ou superior também devem constar
+ * no grimório; magias concedidas por outra origem não contam para essa regra.
+ *
+ * @param {object} personagem
+ * @param {number} [limitePreparadas]
+ * @returns {{alterado: boolean, pendentes: number}}
+ */
+export function normalizarGrimorioMago(personagem, limitePreparadas) {
+  if (!personagem || typeof personagem !== 'object' || personagem.classe !== 'Mago') {
+    return { alterado: false, pendentes: 0 };
+  }
+
+  let alterado = false;
+  if (!Array.isArray(personagem.grimorio)) {
+    // Formatos legados malformados ainda podem conter dados. Encapsulá-los
+    // preserva a entrada e permite que a migração siga sem apagá-la.
+    personagem.grimorio = personagem.grimorio == null ? [] : [personagem.grimorio];
+    alterado = true;
+  }
+
+  const indicesPorNome = new Map();
+  const grimorioNormalizado = [];
+  for (const magia of personagem.grimorio) {
+    const nome = magia?.nome;
+    if (typeof nome !== 'string' || !nome) {
+      grimorioNormalizado.push(magia);
+      continue;
+    }
+
+    const indiceExistente = indicesPorNome.get(nome);
+    if (indiceExistente == null) {
+      indicesPorNome.set(nome, grimorioNormalizado.length);
+      grimorioNormalizado.push(magia);
+      continue;
+    }
+
+    // Em duplicatas legadas, manter a entrada com o menor círculo numérico
+    // confiável e preservar todos os demais dados dessa entrada.
+    const existente = grimorioNormalizado[indiceExistente];
+    const valorCirculoExistente = existente?.circulo;
+    const valorCirculoAtual = magia?.circulo;
+    const existenteConfiavel = (typeof valorCirculoExistente === 'number' && Number.isFinite(valorCirculoExistente)) ||
+      (typeof valorCirculoExistente === 'string' && valorCirculoExistente.trim() !== '' && Number.isFinite(Number(valorCirculoExistente)));
+    const atualConfiavel = (typeof valorCirculoAtual === 'number' && Number.isFinite(valorCirculoAtual)) ||
+      (typeof valorCirculoAtual === 'string' && valorCirculoAtual.trim() !== '' && Number.isFinite(Number(valorCirculoAtual)));
+    const circuloExistente = Number(valorCirculoExistente);
+    const circuloAtual = Number(valorCirculoAtual);
+    if (atualConfiavel && (!existenteConfiavel || circuloAtual < circuloExistente)) {
+      grimorioNormalizado[indiceExistente] = magia;
+    }
+    alterado = true;
+  }
+  if (grimorioNormalizado.length !== personagem.grimorio.length) {
+    personagem.grimorio = grimorioNormalizado;
+  }
+
+  const origensEspeciais = ['dominio', 'sempre', 'especie_legado', 'iniciado_em_magia', 'tocado_por_fadas', 'tocado_pelas_sombras', 'conjurador_ritualista'];
+  const preparadasNormais = (Array.isArray(personagem.magias_preparadas) ? personagem.magias_preparadas : [])
+    .filter(magia => magia && typeof magia === 'object' && typeof magia.nome === 'string' && magia.nome && !origensEspeciais.includes(magia.origem) && Number(magia.circulo) > 0);
+
+  for (const magia of preparadasNormais) {
+    if (!magiaMagoEstaNoGrimorio(personagem, magia.nome)) {
+      personagem.grimorio.push({ ...magia });
+      alterado = true;
+    }
+  }
+
+  const pendentes = typeof limitePreparadas === 'number' && Number.isFinite(limitePreparadas)
+    ? Math.max(0, limitePreparadas - preparadasNormais.length)
+    : 0;
+  return { alterado, pendentes };
+}
+
+/** Calcula CA baseado na armadura equipada */
+export function calcCA(personagem, passivos = null) {
+  const modDes = calcMod(personagem.atributos.destreza);
+  const modCon = calcMod(personagem.atributos.constituicao);
+  const modSab = calcMod(personagem.atributos.sabedoria);
+  const modCar = calcMod(personagem.atributos.carisma);
+  const inv = personagem.inventario || [];
+
+  // Verificar armadura equipada
+  const armadura = inv.find(i => i.equipado && i.tipo === 'armadura' && i.nome !== 'Escudo');
+  const escudo = inv.find(i => i.equipado && (i.nome === 'Escudo' || i.tipo === 'escudo'));
+
+  let ca = 10 + modDes; // Sem armadura
+
+  // Bárbaro: Defesa sem Armadura = 10 + Des + Con
+  if (personagem.classe === 'Bárbaro' && !armadura) {
+    ca = 10 + modDes + modCon;
+  }
+  // Monge: Defesa sem Armadura = 10 + Des + Sab
+  if (personagem.classe === 'Monge' && !armadura) {
+    ca = 10 + modDes + modSab;
+  }
+  // Bardo (Colégio da Dança): Defesa sem Armadura = 10 + Des + Car
+  if (personagem.classe === 'Bardo' && personagem.subclasse === 'Colégio da Dança' && (personagem.nivel || 1) >= 3 && !armadura && !escudo) {
+    ca = 10 + modDes + modCar;
+  }
+  // Feiticeiro (Feitiçaria Dracônica): Resiliência Dracônica = 10 + Des + Car (sem armadura)
+  if (
+    personagem.classe === 'Feiticeiro' &&
+    personagem.subclasse === 'Feitiçaria Dracônica' &&
+    (personagem.nivel || 1) >= 3 &&
+    !armadura
+  ) {
+    ca = 10 + modDes + modCar;
+  }
+
+  if (armadura) {
+    const caStr = armadura.dados?.ca || '';
+    const caBase = parseInt(caStr) || 0;
+
+    if (armadura.dados?.categoria === 'Leve') {
+      ca = caBase + modDes;
+    } else if (armadura.dados?.categoria === 'Média') {
+      const maxDes = passivos?.bonusCAArmaduraMediaMaxDes ?? 2;
+      ca = caBase + Math.min(modDes, maxDes);
+    } else if (armadura.dados?.categoria === 'Pesada') {
+      ca = caBase;
+    } else {
+      // Tentar parsear formato "XX + modificador de Des"
+      const match = caStr.match(/^(\d+)/);
+      if (match) {
+        const base = parseInt(match[1]);
+        if (caStr.includes('máx. 2') || caStr.includes('max. 2')) {
+          ca = base + Math.min(modDes, 2);
+        } else if (caStr.includes('Des')) {
+          ca = base + modDes;
+        } else {
+          ca = base;
+        }
+      }
+    }
+  }
+
+  // Escudo: +2
+  if (escudo) {
+    ca += 2;
+  }
+
+  // Estilo de Luta: Defensivo (+1 CA enquanto usa armadura)
+  const estiloLuta = personagem.escolhas_classe?.estilo_luta?.[0] || '';
+  if (estiloLuta === 'Defensivo' && armadura) {
+    ca += 1;
+  }
+
+  // Bônus de CA de itens customizados
+  inv.filter(i => i.equipado && i.dados?.bonus_ca).forEach(i => {
+    ca += parseInt(i.dados.bonus_ca) || 0;
+  });
+
+  // Efeitos mágicos ativos que afetam CA
+  const efeitos = personagem.efeitos_magicos || [];
+  for (const ef of efeitos) {
+    if (ef.tipo_efeito === 'bonus') {
+      ca += ef.valor || 0;
+    } else if (ef.tipo_efeito === 'base') {
+      // CA base substitui (ex: Armadura Arcana = 13 + Des)
+      const caBase = (ef.valor || 13) + modDes;
+      if (caBase > ca) ca = caBase;
+    } else if (ef.tipo_efeito === 'minimo') {
+      // CA mínima (ex: Pele-Casca = mín 17)
+      if ((ef.valor || 0) > ca) ca = ef.valor;
+    }
+  }
+
+  // Bônus genérico de CA de talentos
+  ca += passivos?.bonusCA || 0;
+
+  return ca;
+}
+
+/** Calcula CD de magia */
+export function calcCDMagia(personagem) {
+  const info = CLASSES_INFO[personagem.classe];
+  if (!info || !info.atributo_conjuracao) return 0;
+  const key = ATRIBUTO_NOME_PARA_KEY[info.atributo_conjuracao];
+  const modAttr = calcMod(personagem.atributos[key]);
+  let cd = 8 + bonusProficiencia(personagem.nivel) + modAttr;
+
+  // Feiticeiro: Feitiçaria Inata ativa aumenta CD em +1
+  if (personagem.classe === 'Feiticeiro' && personagem?.recursos?.feiticeiro?.feiticaria_inata_ativa) {
+    cd += 1;
+  }
+
+  return cd;
+}
+
+/** Calcula bônus de ataque de magia */
+export function calcAtaqueMagia(personagem) {
+  const info = CLASSES_INFO[personagem.classe];
+  if (!info || !info.atributo_conjuracao) return 0;
+  const key = ATRIBUTO_NOME_PARA_KEY[info.atributo_conjuracao];
+  const modAttr = calcMod(personagem.atributos[key]);
+  return bonusProficiencia(personagem.nivel) + modAttr;
+}
+
+/** Calcula Percepção Passiva */
+export function calcPercepcaoPassiva(personagem) {
+  const modSab = calcMod(personagem.atributos.sabedoria);
+  const prof = (personagem.pericias_proficientes || []).includes('Percepção');
+  const exp = (personagem.pericias_expertise || []).includes('Percepção');
+  let bonus = modSab;
+  if (prof) bonus += bonusProficiencia(personagem.nivel);
+  if (exp) bonus += bonusProficiencia(personagem.nivel);
+  if (personagem.classe === 'Bardo' && (personagem.nivel || 1) >= 2 && !prof && !exp) {
+    bonus += Math.floor(bonusProficiencia(personagem.nivel) / 2);
+  }
+  return 10 + bonus;
+}
+
+/** Calcula Intuicao Passiva (10 + bonus pericia Intuicao) */
+export function calcIntuicaoPassiva(personagem) {
+  return 10 + calcBonusPericia(personagem, 'Intuição');
+}
+
+/** Calcula Investigacao Passiva (10 + bonus pericia Investigacao) */
+export function calcInvestigacaoPassiva(personagem) {
+  return 10 + calcBonusPericia(personagem, 'Investigação');
+}
+
+/** Calcula bônus de uma perícia */
+export function calcBonusPericia(personagem, nomePericia, opcoes = {}) {
+  const pericia = PERICIAS.find(p => p.nome === nomePericia);
+  if (!pericia) return 0;
+
+  const emFuria = !!opcoes.emFuria;
+  const forcaPrimordialAtiva = !!opcoes.forcaPrimordialAtiva;
+  const periciasConhecimentoPrimordial = ['Acrobacia', 'Furtividade', 'Intimidação', 'Percepção', 'Sobrevivência'];
+
+  const usarForcaPrimordial = emFuria && forcaPrimordialAtiva && periciasConhecimentoPrimordial.includes(nomePericia);
+  const key = usarForcaPrimordial ? 'forca' : ATRIBUTO_NOME_PARA_KEY[pericia.atributo];
+  const mod = calcMod(personagem.atributos[key]);
+  const prof = (personagem.pericias_proficientes || []).includes(nomePericia);
+  const exp = (personagem.pericias_expertise || []).includes(nomePericia);
+  let bonus = mod;
+  if (prof) bonus += bonusProficiencia(personagem.nivel);
+  if (exp) bonus += bonusProficiencia(personagem.nivel);
+  // Bardo: Pau pra Toda Obra (metade da proficiência em perícias sem proficiência)
+  if (personagem.classe === 'Bardo' && (personagem.nivel || 1) >= 2 && !prof && !exp) {
+    bonus += Math.floor(bonusProficiencia(personagem.nivel) / 2);
+  }
+
+  // Clérigo (Ordem Divina: Taumaturgo) - bônus em Arcanismo e Religião
+  if (
+    personagem.classe === 'Clérigo' &&
+    personagem.ordem_divina === 'Taumaturgo' &&
+    (nomePericia === 'Arcanismo' || nomePericia === 'Religião')
+  ) {
+    bonus += Math.max(1, calcMod(personagem.atributos.sabedoria));
+  }
+
+  // Druida (Ordem Primal: Xamã) - bônus em Arcanismo e Natureza
+  const ordemPrimal = personagem.ordem_primal || personagem.escolhas_classe?.ordem_primal?.[0] || '';
+  if (
+    personagem.classe === 'Druida' &&
+    ordemPrimal === 'Xamã' &&
+    (nomePericia === 'Arcanismo' || nomePericia === 'Natureza')
+  ) {
+    bonus += Math.max(1, calcMod(personagem.atributos.sabedoria));
+  }
+
+  // Efeitos magicos: bonus numerico de pericia (ex: Passo Sem Rastro +10 Furtividade)
+  const efMag = personagem.efeitos_magicos || [];
+  for (const ef of efMag) {
+    if (ef.tipo === 'bonus_pericia' && typeof ef.bonus === 'number' && ef.pericia === nomePericia) {
+      bonus += ef.bonus;
+    }
+  }
+
+  return bonus;
+}
+
+/** Calcula espaços de magia com base na tabela da classe */
+export function getEspacosMagia(tabelaCaracteristicas, nivel) {
+  if (!tabelaCaracteristicas || nivel < 1) return {};
+  const row = tabelaCaracteristicas.find(r => parseInt(r['Nível']) === nivel);
+  if (!row) return {};
+  const espacos = {};
+  for (let i = 1; i <= 9; i++) {
+    const val = row[String(i)];
+    if (val && val !== '—' && val !== '-') {
+      espacos[i] = { total: parseInt(val) || 0, usados: 0 };
+    }
+  }
+  return espacos;
+}
+
+/** Quantidade de truques por nível (da tabela da classe) */
+export function getTruquesConhecidos(tabelaCaracteristicas, nivel) {
+  if (!tabelaCaracteristicas) return 0;
+  const row = tabelaCaracteristicas.find(r => parseInt(r['Nível']) === nivel);
+  return row ? (parseInt(row['Truques']) || 0) : 0;
+}
+
+/**
+ * Bônus de truques conhecidos concedido por escolha de classe (fora da
+ * tabela): Ordem Divina "Taumaturgo" do Clérigo e Ordem Primal "Xamã" do
+ * Druida dão +1 truque de classe (Classes.md:1568/2060). Fica FORA de
+ * getTruquesConhecidos de propósito -- essa função é confrontada direto
+ * contra a tabela do livro pelo motor de testes de classes/níveis e precisa
+ * continuar refletindo só a tabela, sem bônus nenhum somado.
+ *
+ * Único lugar que decide o bônus, para os dois fluxos que precisam do total
+ * (criador em creator/passo-magias.js e creator/wizard.js; ficha em
+ * sheet/grimorio.js e sheet/magias.js; subida de nível em levelup-flow.js)
+ * chamarem em vez de repetir a checagem `classe === 'Clérigo' && ordem_divina
+ * === 'Taumaturgo'` em cada arquivo -- foi exatamente essa cópia manual,
+ * faltando em 3 dos 5 fluxos, que deixava a ficha de um Taumaturgo/Xamã
+ * recém-criado exibir "Truques: 4/3" (ver GUIA-PROXIMOS-DOMINIOS.md, "A
+ * lição da rodada de correção").
+ *
+ * Aceita tanto o objeto do criador (`personagem`) quanto o da ficha (`char`)
+ * -- os dois gravam a ordem escolhida do mesmo jeito, direto no campo
+ * (ordem_divina/ordem_primal) ou em escolhas_classe.
+ */
+export function getBonusTruquesOrdem(personagem) {
+  if (!personagem) return 0;
+  const ordemDivina = personagem.ordem_divina || personagem.escolhas_classe?.ordem_divina?.[0] || '';
+  if (personagem.classe === 'Clérigo' && ordemDivina === 'Taumaturgo') return 1;
+  const ordemPrimal = personagem.ordem_primal || personagem.escolhas_classe?.ordem_primal?.[0] || '';
+  if (personagem.classe === 'Druida' && ordemPrimal === 'Xamã') return 1;
+  return 0;
+}
+
+/** Magias preparadas por nível (da tabela da classe) */
+export function getMagiaPreparadas(tabelaCaracteristicas, nivel) {
+  if (!tabelaCaracteristicas) return 0;
+  const row = tabelaCaracteristicas.find(r => parseInt(r['Nível']) === nivel);
+  return row ? (parseInt(row['Magias Preparadas']) || 0) : 0;
+}
+
+/** Deslocamento padrão da espécie (extraído do texto_completo) */
+export function getDeslocamento(especieTexto) {
+  if (!especieTexto) return '9 metros';
+  const textoLimpo = especieTexto.replace(/\*\*/g, '');
+  const match = textoLimpo.match(/Deslocamento:\s*(\d+(?:[\.,]\d+)?\s*metros?)/i);
+  return match ? match[1].trim() : '9 metros';
+}
+
+/** Tamanho da espécie */
+export function getTamanho(especieTexto) {
+  if (!especieTexto) return 'Médio';
+  const textoLimpo = especieTexto.replace(/\*\*/g, '');
+  const match = textoLimpo.match(/Tamanho:\s*([^\n]+)/i);
+  if (!match) return 'Médio';
+  const linha = match[1].trim();
+
+  if (/Médio\s*\(.+?\)\s*ou\s*Pequeno|Pequeno\s*\(.+?\)\s*ou\s*Médio/i.test(linha)) {
+    return 'Médio ou Pequeno';
+  }
+
+  const tamanhoBase = linha.match(/\b(Pequeno|Médio|Grande)\b/i);
+  return tamanhoBase ? tamanhoBase[1] : 'Médio';
+}
+
+// --- Renderizador simples de Markdown ---
+
+/** Formata notação de dados (ex: 3d6, 2D8) como 🎲3d6🎲 */
+export function formatarDados(texto) {
+  if (!texto) return texto;
+  return texto.replace(/(\d+)[dD](\d+)/g, '🎲$1d$2🎲');
+}
+
+/** Converte markdown básico para HTML */
+export function mdParaHtml(texto) {
+  if (!texto) return '';
+  let html = texto
+    // Escapar HTML
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    // Formatar dados (🎲XdY🎲) antes de outras transformações
+    .replace(/(\d+)[dD](\d+)/g, '🎲$1d$2🎲')
+    // Headers
+    .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    // Negrito e itálico
+    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // Listas
+    .replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>')
+    // Tabelas simples (pipes)
+    .replace(/\|(.+)\|/g, (match) => {
+      const cells = match.split('|').filter(c => c.trim());
+      if (cells.every(c => /^[\s-:]+$/.test(c))) return ''; // Separador
+      const tag = cells.some(c => /^\*\*.+\*\*$/.test(c.trim())) ? 'th' : 'td';
+      return '<tr>' + cells.map(c => `<${tag}>${c.trim().replace(/\*\*/g, '')}</${tag}>`).join('') + '</tr>';
+    });
+
+  // Agrupar <li> em <ul>
+  html = html.replace(/((?:<li>.+<\/li>\n?)+)/g, '<ul>$1</ul>');
+  // Agrupar <tr> em <table>
+  html = html.replace(/((?:<tr>.+<\/tr>\n?)+)/g, '<div class="table-wrapper"><table>$1</table></div>');
+
+  // Parágrafos (linhas que não são tags)
+  html = html.split('\n').map(line => {
+    const trimmed = line.trim();
+    if (!trimmed) return '';
+    if (trimmed.startsWith('<')) return trimmed;
+    return `<p>${trimmed}</p>`;
+  }).join('\n');
+
+  return html;
+}
+
+// --- Helpers gerais ---
+
+/**
+ * Detecta tipo de recarga de uma habilidade pela descrição.
+ * Retorna 'curto', 'longo', 'curto_ou_longo' ou null (passiva).
+ */
+export function detectarRecarga(descricao) {
+  if (!descricao) return null;
+  const d = descricao.toLowerCase();
+  if (d.includes('descanso curto ou longo') || d.includes('descanso longo ou curto'))
+    return 'curto_ou_longo';
+  // Check for short rest recharge
+  const temCurto = d.includes('descanso curto');
+  const temLongo = d.includes('descanso longo');
+  if (temCurto && temLongo) return 'curto_ou_longo';
+  if (temCurto) return 'curto';
+  if (temLongo) return 'longo';
+  return null;
+}
+
+/**
+ * Detecta se uma habilidade é ativa (tem ação, reação, etc.) vs passiva.
+ */
+export function ehHabilidadeAtiva(descricao, nome) {
+  if (!descricao) return false;
+  // Habilidades que sao descritivas por natureza (listas de magias, conjuracao), nao importa o conteudo
+  if (nome) {
+    const n = nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (n.includes('conjuracao') || n.includes('pacto magico') || n.includes('magia de pacto') || n.startsWith('magias d')) return false;
+  }
+  const d = descricao.toLowerCase();
+  const recarga = detectarRecarga(descricao);
+  if (recarga) return true;
+  const acoes = ['como uma ação', 'como ação bônus', 'como uma reação', 'você pode usar', 'você pode gastar', 'no seu turno'];
+  return acoes.some(a => d.includes(a));
+}
+
+/** Gera UUID v4 simples */
+export function gerarId() {
+  return 'xxxx-xxxx-xxxx'.replace(/x/g, () =>
+    Math.floor(Math.random() * 16).toString(16)
+  );
+}
+
+const _ESC_MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+/**
+ * Escapa caracteres HTML especiais para prevenir XSS em innerHTML.
+ * Nao adequado para contextos de atributos de evento ou URLs.
+ * @param {*} str - Valor a escapar (null/undefined retorna '').
+ * @returns {string} String com &, <, >, ", ' escapados.
+ */
+export function escHtml(str) {
+  if (str == null) return '';
+  return String(str).replace(/[&<>"']/g, c => _ESC_MAP[c]);
+}
+
+/** Formata data para exibição */
+export function fmtData(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+/** Mostra toast de notificação */
+export function toast(msg, tipo = '') {
+  const container = document.getElementById('toast-container');
+  const el = document.createElement('div');
+  el.className = `toast ${tipo}`;
+  el.textContent = msg;
+  container.appendChild(el);
+  setTimeout(() => el.remove(), 3000);
+}
+
+/** Debounce simples */
+export function debounce(fn, ms = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), ms);
+  };
+}
+
+/** Remove acentos para busca */
+export function semAcento(str) {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+
+/** Contador de sub-modais ativos */
+let _subModalCount = 0;
+/** Callback opcional ao fechar o modal principal */
+let _onModalClose = null;
+
+/** Abre modal global. onClose é chamado quando o modal principal é fechado. */
+export function abrirModal(titulo, corpoHtml, acoesHtml = '', onClose = null) {
+  const overlay = document.getElementById('modal-overlay');
+  const tituloEl = document.getElementById('modal-titulo');
+  const corpoEl = document.getElementById('modal-corpo');
+  const acoesEl = document.getElementById('modal-acoes');
+
+  // Se ja existe modal aberto, abrir como sub-modal (overlay empilhado)
+  if (overlay.style.display === 'flex') {
+    _subModalCount++;
+    const sub = document.createElement('div');
+    sub.className = 'modal-overlay sub-modal-overlay';
+    sub.id = `sub-modal-overlay-${_subModalCount}`;
+    sub.style.display = 'flex';
+    sub.style.zIndex = 200 + _subModalCount;
+    sub.innerHTML = `
+      <div class="modal-container" style="animation:slideUp 0.2s">
+        <div class="modal-header" style="position:sticky;top:0;background:var(--bg-card);z-index:1">
+          <h2 style="font-size:1rem;font-weight:700">${titulo}</h2>
+          <button class="modal-fechar" data-fechar-sub="true">&times;</button>
+        </div>
+        <div class="modal-corpo" style="padding:16px">${corpoHtml}</div>
+        <div class="modal-acoes" style="padding:12px 16px;display:flex;gap:8px;justify-content:flex-end;border-top:1px solid var(--border-light)">${acoesHtml}</div>
+      </div>
+    `;
+    document.body.appendChild(sub);
+    // Fechar sub-modal ao clicar fora ou no X
+    sub.addEventListener('click', (e) => {
+      if (e.target === sub || e.target.closest('[data-fechar-sub]')) {
+        sub.remove();
+        _subModalCount--;
+      }
+    });
+    // Substituir onclick="fecharModal()" nos botões do sub-modal
+    sub.querySelectorAll('[onclick*="fecharModal"]').forEach(btn => {
+      btn.removeAttribute('onclick');
+      btn.addEventListener('click', () => { sub.remove(); _subModalCount--; });
+    });
+    return;
+  }
+
+  tituloEl.textContent = titulo;
+  corpoEl.innerHTML = corpoHtml;
+  acoesEl.innerHTML = acoesHtml;
+  overlay.style.display = 'flex';
+  _onModalClose = onClose;
+  document.getElementById('modal-container').scrollTop = 0;
+}
+
+/** Fecha modal global */
+export function fecharModal() {
+  // Se existem sub-modais, fechar o mais recente
+  if (_subModalCount > 0) {
+    const sub = document.getElementById(`sub-modal-overlay-${_subModalCount}`);
+    if (sub) sub.remove();
+    _subModalCount--;
+    return;
+  }
+  document.getElementById('modal-overlay').style.display = 'none';
+  if (_onModalClose) { const cb = _onModalClose; _onModalClose = null; cb(); }
+}
+
+/** Fecha todos os modais (principal + sub-modais) */
+export function fecharModalTodos() {
+  // Remover todos sub-modais
+  document.querySelectorAll('.sub-modal-overlay').forEach(el => el.remove());
+  _subModalCount = 0;
+  document.getElementById('modal-overlay').style.display = 'none';
+  if (_onModalClose) { const cb = _onModalClose; _onModalClose = null; cb(); }
+}
+// Expor para onclick inline
+window.fecharModal = fecharModal;
+window.fecharModalTodos = fecharModalTodos;
+
+/** Extrai número base de uma string de CA (ex: "14 + Modificador de Des (máx. 2)" -> 14) */
+export function parsearCA(caStr) {
+  if (!caStr) return 10;
+  const match = caStr.match(/^[+]?(\d+)/);
+  return match ? parseInt(match[1]) : 10;
+}
+
+/**
+ * Lê um arquivo de imagem, redimensiona (mantendo proporção, máximo maxDim
+ * em qualquer lado) e retorna como data URL JPEG comprimido — pequeno o
+ * bastante pra guardar direto no objeto do personagem (localStorage + sync
+ * na nuvem) sem estourar limite de tamanho.
+ * @param {File} file - arquivo escolhido pelo usuário (input type=file)
+ * @param {number} maxDim - dimensão máxima em pixels (largura ou altura)
+ * @returns {Promise<string|null>} data URL da imagem redimensionada, ou null se inválido
+ */
+export function processarImagemArquivo(file, maxDim = 300) {
+  return new Promise((resolve) => {
+    if (!file || !file.type || !file.type.startsWith('image/')) {
+      resolve(null);
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > maxDim || height > maxDim) {
+          if (width > height) {
+            height = Math.round(height * (maxDim / width));
+            width = maxDim;
+          } else {
+            width = Math.round(width * (maxDim / height));
+            height = maxDim;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', 0.8));
+      };
+      img.onerror = () => resolve(null);
+      img.src = ev.target.result;
+    };
+    reader.onerror = () => resolve(null);
+    reader.readAsDataURL(file);
+  });
+}
+
+/** Converte string de peso ("0,5 kg", "250 g", "1 kg (saco)", "—", "Varia") em kg (number). */
+export function parsePeso(pesoStr) {
+  if (pesoStr == null) return 0;
+  const txt = String(pesoStr).trim();
+  if (!txt || txt === '—' || txt === '-' || /varia/i.test(txt)) return 0;
+  // "kg" tem prioridade sobre "g" para não casar o 'g' de 'kg'
+  const mkg = txt.match(/(\d+(?:[.,]\d+)?)\s*kg/i);
+  if (mkg) return parseFloat(mkg[1].replace(',', '.'));
+  const mg = txt.match(/(\d+(?:[.,]\d+)?)\s*g\b/i);
+  if (mg) return parseFloat(mg[1].replace(',', '.')) / 1000;
+  const m = txt.match(/(\d+(?:[.,]\d+)?)/);
+  return m ? parseFloat(m[1].replace(',', '.')) : 0;
+}
+
+/** Formata kg com vírgula decimal (ex: 3.5 -> "3,5"). */
+export function fmtPeso(kg) {
+  const n = Math.round((Number(kg) || 0) * 100) / 100;
+  return n.toString().replace('.', ',');
+}
+
+/** Multiplicador de capacidade de carregar por tamanho de criatura. */
+export function getMultiplicadorCarga(tamanho) {
+  const t = String(tamanho || 'Médio').trim();
+  const mult = {
+    'Minúsculo': 3.5, 'Pequeno': 7, 'Médio': 7,
+    'Grande': 13.5, 'Enorme': 27, 'Colossal': 54.5
+  };
+  if (mult[t] != null) return mult[t];
+  // "Médio ou Pequeno" e variações
+  if (/Grande/i.test(t)) return 13.5;
+  if (/Pequeno|Médio/i.test(t)) return 7;
+  return 7;
+}
+
+/** Capacidade de carregar em kg: Força (valor) × multiplicador de tamanho. */
+export function getCapacidadeCarga(forca, tamanho) {
+  const f = parseInt(forca) || 0;
+  return f * getMultiplicadorCarga(tamanho);
+}
+
+/** Descrição do cálculo real da capacidade (ex: "Força 15 × 7 (Pequeno) = 105 kg"). */
+export function descreverCapacidadeCarga(forca, tamanho) {
+  const f = parseInt(forca) || 0;
+  const mult = getMultiplicadorCarga(tamanho);
+  const total = f * mult;
+  return `Força ${f} × ${fmtPeso(mult)} (${tamanho || 'Médio'}) = ${fmtPeso(total)} kg`;
+}
+
+/** Peso total do inventário em kg (peso × quantidade; ignora itens com qtd <= 0). */
+export function getPesoTotalInventario(inventario) {
+  if (!Array.isArray(inventario)) return 0;
+  return inventario.reduce((total, item) => {
+    const qtd = item.quantidade ?? 1;
+    if (qtd <= 0) return total;
+    const peso = parsePeso(item.dados?.peso ?? item.peso);
+    return total + peso * qtd;
+  }, 0);
+}
+
+/**
+ * Sincroniza todos os campos derivados do nível do personagem:
+ * - Bônus de proficiência
+ * - Dados de vida totais e usados
+ * - Pontos de vida máximos (pv_max) e atuais (pv_atual)
+ * - Espaços de magia totais por nível de círculo
+ */
+export function sincronizarCamposVinculadosNivel(personagem, classeData = null) {
+  if (!personagem || typeof personagem !== 'object') return;
+
+  const nivel = Math.max(1, Math.min(20, Number(personagem.nivel) || 1));
+  personagem.nivel = nivel;
+
+  // 1. Proficiência
+  personagem.proficiencia = bonusProficiencia(nivel);
+
+  // 2. Dados de Vida
+  personagem.dados_vida_total = nivel;
+  if ((personagem.dados_vida_usados || 0) > nivel) {
+    personagem.dados_vida_usados = nivel;
+  }
+
+  // 3. Pontos de Vida (pv_max e pv_atual)
+  const infoClasse = CLASSES_INFO[personagem.classe];
+  const dadoVida = infoClasse?.dado_vida;
+  if (dadoVida) {
+    const modCon = calcMod(personagem.atributos?.constituicao ?? 10);
+    let pvCalculadoBase = calcPVTotal(dadoVida, nivel, modCon);
+
+    // Bônus de espécie: Anão (+1 por nível)
+    if (personagem.especie === 'Anão') {
+      pvCalculadoBase += nivel;
+      personagem.bonus_pv_anao_aplicado = nivel;
+    }
+
+    // Feitiçaria Dracônica: +1 por nível para nível >= 3
+    const ehDraconica = semAcento(personagem.subclasse || '') === semAcento('Feitiçaria Dracônica');
+    if (personagem.classe === 'Feiticeiro' && ehDraconica && nivel >= 3) {
+      pvCalculadoBase += nivel;
+      if (!personagem.recursos) personagem.recursos = {};
+      if (!personagem.recursos.feiticeiro) personagem.recursos.feiticeiro = {};
+      if (!personagem.recursos.feiticeiro.subclasses) personagem.recursos.feiticeiro.subclasses = {};
+      if (!personagem.recursos.feiticeiro.subclasses.draconica) personagem.recursos.feiticeiro.subclasses.draconica = {};
+      personagem.recursos.feiticeiro.subclasses.draconica.bonus_pv_aplicado = nivel;
+    }
+
+    // Vigoroso: +2 por nível
+    const temVigoroso = (personagem.talentos || []).some(t => (typeof t === 'string' ? t : t?.nome) === 'Vigoroso');
+    if (temVigoroso) {
+      pvCalculadoBase += nivel * 2;
+      personagem.bonus_pv_vigoroso_aplicado = nivel * 2;
+    }
+
+    // Dádiva da Fortitude: +40
+    const temFortitude = (personagem.talentos || []).some(t => (typeof t === 'string' ? t : t?.nome) === 'Dádiva da Fortitude');
+    if (temFortitude) {
+      pvCalculadoBase += 40;
+      personagem.bonus_pv_dadiva_fortitude = 40;
+    }
+
+    if (!personagem.pv_max || personagem.pv_max <= 0) {
+      personagem.pv_max = pvCalculadoBase;
+      personagem.pv_atual = pvCalculadoBase;
+    } else {
+      if (personagem.pv_atual === undefined || personagem.pv_atual === null) {
+        personagem.pv_atual = personagem.pv_max;
+      } else {
+        personagem.pv_atual = Math.min(personagem.pv_max, Math.max(0, personagem.pv_atual));
+      }
+    }
+  }
+
+  personagem._nivel_sincronizado = nivel;
+
+  // 4. Espaços de Magia
+  if (infoClasse?.conjurador && classeData?.tabela_caracteristicas) {
+    const espacosBase = getEspacosMagia(classeData.tabela_caracteristicas, nivel);
+    if (!personagem.espacos_magia) personagem.espacos_magia = {};
+    const extras = personagem.espacos_magia_extras || {};
+
+    Object.keys(espacosBase).forEach(circ => {
+      const baseTotal = espacosBase[circ].total;
+      const extraTotal = extras[circ] || 0;
+      const total = baseTotal + extraTotal;
+      if (!personagem.espacos_magia[circ]) {
+        personagem.espacos_magia[circ] = { total, usados: 0 };
+      } else {
+        personagem.espacos_magia[circ].total = total;
+        if (personagem.espacos_magia[circ].usados > total) {
+          personagem.espacos_magia[circ].usados = total;
+        }
+      }
+    });
+
+    Object.keys(extras).forEach(circ => {
+      if (!espacosBase[circ] && extras[circ] > 0) {
+        if (!personagem.espacos_magia[circ]) {
+          personagem.espacos_magia[circ] = { total: extras[circ], usados: 0 };
+        } else {
+          personagem.espacos_magia[circ].total = extras[circ];
+        }
+      }
+    });
+
+    Object.keys(personagem.espacos_magia).forEach(circ => {
+      if (!espacosBase[circ] && !(extras[circ] > 0)) {
+        delete personagem.espacos_magia[circ];
+      }
+    });
+  } else {
+    // Subclasses conjuradoras (Cavaleiro Místico / Trapaceiro Arcano)
+    const ehSubclasseConj = (personagem.classe === 'Guerreiro' && semAcento(personagem.subclasse || '') === semAcento('Cavaleiro Místico')) ||
+                            (personagem.classe === 'Ladino' && semAcento(personagem.subclasse || '') === semAcento('Trapaceiro Arcano'));
+    if (ehSubclasseConj && nivel >= 3) {
+      const tabela13 = {
+        3:  { 1: 2 }, 4: { 1: 3 }, 5: { 1: 3 }, 6: { 1: 3 },
+        7:  { 1: 4, 2: 2 }, 8: { 1: 4, 2: 2 }, 9: { 1: 4, 2: 2 },
+        10: { 1: 4, 2: 3 }, 11: { 1: 4, 2: 3 }, 12: { 1: 4, 2: 3 },
+        13: { 1: 4, 2: 3, 3: 2 }, 14: { 1: 4, 2: 3, 3: 2 }, 15: { 1: 4, 2: 3, 3: 2 },
+        16: { 1: 4, 2: 3, 3: 3 }, 17: { 1: 4, 2: 3, 3: 3 }, 18: { 1: 4, 2: 3, 3: 3 },
+        19: { 1: 4, 2: 3, 3: 3, 4: 1 }, 20: { 1: 4, 2: 3, 3: 3, 4: 1 }
+      };
+      const espacosSub = tabela13[nivel] || {};
+      if (!personagem.espacos_magia) personagem.espacos_magia = {};
+      Object.entries(espacosSub).forEach(([circ, total]) => {
+        if (!personagem.espacos_magia[circ]) {
+          personagem.espacos_magia[circ] = { total, usados: 0 };
+        } else {
+          personagem.espacos_magia[circ].total = total;
+          if (personagem.espacos_magia[circ].usados > total) {
+            personagem.espacos_magia[circ].usados = total;
+          }
+        }
+      });
+      Object.keys(personagem.espacos_magia).forEach(circ => {
+        if (!espacosSub[circ]) {
+          delete personagem.espacos_magia[circ];
+        }
+      });
+    }
+  }
+}
+
