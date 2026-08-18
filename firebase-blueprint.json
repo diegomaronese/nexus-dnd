@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Dados públicos do usuário autenticado",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id"]
+    },
+    "Personagem": {
+      "title": "Personagem",
+      "description": "Ficha de personagem completa do usuário para D&D 5.5e",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nome": { "type": "string" },
+        "classe": { "type": "string" },
+        "nivel": { "type": "number" },
+        "especie": { "type": "string" },
+        "antecedente": { "type": "string" },
+        "atributos": { "type": "object" },
+        "pvMax": { "type": "number" },
+        "pvAtual": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Documento raiz do usuário"
+    },
+    "/users/{userId}/personagens/{personagemId}": {
+      "schema": "Personagem",
+      "description": "Fichas de personagens pertencentes exclusivamente ao usuário"
+    }
+  }
+}

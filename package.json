@@ -1,0 +1,17 @@
+{
+  "name": "dnd-5e-ficha-2024",
+  "version": "1.0.0",
+  "description": "Ficha de Personagem D&D 5.5 (2024)",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "lint": "node --check server.js",
+    "build": "echo 'No build step needed'",
+    "test": "node --test D-D_2024-main/testes/regras/unidade/*.test.mjs"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

@@ -3,15 +3,15 @@
 // Modulo opcional: se nao logado, tudo funciona via localStorage
 // ============================================================
 
-// Configuracao do projeto Firebase (produção)
+// Configuracao do projeto Firebase pessoal (nexus-dnd-fa137)
 const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyBlk6l-yuMQpC080fOsN4NC4mB5pbyY7VA",
-  authDomain: "ded2024.firebaseapp.com",
-  projectId: "ded2024",
-  storageBucket: "ded2024.firebasestorage.app",
-  messagingSenderId: "360073497668",
-  appId: "1:360073497668:web:34377bc83947cbb7018011",
-  measurementId: "G-RET2BV4Z36"
+  apiKey: "AIzaSyB4VtbW5qRq_cvwiT7aMhDhtVZxiTAGFkI",
+  authDomain: "nexus-dnd-fa137.firebaseapp.com",
+  projectId: "nexus-dnd-fa137",
+  storageBucket: "nexus-dnd-fa137.firebasestorage.app",
+  messagingSenderId: "402454250156",
+  appId: "1:402454250156:web:802ad82df4f905128b5509",
+  measurementId: "G-0X76QHYTD1"
 };
 
 let _app = null;
@@ -37,7 +37,9 @@ async function inicializarFirebase() {
 
     _app = initializeApp(FIREBASE_CONFIG);
     _auth = getAuth(_app);
-    _db = getFirestore(_app);
+    _db = FIREBASE_CONFIG.firestoreDatabaseId 
+      ? getFirestore(_app, FIREBASE_CONFIG.firestoreDatabaseId)
+      : getFirestore(_app);
     _inicializado = true;
 
     // Escutar mudancas de autenticacao
