@@ -116,7 +116,7 @@ function _renderMenuPrincipal(container, personagens, usuario) {
           <div class="home-menu-text">
             <div class="home-menu-title">Compêndio</div>
             <div class="home-menu-desc">
-              Biblioteca oficial com todas as Classes, Espécies, Antecedentes, Talentos, Grimório de Magias, Equipamentos, Bestiário e Regras de Jogo.
+              Biblioteca oficial completa, com as principais informações disponíveis nos livros da edição 5.5 do sistema D&D.
             </div>
           </div>
           <div class="home-menu-action">
@@ -139,7 +139,7 @@ function _renderMenuPrincipal(container, personagens, usuario) {
               </span>
             </div>
             <div class="home-menu-desc">
-              Crie novos heróis passo a passo, visualize suas fichas digitais interativas, role dados de combate e gerencie magias e itens.
+              Crie novos heróis passo a passo e gerencie suas fichas digitais interativas.
             </div>
           </div>
           <div class="home-menu-action">
@@ -162,7 +162,7 @@ function _renderMenuPrincipal(container, personagens, usuario) {
               </span>
             </div>
             <div class="home-menu-desc">
-              Rolador completo para sessões de mesa: escolha quantidade, aplique vantagens/desvantagens, adicione modificadores e consulte o histórico de rolagens.
+              Rolador completo de dados, com sistema de vantagens/desvantagens, modificadores e histórico.
             </div>
           </div>
           <div class="home-menu-action">

@@ -265,7 +265,7 @@ async function _renderClasses(container) {
 
   container.innerHTML = `
     <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Classes de Personagem (D&D 5.5)</h2>
+      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Classes de Personagem</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
         Selecione uma classe para consultar todas as suas características de nível 1 a 20, tabela de progressão, subclasses e lista de magias.
       </p>
@@ -640,7 +640,7 @@ async function _renderEspecies(container) {
     <div class="mb-2">
       <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Espécies de Personagem</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
-        Consulte as características raciais, traços únicos, deslocamentos, tamanhos e linhagens do D&D 5.5.
+        Consulte as características raciais, traços únicos, deslocamentos, tamanhos e linhagens.
       </p>
     </div>
 
@@ -835,7 +835,7 @@ async function _renderTalentos(container) {
     <div class="mb-2">
       <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Catálogo de Talentos</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
-        Explore todos os talentos de Origem, Gerais, Estilos de Luta e Dádivas Épicas do sistema 5.5.
+        Explore todos os talentos de Origem, Gerais, Estilos de Luta e Dádivas Épicas do sistema.
       </p>
     </div>
 
@@ -1057,7 +1057,7 @@ async function _renderMagias(container) {
 
   container.innerHTML = `
     <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Grimório de Magias (D&D 5.5)</h2>
+      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Grimório de Magias</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
         Consulte todas as magias do jogo. Filtre por círculo, classe, escola de magia, tempo de conjuração e rituais.
       </p>
@@ -1298,7 +1298,7 @@ async function _renderEquipamento(container) {
 
   container.innerHTML = `
     <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Equipamento & Mercadorias (5.5)</h2>
+      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Equipamento & Mercadorias</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
         Tabelas completas de armas com propriedades de Maestria, armaduras, ferramentas de artesão, veículos e serviços.
       </p>
@@ -1903,7 +1903,7 @@ async function _renderItensMagicos(container) {
 
   container.innerHTML = `
     <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">🔮 Itens Mágicos (D&D 5.5e)</h2>
+      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">🔮 Itens Mágicos</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
         Acervo completo com 350 itens mágicos: armas lendárias, anéis, pergaminhos, poções, varinhas, cetros, cajados, armaduras e itens maravilhosos.
       </p>
@@ -2135,7 +2135,7 @@ async function _renderBestiario(container) {
 
   container.innerHTML = `
     <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">🦁 Bestiário (D&D 5.5e)</h2>
+      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">🦁 Bestiário</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
         Acervo completo de criaturas do Livro do Jogador e monstros temíveis do Manual dos Monstros.
       </p>
@@ -2376,9 +2376,9 @@ async function _renderRegras(container) {
 
   container.innerHTML = `
     <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">📚 Glossário e Regras (D&D 5.5e)</h2>
+      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">📚 Glossário e Regras</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
-        Guia de regras do sistema 5.5: consulte termos e condições no glossário, regras de combate e jogabilidade, criação de personagem e a cosmologia do multiverso.
+        Guia de regras do D&D 5.5: consulte termos e condições no glossário, regras de combate e jogabilidade, criação de personagem e a cosmologia do multiverso.
       </p>
     </div>
 

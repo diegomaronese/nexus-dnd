@@ -122,7 +122,7 @@ function _renderizarLayout(container, ultimoResultado = null) {
       <div class="dice-hero">
         <div>
           <div class="dice-hero-title">
-            <span>🎲 Mesa de Dados - D&D 5.5e</span>
+            <span>🎲 Mesa de Dados Virtual</span>
           </div>
           <div class="dice-hero-desc">
             Role qualquer combinação de dados das regras de D&D com vantagens, desvantagens, modificadores e histórico em tempo real.

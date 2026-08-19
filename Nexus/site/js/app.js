@@ -9,7 +9,7 @@ import { renderCompendio } from './pages/compendio.js';
 import { renderDados } from './pages/dados.js';
 import { inicializarSync } from './sync.js';
 import { carregarTaxasMoeda } from './store.js';
-import { toast, abrirModal } from './utils.js';
+import { toast, abrirModal, fecharModal, temModalAberto } from './utils.js';
 
 // --- Router baseado em hash ---
 const routes = {
@@ -26,6 +26,57 @@ let _scrollMap = new Map();
 let _manterProximoScroll = false;
 let _posicaoScrollDesejada = null;
 
+/**
+ * Retorna a rota pai hierárquica para qualquer rota do aplicativo.
+ * Exemplo:
+ * - 'compendio/classes/Paladino' -> 'compendio/classes'
+ * - 'compendio/classes' ou 'compendio/itens_magicos' -> 'home'
+ * - 'ficha/123' ou 'criar' -> 'personagens'
+ * - 'personagens' ou 'dados' -> 'home'
+ * - 'home' -> null
+ */
+export function obterRotaPai(rota) {
+  const r = (rota || '').replace(/^#/, '').trim() || 'home';
+  const partes = r.split('/').filter(Boolean);
+  const pagina = partes[0] || 'home';
+
+  if (pagina === 'home') return null;
+
+  if (pagina === 'compendio') {
+    if (partes.length > 2) {
+      // Detalhe de sub-seção ou classe específica -> volta para a listagem da seção
+      return `compendio/${partes[1]}`;
+    }
+    // Qualquer aba principal do compêndio -> volta para a Tela Inicial (home)
+    return 'home';
+  }
+
+  if (pagina === 'ficha' || pagina === 'criar') {
+    return 'personagens';
+  }
+
+  // Telas de primeiro nível (personagens, dados, etc.) -> voltam para a Tela Inicial
+  return 'home';
+}
+window.obterRotaPai = obterRotaPai;
+
+/**
+ * Retorna o nível de profundidade na árvore de navegação
+ */
+export function obterNivelHierarquico(rota) {
+  const r = (rota || '').replace(/^#/, '').trim() || 'home';
+  const partes = r.split('/').filter(Boolean);
+  const pagina = partes[0] || 'home';
+
+  if (pagina === 'home') return 0;
+  if (pagina === 'compendio') {
+    return partes.length > 2 ? 2 : 1;
+  }
+  if (pagina === 'ficha') return 2;
+  return 1;
+}
+window.obterNivelHierarquico = obterNivelHierarquico;
+
 /** Rola a janela e containers principais para o topo absoluto */
 export function rolarParaOTopo() {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -36,21 +87,43 @@ export function rolarParaOTopo() {
 }
 window.rolarParaOTopo = rolarParaOTopo;
 
+/**
+ * Volta para a tela hierarquicamente superior (ou fecha modal se houver algum aberto)
+ */
+export function voltarHierarquico() {
+  // 1. Se há algum modal ou sub-modal aberto, fecha o modal primeiro
+  if (temModalAberto()) {
+    fecharModal();
+    return;
+  }
+
+  // 2. Navegar para a rota pai hierárquica
+  const rotaAtual = window.location.hash.slice(1) || 'home';
+  const pai = obterRotaPai(rotaAtual);
+  if (pai) {
+    navegar(pai, { manterScroll: true });
+  } else {
+    navegar('home');
+  }
+}
+window.voltarHierarquico = voltarHierarquico;
+
 /** Navegar para uma rota */
 export function navegar(rota, opcoes = {}) {
-  const rotaAtual = window.location.hash.slice(1) || 'home';
+  const rotaLimpa = (rota || 'home').replace(/^#/, '');
+  const rotaAtual = (window.location.hash.slice(1) || 'home').replace(/^#/, '');
   const scrollAtual = window.scrollY || document.documentElement?.scrollTop || document.body?.scrollTop || 0;
   
   if (rotaAtual) {
     _scrollMap.set(rotaAtual, scrollAtual);
   }
 
-  const { manterScroll = false, scrollTopo = false } = opcoes;
-  const ehInternoCompendio = rotaAtual.startsWith('compendio') && rota.startsWith('compendio');
-  const ehEntradaDetalheClasse = rotaAtual === 'compendio/classes' && rota.startsWith('compendio/classes/');
-  const ehMesmaSecaoEquip = rota.startsWith('compendio/equipamento') && rotaAtual.startsWith('compendio/equipamento');
-  const ehMesmaSecaoRegras = rota.startsWith('compendio/regras') && rotaAtual.startsWith('compendio/regras');
-  const ehMesmaClasse = rota.startsWith('compendio/classes/') && rotaAtual.startsWith('compendio/classes/');
+  const { manterScroll = false, scrollTopo = false, substituir = false } = opcoes;
+  const ehInternoCompendio = rotaAtual.startsWith('compendio') && rotaLimpa.startsWith('compendio');
+  const ehEntradaDetalheClasse = rotaAtual === 'compendio/classes' && rotaLimpa.startsWith('compendio/classes/');
+  const ehMesmaSecaoEquip = rotaLimpa.startsWith('compendio/equipamento') && rotaAtual.startsWith('compendio/equipamento');
+  const ehMesmaSecaoRegras = rotaLimpa.startsWith('compendio/regras') && rotaAtual.startsWith('compendio/regras');
+  const ehMesmaClasse = rotaLimpa.startsWith('compendio/classes/') && rotaAtual.startsWith('compendio/classes/');
   
   let deveManter = false;
   let posDesejada = 0;
@@ -60,9 +133,9 @@ export function navegar(rota, opcoes = {}) {
       deveManter = true;
       posDesejada = scrollAtual;
     } else if (ehInternoCompendio) {
-      if (_scrollMap.has(rota)) {
+      if (_scrollMap.has(rotaLimpa)) {
         deveManter = true;
-        posDesejada = _scrollMap.get(rota);
+        posDesejada = _scrollMap.get(rotaLimpa);
       }
     }
   }
@@ -75,10 +148,26 @@ export function navegar(rota, opcoes = {}) {
     rolarParaOTopo();
   }
 
-  if (window.location.hash === `#${rota}`) {
+  // Troca de abas irmãs no mesmo nível hierárquico (ex: Classes -> Talentos -> Itens Mágicos)
+  // substitui o histórico para que o botão Voltar do celular retorne diretamente à tela pai (Home)
+  const nivelAtual = obterNivelHierarquico(rotaAtual);
+  const nivelNovo = obterNivelHierarquico(rotaLimpa);
+  const mesmoPai = obterRotaPai(rotaAtual) === obterRotaPai(rotaLimpa);
+  const deveSubstituir = substituir || (nivelAtual === nivelNovo && mesmoPai && nivelAtual > 0);
+
+  if (window.location.hash === `#${rotaLimpa}`) {
     processarRota();
   } else {
-    window.location.hash = rota;
+    if (deveSubstituir) {
+      try {
+        history.replaceState(null, '', `#${rotaLimpa}`);
+        processarRota();
+      } catch (e) {
+        window.location.hash = rotaLimpa;
+      }
+    } else {
+      window.location.hash = rotaLimpa;
+    }
   }
 }
 window.navegar = navegar;
@@ -148,25 +237,12 @@ function processarRota() {
   acoes.innerHTML = '';
   btnVoltar.style.display = pagina === 'home' ? 'none' : 'block';
 
-  // Configuração do botão voltar
+  // Configuração do botão voltar no Header (sempre segue a hierarquia superior)
   const iconeVoltar = document.getElementById('icone-voltar');
-  if (pagina === 'ficha') {
+  if (iconeVoltar) {
     iconeVoltar.innerHTML = '<path d="M15 18l-6-6 6-6"/>';
-    btnVoltar.onclick = () => navegar('personagens');
-  } else if (pagina === 'criar') {
-    iconeVoltar.innerHTML = '<path d="M15 18l-6-6 6-6"/>';
-    btnVoltar.onclick = () => navegar('personagens');
-  } else if (pagina === 'compendio') {
-    iconeVoltar.innerHTML = '<path d="M15 18l-6-6 6-6"/>';
-    if (partes.length > 2) {
-      btnVoltar.onclick = () => navegar(`compendio/${partes[1]}`, { manterScroll: true });
-    } else {
-      btnVoltar.onclick = () => navegar('home');
-    }
-  } else {
-    iconeVoltar.innerHTML = '<path d="M15 18l-6-6 6-6"/>';
-    btnVoltar.onclick = () => navegar('home');
   }
+  btnVoltar.onclick = () => voltarHierarquico();
 
   // Definir título padrão
   const titulos = {
@@ -337,8 +413,29 @@ function init() {
     }
   });
 
-  // Listener de rota
-  window.addEventListener('hashchange', processarRota);
+  // Listener do botão voltar nativo do celular / navegador (Android back button)
+  window.addEventListener('popstate', (e) => {
+    // 1. Se há modal ou sub-modal aberto no momento do popstate, fecha apenas o modal e mantém a tela
+    if (temModalAberto()) {
+      fecharModal(true);
+      if (_ultimaRota && window.location.hash !== `#${_ultimaRota}`) {
+        try {
+          history.replaceState(null, '', `#${_ultimaRota}`);
+        } catch (err) {}
+      }
+      return;
+    }
+
+    // 2. Processar a rota de destino
+    processarRota();
+  });
+
+  // Listener de rota para mudanças diretas de hash
+  window.addEventListener('hashchange', () => {
+    if (!temModalAberto()) {
+      processarRota();
+    }
+  });
 
   // Rota inicial
   processarRota();

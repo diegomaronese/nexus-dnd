@@ -564,6 +564,17 @@ export function semAcento(str) {
 let _subModalCount = 0;
 /** Callback opcional ao fechar o modal principal */
 let _onModalClose = null;
+/** Flag para rastrear se o fechamento veio de popstate do navegador */
+let _fechandoModalPorPopstate = false;
+
+/** Verifica se há algum modal (principal ou sub-modal) aberto no momento */
+export function temModalAberto() {
+  const overlay = document.getElementById('modal-overlay');
+  const modalPrincipalAberto = overlay && overlay.style.display === 'flex';
+  const subModaisAbertos = document.querySelectorAll('.sub-modal-overlay').length > 0;
+  return !!(modalPrincipalAberto || subModaisAbertos);
+}
+window.temModalAberto = temModalAberto;
 
 /** Abre modal global. onClose é chamado quando o modal principal é fechado. */
 export function abrirModal(titulo, corpoHtml, acoesHtml = '', onClose = null) {
@@ -571,6 +582,15 @@ export function abrirModal(titulo, corpoHtml, acoesHtml = '', onClose = null) {
   const tituloEl = document.getElementById('modal-titulo');
   const corpoEl = document.getElementById('modal-corpo');
   const acoesEl = document.getElementById('modal-acoes');
+
+  // Adicionar entrada no histórico do navegador para permitir fechar via botão Voltar do celular
+  try {
+    if (window.history && window.history.pushState) {
+      window.history.pushState({ modalNexus: true, subModal: overlay.style.display === 'flex' }, '');
+    }
+  } catch (e) {
+    // Fallback silencioso se pushState não estiver disponível
+  }
 
   // Se ja existe modal aberto, abrir como sub-modal (overlay empilhado)
   if (overlay.style.display === 'flex') {
@@ -594,14 +614,13 @@ export function abrirModal(titulo, corpoHtml, acoesHtml = '', onClose = null) {
     // Fechar sub-modal ao clicar fora ou no X
     sub.addEventListener('click', (e) => {
       if (e.target === sub || e.target.closest('[data-fechar-sub]')) {
-        sub.remove();
-        _subModalCount--;
+        fecharModal();
       }
     });
     // Substituir onclick="fecharModal()" nos botões do sub-modal
     sub.querySelectorAll('[onclick*="fecharModal"]').forEach(btn => {
       btn.removeAttribute('onclick');
-      btn.addEventListener('click', () => { sub.remove(); _subModalCount--; });
+      btn.addEventListener('click', () => { fecharModal(); });
     });
     return;
   }
@@ -614,25 +633,47 @@ export function abrirModal(titulo, corpoHtml, acoesHtml = '', onClose = null) {
   document.getElementById('modal-container').scrollTop = 0;
 }
 
-/** Fecha modal global */
-export function fecharModal() {
-  // Se existem sub-modais, fechar o mais recente
+/** Fecha modal globalmente no DOM sem disparar history.back() duplicado */
+function _fecharModalDOM() {
   if (_subModalCount > 0) {
     const sub = document.getElementById(`sub-modal-overlay-${_subModalCount}`);
     if (sub) sub.remove();
     _subModalCount--;
     return;
   }
-  document.getElementById('modal-overlay').style.display = 'none';
-  if (_onModalClose) { const cb = _onModalClose; _onModalClose = null; cb(); }
+  const overlay = document.getElementById('modal-overlay');
+  if (overlay) overlay.style.display = 'none';
+  if (_onModalClose) {
+    const cb = _onModalClose;
+    _onModalClose = null;
+    cb();
+  }
+}
+
+/** Fecha modal global (trata sincronização com histórico do navegador) */
+export function fecharModal(origemPopstate = false) {
+  if (origemPopstate || _fechandoModalPorPopstate) {
+    _fecharModalDOM();
+    return;
+  }
+
+  // Se foi fechado pelo clique no 'X' ou botão, sincroniza o histórico do navegador
+  _fecharModalDOM();
+  try {
+    if (window.history && window.history.state && window.history.state.modalNexus) {
+      window.history.back();
+    }
+  } catch (e) {
+    // Ignorar falha de history
+  }
 }
 
 /** Fecha todos os modais (principal + sub-modais) */
 export function fecharModalTodos() {
-  // Remover todos sub-modais
   document.querySelectorAll('.sub-modal-overlay').forEach(el => el.remove());
   _subModalCount = 0;
-  document.getElementById('modal-overlay').style.display = 'none';
+  const overlay = document.getElementById('modal-overlay');
+  if (overlay) overlay.style.display = 'none';
   if (_onModalClose) { const cb = _onModalClose; _onModalClose = null; cb(); }
 }
 // Expor para onclick inline

@@ -47,7 +47,7 @@ function _renderConteudo(container, personagens, usuario) {
     <div class="personagens-hero">
       <div>
         <div class="personagens-hero-title">
-          <span>🧙 Meus Personagens - D&D 5.5e</span>
+          <span>🧙 Meus Personagens</span>
         </div>
         <div class="personagens-hero-desc">
           Gerencie, visualize e edite suas fichas de personagens, com suporte a salvamento local, sincronização em nuvem e exportação.
