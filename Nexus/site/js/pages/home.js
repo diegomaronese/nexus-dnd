@@ -97,7 +97,7 @@ function _renderMenuPrincipal(container, personagens, usuario) {
       <!-- Logo Principal e Cabeçalho de Boas-Vindas -->
       <div class="home-hero">
         <div class="home-logo-wrap">
-          <img src="img/nexus-logo.svg" alt="Nexus D&D 5.5" class="home-main-logo">
+          <img src="img/nexus-logo.svg" alt="Nexus D&D" class="home-main-logo">
         </div>
         <div class="home-hero-badge">Dungeons & Dragons 5.5e (2024)</div>
         <p class="home-hero-subtitle">

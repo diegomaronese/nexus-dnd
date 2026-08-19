@@ -253,7 +253,7 @@ function processarRota() {
     'compendio': 'Compêndio D&D 5.5e',
     'dados': 'Mesa de Dados'
   };
-  definirTituloHeader(titulos[pagina] !== undefined ? titulos[pagina] : 'Nexus D&D 5.5');
+  definirTituloHeader(titulos[pagina] !== undefined ? titulos[pagina] : 'Nexus D&D');
 
   // Botões contextuais no header
   if (pagina === 'personagens') {
@@ -295,33 +295,25 @@ function processarRota() {
 
 // --- PWA Update ---
 /**
- * Verifica se existe uma nova versão do Service Worker. Quando encontra,
- * limpa os caches do SW e envia SKIP_WAITING automaticamente (sem exigir
- * clique do usuário). Limpar caches do SW nunca afeta personagens, que
- * vivem só em localStorage (store.js), separado do Cache Storage do SW.
+ * Trata atualizações do Service Worker de forma suave em segundo plano,
+ * sem forçar recarregamento abrupto que interrompa o usuário durante a navegação.
  * @param {ServiceWorkerRegistration} registration - Registro do SW ativo
  */
 function verificarAtualizacaoSW(registration) {
   const novoSW = registration.waiting || registration.installing;
 
   function aplicarAtualizacao(sw) {
-    // Evitar disparar mais de uma vez pro mesmo SW
     if (sw._dndAtualizacaoAplicada) return;
     sw._dndAtualizacaoAplicada = true;
-
-    // NAO apagar caches aqui. O proprio SW (evento 'activate') remove apenas os
-    // caches de versoes antigas. Apagar tudo do cliente destroi o cache que o novo
-    // SW acabou de popular no 'install', deixando o app sem conteudo offline
-    // (erro "Returned response is null" ao abrir sem rede).
     sw.postMessage({ type: 'SKIP_WAITING' });
   }
 
   if (novoSW) {
     if (novoSW.state === 'installed') {
-      if (navigator.serviceWorker.controller) aplicarAtualizacao(novoSW);
+      aplicarAtualizacao(novoSW);
     } else {
       novoSW.addEventListener('statechange', () => {
-        if (novoSW.state === 'installed' && navigator.serviceWorker.controller) {
+        if (novoSW.state === 'installed') {
           aplicarAtualizacao(novoSW);
         }
       });
@@ -332,39 +324,12 @@ function verificarAtualizacaoSW(registration) {
     const instalando = registration.installing;
     if (instalando) {
       instalando.addEventListener('statechange', () => {
-        if (instalando.state === 'installed' && navigator.serviceWorker.controller) {
+        if (instalando.state === 'installed') {
           aplicarAtualizacao(instalando);
         }
       });
     }
   });
-}
-
-/**
- * Recarrega a página assim que for seguro (sem modal aberto), pra não
- * interromper o usuário no meio de uma edição (ex: wizard de level-up).
- * Se já estiver seguro, recarrega na hora.
- */
-function recarregarQuandoSeguro() {
-  const overlay = document.getElementById('modal-overlay');
-  const modalAberto = overlay && overlay.style.display === 'flex';
-
-  if (!modalAberto) {
-    window.location.reload();
-    return;
-  }
-
-  toast('Nova versão disponível — será aplicada ao fechar esta janela.', '');
-  // Polling em vez do callback onClose de abrirModal() (utils.js): esse callback é
-  // um slot único por modal, já pode estar ocupado pela lógica do próprio wizard/modal
-  // em andamento — registrar aqui substituiria esse callback e quebraria a limpeza dele.
-  const interval = setInterval(() => {
-    const aindaAberto = overlay && overlay.style.display === 'flex';
-    if (!aindaAberto) {
-      clearInterval(interval);
-      window.location.reload();
-    }
-  }, 500);
 }
 
 // --- Inicialização ---
@@ -395,14 +360,10 @@ function init() {
       console.warn('SW registro falhou:', err);
     });
 
-    // Recarregar página quando o novo SW assumir controle (pós-atualização)
-    // hadController evita reload desnecessário na primeira instalação
-    const hadController = !!navigator.serviceWorker.controller;
-    let refreshing = false;
+    // Quando o novo SW assumir controle, os novos caches já estarão ativos para as próximas requisições
+    // Não força window.location.reload() para não interromper a sessão nem reiniciar a tela do usuário
     navigator.serviceWorker.addEventListener('controllerchange', () => {
-      if (!hadController || refreshing) return;
-      refreshing = true;
-      recarregarQuandoSeguro();
+      console.info('Nexus D&D: Nova versão do Service Worker ativada em segundo plano.');
     });
   }
 
