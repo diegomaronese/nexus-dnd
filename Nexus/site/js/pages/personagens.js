@@ -75,7 +75,6 @@ function _renderConteudo(container, personagens, usuario) {
         ${syncBarHtml}
 
         <div class="empty-state" style="padding: 40px 20px;">
-          <img src="img/dnd-icon.svg" alt="D&D" width="85" height="85" style="opacity: 0.85; margin-bottom: 12px;">
           <h2 style="font-size: 1.3rem; color: #ffffff; margin-bottom: 6px;">Nenhum personagem cadastrado</h2>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">
             Crie seu primeiro personagem para D&D 5.5e ou importe uma ficha salva anteriormente.
