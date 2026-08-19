@@ -343,15 +343,16 @@ function init() {
   // Rota inicial
   processarRota();
 
-  // Ocultar splash screen após carregamento inicial
+  // Ocultar splash screen com tempo adequado para visualização da tela de abertura e carregamento
   const splash = document.getElementById('app-splash');
   if (splash) {
+    const tempoMinimoSplash = 1800; // 1.8s para experiência fluida da tela de abertura no mobile
     setTimeout(() => {
       splash.classList.add('oculto');
       setTimeout(() => {
         if (splash.parentNode) splash.parentNode.removeChild(splash);
-      }, 400);
-    }, 300);
+      }, 550);
+    }, tempoMinimoSplash);
   }
 }
 

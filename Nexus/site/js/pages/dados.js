@@ -107,7 +107,7 @@ export function limparHistorico() {
  */
 export function renderDados(container) {
   _containerRef = container;
-  definirTituloHeader('Mesa de Dados');
+  definirTituloHeader('Dados');
   _renderizarLayout(container);
 }
 
@@ -120,11 +120,14 @@ function _renderizarLayout(container, ultimoResultado = null) {
       
       <!-- Cabeçalho da Página -->
       <div class="dice-hero">
-        <div class="dice-hero-badge">Rolador Virtual Oficial • D&D 5.5e</div>
-        <h1 class="dice-hero-title">Mesa de Dados</h1>
-        <p class="dice-hero-subtitle">
-          Role qualquer combinação de dados das regras de D&D com vantagens, desvantagens, modificadores e histórico em tempo real.
-        </p>
+        <div>
+          <div class="dice-hero-title">
+            <span>🎲 Mesa de Dados - D&D 5.5e</span>
+          </div>
+          <div class="dice-hero-desc">
+            Role qualquer combinação de dados das regras de D&D com vantagens, desvantagens, modificadores e histórico em tempo real.
+          </div>
+        </div>
       </div>
 
       <!-- SEÇÃO 1: Seleção do Tipo de Dado -->

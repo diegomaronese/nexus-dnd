@@ -10,7 +10,7 @@ let _containerRef = null;
 
 export function renderHome(container) {
   _containerRef = container;
-  definirTituloHeader('D&D 5.5e');
+  definirTituloHeader();
 
   const personagens = listarPersonagens();
   const usuario = getUsuario();

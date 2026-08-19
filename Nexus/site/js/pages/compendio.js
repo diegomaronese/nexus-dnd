@@ -20,6 +20,7 @@ import {
   getIndiceMagias,
   getMagiasPorCirculo,
   getCriaturas,
+  getMonstros,
   getGlossario,
   getCapitulo1Regras,
   getCapitulo2Criacao,
@@ -55,6 +56,7 @@ let _cacheMontarias = null;
 let _cacheServicos = null;
 let _cacheItensMagicos = null;
 let _cacheCriaturas = null;
+let _cacheMonstros = null;
 let _cacheGlossario = null;
 let _cacheCapitulo1 = null;
 let _cacheCapitulo2 = null;
@@ -113,7 +115,7 @@ export async function renderCompendio(container, rotaParam = '') {
               <span>📖 Compêndio - D&D 5.5e</span>
             </div>
             <div class="compendio-hero-desc">
-              Biblioteca de consulta completa das regras, classes, magias, espécies, itens e apêndices do Livro do Jogador e Guia do Mestre (revisão 2024).
+              Biblioteca de consulta completa das regras, classes, magias, espécies, itens e apêndices do Livro do Jogador, Guia do Mestre e Manual dos Monstros.
             </div>
           </div>
         </div>
@@ -2096,24 +2098,36 @@ function _abrirModalItemMagico(it) {
 }
 
 // ============================================================
-// 7. SEÇÃO: BESTIÁRIO (CRIATURAS E FERAS)
+// 7. SEÇÃO: BESTIÁRIO (CRIATURAS E MONSTROS)
 // ============================================================
 
 async function _renderBestiario(container) {
   if (!_cacheCriaturas) {
     _cacheCriaturas = await getCriaturas();
   }
-  const criaturas = _cacheCriaturas?.criaturas || [];
+  if (!_cacheMonstros) {
+    _cacheMonstros = await getMonstros();
+  }
 
-  // Obter lista única de NDs para o filtro
-  const ndsUnicos = Array.from(new Set(criaturas.map(c => c.nd).filter(Boolean)));
-  // Ordenar NDs de forma lógica
+  const criaturasBase = _cacheCriaturas?.criaturas || (Array.isArray(_cacheCriaturas) ? _cacheCriaturas : []);
+  const monstrosBase = Array.isArray(_cacheMonstros) ? _cacheMonstros : (_cacheMonstros?.monstros || []);
+
+  const subSecao = _subSecaoAtiva || 'monstros';
+  const listaAtiva = subSecao === 'criaturas' ? criaturasBase : monstrosBase;
+  const isMonstros = subSecao === 'monstros';
+
+  // Obter lista única de NDs para o filtro da lista ativa
+  const ndsUnicos = Array.from(new Set(listaAtiva.map(c => c.nd).filter(Boolean)));
   const ordenarNd = (a, b) => {
     const parse = (val) => {
-      if (val === '1/8') return 0.125;
-      if (val === '1/4') return 0.25;
-      if (val === '1/2') return 0.5;
-      return parseFloat(val) || 0;
+      if (typeof val === 'string') {
+        const clean = val.split(' ')[0];
+        if (clean === '1/8') return 0.125;
+        if (clean === '1/4') return 0.25;
+        if (clean === '1/2') return 0.5;
+        return parseFloat(clean) || 0;
+      }
+      return Number(val) || 0;
     };
     return parse(a) - parse(b);
   };
@@ -2121,17 +2135,27 @@ async function _renderBestiario(container) {
 
   container.innerHTML = `
     <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">🦁 Bestiário & Criaturas (D&D 5.5e)</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
-        Acervo completo de feras, monstros e criaturas do sistema D&D 2024: consulte blocos de estatísticas, atributos, Nível de Desafio (ND), deslocamento, pontos de vida, traços e ações.
+      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">🦁 Bestiário (D&D 5.5e)</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+        Acervo completo de criaturas do Livro do Jogador e monstros temíveis do Manual dos Monstros.
       </p>
+
+      <!-- Sub-navegação do Bestiário -->
+      <div class="compendio-subnav" style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+        <button class="compendio-subnav-btn ${isMonstros ? 'active' : ''}" data-subsecao="monstros" style="padding: 6px 14px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; background: ${isMonstros ? 'var(--accent)' : 'var(--bg-card)'}; color: ${isMonstros ? '#fff' : 'var(--text-muted)'}; border: 1px solid ${isMonstros ? 'var(--accent)' : 'var(--border-color)'};">
+          🐉 Monstros (${monstrosBase.length})
+        </button>
+        <button class="compendio-subnav-btn ${!isMonstros ? 'active' : ''}" data-subsecao="criaturas" style="padding: 6px 14px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; background: ${!isMonstros ? 'var(--accent)' : 'var(--bg-card)'}; color: ${!isMonstros ? '#fff' : 'var(--text-muted)'}; border: 1px solid ${!isMonstros ? 'var(--accent)' : 'var(--border-color)'};">
+          🐾 Criaturas (${criaturasBase.length})
+        </button>
+      </div>
     </div>
 
     <!-- Barra de Busca e Filtros do Bestiário -->
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
         <span class="compendio-search-icon">🔍</span>
-        <input type="text" class="compendio-search-input" id="busca-criatura" placeholder="Buscar criatura por nome, tamanho, tipo ou traço...">
+        <input type="text" class="compendio-search-input" id="busca-criatura" placeholder="Buscar ${isMonstros ? 'monstro' : 'criatura'} por nome, tipo, traço ou ação...">
       </div>
       <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
         <select id="filtro-nd-criatura" class="form-select" style="width: auto; min-width: 140px; padding: 6px 28px 6px 10px; font-size: 0.82rem; height: 36px;">
@@ -2140,15 +2164,23 @@ async function _renderBestiario(container) {
         </select>
       </div>
       <div class="compendio-count-badge" id="contagem-criaturas">
-        Total: ${criaturas.length} criaturas
+        Total: ${listaAtiva.length} ${isMonstros ? 'monstros' : 'criaturas'}
       </div>
     </div>
 
-    <!-- Grid de Criaturas -->
+    <!-- Grid de Criaturas/Monstros -->
     <div class="compendio-grid" id="grid-criaturas">
-      ${_gerarCardsCriaturasHTML(criaturas)}
+      ${_gerarCardsCriaturasHTML(listaAtiva, isMonstros)}
     </div>
   `;
+
+  // Event listeners para as abas de subseção
+  container.querySelectorAll('.compendio-subnav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      _subSecaoAtiva = btn.dataset.subsecao;
+      _renderBestiario(container);
+    });
+  });
 
   const input = container.querySelector('#busca-criatura');
   const selectNd = container.querySelector('#filtro-nd-criatura');
@@ -2159,43 +2191,46 @@ async function _renderBestiario(container) {
     const termo = semAcento(input.value || '');
     const ndSel = selectNd.value;
 
-    const filtradas = criaturas.filter(c => {
+    const filtradas = listaAtiva.filter(c => {
       if (ndSel !== 'todos' && c.nd !== ndSel) {
         return false;
       }
       if (termo) {
         const matchNome = semAcento(c.nome || '').includes(termo);
-        const matchNd = semAcento(c.nd || '').includes(termo);
+        const matchNd = semAcento(String(c.nd || '')).includes(termo);
         const matchTipo = semAcento(c.tipo_tamanho || '').includes(termo);
         const matchTracos = c.tracos ? c.tracos.some(t => semAcento(t.nome || '').includes(termo) || semAcento(t.descricao || '').includes(termo)) : false;
         const matchAcoes = c.acoes ? c.acoes.some(a => semAcento(a.nome || '').includes(termo) || semAcento(a.descricao || '').includes(termo)) : false;
-        if (!matchNome && !matchNd && !matchTipo && !matchTracos && !matchAcoes) {
+        const matchLore = c.descricao_lore ? semAcento(c.descricao_lore).includes(termo) : false;
+        if (!matchNome && !matchNd && !matchTipo && !matchTracos && !matchAcoes && !matchLore) {
           return false;
         }
       }
       return true;
     });
 
-    grid.innerHTML = _gerarCardsCriaturasHTML(filtradas);
-    contador.textContent = `Total: ${filtradas.length} criaturas`;
-    _atribuirEventosCriaturas(grid, criaturas);
+    grid.innerHTML = _gerarCardsCriaturasHTML(filtradas, isMonstros);
+    contador.textContent = `Total: ${filtradas.length} ${isMonstros ? 'monstros' : 'criaturas'}`;
+    _atribuirEventosCriaturas(grid, listaAtiva);
   }
 
   input.addEventListener('input', filtrarCriaturas);
   selectNd.addEventListener('change', filtrarCriaturas);
-  _atribuirEventosCriaturas(grid, criaturas);
+  _atribuirEventosCriaturas(grid, listaAtiva);
 }
 
-function _gerarCardsCriaturasHTML(lista) {
+function _gerarCardsCriaturasHTML(lista, isMonstros = false) {
   if (lista.length === 0) {
-    return `<div class="empty-state" style="grid-column: 1 / -1;"><p>Nenhuma criatura encontrada com os filtros aplicados.</p></div>`;
+    return `<div class="empty-state" style="grid-column: 1 / -1;"><p>Nenhum registro encontrado com os filtros aplicados.</p></div>`;
   }
+
+  const icon = isMonstros ? '🐉' : '🐾';
 
   return lista.map(c => `
     <div class="compendio-card compendio-card-clickable" data-criatura-nome="${escHtml(c.nome)}">
       <div class="compendio-card-header">
         <div>
-          <div class="compendio-card-title">🦁 ${escHtml(c.nome)}</div>
+          <div class="compendio-card-title">${icon} ${escHtml(c.nome)}</div>
           <div class="compendio-card-subtitle">${escHtml(c.tipo_tamanho || 'Fera')}</div>
         </div>
         <span class="c-badge c-badge-circulo">ND ${escHtml(c.nd || '1/4')}</span>
@@ -2203,6 +2238,7 @@ function _gerarCardsCriaturasHTML(lista) {
       <div class="compendio-card-body" style="font-size: 0.8rem;">
         <div><strong>CA:</strong> ${escHtml(c.ca || '10')} | <strong>PV:</strong> ${escHtml(c.pv || '10')}</div>
         <div><strong>Deslocamento:</strong> ${escHtml(c.deslocamento || '9 m')}</div>
+        ${c.descricao_lore ? `<div style="margin-top: 4px; color: var(--text-muted); font-size: 0.75rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${escHtml(c.descricao_lore)}</div>` : ''}
       </div>
       <div class="compendio-card-footer">
         <span style="color: var(--accent); font-weight: 600;">Ver bloco de estatísticas &rarr;</span>
@@ -2231,43 +2267,48 @@ function _abrirModalCriatura(c) {
 
       <div class="statblock-linha"><strong>Classe de Armadura:</strong> ${escHtml(c.ca || '10')}</div>
       <div class="statblock-linha"><strong>Pontos de Vida:</strong> ${escHtml(c.pv || '10')}</div>
-      <div class="statblock-linha"><strong>Iniciativa:</strong> ${escHtml(c.iniciativa || '+0')}</div>
+      ${c.iniciativa ? `<div class="statblock-linha"><strong>Iniciativa:</strong> ${escHtml(c.iniciativa)}</div>` : ''}
       <div class="statblock-linha"><strong>Deslocamento:</strong> ${escHtml(c.deslocamento || '9 m')}</div>
 
       <div class="statblock-attr-grid">
         <div class="statblock-attr-col">
           <div class="statblock-attr-nome">FOR</div>
-          <div class="statblock-attr-val">${attrs.For?.valor || '10'} (${attrs.For?.modificador || '+0'})</div>
+          <div class="statblock-attr-val">${attrs.For?.valor || '10'} (${attrs.For?.modificador || '+0'})${attrs.For?.salvaguarda && attrs.For?.salvaguarda !== attrs.For?.modificador ? `<br><small>SG: ${attrs.For?.salvaguarda}</small>` : ''}</div>
         </div>
         <div class="statblock-attr-col">
           <div class="statblock-attr-nome">DES</div>
-          <div class="statblock-attr-val">${attrs.Des?.valor || '10'} (${attrs.Des?.modificador || '+0'})</div>
+          <div class="statblock-attr-val">${attrs.Des?.valor || '10'} (${attrs.Des?.modificador || '+0'})${attrs.Des?.salvaguarda && attrs.Des?.salvaguarda !== attrs.Des?.modificador ? `<br><small>SG: ${attrs.Des?.salvaguarda}</small>` : ''}</div>
         </div>
         <div class="statblock-attr-col">
           <div class="statblock-attr-nome">CON</div>
-          <div class="statblock-attr-val">${attrs.Con?.valor || '10'} (${attrs.Con?.modificador || '+0'})</div>
+          <div class="statblock-attr-val">${attrs.Con?.valor || '10'} (${attrs.Con?.modificador || '+0'})${attrs.Con?.salvaguarda && attrs.Con?.salvaguarda !== attrs.Con?.modificador ? `<br><small>SG: ${attrs.Con?.salvaguarda}</small>` : ''}</div>
         </div>
         <div class="statblock-attr-col">
           <div class="statblock-attr-nome">INT</div>
-          <div class="statblock-attr-val">${attrs.Int?.valor || '10'} (${attrs.Int?.modificador || '+0'})</div>
+          <div class="statblock-attr-val">${attrs.Int?.valor || '10'} (${attrs.Int?.modificador || '+0'})${attrs.Int?.salvaguarda && attrs.Int?.salvaguarda !== attrs.Int?.modificador ? `<br><small>SG: ${attrs.Int?.salvaguarda}</small>` : ''}</div>
         </div>
         <div class="statblock-attr-col">
           <div class="statblock-attr-nome">SAB</div>
-          <div class="statblock-attr-val">${attrs.Sab?.valor || '10'} (${attrs.Sab?.modificador || '+0'})</div>
+          <div class="statblock-attr-val">${attrs.Sab?.valor || '10'} (${attrs.Sab?.modificador || '+0'})${attrs.Sab?.salvaguarda && attrs.Sab?.salvaguarda !== attrs.Sab?.modificador ? `<br><small>SG: ${attrs.Sab?.salvaguarda}</small>` : ''}</div>
         </div>
         <div class="statblock-attr-col">
           <div class="statblock-attr-nome">CAR</div>
-          <div class="statblock-attr-val">${attrs.Car?.valor || '10'} (${attrs.Car?.modificador || '+0'})</div>
+          <div class="statblock-attr-val">${attrs.Car?.valor || '10'} (${attrs.Car?.modificador || '+0'})${attrs.Car?.salvaguarda && attrs.Car?.salvaguarda !== attrs.Car?.modificador ? `<br><small>SG: ${attrs.Car?.salvaguarda}</small>` : ''}</div>
         </div>
       </div>
 
+      ${c.testes_resistencia ? `<div class="statblock-linha"><strong>Testes de Resistência:</strong> ${escHtml(c.testes_resistencia)}</div>` : ''}
       ${c.pericias ? `<div class="statblock-linha"><strong>Perícias:</strong> ${escHtml(c.pericias)}</div>` : ''}
+      ${c.vulnerabilidades ? `<div class="statblock-linha"><strong>Vulnerabilidades a Dano:</strong> ${escHtml(c.vulnerabilidades)}</div>` : ''}
+      ${c.resistencias ? `<div class="statblock-linha"><strong>Resistências a Dano:</strong> ${escHtml(c.resistencias)}</div>` : ''}
+      ${c.imunidades_dano ? `<div class="statblock-linha"><strong>Imunidades a Dano:</strong> ${escHtml(c.imunidades_dano)}</div>` : ''}
+      ${c.imunidades_condicao ? `<div class="statblock-linha"><strong>Imunidades a Condição:</strong> ${escHtml(c.imunidades_condicao)}</div>` : ''}
       ${c.sentidos ? `<div class="statblock-linha"><strong>Sentidos:</strong> ${escHtml(c.sentidos)}</div>` : ''}
       ${c.idiomas ? `<div class="statblock-linha"><strong>Idiomas:</strong> ${escHtml(c.idiomas)}</div>` : ''}
       <div class="statblock-linha"><strong>Nível de Desafio:</strong> ${escHtml(c.nd || '0')}</div>
 
       ${c.tracos && c.tracos.length > 0 ? `
-        <div class="statblock-secao-titulo">Traços</div>
+        <div class="statblock-secao-titulo">Traços & Características</div>
         ${c.tracos.map(t => `<div style="font-size: 0.85rem; margin-bottom: 6px;"><strong>${escHtml(t.nome)}.</strong> ${mdParaHtml(t.descricao || '')}</div>`).join('')}
       ` : ''}
 
@@ -2275,10 +2316,31 @@ function _abrirModalCriatura(c) {
         <div class="statblock-secao-titulo">Ações</div>
         ${c.acoes.map(a => `<div style="font-size: 0.85rem; margin-bottom: 6px;"><strong>${escHtml(a.nome)}.</strong> ${mdParaHtml(a.descricao || '')}</div>`).join('')}
       ` : ''}
+
+      ${c.reacoes && c.reacoes.length > 0 ? `
+        <div class="statblock-secao-titulo">Reações</div>
+        ${c.reacoes.map(r => `<div style="font-size: 0.85rem; margin-bottom: 6px;"><strong>${escHtml(r.nome)}.</strong> ${mdParaHtml(r.descricao || '')}</div>`).join('')}
+      ` : ''}
+
+      ${c.acoes_lendarias && c.acoes_lendarias.length > 0 ? `
+        <div class="statblock-secao-titulo">Ações Lendárias</div>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px;">O monstro pode realizar 3 ações lendárias, escolhendo entre as opções abaixo. Apenas uma opção pode ser usada por vez e apenas no final do turno de outra criatura.</p>
+        ${c.acoes_lendarias.map(al => `<div style="font-size: 0.85rem; margin-bottom: 6px;"><strong>${escHtml(al.nome)}.</strong> ${mdParaHtml(al.descricao || '')}</div>`).join('')}
+      ` : ''}
+
+      ${c.acoes_covil && c.acoes_covil.length > 0 ? `
+        <div class="statblock-secao-titulo">Ações de Covil</div>
+        ${c.acoes_covil.map(ac => `<div style="font-size: 0.85rem; margin-bottom: 6px;"><strong>${escHtml(ac.nome)}.</strong> ${mdParaHtml(ac.descricao || '')}</div>`).join('')}
+      ` : ''}
+
+      ${c.descricao_lore ? `
+        <div class="statblock-secao-titulo">Descrição & Lore</div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">${escHtml(c.descricao_lore)}</div>
+      ` : ''}
     </div>
   `;
 
-  abrirModal(`🦁 ${c.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  abrirModal(`${c.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 }
 
 // ============================================================

@@ -16,10 +16,70 @@
   <link rel="apple-touch-icon" sizes="192x192" href="img/icon-192.png">
   <link rel="apple-touch-icon" sizes="512x512" href="img/icon-512.png">
   <link rel="stylesheet" href="css/app.css">
+  <link rel="preload" href="img/nexus-tela.svg" as="image" type="image/svg+xml">
   <!-- Firebase SDK (preload para cache offline) -->
   <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js">
   <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js">
   <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js">
+  <style>
+    /* Estilos críticos da Splash Screen para renderização instantânea sem delay */
+    .app-splash-screen {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #121214;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .app-splash-screen.oculto {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .app-splash-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      gap: 22px;
+    }
+    .app-splash-logo {
+      max-width: 320px;
+      width: 80vw;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 32px rgba(236, 28, 36, 0.35));
+      animation: splash-pulse 2s ease-in-out infinite alternate;
+    }
+    .app-splash-loader {
+      width: 140px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 99px;
+      overflow: hidden;
+      position: relative;
+    }
+    .app-splash-loader-bar {
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, #ec1c24, #ff6b6b);
+      border-radius: 99px;
+      position: absolute;
+      animation: splash-loading 1.4s ease-in-out infinite;
+    }
+    @keyframes splash-pulse {
+      from { transform: scale(0.98); opacity: 0.92; }
+      to { transform: scale(1.02); opacity: 1; }
+    }
+    @keyframes splash-loading {
+      0% { left: -40%; width: 30%; }
+      50% { left: 35%; width: 50%; }
+      100% { left: 100%; width: 30%; }
+    }
+  </style>
 </head>
 <body>
 
@@ -27,6 +87,9 @@
   <div id="app-splash" class="app-splash-screen" aria-hidden="true">
     <div class="app-splash-content">
       <img src="img/nexus-tela.svg" alt="Nexus D&D 5.5" class="app-splash-logo">
+      <div class="app-splash-loader">
+        <div class="app-splash-loader-bar"></div>
+      </div>
     </div>
   </div>
 

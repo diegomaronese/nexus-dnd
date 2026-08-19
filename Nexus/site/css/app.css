@@ -65,7 +65,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 99999;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 .app-splash-screen.oculto {
   opacity: 0;
@@ -78,18 +78,40 @@ body {
   align-items: center;
   justify-content: center;
   padding: 24px;
+  gap: 22px;
 }
 .app-splash-logo {
   max-width: 320px;
   width: 80vw;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 8px 32px rgba(236, 28, 36, 0.3));
+  filter: drop-shadow(0 8px 32px rgba(236, 28, 36, 0.35));
   animation: splash-pulse 2s ease-in-out infinite alternate;
+}
+.app-splash-loader {
+  width: 140px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+}
+.app-splash-loader-bar {
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, #ec1c24, #ff6b6b);
+  border-radius: 99px;
+  position: absolute;
+  animation: splash-loading 1.4s ease-in-out infinite;
 }
 @keyframes splash-pulse {
   from { transform: scale(0.98); opacity: 0.92; }
   to { transform: scale(1.02); opacity: 1; }
+}
+@keyframes splash-loading {
+  0% { left: -40%; width: 30%; }
+  50% { left: 35%; width: 50%; }
+  100% { left: 100%; width: 30%; }
 }
 
 /* --- Header --- */
@@ -3124,40 +3146,36 @@ tr:hover td { background: #27272a; }
   overflow-x: hidden;
 }
 
-.dice-hero {
-  text-align: center;
-  margin-bottom: 16px;
-  padding: 0 4px;
+.dice-hero,
+.personagens-hero {
+  background: linear-gradient(135deg, rgba(236, 28, 36, 0.12) 0%, rgba(28, 28, 31, 0.9) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.dice-hero-badge {
-  display: inline-block;
-  padding: 4px 12px;
-  font-size: 0.72rem;
+.dice-hero-title,
+.personagens-hero-title {
+  font-size: 1.4rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-radius: 9999px;
-  background: rgba(243, 156, 18, 0.15);
-  color: #f39c12;
-  border: 1px solid rgba(243, 156, 18, 0.3);
-  margin-bottom: 10px;
-}
-
-.dice-hero-title {
-  font-size: 1.6rem;
-  font-weight: 800;
   color: #ffffff;
-  margin: 0 0 6px 0;
-  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.dice-hero-subtitle {
-  font-size: 0.88rem;
+.dice-hero-desc,
+.dice-hero-subtitle,
+.personagens-hero-desc {
+  font-size: 0.85rem;
   color: var(--text-muted);
-  line-height: 1.5;
-  max-width: 580px;
-  margin: 0 auto;
+  margin-top: 4px;
 }
 
 .dice-card-section {

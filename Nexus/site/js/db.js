@@ -185,6 +185,11 @@ export async function getCriaturas() {
   return fetchJSON('apendices/criaturas.json');
 }
 
+/** Carrega monstros do Manual dos Monstros */
+export async function getMonstros() {
+  return fetchJSON('apendices/monstros.json');
+}
+
 /** Carrega glossário */
 export async function getGlossario() {
   return fetchJSON('apendices/glossario.json');

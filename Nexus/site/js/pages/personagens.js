@@ -23,7 +23,7 @@ let _sincronizando = false;
 
 export function renderPersonagens(container) {
   _containerRef = container;
-  definirTituloHeader('Meus Personagens');
+  definirTituloHeader('Fichas');
 
   const personagens = listarPersonagens();
   const usuario = getUsuario();
@@ -42,6 +42,20 @@ export function renderPersonagens(container) {
 }
 
 function _renderConteudo(container, personagens, usuario) {
+  const heroHtml = `
+    <!-- Cabeçalho da Página -->
+    <div class="personagens-hero">
+      <div>
+        <div class="personagens-hero-title">
+          <span>🧙 Meus Personagens - D&D 5.5e</span>
+        </div>
+        <div class="personagens-hero-desc">
+          Gerencie, visualize e edite suas fichas de personagens, com suporte a salvamento local, sincronização em nuvem e exportação.
+        </div>
+      </div>
+    </div>
+  `;
+
   // Barra de sincronização caso esteja logado
   const syncBarHtml = usuario
     ? `<div class="card" style="display:flex;align-items:center;gap:10px;padding:10px 14px;margin-bottom:16px;background:var(--bg-input)">
@@ -57,6 +71,7 @@ function _renderConteudo(container, personagens, usuario) {
   if (personagens.length === 0) {
     container.innerHTML = `
       <div style="max-width: 760px; margin: 0 auto;">
+        ${heroHtml}
         ${syncBarHtml}
 
         <div class="empty-state" style="padding: 40px 20px;">
@@ -85,6 +100,7 @@ function _renderConteudo(container, personagens, usuario) {
 
   container.innerHTML = `
     <div style="max-width: 760px; margin: 0 auto;">
+      ${heroHtml}
       ${syncBarHtml}
 
       <div class="flex justify-between items-center mb-2" style="flex-wrap: wrap; gap: 10px;">
