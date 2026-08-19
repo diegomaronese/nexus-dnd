@@ -171,7 +171,7 @@ function _renderizarLayout(container, ultimoResultado = null) {
               <button type="button" class="dice-step-btn" id="btn-qtd-plus" title="Aumentar quantidade">+</button>
             </div>
             <div class="dice-quick-pills">
-              ${[1, 2, 3, 4, 6, 8, 10].map(n => `
+              ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => `
                 <button type="button" class="dice-quick-pill ${Number(_estadoAtual.qtd) === n ? 'ativo' : ''}" data-qtd-val="${n}">${n}</button>
               `).join('')}
             </div>
@@ -186,7 +186,7 @@ function _renderizarLayout(container, ultimoResultado = null) {
               <button type="button" class="dice-step-btn" id="btn-mod-plus" title="Aumentar bônus">+</button>
             </div>
             <div class="dice-quick-pills">
-              ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 10].map(m => `
+              ${[0, 1, 2, 3, 4, 5, 6, 7, 8].map(m => `
                 <button type="button" class="dice-quick-pill ${Number(_estadoAtual.mod) === m ? 'ativo' : ''}" data-mod-val="${m}">
                   ${m >= 0 ? (m === 0 ? '0' : `+${m}`) : m}
                 </button>

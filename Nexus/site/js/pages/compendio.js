@@ -115,7 +115,7 @@ export async function renderCompendio(container, rotaParam = '') {
               <span>📖 Compêndio - D&D 5.5e</span>
             </div>
             <div class="compendio-hero-desc">
-              Biblioteca de consulta completa das regras, classes, magias, espécies, itens e apêndices do Livro do Jogador, Guia do Mestre e Manual dos Monstros.
+              Biblioteca de consulta completa das regras e informações do Livro do Jogador, Guia do Mestre e Manual dos Monstros.
             </div>
           </div>
         </div>
