@@ -2930,25 +2930,17 @@ tr:hover td { background: rgba(200, 160, 81, 0.05); }
   box-shadow: var(--shadow);
 }
 
-.home-card-compendio {
-  background: linear-gradient(135deg, #1c1713 0%, #251614 100%);
-  border-color: #3d2824;
-  cursor: pointer;
-}
-
-.home-card-compendio:hover {
-  border-color: var(--gold);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.7), 0 0 12px rgba(158, 28, 28, 0.35);
-  transform: translateY(-2px);
-}
-
-.home-card-personagens {
+.home-card-compendio,
+.home-card-personagens,
+.home-card-dados {
   background: linear-gradient(135deg, #1c1713 0%, #201b15 100%);
   border-color: #382e24;
   cursor: pointer;
 }
 
-.home-card-personagens:hover {
+.home-card-compendio:hover,
+.home-card-personagens:hover,
+.home-card-dados:hover {
   border-color: var(--gold);
   box-shadow: 0 8px 26px rgba(0, 0, 0, 0.7), 0 0 12px rgba(200, 160, 81, 0.25);
   transform: translateY(-2px);
@@ -3007,7 +2999,10 @@ tr:hover td { background: rgba(200, 160, 81, 0.05); }
   margin-left: 6px;
 }
 
-.home-btn-cta {
+.home-btn-cta,
+.home-btn-cta-primary,
+.home-btn-cta-secondary,
+.home-btn-cta-dados {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -3017,52 +3012,18 @@ tr:hover td { background: rgba(200, 160, 81, 0.05); }
   font-weight: 700;
   white-space: nowrap;
   transition: all 0.2s ease;
-  border: 1px solid rgba(200, 160, 81, 0.3);
-}
-
-.home-btn-cta-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  color: #ffffff;
-}
-
-.home-card-compendio:hover .home-btn-cta-primary {
-  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
-  border-color: var(--gold);
-}
-
-.home-btn-cta-secondary {
   background: linear-gradient(135deg, #3a2e22 0%, #241c14 100%);
   color: var(--gold-light);
-  border-color: var(--border-gold);
+  border: 1px solid var(--border-gold);
 }
 
-.home-card-personagens:hover .home-btn-cta-secondary {
+.home-menu-card:hover .home-btn-cta,
+.home-card-compendio:hover .home-btn-cta-primary,
+.home-card-personagens:hover .home-btn-cta-secondary,
+.home-card-dados:hover .home-btn-cta-dados {
   background: linear-gradient(135deg, #4f3f30 0%, #342a1f 100%);
   border-color: var(--gold);
   color: #ffffff;
-}
-
-.home-card-dados {
-  background: linear-gradient(135deg, #1c1713 0%, #231a10 100%);
-  border-color: #3b2e20;
-  cursor: pointer;
-}
-
-.home-card-dados:hover {
-  border-color: var(--gold);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.7), 0 0 12px rgba(200, 160, 81, 0.3);
-  transform: translateY(-2px);
-}
-
-.home-btn-cta-dados {
-  background: linear-gradient(135deg, #7c4b18 0%, #52310e 100%);
-  color: #ffffff;
-  border-color: rgba(200, 160, 81, 0.4);
-}
-
-.home-card-dados:hover .home-btn-cta-dados {
-  background: linear-gradient(135deg, #995c1e 0%, #693f12 100%);
-  border-color: var(--gold);
 }
 
 .btn-google-login {

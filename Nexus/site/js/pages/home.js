@@ -103,7 +103,7 @@ function _renderMenuPrincipal(container, personagens, usuario) {
 
         <!-- 1º BOTÃO: Compêndio D&D 5.5e -->
         <div class="home-menu-card home-card-compendio" id="btn-home-compendio" onclick="navegar('compendio')">
-          <div class="home-menu-icon-wrap" style="background: rgba(158, 28, 28, 0.18); border-color: rgba(158, 28, 28, 0.35);">
+          <div class="home-menu-icon-wrap" style="background: rgba(200, 160, 81, 0.14); border-color: rgba(200, 160, 81, 0.3);">
             <span class="home-menu-icon">📖</span>
           </div>
           <div class="home-menu-text">
@@ -141,7 +141,7 @@ function _renderMenuPrincipal(container, personagens, usuario) {
 
         <!-- 3º BOTÃO: Mesa de Dados Virtual -->
         <div class="home-menu-card home-card-dados" id="btn-home-dados" onclick="navegar('dados')">
-          <div class="home-menu-icon-wrap" style="background: rgba(184, 115, 51, 0.15); border-color: rgba(184, 115, 51, 0.3);">
+          <div class="home-menu-icon-wrap" style="background: rgba(200, 160, 81, 0.14); border-color: rgba(200, 160, 81, 0.3);">
             <span class="home-menu-icon">🎲</span>
           </div>
           <div class="home-menu-text">
