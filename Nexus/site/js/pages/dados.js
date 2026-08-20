@@ -9,15 +9,15 @@ import { toast, escHtml } from '../utils.js';
 const STORAGE_KEY_HISTORICO = 'dnd5e_dados_historico';
 const STORAGE_KEY_CONFIG = 'dnd5e_dados_config_atual';
 
-// Definição dos dados padrão do D&D
+// Definição dos dados padrão do D&D com tons medievais nobres
 const DADOS_DND = [
-  { tipo: 'd4', faces: 4, nome: 'd4', icone: '▲', cor: '#e67e22', desc: '4 faces' },
-  { tipo: 'd6', faces: 6, nome: 'd6', icone: '■', cor: '#3498db', desc: '6 faces' },
-  { tipo: 'd8', faces: 8, nome: 'd8', icone: '◆', cor: '#9b59b6', desc: '8 faces' },
-  { tipo: 'd10', faces: 10, nome: 'd10', icone: '⬟', cor: '#1abc9c', desc: '10 faces' },
-  { tipo: 'd12', faces: 12, nome: 'd12', icone: '⬢', cor: '#e74c3c', desc: '12 faces' },
-  { tipo: 'd20', faces: 20, nome: 'd20', icone: '⬡', cor: '#f39c12', desc: '20 faces' },
-  { tipo: 'd100', faces: 100, nome: 'd100', icone: '%', cor: '#ec1c24', desc: 'Percentil' },
+  { tipo: 'd4', faces: 4, nome: 'd4', icone: '▲', cor: '#b87333', desc: '4 faces' },
+  { tipo: 'd6', faces: 6, nome: 'd6', icone: '■', cor: '#507693', desc: '6 faces' },
+  { tipo: 'd8', faces: 8, nome: 'd8', icone: '◆', cor: '#825a89', desc: '8 faces' },
+  { tipo: 'd10', faces: 10, nome: 'd10', icone: '⬟', cor: '#2e7c6d', desc: '10 faces' },
+  { tipo: 'd12', faces: 12, nome: 'd12', icone: '⬢', cor: '#9e2b2b', desc: '12 faces' },
+  { tipo: 'd20', faces: 20, nome: 'd20', icone: '⬡', cor: '#c8a051', desc: '20 faces' },
+  { tipo: 'd100', faces: 100, nome: 'd100', icone: '%', cor: '#851a1a', desc: 'Percentil' },
 ];
 
 // Presets de rolagens comuns de D&D

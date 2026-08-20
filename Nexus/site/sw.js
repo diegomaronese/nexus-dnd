@@ -10,7 +10,6 @@ const STATIC_ASSETS = [
   './index.html',
   './manifest.json',
   './css/app.css',
-  './img/icon.png',
   './img/icon.svg',
   './img/favicon.svg',
   './img/nexus-icon.svg',

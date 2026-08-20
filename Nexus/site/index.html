@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="img/icon.png" type="image/png">
-  <link rel="apple-touch-icon" href="img/icon.png">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/icon.svg">
   <link rel="stylesheet" href="css/app.css">
   <link rel="preload" href="img/nexus-tela.svg" as="image" type="image/svg+xml">
   <!-- Firebase SDK (preload para cache offline) -->
@@ -62,7 +62,8 @@
     .app-splash-loader-bar {
       width: 40%;
       height: 100%;
-      background: linear-gradient(90deg, #ec1c24, #ff6b6b);
+      background: #f3eee6;
+      box-shadow: 0 0 8px rgba(243, 238, 230, 0.5);
       border-radius: 99px;
       position: absolute;
       animation: splash-loading 1.4s ease-in-out infinite;

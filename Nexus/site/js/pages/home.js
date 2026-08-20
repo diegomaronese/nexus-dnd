@@ -29,13 +29,6 @@ export function renderHome(container) {
 }
 
 function _renderMenuPrincipal(container, personagens, usuario) {
-  const totalPersonagens = personagens.length;
-  const textoQtd = totalPersonagens === 0
-    ? 'Nenhum personagem criado ainda'
-    : totalPersonagens === 1
-      ? '1 personagem salvo'
-      : `${totalPersonagens} personagens salvos`;
-
   // HTML da Seção 3: Conta Google / Nuvem
   const secaoGoogleHtml = usuario
     ? `
@@ -110,13 +103,13 @@ function _renderMenuPrincipal(container, personagens, usuario) {
 
         <!-- 1º BOTÃO: Compêndio D&D 5.5e -->
         <div class="home-menu-card home-card-compendio" id="btn-home-compendio" onclick="navegar('compendio')">
-          <div class="home-menu-icon-wrap" style="background: rgba(236, 28, 36, 0.15); border-color: rgba(236, 28, 36, 0.3);">
+          <div class="home-menu-icon-wrap" style="background: rgba(158, 28, 28, 0.18); border-color: rgba(158, 28, 28, 0.35);">
             <span class="home-menu-icon">📖</span>
           </div>
           <div class="home-menu-text">
             <div class="home-menu-title">Compêndio</div>
             <div class="home-menu-desc">
-              Biblioteca oficial completa, com as principais informações disponíveis nos livros da edição 5.5 do sistema D&D.
+              Biblioteca oficial completa, com as principais informações disponíveis nos livros de D&D 5.5.
             </div>
           </div>
           <div class="home-menu-action">
@@ -128,15 +121,12 @@ function _renderMenuPrincipal(container, personagens, usuario) {
 
         <!-- 2º BOTÃO: Meus Personagens -->
         <div class="home-menu-card home-card-personagens" id="btn-home-personagens" onclick="navegar('personagens')">
-          <div class="home-menu-icon-wrap" style="background: rgba(52, 152, 219, 0.15); border-color: rgba(52, 152, 219, 0.3);">
+          <div class="home-menu-icon-wrap" style="background: rgba(200, 160, 81, 0.14); border-color: rgba(200, 160, 81, 0.3);">
             <span class="home-menu-icon">🛡️</span>
           </div>
           <div class="home-menu-text">
-            <div class="home-menu-title" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <div class="home-menu-title">
               <span>Meus Personagens</span>
-              <span class="c-badge" style="background: var(--bg-card); border-color: var(--border); color: var(--text-muted); font-size: 0.72rem;">
-                ${textoQtd}
-              </span>
             </div>
             <div class="home-menu-desc">
               Crie novos heróis passo a passo e gerencie suas fichas digitais interativas.
@@ -151,18 +141,18 @@ function _renderMenuPrincipal(container, personagens, usuario) {
 
         <!-- 3º BOTÃO: Mesa de Dados Virtual -->
         <div class="home-menu-card home-card-dados" id="btn-home-dados" onclick="navegar('dados')">
-          <div class="home-menu-icon-wrap" style="background: rgba(243, 156, 18, 0.15); border-color: rgba(243, 156, 18, 0.3);">
+          <div class="home-menu-icon-wrap" style="background: rgba(184, 115, 51, 0.15); border-color: rgba(184, 115, 51, 0.3);">
             <span class="home-menu-icon">🎲</span>
           </div>
           <div class="home-menu-text">
             <div class="home-menu-title" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
               <span>Mesa de Dados Virtual</span>
-              <span class="c-badge" style="background: rgba(243, 156, 18, 0.2); border-color: rgba(243, 156, 18, 0.4); color: #f39c12; font-size: 0.68rem;">
+              <span class="c-badge" style="background: rgba(200, 160, 81, 0.12); border-color: var(--border-gold); color: var(--gold-light); font-size: 0.68rem;">
                 d4 • d6 • d8 • d10 • d12 • d20 • d100
               </span>
             </div>
             <div class="home-menu-desc">
-              Rolador completo de dados, com sistema de vantagens/desvantagens, modificadores e histórico.
+              Rolador de dados com sistema de vantagens/desvantagens, modificadores e histórico.
             </div>
           </div>
           <div class="home-menu-action">
