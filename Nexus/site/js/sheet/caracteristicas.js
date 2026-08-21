@@ -3,6 +3,7 @@
 // Extraido de site/js/pages/sheet.js sem alteracao de comportamento.
 // ============================================================
 import { bonusProficiencia, calcMod, detectarRecarga, ehHabilidadeAtiva, escHtml, mdParaHtml } from '../utils.js';
+import { getIconeClasse } from '../dados-classes.js';
 import { char, classeData, especiesCache } from './estado.js';
 import { detectarUsosMaximos, renderFeatureItem } from './habilidades.js';
 
@@ -36,10 +37,14 @@ export function renderSecaoCaracteristicas() {
 
   const passivas = feats.filter(f => !ehHabilidadeAtiva(f.descricao, f.nome));
   const ativas = feats.filter(f => ehHabilidadeAtiva(f.descricao, f.nome));
+  const iconeClasse = getIconeClasse(char.classe);
 
   return `
     <div class="card print-break-before">
-      <div class="card-header"><h2>Características de Classe</h2></div>
+      <div class="card-header" style="display:flex;align-items:center;gap:8px">
+        ${iconeClasse ? `<img src="${iconeClasse}" class="classe-icon-inline" alt="">` : ''}
+        <h2>Características de Classe${char.classe ? ` (${escHtml(char.classe)})` : ''}</h2>
+      </div>
       ${ativas.length > 0 ? `
         <div class="section-divider"><span>Habilidades Ativas</span></div>
         ${ativas.map(f => renderFeatureItem(f, 'classe')).join('')}
@@ -402,4 +407,4 @@ function renderTracoEspecie(traco, herdaAncestralidade = false, ehSubRevelacao =
       ${infoEscolhaTraco}
     </details>
   `;
-}
+}

@@ -27,7 +27,7 @@ import {
   getMultiverso
 } from '../db.js';
 
-import { CLASSES_INFO, NOMES_CLASSES } from '../dados-classes.js';
+import { CLASSES_INFO, NOMES_CLASSES, getIconeClasse } from '../dados-classes.js';
 import { abrirModal, fecharModal, mdParaHtml, escHtml, semAcento } from '../utils.js';
 import { definirTituloHeader, navegar } from '../app.js';
 
@@ -275,12 +275,17 @@ async function _renderClasses(container) {
     </div>
 
     <div class="compendio-grid">
-      ${todasClasses.map(c => `
+      ${todasClasses.map(c => {
+        const icone = getIconeClasse(c.nome);
+        return `
         <div class="compendio-card compendio-card-clickable" data-classe="${c.nome}">
           <div class="compendio-card-header">
-            <div>
-              <div class="compendio-card-title">${c.nome}</div>
-              <div class="compendio-card-subtitle">Dado de Vida: ${c.dado} • Atributo: ${c.attr}</div>
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+              ${icone ? `<img src="${icone}" class="classe-icon-card" alt="">` : ''}
+              <div>
+                <div class="compendio-card-title">${c.nome}</div>
+                <div class="compendio-card-subtitle">Dado de Vida: ${c.dado} • Atributo: ${c.attr}</div>
+              </div>
             </div>
             <span class="c-badge c-badge-categoria">1–20</span>
           </div>
@@ -291,7 +296,8 @@ async function _renderClasses(container) {
             <span style="color: var(--accent); font-weight: 600;">Ver detalhes e progressão &rarr;</span>
           </div>
         </div>
-      `).join('')}
+      `;
+      }).join('')}
     </div>
   `;
 
@@ -371,7 +377,12 @@ async function _abrirModalClasse(nomeClasse, subAbaInicial = 'caracteristicas') 
     </div>
   `;
 
-  abrirModal(nomeClasse, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  const iconeModal = getIconeClasse(nomeClasse);
+  const tituloModal = iconeModal
+    ? `<span style="display:inline-flex;align-items:center;gap:10px;"><img src="${iconeModal}" class="classe-icon-card" style="width:26px;height:26px;" alt=""><span>${escHtml(nomeClasse)}</span></span>`
+    : escHtml(nomeClasse);
+
+  abrirModal(tituloModal, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 
   const navModal = document.getElementById('modal-classe-nav');
   const subContainer = document.getElementById('modal-classe-subaba-conteudo');
@@ -677,7 +688,7 @@ function _abrirModalEspecie(esp) {
       
       <p style="margin-bottom: 16px; color: var(--text-muted);">${mdParaHtml(esp.descricao || '')}</p>
 
-      <h3 style="font-size: 1rem; color: var(--accent); margin-bottom: 10px; font-weight: 700;">Traços Raciais</h3>
+      <h3 style="font-size: 1.05rem; color: var(--gold-light); margin-bottom: 10px; font-weight: 700; font-family: 'Cinzel', serif;">Traços Raciais</h3>
       <div style="display: flex; flex-direction: column; gap: 10px;">
         ${(esp.tracos || []).map(t => `
           <div style="background: var(--bg-input); padding: 10px 12px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
@@ -688,7 +699,7 @@ function _abrirModalEspecie(esp) {
       </div>
 
       ${esp.linhagens && esp.linhagens.length > 0 ? `
-        <h3 style="font-size: 1rem; color: var(--accent); margin: 16px 0 10px; font-weight: 700;">Linhagens / Sub-raças</h3>
+        <h3 style="font-size: 1.05rem; color: var(--gold-light); margin: 16px 0 10px; font-weight: 700; font-family: 'Cinzel', serif;">Linhagens / Sub-raças</h3>
         <div style="display: flex; flex-direction: column; gap: 10px;">
           ${esp.linhagens.map(lin => `
             <div style="background: var(--surface-variant); padding: 10px 12px; border-radius: var(--radius-sm);">
@@ -783,14 +794,14 @@ function _abrirModalAntecedente(ant) {
 
       ${ant.descricao ? `<div style="margin-bottom: 14px; color: var(--text-muted);">${mdParaHtml(ant.descricao)}</div>` : ''}
 
-      <h3 style="font-size: 0.95rem; color: var(--accent); margin-bottom: 6px; font-weight: 700;">Equipamento Inicial</h3>
+      <h3 style="font-size: 1.05rem; color: var(--gold-light); margin-bottom: 6px; font-weight: 700; font-family: 'Cinzel', serif;">Equipamento Inicial</h3>
       <div style="font-size: 0.85rem; color: var(--ink);">
         ${mdParaHtml(ant.equipamento || ant.equipamento_inicial || 'Consulte as opções de equipamento recomendadas no livro.')}
       </div>
     </div>
   `;
 
-  abrirModal(`Antecedente: ${ant.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  abrirModal(ant.nome, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 }
 
 // ============================================================
@@ -1004,7 +1015,7 @@ function _abrirModalTalento(t) {
       ${descricaoIntro ? `<div style="margin-bottom: 14px; color: var(--text-muted);">${mdParaHtml(descricaoIntro)}</div>` : ''}
 
       ${temBeneficios ? `
-        <h3 style="font-size: 1rem; color: var(--accent); margin-bottom: 10px; font-weight: 700;">Benefícios do Talento</h3>
+        <h3 style="font-size: 1.05rem; color: var(--gold-light); margin-bottom: 10px; font-weight: 700; font-family: 'Cinzel', serif;">Benefícios do Talento</h3>
         <div style="display: flex; flex-direction: column; gap: 10px;">
           ${t.beneficios.map(b => `
             <div style="background: var(--bg-input); padding: 10px 12px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
@@ -1017,7 +1028,7 @@ function _abrirModalTalento(t) {
     </div>
   `;
 
-  abrirModal(`Talento: ${t.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  abrirModal(t.nome, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 }
 
 // ============================================================
@@ -2468,7 +2479,7 @@ async function _renderCapitulo1(container) {
   const texto = _cacheCapitulo1?.texto_completo || '';
 
   container.innerHTML = `
-    <div class="card" style="font-size: 0.9rem; line-height: 1.7;">
+    <div class="card compendio-doc-container">
       ${mdParaHtml(texto)}
     </div>
   `;
@@ -2481,7 +2492,7 @@ async function _renderCapitulo2(container) {
   const texto = _cacheCapitulo2?.texto_completo || '';
 
   container.innerHTML = `
-    <div class="card" style="font-size: 0.9rem; line-height: 1.7;">
+    <div class="card compendio-doc-container">
       ${mdParaHtml(texto)}
     </div>
   `;
@@ -2494,7 +2505,7 @@ async function _renderMultiverso(container) {
   const texto = _cacheMultiverso?.texto_completo || '';
 
   container.innerHTML = `
-    <div class="card" style="font-size: 0.9rem; line-height: 1.7;">
+    <div class="card compendio-doc-container">
       ${mdParaHtml(texto)}
     </div>
   `;

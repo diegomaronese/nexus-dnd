@@ -441,14 +441,19 @@ export function mdParaHtml(texto) {
     // Formatar dados (🎲XdY🎲) antes de outras transformações
     .replace(/(\d+)[dD](\d+)/g, '🎲$1d$2🎲')
     // Headers
+    .replace(/^##### (.+)$/gm, '<h5>$1</h5>')
     .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    // Blockquotes
+    .replace(/^\s*>\s*(.+)$/gm, '<blockquote>$1</blockquote>')
     // Negrito e itálico
     .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     // Listas
-    .replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>')
+    .replace(/^\s*[-•*]\s+(.+)$/gm, '<li>$1</li>')
     // Tabelas simples (pipes)
     .replace(/\|(.+)\|/g, (match) => {
       const cells = match.split('|').filter(c => c.trim());
@@ -459,6 +464,8 @@ export function mdParaHtml(texto) {
 
   // Agrupar <li> em <ul>
   html = html.replace(/((?:<li>.+<\/li>\n?)+)/g, '<ul>$1</ul>');
+  // Agrupar <blockquote> em <blockquote>
+  html = html.replace(/((?:<blockquote>.+<\/blockquote>\n?)+)/g, '<div class="quote-wrapper">$1</div>');
   // Agrupar <tr> em <table>
   html = html.replace(/((?:<tr>.+<\/tr>\n?)+)/g, '<div class="table-wrapper"><table>$1</table></div>');
 
@@ -625,7 +632,7 @@ export function abrirModal(titulo, corpoHtml, acoesHtml = '', onClose = null) {
     return;
   }
 
-  tituloEl.textContent = titulo;
+  tituloEl.innerHTML = titulo;
   corpoEl.innerHTML = corpoHtml;
   acoesEl.innerHTML = acoesHtml;
   overlay.style.display = 'flex';

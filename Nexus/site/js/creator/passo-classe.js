@@ -2,9 +2,9 @@
 // Passo 1: escolha de classe
 // Extraido de site/js/pages/creator.js sem alteracao de comportamento.
 // ============================================================
-import { CLASSES_INFO } from '../dados-classes.js';
+import { CLASSES_INFO, getIconeClasse } from '../dados-classes.js';
 import { getClasse } from '../db.js';
-import { abrirModal, mdParaHtml, toast } from '../utils.js';
+import { abrirModal, escHtml, mdParaHtml, toast } from '../utils.js';
 import { CLASSES_ESCOLHAS, NIVEL_SUBCLASSE } from './comum.js';
 import { dadosCache, personagem } from './wizard.js';
 
@@ -23,11 +23,15 @@ export function renderStepClasse(el) {
     if (personagem.ordem_primal) escolhasTxt.push(personagem.ordem_primal);
     if (personagem.escolhas_classe?.estilo_luta?.length) escolhasTxt.push(personagem.escolhas_classe.estilo_luta[0]);
     const extra = escolhasTxt.length ? ' | ' + escolhasTxt.join(', ') : '';
+    const iconeSel = getIconeClasse(personagem.classe);
     resumoHtml = `
-      <div class="selecao-resumo">
-        <div class="resumo-info">
-          <div class="resumo-titulo">${personagem.classe}</div>
-          <div class="resumo-detalhe">d${info.dado_vida} | ${info.atributo_primario} | ${info.conjurador ? 'Conjurador' : 'Marcial'}${extra}</div>
+      <div class="selecao-resumo" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:center;gap:12px;min-width:0">
+          ${iconeSel ? `<img src="${iconeSel}" class="classe-icon-card" style="width:36px;height:36px;" alt="">` : ''}
+          <div class="resumo-info">
+            <div class="resumo-titulo">${personagem.classe}</div>
+            <div class="resumo-detalhe">d${info.dado_vida} | ${info.atributo_primario} | ${info.conjurador ? 'Conjurador' : 'Marcial'}${extra}</div>
+          </div>
         </div>
         <button class="btn btn-outline btn-sm" id="btn-alterar-classe">Alterar</button>
       </div>`;
@@ -38,10 +42,14 @@ export function renderStepClasse(el) {
     <div class="selection-grid" id="grid-classes">
       ${classes.map(c => {
         const info = CLASSES_INFO[c];
+        const icone = getIconeClasse(c);
         return `
           <div class="selection-card ${personagem.classe === c ? 'selected' : ''}" data-classe="${c}">
             <span class="card-check">&#10003;</span>
-            <div class="card-nome">${c}</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+              ${icone ? `<img src="${icone}" class="classe-icon-card" style="width:26px;height:26px;" alt="">` : ''}
+              <div class="card-nome" style="margin-bottom:0">${c}</div>
+            </div>
             <div class="card-detalhe">d${info.dado_vida} &middot; ${info.atributo_primario}</div>
             <div class="card-detalhe">${info.conjurador ? 'Conjurador' : 'Marcial'}</div>
           </div>`;
@@ -186,7 +194,12 @@ async function abrirPopupClasse(nome) {
     ${caracteristicas1}
   `;
 
-  abrirModal(nome, corpoHtml, `
+  const iconePopup = getIconeClasse(nome);
+  const tituloPopup = iconePopup
+    ? `<span style="display:inline-flex;align-items:center;gap:10px;"><img src="${iconePopup}" class="classe-icon-card" style="width:26px;height:26px;" alt=""><span>${escHtml(nome)}</span></span>`
+    : escHtml(nome);
+
+  abrirModal(tituloPopup, corpoHtml, `
     <button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
     <button class="btn btn-primary" id="popup-confirmar-classe">Selecionar ${nome}</button>
   `);
@@ -284,4 +297,4 @@ async function abrirPopupClasse(nome) {
     const wizContent = document.getElementById('wizard-content');
     if (wizContent) renderStepClasse(wizContent);
   });
-}
+}

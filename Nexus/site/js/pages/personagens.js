@@ -14,7 +14,7 @@ import {
 } from '../store.js';
 import { enfileirarSync, obterIdsPendentesRemocao } from '../sync.js';
 import { toast, abrirModal, fecharModal, escHtml } from '../utils.js';
-import { CLASSES_INFO } from '../dados-classes.js';
+import { CLASSES_INFO, getIconeClasse } from '../dados-classes.js';
 import { iniciarAuth, getUsuario, onAuthChange, buscarPersonagensCloud } from '../auth.js';
 import { definirTituloHeader, navegar } from '../app.js';
 
@@ -323,16 +323,22 @@ function renderCharCard(p) {
   const inicial = (p.nome || p.classe || '?')[0].toUpperCase();
   const info = CLASSES_INFO[p.classe];
   const dadoVida = info ? `d${info.dado_vida}` : '';
+  const iconeClasse = getIconeClasse(p.classe);
+
+  const avatarHtml = p.imagem
+    ? `<img src="${p.imagem}" alt="">`
+    : (iconeClasse
+      ? `<img src="${iconeClasse}" class="classe-icon-avatar" alt="">`
+      : escHtml(inicial));
 
   return `
     <div class="card char-card" data-id="${escHtml(p.id)}">
-      <div class="char-avatar">${p.imagem ? `<img src="${p.imagem}" alt="">` : escHtml(inicial)}</div>
+      <div class="char-avatar">${avatarHtml}</div>
       <div class="char-info">
         <div class="char-nome">${escHtml(p.nome) || 'Sem nome'}</div>
-        <div class="char-detalhe">
-          ${escHtml(p.especie || '')} ${escHtml(p.classe || '')}
-          ${p.subclasse ? `(${escHtml(p.subclasse)})` : ''}
-          ${dadoVida ? `&middot; ${dadoVida}` : ''}
+        <div class="char-detalhe" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;">
+          ${iconeClasse ? `<img src="${iconeClasse}" class="classe-icon-inline" alt="">` : ''}
+          <span>${escHtml(p.especie || '')} ${escHtml(p.classe || '')} ${p.subclasse ? `(${escHtml(p.subclasse)})` : ''} ${dadoVida ? `&middot; ${dadoVida}` : ''}</span>
         </div>
       </div>
       <div class="char-nivel">Nv. ${escHtml(p.nivel ?? 1)}</div>

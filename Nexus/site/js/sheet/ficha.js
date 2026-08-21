@@ -5,7 +5,7 @@
 // dos demais modulos, e restaura o estado aberto/fechado dos <details>.
 // Extraido de site/js/pages/sheet.js sem alteracao de comportamento.
 // ============================================================
-import { ATRIBUTOS_KEYS, ATRIBUTOS_NOMES, ATRIBUTO_NOME_PARA_KEY, CLASSES_INFO, PERICIAS } from '../dados-classes.js';
+import { ATRIBUTOS_KEYS, ATRIBUTOS_NOMES, ATRIBUTO_NOME_PARA_KEY, CLASSES_INFO, PERICIAS, getIconeClasse } from '../dados-classes.js';
 import { XP_POR_NIVEL } from '../levelup.js';
 import { _renderSyncIndicadorHtml } from '../pages/sheet.js';
 import { bonusProficiencia, calcAtaqueMagia, calcBonusPericia, calcCA, calcCDMagia, calcMod, calcPVTotal, escHtml, fmtMod, getDeslocamento, getTamanho, semAcento, sincronizarCamposVinculadosNivel } from '../utils.js';
@@ -98,6 +98,13 @@ export function renderFichaCompleta() {
   const _deslSobrecarga = !!(char?.config?.sobrecarga_afeta_deslocamento && getEstadoCarga().sobrecarregado);
 
   const container = containerRef;
+  const iconeClasse = getIconeClasse(char.classe);
+  const avatarHeaderHtml = char.imagem
+    ? `<div class="char-avatar" style="width:64px;height:64px;font-size:1.6rem;flex-shrink:0"><img src="${char.imagem}" alt=""></div>`
+    : (iconeClasse
+      ? `<div class="char-avatar" style="width:64px;height:64px;font-size:1.6rem;flex-shrink:0;background:var(--bg-input);display:flex;align-items:center;justify-content:center;border-radius:var(--radius-md);border:1px solid var(--border);"><img src="${iconeClasse}" style="width:44px;height:44px;object-fit:contain;" alt=""></div>`
+      : '');
+
   container.innerHTML = `
     <!-- Cabeçalho do personagem -->
     <div class="card">
@@ -105,8 +112,9 @@ export function renderFichaCompleta() {
         <div style="display:flex;align-items:start;gap:10px;flex:1;min-width:0">
           <div style="flex:1;min-width:0">
             <h2 style="font-size:1.3rem;margin-bottom:2px" id="char-nome-display">${escHtml(char.nome) || 'Sem Nome'}</h2>
-            <div style="font-size:0.9rem;color:var(--text-muted)">
-              ${escHtml(char.especie || '')} ${escHtml(char.classe || '')} ${char.subclasse ? `(${escHtml(char.subclasse)})` : ''} &middot; Nível ${char.nivel}
+            <div style="font-size:0.9rem;color:var(--text-muted);display:flex;align-items:center;gap:6px;margin:2px 0;">
+              ${iconeClasse ? `<img src="${iconeClasse}" class="classe-icon-inline" alt="">` : ''}
+              <span>${escHtml(char.especie || '')} <strong>${escHtml(char.classe || '')}</strong> ${char.subclasse ? `(${escHtml(char.subclasse)})` : ''} &middot; Nível ${char.nivel}</span>
             </div>
             <div style="font-size:0.8rem;color:var(--text-muted)">Antecedente: ${escHtml(char.antecedente || '–')}${char.alinhamento ? ' | Alinhamento: ' + escHtml(char.alinhamento) : ''}</div>
             <div style="font-size:0.8rem;color:var(--text-muted)">Tamanho: ${escHtml(_tamanho)}${(char.idiomas && char.idiomas.length) ? ' | Idiomas: ' + char.idiomas.map(escHtml).join(', ') : ''}</div>
@@ -117,7 +125,7 @@ export function renderFichaCompleta() {
               ${char.nivel < 20 ? ` / ${XP_POR_NIVEL[char.nivel + 1]}` : ' (Nível Máximo)'}
             </div>
           </div>
-          ${char.imagem ? `<div class="char-avatar" style="width:64px;height:64px;font-size:1.6rem;flex-shrink:0"><img src="${char.imagem}" alt=""></div>` : ''}
+          ${avatarHeaderHtml}
         </div>
         <div class="no-print" style="display:flex;gap:4px;flex-direction:column">
           <div style="display:flex;gap:4px">

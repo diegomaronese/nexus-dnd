@@ -229,3 +229,52 @@ export const POINT_BUY_CUSTOS = {
   8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7, 15: 9
 };
 export const POINT_BUY_TOTAL = 27;
+
+// Mapeamento dos ícones de cada classe
+export const ICONES_CLASSES = {
+  "Artífice": "img/icons/ico-classe-artifice.png",
+  "Bárbaro": "img/icons/ico-classe-barbaro.png",
+  "Bardo": "img/icons/ico-classe-bardo.png",
+  "Bruxo": "img/icons/ico-classe-bruxo.png",
+  "Clérigo": "img/icons/ico-classe-clerigo.png",
+  "Druida": "img/icons/ico-classe-druida.png",
+  "Feiticeiro": "img/icons/ico-classe-feiticeiro.png",
+  "Guardião": "img/icons/ico-classe-patrulheiro.png",
+  "Patrulheiro": "img/icons/ico-classe-patrulheiro.png",
+  "Guerreiro": "img/icons/ico-classe-guerreiro.png",
+  "Ladino": "img/icons/ico-classe-ladino.png",
+  "Mago": "img/icons/ico-classe-mago.png",
+  "Monge": "img/icons/ico-classe-monge.png",
+  "Paladino": "img/icons/ico-classe-paladino.png"
+};
+
+/**
+ * Retorna o caminho do ícone correspondente à classe fornecida.
+ * Trata variações de acentuação, maiúsculas e sinonímias (Guardião / Patrulheiro / Ranger).
+ * @param {string} nomeClasse
+ * @returns {string|null}
+ */
+export function getIconeClasse(nomeClasse) {
+  if (!nomeClasse) return null;
+  if (ICONES_CLASSES[nomeClasse]) return ICONES_CLASSES[nomeClasse];
+  const limpo = String(nomeClasse).trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const mapa = {
+    artifice: 'img/icons/ico-classe-artifice.png',
+    barbaro: 'img/icons/ico-classe-barbaro.png',
+    bardo: 'img/icons/ico-classe-bardo.png',
+    bruxo: 'img/icons/ico-classe-bruxo.png',
+    clerigo: 'img/icons/ico-classe-clerigo.png',
+    druida: 'img/icons/ico-classe-druida.png',
+    feiticeiro: 'img/icons/ico-classe-feiticeiro.png',
+    guardiao: 'img/icons/ico-classe-patrulheiro.png',
+    patrulheiro: 'img/icons/ico-classe-patrulheiro.png',
+    ranger: 'img/icons/ico-classe-patrulheiro.png',
+    guerreiro: 'img/icons/ico-classe-guerreiro.png',
+    ladino: 'img/icons/ico-classe-ladino.png',
+    mago: 'img/icons/ico-classe-mago.png',
+    monge: 'img/icons/ico-classe-monge.png',
+    paladino: 'img/icons/ico-classe-paladino.png'
+  };
+  return mapa[limpo] || null;
+}
+
