@@ -16,11 +16,15 @@ service cloud.firestore {
 
     // Coleção de Usuários
     match /users/{userId} {
-      allow read, write: if isOwner(userId) && isValidId(userId);
+      allow get: if isOwner(userId) && isValidId(userId);
+      allow list: if isOwner(userId) && isValidId(userId);
+      allow create, update, delete: if isOwner(userId) && isValidId(userId);
 
       // Subcoleção de Personagens do Usuário
       match /personagens/{personagemId} {
-        allow read, write: if isOwner(userId) && isValidId(userId) && isValidId(personagemId);
+        allow get, delete: if isOwner(userId) && isValidId(userId) && isValidId(personagemId);
+        allow list: if isOwner(userId) && isValidId(userId);
+        allow create, update: if isOwner(userId) && isValidId(userId) && isValidId(personagemId);
       }
     }
 
@@ -30,3 +34,4 @@ service cloud.firestore {
     }
   }
 }
+

@@ -607,9 +607,7 @@ export function renderFichaCompleta() {
         </div>
         <!-- Inspiracao Heroica -->
         <div id="inspiracao-toggle" class="no-print hp-inspiracao ${char.inspiracao_heroica ? 'hp-inspiracao-ativa' : ''}" title="Inspiração Heroica">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="${char.inspiracao_heroica ? '#fff' : 'var(--text-muted)'}" stroke="none">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
+          <img src="img/icons/ico-inspiracao.png" class="inspiracao-icon-img" alt="">
           <span class="hp-inspiracao-texto">${char.inspiracao_heroica ? 'Inspirada!' : 'Inspiração'}</span>
         </div>
       </div>
@@ -617,7 +615,10 @@ export function renderFichaCompleta() {
       ${char.pv_atual <= 0 ? `
       <!-- Salvaguarda Contra Morte -->
       <div style="margin-top:12px;padding:12px;border:2px solid var(--danger);border-radius:var(--radius);background:rgba(192,57,43,0.05)">
-        <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;color:var(--danger);text-align:center;margin-bottom:8px">☠ Salvaguarda Contra Morte</div>
+        <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;color:var(--danger);text-align:center;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:6px">
+          <img src="img/icons/ico-morte.png" class="morte-icon-img" alt="">
+          <span>Salvaguarda Contra Morte</span>
+        </div>
         <div style="display:flex;justify-content:center;gap:24px">
           <div style="text-align:center">
             <div style="font-size:0.7rem;font-weight:600;color:var(--success);margin-bottom:4px">Sucessos</div>
@@ -638,7 +639,7 @@ export function renderFichaCompleta() {
 
     <!-- FAB Descanso (flutuante) -->
     <div id="fab-descanso" class="fab-descanso no-print">
-      <button class="fab-btn" id="fab-toggle-descanso" title="Descanso">🏕️</button>
+      <button class="fab-btn" id="fab-toggle-descanso" title="Descanso"><img src="img/icons/ico-descanso.png" style="width:24px;height:24px;object-fit:contain" alt=""></button>
       <div class="fab-menu" id="fab-menu-descanso" style="display:none">
         <button class="btn btn-accent btn-sm" id="btn-descanso-curto">☀ Descanso Curto</button>
         <button class="btn btn-accent btn-sm" id="btn-descanso-longo">🌙 Descanso Longo</button>

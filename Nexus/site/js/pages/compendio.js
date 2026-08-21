@@ -58,6 +58,8 @@ let _cacheItensMagicos = null;
 let _cacheCriaturas = null;
 let _cacheMonstros = null;
 let _cacheGlossario = null;
+
+const ICONE_BUSCA_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>';
 let _cacheCapitulo1 = null;
 let _cacheCapitulo2 = null;
 let _cacheMultiverso = null;
@@ -112,7 +114,8 @@ export async function renderCompendio(container, rotaParam = '') {
         <div class="compendio-hero">
           <div>
             <div class="compendio-hero-title">
-              <span>📖 Compêndio - D&D 5.5e</span>
+              <img src="img/icons/ico-home-compendio.png" class="compendio-hero-ico" alt="">
+              <span>Compêndio</span>
             </div>
             <div class="compendio-hero-desc">
               Biblioteca de consulta completa das regras e informações do Livro do Jogador, Guia do Mestre e Manual dos Monstros.
@@ -122,15 +125,15 @@ export async function renderCompendio(container, rotaParam = '') {
 
         <!-- Navegação Principal entre Seções -->
         <nav class="compendio-nav" id="compendio-nav-bar">
-          <button class="compendio-nav-item ${_secaoAtiva === 'classes' ? 'ativo' : ''}" data-secao="classes">🛡️ Classes</button>
-          <button class="compendio-nav-item ${_secaoAtiva === 'especies' ? 'ativo' : ''}" data-secao="especies">🧬 Espécies</button>
-          <button class="compendio-nav-item ${_secaoAtiva === 'antecedentes' ? 'ativo' : ''}" data-secao="antecedentes">📜 Antecedentes</button>
-          <button class="compendio-nav-item ${_secaoAtiva === 'talentos' ? 'ativo' : ''}" data-secao="talentos">⚡ Talentos</button>
-          <button class="compendio-nav-item ${_secaoAtiva === 'magias' ? 'ativo' : ''}" data-secao="magias">✨ Magias</button>
-          <button class="compendio-nav-item ${_secaoAtiva === 'equipamento' ? 'ativo' : ''}" data-secao="equipamento">⚔️ Equipamento</button>
-          <button class="compendio-nav-item ${_secaoAtiva === 'itens_magicos' || _secaoAtiva === 'magicos' ? 'ativo' : ''}" data-secao="itens_magicos">🔮 Itens Mágicos</button>
-          <button class="compendio-nav-item ${_secaoAtiva === 'bestiario' || _secaoAtiva === 'criaturas' ? 'ativo' : ''}" data-secao="bestiario">🦁 Bestiário</button>
-          <button class="compendio-nav-item ${_secaoAtiva === 'regras' || _secaoAtiva === 'glossario' ? 'ativo' : ''}" data-secao="regras">📚 Glossário e Regras</button>
+          <button class="compendio-nav-item ${_secaoAtiva === 'classes' ? 'ativo' : ''}" data-secao="classes"><img src="img/icons/ico-cat-classes.png" class="nav-cat-icon" alt=""> Classes</button>
+          <button class="compendio-nav-item ${_secaoAtiva === 'especies' ? 'ativo' : ''}" data-secao="especies"><img src="img/icons/ico-cat-especies.png" class="nav-cat-icon" alt=""> Espécies</button>
+          <button class="compendio-nav-item ${_secaoAtiva === 'antecedentes' ? 'ativo' : ''}" data-secao="antecedentes"><img src="img/icons/ico-cat-antecedentes.png" class="nav-cat-icon" alt=""> Antecedentes</button>
+          <button class="compendio-nav-item ${_secaoAtiva === 'talentos' ? 'ativo' : ''}" data-secao="talentos"><img src="img/icons/ico-cat-talentos.png" class="nav-cat-icon" alt=""> Talentos</button>
+          <button class="compendio-nav-item ${_secaoAtiva === 'magias' ? 'ativo' : ''}" data-secao="magias"><img src="img/icons/ico-cat-magias.png" class="nav-cat-icon" alt=""> Magias</button>
+          <button class="compendio-nav-item ${_secaoAtiva === 'equipamento' ? 'ativo' : ''}" data-secao="equipamento"><img src="img/icons/ico-cat-itens.png" class="nav-cat-icon" alt=""> Equipamento</button>
+          <button class="compendio-nav-item ${_secaoAtiva === 'itens_magicos' || _secaoAtiva === 'magicos' ? 'ativo' : ''}" data-secao="itens_magicos"><img src="img/icons/ico-cat-itens.png" class="nav-cat-icon" alt=""> Itens Mágicos</button>
+          <button class="compendio-nav-item ${_secaoAtiva === 'bestiario' || _secaoAtiva === 'criaturas' ? 'ativo' : ''}" data-secao="bestiario"><img src="img/icons/ico-cat-monstros.png" class="nav-cat-icon" alt=""> Bestiário</button>
+          <button class="compendio-nav-item ${_secaoAtiva === 'regras' || _secaoAtiva === 'glossario' ? 'ativo' : ''}" data-secao="regras"><img src="img/icons/ico-cat-regras.png" class="nav-cat-icon" alt=""> Glossário e Regras</button>
         </nav>
 
         <!-- Conteúdo da Seção Ativa -->
@@ -239,19 +242,19 @@ async function _renderClasses(container) {
   delete container.dataset.classeAberta;
 
   const todasClasses = [
-    { nome: 'Artífice', dado: 'd8', attr: 'Inteligência', icon: '🔧', desc: 'Mestres da invenção mágica e infusões de itens.' },
-    { nome: 'Bárbaro', dado: 'd12', attr: 'Força', icon: '🪓', desc: 'Guerreiros ferozes impulsionados por uma fúria primal inigualável.' },
-    { nome: 'Bardo', dado: 'd8', attr: 'Carisma', icon: '🎭', desc: 'Mestres da música, encanto, histórias e magias de apoio versáteis.' },
-    { nome: 'Bruxo', dado: 'd8', attr: 'Carisma', icon: '👁️', desc: 'Portadores de magia mística concedida por patronos transcendentais.' },
-    { nome: 'Clérigo', dado: 'd8', attr: 'Sabedoria', icon: '✝️', desc: 'Campeões divinos que empunham magias sagradas e expulsam profanos.' },
-    { nome: 'Druida', dado: 'd8', attr: 'Sabedoria', icon: '🌿', desc: 'Guardiões da natureza capazes de se transformar em feras majestosas.' },
-    { nome: 'Feiticeiro', dado: 'd6', attr: 'Carisma', icon: '🔥', desc: 'Conjuradores inatos com magia fluindo no próprio sangue e metamagia.' },
-    { nome: 'Guardião', dado: 'd10', attr: 'Destreza / Sabedoria', icon: '🏹', desc: 'Rastreadores e caçadores que dominam o combate ermo e magias naturais.' },
-    { nome: 'Guerreiro', dado: 'd10', attr: 'Força ou Destreza', icon: '⚔️', desc: 'Mestres consumados de armas, armaduras e manobras táticas de batalha.' },
-    { nome: 'Ladino', dado: 'd8', attr: 'Destreza', icon: '🗡️', desc: 'Especialistas em furtividade, precisão de ataque e desativação de armadilhas.' },
-    { nome: 'Mago', dado: 'd6', attr: 'Inteligência', icon: '🧙‍♂️', desc: 'Estudiosos supremos das artes arcanas com o mais vasto repertório de magias.' },
-    { nome: 'Monge', dado: 'd8', attr: 'Destreza / Sabedoria', icon: '🥋', desc: 'Mestres do poder marcial corporal e canalizadores da energia espiritual.' },
-    { nome: 'Paladino', dado: 'd10', attr: 'Força / Carisma', icon: '🛡️', desc: 'Guerreiros sagrados juramentados que canalizam punições divinas devastadoras.' }
+    { nome: 'Artífice', dado: 'd8', attr: 'Inteligência', desc: 'Mestres da invenção mágica e infusões de itens.' },
+    { nome: 'Bárbaro', dado: 'd12', attr: 'Força', desc: 'Guerreiros ferozes impulsionados por uma fúria primal inigualável.' },
+    { nome: 'Bardo', dado: 'd8', attr: 'Carisma', desc: 'Mestres da música, encanto, histórias e magias de apoio versáteis.' },
+    { nome: 'Bruxo', dado: 'd8', attr: 'Carisma', desc: 'Portadores de magia mística concedida por patronos transcendentais.' },
+    { nome: 'Clérigo', dado: 'd8', attr: 'Sabedoria', desc: 'Campeões divinos que empunham magias sagradas e expulsam profanos.' },
+    { nome: 'Druida', dado: 'd8', attr: 'Sabedoria', desc: 'Guardiões da natureza capazes de se transformar em feras majestosas.' },
+    { nome: 'Feiticeiro', dado: 'd6', attr: 'Carisma', desc: 'Conjuradores inatos com magia fluindo no próprio sangue e metamagia.' },
+    { nome: 'Guardião', dado: 'd10', attr: 'Destreza / Sabedoria', desc: 'Rastreadores e caçadores que dominam o combate ermo e magias naturais.' },
+    { nome: 'Guerreiro', dado: 'd10', attr: 'Força ou Destreza', desc: 'Mestres consumados de armas, armaduras e manobras táticas de batalha.' },
+    { nome: 'Ladino', dado: 'd8', attr: 'Destreza', desc: 'Especialistas em furtividade, precisão de ataque e desativação de armadilhas.' },
+    { nome: 'Mago', dado: 'd6', attr: 'Inteligência', desc: 'Estudiosos supremos das artes arcanas com o mais vasto repertório de magias.' },
+    { nome: 'Monge', dado: 'd8', attr: 'Destreza / Sabedoria', desc: 'Mestres do poder marcial corporal e canalizadores da energia espiritual.' },
+    { nome: 'Paladino', dado: 'd10', attr: 'Força / Carisma', desc: 'Guerreiros sagrados juramentados que canalizam punições divinas devastadoras.' }
   ];
 
   // Pré-carregamento em background das classes para garantir abertura 100% instantânea no clique
@@ -276,8 +279,8 @@ async function _renderClasses(container) {
         <div class="compendio-card compendio-card-clickable" data-classe="${c.nome}">
           <div class="compendio-card-header">
             <div>
-              <div class="compendio-card-title">${c.icon} ${c.nome}</div>
-              <div class="compendio-card-subtitle">Dado de Vida: 🎲${c.dado} • Atributo: ${c.attr}</div>
+              <div class="compendio-card-title">${c.nome}</div>
+              <div class="compendio-card-subtitle">Dado de Vida: ${c.dado} • Atributo: ${c.attr}</div>
             </div>
             <span class="c-badge c-badge-categoria">1–20</span>
           </div>
@@ -316,23 +319,6 @@ async function _abrirModalClasse(nomeClasse, subAbaInicial = 'caracteristicas') 
   const magiasClasse = infoBasica.conjurador ? await getMagiasClasse(nomeClasse) : null;
   const temMagias = magiasClasse && magiasClasse.magias && magiasClasse.magias.length > 0;
 
-  const icones = {
-    'Artífice': '🔧',
-    'Bárbaro': '🪓',
-    'Bardo': '🎭',
-    'Bruxo': '👁️',
-    'Clérigo': '✝️',
-    'Druida': '🌿',
-    'Feiticeiro': '🔥',
-    'Guardião': '🏹',
-    'Guerreiro': '⚔️',
-    'Ladino': '🗡️',
-    'Mago': '🧙‍♂️',
-    'Monge': '🥋',
-    'Paladino': '🛡️'
-  };
-  const icone = icones[nomeClasse] || '🛡️';
-
   const armadurasLista = (infoBasica.armaduras || infoBasica.proficiencias_armaduras || []).join(', ') || 'Nenhuma';
   const armasLista = (infoBasica.armas || infoBasica.proficiencias_armas || []).join(', ') || 'Simples';
   const ferramentasLista = (infoBasica.proficiencias_ferramentas || []).join(', ') || 'Nenhuma';
@@ -345,7 +331,7 @@ async function _abrirModalClasse(nomeClasse, subAbaInicial = 'caracteristicas') 
       <div style="background: var(--bg-input); padding: 12px 14px; border-radius: var(--radius-sm); margin-bottom: 14px; border-left: 3px solid var(--accent);">
         <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; align-items: center;">
           <span class="c-badge c-badge-categoria" style="font-size: 0.8rem; font-weight: 700;">
-            Dado de Vida: 🎲${infoBasica.dado_vida || dados.dado_vida || 'd8'}
+            Dado de Vida: ${infoBasica.dado_vida || dados.dado_vida || 'd8'}
           </span>
           <span class="c-badge c-badge-categoria">
             Atributo: ${infoBasica.atributo_primario || 'Varia'}
@@ -365,17 +351,17 @@ async function _abrirModalClasse(nomeClasse, subAbaInicial = 'caracteristicas') 
       <!-- Sub-navegação do Modal -->
       <div class="compendio-detail-nav" id="modal-classe-nav" style="margin-bottom: 14px; position: sticky; top: -16px; background: var(--bg-card); z-index: 2; padding: 4px 0;">
         <button class="compendio-detail-tab ${subAbaInicial === 'caracteristicas' ? 'ativo' : ''}" data-modal-subaba="caracteristicas">
-          📜 Características (${(dados.caracteristicas || []).length})
+          Características (${(dados.caracteristicas || []).length})
         </button>
         <button class="compendio-detail-tab ${subAbaInicial === 'tabela' ? 'ativo' : ''}" data-modal-subaba="tabela">
-          📊 Tabela de Progressão
+          Tabela de Progressão
         </button>
         <button class="compendio-detail-tab ${subAbaInicial === 'subclasses' ? 'ativo' : ''}" data-modal-subaba="subclasses">
-          🏆 Subclasses (${(dados.subclasses || []).length})
+          Subclasses (${(dados.subclasses || []).length})
         </button>
         ${temMagias ? `
           <button class="compendio-detail-tab ${subAbaInicial === 'magias' ? 'ativo' : ''}" data-modal-subaba="magias">
-            ✨ Magias (${magiasClasse.magias.length})
+            Magias (${magiasClasse.magias.length})
           </button>
         ` : ''}
       </div>
@@ -385,7 +371,7 @@ async function _abrirModalClasse(nomeClasse, subAbaInicial = 'caracteristicas') 
     </div>
   `;
 
-  abrirModal(`${icone} ${nomeClasse}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  abrirModal(nomeClasse, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 
   const navModal = document.getElementById('modal-classe-nav');
   const subContainer = document.getElementById('modal-classe-subaba-conteudo');
@@ -543,7 +529,7 @@ function _renderSubclasses(container, dados) {
       ${subclasses.map(sub => `
         <div class="card">
           <div class="card-header">
-            <h2>🏆 ${escHtml(sub.nome)}</h2>
+            <h2>${escHtml(sub.nome)}</h2>
           </div>
           ${sub.descricao ? `<div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;">${mdParaHtml(sub.descricao)}</div>` : ''}
           
@@ -575,7 +561,7 @@ function _renderMagiasClasse(container, nomeClasse, magiasClasse) {
   container.innerHTML = `
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
-        <span class="compendio-search-icon">🔍</span>
+        <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
         <input type="text" class="compendio-search-input" id="busca-magias-classe" placeholder="Buscar magia de ${nomeClasse}...">
       </div>
       <div class="compendio-count-badge" id="contagem-magias-classe">
@@ -649,7 +635,7 @@ async function _renderEspecies(container) {
         <div class="compendio-card compendio-card-clickable" data-especie-nome="${esp.nome}">
           <div class="compendio-card-header">
             <div>
-              <div class="compendio-card-title">🧬 ${escHtml(esp.nome)}</div>
+              <div class="compendio-card-title">${escHtml(esp.nome)}</div>
               <div class="compendio-card-subtitle">
                 ${esp.tipo_criatura || 'Humanoide'} • ${esp.tamanho || 'Médio'} • ${esp.deslocamento || '9 m'}
               </div>
@@ -715,7 +701,7 @@ function _abrirModalEspecie(esp) {
     </div>
   `;
 
-  abrirModal(`🧬 ${esp.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  abrirModal(esp.nome, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 }
 
 // ============================================================
@@ -747,7 +733,7 @@ async function _renderAntecedentes(container) {
         <div class="compendio-card compendio-card-clickable" data-ant-nome="${escHtml(ant.nome)}">
           <div class="compendio-card-header">
             <div>
-              <div class="compendio-card-title">📜 ${escHtml(ant.nome)}</div>
+              <div class="compendio-card-title">${escHtml(ant.nome)}</div>
               <div class="compendio-card-subtitle">Talento: ${escHtml(ant.talento || '—')}</div>
             </div>
             <span class="c-badge c-badge-origem">Origem</span>
@@ -804,7 +790,7 @@ function _abrirModalAntecedente(ant) {
     </div>
   `;
 
-  abrirModal(`📜 Antecedente: ${ant.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  abrirModal(`Antecedente: ${ant.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 }
 
 // ============================================================
@@ -842,7 +828,7 @@ async function _renderTalentos(container) {
     <!-- Barra de Filtros e Busca -->
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
-        <span class="compendio-search-icon">🔍</span>
+        <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
         <input type="text" class="compendio-search-input" id="busca-talento" placeholder="Buscar talento por nome, pré-requisito ou benefício...">
       </div>
       <div class="compendio-count-badge" id="contagem-talentos">
@@ -952,7 +938,7 @@ function _gerarCardsTalentosHTML(lista) {
       <div class="compendio-card compendio-card-clickable" data-talento-nome="${escHtml(t.nome)}">
         <div class="compendio-card-header">
           <div>
-            <div class="compendio-card-title">⚡ ${escHtml(t.nome)}</div>
+            <div class="compendio-card-title">${escHtml(t.nome)}</div>
             <div class="compendio-card-subtitle">
               ${prereq && prereq !== 'Nenhum' ? `Pré-requisito: ${escHtml(prereq)}` : 'Sem pré-requisito'}
             </div>
@@ -1031,7 +1017,7 @@ function _abrirModalTalento(t) {
     </div>
   `;
 
-  abrirModal(`⚡ Talento: ${t.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  abrirModal(`Talento: ${t.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 }
 
 // ============================================================
@@ -1066,7 +1052,7 @@ async function _renderMagias(container) {
     <!-- Toolbar de Busca e Filtros -->
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
-        <span class="compendio-search-icon">🔍</span>
+        <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
         <input type="text" class="compendio-search-input" id="busca-magia" placeholder="Buscar magia pelo nome ou descrição...">
       </div>
 
@@ -1183,8 +1169,8 @@ function _gerarCardsMagiaHTML(lista) {
           <span class="c-badge c-badge-circulo">${circTexto}</span>
         </div>
         <div class="compendio-card-body" style="font-size: 0.78rem;">
-          <div style="color: var(--text-muted); margin-bottom: 4px;">⏱️ ${escHtml(m.tempo_conjuracao || '1 Ação')}</div>
-          <div style="color: var(--text-muted); margin-bottom: 4px;">🎯 ${escHtml(m.alcance || 'Pessoal')}</div>
+          <div style="color: var(--text-muted); margin-bottom: 4px;">Tempo: ${escHtml(m.tempo_conjuracao || '1 Ação')}</div>
+          <div style="color: var(--text-muted); margin-bottom: 4px;">Alcance: ${escHtml(m.alcance || 'Pessoal')}</div>
           <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px;">
             ${m.ritual ? '<span class="c-badge c-badge-ritual">Ritual</span>' : ''}
             ${m.duracao && m.duracao.toLowerCase().includes('concentra') ? '<span class="c-badge c-badge-conc">Concentração</span>' : ''}
@@ -1258,7 +1244,7 @@ function _abrirModalMagia(m) {
     </div>
   `;
 
-  abrirModal(`✨ ${m.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  abrirModal(m.nome, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 }
 
 // ============================================================
@@ -1306,12 +1292,12 @@ async function _renderEquipamento(container) {
 
     <!-- Sub-nav de Equipamentos -->
     <div class="compendio-subnav" id="subnav-equipamento">
-      <button class="compendio-subnav-btn ${subSecao === 'armas' ? 'ativo' : ''}" data-sub="armas">⚔️ Armas</button>
-      <button class="compendio-subnav-btn ${subSecao === 'armaduras' ? 'ativo' : ''}" data-sub="armaduras">🛡️ Armaduras & Escudos</button>
-      <button class="compendio-subnav-btn ${subSecao === 'aventura' ? 'ativo' : ''}" data-sub="aventura">🎒 Equipamento de Aventura</button>
-      <button class="compendio-subnav-btn ${subSecao === 'ferramentas' ? 'ativo' : ''}" data-sub="ferramentas">⚒️ Ferramentas</button>
-      <button class="compendio-subnav-btn ${subSecao === 'montarias' ? 'ativo' : ''}" data-sub="montarias">🐎 Montarias & Veículos</button>
-      <button class="compendio-subnav-btn ${subSecao === 'servicos' ? 'ativo' : ''}" data-sub="servicos">🪙 Serviços & Despesas</button>
+      <button class="compendio-subnav-btn ${subSecao === 'armas' ? 'ativo' : ''}" data-sub="armas">Armas</button>
+      <button class="compendio-subnav-btn ${subSecao === 'armaduras' ? 'ativo' : ''}" data-sub="armaduras">Armaduras & Escudos</button>
+      <button class="compendio-subnav-btn ${subSecao === 'aventura' ? 'ativo' : ''}" data-sub="aventura">Equipamento de Aventura</button>
+      <button class="compendio-subnav-btn ${subSecao === 'ferramentas' ? 'ativo' : ''}" data-sub="ferramentas">Ferramentas</button>
+      <button class="compendio-subnav-btn ${subSecao === 'montarias' ? 'ativo' : ''}" data-sub="montarias">Montarias & Veículos</button>
+      <button class="compendio-subnav-btn ${subSecao === 'servicos' ? 'ativo' : ''}" data-sub="servicos">Serviços & Despesas</button>
     </div>
 
     <!-- Conteúdo do Sub-Equipamento -->
@@ -1358,7 +1344,7 @@ async function _renderTabelaArmas(container) {
   container.innerHTML = `
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
-        <span class="compendio-search-icon">🔍</span>
+        <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
         <input type="text" class="compendio-search-input" id="busca-arma" placeholder="Buscar arma, maestria ou propriedade...">
       </div>
       <div class="compendio-count-badge" id="contagem-armas">
@@ -1471,7 +1457,7 @@ async function _renderEquipamentoAventura(container) {
   container.innerHTML = `
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
-        <span class="compendio-search-icon">🔍</span>
+        <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
         <input type="text" class="compendio-search-input" id="busca-aventura" placeholder="Buscar item de aventura...">
       </div>
       <div class="compendio-count-badge" id="contagem-aventura">
@@ -1534,7 +1520,7 @@ async function _renderFerramentas(container) {
     <div class="card mb-3" style="padding: 14px 16px; background: rgba(30, 41, 59, 0.4); border-left: 3px solid var(--accent, #6366f1);">
       <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" id="toggle-regras-ferramentas">
         <div style="font-weight: 700; color: #fff; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
-          <span>🛠️ Proficiência e Regras com Ferramentas</span>
+          <span>Proficiência e Regras com Ferramentas</span>
         </div>
         <span id="seta-regras-ferramentas" style="font-size: 0.8rem; color: var(--text-muted);">▼ Mostrar Regras</span>
       </div>
@@ -1547,10 +1533,10 @@ async function _renderFerramentas(container) {
         </p>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 8px;">
           <div style="background: rgba(0,0,0,0.2); padding: 8px 10px; border-radius: 6px;">
-            <strong>🎯 Usar Objeto:</strong> Ação e CD padrão para atividades específicas durante o jogo.
+            <strong>Usar Objeto:</strong> Ação e CD padrão para atividades específicas durante o jogo.
           </div>
           <div style="background: rgba(0,0,0,0.2); padding: 8px 10px; border-radius: 6px;">
-            <strong>🔨 Fabricação:</strong> Itens e equipamentos que podem ser produzidos com a ferramenta.
+            <strong>Fabricação:</strong> Itens e equipamentos que podem ser produzidos com a ferramenta.
           </div>
         </div>
       </div>
@@ -1559,7 +1545,7 @@ async function _renderFerramentas(container) {
     <!-- Barra de Busca e Filtros -->
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
-        <span class="compendio-search-icon">🔍</span>
+        <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
         <input type="text" class="compendio-search-input" id="busca-ferramenta" placeholder="Buscar ferramenta por nome, ação, item fabricável...">
       </div>
       <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
@@ -1640,49 +1626,40 @@ function _gerarCardsFerramentasHTML(lista) {
     return `<div class="empty-state" style="grid-column: 1 / -1;"><p>Nenhuma ferramenta encontrada com os filtros aplicados.</p></div>`;
   }
 
-  const iconesAttr = {
-    'Força': '💪',
-    'Destreza': '🎯',
-    'Inteligência': '🧠',
-    'Sabedoria': '👁️',
-    'Carisma': '✨'
-  };
-
   return lista.map(f => {
-    const iconeAttr = iconesAttr[f.atributo] || '🎲';
     return `
       <div class="compendio-card compendio-card-clickable" data-ferramenta-nome="${escHtml(f.nome)}">
         <div class="compendio-card-header">
           <div>
-            <div class="compendio-card-title">🛠️ ${escHtml(f.nome)}</div>
+            <div class="compendio-card-title">${escHtml(f.nome)}</div>
             <div class="compendio-card-subtitle">${escHtml(f.categoria || 'Ferramenta')}</div>
           </div>
           <span class="c-badge c-badge-categoria">${escHtml(f.custo || '—')}</span>
         </div>
 
         <div class="compendio-card-meta" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
-          <span class="badge badge-primary" style="font-size: 0.72rem; padding: 2px 8px;">${iconeAttr} ${escHtml(f.atributo || 'Atributo')}</span>
+          <span class="badge badge-primary" style="font-size: 0.72rem; padding: 2px 8px;">${escHtml(f.atributo || 'Atributo')}</span>
           <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Peso: ${escHtml(f.peso || '—')}</span>
         </div>
 
         <div class="compendio-card-body" style="font-size: 0.82rem; display: flex; flex-direction: column; gap: 8px;">
           ${f.usar_objeto ? `
             <div style="background: rgba(255,255,255,0.03); border-radius: 6px; padding: 6px 8px; border: 1px solid rgba(255,255,255,0.05);">
-              <strong style="color: var(--accent, #818cf8);">🎯 Usar Objeto:</strong>
+              <strong style="color: var(--accent, #818cf8);">Usar Objeto:</strong>
               <div style="margin-top: 2px; color: var(--text-secondary);">${escHtml(f.usar_objeto)}</div>
             </div>
           ` : ''}
 
           ${f.fabricacao ? `
             <div>
-              <strong style="color: #34d399;">🔨 Fabricação:</strong>
+              <strong style="color: #34d399;">Fabricação:</strong>
               <div style="margin-top: 2px; color: var(--text-muted); line-height: 1.4;">${escHtml(f.fabricacao)}</div>
             </div>
           ` : ''}
 
           ${f.variantes ? `
             <div>
-              <strong style="color: #fbbf24;">🎲 Variantes:</strong>
+              <strong style="color: #fbbf24;">Variantes:</strong>
               <div style="margin-top: 2px; color: var(--text-muted); line-height: 1.4;">${escHtml(f.variantes)}</div>
             </div>
           ` : ''}
@@ -1707,26 +1684,17 @@ function _atribuirEventosFerramentas(container, lista) {
 }
 
 function _abrirModalFerramenta(f) {
-  const iconesAttr = {
-    'Força': '💪',
-    'Destreza': '🎯',
-    'Inteligência': '🧠',
-    'Sabedoria': '👁️',
-    'Carisma': '✨'
-  };
-  const iconeAttr = iconesAttr[f.atributo] || '🎲';
-
   const corpo = `
     <div style="font-size: 0.9rem; line-height: 1.6;">
       <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px;">
         <span class="badge badge-secondary">${escHtml(f.categoria)}</span>
         <span class="badge badge-accent">${escHtml(f.custo)}</span>
-        <span class="badge badge-primary">${iconeAttr} Atributo: ${escHtml(f.atributo)}</span>
+        <span class="badge badge-primary">Atributo: ${escHtml(f.atributo)}</span>
         <span class="badge" style="background: rgba(255,255,255,0.1);">Peso: ${escHtml(f.peso)}</span>
       </div>
 
       <div class="card mb-3" style="padding: 12px; background: rgba(99, 102, 241, 0.08); border-left: 3px solid var(--accent, #6366f1);">
-        <strong style="color: var(--accent, #818cf8); font-size: 0.95rem;">🎯 Ação Usar Objeto</strong>
+        <strong style="color: var(--accent, #818cf8); font-size: 0.95rem;">Ação Usar Objeto</strong>
         <p style="margin-top: 4px; margin-bottom: 0; color: #fff;">
           ${escHtml(f.usar_objeto || '—')}
         </p>
@@ -1734,7 +1702,7 @@ function _abrirModalFerramenta(f) {
 
       ${f.fabricacao ? `
         <div class="card mb-3" style="padding: 12px; background: rgba(52, 211, 153, 0.08); border-left: 3px solid #10b981;">
-          <strong style="color: #34d399; font-size: 0.95rem;">🔨 Itens Fabricáveis</strong>
+          <strong style="color: #34d399; font-size: 0.95rem;">Itens Fabricáveis</strong>
           <p style="margin-top: 4px; margin-bottom: 0; color: var(--text-secondary);">
             ${escHtml(f.fabricacao)}
           </p>
@@ -1743,7 +1711,7 @@ function _abrirModalFerramenta(f) {
 
       ${f.variantes ? `
         <div class="card mb-3" style="padding: 12px; background: rgba(251, 191, 36, 0.08); border-left: 3px solid #f59e0b;">
-          <strong style="color: #fbbf24; font-size: 0.95rem;">🎲 Variantes Disponíveis</strong>
+          <strong style="color: #fbbf24; font-size: 0.95rem;">Variantes Disponíveis</strong>
           <p style="margin-top: 4px; margin-bottom: 0; color: var(--text-secondary);">
             ${escHtml(f.variantes)}
           </p>
@@ -1756,7 +1724,7 @@ function _abrirModalFerramenta(f) {
     </div>
   `;
 
-  abrirModal(`🛠️ ${f.nome}`, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  abrirModal(f.nome, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 }
 
 async function _renderMontariasVeiculos(container) {
@@ -1903,7 +1871,7 @@ async function _renderItensMagicos(container) {
 
   container.innerHTML = `
     <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">🔮 Itens Mágicos</h2>
+      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Itens Mágicos</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
         Acervo completo com 350 itens mágicos: armas lendárias, anéis, pergaminhos, poções, varinhas, cetros, cajados, armaduras e itens maravilhosos.
       </p>
@@ -1912,7 +1880,7 @@ async function _renderItensMagicos(container) {
     <!-- Barra de Busca e Filtros -->
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
-        <span class="compendio-search-icon">🔍</span>
+        <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
         <input type="text" class="compendio-search-input" id="busca-item-magico" placeholder="Buscar por nome, tipo, propriedade ou efeito...">
       </div>
       <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
@@ -2046,7 +2014,7 @@ function _gerarCardsItensMagicosHTML(lista) {
       <div class="compendio-card compendio-card-clickable" data-item-magico-nome="${escHtml(it.nome)}">
         <div class="compendio-card-header">
           <div>
-            <div class="compendio-card-title">🔮 ${escHtml(it.nome)}</div>
+            <div class="compendio-card-title">${escHtml(it.nome)}</div>
             <div class="compendio-card-subtitle" style="color: var(--text-muted); font-weight: 500;">
               ${escHtml(it.tipo)}${it.subtipo ? ` (${escHtml(it.subtipo)})` : ''}
             </div>
@@ -2135,7 +2103,7 @@ async function _renderBestiario(container) {
 
   container.innerHTML = `
     <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">🦁 Bestiário</h2>
+      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Bestiário</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
         Acervo completo de criaturas do Livro do Jogador e monstros temíveis do Manual dos Monstros.
       </p>
@@ -2143,10 +2111,10 @@ async function _renderBestiario(container) {
       <!-- Sub-navegação do Bestiário -->
       <div class="compendio-subnav" style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
         <button class="compendio-subnav-btn ${isMonstros ? 'active' : ''}" data-subsecao="monstros" style="padding: 6px 14px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; background: ${isMonstros ? 'var(--accent)' : 'var(--bg-card)'}; color: ${isMonstros ? '#fff' : 'var(--text-muted)'}; border: 1px solid ${isMonstros ? 'var(--accent)' : 'var(--border-color)'};">
-          🐉 Monstros (${monstrosBase.length})
+          Monstros (${monstrosBase.length})
         </button>
         <button class="compendio-subnav-btn ${!isMonstros ? 'active' : ''}" data-subsecao="criaturas" style="padding: 6px 14px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; background: ${!isMonstros ? 'var(--accent)' : 'var(--bg-card)'}; color: ${!isMonstros ? '#fff' : 'var(--text-muted)'}; border: 1px solid ${!isMonstros ? 'var(--accent)' : 'var(--border-color)'};">
-          🐾 Criaturas (${criaturasBase.length})
+          Criaturas (${criaturasBase.length})
         </button>
       </div>
     </div>
@@ -2154,7 +2122,7 @@ async function _renderBestiario(container) {
     <!-- Barra de Busca e Filtros do Bestiário -->
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
-        <span class="compendio-search-icon">🔍</span>
+        <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
         <input type="text" class="compendio-search-input" id="busca-criatura" placeholder="Buscar ${isMonstros ? 'monstro' : 'criatura'} por nome, tipo, traço ou ação...">
       </div>
       <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
@@ -2224,13 +2192,11 @@ function _gerarCardsCriaturasHTML(lista, isMonstros = false) {
     return `<div class="empty-state" style="grid-column: 1 / -1;"><p>Nenhum registro encontrado com os filtros aplicados.</p></div>`;
   }
 
-  const icon = isMonstros ? '🐉' : '🐾';
-
   return lista.map(c => `
     <div class="compendio-card compendio-card-clickable" data-criatura-nome="${escHtml(c.nome)}">
       <div class="compendio-card-header">
         <div>
-          <div class="compendio-card-title">${icon} ${escHtml(c.nome)}</div>
+          <div class="compendio-card-title">${escHtml(c.nome)}</div>
           <div class="compendio-card-subtitle">${escHtml(c.tipo_tamanho || 'Fera')}</div>
         </div>
         <span class="c-badge c-badge-circulo">ND ${escHtml(c.nd || '1/4')}</span>
@@ -2376,7 +2342,7 @@ async function _renderRegras(container) {
 
   container.innerHTML = `
     <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">📚 Glossário e Regras</h2>
+      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Glossário e Regras</h2>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
         Guia de regras do D&D 5.5: consulte termos e condições no glossário, regras de combate e jogabilidade, criação de personagem e a cosmologia do multiverso.
       </p>
@@ -2384,10 +2350,10 @@ async function _renderRegras(container) {
 
     <!-- Sub-nav de Regras -->
     <div class="compendio-subnav" id="subnav-regras">
-      <button class="compendio-subnav-btn ${subSecao === 'glossario' ? 'ativo' : ''}" data-sub="glossario">📖 Glossário de Regras</button>
-      <button class="compendio-subnav-btn ${subSecao === 'capitulo1' ? 'ativo' : ''}" data-sub="capitulo1">🎲 Cap. 1 - Jogando o Jogo</button>
-      <button class="compendio-subnav-btn ${subSecao === 'capitulo2' ? 'ativo' : ''}" data-sub="capitulo2">👤 Cap. 2 - Criação</button>
-      <button class="compendio-subnav-btn ${subSecao === 'multiverso' ? 'ativo' : ''}" data-sub="multiverso">🌌 O Multiverso</button>
+      <button class="compendio-subnav-btn ${subSecao === 'glossario' ? 'ativo' : ''}" data-sub="glossario">Glossário de Regras</button>
+      <button class="compendio-subnav-btn ${subSecao === 'capitulo1' ? 'ativo' : ''}" data-sub="capitulo1">Cap. 1 - Jogando o Jogo</button>
+      <button class="compendio-subnav-btn ${subSecao === 'capitulo2' ? 'ativo' : ''}" data-sub="capitulo2">Cap. 2 - Criação</button>
+      <button class="compendio-subnav-btn ${subSecao === 'multiverso' ? 'ativo' : ''}" data-sub="multiverso">O Multiverso</button>
     </div>
 
     <div id="compendio-regras-conteudo"></div>
@@ -2429,7 +2395,7 @@ async function _renderGlossario(container) {
   container.innerHTML = `
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
-        <span class="compendio-search-icon">🔍</span>
+        <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
         <input type="text" class="compendio-search-input" id="busca-glossario" placeholder="Buscar regra ou condição (ex: Vantagem, Agarrado, Invisível)...">
       </div>
       <div class="compendio-count-badge" id="contagem-glossario">

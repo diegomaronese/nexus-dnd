@@ -122,7 +122,8 @@ function _renderizarLayout(container, ultimoResultado = null) {
       <div class="dice-hero">
         <div>
           <div class="dice-hero-title">
-            <span>🎲 Mesa de Dados Virtual</span>
+            <img src="img/icons/ico-home-dados.png" class="page-hero-ico" alt="">
+            <span>Mesa de Dados</span>
           </div>
           <div class="dice-hero-desc">
             Role qualquer combinação de dados das regras de D&D com vantagens, desvantagens, modificadores e histórico em tempo real.
@@ -201,21 +202,21 @@ function _renderizarLayout(container, ultimoResultado = null) {
           <label class="dice-field-label">Modo de Rolagem</label>
           <div class="dice-mode-selector">
             <button type="button" class="dice-mode-btn ${(!_estadoAtual.modo || _estadoAtual.modo === 'normal') ? 'ativo' : ''}" data-modo="normal">
-              <span class="dice-mode-icon">⚪</span>
+              <span class="dice-mode-icon"><img src="img/icons/ico-modo-normal.png" class="mode-icon-img" alt=""></span>
               <div class="dice-mode-info">
                 <span class="dice-mode-title">Normal</span>
                 <span class="dice-mode-desc">1 rolagem padrão</span>
               </div>
             </button>
             <button type="button" class="dice-mode-btn mode-vantagem ${_estadoAtual.modo === 'vantagem' ? 'ativo' : ''}" data-modo="vantagem">
-              <span class="dice-mode-icon">🟢</span>
+              <span class="dice-mode-icon"><img src="img/icons/ico-modo-vantagem.png" class="mode-icon-img" alt=""></span>
               <div class="dice-mode-info">
                 <span class="dice-mode-title">Vantagem</span>
                 <span class="dice-mode-desc">Rola 2x, pega o maior</span>
               </div>
             </button>
             <button type="button" class="dice-mode-btn mode-desvantagem ${_estadoAtual.modo === 'desvantagem' ? 'ativo' : ''}" data-modo="desvantagem">
-              <span class="dice-mode-icon">🔴</span>
+              <span class="dice-mode-icon"><img src="img/icons/ico-modo-desvantagem.png" class="mode-icon-img" alt=""></span>
               <div class="dice-mode-info">
                 <span class="dice-mode-title">Desvantagem</span>
                 <span class="dice-mode-desc">Rola 2x, pega o menor</span>
@@ -233,7 +234,7 @@ function _renderizarLayout(container, ultimoResultado = null) {
         <!-- Botão Principal de Rolagem -->
         <div class="dice-action-wrap">
           <button type="button" id="btn-executar-rolagem" class="dice-roll-main-btn" ${_estaRolando ? 'disabled' : ''}>
-            <span class="dice-roll-icon">🎲</span>
+            <span class="dice-roll-icon"><img src="img/icons/ico-home-dados.png" class="dice-roll-icon-img" alt=""></span>
             <span class="dice-roll-text">
               ${_estaRolando ? 'Rolando dados...' : `Rolar ${_montarFormulaTexto(_estadoAtual)}`}
             </span>
@@ -275,7 +276,7 @@ function _renderizarLayout(container, ultimoResultado = null) {
           </div>
           ${historico.length > 0 ? `
             <button type="button" class="btn btn-sm btn-secondary" id="btn-limpar-historico" title="Limpar histórico">
-              🗑️ Limpar
+              <img src="img/icons/ico-limpar-historico.png" class="btn-icon-img" alt=""> Limpar
             </button>
           ` : ''}
         </div>
@@ -283,7 +284,7 @@ function _renderizarLayout(container, ultimoResultado = null) {
         <div class="dice-history-list" id="dice-history-container">
           ${historico.length === 0 ? `
             <div class="dice-history-empty">
-              <span style="font-size: 2rem; opacity: 0.5;">🎲</span>
+              <img src="img/icons/ico-home-dados.png" style="width: 48px; height: 48px; opacity: 0.45; object-fit: contain; margin-bottom: 8px;" alt="">
               <p>Nenhuma rolagem realizada ainda nesta sessão.</p>
               <span style="font-size: 0.8rem; color: var(--text-muted);">As suas últimas 10 rolagens aparecerão detalhadas aqui.</span>
             </div>
@@ -590,14 +591,16 @@ function _gerarHtmlResultado(res) {
     classeCritico = 'res-nat20';
     badgeCritico = `
       <div class="dice-crit-badge badge-nat20">
-        <span>🎯 SUCEsSO CRÍTICO (NATURAL 20!)</span>
+        <img src="img/icons/ico-nat20.png" class="crit-icon-img" alt="">
+        <span>SUCESSO CRÍTICO (NATURAL 20!)</span>
       </div>
     `;
   } else if (res.statusCritico === 'nat1') {
     classeCritico = 'res-nat1';
     badgeCritico = `
       <div class="dice-crit-badge badge-nat1">
-        <span>💀 FALHA CRÍTICA (NATURAL 1!)</span>
+        <img src="img/icons/ico-nat1.png" class="crit-icon-img" alt="">
+        <span>FALHA CRÍTICA (NATURAL 1!)</span>
       </div>
     `;
   }
@@ -798,6 +801,6 @@ function _gerarSvgDado(tipo, cor, ativo) {
         </svg>
       `;
     default:
-      return `<span style="font-size: 1.5rem;">🎲</span>`;
+      return `<img src="img/icons/ico-home-dados.png" class="dice-roll-icon-img" alt="">`;
   }
 }

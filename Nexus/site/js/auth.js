@@ -8,6 +8,7 @@ const FIREBASE_CONFIG = {
   apiKey: "AIzaSyB4VtbW5qRq_cvwiT7aMhDhtVZxiTAGFkI",
   authDomain: "nexus-dnd-fa137.firebaseapp.com",
   projectId: "nexus-dnd-fa137",
+  firestoreDatabaseId: "(default)",
   storageBucket: "nexus-dnd-fa137.firebasestorage.app",
   messagingSenderId: "402454250156",
   appId: "1:402454250156:web:802ad82df4f905128b5509",

@@ -47,7 +47,8 @@ function _renderConteudo(container, personagens, usuario) {
     <div class="personagens-hero">
       <div>
         <div class="personagens-hero-title">
-          <span>🧙 Meus Personagens</span>
+          <img src="img/icons/ico-personagens-hero.png" class="page-hero-ico" alt="">
+          <span>Meus Personagens</span>
         </div>
         <div class="personagens-hero-desc">
           Gerencie, visualize e edite suas fichas de personagens, com suporte a salvamento local, sincronização em nuvem e exportação.
@@ -84,7 +85,7 @@ function _renderConteudo(container, personagens, usuario) {
               + Criar Novo Personagem
             </button>
             <button class="btn btn-secondary btn-lg" id="btn-importar">
-              📥 Importar Ficha (.json)
+              <img src="img/icons/ico-acao-importar.png" class="btn-icon-img" alt=""> Importar Ficha (.json)
             </button>
           </div>
         </div>
@@ -111,10 +112,10 @@ function _renderConteudo(container, personagens, usuario) {
         </div>
         <div class="flex gap-1" style="flex-wrap: wrap;">
           <button class="btn btn-sm btn-secondary" id="btn-exportar" title="Exportar todos os personagens num único arquivo">
-            📤 Exportar Todos
+            <img src="img/icons/ico-acao-exportar.png" class="btn-icon-img" alt=""> Exportar Todos
           </button>
           <button class="btn btn-sm btn-secondary" id="btn-importar" title="Importar arquivo com 1 ou vários personagens">
-            📥 Importar
+            <img src="img/icons/ico-acao-importar.png" class="btn-icon-img" alt=""> Importar
           </button>
           <button class="btn btn-sm btn-primary" onclick="navegar('criar')">
             + Novo Personagem
@@ -336,9 +337,9 @@ function renderCharCard(p) {
       </div>
       <div class="char-nivel">Nv. ${escHtml(p.nivel ?? 1)}</div>
       <div class="char-actions" style="display:flex;gap:4px;margin-left:8px;">
-        <button class="btn btn-sm btn-secondary" data-action="exportar-individual" title="Exportar este personagem (arquivo só com ele)">&#x21E9;</button>
-        <button class="btn btn-sm btn-secondary" data-action="duplicar" title="Duplicar">&#x2398;</button>
-        <button class="btn btn-sm btn-danger" data-action="excluir" title="Excluir">&times;</button>
+        <button class="btn btn-sm btn-secondary" data-action="exportar-individual" title="Exportar este personagem (arquivo só com ele)"><img src="img/icons/ico-acao-exportar.png" class="btn-icon-sm-img" alt="Exportar"></button>
+        <button class="btn btn-sm btn-secondary" data-action="duplicar" title="Duplicar"><img src="img/icons/ico-acao-duplicar.png" class="btn-icon-sm-img" alt="Duplicar"></button>
+        <button class="btn btn-sm btn-danger" data-action="excluir" title="Excluir"><img src="img/icons/ico-acao-excluir.png" class="btn-icon-sm-img" alt="Excluir"></button>
       </div>
     </div>
   `;

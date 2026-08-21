@@ -3660,8 +3660,18 @@ tr:hover td { background: rgba(200, 160, 81, 0.05); }
 }
 
 .dice-roll-icon {
-  font-size: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+}
+
+.dice-roll-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.6));
 }
 
 .dice-roll-text {
@@ -4223,7 +4233,7 @@ tr:hover td { background: rgba(200, 160, 81, 0.05); }
     font-size: 0.92rem;
   }
 
-  /* Compêndio navegação e cards */
+/* Compêndio navegação e cards */
   .compendio-nav {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -4241,5 +4251,114 @@ tr:hover td { background: rgba(200, 160, 81, 0.05); }
   }
 }
 
+/* ============================================================
+   Ícones Transparentes PNG - Estilização Universal
+   ============================================================ */
+.home-menu-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
 
+.home-user-icon-img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  display: block;
+}
 
+.compendio-hero-ico,
+.page-hero-ico {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.nav-cat-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.btn-icon-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.btn-icon-sm-img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.search-icon-img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  vertical-align: middle;
+  opacity: 0.75;
+}
+
+.mode-icon-img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.crit-icon-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.section-title-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.hp-icon-inline {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.inspiracao-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+.morte-icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 6px;
+}
