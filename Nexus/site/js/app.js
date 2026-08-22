@@ -158,20 +158,17 @@ export function navegar(rota, opcoes = {}) {
   const ehMesmoNivel = nivelAtual === nivelNovo && mesmoPai && nivelAtual > 0;
   const deveSubstituir = substituir || ehMesmoNivel || ehSubidaHierarquica || (rotaLimpa === 'home' && rotaAtual === 'home');
 
-  if (window.location.hash === `#${rotaLimpa}`) {
-    processarRota();
-  } else {
+  try {
     if (deveSubstituir) {
-      try {
-        history.replaceState(null, '', `#${rotaLimpa}`);
-        processarRota();
-      } catch (e) {
-        window.location.hash = rotaLimpa;
-      }
+      history.replaceState({ rota: rotaLimpa }, '', `#${rotaLimpa}`);
     } else {
-      window.location.hash = rotaLimpa;
+      history.pushState({ rota: rotaLimpa }, '', `#${rotaLimpa}`);
     }
+  } catch (e) {
+    window.location.hash = rotaLimpa;
   }
+
+  processarRota();
 }
 window.navegar = navegar;
 

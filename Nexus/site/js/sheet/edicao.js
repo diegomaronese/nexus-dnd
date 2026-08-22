@@ -542,4 +542,4 @@ async function abrirModalLevelUp() {
     console.error('Falha ao abrir fluxo de level up V2:', err);
     toast('Não foi possível abrir o fluxo de level up. Tente novamente.', 'error');
   }
-}
+}
