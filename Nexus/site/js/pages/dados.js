@@ -156,8 +156,8 @@ function _renderizarLayout(container, ultimoResultado = null) {
 
       <!-- SEÇÃO 2: Configuração da Rolagem (Qtd, Modo, Modificador, Motivo) -->
       <div class="card dice-card-section">
-        <div class="dice-section-label">
-          <span>Configuração da Rolagem</span>
+        <div class="dice-section-label dice-section-label-col">
+          <span class="dice-section-title">Configuração da Rolagem</span>
           <span class="dice-formula-preview">Fórmula: <strong>${_montarFormulaTexto(_estadoAtual)}</strong></span>
         </div>
 
@@ -234,7 +234,7 @@ function _renderizarLayout(container, ultimoResultado = null) {
         <!-- Botão Principal de Rolagem -->
         <div class="dice-action-wrap">
           <button type="button" id="btn-executar-rolagem" class="dice-roll-main-btn" ${_estaRolando ? 'disabled' : ''}>
-            <span class="dice-roll-icon"><img src="img/icons/ico-home-dados.png" class="dice-roll-icon-img" alt=""></span>
+            <span class="dice-roll-icon">${_gerarSvgDado(_estadoAtual.tipo, dadoAtivoInfo.cor, true, 26)}</span>
             <span class="dice-roll-text">
               ${_estaRolando ? 'Rolando dados...' : `Rolar ${_montarFormulaTexto(_estadoAtual)}`}
             </span>
@@ -459,6 +459,11 @@ function _atualizarTextoBotao(container) {
     const spanText = btn.querySelector('.dice-roll-text');
     if (spanText) {
       spanText.textContent = `Rolar ${_montarFormulaTexto(_estadoAtual)}`;
+    }
+    const iconSpan = btn.querySelector('.dice-roll-icon');
+    if (iconSpan) {
+      const dadoAtivoInfo = DADOS_DND.find(d => d.tipo === _estadoAtual.tipo) || DADOS_DND[5];
+      iconSpan.innerHTML = _gerarSvgDado(_estadoAtual.tipo, dadoAtivoInfo.cor, true, 26);
     }
   }
   const preview = container.querySelector('.dice-formula-preview strong');
@@ -727,14 +732,15 @@ function _gerarHtmlItemHistorico(item, idx) {
 /**
  * Gera SVGs estilizados para cada tipo de dado poliédrico de D&D
  */
-function _gerarSvgDado(tipo, cor, ativo) {
+function _gerarSvgDado(tipo, cor, ativo, tamanho = 36) {
   const stroke = ativo ? '#ffffff' : cor;
   const fill = ativo ? cor : 'rgba(255,255,255,0.04)';
+  const t = tamanho;
   
   switch (tipo) {
     case 'd4':
       return `
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+        <svg width="${t}" height="${t}" viewBox="0 0 40 40" fill="none">
           <polygon points="20,4 36,34 4,34" fill="${fill}" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round"/>
           <line x1="20" y1="4" x2="20" y2="24" stroke="${stroke}" stroke-width="1.5" stroke-dasharray="2 2"/>
           <line x1="4" y1="34" x2="20" y2="24" stroke="${stroke}" stroke-width="1.5"/>
@@ -744,7 +750,7 @@ function _gerarSvgDado(tipo, cor, ativo) {
       `;
     case 'd6':
       return `
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+        <svg width="${t}" height="${t}" viewBox="0 0 40 40" fill="none">
           <rect x="7" y="7" width="26" height="26" rx="4" fill="${fill}" stroke="${stroke}" stroke-width="2.5"/>
           <circle cx="14" cy="14" r="2.5" fill="${ativo ? '#ffffff' : cor}"/>
           <circle cx="26" cy="14" r="2.5" fill="${ativo ? '#ffffff' : cor}"/>
@@ -755,7 +761,7 @@ function _gerarSvgDado(tipo, cor, ativo) {
       `;
     case 'd8':
       return `
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+        <svg width="${t}" height="${t}" viewBox="0 0 40 40" fill="none">
           <polygon points="20,3 35,20 20,37 5,20" fill="${fill}" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round"/>
           <line x1="5" y1="20" x2="35" y2="20" stroke="${stroke}" stroke-width="1.5"/>
           <line x1="20" y1="3" x2="20" y2="37" stroke="${stroke}" stroke-width="1.5"/>
@@ -764,7 +770,7 @@ function _gerarSvgDado(tipo, cor, ativo) {
       `;
     case 'd10':
       return `
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+        <svg width="${t}" height="${t}" viewBox="0 0 40 40" fill="none">
           <polygon points="20,3 36,15 20,37 4,15" fill="${fill}" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round"/>
           <line x1="20" y1="3" x2="20" y2="37" stroke="${stroke}" stroke-width="1.5"/>
           <line x1="4" y1="15" x2="20" y2="20" stroke="${stroke}" stroke-width="1.5"/>
@@ -774,7 +780,7 @@ function _gerarSvgDado(tipo, cor, ativo) {
       `;
     case 'd12':
       return `
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+        <svg width="${t}" height="${t}" viewBox="0 0 40 40" fill="none">
           <polygon points="20,4 34,14 29,32 11,32 6,14" fill="${fill}" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round"/>
           <polygon points="20,11 28,17 25,27 15,27 12,17" fill="none" stroke="${stroke}" stroke-width="1.2"/>
           <text x="20" y="23" font-size="10" font-weight="800" fill="${ativo ? '#ffffff' : cor}" text-anchor="middle">12</text>
@@ -782,7 +788,7 @@ function _gerarSvgDado(tipo, cor, ativo) {
       `;
     case 'd20':
       return `
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+        <svg width="${t}" height="${t}" viewBox="0 0 40 40" fill="none">
           <polygon points="20,3 36,12 36,28 20,37 4,28 4,12" fill="${fill}" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round"/>
           <polygon points="20,10 31,23 9,23" fill="none" stroke="${stroke}" stroke-width="1.5"/>
           <line x1="20" y1="3" x2="20" y2="10" stroke="${stroke}" stroke-width="1.5"/>
@@ -795,7 +801,7 @@ function _gerarSvgDado(tipo, cor, ativo) {
       `;
     case 'd100':
       return `
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+        <svg width="${t}" height="${t}" viewBox="0 0 40 40" fill="none">
           <circle cx="20" cy="20" r="16" fill="${fill}" stroke="${stroke}" stroke-width="2.5"/>
           <text x="20" y="24" font-size="10" font-weight="900" fill="${ativo ? '#ffffff' : cor}" text-anchor="middle">d%</text>
         </svg>

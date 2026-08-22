@@ -12,6 +12,24 @@ import { dadosCache, personagem } from './wizard.js';
 // ============================================================
 // PASSO 2: ESPÉCIE
 // ============================================================
+
+export function selecionarEspecie(nome) {
+  if (personagem.especie && personagem.especie !== nome) {
+    personagem.tracos_escolhidos = [];
+    if (nome !== 'Humano') delete personagem.talento_versatil;
+    if (nome !== 'Humano' && nome !== 'Elfo') delete personagem.pericia_especie;
+    if (nome !== 'Kenku') delete personagem.pericias_especie;
+    if (personagem.escolhas_talento?.versatil) delete personagem.escolhas_talento.versatil;
+  }
+  personagem.especie = nome;
+
+  // Sincronizar talentos base
+  _reconstruirTalentosBase();
+
+  const wizContent = document.getElementById('wizard-content');
+  if (wizContent) renderStepEspecie(wizContent);
+}
+
 export async function renderStepEspecie(el) {
   try {
     let especies = dadosCache.especies;
@@ -25,11 +43,11 @@ export async function renderStepEspecie(el) {
 
     if (!Array.isArray(especies) || especies.length === 0) {
       el.innerHTML = `
-        <h3 style="margin-bottom:12px">Escolha sua Especie</h3>
+        <h3 style="margin-bottom:12px">Escolha sua Espécie</h3>
         <div class="info-box warning">
-          Nao foi possivel carregar as especies agora. Tente recarregar a lista.
+          Não foi possível carregar as espécies agora. Tente recarregar a lista.
         </div>
-        <button class="btn btn-primary" id="btn-recarregar-especies">Recarregar especies</button>
+        <button class="btn btn-primary" id="btn-recarregar-especies">Recarregar espécies</button>
       `;
 
       document.getElementById('btn-recarregar-especies')?.addEventListener('click', async () => {
@@ -40,47 +58,312 @@ export async function renderStepEspecie(el) {
       return;
     }
 
-  // Resumo compacto se ja tem especie selecionada
-  let resumoHtml = '';
-  if (personagem.especie) {
-    const esp = especies.find(e => e.nome === personagem.especie);
-    const tracosEsc = personagem.tracos_escolhidos?.length ? ' | ' + personagem.tracos_escolhidos.join(', ') : '';
-    resumoHtml = `
-      <div class="selecao-resumo">
-        <div class="resumo-info">
-          <div class="resumo-titulo">${personagem.especie}</div>
-          <div class="resumo-detalhe">${esp?.tracos?.length || 0} tracos${tracosEsc}</div>
-        </div>
-        <button class="btn btn-outline btn-sm" id="btn-alterar-especie">Alterar</button>
-      </div>`;
-  }
+    // Resumo compacto se ja tem especie selecionada
+    let resumoHtml = '';
+    let escolhasInlineHtml = '';
 
-  el.innerHTML = `
-    <h3 style="margin-bottom:12px">Escolha sua Especie</h3>
-    <div class="selection-grid" id="grid-especies">
-      ${especies.map(e => `
-        <div class="selection-card ${personagem.especie === e.nome ? 'selected' : ''}" data-especie="${e.nome}">
-          <span class="card-check">&#10003;</span>
-          <div class="card-nome">${e.nome}</div>
-          <div class="card-detalhe">${e.tracos?.length || 0} tracos</div>
-        </div>
-      `).join('')}
-    </div>
-    ${resumoHtml}
-  `;
+    if (personagem.especie) {
+      const espNome = personagem.especie;
+      const esp = especies.find(e => e.nome === espNome);
+      const tracosEsc = personagem.tracos_escolhidos?.length ? ' | ' + personagem.tracos_escolhidos.join(', ') : '';
+      const periciaEsc = personagem.pericia_especie ? ` | ${personagem.pericia_especie}` : '';
+      const periciasKenku = personagem.pericias_especie?.length ? ` | ${personagem.pericias_especie.join(', ')}` : '';
+      const versatilEsc = personagem.talento_versatil ? ` | ${personagem.talento_versatil}` : '';
 
-  // Clicar num card abre popup com detalhes da especie
-  el.querySelectorAll('[data-especie]').forEach(card => {
-    card.addEventListener('click', () => abrirPopupEspecie(card.dataset.especie));
-  });
+      resumoHtml = `
+        <div class="selecao-resumo" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div class="resumo-info">
+            <div class="resumo-titulo">${espNome}</div>
+            <div class="resumo-detalhe">${esp?.tracos?.length || 0} traços${tracosEsc}${periciaEsc}${periciasKenku}${versatilEsc}</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-outline btn-sm" id="btn-detalhes-especie">Ver Detalhes</button>
+          </div>
+        </div>`;
 
-  document.getElementById('btn-alterar-especie')?.addEventListener('click', () => {
-    if (personagem.especie) abrirPopupEspecie(personagem.especie);
-  });
+      // Renderizar escolhas da espécie inline
+      const escolhaConfig = ESPECIES_TRACOS_ESCOLHA[espNome];
+      let tracosInlineHtml = '';
+
+      if (escolhaConfig) {
+        let tracosOpcoes = [];
+        if (escolhaConfig.opcoes) {
+          tracosOpcoes = escolhaConfig.opcoes;
+        } else if (escolhaConfig.tracos && esp?.tracos) {
+          tracosOpcoes = esp.tracos.filter(t => escolhaConfig.tracos.includes(t.nome)).map(t => ({ nome: t.nome, descricao: t.descricao }));
+        }
+
+        const selecionados = personagem.tracos_escolhidos || [];
+
+        tracosInlineHtml = `
+          <div class="mt-2">
+            <div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">${escolhaConfig.titulo} (${selecionados.length}/${escolhaConfig.maxEscolhas})</div>
+            <div class="info-box info" style="font-size:0.85rem;margin-bottom:8px">${escolhaConfig.descricao}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px" id="inline-tracos-especie">
+              ${tracosOpcoes.map(t => {
+                const nomeTraco = t.nome || t;
+                const descTraco = t.descricao || '';
+                return `
+                  <div class="selection-card ${selecionados.includes(nomeTraco) ? 'selected' : ''}"
+                       data-inline-traco-especie="${nomeTraco}"
+                       style="flex:1;min-width:140px;max-width:220px;cursor:pointer">
+                    <span class="card-check">&#10003;</span>
+                    <div class="card-nome" style="font-size:0.85rem">${nomeTraco}</div>
+                    ${descTraco ? `<div class="card-detalhe" style="font-size:0.75rem">${descTraco}</div>` : ''}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // Perícia de espécie (Humano / Elfo / Kenku)
+      let periciaInlineHtml = '';
+      const reservadasEspecie = periciasReservadasParaClasse();
+
+      if (espNome === 'Humano') {
+        const opcsPericia = PERICIAS.filter(p => !reservadasEspecie.has(p.nome)).map(p => {
+          const sel = personagem.pericia_especie === p.nome ? 'selected' : '';
+          return `<option value="${p.nome}" ${sel}>${p.nome} (${p.atributo})</option>`;
+        }).join('');
+        periciaInlineHtml += `
+          <div class="mt-2">
+            <div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">Hábil — Perícia Extra</div>
+            <div class="info-box info" style="font-size:0.85rem;margin-bottom:8px">O traço Hábil concede proficiência em uma perícia à sua escolha.</div>
+            <select id="inline-select-pericia-especie" style="width:100%;padding:8px;border-radius:var(--radius-sm);border:1px solid var(--border);font-size:0.9rem">
+              <option value="">-- Escolha uma perícia --</option>
+              ${opcsPericia}
+            </select>
+          </div>
+        `;
+      } else if (espNome === 'Elfo') {
+        const opcsElfo = ['Intuição', 'Percepção', 'Sobrevivência'].map(p => {
+          const sel = personagem.pericia_especie === p ? 'selected' : '';
+          return `<option value="${p}" ${sel}>${p}</option>`;
+        }).join('');
+        periciaInlineHtml += `
+          <div class="mt-2">
+            <div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">Sentidos Aguçados — Perícia</div>
+            <div class="info-box info" style="font-size:0.85rem;margin-bottom:8px">Você tem proficiência na perícia Intuição, Percepção ou Sobrevivência.</div>
+            <select id="inline-select-pericia-especie" style="width:100%;padding:8px;border-radius:var(--radius-sm);border:1px solid var(--border);font-size:0.9rem">
+              <option value="">-- Escolha uma perícia --</option>
+              ${opcsElfo}
+            </select>
+          </div>
+        `;
+      } else if (espNome === 'Kenku') {
+        const periciasSel = personagem.pericias_especie || [];
+        const reservadasKenku1 = periciasReservadasParaClasse([periciasSel[1]].filter(Boolean));
+        const reservadasKenku2 = periciasReservadasParaClasse([periciasSel[0]].filter(Boolean));
+        const opcsKenku1 = PERICIAS.map(p => {
+          if (periciasSel[1] === p.nome) return '';
+          if (reservadasKenku1.has(p.nome) && periciasSel[0] !== p.nome) return '';
+          const sel = periciasSel[0] === p.nome ? 'selected' : '';
+          return `<option value="${p.nome}" ${sel}>${p.nome} (${p.atributo})</option>`;
+        }).join('');
+        const opcsKenku2 = PERICIAS.map(p => {
+          if (periciasSel[0] === p.nome) return '';
+          if (reservadasKenku2.has(p.nome) && periciasSel[1] !== p.nome) return '';
+          const sel = periciasSel[1] === p.nome ? 'selected' : '';
+          return `<option value="${p.nome}" ${sel}>${p.nome} (${p.atributo})</option>`;
+        }).join('');
+        periciaInlineHtml += `
+          <div class="mt-2">
+            <div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">Memória Kenku — 2 Perícias</div>
+            <div class="info-box info" style="font-size:0.85rem;margin-bottom:8px">O traço Memória Kenku concede proficiência em duas perícias de sua escolha.</div>
+            <div style="display:flex;gap:8px">
+              <select id="inline-select-kenku-1" style="flex:1;padding:8px;border-radius:var(--radius-sm);border:1px solid var(--border);font-size:0.9rem">
+                <option value="">-- 1ª perícia --</option>
+                ${opcsKenku1}
+              </select>
+              <select id="inline-select-kenku-2" style="flex:1;padding:8px;border-radius:var(--radius-sm);border:1px solid var(--border);font-size:0.9rem">
+                <option value="">-- 2ª perícia --</option>
+                ${opcsKenku2}
+              </select>
+            </div>
+          </div>
+        `;
+      }
+
+      // Versátil (Humano)
+      let versatilInlineHtml = '';
+      if (espNome === 'Humano') {
+        versatilInlineHtml = `
+          <div class="mt-2">
+            <div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">Versátil — Talento de Origem</div>
+            <div class="info-box info" style="font-size:0.85rem;margin-bottom:8px">O traço Versátil concede um talento de Origem extra. Escolha abaixo:</div>
+            <select id="inline-select-talento-versatil" style="width:100%;padding:8px;border-radius:var(--radius-sm);border:1px solid var(--border);font-size:0.9rem">
+              <option value="">-- Escolha um talento de Origem --</option>
+            </select>
+            <div id="inline-versatil-detalhe"></div>
+          </div>
+        `;
+      }
+
+      if (tracosInlineHtml || periciaInlineHtml || versatilInlineHtml) {
+        escolhasInlineHtml = `
+          <div class="card mt-2" style="border-left:3px solid var(--primary)">
+            <div class="card-header">
+              <h4 style="margin:0">Configurações da Espécie: ${espNome}</h4>
+            </div>
+            ${tracosInlineHtml}
+            ${periciaInlineHtml}
+            ${versatilInlineHtml}
+          </div>
+        `;
+      }
+    }
+
+    el.innerHTML = `
+      <h3 style="margin-bottom:12px">Escolha sua Espécie</h3>
+      <div class="selection-grid" id="grid-especies">
+        ${especies.map(e => `
+          <div class="selection-card ${personagem.especie === e.nome ? 'selected' : ''}" data-especie="${e.nome}">
+            <span class="card-check">&#10003;</span>
+            <button type="button" class="card-btn-info" data-info-especie="${e.nome}" title="Ver detalhes de ${e.nome}">&#9432;</button>
+            <div class="card-nome">${e.nome}</div>
+            <div class="card-detalhe">${e.tracos?.length || 0} traços</div>
+          </div>
+        `).join('')}
+      </div>
+      ${resumoHtml}
+      ${escolhasInlineHtml}
+    `;
+
+    // Clicar num card da espécie seleciona a espécie imediatamente
+    el.querySelectorAll('[data-especie]').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('[data-info-especie]')) return;
+        selecionarEspecie(card.dataset.especie);
+      });
+    });
+
+    // Botões de informação direta no card
+    el.querySelectorAll('[data-info-especie]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        abrirPopupEspecie(btn.dataset.infoEspecie);
+      });
+    });
+
+    // Botão para ver detalhes no modal
+    document.getElementById('btn-detalhes-especie')?.addEventListener('click', () => {
+      if (personagem.especie) abrirPopupEspecie(personagem.especie);
+    });
+
+    // Eventos inline de traços
+    if (personagem.especie && ESPECIES_TRACOS_ESCOLHA[personagem.especie]) {
+      const escolhaConfig = ESPECIES_TRACOS_ESCOLHA[personagem.especie];
+      el.querySelectorAll('[data-inline-traco-especie]').forEach(card => {
+        card.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const nomeTr = card.dataset.inlineTracoEspecie;
+          const max = escolhaConfig.maxEscolhas;
+          let selecionados = [...(personagem.tracos_escolhidos || [])];
+
+          if (selecionados.includes(nomeTr)) {
+            selecionados = selecionados.filter(n => n !== nomeTr);
+          } else {
+            if (selecionados.length >= max) selecionados = [nomeTr];
+            else selecionados.push(nomeTr);
+          }
+          personagem.tracos_escolhidos = selecionados;
+
+          // Atualizar truques da espécie
+          const novosTruques = obterTruquesEspecie(personagem.especie, personagem.tracos_escolhidos);
+          if (novosTruques.length > 0 && Array.isArray(personagem.magias_conhecidas)) {
+            personagem.magias_conhecidas = personagem.magias_conhecidas.filter(m =>
+              !(m.circulo === 0 && m.origem !== 'especie' && novosTruques.includes(m.nome))
+            );
+          }
+
+          renderStepEspecie(el);
+        });
+      });
+    }
+
+    // Eventos inline de perícia de espécie
+    const selPericia = document.getElementById('inline-select-pericia-especie');
+    selPericia?.addEventListener('change', (e) => {
+      personagem.pericia_especie = e.target.value;
+    });
+
+    // Eventos inline de perícias Kenku
+    const k1 = document.getElementById('inline-select-kenku-1');
+    const k2 = document.getElementById('inline-select-kenku-2');
+    if (k1 && k2) {
+      const atualizarKenku = () => {
+        if (k1.value && k2.value && k1.value !== k2.value) {
+          personagem.pericias_especie = [k1.value, k2.value];
+        } else if (k1.value || k2.value) {
+          personagem.pericias_especie = [k1.value, k2.value].filter(Boolean);
+        } else {
+          personagem.pericias_especie = [];
+        }
+      };
+      k1.addEventListener('change', atualizarKenku);
+      k2.addEventListener('change', atualizarKenku);
+    }
+
+    // Carregar talentos de Origem para Versátil inline (Humano)
+    if (personagem.especie === 'Humano') {
+      try {
+        const talentosData = await getTalentos();
+        const talentosOrigem = (talentosData?.por_categoria?.['de Origem'] || []).sort((a, b) => a.nome.localeCompare(b.nome));
+        const selectEl = document.getElementById('inline-select-talento-versatil');
+        if (selectEl) {
+          talentosOrigem.forEach(t => {
+            const opt = document.createElement('option');
+            opt.value = t.nome;
+            opt.textContent = t.nome;
+            if (personagem.talento_versatil === t.nome) opt.selected = true;
+            selectEl.appendChild(opt);
+          });
+
+          const atualizarDetalheInline = (nomeT) => {
+            const detalheEl = document.getElementById('inline-versatil-detalhe');
+            if (!detalheEl) return;
+            if (!nomeT) { detalheEl.innerHTML = ''; return; }
+            const td = talentosOrigem.find(t => t.nome === nomeT);
+            if (!td) { detalheEl.innerHTML = ''; return; }
+            let html = `<div class="info-box success" style="font-size:0.85rem;margin-top:8px">${renderDescricaoTalento(td)}</div>`;
+            html += renderEscolhasTalentoHtml(nomeT, 'versatil');
+            detalheEl.innerHTML = html;
+            if (talentoExigeEscolhas(nomeT)) {
+              configurarSelectsExclusivos('.escolha-talento-versatil', { reservarClasse: true });
+              document.querySelectorAll('.escolha-talento-versatil').forEach(s => {
+                s.addEventListener('change', () => {
+                  const selects = document.querySelectorAll('.escolha-talento-versatil');
+                  const vals = [...selects].map(sel => sel.value).filter(Boolean);
+                  if (!personagem.escolhas_talento) personagem.escolhas_talento = {};
+                  personagem.escolhas_talento.versatil = vals;
+                });
+              });
+            }
+          };
+
+          if (personagem.talento_versatil) {
+            atualizarDetalheInline(personagem.talento_versatil);
+          }
+
+          selectEl.addEventListener('change', () => {
+            personagem.talento_versatil = selectEl.value;
+            if (!personagem.escolhas_talento) personagem.escolhas_talento = {};
+            delete personagem.escolhas_talento.versatil;
+            _reconstruirTalentosBase();
+            atualizarDetalheInline(selectEl.value);
+          });
+        }
+      } catch (e) {
+        console.error('Erro ao carregar talentos de Origem:', e);
+      }
+    }
+
   } catch (err) {
     console.error('Erro em renderStepEspecie:', err);
     el.innerHTML = `
-      <h3 style="margin-bottom:12px">Escolha sua Especie</h3>
+      <h3 style="margin-bottom:12px">Escolha sua Espécie</h3>
       <div class="info-box warning">Erro ao carregar: ${err.message}</div>
     `;
   }

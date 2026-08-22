@@ -96,12 +96,29 @@ export async function renderCompendio(container, rotaParam = '') {
 
   // Parsear parâmetros de rota
   if (rotaParam) {
-    const [secao, item, sub] = rotaParam.split('/');
+    const partes = rotaParam.split('/');
+    const secao = partes[0] || '';
     if (secao) _secaoAtiva = secao;
-    _itemSelecionado = item ? decodeURIComponent(item) : null;
-    if (sub) _subSecaoAtiva = sub;
+
+    if (secao === 'classes') {
+      _itemSelecionado = partes[1] ? decodeURIComponent(partes[1]) : null;
+      _subSecaoAtiva = partes[2] || '';
+    } else if (
+      secao === 'equipamento' ||
+      secao === 'regras' ||
+      secao === 'glossario' ||
+      secao === 'bestiario' ||
+      secao === 'criaturas'
+    ) {
+      _itemSelecionado = null;
+      _subSecaoAtiva = partes[1] || '';
+    } else {
+      _itemSelecionado = partes[1] ? decodeURIComponent(partes[1]) : null;
+      _subSecaoAtiva = partes[2] || '';
+    }
   } else {
     _itemSelecionado = null;
+    _subSecaoAtiva = '';
   }
 
   const existingNav = container.querySelector('#compendio-nav-bar');
@@ -156,6 +173,7 @@ export async function renderCompendio(container, rotaParam = '') {
         btn.addEventListener('click', () => {
           const secao = btn.dataset.secao;
           _secaoAtiva = secao;
+          _subSecaoAtiva = '';
           _itemSelecionado = null;
           _buscaTexto = '';
           _filtroAdicional = 'todos';
@@ -267,9 +285,9 @@ async function _renderClasses(container) {
   });
 
   container.innerHTML = `
-    <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Classes de Personagem</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+    <div class="compendio-secao-header">
+      <h2>Classes de Personagem</h2>
+      <p>
         Selecione uma classe para consultar todas as suas características de nível 1 a 20, tabela de progressão, subclasses e lista de magias.
       </p>
     </div>
@@ -287,7 +305,6 @@ async function _renderClasses(container) {
                 <div class="compendio-card-subtitle">Dado de Vida: ${c.dado} • Atributo: ${c.attr}</div>
               </div>
             </div>
-            <span class="c-badge c-badge-categoria">1–20</span>
           </div>
           <div class="compendio-card-body">
             ${c.desc}
@@ -634,9 +651,9 @@ async function _renderEspecies(container) {
   const especies = _cacheEspecies?.especies || [];
 
   container.innerHTML = `
-    <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Espécies de Personagem</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+    <div class="compendio-secao-header">
+      <h2>Espécies de Personagem</h2>
+      <p>
         Consulte as características raciais, traços únicos, deslocamentos, tamanhos e linhagens.
       </p>
     </div>
@@ -732,9 +749,9 @@ async function _renderAntecedentes(container) {
   const antecedentes = _cacheAntecedentes?.antecedentes || [];
 
   container.innerHTML = `
-    <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Antecedentes (Origens)</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+    <div class="compendio-secao-header">
+      <h2>Antecedentes (Origens)</h2>
+      <p>
         No D&D 5.5, os antecedentes definem seus bônus de atributos (+2/+1 ou +1/+1/+1), seu Talento de Origem, proficiências em perícias e ferramentas.
       </p>
     </div>
@@ -829,9 +846,9 @@ async function _renderTalentos(container) {
   const talentos = _cacheTalentos?.talentos || _cacheTalentos?.todos || Object.values(_cacheTalentos?.por_categoria || {}).flat() || [];
 
   container.innerHTML = `
-    <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Catálogo de Talentos</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+    <div class="compendio-secao-header">
+      <h2>Catálogo de Talentos</h2>
+      <p>
         Explore todos os talentos de Origem, Gerais, Estilos de Luta e Dádivas Épicas do sistema.
       </p>
     </div>
@@ -1053,9 +1070,9 @@ async function _renderMagias(container) {
   const todasMagias = _cacheMagiasCompletas;
 
   container.innerHTML = `
-    <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Grimório de Magias</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+    <div class="compendio-secao-header">
+      <h2>Grimório de Magias</h2>
+      <p>
         Consulte todas as magias do jogo. Filtre por círculo, classe, escola de magia, tempo de conjuração e rituais.
       </p>
     </div>
@@ -1294,9 +1311,9 @@ async function _renderEquipamento(container) {
   }
 
   container.innerHTML = `
-    <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Equipamento & Mercadorias</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+    <div class="compendio-secao-header">
+      <h2>Equipamento & Mercadorias</h2>
+      <p>
         Tabelas completas de armas com propriedades de Maestria, armaduras, ferramentas de artesão, veículos e serviços.
       </p>
     </div>
@@ -1881,9 +1898,9 @@ async function _renderItensMagicos(container) {
   const qtdVariavel = itens.filter(it => _checarRaridadeItemMagico(it.raridade, 'Variável')).length;
 
   container.innerHTML = `
-    <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Itens Mágicos</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+    <div class="compendio-secao-header">
+      <h2>Itens Mágicos</h2>
+      <p>
         Acervo completo com 350 itens mágicos: armas lendárias, anéis, pergaminhos, poções, varinhas, cetros, cajados, armaduras e itens maravilhosos.
       </p>
     </div>
@@ -2113,21 +2130,21 @@ async function _renderBestiario(container) {
   ndsUnicos.sort(ordenarNd);
 
   container.innerHTML = `
-    <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Bestiário</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+    <div class="compendio-secao-header">
+      <h2>Bestiário</h2>
+      <p>
         Acervo completo de criaturas do Livro do Jogador e monstros temíveis do Manual dos Monstros.
       </p>
+    </div>
 
-      <!-- Sub-navegação do Bestiário -->
-      <div class="compendio-subnav" style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
-        <button class="compendio-subnav-btn ${isMonstros ? 'active' : ''}" data-subsecao="monstros" style="padding: 6px 14px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; background: ${isMonstros ? 'var(--accent)' : 'var(--bg-card)'}; color: ${isMonstros ? '#fff' : 'var(--text-muted)'}; border: 1px solid ${isMonstros ? 'var(--accent)' : 'var(--border-color)'};">
-          Monstros (${monstrosBase.length})
-        </button>
-        <button class="compendio-subnav-btn ${!isMonstros ? 'active' : ''}" data-subsecao="criaturas" style="padding: 6px 14px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; background: ${!isMonstros ? 'var(--accent)' : 'var(--bg-card)'}; color: ${!isMonstros ? '#fff' : 'var(--text-muted)'}; border: 1px solid ${!isMonstros ? 'var(--accent)' : 'var(--border-color)'};">
-          Criaturas (${criaturasBase.length})
-        </button>
-      </div>
+    <!-- Sub-navegação do Bestiário -->
+    <div class="compendio-subnav" id="subnav-bestiario">
+      <button class="compendio-subnav-btn ${isMonstros ? 'ativo' : ''}" data-subsecao="monstros">
+        Monstros (${monstrosBase.length})
+      </button>
+      <button class="compendio-subnav-btn ${!isMonstros ? 'ativo' : ''}" data-subsecao="criaturas">
+        Criaturas (${criaturasBase.length})
+      </button>
     </div>
 
     <!-- Barra de Busca e Filtros do Bestiário -->
@@ -2154,10 +2171,10 @@ async function _renderBestiario(container) {
   `;
 
   // Event listeners para as abas de subseção
-  container.querySelectorAll('.compendio-subnav-btn').forEach(btn => {
+  container.querySelectorAll('#subnav-bestiario .compendio-subnav-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       _subSecaoAtiva = btn.dataset.subsecao;
-      _renderBestiario(container);
+      navegar(`compendio/bestiario/${_subSecaoAtiva}`, { manterScroll: true });
     });
   });
 
@@ -2352,9 +2369,9 @@ async function _renderRegras(container) {
   }
 
   container.innerHTML = `
-    <div class="mb-2">
-      <h2 style="font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Glossário e Regras</h2>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+    <div class="compendio-secao-header">
+      <h2>Glossário e Regras</h2>
+      <p>
         Guia de regras do D&D 5.5: consulte termos e condições no glossário, regras de combate e jogabilidade, criação de personagem e a cosmologia do multiverso.
       </p>
     </div>
@@ -2362,8 +2379,8 @@ async function _renderRegras(container) {
     <!-- Sub-nav de Regras -->
     <div class="compendio-subnav" id="subnav-regras">
       <button class="compendio-subnav-btn ${subSecao === 'glossario' ? 'ativo' : ''}" data-sub="glossario">Glossário de Regras</button>
-      <button class="compendio-subnav-btn ${subSecao === 'capitulo1' ? 'ativo' : ''}" data-sub="capitulo1">Cap. 1 - Jogando o Jogo</button>
-      <button class="compendio-subnav-btn ${subSecao === 'capitulo2' ? 'ativo' : ''}" data-sub="capitulo2">Cap. 2 - Criação</button>
+      <button class="compendio-subnav-btn ${subSecao === 'capitulo1' ? 'ativo' : ''}" data-sub="capitulo1">Jogando o Jogo</button>
+      <button class="compendio-subnav-btn ${subSecao === 'capitulo2' ? 'ativo' : ''}" data-sub="capitulo2">Criação</button>
       <button class="compendio-subnav-btn ${subSecao === 'multiverso' ? 'ativo' : ''}" data-sub="multiverso">O Multiverso</button>
     </div>
 

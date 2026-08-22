@@ -10,47 +10,184 @@ import { dadosCache, personagem } from './wizard.js';
 // ============================================================
 // PASSO 3: ANTECEDENTE
 // ============================================================
+
+export function selecionarAntecedente(nome) {
+  const ant = dadosCache.antecedentes?.find(a => a.nome === nome);
+  if (!ant) return;
+
+  const pericias = ant.pericias.split(',').map(p => p.trim()).filter(Boolean);
+  const atributosDisponiveis = ant.valores_atributo.split(',').map(a => a.trim()).filter(Boolean);
+  const talentoNome = ant.talento?.replace(/\s*\(veja.*\)/, '').trim() || '';
+
+  if (personagem.antecedente && personagem.antecedente !== nome) {
+    personagem.bonus_antecedente = {};
+    personagem.escolhas_antecedente = {};
+    personagem.talentos = [];
+    if (personagem.escolhas_talento) delete personagem.escolhas_talento.antecedente;
+    delete personagem.iniciado_em_magia;
+    delete personagem.iniciado_em_magia_instancias;
+    delete dadosCache.bonus2;
+    delete dadosCache.bonus1;
+    delete dadosCache.bonus111;
+  }
+  personagem.antecedente = nome;
+
+  // Aplicar pericias do antecedente
+  dadosCache.pericias_antecedente = pericias;
+  dadosCache.atributos_antecedente = atributosDisponiveis;
+
+  personagem.talento_antecedente = talentoNome || '';
+  _reconstruirTalentosBase();
+  _consolidarFerramentaAntecedente();
+  consolidarPericiasProficientes();
+
+  const wizContent = document.getElementById('wizard-content');
+  if (wizContent) renderStepAntecedente(wizContent);
+}
+
 export function renderStepAntecedente(el) {
-  const antecedentes = dadosCache.antecedentes;
+  const antecedentes = dadosCache.antecedentes || [];
 
   // Resumo compacto se ja tem antecedente selecionado
   let resumoHtml = '';
+  let escolhasInlineHtml = '';
+
   if (personagem.antecedente) {
-    const ant = antecedentes.find(a => a.nome === personagem.antecedente);
+    const antNome = personagem.antecedente;
+    const ant = antecedentes.find(a => a.nome === antNome);
+    const talentoNome = ant?.talento?.split('(')[0]?.trim() || '';
+
     resumoHtml = `
-      <div class="selecao-resumo">
+      <div class="selecao-resumo" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
         <div class="resumo-info">
-          <div class="resumo-titulo">${personagem.antecedente}</div>
-          <div class="resumo-detalhe">${ant?.talento?.split('(')[0]?.trim() || ''} | ${ant?.pericias || ''}</div>
+          <div class="resumo-titulo">${antNome}</div>
+          <div class="resumo-detalhe">${talentoNome} | ${ant?.pericias || ''}</div>
         </div>
-        <button class="btn btn-outline btn-sm" id="btn-alterar-antecedente">Alterar</button>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-outline btn-sm" id="btn-detalhes-antecedente">Ver Detalhes</button>
+        </div>
       </div>`;
+
+    // Escolhas de ferramenta/instrumento/jogos inline
+    const antEscolha = ANTECEDENTES_ESCOLHAS[antNome];
+    let ferramentaInlineHtml = '';
+    if (antEscolha) {
+      const valorAtual = personagem.escolhas_antecedente?.[antEscolha.campo] || '';
+      ferramentaInlineHtml = `
+        <div class="mt-2">
+          <div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">${antEscolha.titulo}</div>
+          <div class="info-box info" style="font-size:0.85rem;margin-bottom:8px">${antEscolha.descricao}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            ${antEscolha.opcoes.map(opt => `
+              <div class="selection-card ${valorAtual === opt ? 'selected' : ''}"
+                   data-inline-escolha-ant="${antEscolha.campo}" data-opcao-ant="${opt}"
+                   style="flex:1;min-width:130px;max-width:200px;cursor:pointer">
+                <span class="card-check">&#10003;</span>
+                <div class="card-nome" style="font-size:0.85rem">${opt}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // Escolhas de talento de antecedente inline (Habilidoso, Artifista, Músico)
+    let talentoInlineHtml = '';
+    if (talentoExigeEscolhas(talentoNome)) {
+      const pericias = ant?.pericias?.split(',').map(p => p.trim()).filter(Boolean) || [];
+      talentoInlineHtml = `
+        <div class="mt-2">
+          ${renderEscolhasTalentoHtml(talentoNome, 'antecedente', pericias)}
+        </div>
+      `;
+    }
+
+    if (ferramentaInlineHtml || talentoInlineHtml) {
+      escolhasInlineHtml = `
+        <div class="card mt-2" style="border-left:3px solid var(--primary)">
+          <div class="card-header">
+            <h4 style="margin:0">Configurações do Antecedente: ${antNome}</h4>
+          </div>
+          ${ferramentaInlineHtml}
+          ${talentoInlineHtml}
+        </div>
+      `;
+    }
   }
 
   el.innerHTML = `
     <h3 style="margin-bottom:12px">Escolha seu Antecedente</h3>
-    <div class="info-box info">O antecedente define suas pericias, ferramentas, talento de origem e distribuicao de atributos.</div>
+    <div class="info-box info">O antecedente define suas perícias, ferramentas, talento de origem e distribuição de atributos.</div>
     <div class="selection-grid" id="grid-antecedentes">
       ${antecedentes.map(a => `
         <div class="selection-card ${personagem.antecedente === a.nome ? 'selected' : ''}" data-antecedente="${a.nome}">
           <span class="card-check">&#10003;</span>
+          <button type="button" class="card-btn-info" data-info-antecedente="${a.nome}" title="Ver detalhes de ${a.nome}">&#9432;</button>
           <div class="card-nome">${a.nome}</div>
           <div class="card-detalhe">${a.talento?.split('(')[0]?.trim() || ''}</div>
         </div>
       `).join('')}
     </div>
     ${resumoHtml}
+    ${escolhasInlineHtml}
     <div id="antecedente-distribuicao" class="mt-2"></div>
   `;
 
-  // Clicar num card abre popup com detalhes do antecedente
+  // Clicar num card do antecedente seleciona o antecedente imediatamente
   el.querySelectorAll('[data-antecedente]').forEach(card => {
-    card.addEventListener('click', () => abrirPopupAntecedente(card.dataset.antecedente));
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('[data-info-antecedente]')) return;
+      selecionarAntecedente(card.dataset.antecedente);
+    });
   });
 
-  document.getElementById('btn-alterar-antecedente')?.addEventListener('click', () => {
+  // Botões de informação direta no card
+  el.querySelectorAll('[data-info-antecedente]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      abrirPopupAntecedente(btn.dataset.infoAntecedente);
+    });
+  });
+
+  // Botão para ver detalhes no modal
+  document.getElementById('btn-detalhes-antecedente')?.addEventListener('click', () => {
     if (personagem.antecedente) abrirPopupAntecedente(personagem.antecedente);
   });
+
+  // Eventos inline de ferramenta/instrumento
+  if (personagem.antecedente && ANTECEDENTES_ESCOLHAS[personagem.antecedente]) {
+    const antEscolha = ANTECEDENTES_ESCOLHAS[personagem.antecedente];
+    el.querySelectorAll('[data-inline-escolha-ant]').forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const campo = card.dataset.inlineEscolhaAnt;
+        const opcao = card.dataset.opcaoAnt;
+        if (!personagem.escolhas_antecedente) personagem.escolhas_antecedente = {};
+        personagem.escolhas_antecedente[campo] = opcao;
+        _consolidarFerramentaAntecedente();
+        renderStepAntecedente(el);
+      });
+    });
+  }
+
+  // Eventos inline de talento do antecedente
+  if (personagem.antecedente) {
+    const ant = antecedentes.find(a => a.nome === personagem.antecedente);
+    const talentoNome = ant?.talento?.replace(/\s*\(veja.*\)/, '').trim() || '';
+    const pericias = ant?.pericias?.split(',').map(p => p.trim()).filter(Boolean) || [];
+    if (talentoExigeEscolhas(talentoNome)) {
+      configurarSelectsExclusivos('.escolha-talento-antecedente', { reservarClasse: true, extras: pericias });
+      el.querySelectorAll('.escolha-talento-antecedente').forEach(s => {
+        s.addEventListener('change', () => {
+          const selects = el.querySelectorAll('.escolha-talento-antecedente');
+          const vals = [...selects].map(sel => sel.value).filter(Boolean);
+          if (!personagem.escolhas_talento) personagem.escolhas_talento = {};
+          personagem.escolhas_talento.antecedente = vals;
+          consolidarPericiasProficientes();
+        });
+      });
+    }
+  }
 
   // Se ja tem antecedente, mostrar distribuicao de atributos inline
   if (personagem.antecedente) {

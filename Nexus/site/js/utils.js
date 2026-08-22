@@ -573,6 +573,22 @@ let _subModalCount = 0;
 let _onModalClose = null;
 /** Flag para rastrear se o fechamento veio de popstate do navegador */
 let _fechandoModalPorPopstate = false;
+/** Contador de pops de histórico pendentes gerados por fechamento programático de modal */
+let _modalHistoryPopsPendentes = 0;
+
+export function isModalHistoryBackPending() {
+  return _modalHistoryPopsPendentes > 0;
+}
+
+export function consumeModalHistoryBack() {
+  if (_modalHistoryPopsPendentes > 0) {
+    _modalHistoryPopsPendentes--;
+    return true;
+  }
+  return false;
+}
+window.isModalHistoryBackPending = isModalHistoryBackPending;
+window.consumeModalHistoryBack = consumeModalHistoryBack;
 
 /** Verifica se há algum modal (principal ou sub-modal) aberto no momento */
 export function temModalAberto() {
@@ -668,6 +684,7 @@ export function fecharModal(origemPopstate = false) {
   _fecharModalDOM();
   try {
     if (window.history && window.history.state && window.history.state.modalNexus) {
+      _modalHistoryPopsPendentes++;
       window.history.back();
     }
   } catch (e) {
@@ -677,11 +694,18 @@ export function fecharModal(origemPopstate = false) {
 
 /** Fecha todos os modais (principal + sub-modais) */
 export function fecharModalTodos() {
+  const totalModais = (_subModalCount || 0) + ((document.getElementById('modal-overlay')?.style.display === 'flex') ? 1 : 0);
   document.querySelectorAll('.sub-modal-overlay').forEach(el => el.remove());
   _subModalCount = 0;
   const overlay = document.getElementById('modal-overlay');
   if (overlay) overlay.style.display = 'none';
   if (_onModalClose) { const cb = _onModalClose; _onModalClose = null; cb(); }
+  try {
+    if (totalModais > 0 && window.history && window.history.state && window.history.state.modalNexus) {
+      _modalHistoryPopsPendentes += totalModais;
+      window.history.go(-totalModais);
+    }
+  } catch (e) {}
 }
 // Expor para onclick inline
 window.fecharModal = fecharModal;

@@ -97,7 +97,7 @@ function _renderMenuPrincipal(container, personagens, usuario) {
       <div class="home-menu-grid">
 
         <!-- 1º BOTÃO: Compêndio D&D 5.5e -->
-        <div class="home-menu-card home-card-compendio" id="btn-home-compendio" onclick="navegar('compendio')">
+        <div class="home-menu-card home-card-compendio" id="btn-home-compendio" role="button" tabindex="0" onclick="navegar('compendio')">
           <div class="home-menu-icon-wrap" style="background: rgba(200, 160, 81, 0.14); border-color: rgba(200, 160, 81, 0.3);">
             <img src="img/icons/ico-home-compendio.png" alt="Compêndio" class="home-menu-icon-img">
           </div>
@@ -107,15 +107,10 @@ function _renderMenuPrincipal(container, personagens, usuario) {
               Biblioteca oficial completa, com as principais informações disponíveis nos livros de D&D 5.5.
             </div>
           </div>
-          <div class="home-menu-action">
-            <span class="home-btn-cta home-btn-cta-primary">
-              Abrir Compêndio &rarr;
-            </span>
-          </div>
         </div>
 
         <!-- 2º BOTÃO: Meus Personagens -->
-        <div class="home-menu-card home-card-personagens" id="btn-home-personagens" onclick="navegar('personagens')">
+        <div class="home-menu-card home-card-personagens" id="btn-home-personagens" role="button" tabindex="0" onclick="navegar('personagens')">
           <div class="home-menu-icon-wrap" style="background: rgba(200, 160, 81, 0.14); border-color: rgba(200, 160, 81, 0.3);">
             <img src="img/icons/ico-home-personagens.png" alt="Personagens" class="home-menu-icon-img">
           </div>
@@ -127,15 +122,10 @@ function _renderMenuPrincipal(container, personagens, usuario) {
               Crie novos heróis passo a passo e gerencie suas fichas digitais interativas.
             </div>
           </div>
-          <div class="home-menu-action">
-            <span class="home-btn-cta home-btn-cta-secondary">
-              Acessar Fichas &rarr;
-            </span>
-          </div>
         </div>
 
         <!-- 3º BOTÃO: Mesa de Dados Virtual -->
-        <div class="home-menu-card home-card-dados" id="btn-home-dados" onclick="navegar('dados')">
+        <div class="home-menu-card home-card-dados" id="btn-home-dados" role="button" tabindex="0" onclick="navegar('dados')">
           <div class="home-menu-icon-wrap" style="background: rgba(200, 160, 81, 0.14); border-color: rgba(200, 160, 81, 0.3);">
             <img src="img/icons/ico-home-dados.png" alt="Dados" class="home-menu-icon-img">
           </div>
@@ -150,11 +140,6 @@ function _renderMenuPrincipal(container, personagens, usuario) {
               Rolador de dados com sistema de vantagens, desvantagens, modificadores e histórico.
             </div>
           </div>
-          <div class="home-menu-action">
-            <span class="home-btn-cta home-btn-cta-dados">
-              Rolar Dados &rarr;
-            </span>
-          </div>
         </div>
 
         <!-- 4º BOTÃO / SEÇÃO: Entrar com Google -->
@@ -165,6 +150,16 @@ function _renderMenuPrincipal(container, personagens, usuario) {
   `;
 
   _setupAuthEvents(container);
+
+  // Acessibilidade via teclado para os cards clicáveis
+  container.querySelectorAll('.home-menu-card[role="button"]').forEach(card => {
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
 }
 
 function _setupAuthEvents(container) {

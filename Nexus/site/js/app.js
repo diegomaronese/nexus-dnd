@@ -9,7 +9,7 @@ import { renderCompendio } from './pages/compendio.js';
 import { renderDados } from './pages/dados.js';
 import { inicializarSync } from './sync.js';
 import { carregarTaxasMoeda } from './store.js';
-import { toast, abrirModal, fecharModal, temModalAberto } from './utils.js';
+import { toast, abrirModal, fecharModal, temModalAberto, consumeModalHistoryBack } from './utils.js';
 
 // --- Router baseado em hash ---
 const routes = {
@@ -376,6 +376,11 @@ function init() {
 
   // Listener do botão voltar nativo do celular / navegador (Android back button)
   window.addEventListener('popstate', (e) => {
+    // 0. Se este popstate foi disparado por um fecharModal programático anterior (history.back), consumir e não re-processar rota
+    if (consumeModalHistoryBack()) {
+      return;
+    }
+
     // 1. Se há modal ou sub-modal aberto no momento do popstate, fecha apenas o modal e mantém a tela
     if (temModalAberto()) {
       fecharModal(true);
