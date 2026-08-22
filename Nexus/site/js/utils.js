@@ -718,6 +718,8 @@ export function parsearCA(caStr) {
   return match ? parseInt(match[1]) : 10;
 }
 
+export { recortarImagemArquivo } from './image-cropper.js';
+
 /**
  * Lê um arquivo de imagem, redimensiona (mantendo proporção, máximo maxDim
  * em qualquer lado) e retorna como data URL JPEG comprimido — pequeno o

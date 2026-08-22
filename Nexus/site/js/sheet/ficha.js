@@ -100,47 +100,86 @@ export function renderFichaCompleta() {
   const container = containerRef;
   const iconeClasse = getIconeClasse(char.classe);
   const avatarHeaderHtml = char.imagem
-    ? `<div class="char-avatar" style="width:64px;height:64px;font-size:1.6rem;flex-shrink:0"><img src="${char.imagem}" alt=""></div>`
+    ? `<div class="char-avatar"><img src="${char.imagem}" alt="${escHtml(char.nome || 'Personagem')}"></div>`
     : (iconeClasse
-      ? `<div class="char-avatar" style="width:64px;height:64px;font-size:1.6rem;flex-shrink:0;background:var(--bg-input);display:flex;align-items:center;justify-content:center;border-radius:var(--radius-md);border:1px solid var(--border);"><img src="${iconeClasse}" style="width:44px;height:44px;object-fit:contain;" alt=""></div>`
-      : '');
+      ? `<div class="char-avatar"><img src="${iconeClasse}" style="width:40px;height:40px;object-fit:contain;" alt=""></div>`
+      : `<div class="char-avatar">${(char.nome || 'P').charAt(0).toUpperCase()}</div>`);
 
   container.innerHTML = `
     <!-- Cabeçalho do personagem -->
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px">
-        <div style="display:flex;align-items:start;gap:10px;flex:1;min-width:0">
-          <div style="flex:1;min-width:0">
-            <h2 style="font-size:1.3rem;margin-bottom:2px" id="char-nome-display">${escHtml(char.nome) || 'Sem Nome'}</h2>
-            <div style="font-size:0.9rem;color:var(--text-muted);display:flex;align-items:center;gap:6px;margin:2px 0;">
+    <div class="card char-header-card">
+      <div class="char-header-main">
+        <div class="char-header-identity">
+          <div class="char-header-avatar">
+            ${avatarHeaderHtml}
+          </div>
+          <div class="char-header-meta">
+            <h2 class="char-header-name" id="char-nome-display">${escHtml(char.nome) || 'Sem Nome'}</h2>
+            <div class="char-header-subtitle">
               ${iconeClasse ? `<img src="${iconeClasse}" class="classe-icon-inline" alt="">` : ''}
-              <span>${escHtml(char.especie || '')} <strong>${escHtml(char.classe || '')}</strong> ${char.subclasse ? `(${escHtml(char.subclasse)})` : ''} &middot; Nível ${char.nivel}</span>
-            </div>
-            <div style="font-size:0.8rem;color:var(--text-muted)">Antecedente: ${escHtml(char.antecedente || '–')}${char.alinhamento ? ' | Alinhamento: ' + escHtml(char.alinhamento) : ''}</div>
-            <div style="font-size:0.8rem;color:var(--text-muted)">Tamanho: ${escHtml(_tamanho)}${(char.idiomas && char.idiomas.length) ? ' | Idiomas: ' + char.idiomas.map(escHtml).join(', ') : ''}</div>
-            ${(estadoGuardiao && estadoGuardiao.sentidosSelvagensAtivo) ? '<div style="font-size:0.8rem;color:var(--text-muted)">Sentidos: Visão às Cegas 9 m</div>' : ''}
-            ${(estadoGuardiao && estadoGuardiao.exaustao > 0) ? `<div style="font-size:0.8rem;color:var(--danger)">Exaustão: ${estadoGuardiao.exaustao}</div>` : ''}
-            <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px">
-              XP: <span style="font-weight:600;color:var(--accent);cursor:pointer" id="xp-display" title="Clique para editar XP">${char.xp || 0}</span>
-              ${char.nivel < 20 ? ` / ${XP_POR_NIVEL[char.nivel + 1]}` : ' (Nível Máximo)'}
+              <span class="char-header-class-text">
+                ${escHtml(char.especie || '')} <strong>${escHtml(char.classe || '')}</strong> ${char.subclasse ? `(${escHtml(char.subclasse)})` : ''}
+              </span>
+              <span class="char-header-level-badge">Nível ${char.nivel}</span>
             </div>
           </div>
-          ${avatarHeaderHtml}
         </div>
-        <div class="no-print" style="display:flex;gap:4px;flex-direction:column">
-          <div style="display:flex;gap:4px">
-            <button class="btn btn-sm btn-secondary" id="btn-editar-ficha">Editar ficha</button>
-            <button class="btn btn-sm btn-primary" id="btn-print" title="Gerar PDF da ficha" style="gap:4px">
+        <div class="char-header-actions no-print">
+          <div class="char-header-btn-row">
+            <button class="btn btn-sm btn-secondary" id="btn-editar-ficha" title="Editar ficha">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Editar ficha
+            </button>
+            <button class="btn btn-sm btn-primary" id="btn-print" title="Gerar PDF da ficha">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 18h6M9 12h2"/></svg> Gerar PDF
             </button>
           </div>
-          ${_renderSyncIndicadorHtml()}
           ${char.nivel < 20 ? `
-            <button class="btn btn-sm btn-accent" id="btn-levelup" style="font-weight:700">
+            <button class="btn btn-sm btn-accent char-btn-levelup" id="btn-levelup">
               ⬆ Subir de Nível (Nível ${char.nivel + 1})
             </button>
           ` : ''}
+          ${_renderSyncIndicadorHtml()}
         </div>
+      </div>
+
+      <div class="char-header-divider"></div>
+
+      <div class="char-header-details-grid">
+        <div class="char-detail-chip">
+          <span class="char-detail-label">Antecedente</span>
+          <span class="char-detail-val">${escHtml(char.antecedente || '–')}</span>
+        </div>
+        <div class="char-detail-chip">
+          <span class="char-detail-label">Alinhamento</span>
+          <span class="char-detail-val">${escHtml(char.alinhamento || '–')}</span>
+        </div>
+        <div class="char-detail-chip">
+          <span class="char-detail-label">Tamanho</span>
+          <span class="char-detail-val">${escHtml(_tamanho)}</span>
+        </div>
+        <div class="char-detail-chip char-detail-chip-wide">
+          <span class="char-detail-label">Idiomas</span>
+          <span class="char-detail-val">${(char.idiomas && char.idiomas.length) ? char.idiomas.map(escHtml).join(', ') : '–'}</span>
+        </div>
+        <div class="char-detail-chip char-detail-chip-xp">
+          <span class="char-detail-label">Experiência (XP)</span>
+          <span class="char-detail-val">
+            <span class="xp-val-highlight" id="xp-display" title="Clique para editar XP">${char.xp || 0}</span>
+            <span class="xp-max-label">${char.nivel < 20 ? ` / ${XP_POR_NIVEL[char.nivel + 1]} XP` : ' (Nível Máximo)'}</span>
+          </span>
+        </div>
+        ${(estadoGuardiao && estadoGuardiao.sentidosSelvagensAtivo) ? `
+          <div class="char-detail-chip">
+            <span class="char-detail-label">Sentidos</span>
+            <span class="char-detail-val">Visão às Cegas 9 m</span>
+          </div>
+        ` : ''}
+        ${(estadoGuardiao && estadoGuardiao.exaustao > 0) ? `
+          <div class="char-detail-chip char-detail-danger">
+            <span class="char-detail-label">Exaustão</span>
+            <span class="char-detail-val">${estadoGuardiao.exaustao}</span>
+          </div>
+        ` : ''}
       </div>
     </div>
 
@@ -647,10 +686,18 @@ export function renderFichaCompleta() {
 
     <!-- FAB Descanso (flutuante) -->
     <div id="fab-descanso" class="fab-descanso no-print">
-      <button class="fab-btn" id="fab-toggle-descanso" title="Descanso"><img src="img/icons/ico-descanso.png" style="width:24px;height:24px;object-fit:contain" alt=""></button>
+      <button class="fab-btn" id="fab-toggle-descanso" title="Descanso (Curto / Longo)" aria-label="Menu de Descanso">
+        <img src="img/icons/ico-descanso.png" style="width:26px;height:26px;object-fit:contain" alt="Descanso" onerror="this.outerHTML='<svg width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\'><path d=\'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\'></svg>'">
+      </button>
       <div class="fab-menu" id="fab-menu-descanso" style="display:none">
-        <button class="btn btn-accent btn-sm" id="btn-descanso-curto">☀ Descanso Curto</button>
-        <button class="btn btn-accent btn-sm" id="btn-descanso-longo">🌙 Descanso Longo</button>
+        <button class="btn btn-accent btn-sm" id="btn-descanso-curto" style="display:flex;align-items:center;gap:8px">
+          <img src="img/icons/ico-descanso-curto.png" style="width:18px;height:18px;object-fit:contain" alt="" onerror="this.style.display='none'">
+          <span>☀ Descanso Curto</span>
+        </button>
+        <button class="btn btn-accent btn-sm" id="btn-descanso-longo" style="display:flex;align-items:center;gap:8px">
+          <img src="img/icons/ico-descanso-longo.png" style="width:18px;height:18px;object-fit:contain" alt="" onerror="this.style.display='none'">
+          <span>🌙 Descanso Longo</span>
+        </button>
       </div>
     </div>
 

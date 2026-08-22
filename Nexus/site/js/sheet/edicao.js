@@ -7,7 +7,7 @@ import { validarAtributosEditados, validarListaUnica } from '../ficha-edicao-val
 import { aplicarEdicao, consolidarEdicoesAtributos, reverterEdicao } from '../ficha-edicoes.js';
 import { abrirLevelUpCards } from '../levelup-ui.js';
 import { XP_POR_NIVEL, podeSubirDeNivel } from '../levelup.js';
-import { abrirModal, calcMod, escHtml, fmtMod, processarImagemArquivo, toast } from '../utils.js';
+import { abrirModal, calcMod, escHtml, fmtMod, processarImagemArquivo, recortarImagemArquivo, toast } from '../utils.js';
 import { campoEstaEditado, char, classeData, salvar, seloEdicao, talentosCache } from './estado.js';
 import { renderFichaCompleta } from './ficha.js';
 import { achatarMagiasClasse, ehSubclasseConjuradora, getSubclasseConjuradoraConjuracao, magiaContaNoLimite, obterMagiasDisponiveisClasseAtual } from './magias.js';
@@ -195,8 +195,8 @@ function abrirModalEdicaoFicha(secaoInicial = 'atributos') {
       const arquivo = event.target.files?.[0];
       event.target.value = '';
       if (!arquivo) return;
-      const dataUrl = await processarImagemArquivo(arquivo, 300);
-      if (!dataUrl) { toast('Não foi possível processar essa imagem.', 'error'); return; }
+      const dataUrl = await recortarImagemArquivo(arquivo, { tamanhoSaida: 320 });
+      if (!dataUrl) return;
       imagemPendente = dataUrl;
       const preview = document.getElementById('edicao-imagem-preview');
       if (preview) preview.innerHTML = `<img src="${dataUrl}" alt="">`;
@@ -369,11 +369,8 @@ export function setupEventosEdicao() {
       const file = e.target.files[0];
       e.target.value = '';
       if (!file) return;
-      const dataUrl = await processarImagemArquivo(file, 300);
-      if (!dataUrl) {
-        toast('Não foi possível processar essa imagem', 'error');
-        return;
-      }
+      const dataUrl = await recortarImagemArquivo(file, { tamanhoSaida: 320 });
+      if (!dataUrl) return;
       char.imagem = dataUrl;
       const preview = document.getElementById('edit-imagem-preview');
       if (preview) preview.innerHTML = `<img src="${dataUrl}" alt="">`;

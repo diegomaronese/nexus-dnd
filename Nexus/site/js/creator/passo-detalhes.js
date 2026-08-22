@@ -3,7 +3,7 @@
 // Extraido de site/js/pages/creator.js sem alteracao de comportamento.
 // ============================================================
 import { ATRIBUTOS_NOMES, CLASSES_INFO } from '../dados-classes.js';
-import { calcMod, calcPVNivel1, descreverCapacidadeCarga, escHtml, getTamanho, processarImagemArquivo, toast } from '../utils.js';
+import { calcMod, calcPVNivel1, descreverCapacidadeCarga, escHtml, getTamanho, processarImagemArquivo, recortarImagemArquivo, toast } from '../utils.js';
 import { dadosCache, personagem } from './wizard.js';
 
 // ============================================================
@@ -359,11 +359,8 @@ export function renderStepDetalhes(el) {
     const file = e.target.files[0];
     e.target.value = '';
     if (!file) return;
-    const dataUrl = await processarImagemArquivo(file, 300);
-    if (!dataUrl) {
-      toast('Não foi possível processar essa imagem', 'error');
-      return;
-    }
+    const dataUrl = await recortarImagemArquivo(file, { tamanhoSaida: 320 });
+    if (!dataUrl) return;
     personagem.imagem = dataUrl;
     const preview = document.getElementById('det-imagem-preview');
     if (preview) preview.innerHTML = `<img src="${dataUrl}" alt="">`;
