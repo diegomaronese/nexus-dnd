@@ -110,8 +110,11 @@ export function renderFichaCompleta() {
     <div class="card char-header-card">
       <div class="char-header-main">
         <div class="char-header-identity">
-          <div class="char-header-avatar">
+          <div class="char-header-avatar is-interactive" id="char-avatar-btn" title="Clique para editar a foto do personagem" role="button" tabindex="0">
             ${avatarHeaderHtml}
+            <div class="char-header-avatar-badge" title="Editar foto">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
           </div>
           <div class="char-header-meta">
             <h2 class="char-header-name" id="char-nome-display">${escHtml(char.nome) || 'Sem Nome'}</h2>
@@ -691,12 +694,12 @@ export function renderFichaCompleta() {
       </button>
       <div class="fab-menu" id="fab-menu-descanso" style="display:none">
         <button class="btn btn-accent btn-sm" id="btn-descanso-curto" style="display:flex;align-items:center;gap:8px">
-          <img src="img/icons/ico-descanso-curto.png" style="width:18px;height:18px;object-fit:contain" alt="" onerror="this.style.display='none'">
-          <span>☀ Descanso Curto</span>
+          <img src="img/icons/ico-descanso-curto.png" style="width:18px;height:18px;object-fit:contain" alt="" onerror="this.outerHTML='<svg width=\'18\' height=\'18\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\'><circle cx=\'12\' cy=\'12\' r=\'5\'/><line x1=\'12\' y1=\'1\' x2=\'12\' y2=\'3\'/><line x1=\'12\' y1=\'21\' x2=\'12\' y2=\'23\'/><line x1=\'4.22\' y1=\'4.22\' x2=\'5.64\' y2=\'5.64\'/><line x1=\'18.36\' y1=\'18.36\' x2=\'19.78\' y2=\'19.78\'/><line x1=\'1\' y1=\'12\' x2=\'3\' y2=\'12\'/><line x1=\'21\' y1=\'12\' x2=\'23\' y2=\'12\'/><line x1=\'4.22\' y1=\'19.78\' x2=\'5.64\' y2=\'18.36\'/><line x1=\'18.36\' y1=\'5.64\' x2=\'19.78\' y2=\'4.22\'/></svg>'">
+          <span>Descanso Curto</span>
         </button>
         <button class="btn btn-accent btn-sm" id="btn-descanso-longo" style="display:flex;align-items:center;gap:8px">
-          <img src="img/icons/ico-descanso-longo.png" style="width:18px;height:18px;object-fit:contain" alt="" onerror="this.style.display='none'">
-          <span>🌙 Descanso Longo</span>
+          <img src="img/icons/ico-descanso-longo.png" style="width:18px;height:18px;object-fit:contain" alt="" onerror="this.outerHTML='<svg width=\'18\' height=\'18\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\'><path d=\'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\'></svg>'">
+          <span>Descanso Longo</span>
         </button>
       </div>
     </div>

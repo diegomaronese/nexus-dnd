@@ -55,11 +55,40 @@ function salvarFlagLevelUpFlowV2(ativo) {
 }
 
 // --- Edição do cabeçalho e detalhes ---
-function abrirModalEdicaoFicha(secaoInicial = 'atributos') {
-  const secoes = ['atributos', 'pericias', 'detalhes'];
-  let secao = secoes.includes(secaoInicial) ? secaoInicial : 'atributos';
+export function abrirModalEdicaoFicha(secaoInicial = 'identidade') {
+  const secoes = ['identidade', 'atributos', 'pericias', 'detalhes'];
+  const titulosSecoes = {
+    identidade: 'Identidade & Foto',
+    atributos: 'Atributos',
+    pericias: 'Perícias',
+    detalhes: 'Detalhes Pessoais'
+  };
+  const camposDetalhes = [
+    { key: 'aparencia', label: 'Aparência' },
+    { key: 'personalidade', label: 'Personalidade' },
+    { key: 'ideais', label: 'Ideais' },
+    { key: 'lacos', label: 'Laços' },
+    { key: 'defeitos', label: 'Defeitos' },
+    { key: 'historia_personagem', label: 'História' },
+    { key: 'notas', label: 'Notas' }
+  ];
+  const alinhamentos = [
+    '',
+    'Leal e Bom', 'Neutro e Bom', 'Caótico e Bom',
+    'Leal e Neutro', 'Neutro', 'Caótico e Neutro',
+    'Leal e Mau', 'Neutro e Mau', 'Caótico e Mau'
+  ];
+
+  let secao = secoes.includes(secaoInicial) ? secaoInicial : 'identidade';
   let imagemPendente = char.imagem || '';
+  let nomePendente = char.nome || '';
+  let alinhamentoPendente = char.alinhamento || '';
+  let detalhesPendentes = Object.fromEntries(camposDetalhes.map(c => [c.key, char[c.key] || '']));
   let propostaAtributos = Object.fromEntries(ATRIBUTOS_KEYS.map(key => [key, char.atributos_base?.[key] ?? char.atributos[key]]));
+  let periciasPendentes = [...(char.pericias_proficientes || [])];
+  let atributosForamModificados = false;
+  let periciasForamModificadas = false;
+
   const bonusAtributo = key => char.bonus_antecedente?.[key] || 0;
   const caixaAtributo = (key, conteudo) => {
     const base = propostaAtributos[key];
@@ -76,9 +105,86 @@ function abrirModalEdicaoFicha(secaoInicial = 'atributos') {
   };
   const atributosEstaoEditados = () => ATRIBUTOS_KEYS.some(key =>
     campoEstaEditado(`atributos_base.${key}`) || campoEstaEditado(`atributos.${key}`));
+
+  const salvarValoresAbaAtual = () => {
+    if (secao === 'identidade') {
+      const inputNome = document.querySelector('[data-edicao-identidade="nome"]');
+      if (inputNome) nomePendente = inputNome.value;
+      const selectAlinhamento = document.querySelector('[data-edicao-identidade="alinhamento"]');
+      if (selectAlinhamento) alinhamentoPendente = selectAlinhamento.value;
+    } else if (secao === 'detalhes') {
+      document.querySelectorAll('[data-edicao-detalhe]').forEach(el => {
+        detalhesPendentes[el.dataset.edicaoDetalhe] = el.value;
+      });
+    } else if (secao === 'pericias') {
+      const marcadas = [...document.querySelectorAll('[data-edicao-pericia]:checked')].map(el => el.dataset.edicaoPericia);
+      if (marcadas.length > 0) {
+        periciasPendentes = marcadas;
+      }
+    }
+  };
+
   const render = () => {
-    const titulosSecoes = { atributos: 'Atributos', pericias: 'Perícias', detalhes: 'Detalhes' };
-    const navegacao = `<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px">${secoes.map(s => `<button class="btn btn-sm ${s === secao ? 'btn-primary' : 'btn-secondary'}" data-edicao-secao="${s}">${titulosSecoes[s] || (s[0].toUpperCase() + s.slice(1))}</button>`).join('')}</div>`;
+    const iconeClasse = char.classe ? `assets/icons/classes/${char.classe.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')}.svg` : '';
+    const avatarPreviewHtml = imagemPendente
+      ? `<img src="${imagemPendente}" alt="">`
+      : (iconeClasse
+        ? `<img src="${iconeClasse}" style="width:36px;height:36px;object-fit:contain;" alt="">`
+        : escHtml((nomePendente || char.classe || 'P').charAt(0).toUpperCase()));
+
+    const navegacao = `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">${secoes.map(s => `<button class="btn btn-sm ${s === secao ? 'btn-primary' : 'btn-secondary'}" data-edicao-secao="${s}">${titulosSecoes[s] || s}</button>`).join('')}</div>`;
+
+    if (secao === 'identidade') {
+      return navegacao + `
+        <div class="form-group">
+          <label class="form-label">Foto do Personagem${seloEdicao('imagem')}</label>
+          <div class="edicao-foto-card">
+            <div class="edicao-foto-preview-wrapper">
+              <div class="edicao-foto-avatar" id="edicao-imagem-preview">
+                ${avatarPreviewHtml}
+              </div>
+            </div>
+            <div class="edicao-foto-controles">
+              <div class="edicao-foto-botoes">
+                <button type="button" class="btn btn-sm btn-secondary" id="edicao-imagem-btn" style="display:inline-flex;align-items:center;gap:6px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  <span>${imagemPendente ? 'Trocar Foto' : 'Selecionar Foto'}</span>
+                </button>
+                ${imagemPendente ? `
+                  <button type="button" class="btn btn-sm btn-secondary" id="edicao-imagem-ajustar" style="display:inline-flex;align-items:center;gap:6px" title="Ajustar zoom, enquadramento e rotação da foto">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>
+                    <span>Ajustar Recorte</span>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-danger" id="edicao-imagem-remover" title="Remover Foto">
+                    &times; Remover
+                  </button>
+                ` : ''}
+                <input type="file" accept="image/*" id="edicao-imagem-input" style="display:none">
+              </div>
+              <div class="edicao-foto-dica">
+                Formatos JPG, PNG ou WebP. Você pode posicionar, girar e ampliar para o formato circular.
+              </div>
+              ${campoEstaEditado('imagem') ? '<button class="btn btn-sm btn-secondary" data-reverter-campo="imagem" style="align-self:flex-start">Reverter foto original</button>' : ''}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mt-2">
+          <label class="form-label">Nome do Personagem${seloEdicao('nome')}</label>
+          <input class="form-input" data-edicao-identidade="nome" value="${escHtml(nomePendente)}">
+          ${campoEstaEditado('nome') ? '<button class="btn btn-sm btn-secondary mt-1" data-reverter-campo="nome">Reverter nome</button>' : ''}
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Alinhamento${seloEdicao('alinhamento')}</label>
+          <select class="form-input" data-edicao-identidade="alinhamento">
+            ${alinhamentos.map(valor => `<option value="${escHtml(valor)}" ${alinhamentoPendente === valor ? 'selected' : ''}>${valor || '— Nenhum —'}</option>`).join('')}
+          </select>
+          ${campoEstaEditado('alinhamento') ? '<button class="btn btn-sm btn-secondary mt-1" data-reverter-campo="alinhamento">Reverter alinhamento</button>' : ''}
+        </div>
+      `;
+    }
+
     if (secao === 'atributos') {
       const cfg = char.configuracao_criacao?.atributos || {};
       const metodo = cfg.metodo || '';
@@ -128,50 +234,50 @@ function abrirModalEdicaoFicha(secaoInicial = 'atributos') {
         <div class="atributos-grid atributos-grid-edicao">${controles}</div>
         ${atributosEstaoEditados() ? '<button class="btn btn-sm btn-secondary mt-1" data-reverter-atributos>Reverter distribuição de atributos</button>' : ''}`;
     }
+
     if (secao === 'pericias') {
       const limite = (char.pericias_proficientes || []).length;
-      return navegacao + `<div class="info-box info" style="font-size:0.8rem;margin-bottom:10px">Mantenha ${limite} proficiência(s). Especializações continuam exigindo proficiência.</div><div style="max-height:45vh;overflow:auto">${PERICIAS.map(p => `<label class="form-check" style="justify-content:flex-start;margin:0 0 6px"><input type="checkbox" data-edicao-pericia="${escHtml(p.nome)}" ${(char.pericias_proficientes || []).includes(p.nome) ? 'checked' : ''}> ${p.nome}${(char.pericias_expertise || []).includes(p.nome) ? ' (Especialização)' : ''}</label>`).join('')}</div>${campoEstaEditado('pericias_proficientes') ? '<button class="btn btn-sm btn-secondary mt-1" data-reverter-campo="pericias_proficientes">Reverter perícias</button>' : ''}`;
-    }
-    const campos = [
-      { key: 'aparencia', label: 'Aparência' }, { key: 'personalidade', label: 'Personalidade' }, { key: 'ideais', label: 'Ideais' }, { key: 'lacos', label: 'Laços' }, { key: 'defeitos', label: 'Defeitos' }, { key: 'historia_personagem', label: 'História' }, { key: 'notas', label: 'Notas' }
-    ];
-    const alinhamentos = ['', 'Leal e Bom', 'Neutro e Bom', 'Caótico e Bom', 'Leal e Neutro', 'Neutro', 'Caótico e Neutro', 'Leal e Mau', 'Neutro e Mau', 'Caótico e Mau'];
-    const inicialImagem = escHtml((char.nome || char.classe || '?').charAt(0).toUpperCase() || '?');
-    return navegacao + `
-      <div class="form-group">
-        <label class="form-label">Nome${seloEdicao('nome')}</label>
-        <input class="form-input" data-edicao-identidade="nome" value="${escHtml(char.nome || '')}">
-        ${campoEstaEditado('nome') ? '<button class="btn btn-sm btn-secondary" data-reverter-campo="nome">Reverter</button>' : ''}
-      </div>
-      <div class="form-group">
-        <label class="form-label">Imagem${seloEdicao('imagem')}</label>
-        <div style="display:flex;align-items:center;gap:10px">
-          <div class="char-avatar" id="edicao-imagem-preview" style="width:56px;height:56px;font-size:1.4rem">${imagemPendente ? `<img src="${imagemPendente}" alt="">` : inicialImagem}</div>
-          <button type="button" class="btn btn-sm btn-secondary" id="edicao-imagem-btn">Trocar foto</button>
-          <button type="button" class="btn btn-sm btn-danger" id="edicao-imagem-remover" style="${imagemPendente ? '' : 'display:none'}">&times;</button>
-          <input type="file" accept="image/*" id="edicao-imagem-input" style="display:none">
+      return navegacao + `
+        <div class="info-box info" style="font-size:0.8rem;margin-bottom:10px">Mantenha ${limite} proficiência(s). Especializações continuam exigindo proficiência.</div>
+        <div style="max-height:45vh;overflow:auto">
+          ${PERICIAS.map(p => `<label class="form-check" style="justify-content:flex-start;margin:0 0 6px"><input type="checkbox" data-edicao-pericia="${escHtml(p.nome)}" ${periciasPendentes.includes(p.nome) ? 'checked' : ''}> ${p.nome}${(char.pericias_expertise || []).includes(p.nome) ? ' (Especialização)' : ''}</label>`).join('')}
         </div>
-        ${campoEstaEditado('imagem') ? '<button class="btn btn-sm btn-secondary" data-reverter-campo="imagem">Reverter</button>' : ''}
-      </div>
-      <div class="form-group">
-        <label class="form-label">Alinhamento${seloEdicao('alinhamento')}</label>
-        <select class="form-input" data-edicao-identidade="alinhamento">${alinhamentos.map(valor => `<option value="${escHtml(valor)}" ${char.alinhamento === valor ? 'selected' : ''}>${valor || '— Nenhum —'}</option>`).join('')}</select>
-        ${campoEstaEditado('alinhamento') ? '<button class="btn btn-sm btn-secondary" data-reverter-campo="alinhamento">Reverter</button>' : ''}
-      </div>
-      <div class="section-divider"><span>Detalhes pessoais</span></div>
-      ${campos.map(c => `<div class="form-group"><label class="form-label">${c.label}${seloEdicao(c.key)}</label><textarea class="form-textarea" rows="2" data-edicao-detalhe="${c.key}">${escHtml(char[c.key] || '')}</textarea>${campoEstaEditado(c.key) ? `<button class="btn btn-sm btn-secondary" data-reverter-campo="${c.key}">Reverter</button>` : ''}</div>`).join('')}`;
+        ${campoEstaEditado('pericias_proficientes') ? '<button class="btn btn-sm btn-secondary mt-1" data-reverter-campo="pericias_proficientes">Reverter perícias</button>' : ''}`;
+    }
+
+    if (secao === 'detalhes') {
+      return navegacao + `
+        <div class="section-divider" style="margin-top:0"><span>Detalhes Pessoais & História</span></div>
+        ${camposDetalhes.map(c => `<div class="form-group">
+          <label class="form-label">${c.label}${seloEdicao(c.key)}</label>
+          <textarea class="form-textarea" rows="2" data-edicao-detalhe="${c.key}">${escHtml(detalhesPendentes[c.key] || '')}</textarea>
+          ${campoEstaEditado(c.key) ? `<button class="btn btn-sm btn-secondary mt-1" data-reverter-campo="${c.key}">Reverter</button>` : ''}
+        </div>`).join('')}`;
+    }
+
+    return navegacao;
   };
+
   const abrir = () => {
-    abrirModal('Editar ficha', `<div id="edicao-ficha-corpo">${render()}</div>`, '<button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button><button class="btn btn-primary" id="btn-salvar-edicao-ficha">Salvar</button>');
+    abrirModal(
+      'Editar Ficha',
+      `<div id="edicao-ficha-corpo">${render()}</div>`,
+      '<button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button><button class="btn btn-primary" id="btn-salvar-edicao-ficha">Salvar</button>'
+    );
     vincular();
   };
+
   const vincular = () => {
     document.querySelectorAll('[data-edicao-secao]').forEach(btn => btn.addEventListener('click', () => {
+      salvarValoresAbaAtual();
       secao = btn.dataset.edicaoSecao;
       const corpo = document.getElementById('edicao-ficha-corpo');
       if (corpo) { corpo.innerHTML = render(); vincular(); }
     }));
+
+    // Atributos
     document.querySelectorAll('[data-edicao-atributo]').forEach(input => input.addEventListener('change', () => {
+      atributosForamModificados = true;
       const metodo = char.configuracao_criacao?.atributos?.metodo || '';
       if (metodo === 'standard' || metodo === 'rolagem' || metodo === 'manual') {
         const valores = metodo === 'standard'
@@ -184,13 +290,26 @@ function abrirModalEdicaoFicha(secaoInicial = 'atributos') {
         propostaAtributos[input.dataset.edicaoAtributo] = parseInt(input.value);
       }
     }));
+
     document.querySelectorAll('[data-edicao-pointbuy]').forEach(btn => btn.addEventListener('click', () => {
+      atributosForamModificados = true;
       const key = btn.dataset.edicaoPointbuy;
       propostaAtributos[key] += parseInt(btn.dataset.dir);
       const corpo = document.getElementById('edicao-ficha-corpo');
       if (corpo) { corpo.innerHTML = render(); vincular(); }
     }));
-    document.getElementById('edicao-imagem-btn')?.addEventListener('click', () => document.getElementById('edicao-imagem-input')?.click());
+
+    // Perícias
+    document.querySelectorAll('[data-edicao-pericia]').forEach(chk => chk.addEventListener('change', () => {
+      periciasForamModificadas = true;
+      periciasPendentes = [...document.querySelectorAll('[data-edicao-pericia]:checked')].map(el => el.dataset.edicaoPericia);
+    }));
+
+    // Imagem: Escolher novo arquivo
+    document.getElementById('edicao-imagem-btn')?.addEventListener('click', () => {
+      document.getElementById('edicao-imagem-input')?.click();
+    });
+
     document.getElementById('edicao-imagem-input')?.addEventListener('change', async event => {
       const arquivo = event.target.files?.[0];
       event.target.value = '';
@@ -198,204 +317,145 @@ function abrirModalEdicaoFicha(secaoInicial = 'atributos') {
       const dataUrl = await recortarImagemArquivo(arquivo, { tamanhoSaida: 320 });
       if (!dataUrl) return;
       imagemPendente = dataUrl;
-      const preview = document.getElementById('edicao-imagem-preview');
-      if (preview) preview.innerHTML = `<img src="${dataUrl}" alt="">`;
-      const remover = document.getElementById('edicao-imagem-remover');
-      if (remover) remover.style.display = '';
+      const corpo = document.getElementById('edicao-ficha-corpo');
+      if (corpo) { corpo.innerHTML = render(); vincular(); }
     });
+
+    // Imagem: Ajustar imagem atual
+    document.getElementById('edicao-imagem-ajustar')?.addEventListener('click', async () => {
+      if (!imagemPendente) return;
+      const dataUrl = await recortarImagemArquivo(imagemPendente, { tamanhoSaida: 320 });
+      if (!dataUrl) return;
+      imagemPendente = dataUrl;
+      const corpo = document.getElementById('edicao-ficha-corpo');
+      if (corpo) { corpo.innerHTML = render(); vincular(); }
+    });
+
+    // Imagem: Remover
     document.getElementById('edicao-imagem-remover')?.addEventListener('click', () => {
       imagemPendente = '';
-      const preview = document.getElementById('edicao-imagem-preview');
-      if (preview) preview.textContent = (char.nome || char.classe || '?').charAt(0).toUpperCase() || '?';
-      const remover = document.getElementById('edicao-imagem-remover');
-      if (remover) remover.style.display = 'none';
+      const corpo = document.getElementById('edicao-ficha-corpo');
+      if (corpo) { corpo.innerHTML = render(); vincular(); }
     });
+
+    // Reversões
     document.querySelector('[data-reverter-atributos]')?.addEventListener('click', () => {
       consolidarEdicoesAtributos(char);
       const mudouBase = reverterEdicao(char, 'atributos_base');
       const mudouTotal = reverterEdicao(char, 'atributos');
-      if (mudouBase || mudouTotal) { salvar(); window.fecharModal(); renderFichaCompleta(); toast('Distribuição de atributos restaurada.', 'success'); }
-    });
-    document.querySelectorAll('[data-reverter-campo]').forEach(btn => btn.addEventListener('click', () => {
-      if (reverterEdicao(char, btn.dataset.reverterCampo)) { salvar(); window.fecharModal(); renderFichaCompleta(); toast('Campo restaurado.', 'success'); }
-    }));
-    document.getElementById('btn-salvar-edicao-ficha')?.addEventListener('click', () => {
-      if (secao === 'atributos') {
-        const metodo = char.configuracao_criacao?.atributos?.metodo || document.getElementById('edicao-metodo-atributos')?.value;
-        if (!metodo) { toast('Informe o método de criação.', 'error'); return; }
-        const proposta = { ...propostaAtributos };
-        if (Object.values(proposta).some(v => !Number.isInteger(v))) { toast('Informe todos os atributos.', 'error'); return; }
-        if (!char.configuracao_criacao) char.configuracao_criacao = {};
-        if (!char.configuracao_criacao.atributos) char.configuracao_criacao.atributos = {};
-        if (!char.configuracao_criacao.atributos.valoresBase) char.configuracao_criacao.atributos.valoresBase = { ...char.atributos_base };
-        if (!char.configuracao_criacao.atributos.rolagens && metodo === 'rolagem') char.configuracao_criacao.atributos.rolagens = { ...char.atributos_base };
-        char.configuracao_criacao.atributos.metodo = metodo;
-        const resultado = validarAtributosEditados(char, proposta, { STANDARD_ARRAY, POINT_BUY_CUSTOS, POINT_BUY_TOTAL });
-        if (!resultado.ok) { toast(resultado.erro, 'error'); return; }
-        const atributosPropostos = Object.fromEntries(ATRIBUTOS_KEYS.map(k => {
-          const bonus = char.bonus_antecedente?.[k] || 0;
-          const ganhoSistema = (char.atributos?.[k] || 0) - (char.atributos_base?.[k] || 0) - bonus;
-          return [k, proposta[k] + bonus + ganhoSistema];
-        }));
-        if (Object.values(atributosPropostos).some(valor => valor > 20)) { toast('Nenhum atributo pode ultrapassar 20.', 'error'); return; }
-        consolidarEdicoesAtributos(char);
-        const mudouBase = ATRIBUTOS_KEYS.some(k => char.atributos_base?.[k] !== proposta[k]);
-        const mudouTotal = ATRIBUTOS_KEYS.some(k => char.atributos?.[k] !== atributosPropostos[k]);
-        if (mudouBase || mudouTotal) {
-          aplicarEdicao(char, 'atributos_base', proposta);
-          aplicarEdicao(char, 'atributos', atributosPropostos);
-          consolidarEdicoesAtributos(char);
-        }
-      } else if (secao === 'pericias') {
-        const proposta = [...document.querySelectorAll('[data-edicao-pericia]:checked')].map(el => el.dataset.edicaoPericia);
-        const resultado = validarListaUnica(proposta, new Set(PERICIAS.map(p => p.nome)), (char.pericias_proficientes || []).length, 'Perícias');
-        if (!resultado.ok) { toast(resultado.erro, 'error'); return; }
-        if ((char.pericias_expertise || []).some(p => !proposta.includes(p))) { toast('Não remova uma perícia com Especialização.', 'error'); return; }
-        aplicarEdicao(char, 'pericias_proficientes', proposta);
-      } else if (secao === 'detalhes') {
-        const nome = document.querySelector('[data-edicao-identidade="nome"]')?.value?.trim();
-        aplicarEdicao(char, 'nome', nome || char.nome);
-        aplicarEdicao(char, 'alinhamento', document.querySelector('[data-edicao-identidade="alinhamento"]')?.value || '');
-        aplicarEdicao(char, 'imagem', imagemPendente);
-        document.querySelectorAll('[data-edicao-detalhe]').forEach(el => aplicarEdicao(char, el.dataset.edicaoDetalhe, el.value));
-      } else {
+      if (mudouBase || mudouTotal) {
+        salvar();
         window.fecharModal();
-        return;
+        renderFichaCompleta();
+        toast('Distribuição de atributos restaurada.', 'success');
       }
-      salvar(); window.fecharModal(); window.definirTituloHeader?.(char.nome); renderFichaCompleta(); toast('Alterações salvas.', 'success');
     });
-  };
-  abrir();
-}
 
-export function setupEventosEdicao() {
-  document.getElementById('btn-editar-ficha')?.addEventListener('click', () => abrirModalEdicaoFicha());
-  // Editar detalhes pessoais
-  document.getElementById('btn-edit-detalhes')?.addEventListener('click', () => {
-    const campos = [
-      { key: 'aparencia', label: 'Aparencia' },
-      { key: 'personalidade', label: 'Personalidade' },
-      { key: 'ideais', label: 'Ideais' },
-      { key: 'lacos', label: 'Lacos' },
-      { key: 'defeitos', label: 'Defeitos' },
-      { key: 'historia_personagem', label: 'Historia do Personagem' },
-      { key: 'notas', label: 'Notas' }
-    ];
-    abrirModal('Editar Detalhes', `
-      ${campos.map(c => `
-        <div class="form-group">
-          <label class="form-label" for="edit-${c.key}">${c.label}</label>
-          <textarea class="form-textarea" id="edit-${c.key}" rows="2">${char[c.key] || ''}</textarea>
-        </div>
-      `).join('')}
-    `, '<button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button><button class="btn btn-primary" id="btn-salvar-detalhes">Salvar</button>');
+    document.querySelectorAll('[data-reverter-campo]').forEach(btn => btn.addEventListener('click', () => {
+      if (reverterEdicao(char, btn.dataset.reverterCampo)) {
+        salvar();
+        window.fecharModal();
+        renderFichaCompleta();
+        toast('Campo restaurado.', 'success');
+      }
+    }));
 
-    document.getElementById('btn-salvar-detalhes')?.addEventListener('click', () => {
-      campos.forEach(c => {
-        aplicarEdicao(char, c.key, document.getElementById(`edit-${c.key}`)?.value || '');
+    // Salvar todas as alterações da ficha
+    document.getElementById('btn-salvar-edicao-ficha')?.addEventListener('click', () => {
+      salvarValoresAbaAtual();
+
+      // Se atributos foram alterados ou se está na aba atributos
+      if (atributosForamModificados || secao === 'atributos') {
+        const metodo = char.configuracao_criacao?.atributos?.metodo || document.getElementById('edicao-metodo-atributos')?.value;
+        if (!metodo && secao === 'atributos') { toast('Informe o método de criação dos atributos.', 'error'); return; }
+        if (metodo) {
+          const proposta = { ...propostaAtributos };
+          if (Object.values(proposta).some(v => !Number.isInteger(v))) {
+            toast('Informe todos os atributos corretamente.', 'error');
+            return;
+          }
+          if (!char.configuracao_criacao) char.configuracao_criacao = {};
+          if (!char.configuracao_criacao.atributos) char.configuracao_criacao.atributos = {};
+          if (!char.configuracao_criacao.atributos.valoresBase) char.configuracao_criacao.atributos.valoresBase = { ...char.atributos_base };
+          if (!char.configuracao_criacao.atributos.rolagens && metodo === 'rolagem') char.configuracao_criacao.atributos.rolagens = { ...char.atributos_base };
+          char.configuracao_criacao.atributos.metodo = metodo;
+          const resultado = validarAtributosEditados(char, proposta, { STANDARD_ARRAY, POINT_BUY_CUSTOS, POINT_BUY_TOTAL });
+          if (!resultado.ok) { toast(resultado.erro, 'error'); return; }
+          const atributosPropostos = Object.fromEntries(ATRIBUTOS_KEYS.map(k => {
+            const bonus = char.bonus_antecedente?.[k] || 0;
+            const ganhoSistema = (char.atributos?.[k] || 0) - (char.atributos_base?.[k] || 0) - bonus;
+            return [k, proposta[k] + bonus + ganhoSistema];
+          }));
+          if (Object.values(atributosPropostos).some(valor => valor > 20)) { toast('Nenhum atributo pode ultrapassar 20.', 'error'); return; }
+          consolidarEdicoesAtributos(char);
+          const mudouBase = ATRIBUTOS_KEYS.some(k => char.atributos_base?.[k] !== proposta[k]);
+          const mudouTotal = ATRIBUTOS_KEYS.some(k => char.atributos?.[k] !== atributosPropostos[k]);
+          if (mudouBase || mudouTotal) {
+            aplicarEdicao(char, 'atributos_base', proposta);
+            aplicarEdicao(char, 'atributos', atributosPropostos);
+            consolidarEdicoesAtributos(char);
+          }
+        }
+      }
+
+      // Se perícias foram alteradas ou se está na aba perícias
+      if (periciasForamModificadas || secao === 'pericias') {
+        const limite = (char.pericias_proficientes || []).length;
+        if (periciasPendentes.length > 0 || limite > 0) {
+          const resultado = validarListaUnica(periciasPendentes, new Set(PERICIAS.map(p => p.nome)), limite, 'Perícias');
+          if (!resultado.ok) { toast(resultado.erro, 'error'); return; }
+          if ((char.pericias_expertise || []).some(p => !periciasPendentes.includes(p))) {
+            toast('Não remova uma perícia com Especialização.', 'error');
+            return;
+          }
+          aplicarEdicao(char, 'pericias_proficientes', periciasPendentes);
+        }
+      }
+
+      // Identidade & Foto
+      if (nomePendente && nomePendente.trim()) {
+        aplicarEdicao(char, 'nome', nomePendente.trim());
+      }
+      if (alinhamentoPendente !== undefined) {
+        aplicarEdicao(char, 'alinhamento', alinhamentoPendente);
+      }
+      if (imagemPendente !== undefined && imagemPendente !== char.imagem) {
+        aplicarEdicao(char, 'imagem', imagemPendente);
+      }
+
+      // Detalhes pessoais
+      camposDetalhes.forEach(c => {
+        if (detalhesPendentes[c.key] !== undefined && detalhesPendentes[c.key] !== (char[c.key] || '')) {
+          aplicarEdicao(char, c.key, detalhesPendentes[c.key]);
+        }
       });
-      salvar();
-      window.fecharModal();
-      renderFichaCompleta();
-    });
-  });
-
-  // Editar cabeçalho
-  document.getElementById('btn-edit-header')?.addEventListener('click', () => {
-    abrirModal('Editar Personagem', `
-      <div class="form-group">
-        <label class="form-label" for="edit-nome">Nome</label>
-        <input type="text" class="form-input" id="edit-nome" value="${escHtml(char.nome)}">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Imagem</label>
-        <div style="display:flex;align-items:center;gap:10px">
-          <div class="char-avatar" id="edit-imagem-preview" style="width:56px;height:56px;font-size:1.4rem">
-            ${char.imagem ? `<img src="${char.imagem}" alt="">` : escHtml((char.nome || char.classe || '?').charAt(0).toUpperCase() || '?')}
-          </div>
-          <button type="button" class="btn btn-sm btn-secondary" id="edit-imagem-btn">Trocar Foto</button>
-          <button type="button" class="btn btn-sm btn-danger" id="edit-imagem-remover" title="Remover imagem" style="${char.imagem ? '' : 'display:none'}">&times;</button>
-          <input type="file" accept="image/*" id="edit-imagem-input" style="display:none">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="edit-alinhamento">Alinhamento</label>
-        <select class="form-input" id="edit-alinhamento">
-          <option value="">— Nenhum —</option>
-          <option value="Leal e Bom"${(char.alinhamento === 'Leal e Bom' || char.alinhamento === 'Ordeiro e Bom' || char.alinhamento === 'OB' || char.alinhamento === 'LB') ? ' selected' : ''}>Leal e Bom</option>
-          <option value="Neutro e Bom"${(char.alinhamento === 'Neutro e Bom' || char.alinhamento === 'NB') ? ' selected' : ''}>Neutro e Bom</option>
-          <option value="Caótico e Bom"${(char.alinhamento === 'Caótico e Bom' || char.alinhamento === 'Caotico e Bom' || char.alinhamento === 'CB') ? ' selected' : ''}>Caótico e Bom</option>
-          <option value="Leal e Neutro"${(char.alinhamento === 'Leal e Neutro' || char.alinhamento === 'Ordeiro e Neutro' || char.alinhamento === 'ON' || char.alinhamento === 'LN') ? ' selected' : ''}>Leal e Neutro</option>
-          <option value="Neutro"${(char.alinhamento === 'Neutro' || char.alinhamento === 'N') ? ' selected' : ''}>Neutro</option>
-          <option value="Caótico e Neutro"${(char.alinhamento === 'Caótico e Neutro' || char.alinhamento === 'Caotico e Neutro' || char.alinhamento === 'CN') ? ' selected' : ''}>Caótico e Neutro</option>
-          <option value="Leal e Mau"${(char.alinhamento === 'Leal e Mau' || char.alinhamento === 'Ordeiro e Mau' || char.alinhamento === 'OM' || char.alinhamento === 'LM') ? ' selected' : ''}>Leal e Mau</option>
-          <option value="Neutro e Mau"${(char.alinhamento === 'Neutro e Mau' || char.alinhamento === 'NM') ? ' selected' : ''}>Neutro e Mau</option>
-          <option value="Caótico e Mau"${(char.alinhamento === 'Caótico e Mau' || char.alinhamento === 'Caotico e Mau' || char.alinhamento === 'CM') ? ' selected' : ''}>Caótico e Mau</option>
-        </select>
-      </div>
-      <div class="row gap-1">
-        <div class="col">
-          <label class="form-label">Nivel</label>
-          <div style="font-size:1rem;font-weight:700;padding:6px;background:var(--surface-variant);border-radius:4px">${char.nivel}</div>
-          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px">Use Subir de Nível para alterar</div>
-        </div>
-        <div class="col">
-          <label class="form-label">Subclasse</label>
-          <div style="font-size:1rem;font-weight:700;padding:6px;background:var(--surface-variant);border-radius:4px">${escHtml(char.subclasse) || '—'}</div>
-          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px">Definida ao subir de nível</div>
-        </div>
-      </div>
-      <div class="section-divider mt-2"><span>Atributos</span></div>
-      <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px">
-        Atributos são definidos na criação e alterados ao subir de nível (Aumento de Atributo). Não podem ser editados livremente.
-      </div>
-      <div class="atributos-grid">
-        ${ATRIBUTOS_KEYS.map(key => `
-          <div class="form-group" style="text-align:center">
-            <label class="form-label">${ATRIBUTOS_NOMES[key]}</label>
-            <div style="font-size:1.1rem;font-weight:700;padding:6px;background:var(--surface-variant);border-radius:4px">${char.atributos[key]}</div>
-          </div>
-        `).join('')}
-      </div>
-    `, '<button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button><button class="btn btn-primary" id="btn-salvar-edit">Salvar</button>');
-
-    const editImagemInicial = () => (char.nome || char.classe || '?').charAt(0).toUpperCase() || '?';
-
-    document.getElementById('edit-imagem-btn')?.addEventListener('click', () => {
-      document.getElementById('edit-imagem-input')?.click();
-    });
-
-    document.getElementById('edit-imagem-input')?.addEventListener('change', async (e) => {
-      const file = e.target.files[0];
-      e.target.value = '';
-      if (!file) return;
-      const dataUrl = await recortarImagemArquivo(file, { tamanhoSaida: 320 });
-      if (!dataUrl) return;
-      char.imagem = dataUrl;
-      const preview = document.getElementById('edit-imagem-preview');
-      if (preview) preview.innerHTML = `<img src="${dataUrl}" alt="">`;
-      const btnRemover = document.getElementById('edit-imagem-remover');
-      if (btnRemover) btnRemover.style.display = '';
-    });
-
-    document.getElementById('edit-imagem-remover')?.addEventListener('click', () => {
-      char.imagem = '';
-      const preview = document.getElementById('edit-imagem-preview');
-      if (preview) preview.textContent = editImagemInicial();
-      const btnRemover = document.getElementById('edit-imagem-remover');
-      if (btnRemover) btnRemover.style.display = 'none';
-    });
-
-    document.getElementById('btn-salvar-edit')?.addEventListener('click', () => {
-      aplicarEdicao(char, 'nome', document.getElementById('edit-nome')?.value?.trim() || char.nome);
-      aplicarEdicao(char, 'alinhamento', document.getElementById('edit-alinhamento')?.value || '');
 
       salvar();
       window.fecharModal();
       window.definirTituloHeader?.(char.nome);
       renderFichaCompleta();
+      toast('Alterações salvas com sucesso!', 'success');
     });
+  };
+
+  abrir();
+}
+
+export function setupEventosEdicao() {
+  document.getElementById('btn-editar-ficha')?.addEventListener('click', () => abrirModalEdicaoFicha('identidade'));
+  document.getElementById('char-avatar-btn')?.addEventListener('click', () => abrirModalEdicaoFicha('identidade'));
+  document.getElementById('char-avatar-btn')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      abrirModalEdicaoFicha('identidade');
+    }
   });
+
+  // Editar detalhes pessoais
+  document.getElementById('btn-edit-detalhes')?.addEventListener('click', () => abrirModalEdicaoFicha('detalhes'));
+
+  // Editar cabeçalho
+  document.getElementById('btn-edit-header')?.addEventListener('click', () => abrirModalEdicaoFicha('identidade'));
 
   // Editar XP
   document.getElementById('xp-display')?.addEventListener('click', () => {
@@ -482,4 +542,4 @@ async function abrirModalLevelUp() {
     console.error('Falha ao abrir fluxo de level up V2:', err);
     toast('Não foi possível abrir o fluxo de level up. Tente novamente.', 'error');
   }
-}
+}

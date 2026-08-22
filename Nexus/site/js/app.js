@@ -98,12 +98,12 @@ export function voltarHierarquico() {
   }
 
   // 2. Navegar para a rota pai hierárquica
-  const rotaAtual = window.location.hash.slice(1) || 'home';
+  const rotaAtual = (window.location.hash.slice(1) || 'home').replace(/^#/, '');
   const pai = obterRotaPai(rotaAtual);
   if (pai) {
-    navegar(pai, { manterScroll: true });
+    navegar(pai, { manterScroll: true, substituir: true });
   } else {
-    navegar('home');
+    navegar('home', { substituir: true });
   }
 }
 window.voltarHierarquico = voltarHierarquico;
@@ -148,12 +148,15 @@ export function navegar(rota, opcoes = {}) {
     rolarParaOTopo();
   }
 
-  // Troca de abas irmãs no mesmo nível hierárquico (ex: Classes -> Talentos -> Itens Mágicos)
-  // substitui o histórico para que o botão Voltar do celular retorne diretamente à tela pai (Home)
+  // Controle de histórico hierárquico:
+  // - Mudanças de abas/seções no mesmo nível ou subidas para telas pai substituem o estado no histórico
+  // - Isso garante que o botão Voltar do celular sempre suba a árvore hierárquica até a Tela Iniciar
   const nivelAtual = obterNivelHierarquico(rotaAtual);
   const nivelNovo = obterNivelHierarquico(rotaLimpa);
   const mesmoPai = obterRotaPai(rotaAtual) === obterRotaPai(rotaLimpa);
-  const deveSubstituir = substituir || (nivelAtual === nivelNovo && mesmoPai && nivelAtual > 0);
+  const ehSubidaHierarquica = nivelNovo < nivelAtual || rotaLimpa === obterRotaPai(rotaAtual);
+  const ehMesmoNivel = nivelAtual === nivelNovo && mesmoPai && nivelAtual > 0;
+  const deveSubstituir = substituir || ehMesmoNivel || ehSubidaHierarquica || (rotaLimpa === 'home' && rotaAtual === 'home');
 
   if (window.location.hash === `#${rotaLimpa}`) {
     processarRota();
@@ -392,13 +395,38 @@ function init() {
       return;
     }
 
-    // 2. Processar a rota de destino
+    // 2. Retorno estritamente hierárquico até a Tela Iniciar (Home)
+    const rotaAntesDoPop = (_ultimaRota || (window.location.hash.slice(1) || 'home')).replace(/^#/, '');
+
+    // Se já estava na Tela Iniciar (home), permanece na home
+    if (rotaAntesDoPop === 'home' || !obterRotaPai(rotaAntesDoPop)) {
+      if (window.location.hash !== '#home' && window.location.hash !== '') {
+        try {
+          history.replaceState(null, '', '#home');
+        } catch (err) {}
+      }
+      _ultimaRota = 'home';
+      processarRota();
+      return;
+    }
+
+    // Obter rota pai hierárquica (ex: ficha/123 -> personagens -> home; compendio/magias -> home)
+    const rotaPai = obterRotaPai(rotaAntesDoPop) || 'home';
+
+    try {
+      history.replaceState(null, '', `#${rotaPai}`);
+    } catch (err) {
+      window.location.hash = rotaPai;
+    }
+
+    _ultimaRota = rotaPai;
     processarRota();
   });
 
   // Listener de rota para mudanças diretas de hash
   window.addEventListener('hashchange', () => {
-    if (!temModalAberto()) {
+    const hashAtual = (window.location.hash.slice(1) || 'home').replace(/^#/, '');
+    if (!temModalAberto() && hashAtual !== _ultimaRota) {
       processarRota();
     }
   });
