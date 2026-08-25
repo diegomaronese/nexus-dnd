@@ -46,7 +46,7 @@ export function renderSecaoInventario() {
   });
 
   return `
-    <div class="card">
+    <div class="card" id="secao-inventario">
       <div class="card-header">
         <h2>Inventário</h2>
         <div class="no-print" style="display:flex;gap:4px;align-items:center">

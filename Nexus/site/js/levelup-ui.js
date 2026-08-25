@@ -57,12 +57,12 @@ export async function abrirLevelUpCards(char, classeData, helpers, caches, salva
 
   try {
     const ctx = await buildLevelUpContext(char, classeData, helpers);
-    const state = createInitialState();
+    const state = createInitialState(ctx);
     if (ctx.exigeDadivaEpica) state.asiModo = 'talento';
 
     // Carregar lista de magias disponíveis para uso interno
-    if (ctx.ehConjurador && helpers.obterMagiasDisponiveisClasseAtual) {
-      ctx._listaMagiasClasse = await helpers.obterMagiasDisponiveisClasseAtual();
+    if (ctx.ehConjurador) {
+      ctx._listaMagiasClasse = await getMagiasClasse(ctx.classeAlvo);
     }
 
     renderModal(ctx, state, caches);
@@ -218,6 +218,12 @@ function salvarStateDoDOM(ctx, state, step) {
       if (modo) state.hpModo = modo;
       const rolado = parseInt(document.getElementById('levelup-hp-rolado')?.value) || 1;
       state.hpRolado = Math.max(1, Math.min(ctx.info.dado_vida, rolado));
+      const selClasse = document.getElementById('levelup-classe-alvo');
+      if (selClasse?.value) state.classeAlvo = selClasse.value;
+      const periciaEl = document.getElementById('levelup-multiclasse-pericia');
+      if (periciaEl) state.multiclassePericia = periciaEl.value || '';
+      const instEl = document.getElementById('levelup-multiclasse-instrumento');
+      if (instEl) state.multiclasseInstrumento = instEl.value || '';
       break;
     }
     case 'escolha_subclasse': {
@@ -348,7 +354,7 @@ function salvarStateDoDOM(ctx, state, step) {
 
 function bindEventosStep(ctx, state, step, caches) {
   switch (step.id) {
-    case 'ganhos_nivel': bindEventosHP(ctx, state); break;
+    case 'ganhos_nivel': bindEventosGanhosNivel(ctx, state, caches); break;
     case 'escolha_subclasse': bindEventosSubclasse(ctx, state); break;
     case 'aumento_atributo': bindEventosASI(ctx, state, caches); break;
     case 'escolhas_classe': bindEventosEscolhasClasse(ctx, state); break;
@@ -356,6 +362,69 @@ function bindEventosStep(ctx, state, step, caches) {
     case 'manobras_guerreiro': bindEventosManobrasGuerreiro(ctx, state); break;
     case 'revisao_confirmacao': bindEventosTrocasOpcionais(ctx, state); break;
   }
+}
+
+// --- Ganhos do Nível (HP + Seleção de Classe / Multiclasse) ---
+function bindEventosGanhosNivel(ctx, state, caches) {
+  bindEventosHP(ctx, state);
+
+  // Seleção de classe de evolução / multiclasse
+  const selClasse = document.getElementById('levelup-classe-alvo');
+  selClasse?.addEventListener('change', async () => {
+    const novaClasse = selClasse.value;
+    if (!novaClasse || novaClasse === ctx.classeAlvo) return;
+
+    // Salvar estado atual do DOM
+    salvarStateDoDOM(ctx, state, { id: 'ganhos_nivel' });
+
+    // Resetar campos dependentes da classe
+    state.classeAlvo = novaClasse;
+    state.subclasse = '';
+    state.multiclassePericia = '';
+    state.multiclasseInstrumento = '';
+    state.truquesSelecionados = [];
+    state.magiasSelecionadas = [];
+    state.grimorioSelecionados = [];
+    state.subclasseMagiasSelecionados = [];
+    state.estiloLuta = '';
+    state.estiloLutaTrocarDe = '';
+    state.estiloLutaTrocarPara = '';
+    state.bardoExpertise = [];
+    state.guardiaoExpertise = [];
+    state.ladinoExpertise = [];
+    state.exploradorExpertise = '';
+    state.exploradorIdiomas = [];
+    state.academicoExpertise = [];
+    state.manobrasNovasSelecionadas = [];
+    state.manobraTrocarDe = '';
+    state.manobraTrocarPara = '';
+
+    // Reconstruir o contexto para a nova classe
+    const novoCtx = await buildLevelUpContext(ctx.char, null, ctx.helpers, novaClasse);
+    if (novoCtx.ehConjurador) {
+      novoCtx._listaMagiasClasse = await getMagiasClasse(novaClasse);
+    }
+
+    // Copiar propriedades de novoCtx para ctx
+    Object.keys(ctx).forEach(k => { if (k !== 'helpers') delete ctx[k]; });
+    Object.assign(ctx, novoCtx);
+
+    if (ctx.exigeDadivaEpica) state.asiModo = 'talento';
+
+    // Re-renderizar modal mantendo stepAtual em 0
+    state.stepAtual = 0;
+    renderModal(ctx, state, caches);
+  });
+
+  const selPericia = document.getElementById('levelup-multiclasse-pericia');
+  selPericia?.addEventListener('change', () => {
+    state.multiclassePericia = selPericia.value || '';
+  });
+
+  const selInst = document.getElementById('levelup-multiclasse-instrumento');
+  selInst?.addEventListener('change', () => {
+    state.multiclasseInstrumento = selInst.value || '';
+  });
 }
 
 // --- HP ---
@@ -1441,6 +1510,15 @@ function montarResumoFinal(resultado, char, truquesAdicionados, magiasAdicionada
   // Lista de novidades
   const itens = [];
   
+  if (resultado.classe_evoluida) {
+    itens.push(`Classe: <strong>${resultado.classe_evoluida}</strong> (Nível ${resultado.nivel_classe_novo || ''})`);
+  }
+  if (resultado.multiclasse_pericia_aplicada) {
+    itens.push(`Perícia de Multiclasse: <strong>${resultado.multiclasse_pericia_aplicada}</strong>`);
+  }
+  if (resultado.multiclasse_instrumento_aplicado) {
+    itens.push(`Instrumento Musical: <strong>${resultado.multiclasse_instrumento_aplicado}</strong>`);
+  }
   if (resultado.subclasse_escolhida) itens.push(`Subclasse: <strong>${resultado.subclasse_escolhida}</strong>`);
   if (resultado.aumentos_aplicados) itens.push(`Atributos aumentados`);
   

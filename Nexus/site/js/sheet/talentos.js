@@ -131,7 +131,7 @@ export function renderSecaoTalentos() {
   }
   
   return `
-    <div class="card">
+    <div class="card" id="secao-talentos">
       <div class="card-header">
         <h2>Talentos</h2>
         <button class="btn btn-sm btn-accent no-print" id="btn-add-talento">+ Talento</button>
@@ -716,4 +716,4 @@ export function obterTiposAdeptoElementalUsados() {
     usados.push(char.adepto_elemental_tipo);
   }
   return usados;
-}
+}

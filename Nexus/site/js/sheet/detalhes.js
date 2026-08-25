@@ -19,7 +19,7 @@ export function renderSecaoDetalhes() {
 
   const temConteudo = campos.some(c => char[c.key]);
   if (!temConteudo) return `
-    <div class="card no-print">
+    <div class="card no-print" id="secao-detalhes">
       <div class="card-header"><h2>Detalhes</h2></div>
       <div style="text-align:center;color:var(--text-muted);font-size:0.85rem;padding:8px">
         Nenhum detalhe preenchido.
@@ -30,7 +30,7 @@ export function renderSecaoDetalhes() {
 
   const colapsada = _detalhesColapsada;
   return `
-    <div class="card">
+    <div class="card" id="secao-detalhes">
       <div class="card-header detalhes-header-colapsavel${colapsada ? ' detalhes-header-colapsado' : ''}" data-toggle-detalhes>
         <h2>Detalhes</h2>
         <div style="display:flex;align-items:center;gap:8px">

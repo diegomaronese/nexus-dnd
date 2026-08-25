@@ -81,7 +81,7 @@ export async function modulosApp() {
   if (_cache) return _cache;
   instalarStubs();
   const importar = (rel) => import(pathToFileURL(resolve(RAIZ, rel)).href);
-  const [regras, efeitos, store, levelup, criador, utils, dadosClasses, db, multiclasse] = await Promise.all([
+  const [regras, efeitos, store, levelup, criador, utils, dadosClasses, db, multiclasse, levelupFlow, levelupValidations] = await Promise.all([
     importar('site/js/regras-cobertura.js'),
     importar('site/js/talentos-effects.js'),
     importar('site/js/store.js'),
@@ -91,8 +91,10 @@ export async function modulosApp() {
     importar('site/js/dados-classes.js'),
     importar('site/js/db.js'),
     importar('site/js/multiclasse.js'),
+    importar('site/js/levelup-flow.js'),
+    importar('site/js/levelup-validations.js'),
   ]);
-  _cache = { regras, efeitos, store, levelup, criador, utils, dadosClasses, db, multiclasse };
+  _cache = { regras, efeitos, store, levelup, criador, utils, dadosClasses, db, multiclasse, levelupFlow, levelupValidations };
   return _cache;
 }
 

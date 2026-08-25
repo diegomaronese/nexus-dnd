@@ -168,3 +168,68 @@ test('Evolução de Nível com Multiclasse via subirDeNivel', async () => {
   assert.equal(getNivelClasse(char, 'Guerreiro'), 1, 'Guerreiro agora é nível 1');
   assert.equal(ehMulticlasse(char), true, 'Personagem é detectado como multiclasse');
 });
+
+test('Fluxo e contexto do Level Up suportam seleção e troca de multiclasse', async () => {
+  const { levelupFlow, levelupValidations } = await modulosApp();
+  const { buildLevelUpContext, buildVisibleSteps, createInitialState } = levelupFlow;
+  const { collectOpcoes, validateAll } = levelupValidations;
+
+  const char = {
+    nome: 'Valeros',
+    classe: 'Guerreiro',
+    nivel: 2,
+    pv_max: 20,
+    pv_atual: 20,
+    atributos: {
+      forca: 16,
+      destreza: 14,
+      constituicao: 14,
+      inteligencia: 10,
+      sabedoria: 10,
+      carisma: 14
+    },
+    salvaguardas_proficientes: ['Força', 'Constituição'],
+    pericias_proficientes: ['Atletismo', 'Intimidação'],
+    classes: [
+      { classe: 'Guerreiro', nivel: 2 }
+    ]
+  };
+
+  // Contexto inicial: Guerreiro Nível 3 (precisaria escolher subclasse)
+  const ctxGuerreiro = await buildLevelUpContext(char, null, {}, 'Guerreiro');
+  assert.equal(ctxGuerreiro.classeAlvo, 'Guerreiro');
+  assert.equal(ctxGuerreiro.novoNivelClasse, 3);
+  assert.equal(ctxGuerreiro.precisaSubclasse, true);
+
+  // Contexto ao mudar para Bardo (Multiclasse Nível 1)
+  const ctxBardo = await buildLevelUpContext(char, null, {}, 'Bardo');
+  assert.equal(ctxBardo.classeAlvo, 'Bardo');
+  assert.equal(ctxBardo.ehNovaClasse, true);
+  assert.equal(ctxBardo.novoNivelClasse, 1);
+  assert.equal(ctxBardo.precisaSubclasse, false, 'Bardo nível 1 não escolhe subclasse ainda');
+  assert.equal(ctxBardo.precisaPericiaMulticlasse, true, 'Bardo ganha 1 perícia por multiclasse');
+  assert.equal(ctxBardo.precisaInstrumentoMulticlasse, true, 'Bardo ganha 1 instrumento musical por multiclasse');
+
+  const state = createInitialState(ctxBardo);
+  state.classeAlvo = 'Bardo';
+
+  // Validação: falta perícia e instrumento
+  const erroValidacao1 = validateAll(ctxBardo, state);
+  assert.match(erroValidacao1, /perícia/i);
+
+  state.multiclassePericia = 'Atuação';
+  const erroValidacao2 = validateAll(ctxBardo, state);
+  assert.match(erroValidacao2, /instrumento/i);
+
+  state.multiclasseInstrumento = 'Alaúde';
+  state.truquesSelecionados = ['Zombaria Viciosa', 'Luz'];
+  state.magiasSelecionadas = ['Curar Ferimentos', 'Sussurros Dissonantes', 'Palavra de Cura', 'Queda Suave'];
+  const erroValidacao3 = validateAll(ctxBardo, state);
+  assert.equal(erroValidacao3, null, 'Com perícia, instrumento e magias preenchidos, deve passar na validação');
+
+  const opcoes = collectOpcoes(ctxBardo, state);
+  assert.equal(opcoes.classe_alvo, 'Bardo');
+  assert.equal(opcoes.multiclasse_pericia, 'Atuação');
+  assert.equal(opcoes.multiclasse_instrumento, 'Alaúde');
+});
+

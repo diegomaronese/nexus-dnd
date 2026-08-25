@@ -5,8 +5,11 @@
 import { CLASSES_INFO, ATRIBUTOS_KEYS, ATRIBUTOS_NOMES, ESCOLAS_SUBCLASSE_MAGO } from './dados-classes.js';
 import { getClasse, getMagiasClasse, getMagiasPorCirculo } from './db.js';
 import {
-  calcMod, bonusProficiencia, getBonusTruquesOrdem, getEspacosMagia, getTruquesConhecidos, getMagiaPreparadas
+  calcMod, bonusProficiencia, getBonusTruquesOrdem, getEspacosMagia, getTruquesConhecidos, getMagiaPreparadas, semAcento
 } from './utils.js';
+import {
+  getClassesArray, getCatalogoElegibilidadeMulticlasse, MULTICLASSE_PROFICIENCIAS
+} from './multiclasse.js';
 import {
   concedeAumentoAtributo, exigeDadivaEpica, exigeSubclasse,
   exigeEspecializacaoBardo, exigeEspecializacaoGuardiao, exigeEspecializacaoLadino,
@@ -25,54 +28,75 @@ import {
  * @param {Object} char - Personagem atual
  * @param {Object} classeData - Dados carregados da classe (getClasse)
  * @param {Object} helpers - Funções auxiliares do sheet.js (ehSubclasseConjuradora, getSubclasseConjuradoraConjuracao, etc.)
+ * @param {string|null} classeAlvoParam - Classe alvo para este nível (seja classe atual ou multiclasse)
  * @returns {Object} ctx - Contexto completo
  */
-export async function buildLevelUpContext(char, classeData, helpers = {}) {
+export async function buildLevelUpContext(char, classeData, helpers = {}, classeAlvoParam = null) {
+  const classesAtuais = getClassesArray(char);
+  const classeAlvo = classeAlvoParam || char.classe || (classesAtuais[0]?.classe) || 'Guerreiro';
+
+  // Carregar classeData da classe alvo se necessário
+  if (!classeData || semAcento(classeData.nome || '') !== semAcento(classeAlvo)) {
+    classeData = await getClasse(classeAlvo);
+  }
+
+  const classeExistente = classesAtuais.find(c => semAcento(c.classe) === semAcento(classeAlvo));
+  const ehNovaClasse = !classeExistente;
+  const nivelAtualClasse = classeExistente ? classeExistente.nivel : 0;
+  const novoNivelClasse = nivelAtualClasse + 1;
+  const subclasseAtual = classeExistente ? (classeExistente.subclasse || '') : '';
+
   const nivelAtual = char.nivel || 1;
   const nivelNovo = nivelAtual + 1;
-  const info = CLASSES_INFO[char.classe];
+  const info = CLASSES_INFO[classeAlvo] || CLASSES_INFO[char.classe] || { dado_vida: 8 };
   const modCon = calcMod(char.atributos.constituicao);
   const hpGanhoFixo = Math.max(1, Math.floor(info.dado_vida / 2) + 1 + modCon);
 
-  // Flags de regras
-  const precisaSubclasse = exigeSubclasse(char.classe, nivelNovo) && !char.subclasse;
-  const ganhaASI = concedeAumentoAtributo(char.classe, nivelNovo);
-  const exigeDadivaEpicaNivel = exigeDadivaEpica(char.classe, nivelNovo);
-  const precisaExpertiseBardo = exigeEspecializacaoBardo(char.classe, nivelNovo);
-  const precisaExpertiseGuardiao = exigeEspecializacaoGuardiao(char.classe, nivelNovo);
-  const precisaEstiloLuta = exigeEstiloLuta(char.classe, nivelNovo);
-  // Troca de Estilo de Luta do Guerreiro (Classes.md:3812): opcional, por
-  // isso não entra em `requirements` (que só lista pendências
-  // obrigatórias) -- só controla se o card de troca aparece na tela.
-  const podeTrocarEstiloLutaGuerreiro = exigeTrocaEstiloLutaGuerreiro(char.classe, nivelNovo);
-  // Especialização adicional do Ladino (Classes.md:4188, nível 6):
-  // também opcional -- subirDeNivel preenche sozinho se o jogador não
-  // escolher (ver levelup.js).
-  const precisaExpertiseLadino = exigeEspecializacaoLadino(char.classe, nivelNovo);
-  const precisaExploradorHabil = exigeExploradorHabil(char.classe, nivelNovo);
-  const precisaAcademico = exigeAcademico(char.classe, nivelNovo);
+  // Catálogo de elegibilidade multiclasse
+  const catalogoMulticlasse = getCatalogoElegibilidadeMulticlasse(char);
+
+  // Proficiências de multiclasse (se for primeiro nível em nova classe)
+  const proficienciasMulticlasse = ehNovaClasse ? MULTICLASSE_PROFICIENCIAS[classeAlvo] : null;
+  const precisaPericiaMulticlasse = ehNovaClasse && !!proficienciasMulticlasse?.escolha_pericia;
+  const opcoesPericiaMulticlasse = proficienciasMulticlasse?.escolha_pericia?.opcoes || null;
+  const precisaInstrumentoMulticlasse = ehNovaClasse && !!proficienciasMulticlasse?.escolha_instrumento;
+
+  // Flags de regras para a classe alvo no seu respectivo novo nível
+  const precisaSubclasse = exigeSubclasse(classeAlvo, novoNivelClasse) && !subclasseAtual;
+  const ganhaASI = concedeAumentoAtributo(classeAlvo, novoNivelClasse);
+  const exigeDadivaEpicaNivel = exigeDadivaEpica(classeAlvo, novoNivelClasse);
+  const precisaExpertiseBardo = exigeEspecializacaoBardo(classeAlvo, novoNivelClasse);
+  const precisaExpertiseGuardiao = exigeEspecializacaoGuardiao(classeAlvo, novoNivelClasse);
+  const precisaEstiloLuta = exigeEstiloLuta(classeAlvo, novoNivelClasse);
+  // Troca de Estilo de Luta do Guerreiro: opcional
+  const podeTrocarEstiloLutaGuerreiro = exigeTrocaEstiloLutaGuerreiro(classeAlvo, novoNivelClasse);
+  // Especialização adicional do Ladino (nível 6): opcional
+  const precisaExpertiseLadino = exigeEspecializacaoLadino(classeAlvo, novoNivelClasse);
+  const precisaExploradorHabil = exigeExploradorHabil(classeAlvo, novoNivelClasse);
+  const precisaAcademico = exigeAcademico(classeAlvo, novoNivelClasse);
+
   let manobrasGuerreiro = null;
-  if (char.classe === 'Guerreiro') {
+  if (classeAlvo === 'Guerreiro') {
     const opcoesDisponiveis = classeData?.subclasses
       ?.find(sc => sc.nome === 'Mestre da Batalha')?.opcoes_manobra || [];
     manobrasGuerreiro = {
       opcoesDisponiveis,
-      qtdNova: getQuantidadeNovasManobras(nivelNovo),
+      qtdNova: getQuantidadeNovasManobras(novoNivelClasse),
       manobrasConhecidasAtuais: char.manobras_conhecidas || []
     };
   }
 
-  // Características ganhas neste nível
-  const caracteristicas = await obterCaracteristicasNivel(char.classe, nivelNovo);
+  // Características ganhas neste nível na classe alvo
+  const caracteristicas = await obterCaracteristicasNivel(classeAlvo, novoNivelClasse);
   const caracteristicasEspecie = await obterCaracteristicasEspecieNivel(char.especie, nivelNovo, char.tracos_escolhidos);
-  const caracteristicasSubclasse = char.subclasse
-    ? await obterCaracteristicasSubclasseNivel(char.classe, char.subclasse, nivelNovo)
+  const caracteristicasSubclasse = subclasseAtual
+    ? await obterCaracteristicasSubclasseNivel(classeAlvo, subclasseAtual, novoNivelClasse)
     : [];
-  const magiasDominioNivel = char.subclasse
-    ? await obterMagiasDominioNivel(char.classe, char.subclasse, nivelNovo)
+  const magiasDominioNivel = subclasseAtual
+    ? await obterMagiasDominioNivel(classeAlvo, subclasseAtual, novoNivelClasse)
     : [];
-  const magiasSempreNivel = char.subclasse
-    ? await obterMagiasSemprePreparadasNivel(char.classe, char.subclasse, nivelNovo)
+  const magiasSempreNivel = subclasseAtual
+    ? await obterMagiasSemprePreparadasNivel(classeAlvo, subclasseAtual, novoNivelClasse)
     : [];
 
   // Subclasses disponíveis
@@ -82,23 +106,22 @@ export async function buildLevelUpContext(char, classeData, helpers = {}) {
       .filter(sc => !sc.nome.toLowerCase().startsWith('subclasses de'));
   }
 
-  // Conjuração
-  const ehSubConj = helpers.ehSubclasseConjuradora?.() || false;
+  // Conjuração para a classe alvo
+  const ehSubConj = (classeAlvo === char.classe && helpers.ehSubclasseConjuradora?.()) || false;
   const ehConjurador = !!(info.conjurador || ehSubConj);
   const tipoConj = info.tipo_conjuracao || (ehSubConj ? 'conhecidas' : 'preparadas');
 
   let conjuracao = null;
   if (ehConjurador) {
     const tabela = classeData?.tabela_caracteristicas;
-    let truquesAtual = tabela ? getTruquesConhecidos(tabela, nivelAtual) : 0;
-    let truquesNovo = tabela ? getTruquesConhecidos(tabela, nivelNovo) : 0;
-    let magiasAtual = tabela ? getMagiaPreparadas(tabela, nivelAtual) : 0;
-    let magiasNovo = tabela ? getMagiaPreparadas(tabela, nivelNovo) : 0;
+    let truquesAtual = tabela ? getTruquesConhecidos(tabela, nivelAtualClasse) : 0;
+    let truquesNovo = tabela ? getTruquesConhecidos(tabela, novoNivelClasse) : 0;
+    let magiasAtual = tabela ? getMagiaPreparadas(tabela, nivelAtualClasse) : 0;
+    let magiasNovo = tabela ? getMagiaPreparadas(tabela, novoNivelClasse) : 0;
 
     // Para subclasses conjuradoras, calcular limites da tabela da subclasse
     if (ehSubConj && helpers.getSubclasseConjuradoraConjuracao) {
       const subAtual = helpers.getSubclasseConjuradoraConjuracao();
-      // Simular nível novo temporariamente
       const nivelOriginal = char.nivel;
       char.nivel = nivelNovo;
       const subNovo = helpers.getSubclasseConjuradoraConjuracao();
@@ -109,27 +132,13 @@ export async function buildLevelUpContext(char, classeData, helpers = {}) {
       magiasNovo = subNovo?.preparadas || 0;
     }
 
-    // Truques extras do Clérigo Taumaturgo / Druida Xamã (utils.js, mesma
-    // função que o criador/ficha usam). NO-OP HOJE para o único valor que
-    // este bloco expõe a quem consome: os 3 leitores reais
-    // (levelup-cards.js:renderCardMagias, levelup-ui.js:setupEventListeners,
-    // levelup-validations.js:validateAll) leem só `conjuracao.truquesGanhos`
-    // (a DIFERENÇA truquesNovo-truquesAtual, algumas linhas abaixo) --
-    // ordem_divina/ordem_primal não muda dentro de uma mesma chamada de
-    // subirDeNivel (foi escolhida na criação, nível 1), então o bônus é
-    // IDÊNTICO nos dois lados e se cancela na subtração:
-    // (novo+1)-(atual+1) === novo-atual. Mantido mesmo sendo no-op, por
-    // defesa: truquesAtual/truquesNovo são expostos BRUTOS em `conjuracao`
-    // (objeto retornado logo abaixo) e nada impede um consumidor futuro de
-    // ler um dos dois direto (ex.: um card que mostrasse "Truques: X → Y"
-    // em vez de só o delta) -- sem o bônus aqui, esse consumidor hipotético
-    // exibiria o valor sem o +1. 0 para subclasses conjuradoras (não são
-    // Clérigo/Druida), então soma sem risco nos dois ramos acima.
-    truquesAtual += getBonusTruquesOrdem(char);
-    truquesNovo += getBonusTruquesOrdem(char);
+    if (classeAlvo === 'Clérigo' || classeAlvo === 'Druida') {
+      truquesAtual += getBonusTruquesOrdem(char);
+      truquesNovo += getBonusTruquesOrdem(char);
+    }
 
-    // Espaços de magia no nível novo
-    let espacosNovo = tabela ? getEspacosMagia(tabela, nivelNovo) : {};
+    // Espaços de magia no nível novo da classe
+    let espacosNovo = tabela ? getEspacosMagia(tabela, novoNivelClasse) : {};
     if (ehSubConj && Object.keys(espacosNovo).length === 0 && helpers.getSubclasseConjuradoraConjuracao) {
       const nivelOriginal = char.nivel;
       char.nivel = nivelNovo;
@@ -139,21 +148,18 @@ export async function buildLevelUpContext(char, classeData, helpers = {}) {
     }
     const maxCirculoNovo = Math.max(...Object.keys(espacosNovo).map(Number), 0);
 
-    // Ganhou um círculo de magia totalmente novo neste nível (independe de já saber a escola/subclasse)
-    const espacosAntes = nivelAtual >= 1 ? getEspacosMagia(tabela, nivelAtual) : {};
+    const espacosAntes = nivelAtualClasse >= 1 ? getEspacosMagia(tabela, nivelAtualClasse) : {};
     const ganhouNovoCirculo = Object.entries(espacosNovo).some(([c, d]) =>
       (d?.total || 0) > 0 && (espacosAntes[c]?.total || 0) === 0);
 
-    // char.subclasse só reflete a escolha feita em level-ups anteriores; para a escolha
-    // feita nesta mesma sessão de level-up (state.subclasse), use calcularSubclasseArcana(ctx, state).
-    const subclasseEfetiva = char.subclasse;
-    const escolaSubclasse = char.classe === 'Mago' &&
+    const subclasseEfetiva = subclasseAtual;
+    const escolaSubclasse = classeAlvo === 'Mago' &&
       Object.prototype.hasOwnProperty.call(ESCOLAS_SUBCLASSE_MAGO, subclasseEfetiva)
       ? ESCOLAS_SUBCLASSE_MAGO[subclasseEfetiva] : null;
     let subclasseArcana = null;
     if (escolaSubclasse) {
       let quantidade = 0;
-      if (nivelNovo === 3) {
+      if (novoNivelClasse === 3) {
         quantidade += 2;
       } else if (ganhouNovoCirculo) {
         quantidade += 1;
@@ -173,7 +179,7 @@ export async function buildLevelUpContext(char, classeData, helpers = {}) {
       magiasGanhas: magiasNovo - magiasAtual,
       maxCirculoNovo,
       espacosNovo,
-      ehMago: char.classe === 'Mago',
+      ehMago: classeAlvo === 'Mago',
       subclasseArcana,
       ganhouNovoCirculo
     };
@@ -181,6 +187,8 @@ export async function buildLevelUpContext(char, classeData, helpers = {}) {
 
   // Requirements: array de pendências obrigatórias
   const requirements = [];
+  if (precisaPericiaMulticlasse) requirements.push({ tipo: 'multiclasse_pericia', label: 'Perícia de Multiclasse' });
+  if (precisaInstrumentoMulticlasse) requirements.push({ tipo: 'multiclasse_instrumento', label: 'Instrumento Musical de Multiclasse' });
   if (precisaSubclasse) requirements.push({ tipo: 'subclasse', label: 'Escolher subclasse' });
   if (exigeDadivaEpicaNivel) requirements.push({ tipo: 'dadiva_epica', label: 'Dádiva Épica ou Outro Talento' });
   else if (ganhaASI) requirements.push({ tipo: 'asi', label: 'Distribuir 2 pontos de atributo ou Talento' });
@@ -192,7 +200,7 @@ export async function buildLevelUpContext(char, classeData, helpers = {}) {
   if (ehConjurador && conjuracao) {
     if (conjuracao.truquesGanhos > 0) requirements.push({ tipo: 'truques', label: `Selecionar ${conjuracao.truquesGanhos} truque(s)` });
     if (tipoConj === 'conhecidas' && conjuracao.magiasGanhas > 0) requirements.push({ tipo: 'magias_conhecidas', label: `Selecionar ${conjuracao.magiasGanhas} magia(s)` });
-    if (conjuracao.ehMago) requirements.push({ tipo: 'grimorio', label: 'Grimório: +2 magias' });
+    if (conjuracao.ehMago && novoNivelClasse > 1) requirements.push({ tipo: 'grimorio', label: 'Grimório: +2 magias' });
     if (conjuracao.subclasseArcana) requirements.push({
       tipo: 'subclasse_magias_arcana',
       label: `${conjuracao.subclasseArcana.escola}: +${conjuracao.subclasseArcana.quantidade} magia(s)`
@@ -207,6 +215,17 @@ export async function buildLevelUpContext(char, classeData, helpers = {}) {
     char,
     classeData,
     info,
+    classeAlvo,
+    ehNovaClasse,
+    classesAtuais,
+    nivelAtualClasse,
+    novoNivelClasse,
+    subclasseAtual,
+    catalogoMulticlasse,
+    proficienciasMulticlasse,
+    precisaPericiaMulticlasse,
+    opcoesPericiaMulticlasse,
+    precisaInstrumentoMulticlasse,
     nivelAtual,
     nivelNovo,
     modCon,
@@ -249,13 +268,14 @@ export async function buildLevelUpContext(char, classeData, helpers = {}) {
  * @returns {{ escola: string, quantidade: number, circuloMax: number } | null}
  */
 export function calcularSubclasseArcana(ctx, state) {
-  const subclasseEfetiva = state?.subclasse || ctx.char?.subclasse;
-  const escolaSubclasse = ctx.char?.classe === 'Mago' &&
+  const subclasseEfetiva = state?.subclasse || ctx.subclasseAtual || ctx.char?.subclasse;
+  const classeAlvo = ctx.classeAlvo || ctx.char?.classe;
+  const escolaSubclasse = classeAlvo === 'Mago' &&
     Object.prototype.hasOwnProperty.call(ESCOLAS_SUBCLASSE_MAGO, subclasseEfetiva)
     ? ESCOLAS_SUBCLASSE_MAGO[subclasseEfetiva] : null;
   if (!escolaSubclasse || !ctx.conjuracao) return null;
   let quantidade = 0;
-  if (ctx.nivelNovo === 3) {
+  if ((ctx.novoNivelClasse || ctx.nivelNovo) === 3) {
     quantidade += 2;
   } else if (ctx.conjuracao.ganhouNovoCirculo) {
     quantidade += 1;
@@ -276,9 +296,13 @@ const STEP_DEFINITIONS = [
     titulo: 'Ganhos do Nível',
     tipo: 'ganho',
     obrigatorio: true,
-    // Sempre visível - todo level up mostra o que se ganha
+    // Sempre visível - todo level up mostra o que se ganha e permite selecionar classe/multiclasse
     visivel: () => true,
-    completo: () => true // Informativo, sempre completo
+    completo: (ctx, state) => {
+      if (ctx.precisaPericiaMulticlasse && !state?.multiclassePericia) return false;
+      if (ctx.precisaInstrumentoMulticlasse && !state?.multiclasseInstrumento) return false;
+      return true;
+    }
   },
   {
     id: 'escolha_subclasse',
@@ -315,17 +339,6 @@ const STEP_DEFINITIONS = [
     titulo: 'Escolhas de Classe',
     tipo: 'escolha',
     obrigatorio: true,
-    // IMPORTANTE: a troca opcional de Estilo de Luta do Guerreiro
-    // (podeTrocarEstiloLutaGuerreiro) e a Especialização opcional do
-    // Ladino nível 6 (precisaExpertiseLadino) DELIBERADAMENTE não entram
-    // nesta condição de visibilidade -- essas duas nunca introduzem um
-    // step novo na tela (ver renderCardRevisao/'revisao_confirmacao'
-    // abaixo, onde os dois cards aparecem). talentos-levelup.spec.mjs
-    // (testes/e2e/regras/) hardcoda que, semeando um Guerreiro ou
-    // Paladino, o step de ASI/talento é seguido DIRETAMENTE pela Revisão
-    // ("um Próximo, um Confirmar") -- inserir aqui um step visível em
-    // TODO nível >= 2 de Guerreiro quebraria essa suposição para dezenas
-    // de testes de talento, sem relação nenhuma com Estilo de Luta.
     visivel: (ctx) => ctx.precisaExpertiseBardo || ctx.precisaExpertiseGuardiao ||
                        ctx.precisaEstiloLuta ||
                        ctx.precisaExploradorHabil || ctx.precisaAcademico,
@@ -346,25 +359,17 @@ const STEP_DEFINITIONS = [
     visivel: (ctx, state) => {
       if (!ctx.ehConjurador || !ctx.conjuracao) return false;
       const c = ctx.conjuracao;
-      // Nota: !!subclasseArcana é redundante hoje (só é truthy quando c.ehMago já é true,
-      // pois deriva de ctx.char.classe, que não muda durante o level-up), mas mantido
-      // explícito via calcularSubclasseArcana para não depender de ctx.conjuracao.subclasseArcana
-      // (congelado) e para deixar a intenção clara caso a regra mude no futuro.
       const subclasseArcana = calcularSubclasseArcana(ctx, state);
-      // Task 1: a troca de truque é universal a qualquer classe que conheça truques de
-      // classe, mesmo em níveis sem ganho de truque/magia novo - então o step também
-      // precisa ficar visível quando há pelo menos 1 truque elegível para troca (mesma
-      // lista de origens especiais usada no card de troca em levelup-cards.js).
       const origensEspeciais = ['especie', 'sempre', 'especie_legado', 'iniciado_em_magia', 'tocado_por_fadas', 'tocado_pelas_sombras', 'conjurador_ritualista'];
       const temTruqueTrocavel = (ctx.char.magias_conhecidas || []).some(m => m.circulo === 0 && !origensEspeciais.includes(m?.origem));
-      return c.truquesGanhos > 0 || (c.tipoConj === 'conhecidas' && c.magiasGanhas > 0) || c.ehMago || !!subclasseArcana || temTruqueTrocavel;
+      return c.truquesGanhos > 0 || (c.tipoConj === 'conhecidas' && c.magiasGanhas > 0) || (c.ehMago && (ctx.novoNivelClasse || ctx.nivelNovo) > 1) || !!subclasseArcana || temTruqueTrocavel;
     },
     completo: (ctx, state) => {
       const c = ctx.conjuracao;
       if (!c) return true;
       if (c.truquesGanhos > 0 && (state.truquesSelecionados || []).length !== c.truquesGanhos) return false;
       if (c.tipoConj === 'conhecidas' && c.magiasGanhas > 0 && (state.magiasSelecionadas || []).length !== c.magiasGanhas) return false;
-      if (c.ehMago && (state.grimorioSelecionados || []).length !== 2) return false;
+      if (c.ehMago && (ctx.novoNivelClasse || ctx.nivelNovo) > 1 && (state.grimorioSelecionados || []).length !== 2) return false;
       const subclasseArcana = calcularSubclasseArcana(ctx, state);
       if (subclasseArcana && (state.subclasseMagiasSelecionados || []).length !== subclasseArcana.quantidade) return false;
       return true;
@@ -375,7 +380,7 @@ const STEP_DEFINITIONS = [
     titulo: 'Manobras (Mestre da Batalha)',
     tipo: 'escolha',
     obrigatorio: true,
-    visivel: (ctx, state) => exigeManobrasGuerreiro(ctx.char.classe, state?.subclasse || ctx.char.subclasse, ctx.nivelNovo),
+    visivel: (ctx, state) => exigeManobrasGuerreiro(ctx.classeAlvo || ctx.char.classe, state?.subclasse || ctx.subclasseAtual || ctx.char.subclasse, ctx.novoNivelClasse || ctx.nivelNovo),
     completo: (ctx, state) => {
       if (!ctx.manobrasGuerreiro) return false;
       if ((state.manobrasNovasSelecionadas || []).length !== ctx.manobrasGuerreiro.qtdNova) return false;
@@ -414,9 +419,14 @@ export function buildVisibleSteps(ctx, state) {
 
 /**
  * Cria o estado inicial vazio para o fluxo de level up.
+ * @param {Object|null} ctx - Contexto opcional para pré-popular classeAlvo
  */
-export function createInitialState() {
+export function createInitialState(ctx = null) {
   return {
+    // Classe Alvo / Multiclasse
+    classeAlvo: ctx?.classeAlvo || ctx?.char?.classe || '',
+    multiclassePericia: '',
+    multiclasseInstrumento: '',
     // HP
     hpModo: 'fixo',
     hpRolado: 1,
@@ -433,6 +443,7 @@ export function createInitialState() {
     talentoTipoEscolha: '',
     resilienteAtributo: '',
     iniciadoEmMagia: null,
+    dadivaResistenciaEnergia: [],
     // Escolhas de classe
     bardoExpertise: [],
     guardiaoExpertise: [],

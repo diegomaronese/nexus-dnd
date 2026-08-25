@@ -1274,6 +1274,134 @@ tr:hover td { background: rgba(200, 160, 81, 0.05); }
   }
 }
 
+/* --- Barra de Atalhos Rápidos da Ficha --- */
+.char-atalhos-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.char-atalhos-bar::-webkit-scrollbar {
+  height: 4px;
+}
+.char-atalhos-bar::-webkit-scrollbar-thumb {
+  background: var(--border-gold);
+  border-radius: 4px;
+}
+
+.char-atalhos-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--secondary);
+  white-space: nowrap;
+  padding-right: 8px;
+  border-right: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.char-atalhos-lista {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  min-width: max-content;
+}
+
+.char-atalho-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+  user-select: none;
+  font-family: inherit;
+}
+
+.char-atalho-chip:hover {
+  background: rgba(200, 160, 81, 0.12);
+  border-color: var(--border-gold);
+  color: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.char-atalho-chip:active {
+  transform: translateY(0);
+  background: rgba(200, 160, 81, 0.22);
+}
+
+.char-atalho-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.char-atalho-text {
+  line-height: 1.2;
+}
+
+#secao-combate,
+#secao-atributos,
+#secao-salvaguardas,
+#secao-pericias,
+#secao-talentos,
+#secao-caracteristicas,
+#secao-magias,
+#secao-inventario,
+#secao-detalhes {
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.secao-destaque-scroll {
+  outline: 2px solid var(--gold) !important;
+  box-shadow: 0 0 20px rgba(200, 160, 81, 0.4), var(--shadow) !important;
+  transition: outline 0.25s ease, box-shadow 0.25s ease;
+}
+
+@media (min-width: 992px) {
+  .char-atalhos-lista {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 680px) {
+  .char-atalhos-bar {
+    padding: 6px 10px;
+    gap: 8px;
+  }
+  .char-atalhos-label {
+    font-size: 0.7rem;
+    padding-right: 6px;
+  }
+  .char-atalho-chip {
+    padding: 4px 10px;
+    font-size: 0.78rem;
+  }
+}
+
 /* --- Vazia state --- */
 .empty-state {
   text-align: center; padding: 40px 20px;

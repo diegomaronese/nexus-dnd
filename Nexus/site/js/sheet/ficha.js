@@ -54,6 +54,96 @@ function restaurarEstadoDetails(estado) {
   });
 }
 
+/** Renderiza a barra de atalhos rápidos das seções da ficha */
+export function renderBarraAtalhos(info) {
+  const temMagias = !!(info.conjurador || ehSubclasseConjuradora() || getTruquesExtraEstiloLuta() > 0 || char.iniciado_em_magia?.lista || (char.iniciado_em_magia_instancias?.length > 0) || (char.magias_customizadas?.length > 0));
+  const temTalentos = (char.talentos && char.talentos.length > 0) || !!passivosTalentosCache?.flags?.sortudo;
+  const temCaracteristicas = !!(classeData?.caracteristicas?.length || char.subclasse || char.especie);
+
+  return `
+    <nav class="char-atalhos-bar no-print" id="char-nav-atalhos" aria-label="Atalhos rápidos para as seções da ficha">
+      <div class="char-atalhos-label" title="Navegação rápida">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+        <span>Atalhos</span>
+      </div>
+      <div class="char-atalhos-lista">
+        <button type="button" class="char-atalho-chip" data-atalho-alvo="secao-combate" title="Ir para Combate e Pontos de Vida">
+          <span class="char-atalho-icon">⚔️</span>
+          <span class="char-atalho-text">Combate</span>
+        </button>
+        <button type="button" class="char-atalho-chip" data-atalho-alvo="secao-atributos" title="Ir para Atributos">
+          <span class="char-atalho-icon">📊</span>
+          <span class="char-atalho-text">Atributos</span>
+        </button>
+        <button type="button" class="char-atalho-chip" data-atalho-alvo="secao-salvaguardas" title="Ir para Salvaguardas">
+          <span class="char-atalho-icon">🛡️</span>
+          <span class="char-atalho-text">Salvaguardas</span>
+        </button>
+        <button type="button" class="char-atalho-chip" data-atalho-alvo="secao-pericias" title="Ir para Perícias">
+          <span class="char-atalho-icon">🎯</span>
+          <span class="char-atalho-text">Perícias</span>
+        </button>
+        ${temTalentos ? `
+          <button type="button" class="char-atalho-chip" data-atalho-alvo="secao-talentos" title="Ir para Talentos">
+            <span class="char-atalho-icon">✨</span>
+            <span class="char-atalho-text">Talentos</span>
+          </button>
+        ` : ''}
+        ${temCaracteristicas ? `
+          <button type="button" class="char-atalho-chip" data-atalho-alvo="secao-caracteristicas" title="Ir para Características de Classe, Subclasse e Espécie">
+            <span class="char-atalho-icon">📜</span>
+            <span class="char-atalho-text">Características</span>
+          </button>
+        ` : ''}
+        ${temMagias ? `
+          <button type="button" class="char-atalho-chip" data-atalho-alvo="secao-magias" title="Ir para Magias e Grimório">
+            <span class="char-atalho-icon">🔮</span>
+            <span class="char-atalho-text">Magias</span>
+          </button>
+        ` : ''}
+        <button type="button" class="char-atalho-chip" data-atalho-alvo="secao-inventario" title="Ir para Inventário e Equipamento">
+          <span class="char-atalho-icon">🎒</span>
+          <span class="char-atalho-text">Inventário</span>
+        </button>
+        <button type="button" class="char-atalho-chip" data-atalho-alvo="secao-detalhes" title="Ir para Detalhes e Notas">
+          <span class="char-atalho-icon">📝</span>
+          <span class="char-atalho-text">Detalhes</span>
+        </button>
+      </div>
+    </nav>
+  `;
+}
+
+/** Configura eventos de clique para navegação suave nos atalhos */
+export function setupEventosAtalhosSheet() {
+  const container = containerRef || document;
+  const atalhos = container.querySelectorAll('.char-atalho-chip[data-atalho-alvo]');
+  atalhos.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const alvoId = btn.getAttribute('data-atalho-alvo');
+      const el = document.getElementById(alvoId);
+      if (!el) return;
+
+      const headerEl = document.getElementById('app-header');
+      const headerH = headerEl ? headerEl.offsetHeight : 60;
+      const rect = el.getBoundingClientRect();
+      const top = window.pageYOffset + rect.top - headerH - 12;
+
+      window.scrollTo({
+        top: Math.max(0, top),
+        behavior: 'smooth'
+      });
+
+      // Efeito de destaque visual
+      el.classList.add('secao-destaque-scroll');
+      setTimeout(() => {
+        el.classList.remove('secao-destaque-scroll');
+      }, 1400);
+    });
+  });
+}
+
 export function renderFichaCompleta() {
   sincronizarCamposVinculadosNivel(char, classeData);
   const estadoDetails = salvarEstadoDetails();
@@ -187,6 +277,8 @@ export function renderFichaCompleta() {
       </div>
     </div>
 
+    ${renderBarraAtalhos(info)}
+
     ${precisaRecuperarDadivaEpica() ? `
       <div class="info-box warning no-print" style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
         <div style="font-size:0.85rem">
@@ -197,7 +289,7 @@ export function renderFichaCompleta() {
     ` : ''}
 
     <!-- Stats combate -->
-    <div class="card">
+    <div class="card" id="secao-combate">
       ${estadoFuria ? `
         <div class="info-box ${estadoFuria.ativa ? 'danger' : 'info'}" style="margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
           <div style="font-size:0.85rem">
@@ -706,7 +798,7 @@ export function renderFichaCompleta() {
     </div>
 
     <!-- Atributos -->
-    <div class="card">
+    <div class="card" id="secao-atributos">
       <div class="card-header"><h2>Atributos</h2></div>
       <div class="atributos-grid">
         ${ATRIBUTOS_KEYS.map(key => {
@@ -728,7 +820,7 @@ export function renderFichaCompleta() {
     </div>
 
     <!-- Salvaguardas -->
-    <div class="card">
+    <div class="card" id="secao-salvaguardas">
       <div class="card-header"><h2>Salvaguardas</h2></div>
       ${char.especie === 'Pequenino' ? '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px"><span class="badge" style="font-size:0.7rem;padding:3px 8px;background:var(--success);color:#fff" title="Ao tirar 1 natural em qualquer d20, re-jogue e use o novo resultado.">Sorte: Re-roll nat 1</span></div>' : ''}
       ${(() => {
@@ -824,7 +916,7 @@ export function renderFichaCompleta() {
     ${renderSecaoSentidos()}
 
     <!-- Pericias em ordem customizada -->
-    <div class="card">
+    <div class="card" id="secao-pericias">
       <div class="card-header"><h2>Perícias</h2></div>
       <div class="pericias-lista-custom">
         ${(() => {
@@ -917,6 +1009,7 @@ export function renderFichaCompleta() {
   `;
 
   // --- Eventos ---
+  setupEventosAtalhosSheet();
   setupEventosHP();
   setupEventosDescanso();
   setupEventosEdicao();

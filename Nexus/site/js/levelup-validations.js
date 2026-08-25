@@ -7,7 +7,7 @@ import { validarEscolhasTalento } from './regras-cobertura.js';
 import { calcularSubclasseArcana } from './levelup-flow.js';
 
 function precisaManobrasAgora(ctx, state) {
-  return exigeManobrasGuerreiro(ctx.char.classe, state.subclasse || ctx.char.subclasse, ctx.nivelNovo);
+  return exigeManobrasGuerreiro(ctx.classeAlvo || ctx.char.classe, state.subclasse || ctx.subclasseAtual || ctx.char.subclasse, ctx.novoNivelClasse || ctx.nivelNovo);
 }
 
 /**
@@ -18,6 +18,17 @@ function precisaManobrasAgora(ctx, state) {
  */
 export function collectOpcoes(ctx, state) {
   const opcoes = { ignorar_xp: true };
+
+  // Classe Alvo (Evolução ou Multiclasse)
+  if (state.classeAlvo || ctx.classeAlvo) {
+    opcoes.classe_alvo = state.classeAlvo || ctx.classeAlvo;
+  }
+  if (ctx.precisaPericiaMulticlasse && state.multiclassePericia) {
+    opcoes.multiclasse_pericia = state.multiclassePericia;
+  }
+  if (ctx.precisaInstrumentoMulticlasse && state.multiclasseInstrumento) {
+    opcoes.multiclasse_instrumento = state.multiclasseInstrumento;
+  }
 
   // HP
   opcoes.hp_modo = state.hpModo;
@@ -99,6 +110,13 @@ export function collectOpcoes(ctx, state) {
  */
 export function validateAll(ctx, state) {
   const precisaManobrasLive = precisaManobrasAgora(ctx, state);
+
+  if (ctx.precisaPericiaMulticlasse && !state.multiclassePericia) {
+    return 'Selecione 1 perícia de multiclasse.';
+  }
+  if (ctx.precisaInstrumentoMulticlasse && !state.multiclasseInstrumento) {
+    return 'Selecione 1 instrumento musical de multiclasse.';
+  }
 
   if (ctx.precisaSubclasse && !state.subclasse) return 'Escolha uma subclasse.';
 
@@ -189,7 +207,7 @@ export function validateAll(ctx, state) {
       return `Selecione ${c.truquesGanhos} truque(s).`;
     if (c.tipoConj === 'conhecidas' && c.magiasGanhas > 0 && state.magiasSelecionadas.length !== c.magiasGanhas)
       return `Selecione ${c.magiasGanhas} magia(s) conhecida(s).`;
-    if (c.ehMago) {
+    if (c.ehMago && (ctx.novoNivelClasse || ctx.nivelNovo) > 1) {
       const selecionadas = state.grimorioSelecionados || [];
       const nomesNoGrimorio = new Set((ctx.char.grimorio || []).map(m => m?.nome));
       const magiasPorNome = new Map((ctx._listaMagiasClasse || []).map(m => [m.nome, m]));

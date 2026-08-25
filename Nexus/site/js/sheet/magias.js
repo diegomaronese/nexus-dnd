@@ -465,7 +465,7 @@ export function renderSecaoMagias() {
   }
 
   return `
-    <div class="card print-break-before">
+    <div class="card print-break-before" id="secao-magias">
       <div class="card-header">
         <h2>Magias</h2>
         <div class="no-print" style="display:flex;gap:4px">

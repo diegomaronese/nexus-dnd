@@ -7,6 +7,7 @@ import { getMagiasClasse, getMagiasPorCirculo } from './db.js';
 import { calcMod, bonusProficiencia, mdParaHtml, semAcento, toast, abrirModal } from './utils.js';
 import { obterTalentosElegiveis } from './levelup.js';
 import { calcularSubclasseArcana } from './levelup-flow.js';
+import { PERICIAS_TODAS as _PERICIAS_NOMES, INSTRUMENTOS_MUSICAIS as _INSTRUMENTOS } from './regras-cobertura.js';
 
 // ============================================================
 // CARD: Ganhos do Nível
@@ -16,6 +17,98 @@ export function renderCardGanhosNivel(ctx, state) {
           caracteristicasSubclasse, magiasDominioNivel, bonusNovo, bonusMudou, char } = ctx;
 
   let html = '';
+
+  // Card de Seleção de Classe / Multiclasse
+  const classesAtuais = ctx.classesAtuais || [{ classe: char.classe, nivel: char.nivel || 1 }];
+  const catalogo = ctx.catalogoMulticlasse || [];
+  const classeAlvo = ctx.classeAlvo || char.classe;
+  const ehNovaClasse = ctx.ehNovaClasse;
+
+  html += `
+    <div class="levelup-card">
+      <div class="levelup-card-header" style="display:flex;justify-content:space-between;align-items:center">
+        <span>Classe de Evolução</span>
+        <span class="badge ${ehNovaClasse ? 'badge-accent' : 'badge-primary'}">
+          ${ehNovaClasse ? 'Nova Multiclasse' : `${classeAlvo} (Nível ${ctx.novoNivelClasse})`}
+        </span>
+      </div>
+      <div class="levelup-card-body">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div>
+            <label for="levelup-classe-alvo" style="display:block;font-weight:600;font-size:0.875rem;margin-bottom:4px">
+              Selecione a classe para evoluir neste nível:
+            </label>
+            <select class="form-input" id="levelup-classe-alvo" style="font-size:0.95rem;font-weight:600;width:100%">
+              <optgroup label="Classes Atuais">
+                ${classesAtuais.map(c => `
+                  <option value="${c.classe}" ${c.classe === classeAlvo ? 'selected' : ''}>
+                    ${c.classe} (Nível atual: ${c.nivel} ➔ Novo nível: ${c.nivel + 1})
+                  </option>
+                `).join('')}
+              </optgroup>
+              <optgroup label="Multiclasse (Nova Classe)">
+                ${catalogo.filter(c => !c.jaPossui).map(c => `
+                  <option value="${c.classe}" ${c.classe === classeAlvo ? 'selected' : ''} ${!c.elegivel ? 'disabled' : ''}>
+                    ${c.elegivel ? '➕ ' : '🔒 '}${c.classe} (Nível 1)${c.elegivel ? ' — Requisitos atendidos' : ` — ${c.motivo}`}
+                  </option>
+                `).join('')}
+              </optgroup>
+            </select>
+          </div>
+
+          <div style="font-size:0.82rem;color:var(--text-muted)">
+            ${ehNovaClasse
+              ? `Adquirindo o 1º nível de <strong>${classeAlvo}</strong>. O nível total do personagem passará a ser <strong>${nivelNovo}</strong>.`
+              : `Avançando <strong>${classeAlvo}</strong> para o Nível <strong>${ctx.novoNivelClasse}</strong>. Nível total do personagem: <strong>${nivelNovo}</strong>.`}
+          </div>
+
+          ${ehNovaClasse ? `
+            <div style="padding:10px 12px;background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:var(--radius-sm);margin-top:2px">
+              <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;color:var(--accent)">
+                Proficiências Ganhas por Multiclasse (${classeAlvo}):
+              </div>
+              <div style="font-size:0.85rem;display:flex;flex-direction:column;gap:4px">
+                ${ctx.proficienciasMulticlasse?.armaduras?.length ? `<div><strong>Armaduras:</strong> ${ctx.proficienciasMulticlasse.armaduras.join(', ')}</div>` : ''}
+                ${ctx.proficienciasMulticlasse?.armas?.length ? `<div><strong>Armas:</strong> ${ctx.proficienciasMulticlasse.armas.join(', ')}</div>` : ''}
+                ${ctx.proficienciasMulticlasse?.ferramentas?.length ? `<div><strong>Ferramentas:</strong> ${ctx.proficienciasMulticlasse.ferramentas.join(', ')}</div>` : ''}
+                ${!ctx.proficienciasMulticlasse?.armaduras?.length && !ctx.proficienciasMulticlasse?.armas?.length && !ctx.proficienciasMulticlasse?.ferramentas?.length && !ctx.precisaPericiaMulticlasse && !ctx.precisaInstrumentoMulticlasse ? `<div style="color:var(--text-muted)">Nenhuma proficiência adicional em armaduras/armas.</div>` : ''}
+              </div>
+
+              ${ctx.precisaPericiaMulticlasse ? `
+                <div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border-light)">
+                  <label for="levelup-multiclasse-pericia" style="display:block;font-weight:600;font-size:0.85rem;margin-bottom:4px">
+                    Escolha 1 Perícia de Multiclasse: <span style="color:var(--danger)">*</span>
+                  </label>
+                  <select class="form-input" id="levelup-multiclasse-pericia">
+                    <option value="">Selecione uma perícia...</option>
+                    ${(ctx.opcoesPericiaMulticlasse || _PERICIAS_NOMES).map(p => {
+                      const jaTem = (char.pericias_proficientes || []).includes(p);
+                      return `<option value="${p}" ${state.multiclassePericia === p ? 'selected' : ''} ${jaTem ? 'disabled' : ''}>${p}${jaTem ? ' (já possui)' : ''}</option>`;
+                    }).join('')}
+                  </select>
+                </div>
+              ` : ''}
+
+              ${ctx.precisaInstrumentoMulticlasse ? `
+                <div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border-light)">
+                  <label for="levelup-multiclasse-instrumento" style="display:block;font-weight:600;font-size:0.85rem;margin-bottom:4px">
+                    Escolha 1 Instrumento Musical: <span style="color:var(--danger)">*</span>
+                  </label>
+                  <select class="form-input" id="levelup-multiclasse-instrumento">
+                    <option value="">Selecione um instrumento...</option>
+                    ${_INSTRUMENTOS.map(inst => {
+                      const jaTem = (char.proficiencias_instrumentos || []).includes(inst);
+                      return `<option value="${inst}" ${state.multiclasseInstrumento === inst ? 'selected' : ''} ${jaTem ? 'disabled' : ''}>${inst}${jaTem ? ' (já possui)' : ''}</option>`;
+                    }).join('')}
+                  </select>
+                </div>
+              ` : ''}
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    </div>
+  `;
 
   // Card de PV
   html += `
@@ -726,6 +819,9 @@ export function renderCardRevisao(ctx, state, steps) {
       <div class="levelup-card-header">Resumo da Subida para Nível ${nivelNovo}</div>
       <div class="levelup-card-body">
         <ul class="levelup-list">
+          <li><strong>Classe:</strong> ${ctx.classeAlvo || char.classe} (Nível ${ctx.novoNivelClasse}) ${ctx.ehNovaClasse ? '<span class="badge badge-sm badge-accent">Nova Multiclasse</span>' : ''}</li>
+          ${ctx.precisaPericiaMulticlasse && state.multiclassePericia ? `<li><strong>Perícia de Multiclasse:</strong> ${state.multiclassePericia}</li>` : ''}
+          ${ctx.precisaInstrumentoMulticlasse && state.multiclasseInstrumento ? `<li><strong>Instrumento de Multiclasse:</strong> ${state.multiclasseInstrumento}</li>` : ''}
           <li><strong>HP:</strong> +${hpGanho} PV (${state.hpModo === 'rolado' ? `rolagem ${state.hpRolado}` : 'fixo'})</li>
   `;
 

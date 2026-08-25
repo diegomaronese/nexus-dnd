@@ -40,7 +40,7 @@ export function renderSecaoCaracteristicas() {
   const iconeClasse = getIconeClasse(char.classe);
 
   return `
-    <div class="card print-break-before">
+    <div class="card print-break-before" id="secao-caracteristicas">
       <div class="card-header" style="display:flex;align-items:center;gap:8px">
         ${iconeClasse ? `<img src="${iconeClasse}" class="classe-icon-inline" alt="">` : ''}
         <h2>Características de Classe${char.classe ? ` (${escHtml(char.classe)})` : ''}</h2>
