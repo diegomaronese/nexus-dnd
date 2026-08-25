@@ -1,7 +1,7 @@
 // ============================================================
 // Utilitários de cálculo D&D 5.5 e helpers gerais
 // ============================================================
-import { ATRIBUTOS_KEYS, ATRIBUTO_NOME_PARA_KEY, PERICIAS, CLASSES_INFO } from './dados-classes.js';
+import { ATRIBUTOS_KEYS, ATRIBUTOS_NOMES, ATRIBUTO_NOME_PARA_KEY, PERICIAS, CLASSES_INFO } from './dados-classes.js';
 
 // --- Cálculos D&D ---
 
@@ -238,6 +238,57 @@ export function calcCA(personagem, passivos = null) {
   ca += passivos?.bonusCA || 0;
 
   return ca;
+}
+
+/** Verifica se o personagem é proficiente na salvaguarda de um atributo */
+export function isSalvaguardaProficiente(personagem, atributoChaveOuNome) {
+  if (!personagem) return false;
+  const key = ATRIBUTOS_KEYS.includes(atributoChaveOuNome)
+    ? atributoChaveOuNome
+    : ATRIBUTO_NOME_PARA_KEY[atributoChaveOuNome] || 'forca';
+  const nome = ATRIBUTOS_NOMES[key] || atributoChaveOuNome;
+
+  if ((personagem.salvaguardas_proficientes || []).includes(nome)) return true;
+  // Monge Nível 14+: Sobrevivente (proficiência em todas as salvaguardas)
+  if (personagem.classe === 'Monge' && (personagem.nivel || 1) >= 14) return true;
+  // Ladino Nível 15+: Mente Escorregadia (proficiência em Sabedoria e Carisma)
+  if (personagem.classe === 'Ladino' && (personagem.nivel || 1) >= 15 && (nome === 'Sabedoria' || nome === 'Carisma')) return true;
+
+  return false;
+}
+
+/** Calcula bônus de uma salvaguarda */
+export function calcBonusSalvaguarda(personagem, atributoChaveOuNome, opcoes = {}) {
+  if (!personagem || !personagem.atributos) return 0;
+  const key = ATRIBUTOS_KEYS.includes(atributoChaveOuNome)
+    ? atributoChaveOuNome
+    : ATRIBUTO_NOME_PARA_KEY[atributoChaveOuNome] || 'forca';
+  const nome = ATRIBUTOS_NOMES[key] || atributoChaveOuNome;
+  const mod = calcMod(personagem.atributos[key]);
+  const prof = bonusProficiencia(personagem.nivel || 1);
+
+  const proficiente = isSalvaguardaProficiente(personagem, key);
+  let bonus = mod + (proficiente ? prof : 0);
+
+  // Paladino Nível 6+: Aura de Proteção (+mod CAR, mín +1, desde que não esteja Incapacitado)
+  const condicoes = personagem.condicoes || [];
+  const incapacitado = condicoes.includes('Incapacitado');
+  if (personagem.classe === 'Paladino' && (personagem.nivel || 1) >= 6 && !incapacitado) {
+    const modCar = Math.max(1, calcMod(personagem.atributos.carisma));
+    bonus += modCar;
+  }
+
+  // Efeitos mágicos com bônus fixo de salvaguarda (se houver)
+  const efMag = personagem.efeitos_magicos || [];
+  for (const ef of efMag) {
+    if (ef.tipo === 'bonus_salvaguarda' && typeof ef.bonus === 'number') {
+      if (!ef.atributo || ef.atributo === nome || ef.atributo === key) {
+        bonus += ef.bonus;
+      }
+    }
+  }
+
+  return bonus;
 }
 
 /** Calcula CD de magia */

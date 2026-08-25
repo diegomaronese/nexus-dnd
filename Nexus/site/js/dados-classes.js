@@ -3,18 +3,6 @@
 // Informações hard-coded para cálculos e automação
 // ============================================================
 export const CLASSES_INFO = {
-  "Artífice": {
-    dado_vida: 8,
-    atributo_primario: "Inteligência",
-    salvaguardas: ["Constituição", "Inteligência"],
-    armaduras: ["Leve", "Média", "Escudo"],
-    armas: ["Simples"],
-    pericias_opcoes: ["Arcanismo", "História", "Investigação", "Medicina", "Natureza", "Percepção", "Prestidigitação"],
-    num_pericias: 2,
-    conjurador: true,
-    atributo_conjuracao: "Inteligência",
-    tipo_conjuracao: "preparadas"
-  },
   "Bárbaro": {
     dado_vida: 12,
     atributo_primario: "Força",

@@ -97,7 +97,7 @@ export function abrirModalEdicaoFicha(secaoInicial = 'identidade') {
     return `<div class="atributo-box" data-key="${key}">
       <div class="atributo-nome">${ATRIBUTOS_NOMES[key]}${seloEdicao(`atributos.${key}`)}</div>
       ${conteudo}
-      <div style="font-size:0.65rem;color:var(--text-muted)">base: ${base}</div>
+      <div style="font-size:0.65rem;color:var(--text-muted)">base: <span class="atributo-base-val">${base}</span></div>
       ${bonus ? `<div style="font-size:0.7rem;color:var(--success)">+${bonus} antecedente</div>` : ''}
       <div class="atributo-mod">${fmtMod(calcMod(total))}</div>
       <div class="atributo-total">${total}</div>
@@ -201,7 +201,7 @@ export function abrirModalEdicaoFicha(secaoInicial = 'identidade') {
         </select>`)).join('');
       };
       let controles = ATRIBUTOS_KEYS.map(key => caixaAtributo(key, `<input type="number" class="form-input" style="text-align:center;font-size:1rem;padding:6px;font-weight:700" min="3" max="18" data-edicao-atributo="${key}" value="${propostaAtributos[key]}">`)).join('');
-      let ajudaMetodo = 'Informe os valores originais para redistribuí-los.';
+      let ajudaMetodo = 'Edite livremente os valores base dos atributos (mínimo: 3 | máximo: 18).';
       if (metodo === 'standard') {
         controles = selecaoPorValores(STANDARD_ARRAY);
         ajudaMetodo = 'Atribua cada valor do Conjunto Padrão uma vez: 15, 14, 13, 12, 10 e 8.';
@@ -225,8 +225,8 @@ export function abrirModalEdicaoFicha(secaoInicial = 'identidade') {
         controles = selecaoPorValores(rolados);
         ajudaMetodo = `Resultados da rolagem preservados: ${rolados.join(', ')}. Redistribua-os entre os atributos; não é possível rolar novamente.`;
       } else if (metodo === 'manual') {
-        controles = selecaoPorValores(Object.values(cfg.valoresBase || propostaAtributos));
-        ajudaMetodo = 'Redistribua somente os seis valores informados na criação.';
+        controles = ATRIBUTOS_KEYS.map(key => caixaAtributo(key, `<input type="number" class="form-input" style="text-align:center;font-size:1rem;padding:6px;font-weight:700" min="3" max="18" data-edicao-atributo="${key}" value="${propostaAtributos[key]}">`)).join('');
+        ajudaMetodo = 'Edite livremente os valores base dos atributos (mínimo: 3 | máximo: 18).';
       }
       return navegacao + `
         <div class="info-box info" style="font-size:0.8rem;margin-bottom:10px">${ajudaMetodo} Ganhos de nível permanecem preservados ao reverter.</div>
@@ -275,21 +275,72 @@ export function abrirModalEdicaoFicha(secaoInicial = 'identidade') {
       if (corpo) { corpo.innerHTML = render(); vincular(); }
     }));
 
-    // Atributos
-    document.querySelectorAll('[data-edicao-atributo]').forEach(input => input.addEventListener('change', () => {
+    // Método de atributos (se ainda não definido na criação)
+    document.getElementById('edicao-metodo-atributos')?.addEventListener('change', (e) => {
       atributosForamModificados = true;
-      const metodo = char.configuracao_criacao?.atributos?.metodo || '';
-      if (metodo === 'standard' || metodo === 'rolagem' || metodo === 'manual') {
-        const valores = metodo === 'standard'
-          ? STANDARD_ARRAY
-          : Object.values(char.configuracao_criacao?.atributos?.rolagens || char.configuracao_criacao?.atributos?.valoresBase || propostaAtributos);
-        propostaAtributos[input.dataset.edicaoAtributo] = valores[parseInt(input.value)];
-        const corpo = document.getElementById('edicao-ficha-corpo');
-        if (corpo) { corpo.innerHTML = render(); vincular(); }
-      } else {
-        propostaAtributos[input.dataset.edicaoAtributo] = parseInt(input.value);
+      const novoMetodo = e.target.value;
+      if (!char.configuracao_criacao) char.configuracao_criacao = {};
+      if (!char.configuracao_criacao.atributos) char.configuracao_criacao.atributos = {};
+      char.configuracao_criacao.atributos.metodo = novoMetodo;
+      if (!char.configuracao_criacao.atributos.valoresBase) {
+        char.configuracao_criacao.atributos.valoresBase = { ...char.atributos_base };
       }
-    }));
+      const corpo = document.getElementById('edicao-ficha-corpo');
+      if (corpo) { corpo.innerHTML = render(); vincular(); }
+    });
+
+    // Atributos
+    document.querySelectorAll('[data-edicao-atributo]').forEach(input => {
+      const atualizarVisualBox = (key, val) => {
+        const box = input.closest('.atributo-box');
+        if (box) {
+          const bonus = bonusAtributo(key);
+          const total = val + bonus;
+          const modEl = box.querySelector('.atributo-mod');
+          const totalEl = box.querySelector('.atributo-total');
+          const baseEl = box.querySelector('.atributo-base-val');
+          if (modEl) modEl.textContent = fmtMod(calcMod(total));
+          if (totalEl) totalEl.textContent = total;
+          if (baseEl) baseEl.textContent = val;
+        }
+      };
+
+      input.addEventListener('input', () => {
+        if (input.tagName === 'INPUT') {
+          const key = input.dataset.edicaoAtributo;
+          const val = parseInt(input.value);
+          if (!isNaN(val)) {
+            atributosForamModificados = true;
+            propostaAtributos[key] = val;
+            atualizarVisualBox(key, val);
+          }
+        }
+      });
+
+      input.addEventListener('change', () => {
+        atributosForamModificados = true;
+        const metodo = char.configuracao_criacao?.atributos?.metodo || document.getElementById('edicao-metodo-atributos')?.value || '';
+        if (metodo === 'standard' || metodo === 'rolagem') {
+          const valores = metodo === 'standard'
+            ? STANDARD_ARRAY
+            : Object.values(char.configuracao_criacao?.atributos?.rolagens || char.configuracao_criacao?.atributos?.valoresBase || propostaAtributos);
+          const idx = parseInt(input.value);
+          if (!isNaN(idx) && valores[idx] !== undefined) {
+            propostaAtributos[input.dataset.edicaoAtributo] = valores[idx];
+            const corpo = document.getElementById('edicao-ficha-corpo');
+            if (corpo) { corpo.innerHTML = render(); vincular(); }
+          }
+        } else {
+          let val = parseInt(input.value);
+          if (isNaN(val)) val = 10;
+          if (val < 3) val = 3;
+          if (val > 18) val = 18;
+          input.value = val;
+          propostaAtributos[input.dataset.edicaoAtributo] = val;
+          atualizarVisualBox(input.dataset.edicaoAtributo, val);
+        }
+      });
+    });
 
     document.querySelectorAll('[data-edicao-pointbuy]').forEach(btn => btn.addEventListener('click', () => {
       atributosForamModificados = true;
@@ -542,4 +593,4 @@ async function abrirModalLevelUp() {
     console.error('Falha ao abrir fluxo de level up V2:', err);
     toast('Não foi possível abrir o fluxo de level up. Tente novamente.', 'error');
   }
-}
+}

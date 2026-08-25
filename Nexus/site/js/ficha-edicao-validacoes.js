@@ -10,7 +10,9 @@ export function validarAtributosEditados(personagem, baseProposta, regras) {
     if (custo !== regras.POINT_BUY_TOTAL) return { ok: false, erro: 'A Compra de Pontos deve usar exatamente 27 pontos.' };
   }
   if (cfg.metodo === 'rolagem' && assinatura(valores) !== assinatura(Object.values(cfg.rolagens || {}))) return { ok: false, erro: 'Use apenas os resultados da rolagem original.' };
-  if (cfg.metodo === 'manual' && assinatura(valores) !== assinatura(Object.values(cfg.valoresBase))) return { ok: false, erro: 'Redistribua somente os valores originais.' };
+  if (cfg.metodo === 'manual') {
+    if (valores.some(v => v < 3 || v > 18)) return { ok: false, erro: 'Os valores base dos atributos devem estar entre 3 e 18.' };
+  }
   if (Object.entries(baseProposta).some(([chave, valor]) => valor + (personagem.bonus_antecedente?.[chave] || 0) > 20)) return { ok: false, erro: 'Nenhum atributo pode ultrapassar 20.' };
   return { ok: true };
 }

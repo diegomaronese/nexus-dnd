@@ -3,9 +3,14 @@
 // ============================================================
 import { CLASSES_INFO, ESCOLAS_SUBCLASSE_MAGO } from './dados-classes.js';
 import { getClasse, getEspecies, getIndiceMagias, getTalentos } from './db.js';
-import { calcMod, bonusProficiencia, getEspacosMagia, getTruquesConhecidos, getMagiaPreparadas, sincronizarCamposVinculadosNivel } from './utils.js';
+import { calcMod, bonusProficiencia, getEspacosMagia, getTruquesConhecidos, getMagiaPreparadas, sincronizarCamposVinculadosNivel, semAcento } from './utils.js';
 import { aplicarDeltaSistema } from './ficha-edicoes.js';
 import { aplicarEfeitoTalento, validarEscolhasTalento } from './regras-cobertura.js';
+import {
+  getClassesArray, hasClasse, getNivelClasse, getSubclasseClasse,
+  ehMulticlasse, verificarPrerequisitosMulticlasse, aplicarProficienciasMulticlasse,
+  calcularEspacosMagiaMulticlasse, calcularNivelConjuradorMulticlasse, TABELA_ESPACOS_PACTO_BRUXO
+} from './multiclasse.js';
 
 const _ATRIBUTOS_ASI_TALENTO = {
   'Força': 'forca', 'Destreza': 'destreza', 'Constituição': 'constituicao',
@@ -920,45 +925,77 @@ export async function subirDeNivel(personagem, opcoes = {}) {
       erro: `XP insuficiente. Necessário: ${xpNecessario}, Atual: ${xpAtual}`
     };
   }
-  
-  // Carregar dados da classe
-  const classeData = await getClasse(personagem.classe);
+
+  // Identificar classe alvo (classe atual ou nova multiclasse)
+  const classeAlvo = opcoes.classe_alvo || opcoes.classe || personagem.classe;
+  if (!classeAlvo) {
+    return { sucesso: false, erro: 'Classe de evolução não especificada' };
+  }
+
+  // Normalizar array de classes no personagem
+  if (!Array.isArray(personagem.classes) || personagem.classes.length === 0) {
+    personagem.classes = [{
+      classe: personagem.classe,
+      nivel: nivelAnterior,
+      subclasse: personagem.subclasse || ''
+    }];
+  }
+
+  const classeExistente = personagem.classes.find(c => semAcento(c.classe) === semAcento(classeAlvo));
+  const ehNovaClasse = !classeExistente;
+  const nivelAtualClasse = classeExistente ? classeExistente.nivel : 0;
+  const novoNivelClasse = nivelAtualClasse + 1;
+  const subclasseAtual = classeExistente ? (classeExistente.subclasse || '') : '';
+
+  // Validar pré-requisitos de multiclasse
+  if (ehNovaClasse) {
+    const prereq = verificarPrerequisitosMulticlasse(personagem, classeAlvo);
+    if (!prereq.elegivel) {
+      return {
+        sucesso: false,
+        erro: `Pré-requisito de multiclasse não atendido: ${prereq.motivos.join('; ')}`
+      };
+    }
+  }
+
+  // Carregar dados da classe alvo
+  const classeData = await getClasse(classeAlvo);
   if (!classeData) {
-    return { sucesso: false, erro: 'Dados da classe não encontrados' };
+    return { sucesso: false, erro: `Dados da classe ${classeAlvo} não encontrados` };
   }
   
-  // Calcular ganho de HP
+  // Calcular ganho de HP baseado no dado de vida da classe alvo
   const modConAntes = calcMod(personagem.atributos.constituicao);
-  const hpGanho = calcularHPGanhoComOpcao(personagem.classe, modConAntes, opcoes);
+  const hpGanho = calcularHPGanhoComOpcao(classeAlvo, modConAntes, opcoes);
   
-  // Obter características do novo nível
-  const caracteristicas = await obterCaracteristicasNivel(personagem.classe, novoNivel);
+  // Obter características da classe alvo para o novo nível naquela classe
+  const caracteristicas = await obterCaracteristicasNivel(classeAlvo, novoNivelClasse);
   const caracteristicasEspecie = await obterCaracteristicasEspecieNivel(personagem.especie, novoNivel, personagem.tracos_escolhidos);
   
-  // Verificar se precisa escolher subclasse
-  const precisaSubclasse = exigeSubclasse(personagem.classe, novoNivel) && !personagem.subclasse;
+  // Verificar se precisa escolher subclasse na classe alvo (nível 3 daquela classe)
+  const precisaSubclasse = exigeSubclasse(classeAlvo, novoNivelClasse) && !subclasseAtual;
   
-  // Verificar se ganha aumento de atributo
-  const ganhaAumentoAtributo = concedeAumentoAtributo(personagem.classe, novoNivel);
-  const requerDadivaEpica = exigeDadivaEpica(personagem.classe, novoNivel);
-  const exigeEspecializacao = exigeEspecializacaoBardo(personagem.classe, novoNivel);
-  const exigeEspecializacaoGuardiaoNivel = exigeEspecializacaoGuardiao(personagem.classe, novoNivel);
-  const exigeEstiloLutaNivel = exigeEstiloLuta(personagem.classe, novoNivel);
-  const exigeTrocaEstiloLutaGuerreiroNivel = exigeTrocaEstiloLutaGuerreiro(personagem.classe, novoNivel);
-  const exigeEspecializacaoLadinoNivel = exigeEspecializacaoLadino(personagem.classe, novoNivel);
-  const exigeExploradorHabilNivel = exigeExploradorHabil(personagem.classe, novoNivel);
-  const exigeAcademicoNivel = exigeAcademico(personagem.classe, novoNivel);
-  const exigeGrimorioMago = personagem.classe === 'Mago' && novoNivel > 1;
-  const subclasseEfetivaManobras = opcoes.subclasse || personagem.subclasse;
-  const exigeManobrasNivel = exigeManobrasGuerreiro(personagem.classe, subclasseEfetivaManobras, novoNivel);
+  // Verificar se ganha aumento de atributo/talento (progressão por classe)
+  const ganhaAumentoAtributo = concedeAumentoAtributo(classeAlvo, novoNivelClasse);
+  const requerDadivaEpica = exigeDadivaEpica(classeAlvo, novoNivelClasse);
+  const exigeEspecializacao = exigeEspecializacaoBardo(classeAlvo, novoNivelClasse);
+  const exigeEspecializacaoGuardiaoNivel = exigeEspecializacaoGuardiao(classeAlvo, novoNivelClasse);
+  const exigeEstiloLutaNivel = exigeEstiloLuta(classeAlvo, novoNivelClasse);
+  const exigeTrocaEstiloLutaGuerreiroNivel = exigeTrocaEstiloLutaGuerreiro(classeAlvo, novoNivelClasse);
+  const exigeEspecializacaoLadinoNivel = exigeEspecializacaoLadino(classeAlvo, novoNivelClasse);
+  const exigeExploradorHabilNivel = exigeExploradorHabil(classeAlvo, novoNivelClasse);
+  const exigeAcademicoNivel = exigeAcademico(classeAlvo, novoNivelClasse);
+  const exigeGrimorioMago = classeAlvo === 'Mago' && novoNivelClasse > 1;
+  const subclasseEfetivaManobras = opcoes.subclasse || subclasseAtual;
+  const exigeManobrasNivel = exigeManobrasGuerreiro(classeAlvo, subclasseEfetivaManobras, novoNivelClasse);
   let magiasGrimorioSelecionadas = [];
   // Versado em [Escola] (subclasse do Mago): magias grátis de escola no grimório.
-  const escolaSubclasseArcana = personagem.classe === 'Mago' && Object.prototype.hasOwnProperty.call(ESCOLAS_SUBCLASSE_MAGO, subclasseEfetivaManobras)
+  const escolaSubclasseArcana = classeAlvo === 'Mago' && Object.prototype.hasOwnProperty.call(ESCOLAS_SUBCLASSE_MAGO, subclasseEfetivaManobras)
     ? ESCOLAS_SUBCLASSE_MAGO[subclasseEfetivaManobras] : null;
   let qtdMagiasSubclasseArcana = 0;
   if (escolaSubclasseArcana) {
-    const ganhouNovoCirculoNivel = ganhouNovoCirculoDeEspacos(classeData.tabela_caracteristicas, nivelAnterior, novoNivel);
-    if (novoNivel === 3) {
+    const ganhouNovoCirculoNivel = ganhouNovoCirculoDeEspacos(classeData.tabela_caracteristicas, nivelAtualClasse, novoNivelClasse);
+    if (novoNivelClasse === 3) {
       qtdMagiasSubclasseArcana += 2; // bônus inicial de entrada na subclasse (já cobre o 2º círculo do próprio nível 3)
     } else if (ganhouNovoCirculoNivel) {
       qtdMagiasSubclasseArcana += 1; // bônus recorrente, apenas nos níveis seguintes que desbloqueiam novo círculo
@@ -1243,25 +1280,72 @@ export async function subirDeNivel(personagem, opcoes = {}) {
   
   // Aplicar mudanças ao personagem
   personagem.nivel = novoNivel;
-  sincronizarCamposVinculadosNivel(personagem, classeData);
   personagem.pv_max += hpGanho;
   personagem.pv_atual += hpGanho; // Também aumenta PV atual (cura ao subir de nível)
   personagem.dados_vida_total = novoNivel;
-  
+
+  if (ehNovaClasse) {
+    personagem.classes.push({
+      classe: classeAlvo,
+      nivel: 1,
+      subclasse: opcoes.subclasse || ''
+    });
+    aplicarProficienciasMulticlasse(personagem, classeAlvo, {
+      pericia: opcoes.multiclasse_pericia,
+      instrumento: opcoes.multiclasse_instrumento
+    });
+  } else {
+    classeExistente.nivel = novoNivelClasse;
+    if (opcoes.subclasse) {
+      classeExistente.subclasse = opcoes.subclasse;
+    }
+  }
+
+  // Manter compatibilidade com propriedades de classe raiz
+  if (personagem.classes.length > 0) {
+    personagem.classe = personagem.classes[0].classe;
+    personagem.subclasse = personagem.classes[0].subclasse || '';
+  }
+
+  sincronizarCamposVinculadosNivel(personagem, classeData);
+
   // Atualizar bônus de proficiência (se mudou)
   const bonusAnterior = bonusProficiencia(nivelAnterior);
   const bonusNovo = bonusProficiencia(novoNivel);
   const bonusMudou = bonusNovo !== bonusAnterior;
   
-  // Atualizar espaços de magia se for conjurador
-  const info = CLASSES_INFO[personagem.classe];
-  if (info && info.conjurador) {
-    await atualizarEspacosMagia(personagem, classeData);
+  // Atualizar espaços de magia
+  const conjMulticlasse = calcularNivelConjuradorMulticlasse(personagem);
+  if (ehMulticlasse(personagem) && conjMulticlasse.temConjuradorNaoBruxo) {
+    const espacosMulti = calcularEspacosMagiaMulticlasse(personagem);
+    personagem.espacos_magia = espacosMulti;
+  } else {
+    const infoClasseAlvo = CLASSES_INFO[classeAlvo];
+    if (infoClasseAlvo && infoClasseAlvo.conjurador) {
+      await atualizarEspacosMagia(personagem, classeData);
+    }
   }
 
-  // Cavaleiro Místico: atualizar espaços de magia da subclasse
-  if (personagem.classe === 'Guerreiro' && personagem.subclasse === 'Cavaleiro Místico' && novoNivel >= 3) {
-    const tabelaCM = getCavaleiroMisticoEspacos(novoNivel);
+  // Magia de Pacto do Bruxo (se o personagem tiver níveis de Bruxo)
+  const nivelBruxo = getNivelClasse(personagem, 'Bruxo');
+  if (nivelBruxo > 0) {
+    const pactoInfo = TABELA_ESPACOS_PACTO_BRUXO[nivelBruxo];
+    if (pactoInfo) {
+      if (!personagem.espacos_pacto) {
+        personagem.espacos_pacto = { total: pactoInfo.espacos, usados: 0, circulo: pactoInfo.circulo };
+      } else {
+        personagem.espacos_pacto.total = pactoInfo.espacos;
+        personagem.espacos_pacto.circulo = pactoInfo.circulo;
+      }
+    }
+  }
+
+  // Cavaleiro Místico (se Guerreiro com subclasse Cavaleiro Místico e não-multiclasse conjurador geral)
+  const nivelGuerreiro = getNivelClasse(personagem, 'Guerreiro');
+  const subGuerreiro = getSubclasseClasse(personagem, 'Guerreiro');
+  if (subGuerreiro === 'Cavaleiro Místico' && nivelGuerreiro >= 3 && !ehMulticlasse(personagem)) {
+    const tabelaCM = getCavaleiroMisticoEspacos(nivelGuerreiro);
+    if (!personagem.espacos_magia) personagem.espacos_magia = {};
     Object.keys(tabelaCM).forEach(circulo => {
       if (personagem.espacos_magia[circulo]) {
         personagem.espacos_magia[circulo].total = tabelaCM[circulo].total;
@@ -1280,17 +1364,12 @@ export async function subirDeNivel(personagem, opcoes = {}) {
     });
   }
   
-  // Aplicar escolha de subclasse
-  if (precisaSubclasse && opcoes.subclasse) {
-    personagem.subclasse = opcoes.subclasse;
-  }
-  
-  // Obter características de subclasse para este nível
-  const subclasseAtual = personagem.subclasse;
-  const caracteristicasSubclasse = await obterCaracteristicasSubclasseNivel(personagem.classe, subclasseAtual, novoNivel);
+  // Obter características de subclasse para este nível na classe alvo
+  const subclasseAlvoEfetiva = opcoes.subclasse || subclasseAtual;
+  const caracteristicasSubclasse = await obterCaracteristicasSubclasseNivel(classeAlvo, subclasseAlvoEfetiva, novoNivelClasse);
   
   // Adicionar automaticamente magias de domínio/subclasse
-  const magiasDominio = await obterMagiasDominioNivel(personagem.classe, subclasseAtual, novoNivel);
+  const magiasDominio = await obterMagiasDominioNivel(classeAlvo, subclasseAlvoEfetiva, novoNivelClasse);
   if (magiasDominio.length > 0) {
     if (!personagem.magias_preparadas) personagem.magias_preparadas = [];
     for (const magia of magiasDominio) {
@@ -1302,7 +1381,7 @@ export async function subirDeNivel(personagem, opcoes = {}) {
   // Excluir magias já concedidas por Domínio - a mesma magia pode aparecer em ambas as
   // listas porque o texto de "Magias de Domínio" também casa com o parser de "sempre
   // preparada"; Domínio deve ganhar (mantém origem: 'dominio', não 'sempre').
-  const magiasSempre = (await obterMagiasSemprePreparadasNivel(personagem.classe, subclasseAtual, novoNivel))
+  const magiasSempre = (await obterMagiasSemprePreparadasNivel(classeAlvo, subclasseAlvoEfetiva, novoNivelClasse))
     .filter(magia => !magiasDominio.some(d => d.nome === magia.nome));
   if (magiasSempre.length > 0) {
     if (!personagem.magias_preparadas) personagem.magias_preparadas = [];

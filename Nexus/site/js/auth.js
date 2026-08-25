@@ -155,3 +155,56 @@ export async function buscarPersonagensCloud() {
     return sem;
   });
 }
+
+// ============================================================
+// Operacoes Firestore para Atalhos Rapidos de Dados
+// ============================================================
+
+/**
+ * Retorna o caminho da colecao de atalhos de dados do usuario logado.
+ * Caminho: users/{uid}/atalhos_dados
+ */
+function _colecaoAtalhosDadosPath() {
+  if (!_usuario) return null;
+  return `users/${_usuario.uid}/atalhos_dados`;
+}
+
+/** Lista todos os atalhos de dados salvos na nuvem */
+export async function listarAtalhosDadosCloud() {
+  if (!_db || !_usuario) return [];
+  const { collection, getDocs } = await _getFirestoreModules();
+  const ref = collection(_db, _colecaoAtalhosDadosPath());
+  const snap = await getDocs(ref);
+  return snap.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+}
+
+/** Salva ou atualiza um atalho de dados na nuvem */
+export async function salvarAtalhoDadosCloud(atalho) {
+  if (!_db || !_usuario || !atalho?.id) return;
+  const { doc, setDoc } = await _getFirestoreModules();
+  const docRef = doc(_db, _colecaoAtalhosDadosPath(), atalho.id);
+  const dados = JSON.parse(JSON.stringify(atalho));
+  await setDoc(docRef, dados);
+}
+
+/** Salva múltiplos atalhos de dados na nuvem */
+export async function salvarTodosAtalhosDadosCloud(listaAtalhos) {
+  if (!_db || !_usuario || !Array.isArray(listaAtalhos)) return;
+  const { doc, setDoc } = await _getFirestoreModules();
+  const path = _colecaoAtalhosDadosPath();
+  for (const atalho of listaAtalhos) {
+    if (!atalho?.id) continue;
+    const docRef = doc(_db, path, atalho.id);
+    const dados = JSON.parse(JSON.stringify(atalho));
+    await setDoc(docRef, dados);
+  }
+}
+
+/** Remove um atalho de dados da nuvem */
+export async function removerAtalhoDadosCloud(id) {
+  if (!_db || !_usuario || !id) return;
+  const { doc, deleteDoc } = await _getFirestoreModules();
+  const docRef = doc(_db, _colecaoAtalhosDadosPath(), id);
+  await deleteDoc(docRef);
+}
+

@@ -1,16 +1,28 @@
 // ============================================================
 // Página: Rolador de Dados Virtual D&D 5.5e
 // Rolagem completa com Vantagem, Desvantagem, Modificadores,
-// Seleção de Quantidade e Histórico das últimas 10 rolagens.
+// Seleção de Quantidade, Histórico das últimas 10 rolagens e
+// Gerenciamento completo de Atalhos Rápidos Personalizados
+// com persistência local e sincronização na Nuvem (Google / Firestore).
 // ============================================================
 import { definirTituloHeader, navegar } from '../app.js';
-import { toast, escHtml } from '../utils.js';
+import { toast, escHtml, abrirModal, fecharModal } from '../utils.js';
+import {
+  iniciarAuth,
+  getUsuario,
+  onAuthChange,
+  listarAtalhosDadosCloud,
+  salvarAtalhoDadosCloud,
+  salvarTodosAtalhosDadosCloud,
+  removerAtalhoDadosCloud
+} from '../auth.js';
 
 const STORAGE_KEY_HISTORICO = 'dnd5e_dados_historico';
 const STORAGE_KEY_CONFIG = 'dnd5e_dados_config_atual';
+const STORAGE_KEY_ATALHOS = 'dnd5e_dados_atalhos_customizados';
 
-// Definição dos dados padrão do D&D com tons medievais nobres
-const DADOS_DND = [
+// Definição dos dados padrão do D&D com tons nobres medievais
+export const DADOS_DND = [
   { tipo: 'd4', faces: 4, nome: 'd4', icone: '▲', cor: '#b87333', desc: '4 faces' },
   { tipo: 'd6', faces: 6, nome: 'd6', icone: '■', cor: '#507693', desc: '6 faces' },
   { tipo: 'd8', faces: 8, nome: 'd8', icone: '◆', cor: '#825a89', desc: '8 faces' },
@@ -20,20 +32,22 @@ const DADOS_DND = [
   { tipo: 'd100', faces: 100, nome: 'd100', icone: '%', cor: '#851a1a', desc: 'Percentil' },
 ];
 
-// Presets de rolagens comuns de D&D
-const PRESETS_DND = [
-  { nome: 'Teste d20 Padrão', tipo: 'd20', qtd: 1, mod: 0, modo: 'normal', desc: 'Teste de Atributo / Perícia' },
-  { nome: 'Ataque d20 (Vantagem)', tipo: 'd20', qtd: 1, mod: 4, modo: 'vantagem', desc: 'Jogada de Ataque c/ Vantagem' },
-  { nome: 'Espada Longa (1d8+3)', tipo: 'd8', qtd: 1, mod: 3, modo: 'normal', desc: 'Dano Versátil / 1 Mão' },
-  { nome: 'Espada Grande (2d6+3)', tipo: 'd6', qtd: 2, mod: 3, modo: 'normal', desc: 'Dano de 2 Mãos' },
-  { nome: 'Bola de Fogo (8d6)', tipo: 'd6', qtd: 8, mod: 0, modo: 'normal', desc: 'Magia de 3º Círculo' },
-  { nome: 'Curar Ferimentos (2d8+3)', tipo: 'd8', qtd: 2, mod: 3, modo: 'normal', desc: 'Cura Nível 2' },
-  { nome: 'Tabela de Tesouro (1d100)', tipo: 'd100', qtd: 1, mod: 0, modo: 'normal', desc: 'Rolagem Percentil' }
+// Presets padrão iniciais de D&D 5.5e
+export const PRESETS_DND_PADRAO = [
+  { id: 'padrao_d20', nome: 'Teste d20 Padrão', tipo: 'd20', qtd: 1, mod: 0, modo: 'normal', desc: 'Teste de Atributo / Perícia', padrao: true },
+  { id: 'padrao_atk_vant', nome: 'Ataque d20 (Vantagem)', tipo: 'd20', qtd: 1, mod: 4, modo: 'vantagem', desc: 'Jogada de Ataque c/ Vantagem', padrao: true },
+  { id: 'padrao_espada_longa', nome: 'Espada Longa (1d8+3)', tipo: 'd8', qtd: 1, mod: 3, modo: 'normal', desc: 'Dano Versátil / 1 Mão', padrao: true },
+  { id: 'padrao_espada_grande', nome: 'Espada Grande (2d6+3)', tipo: 'd6', qtd: 2, mod: 3, modo: 'normal', desc: 'Dano de 2 Mãos', padrao: true },
+  { id: 'padrao_bola_fogo', nome: 'Bola de Fogo (8d6)', tipo: 'd6', qtd: 8, mod: 0, modo: 'normal', desc: 'Magia de 3º Círculo', padrao: true },
+  { id: 'padrao_cura', nome: 'Curar Ferimentos (2d8+3)', tipo: 'd8', qtd: 2, mod: 3, modo: 'normal', desc: 'Cura Nível 2', padrao: true },
+  { id: 'padrao_d100', nome: 'Tabela de Tesouro (1d100)', tipo: 'd100', qtd: 1, mod: 0, modo: 'normal', desc: 'Rolagem Percentil', padrao: true }
 ];
 
 let _containerRef = null;
 let _estadoAtual = _carregarConfigSalva();
 let _estaRolando = false;
+let _authRegistradoDados = false;
+let _syncEmAndamento = false;
 
 function _carregarConfigSalva() {
   try {
@@ -67,6 +81,158 @@ function _salvarConfigAtual() {
     // Ignorar falha de quota
   }
 }
+
+// ============================================================
+// Gerenciamento de Atalhos Rápidos (Local + Nuvem)
+// ============================================================
+
+/** Carrega a lista de atalhos rápidos do localStorage */
+export function carregarAtalhos() {
+  try {
+    const dados = localStorage.getItem(STORAGE_KEY_ATALHOS);
+    if (dados) {
+      const lista = JSON.parse(dados);
+      if (Array.isArray(lista) && lista.length > 0) {
+        return lista.map(item => ({
+          id: item.id || ('atalho_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4)),
+          nome: item.nome || 'Atalho sem nome',
+          tipo: DADOS_DND.some(d => d.tipo === item.tipo) ? item.tipo : 'd20',
+          qtd: Math.max(1, Math.min(100, Number(item.qtd) || 1)),
+          mod: Number(item.mod) || 0,
+          modo: ['normal', 'vantagem', 'desvantagem'].includes(item.modo) ? item.modo : 'normal',
+          desc: item.desc || '',
+          padrao: Boolean(item.padrao),
+          personalizado: Boolean(item.personalizado || !item.padrao),
+          criadoEm: item.criadoEm || Date.now(),
+          atualizadoEm: item.atualizadoEm || Date.now()
+        }));
+      }
+    }
+  } catch (e) {
+    console.error('Erro ao ler atalhos de dados:', e);
+  }
+  return [...PRESETS_DND_PADRAO];
+}
+
+/** Salva a lista de atalhos no localStorage */
+export function salvarAtalhosLocais(lista) {
+  try {
+    localStorage.setItem(STORAGE_KEY_ATALHOS, JSON.stringify(lista));
+  } catch (e) {
+    console.error('Erro ao salvar atalhos locais:', e);
+  }
+}
+
+/** Sincroniza atalhos locais com a nuvem (Firestore) */
+export async function sincronizarAtalhosCloud() {
+  const usuario = getUsuario();
+  if (!usuario || _syncEmAndamento) return;
+  _syncEmAndamento = true;
+
+  try {
+    const cloudAtalhos = await listarAtalhosDadosCloud();
+    const locaisAtalhos = carregarAtalhos();
+
+    if (Array.isArray(cloudAtalhos) && cloudAtalhos.length > 0) {
+      // Se há atalhos na nuvem, atualizar o cache local com os da nuvem
+      salvarAtalhosLocais(cloudAtalhos);
+    } else if (locaisAtalhos.length > 0) {
+      // Se a nuvem está vazia mas há atalhos locais, faz upload para a nuvem
+      await salvarTodosAtalhosDadosCloud(locaisAtalhos);
+    }
+
+    if (_containerRef && window.location.hash.includes('dados')) {
+      _renderizarLayout(_containerRef);
+    }
+  } catch (err) {
+    console.warn('Erro ao sincronizar atalhos com a nuvem:', err.message);
+  } finally {
+    _syncEmAndamento = false;
+  }
+}
+
+/** Cria ou atualiza um atalho rápido */
+export async function salvarAtalho(dadosAtalho, idExistente = null) {
+  let atalhos = carregarAtalhos();
+  const agora = Date.now();
+
+  const atalhoFormatado = {
+    id: idExistente || ('atalho_' + agora + '_' + Math.random().toString(36).substr(2, 6)),
+    nome: (dadosAtalho.nome || 'Novo Atalho').trim(),
+    tipo: dadosAtalho.tipo || 'd20',
+    qtd: Math.max(1, Math.min(100, Number(dadosAtalho.qtd) || 1)),
+    mod: Number(dadosAtalho.mod) || 0,
+    modo: ['normal', 'vantagem', 'desvantagem'].includes(dadosAtalho.modo) ? dadosAtalho.modo : 'normal',
+    desc: (dadosAtalho.desc || '').trim(),
+    personalizado: true,
+    padrao: false,
+    criadoEm: dadosAtalho.criadoEm || agora,
+    atualizadoEm: agora
+  };
+
+  if (idExistente) {
+    const idx = atalhos.findIndex(a => a.id === idExistente);
+    if (idx >= 0) {
+      atalhoFormatado.criadoEm = atalhos[idx].criadoEm || agora;
+      atalhos[idx] = atalhoFormatado;
+    } else {
+      atalhos.unshift(atalhoFormatado);
+    }
+  } else {
+    atalhos.unshift(atalhoFormatado);
+  }
+
+  salvarAtalhosLocais(atalhos);
+
+  // Sincronizar com Firestore se logado
+  if (getUsuario()) {
+    try {
+      await salvarAtalhoDadosCloud(atalhoFormatado);
+    } catch (err) {
+      console.warn('Erro ao salvar atalho na nuvem:', err);
+    }
+  }
+
+  return atalhoFormatado;
+}
+
+/** Exclui um atalho rápido por ID */
+export async function excluirAtalho(id) {
+  let atalhos = carregarAtalhos();
+  atalhos = atalhos.filter(a => a.id !== id);
+  salvarAtalhosLocais(atalhos);
+
+  // Remover da nuvem se logado
+  if (getUsuario()) {
+    try {
+      await removerAtalhoDadosCloud(id);
+    } catch (err) {
+      console.warn('Erro ao remover atalho da nuvem:', err);
+    }
+  }
+
+  return atalhos;
+}
+
+/** Restaura a lista de atalhos padrão */
+export async function restaurarAtalhosPadrao() {
+  const padroes = [...PRESETS_DND_PADRAO];
+  salvarAtalhosLocais(padroes);
+
+  if (getUsuario()) {
+    try {
+      await salvarTodosAtalhosDadosCloud(padroes);
+    } catch (err) {
+      console.warn('Erro ao restaurar atalhos na nuvem:', err);
+    }
+  }
+
+  return padroes;
+}
+
+// ============================================================
+// Histórico de Rolagens
+// ============================================================
 
 export function carregarHistorico() {
   try {
@@ -102,17 +268,40 @@ export function limparHistorico() {
   }
 }
 
-/**
- * Ponto de entrada da página de Rolagem de Dados
- */
+// ============================================================
+// Ponto de entrada da página de Rolagem de Dados
+// ============================================================
+
 export function renderDados(container) {
   _containerRef = container;
   definirTituloHeader('Dados');
+
+  // Inicializar Firebase Auth e sincronização em segundo plano
+  iniciarAuth().then(() => {
+    if (!_authRegistradoDados) {
+      _authRegistradoDados = true;
+      onAuthChange((usuario) => {
+        if (usuario) {
+          sincronizarAtalhosCloud();
+        }
+        if (_containerRef && window.location.hash.includes('dados')) {
+          _renderizarLayout(_containerRef);
+        }
+      });
+    }
+    // Se já autenticado no momento da renderização
+    if (getUsuario()) {
+      sincronizarAtalhosCloud();
+    }
+  });
+
   _renderizarLayout(container);
 }
 
 function _renderizarLayout(container, ultimoResultado = null) {
   const historico = carregarHistorico();
+  const atalhos = carregarAtalhos();
+  const usuario = getUsuario();
   const dadoAtivoInfo = DADOS_DND.find(d => d.tipo === _estadoAtual.tipo) || DADOS_DND[5];
 
   container.innerHTML = `
@@ -126,7 +315,7 @@ function _renderizarLayout(container, ultimoResultado = null) {
             <span>Mesa de Dados</span>
           </div>
           <div class="dice-hero-desc">
-            Role qualquer combinação de dados das regras de D&D com vantagens, desvantagens, modificadores e histórico em tempo real.
+            Role qualquer combinação de dados das regras de D&D com vantagens, desvantagens, modificadores, histórico e atalhos rápidos sincronizados na nuvem.
           </div>
         </div>
       </div>
@@ -232,12 +421,16 @@ function _renderizarLayout(container, ultimoResultado = null) {
         </div>
 
         <!-- Botão Principal de Rolagem -->
-        <div class="dice-action-wrap">
-          <button type="button" id="btn-executar-rolagem" class="dice-roll-main-btn" ${_estaRolando ? 'disabled' : ''}>
+        <div class="dice-action-wrap" style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button type="button" id="btn-executar-rolagem" class="dice-roll-main-btn" ${_estaRolando ? 'disabled' : ''} style="flex: 1; min-width: 220px;">
             <span class="dice-roll-icon">${_gerarSvgDado(_estadoAtual.tipo, dadoAtivoInfo.cor, true, 26)}</span>
             <span class="dice-roll-text">
               ${_estaRolando ? 'Rolando dados...' : `Rolar ${_montarFormulaTexto(_estadoAtual)}`}
             </span>
+          </button>
+          <button type="button" id="btn-salvar-como-atalho-rapido" class="btn btn-secondary" style="display: flex; align-items: center; gap: 6px; padding: 0 16px; font-weight: 600;" title="Salvar esta configuração como um novo Atalho Rápido">
+            <span>⭐</span>
+            <span>Salvar como Atalho</span>
           </button>
         </div>
 
@@ -248,20 +441,46 @@ function _renderizarLayout(container, ultimoResultado = null) {
         ${ultimoResultado ? _gerarHtmlResultado(ultimoResultado) : ''}
       </div>
 
-      <!-- SEÇÃO 4: Presets Rápidos de D&D -->
-      <div class="card dice-card-section">
-        <div class="dice-section-label">
-          <span>Atalhos Rápidos de D&D</span>
-          <span style="font-size: 0.75rem; color: var(--text-muted)">Clique para rolar instantaneamente</span>
-        </div>
-        <div class="dice-presets-grid">
-          ${PRESETS_DND.map((p, idx) => `
-            <button type="button" class="dice-preset-btn" data-preset-idx="${idx}">
-              <div class="dice-preset-title">${p.nome}</div>
-              <div class="dice-preset-formula">${p.qtd}${p.tipo}${p.mod ? (p.mod > 0 ? `+${p.mod}` : p.mod) : ''} ${p.modo !== 'normal' ? `(${p.modo})` : ''}</div>
-              <div class="dice-preset-desc">${p.desc}</div>
+      <!-- SEÇÃO 4: Atalhos Rápidos Personalizados & Sincronização na Nuvem -->
+      <div class="card dice-card-section" id="secao-atalhos-rapidos">
+        <div class="dice-presets-header">
+          <div class="dice-presets-title-wrap">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="font-size: 1.05rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                <span>⚡</span> Atalhos Rápidos
+              </span>
+              ${usuario ? `
+                <span class="c-badge" style="background: rgba(46, 204, 113, 0.18); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.4); font-size: 0.7rem; font-weight: 600;">
+                  ● Nuvem Google Sincronizada
+                </span>
+              ` : `
+                <span class="c-badge" style="background: rgba(200, 160, 81, 0.12); color: #c8a051; border: 1px solid rgba(200, 160, 81, 0.3); font-size: 0.7rem; font-weight: 600;">
+                  💾 Salvo no Navegador (Offline)
+                </span>
+              `}
+            </div>
+            <span style="font-size: 0.76rem; color: var(--text-muted)">Clique no atalho para rolar instantaneamente. Você pode criar, editar e excluir seus próprios atalhos.</span>
+          </div>
+
+          <div class="dice-presets-actions-bar">
+            <button type="button" class="btn btn-sm btn-primary" id="btn-novo-atalho" style="display: flex; align-items: center; gap: 5px;">
+              <span>＋</span>
+              <span>Novo Atalho</span>
             </button>
-          `).join('')}
+            <button type="button" class="btn btn-sm btn-secondary" id="btn-restaurar-atalhos" title="Restaurar a lista de atalhos padrão do D&D" style="display: flex; align-items: center; gap: 5px;">
+              <span>↺</span>
+              <span>Padrões</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="dice-presets-grid">
+          ${atalhos.length === 0 ? `
+            <div class="dice-preset-empty-box">
+              <p>Nenhum atalho rápido configurado.</p>
+              <button type="button" class="btn btn-sm btn-primary" id="btn-criar-primeiro-atalho" style="margin-top: 8px;">＋ Criar Meu Primeiro Atalho</button>
+            </div>
+          ` : atalhos.map(p => _gerarHtmlCardAtalho(p)).join('')}
         </div>
       </div>
 
@@ -296,6 +515,37 @@ function _renderizarLayout(container, ultimoResultado = null) {
   `;
 
   _vincularEventos(container);
+}
+
+function _gerarHtmlCardAtalho(p) {
+  const dadoInfo = DADOS_DND.find(d => d.tipo === p.tipo) || DADOS_DND[5];
+  const modTxt = p.mod !== 0 ? (p.mod > 0 ? `+${p.mod}` : `${p.mod}`) : '';
+  const formulaStr = `${p.qtd}${p.tipo}${modTxt ? ` ${modTxt}` : ''}${p.modo !== 'normal' ? ` (${p.modo})` : ''}`;
+
+  return `
+    <div class="dice-preset-btn" data-atalho-id="${escHtml(p.id)}">
+      <div class="dice-preset-top-row">
+        <span class="dice-preset-badge-tag" style="background: ${dadoInfo.cor}22; color: ${dadoInfo.cor}; border: 1px solid ${dadoInfo.cor}66;">
+          ${p.tipo.toUpperCase()}
+        </span>
+        
+        <div class="dice-preset-actions" onclick="event.stopPropagation();">
+          <button type="button" class="dice-preset-act-btn act-edit" data-edit-atalho-id="${escHtml(p.id)}" title="Editar este atalho">
+            ✏️
+          </button>
+          <button type="button" class="dice-preset-act-btn act-delete" data-delete-atalho-id="${escHtml(p.id)}" title="Excluir este atalho">
+            🗑️
+          </button>
+        </div>
+      </div>
+
+      <div class="dice-preset-title" title="${escHtml(p.nome)}">${escHtml(p.nome)}</div>
+      <div class="dice-preset-formula">
+        <span>${formulaStr}</span>
+      </div>
+      <div class="dice-preset-desc" title="${escHtml(p.desc || 'Sem observações')}">${escHtml(p.desc || 'Rolagem rápida')}</div>
+    </div>
+  `;
 }
 
 function _montarFormulaTexto(cfg) {
@@ -400,24 +650,71 @@ function _vincularEventos(container) {
     });
   }
 
-  // 6. Botão Executar Rolagem
+  // 6. Botão Executar Rolagem Principal
   container.querySelector('#btn-executar-rolagem')?.addEventListener('click', () => {
     if (_estaRolando) return;
     _executarRolagem(container, _estadoAtual);
   });
 
-  // 7. Atalhos / Presets Rápidos
-  container.querySelectorAll('[data-preset-idx]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const idx = parseInt(btn.dataset.presetIdx, 10);
-      const preset = PRESETS_DND[idx];
-      if (preset) {
+  // 7. Botão "Salvar como Atalho" direto da configuração ativa
+  container.querySelector('#btn-salvar-como-atalho-rapido')?.addEventListener('click', () => {
+    _abrirModalCriarEditarAtalho(null, {
+      tipo: _estadoAtual.tipo,
+      qtd: _estadoAtual.qtd,
+      mod: _estadoAtual.mod,
+      modo: _estadoAtual.modo,
+      desc: _estadoAtual.descricao || '',
+      nome: _estadoAtual.descricao ? `Rolagem de ${_estadoAtual.descricao}` : `Atalho ${_montarFormulaTexto(_estadoAtual)}`
+    });
+  });
+
+  // 8. Botão Novo Atalho
+  container.querySelector('#btn-novo-atalho')?.addEventListener('click', () => {
+    _abrirModalCriarEditarAtalho();
+  });
+  container.querySelector('#btn-criar-primeiro-atalho')?.addEventListener('click', () => {
+    _abrirModalCriarEditarAtalho();
+  });
+
+  // 9. Botão Restaurar Atalhos Padrão
+  container.querySelector('#btn-restaurar-atalhos')?.addEventListener('click', () => {
+    abrirModal(
+      'Restaurar Atalhos Padrão',
+      `
+        <div style="font-size: 0.9rem; line-height: 1.6;">
+          <p>Deseja restaurar a lista com os <strong>7 atalhos padrão</strong> do D&D 5.5e?</p>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 8px;">
+            Esta ação substituirá a lista atual de atalhos e sincronizará automaticamente na nuvem se você estiver logado.
+          </p>
+        </div>
+      `,
+      `
+        <button type="button" class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="btn-confirmar-restaurar-atalhos">Restaurar Padrões</button>
+      `
+    );
+
+    document.getElementById('btn-confirmar-restaurar-atalhos')?.addEventListener('click', async () => {
+      fecharModal();
+      await restaurarAtalhosPadrao();
+      toast('Atalhos padrão restaurados com sucesso!', 'success');
+      _renderizarLayout(container);
+    });
+  });
+
+  // 10. Clicar no Atalho para Rolar Instantaneamente
+  container.querySelectorAll('.dice-preset-btn[data-atalho-id]').forEach(card => {
+    card.addEventListener('click', () => {
+      const atalhoId = card.dataset.atalhoId;
+      const atalhos = carregarAtalhos();
+      const atalho = atalhos.find(a => a.id === atalhoId);
+      if (atalho) {
         _estadoAtual = {
-          tipo: preset.tipo,
-          qtd: preset.qtd,
-          mod: preset.mod,
-          modo: preset.modo,
-          descricao: preset.desc
+          tipo: atalho.tipo,
+          qtd: atalho.qtd,
+          mod: atalho.mod,
+          modo: atalho.modo,
+          descricao: atalho.desc || atalho.nome
         };
         _salvarConfigAtual();
         _executarRolagem(container, _estadoAtual);
@@ -425,14 +722,62 @@ function _vincularEventos(container) {
     });
   });
 
-  // 8. Limpar Histórico
+  // 11. Editar Atalho Rápido
+  container.querySelectorAll('[data-edit-atalho-id]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const atalhoId = btn.dataset.editAtalhoId;
+      const atalhos = carregarAtalhos();
+      const atalho = atalhos.find(a => a.id === atalhoId);
+      if (atalho) {
+        _abrirModalCriarEditarAtalho(atalho);
+      }
+    });
+  });
+
+  // 12. Excluir Atalho Rápido
+  container.querySelectorAll('[data-delete-atalho-id]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const atalhoId = btn.dataset.deleteAtalhoId;
+      const atalhos = carregarAtalhos();
+      const atalho = atalhos.find(a => a.id === atalhoId);
+      if (atalho) {
+        abrirModal(
+          'Excluir Atalho Rápido',
+          `
+            <div style="font-size: 0.9rem; line-height: 1.6;">
+              <p>Tem certeza que deseja excluir o atalho <strong>${escHtml(atalho.nome)}</strong>?</p>
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; margin-top: 8px;">
+                <span style="color: #f39c12; font-weight: 700;">${atalho.qtd}${atalho.tipo}${atalho.mod !== 0 ? (atalho.mod > 0 ? ` +${atalho.mod}` : ` ${atalho.mod}`) : ''} ${atalho.modo !== 'normal' ? `(${atalho.modo})` : ''}</span>
+                ${atalho.desc ? `<div style="font-size: 0.78rem; color: var(--text-muted);">${escHtml(atalho.desc)}</div>` : ''}
+              </div>
+            </div>
+          `,
+          `
+            <button type="button" class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+            <button type="button" class="btn btn-danger" id="btn-confirmar-excluir-atalho">Excluir Atalho</button>
+          `
+        );
+
+        document.getElementById('btn-confirmar-excluir-atalho')?.addEventListener('click', async () => {
+          fecharModal();
+          await excluirAtalho(atalhoId);
+          toast(`Atalho "${atalho.nome}" excluído`, 'info');
+          _renderizarLayout(container);
+        });
+      }
+    });
+  });
+
+  // 13. Limpar Histórico
   container.querySelector('#btn-limpar-historico')?.addEventListener('click', () => {
     limparHistorico();
     toast('Histórico de rolagens limpo', 'info');
     _renderizarLayout(container);
   });
 
-  // 9. Re-rolar item do histórico
+  // 14. Re-rolar item do histórico
   container.querySelectorAll('[data-reroll-idx]').forEach(btn => {
     btn.addEventListener('click', () => {
       const historico = carregarHistorico();
@@ -450,6 +795,276 @@ function _vincularEventos(container) {
         _executarRolagem(container, _estadoAtual);
       }
     });
+  });
+}
+
+/**
+ * Modal completo para Criação e Edição de Atalho Rápido
+ */
+function _abrirModalCriarEditarAtalho(atalhoParaEditar = null, dadosIniciais = null) {
+  const ehEdicao = Boolean(atalhoParaEditar);
+  const idAlvo = atalhoParaEditar?.id || null;
+
+  const tempState = {
+    nome: atalhoParaEditar?.nome || dadosIniciais?.nome || '',
+    tipo: atalhoParaEditar?.tipo || dadosIniciais?.tipo || _estadoAtual.tipo || 'd20',
+    qtd: atalhoParaEditar ? atalhoParaEditar.qtd : (dadosIniciais?.qtd || _estadoAtual.qtd || 1),
+    mod: atalhoParaEditar ? atalhoParaEditar.mod : (dadosIniciais?.mod || _estadoAtual.mod || 0),
+    modo: atalhoParaEditar ? atalhoParaEditar.modo : (dadosIniciais?.modo || _estadoAtual.modo || 'normal'),
+    desc: atalhoParaEditar?.desc || dadosIniciais?.desc || ''
+  };
+
+  const tituloModal = ehEdicao ? '✏️ Editar Atalho Rápido' : '⚡ Novo Atalho Rápido';
+
+  const corpoHtml = `
+    <form id="form-modal-atalho" onsubmit="return false;" style="display: flex; flex-direction: column; gap: 14px;">
+      
+      <!-- Nome do Atalho -->
+      <div>
+        <label class="dice-field-label" for="modal-input-nome">Nome do Atalho *</label>
+        <input type="text" id="modal-input-nome" class="dice-input-text" required placeholder="Ex: Fúria do Bárbaro, Bola de Fogo, Iniciativa..." value="${escHtml(tempState.nome)}">
+      </div>
+
+      <!-- Tipo de Dado -->
+      <div>
+        <label class="dice-field-label">Tipo de Dado</label>
+        <div class="modal-dice-types-grid" id="modal-types-container">
+          ${DADOS_DND.map(d => {
+            const ativo = d.tipo === tempState.tipo;
+            return `
+              <button type="button" class="modal-dice-type-btn ${ativo ? 'ativo' : ''}" data-modal-tipo="${d.tipo}" style="--dice-color: ${d.cor}">
+                <div>${_gerarSvgDado(d.tipo, d.cor, ativo, 24)}</div>
+                <span class="modal-dice-type-label">${d.nome.toUpperCase()}</span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+      </div>
+
+      <!-- Configuração de Qtd e Modificador -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        
+        <!-- Quantidade -->
+        <div class="dice-config-box" style="margin-bottom: 0;">
+          <label class="dice-field-label">Quantidade</label>
+          <div class="dice-stepper">
+            <button type="button" class="dice-step-btn" id="modal-btn-qtd-minus">-</button>
+            <input type="number" id="modal-input-qtd" class="dice-step-input" min="1" max="100" value="${tempState.qtd}">
+            <button type="button" class="dice-step-btn" id="modal-btn-qtd-plus">+</button>
+          </div>
+          <div class="dice-quick-pills" style="margin-top: 6px;">
+            ${[1, 2, 3, 4, 6, 8].map(n => `
+              <button type="button" class="dice-quick-pill modal-pill-qtd ${Number(tempState.qtd) === n ? 'ativo' : ''}" data-val="${n}">${n}</button>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Modificador -->
+        <div class="dice-config-box" style="margin-bottom: 0;">
+          <label class="dice-field-label">Modificador</label>
+          <div class="dice-stepper">
+            <button type="button" class="dice-step-btn" id="modal-btn-mod-minus">-</button>
+            <input type="number" id="modal-input-mod" class="dice-step-input" value="${tempState.mod}">
+            <button type="button" class="dice-step-btn" id="modal-btn-mod-plus">+</button>
+          </div>
+          <div class="dice-quick-pills" style="margin-top: 6px;">
+            ${[0, 1, 2, 3, 4, 5].map(m => `
+              <button type="button" class="dice-quick-pill modal-pill-mod ${Number(tempState.mod) === m ? 'ativo' : ''}" data-val="${m}">
+                ${m === 0 ? '0' : `+${m}`}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modo de Rolagem -->
+      <div>
+        <label class="dice-field-label">Modo de Rolagem</label>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;">
+          <button type="button" class="btn btn-sm ${tempState.modo === 'normal' ? 'btn-primary' : 'btn-secondary'} modal-modo-btn" data-modal-modo="normal">
+            Normal
+          </button>
+          <button type="button" class="btn btn-sm ${tempState.modo === 'vantagem' ? 'btn-primary' : 'btn-secondary'} modal-modo-btn" data-modal-modo="vantagem" style="${tempState.modo === 'vantagem' ? 'background: #27ae60; border-color: #2ecc71;' : ''}">
+            Vantagem
+          </button>
+          <button type="button" class="btn btn-sm ${tempState.modo === 'desvantagem' ? 'btn-primary' : 'btn-secondary'} modal-modo-btn" data-modal-modo="desvantagem" style="${tempState.modo === 'desvantagem' ? 'background: #c0392b; border-color: #e74c3c;' : ''}">
+            Desvantagem
+          </button>
+        </div>
+      </div>
+
+      <!-- Descrição / Observação -->
+      <div>
+        <label class="dice-field-label" for="modal-input-desc">Descrição / Detalhes (Opcional)</label>
+        <input type="text" id="modal-input-desc" class="dice-input-text" placeholder="Ex: Dano cortante com bônus de Força, Magia de 3º círculo..." value="${escHtml(tempState.desc)}">
+      </div>
+
+      <!-- Pré-visualização da Fórmula -->
+      <div style="background: rgba(200, 160, 81, 0.08); border: 1px solid rgba(200, 160, 81, 0.25); border-radius: 6px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Pré-visualização:</span>
+        <span id="modal-preview-formula" style="font-weight: 800; color: #f39c12; font-size: 0.95rem;">
+          ${_montarFormulaTexto(tempState)}
+        </span>
+      </div>
+
+    </form>
+  `;
+
+  const acoesHtml = `
+    <button type="button" class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+    <button type="button" class="btn btn-primary" id="btn-salvar-modal-atalho-confirmar">
+      ${ehEdicao ? 'Salvar Alterações' : 'Criar Atalho'}
+    </button>
+  `;
+
+  abrirModal(tituloModal, corpoHtml, acoesHtml);
+
+  // Vincular eventos interativos dentro do modal
+  const modalCorpo = document.getElementById('modal-corpo');
+  if (!modalCorpo) return;
+
+  const atualizarPreview = () => {
+    const previewEl = modalCorpo.querySelector('#modal-preview-formula');
+    if (previewEl) {
+      previewEl.textContent = _montarFormulaTexto(tempState);
+    }
+  };
+
+  // 1. Tipo de dado
+  modalCorpo.querySelectorAll('[data-modal-tipo]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tempState.tipo = btn.dataset.modalTipo;
+      modalCorpo.querySelectorAll('[data-modal-tipo]').forEach(b => {
+        const ativo = b.dataset.modalTipo === tempState.tipo;
+        b.classList.toggle('ativo', ativo);
+        const d = DADOS_DND.find(x => x.tipo === b.dataset.modalTipo);
+        if (d) {
+          const divIcon = b.querySelector('div');
+          if (divIcon) divIcon.innerHTML = _gerarSvgDado(d.tipo, d.cor, ativo, 24);
+        }
+      });
+      atualizarPreview();
+    });
+  });
+
+  // 2. Steppers e inputs de Qtd
+  const inputQtd = modalCorpo.querySelector('#modal-input-qtd');
+  if (inputQtd) {
+    inputQtd.addEventListener('input', () => {
+      tempState.qtd = Math.max(1, Math.min(100, parseInt(inputQtd.value, 10) || 1));
+      atualizarPreview();
+    });
+  }
+
+  modalCorpo.querySelector('#modal-btn-qtd-minus')?.addEventListener('click', () => {
+    tempState.qtd = Math.max(1, (parseInt(tempState.qtd, 10) || 1) - 1);
+    if (inputQtd) inputQtd.value = tempState.qtd;
+    atualizarPills();
+    atualizarPreview();
+  });
+
+  modalCorpo.querySelector('#modal-btn-qtd-plus')?.addEventListener('click', () => {
+    tempState.qtd = Math.min(100, (parseInt(tempState.qtd, 10) || 1) + 1);
+    if (inputQtd) inputQtd.value = tempState.qtd;
+    atualizarPills();
+    atualizarPreview();
+  });
+
+  modalCorpo.querySelectorAll('.modal-pill-qtd').forEach(p => {
+    p.addEventListener('click', () => {
+      tempState.qtd = parseInt(p.dataset.val, 10);
+      if (inputQtd) inputQtd.value = tempState.qtd;
+      atualizarPills();
+      atualizarPreview();
+    });
+  });
+
+  // 3. Steppers e inputs de Mod
+  const inputMod = modalCorpo.querySelector('#modal-input-mod');
+  if (inputMod) {
+    inputMod.addEventListener('input', () => {
+      tempState.mod = parseInt(inputMod.value, 10) || 0;
+      atualizarPreview();
+    });
+  }
+
+  modalCorpo.querySelector('#modal-btn-mod-minus')?.addEventListener('click', () => {
+    tempState.mod = (parseInt(tempState.mod, 10) || 0) - 1;
+    if (inputMod) inputMod.value = tempState.mod;
+    atualizarPills();
+    atualizarPreview();
+  });
+
+  modalCorpo.querySelector('#modal-btn-mod-plus')?.addEventListener('click', () => {
+    tempState.mod = (parseInt(tempState.mod, 10) || 0) + 1;
+    if (inputMod) inputMod.value = tempState.mod;
+    atualizarPills();
+    atualizarPreview();
+  });
+
+  modalCorpo.querySelectorAll('.modal-pill-mod').forEach(p => {
+    p.addEventListener('click', () => {
+      tempState.mod = parseInt(p.dataset.val, 10);
+      if (inputMod) inputMod.value = tempState.mod;
+      atualizarPills();
+      atualizarPreview();
+    });
+  });
+
+  const atualizarPills = () => {
+    modalCorpo.querySelectorAll('.modal-pill-qtd').forEach(p => {
+      p.classList.toggle('ativo', Number(p.dataset.val) === Number(tempState.qtd));
+    });
+    modalCorpo.querySelectorAll('.modal-pill-mod').forEach(p => {
+      p.classList.toggle('ativo', Number(p.dataset.val) === Number(tempState.mod));
+    });
+  };
+
+  // 4. Modos
+  modalCorpo.querySelectorAll('.modal-modo-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tempState.modo = btn.dataset.modalModo;
+      modalCorpo.querySelectorAll('.modal-modo-btn').forEach(b => {
+        const ativo = b.dataset.modalModo === tempState.modo;
+        b.className = `btn btn-sm ${ativo ? 'btn-primary' : 'btn-secondary'} modal-modo-btn`;
+        if (b.dataset.modalModo === 'vantagem' && ativo) {
+          b.style.background = '#27ae60';
+          b.style.borderColor = '#2ecc71';
+        } else if (b.dataset.modalModo === 'desvantagem' && ativo) {
+          b.style.background = '#c0392b';
+          b.style.borderColor = '#e74c3c';
+        } else {
+          b.style.background = '';
+          b.style.borderColor = '';
+        }
+      });
+      atualizarPreview();
+    });
+  });
+
+  // 5. Salvar Atalho
+  document.getElementById('btn-salvar-modal-atalho-confirmar')?.addEventListener('click', async () => {
+    const inputNome = modalCorpo.querySelector('#modal-input-nome');
+    const inputDesc = modalCorpo.querySelector('#modal-input-desc');
+
+    const nome = inputNome ? inputNome.value.trim() : '';
+    if (!nome) {
+      toast('Por favor, informe um nome para o atalho.', 'warning');
+      inputNome?.focus();
+      return;
+    }
+
+    tempState.nome = nome;
+    tempState.desc = inputDesc ? inputDesc.value.trim() : '';
+
+    fecharModal();
+    await salvarAtalho(tempState, idAlvo);
+    toast(ehEdicao ? `Atalho "${nome}" atualizado!` : `Atalho "${nome}" criado com sucesso!`, 'success');
+
+    if (_containerRef) {
+      _renderizarLayout(_containerRef);
+    }
   });
 }
 
@@ -490,7 +1105,7 @@ function _executarRolagem(container, config) {
   const mod = Number(config.mod) || 0;
   const modo = config.modo || 'normal';
 
-  // Realizar o sorteio criptográfico ou pseudo-aleatório seguro
+  // Realizar o sorteio
   const rolar1Dado = () => Math.floor(Math.random() * faces) + 1;
 
   let dadosMantidos = [];
@@ -498,7 +1113,6 @@ function _executarRolagem(container, config) {
   let paresAdvDisadv = [];
 
   if (modo === 'vantagem' || modo === 'desvantagem') {
-    // Para cada dado da quantidade, rola 2 vezes
     for (let i = 0; i < qtd; i++) {
       const r1 = rolar1Dado();
       const r2 = rolar1Dado();
@@ -513,7 +1127,6 @@ function _executarRolagem(container, config) {
           descartado = r1;
         }
       } else {
-        // Desvantagem: menor
         if (r1 <= r2) {
           mantido = r1;
           descartado = r2;
@@ -528,7 +1141,6 @@ function _executarRolagem(container, config) {
       paresAdvDisadv.push({ r1, r2, mantido, descartado });
     }
   } else {
-    // Modo Normal
     for (let i = 0; i < qtd; i++) {
       dadosMantidos.push(rolar1Dado());
     }
@@ -569,13 +1181,11 @@ function _executarRolagem(container, config) {
     timestamp: Date.now()
   };
 
-  // Simular breve animação de rotação/flip de dados (250ms)
   setTimeout(() => {
     salvarNoHistorico(resultado);
     _estaRolando = false;
     _renderizarLayout(container, resultado);
 
-    // Rolar suavemente para o resultado se a tela for pequena
     const resSlot = container.querySelector('#dice-resultado-slot');
     if (resSlot) {
       resSlot.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -610,7 +1220,6 @@ function _gerarHtmlResultado(res) {
     `;
   }
 
-  // Montagem da quebra visual de dados
   let detalheDadosHtml = '';
   if (res.modo === 'vantagem' || res.modo === 'desvantagem') {
     detalheDadosHtml = res.paresAdvDisadv.map((par, i) => `

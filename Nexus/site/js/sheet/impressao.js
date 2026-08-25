@@ -5,7 +5,7 @@
 import { ATRIBUTOS_KEYS, ATRIBUTOS_NOMES, CLASSES_INFO, PERICIAS } from '../dados-classes.js';
 import { getMagiasPorCirculo } from '../db.js';
 import { formatarCarteira, totalEmCobre } from '../moedas.js';
-import { bonusProficiencia, calcAtaqueMagia, calcBonusPericia, calcCA, calcCDMagia, calcIntuicaoPassiva, calcInvestigacaoPassiva, calcMod, calcPercepcaoPassiva, escHtml, fmtMod, getDeslocamento, getTamanho, mdParaHtml, toast } from '../utils.js';
+import { bonusProficiencia, calcAtaqueMagia, calcBonusPericia, calcBonusSalvaguarda, calcCA, calcCDMagia, calcIntuicaoPassiva, calcInvestigacaoPassiva, calcMod, calcPercepcaoPassiva, escHtml, fmtMod, getDeslocamento, getTamanho, isSalvaguardaProficiente, mdParaHtml, toast } from '../utils.js';
 import { SUBTRACOS_ESPECIE, gerarTracoSinteticoEspecie } from './caracteristicas.js';
 import { getEstadoRecursosBruxo } from './classes/bruxo.js';
 import { forcaPrimordialAtiva, getAtaquesPorAcao, getDeslocamentoFinal, getModIniciativa } from './combate.js';
@@ -280,9 +280,8 @@ export async function gerarHtmlImpressao() {
       <div class="print-saves-grid">
         ${ATRIBUTOS_KEYS.map(key => {
           const nome = ATRIBUTOS_NOMES[key];
-          const mod = calcMod(char.atributos[key]);
-          const proficiente = (char.salvaguardas_proficientes || []).includes(nome);
-          const bonus = mod + (proficiente ? prof : 0);
+          const proficiente = isSalvaguardaProficiente(char, key);
+          const bonus = calcBonusSalvaguarda(char, key);
           return `
             <div class="print-save-item">
               <div class="print-save-prof ${proficiente ? 'ativo' : ''}"></div>
@@ -836,4 +835,4 @@ async function imprimirFicha() {
  */
 function isStandaloneApp() {
   return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-}
+}

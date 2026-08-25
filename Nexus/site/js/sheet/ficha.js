@@ -6,9 +6,10 @@
 // Extraido de site/js/pages/sheet.js sem alteracao de comportamento.
 // ============================================================
 import { ATRIBUTOS_KEYS, ATRIBUTOS_NOMES, ATRIBUTO_NOME_PARA_KEY, CLASSES_INFO, PERICIAS, getIconeClasse } from '../dados-classes.js';
+import { formatarClasses, calcularReservaDadosVida, ehMulticlasse } from '../multiclasse.js';
 import { XP_POR_NIVEL } from '../levelup.js';
 import { _renderSyncIndicadorHtml } from '../pages/sheet.js';
-import { bonusProficiencia, calcAtaqueMagia, calcBonusPericia, calcCA, calcCDMagia, calcMod, calcPVTotal, escHtml, fmtMod, getDeslocamento, getTamanho, semAcento, sincronizarCamposVinculadosNivel } from '../utils.js';
+import { bonusProficiencia, calcAtaqueMagia, calcBonusPericia, calcBonusSalvaguarda, calcCA, calcCDMagia, calcMod, calcPVTotal, escHtml, fmtMod, getDeslocamento, getTamanho, isSalvaguardaProficiente, semAcento, sincronizarCamposVinculadosNivel } from '../utils.js';
 import { renderSecaoCaracteristicas, renderSecaoSubclasse, renderSecaoTracosEspecie } from './caracteristicas.js';
 import { getEstadoRecursosArtifice, getProgressaoArtifice } from './classes/artifice.js';
 import { getEstadoFuria, setupEventosSubclasseBarbaro } from './classes/barbaro.js';
@@ -121,7 +122,7 @@ export function renderFichaCompleta() {
             <div class="char-header-subtitle">
               ${iconeClasse ? `<img src="${iconeClasse}" class="classe-icon-inline" alt="">` : ''}
               <span class="char-header-class-text">
-                ${escHtml(char.especie || '')} <strong>${escHtml(char.classe || '')}</strong> ${char.subclasse ? `(${escHtml(char.subclasse)})` : ''}
+                ${escHtml(char.especie || '')} <strong>${escHtml(formatarClasses(char))}</strong>
               </span>
               <span class="char-header-level-badge">Nível ${char.nivel}</span>
             </div>
@@ -651,7 +652,7 @@ export function renderFichaCompleta() {
           </div>
           <div class="hp-sub-box hp-dv-box">
             <div class="hp-sub-label">Dados de Vida</div>
-            <div class="hp-sub-value">${char.nivel - (char.dados_vida_usados || 0)} / ${char.nivel} <span style="font-size:0.8em;color:var(--text-muted)">d${info.dado_vida || '?'}</span></div>
+            <div class="hp-sub-value">${char.nivel - (char.dados_vida_usados || 0)} / ${char.nivel} <span style="font-size:0.8em;color:var(--text-muted)">${ehMulticlasse(char) ? calcularReservaDadosVida(char).map(d => `${d.total}${d.tipo}`).join('+') : `d${info.dado_vida || '?'}`}</span></div>
             <button class="btn btn-sm btn-secondary no-print" id="btn-usar-dv" style="margin-top:4px;font-size:0.72rem;padding:3px 8px">Usar DV</button>
           </div>
         </div>
@@ -731,37 +732,49 @@ export function renderFichaCompleta() {
       <div class="card-header"><h2>Salvaguardas</h2></div>
       ${char.especie === 'Pequenino' ? '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px"><span class="badge" style="font-size:0.7rem;padding:3px 8px;background:var(--success);color:#fff" title="Ao tirar 1 natural em qualquer d20, re-jogue e use o novo resultado.">Sorte: Re-roll nat 1</span></div>' : ''}
       ${(() => {
-        // Calcular imunidades a condições para exibir na seção
-        const _imunidades = [];
+        // Calcular imunidades e auras para exibir na seção
+        const _badges = [];
         const _ef = getEstadoFuria();
         if (_ef?.ativa && _ef?.furiaIrracional) {
-          _imunidades.push({ condicao: 'Amedrontado', fonte: 'Fúria Irracional' });
-          _imunidades.push({ condicao: 'Enfeitiçado', fonte: 'Fúria Irracional' });
+          _badges.push(`<span class="badge" style="font-size:0.65rem;padding:2px 6px;background:var(--success);color:#fff" title="Fúria Irracional">Imune: Amedrontado (Fúria)</span>`);
+          _badges.push(`<span class="badge" style="font-size:0.65rem;padding:2px 6px;background:var(--success);color:#fff" title="Fúria Irracional">Imune: Enfeitiçado (Fúria)</span>`);
         }
         const _ep = getEstadoRecursosPaladino();
-        if (_ep?.auraCoragemAtiva) {
-          if (!_imunidades.find(i => i.condicao === 'Amedrontado')) {
-            _imunidades.push({ condicao: 'Amedrontado', fonte: 'Aura de Coragem' });
+        if (_ep?.auraProtecaoAtiva) {
+          const inc = (char.condicoes || []).includes('Incapacitado');
+          if (inc) {
+            _badges.push(`<span class="badge" style="font-size:0.65rem;padding:2px 6px;background:var(--danger);color:#fff" title="Aura de Proteção inativa enquanto Incapacitado">Aura de Proteção: Inativa (Incapacitado)</span>`);
+          } else {
+            _badges.push(`<span class="badge" style="font-size:0.65rem;padding:2px 6px;background:var(--primary);color:#fff" title="Aura de Proteção (${_ep.auraRaio}m): +${_ep.bonusAura} (mod. Carisma, mín. +1) em todas as salvaguardas">Aura de Proteção (${_ep.auraRaio}m): +${_ep.bonusAura} SG</span>`);
           }
+        }
+        if (_ep?.auraCoragemAtiva) {
+          _badges.push(`<span class="badge" style="font-size:0.65rem;padding:2px 6px;background:var(--success);color:#fff" title="Aura de Coragem">Imune: Amedrontado (Aura de Coragem)</span>`);
         }
         if (_ep?.auraDevocaoAtiva) {
-          if (!_imunidades.find(i => i.condicao === 'Enfeitiçado')) {
-            _imunidades.push({ condicao: 'Enfeitiçado', fonte: 'Aura de Devoção' });
-          }
+          _badges.push(`<span class="badge" style="font-size:0.65rem;padding:2px 6px;background:var(--success);color:#fff" title="Aura de Devoção">Imune: Enfeitiçado (Aura de Devoção)</span>`);
         }
-        return _imunidades.length > 0 ? `
+        return _badges.length > 0 ? `
           <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px">
-            ${_imunidades.map(i => `<span class="badge" style="font-size:0.65rem;padding:2px 6px;background:var(--success);color:#fff" title="${i.fonte}">Imune: ${i.condicao} (${i.fonte})</span>`).join('')}
+            ${_badges.join('')}
           </div>` : '';
       })()}
       <div class="salvaguardas-grid">
         ${ATRIBUTOS_KEYS.map(key => {
           const nome = ATRIBUTOS_NOMES[key];
-          const mod = calcMod(char.atributos[key]);
-          const proficiente = (char.salvaguardas_proficientes || []).includes(nome);
-          const bonus = mod + (proficiente ? prof : 0);
+          const proficiente = isSalvaguardaProficiente(char, key);
+          const bonus = calcBonusSalvaguarda(char, key);
           const condicoes = char.condicoes || [];
           const incapacitado = condicoes.includes('Incapacitado');
+
+          // Detalhamento do cálculo para tooltip
+          const mod = calcMod(char.atributos[key]);
+          const bonusProf = proficiente ? prof : 0;
+          const _ep = char.classe === 'Paladino' ? getEstadoRecursosPaladino() : null;
+          const bonusAura = (_ep?.auraProtecaoAtiva && !incapacitado) ? _ep.bonusAura : 0;
+          let breakdown = `${nome}: Mod ${fmtMod(mod)}`;
+          if (bonusProf > 0) breakdown += ` + Prof ${fmtMod(bonusProf)}`;
+          if (bonusAura > 0) breakdown += ` + Aura de Proteção +${bonusAura}`;
 
           // Fontes de vantagem em salvaguardas
           const fontsVant = [];
@@ -791,7 +804,7 @@ export function renderFichaCompleta() {
             indicadorSalv = `<span class="pericia-vd-badge desvantagem" data-vd-info="Desvantagem: ${fontsDesv.join(', ')}">D</span>`;
           }
           return `
-            <div class="salva-item ${proficiente ? 'proficiente' : ''}">
+            <div class="salva-item ${proficiente ? 'proficiente' : ''}" title="${breakdown}">
               <div class="pericia-prof ${proficiente ? 'ativo' : ''}"></div>
               <span class="pericia-bonus">${fmtMod(bonus)}</span>
               <span class="pericia-nome" style="flex:1">${nome}</span>

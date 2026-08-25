@@ -29,6 +29,22 @@
         "updatedAt": { "type": "string" }
       },
       "required": ["id"]
+    },
+    "AtalhoDados": {
+      "title": "AtalhoDados",
+      "description": "Atalho de rolagem de dados configurado pelo usuário para a mesa virtual",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nome": { "type": "string" },
+        "tipo": { "type": "string" },
+        "qtd": { "type": "number" },
+        "mod": { "type": "number" },
+        "modo": { "type": "string" },
+        "desc": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "nome", "tipo", "qtd"]
     }
   },
   "firestore": {
@@ -39,6 +55,10 @@
     "/users/{userId}/personagens/{personagemId}": {
       "schema": "Personagem",
       "description": "Fichas de personagens pertencentes exclusivamente ao usuário"
+    },
+    "/users/{userId}/atalhos_dados/{atalhoId}": {
+      "schema": "AtalhoDados",
+      "description": "Atalhos rápidos de rolagem de dados personalizados do usuário"
     }
   }
 }

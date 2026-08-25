@@ -26,6 +26,13 @@ service cloud.firestore {
         allow list: if isOwner(userId) && isValidId(userId);
         allow create, update: if isOwner(userId) && isValidId(userId) && isValidId(personagemId);
       }
+
+      // Subcoleção de Atalhos de Dados do Usuário
+      match /atalhos_dados/{atalhoId} {
+        allow get, delete: if isOwner(userId) && isValidId(userId) && isValidId(atalhoId);
+        allow list: if isOwner(userId) && isValidId(userId);
+        allow create, update: if isOwner(userId) && isValidId(userId) && isValidId(atalhoId);
+      }
     }
 
     // Default deny catch-all

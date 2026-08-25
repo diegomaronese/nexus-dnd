@@ -418,3 +418,67 @@ test('Percepção Passiva bate com 10 + bônus do teste de Sabedoria (Percepçã
     }
   }
 });
+
+test('calcBonusSalvaguarda: Paladino nível 6+ adiciona Aura de Proteção (+mod CAR, mín +1) em todas as salvaguardas', () => {
+  const p = store.criarPersonagemVazio();
+  p.classe = 'Paladino';
+  p.nivel = 5;
+  p.atributos = { forca: 16, destreza: 10, constituicao: 14, inteligencia: 8, sabedoria: 12, carisma: 16 };
+  p.salvaguardas_proficientes = ['Sabedoria', 'Carisma'];
+
+  // Nível 5: sem Aura de Proteção (Força mod +3, Carisma proficiente mod +3 + bp +3 = +6)
+  assert.equal(utils.calcBonusSalvaguarda(p, 'forca'), 3, 'Paladino nível 5: Força deve ser apenas +3');
+  assert.equal(utils.calcBonusSalvaguarda(p, 'carisma'), 6, 'Paladino nível 5: Carisma deve ser +3 mod + 3 bp = +6');
+
+  // Nível 6: Aura de Proteção ativa (+3 de mod CAR)
+  p.nivel = 6;
+  assert.equal(utils.calcBonusSalvaguarda(p, 'forca'), 3 + 3, 'Paladino nível 6: Força deve ser +3 mod + 3 aura = +6');
+  assert.equal(utils.calcBonusSalvaguarda(p, 'destreza'), 0 + 3, 'Paladino nível 6: Destreza deve ser 0 mod + 3 aura = +3');
+  assert.equal(utils.calcBonusSalvaguarda(p, 'constituicao'), 2 + 3, 'Paladino nível 6: Constituição deve ser +2 mod + 3 aura = +5');
+  assert.equal(utils.calcBonusSalvaguarda(p, 'inteligencia'), -1 + 3, 'Paladino nível 6: Inteligência deve ser -1 mod + 3 aura = +2');
+  assert.equal(utils.calcBonusSalvaguarda(p, 'sabedoria'), 1 + 3 + 3, 'Paladino nível 6: Sabedoria deve ser +1 mod + 3 bp + 3 aura = +7');
+  assert.equal(utils.calcBonusSalvaguarda(p, 'carisma'), 3 + 3 + 3, 'Paladino nível 6: Carisma deve ser +3 mod + 3 bp + 3 aura = +9');
+
+  // Carisma baixo: bônus mínimo de +1
+  p.atributos.carisma = 10; // mod 0
+  assert.equal(utils.calcBonusSalvaguarda(p, 'forca'), 3 + 1, 'Paladino nível 6 com CAR 10: bônus mínimo de +1 na aura');
+
+  // Incapacitado: Aura inativa
+  p.atributos.carisma = 16;
+  p.condicoes = ['Incapacitado'];
+  assert.equal(utils.calcBonusSalvaguarda(p, 'forca'), 3, 'Paladino Incapacitado: aura inativa, volta para +3');
+});
+
+test('validarAtributosEditados: metodo manual permite alterar valores base livremente (min 3, max 18)', async () => {
+  const { validarAtributosEditados } = await import('../../../site/js/ficha-edicao-validacoes.js');
+  const personagem = {
+    bonus_antecedente: { forca: 2, constituicao: 1 },
+    configuracao_criacao: {
+      atributos: {
+        metodo: 'manual',
+        valoresBase: { forca: 15, destreza: 14, constituicao: 13, inteligencia: 12, sabedoria: 10, carisma: 8 }
+      }
+    }
+  };
+
+  // Valores novos totalmente diferentes dos originais (ex: 18, 17, 16, 14, 12, 10)
+  const propostaValida = { forca: 18, destreza: 17, constituicao: 16, inteligencia: 14, sabedoria: 12, carisma: 10 };
+  const resValida = validarAtributosEditados(personagem, propostaValida, {});
+  assert.equal(resValida.ok, true, 'deve aceitar valores manuais novos');
+
+  // Valor abaixo de 3 deve ser recusado
+  const propostaInvalidaBaixa = { forca: 2, destreza: 17, constituicao: 16, inteligencia: 14, sabedoria: 12, carisma: 10 };
+  const resInvalidaBaixa = validarAtributosEditados(personagem, propostaInvalidaBaixa, {});
+  assert.equal(resInvalidaBaixa.ok, false, 'deve recusar valor abaixo de 3');
+
+  // Valor acima de 18 deve ser recusado
+  const propostaInvalidaAlta = { forca: 19, destreza: 17, constituicao: 16, inteligencia: 14, sabedoria: 12, carisma: 10 };
+  const resInvalidaAlta = validarAtributosEditados(personagem, propostaInvalidaAlta, {});
+  assert.equal(resInvalidaAlta.ok, false, 'deve recusar valor base acima de 18');
+
+  // Base + bonus que ultrapassa 20 deve ser recusado
+  const propostaEstouroTeto = { forca: 19, destreza: 10, constituicao: 10, inteligencia: 10, sabedoria: 10, carisma: 10 }; // 19+2=21
+  const resEstouroTeto = validarAtributosEditados(personagem, propostaEstouroTeto, {});
+  assert.equal(resEstouroTeto.ok, false, 'deve recusar se estourar teto de 20');
+});
+

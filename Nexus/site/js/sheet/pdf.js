@@ -3,7 +3,7 @@
 // Extraido de site/js/pages/sheet.js sem alteracao de comportamento.
 // ============================================================
 import { ATRIBUTOS_KEYS, ATRIBUTOS_NOMES, CLASSES_INFO } from '../dados-classes.js';
-import { bonusProficiencia, calcAtaqueMagia, calcBonusPericia, calcCA, calcCDMagia, calcIntuicaoPassiva, calcInvestigacaoPassiva, calcMod, calcPercepcaoPassiva, fmtMod, getDeslocamento, toast } from '../utils.js';
+import { bonusProficiencia, calcAtaqueMagia, calcBonusPericia, calcBonusSalvaguarda, calcCA, calcCDMagia, calcIntuicaoPassiva, calcInvestigacaoPassiva, calcMod, calcPercepcaoPassiva, fmtMod, getDeslocamento, isSalvaguardaProficiente, toast } from '../utils.js';
 import { forcaPrimordialAtiva, getDeslocamentoFinal, getModIniciativa } from './combate.js';
 import { char, especiesCache, passivosTalentosCache } from './estado.js';
 import { gerarHtmlImpressao } from './impressao.js';
@@ -80,9 +80,9 @@ function _montarDadosCartao() {
   }));
 
   const saves = ATRIBUTOS_KEYS.map(k => {
-    const m = calcMod(char.atributos[k]);
-    const p = (char.salvaguardas_proficientes || []).includes(ATRIBUTOS_NOMES[k]);
-    return { nome: ATRIBUTOS_NOMES[k], bonus: fmtMod(m + (p ? prof : 0)), prof: p };
+    const p = isSalvaguardaProficiente(char, k);
+    const bonus = calcBonusSalvaguarda(char, k);
+    return { nome: ATRIBUTOS_NOMES[k], bonus: fmtMod(bonus), prof: p };
   });
 
   const listaBase = ['Percepção','Intuição','Investigação','Religião','História','Prestidigitação','Furtividade','Persuasão','Atletismo','Medicina','Acrobacia','Enganação','Arcanismo','Sobrevivência','Natureza','Atuação','Intimidação','Lidar com Animais'];
