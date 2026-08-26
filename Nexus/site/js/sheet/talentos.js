@@ -716,4 +716,4 @@ export function obterTiposAdeptoElementalUsados() {
     usados.push(char.adepto_elemental_tipo);
   }
   return usados;
-}
+}

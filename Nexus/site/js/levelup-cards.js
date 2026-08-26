@@ -569,8 +569,9 @@ export function renderCardEscolhasClasse(ctx, state) {
 // CARD: Seleção de Magias
 // ============================================================
 export function renderCardMagias(ctx, state) {
-  const { char, conjuracao, info } = ctx;
+  const { char, conjuracao, info, classeAlvo } = ctx;
   if (!conjuracao) return '';
+  const nomeClasseAlvo = classeAlvo || char.classe;
 
   const { truquesGanhos, tipoConj, magiasGanhas, magiasNovo, magiasAtual, ehMago } = conjuracao;
   let html = '';
@@ -633,7 +634,7 @@ export function renderCardMagias(ctx, state) {
           <div class="levelup-card-header">Trocar Magia (Opcional)</div>
           <div class="levelup-card-body">
             <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:8px">
-              Troque 1 magia conhecida por outra da lista de ${char.classe}.
+              Troque 1 magia conhecida por outra da lista de ${nomeClasseAlvo}.
             </div>
             <select class="form-input" id="levelup-trocar-de" style="margin-bottom:8px">
               <option value="">Não trocar</option>
@@ -665,7 +666,7 @@ export function renderCardMagias(ctx, state) {
         <div class="levelup-card-header">Trocar Truque (Opcional)</div>
         <div class="levelup-card-body">
           <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:8px">
-            Troque 1 truque conhecido por outro da lista de ${char.classe}.
+            Troque 1 truque conhecido por outro da lista de ${nomeClasseAlvo}.
           </div>
           <select class="form-input" id="levelup-truque-trocar-de" style="margin-bottom:8px">
             <option value="">Não trocar</option>

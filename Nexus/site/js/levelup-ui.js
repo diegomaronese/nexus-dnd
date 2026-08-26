@@ -34,6 +34,77 @@ let _levelUpModalPrincipalAberto = false;
 // vêm de regras-cobertura.js (única fonte) para não divergir da validação
 // central em validarEscolhasTalento — ver os aliases importados acima.
 
+export function achatarMagiasClasse(magiasClasseData) {
+  if (!magiasClasseData) return [];
+  if (Array.isArray(magiasClasseData)) return magiasClasseData;
+  const lista = magiasClasseData?.lista_magias || magiasClasseData || {};
+  const resultado = [];
+  for (const [chave, magias] of Object.entries(lista)) {
+    if (chave === 'classe') continue;
+    let circulo = 0;
+    if (chave === 'Truques' || chave === 'truques' || chave === '0') {
+      circulo = 0;
+    } else {
+      const match = chave.match(/^(\d+)/);
+      if (match) circulo = parseInt(match[1]);
+    }
+    (magias || []).forEach(m => {
+      const obj = typeof m === 'string' ? { nome: m } : { ...m };
+      obj.circulo = (typeof obj.circulo === 'number') ? obj.circulo : circulo;
+      resultado.push(obj);
+    });
+  }
+  return resultado;
+}
+
+export async function carregarListaMagiasClasseLevelUp(classeAlvo, ctx = null) {
+  if (!classeAlvo) return [];
+  let classeParaMagias = classeAlvo;
+  if (ctx?.helpers?.ehSubclasseConjuradora && ctx.helpers.ehSubclasseConjuradora()) {
+    classeParaMagias = 'Mago';
+  }
+  const rawData = await getMagiasClasse(classeParaMagias);
+  const base = achatarMagiasClasse(rawData);
+
+  const nivelClasseNovo = ctx ? (ctx.novoNivelClasse || ctx.nivelNovo || 1) : 1;
+  const ehBardoSegredos = classeAlvo === 'Bardo' && nivelClasseNovo >= 10;
+
+  // Combatente Druídico / Combatente Abençoado
+  const estiloLuta = ctx?.char?.escolhas_classe?.estilo_luta?.[0] || '';
+  if (estiloLuta === 'Combatente Druídico') {
+    const druidaData = await getMagiasClasse('Druida');
+    const druidaTruques = achatarMagiasClasse(druidaData).filter(m => m.circulo === 0);
+    const mapa = new Map();
+    base.forEach(m => mapa.set(`${m.nome}|${m.circulo || 0}`, m));
+    druidaTruques.forEach(m => { if (!mapa.has(`${m.nome}|0`)) mapa.set(`${m.nome}|0`, m); });
+    if (!ehBardoSegredos) return [...mapa.values()];
+  } else if (estiloLuta === 'Combatente Abençoado') {
+    const clerigoData = await getMagiasClasse('Clérigo');
+    const clerigoTruques = achatarMagiasClasse(clerigoData).filter(m => m.circulo === 0);
+    const mapa = new Map();
+    base.forEach(m => mapa.set(`${m.nome}|${m.circulo || 0}`, m));
+    clerigoTruques.forEach(m => { if (!mapa.has(`${m.nome}|0`)) mapa.set(`${m.nome}|0`, m); });
+    if (!ehBardoSegredos) return [...mapa.values()];
+  }
+
+  if (ehBardoSegredos) {
+    const extrasClasses = ['Clérigo', 'Druida', 'Mago'];
+    const extras = [];
+    for (const cl of extrasClasses) {
+      const d = await getMagiasClasse(cl);
+      extras.push(...achatarMagiasClasse(d));
+    }
+    const mapa = new Map();
+    [...base, ...extras].forEach(m => {
+      const chave = `${m.nome}|${m.circulo || 0}`;
+      if (!mapa.has(chave)) mapa.set(chave, m);
+    });
+    return [...mapa.values()];
+  }
+
+  return base;
+}
+
 // ============================================================
 // PONTO DE ENTRADA PRINCIPAL
 // ============================================================
@@ -62,7 +133,7 @@ export async function abrirLevelUpCards(char, classeData, helpers, caches, salva
 
     // Carregar lista de magias disponíveis para uso interno
     if (ctx.ehConjurador) {
-      ctx._listaMagiasClasse = await getMagiasClasse(ctx.classeAlvo);
+      ctx._listaMagiasClasse = await carregarListaMagiasClasseLevelUp(ctx.classeAlvo, ctx);
     }
 
     renderModal(ctx, state, caches);
@@ -402,7 +473,7 @@ function bindEventosGanhosNivel(ctx, state, caches) {
     // Reconstruir o contexto para a nova classe
     const novoCtx = await buildLevelUpContext(ctx.char, null, ctx.helpers, novaClasse);
     if (novoCtx.ehConjurador) {
-      novoCtx._listaMagiasClasse = await getMagiasClasse(novaClasse);
+      novoCtx._listaMagiasClasse = await carregarListaMagiasClasseLevelUp(novaClasse, novoCtx);
     }
 
     // Copiar propriedades de novoCtx para ctx
@@ -1019,9 +1090,12 @@ function bindEventosTrocasOpcionais(ctx, state) {
 }
 
 // --- Magias ---
-function bindEventosMagias(ctx, state) {
+async function bindEventosMagias(ctx, state) {
   const conj = ctx.conjuracao;
   if (!conj) return;
+  if (!Array.isArray(ctx._listaMagiasClasse) || ctx._listaMagiasClasse.length === 0) {
+    ctx._listaMagiasClasse = await carregarListaMagiasClasseLevelUp(ctx.classeAlvo, ctx);
+  }
   const listaMagiasClasse = ctx._listaMagiasClasse || [];
   const maxCirculoNovo = conj.maxCirculoNovo || 0;
 
@@ -1059,11 +1133,15 @@ function bindEventosMagias(ctx, state) {
     }
   }
 
-  function abrirGridSelecao(titulo, maxSel, selSet, filtroCirc, jaTemSet, resumoId, badgesId, escolaFiltro = null, circuloMaxOverride = null) {
+  async function abrirGridSelecao(titulo, maxSel, selSet, filtroCirc, jaTemSet, resumoId, badgesId, escolaFiltro = null, circuloMaxOverride = null) {
+    if (!Array.isArray(ctx._listaMagiasClasse) || ctx._listaMagiasClasse.length === 0) {
+      ctx._listaMagiasClasse = await carregarListaMagiasClasseLevelUp(ctx.classeAlvo, ctx);
+    }
+    const listaMagias = ctx._listaMagiasClasse || [];
     const circulosExpandidos = new Set();
     const circulosComEstadoDefinido = new Set();
     const circuloLimite = circuloMaxOverride != null ? circuloMaxOverride : maxCirculoNovo;
-    let disponiveis = listaMagiasClasse.filter(m => {
+    let disponiveis = listaMagias.filter(m => {
       if (filtroCirc === 0) return m.circulo === 0;
       if (filtroCirc === 'magia') return m.circulo > 0 && m.circulo <= circuloLimite;
       return true;
