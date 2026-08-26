@@ -1,5 +1,21 @@
 export default [
   {
+    "nome": "Adaga de Ritual Rakdos",
+    "tipo": "Arma",
+    "subtipo": "Adaga",
+    "tipo_linha": "Arma (Adaga), Lendário (Requer Sintonização)",
+    "raridade": "Lendário",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_ataque": 1,
+    "bonus_dano": 1,
+    "dano": "1d4 perfurante",
+    "propriedades": "Acuidade, arremesso (distância 6/18 m), leve",
+    "categoria": "Arma Simples Corpo a Corpo",
+    "resumo": "Adaga +1 que aprisiona até 5 almas ao matar, causando +1d4 de dano necrótico por alma, cura 1d10 por alma e poder de Aniquilação.",
+    "descricao": "Você ganha um bônus de +1 nas jogadas de ataque e dano feitas com esta arma mágica. Sua lâmina é cruelmente serrilhada e seu cabo lembra uma cabeça e asas demoníacas.\n\nSempre que você mata uma criatura com um ataque usando a adaga, a alma da criatura é aprisionada dentro da adaga, e aquela criatura pode ser restaurada à vida apenas por um feitiço de *Desejo*. A adaga pode conter no máximo cinco almas.\n\nPara cada alma aprisionada na adaga, seus ataques com ela causam um dano necrótico 1d4 extra em um acerto. Enquanto a adaga está a menos de 1,5 metro de você, seus sonhos estão assombrados por sussurros das almas presas.\n\nA adaga possui as seguintes propriedades adicionais:\n\n• **Sifão da Vitalidade:** Como uma ação bônus, você pode liberar qualquer número de almas armazenadas da adaga para recuperar 1d10 pontos de vida por alma liberada.\n\n• **Aniquilação:** Se a adaga tiver cinco almas, você pode usar esta propriedade: como uma reação imediatamente após você acertar uma criatura com a adaga e causar dano a esse alvo, você pode liberar todas as cinco almas. Se o alvo agora tem menos de 75 pontos de vida, deve ser bem-sucedido em um teste de resistência de Constituição CD 15 ou morrer. Se o alvo morrer, você não pode usar esta propriedade novamente até terminar um descanso longo."
+  },
+  {
     "nome": "Adaga Peçonhenta",
     "tipo": "Arma",
     "subtipo": "Adaga",
@@ -31,6 +47,17 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Aljava mágica com 3 compartimentos extradimensionais para flechas, azagaias e armas longas, sem pesar mais de 1 kg.",
     "descricao": "Cada um dos três compartimentos dessa aljava conecta-se a um espaço extradimensional que permite armazenar inúmeros itens sem pesar mais de 1 quilo. O compartimento mais curto pode conter até 60 Flechas, Virotes ou objetos similares. O compartimento médio comporta até 18 Azagaias ou objetos similares. O compartimento mais longo pode armazenar até 6 objetos longos, como arcos, Cajados ou Lanças.\n\nVocê pode sacar qualquer item da aljava como se estivesse pegando de uma aljava ou bainha comum."
+  },
+  {
+    "nome": "Amolador Mental",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "O anel possui 4 cargas para manter a concentração em uma magia após falhar na salvaguarda de Constituição.",
+    "descricao": "O anel possui 4 cargas, recuperando 1d4 cargas diariamente ao amanhecer.\n\nEnquanto estiver sintonizado a este anel, quando você falhar em uma salvaguarda de Constituição realizada para manter sua Concentração em uma magia, você pode usar uma Reação para gastar 1 carga do anel e ter sucesso na salvaguarda."
   },
   {
     "nome": "Amuleto da Estilha Negra",
@@ -66,6 +93,17 @@ export default [
     "descricao": "Enquanto estiver usando este amuleto, você fica oculto aos efeitos de magias de Adivinhação. Você não pode ser alvo de tais magias ou ser percebido por sensores mágicos de vidência."
   },
   {
+    "nome": "Amuleto do Fragmento Negro",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Amuleto",
+    "tipo_linha": "Item Maravilhoso (Amuleto), Comum (Requer Sintonização por um Bruxo)",
+    "raridade": "Comum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer sintonização por um Bruxo",
+    "resumo": "Foco arcano de bruxo. Permite tentar conjurar um truque de bruxo desconhecido fazendo um teste de Inteligência (Arcanismo) CD 10 (1x por descanso longo).",
+    "descricao": "Este amuleto é confeccionado a partir de um fragmento de material extraplanar, originário do plano do patrono de seu bruxo. Enquanto usa o amuleto você recebe os seguintes benefícios:\n\n• Você pode usar o amuleto como o foco arcano de suas magias de bruxo.\n• Você pode tentar conjurar um truque que não conheça. O truque deve estar na lista de magias do bruxo e você deve fazer um teste de Inteligência (Arcanismo) com CD 10. Se o teste for bem-sucedido, você conjura a magia. Se o teste falhar, a magia também falha, e a ação usada para tentar conjurar a magia é desperdiçada. Qualquer que seja o resultado, você não pode usar esta propriedade novamente até o término de um descanso longo."
+  },
+  {
     "nome": "Amuleto Mecânico",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -86,6 +124,17 @@ export default [
     "detalhe_sintonizacao": "Requer Sintonização",
     "resumo": "Permite conjurar Transição Planar com teste de Arcanismo CD 15 (com risco de desvio para planos aleatórios em caso de falha).",
     "descricao": "Enquanto estiver usando este amuleto, você pode executar uma ação Usar Magia para nomear um local em outro plano de existência com o qual esteja familiarizado. Em seguida, realize um teste de Inteligência (Arcanismo) CD 15. Em caso de sucesso, você conjura *Transição Planar*. Se falhar, você e cada criatura e objeto em um raio de 4,5 metros viajam para um destino aleatório determinado ao jogar 1d100, conforme a tabela a seguir.\n\n| 1d100 | Destino |\n| :---- | :---- |\n| 01-60 | Local aleatório no plano nomeado |\n| 61-70 | Localização aleatória em um Plano Interno determinada pela jogada de 1d6: em um **1**, o Plano do Ar; em um **2**, o Plano da Terra; em um **3**, o Plano do Fogo; em um **4**, o Plano da Água; em um **5**, Faéria; em um **6**, o Sombral |\n| 71-80 | Localização aleatória em um Plano Externo determinada pela jogada de 1d8: em um **1**, Arbórea; em um **2**, Arcádia; em um **3**, as Terras Ferais; em um **4**, Bitopia; em um **5**, Elísio; em um **6**, Mecânos; em um **7**, Monte Celéstia; em um **8**, Ysgard |\n| 81-90 | Localização aleatória em um Plano Externo determinada pela jogada de 1d8: em um **1**, o Abismo; em um **2**, Aqueronte; em um **3**, Cárceri; em um **4**, Gehenna; em um **5**, Hades; em um **6**, Limbo; em um **7**, os Nove Infernos; em um **8**, Pandemônio |\n| 91-100 | Local aleatório no Plano Astral |"
+  },
+  {
+    "nome": "Amuleto Relógio",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Amuleto",
+    "tipo_linha": "Item Maravilhoso (Amuleto), Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Ao fazer uma jogada de ataque, pode trocar a rolagem do d20 por um resultado 10 no dado (1x por amanhecer).",
+    "descricao": "Este amuleto de cobre contém pequenas engrenagens interligadas e é alimentado pela magia de Mechanus, um plano de previsibilidade exata. Uma criatura que aproximar o ouvido do amuleto pode escutar suaves ruídos de zumbidos e tique-taques em seu interior.\n\nAo usar o amuleto, quando fizer um ataque você pode se abster de rolar um d20 para obter um resultado 10. Uma vez usado, esta propriedade não pode ser usada até o próximo amanhecer."
   },
   {
     "nome": "Anel Afastador de Magias",
@@ -119,6 +168,17 @@ export default [
     "detalhe_sintonizacao": "Requer Sintonização",
     "resumo": "Terreno Difícil não custa movimento extra; magia não pode reduzir deslocamentos nem impor Contido ou Paralisado.",
     "descricao": "Enquanto estiver usando este anel, Terreno Difícil não custa movimento adicional a você. Além disso, a magia não pode reduzir nenhum de seus Deslocamentos nem impor a condição Contido ou Paralisado a você."
+  },
+  {
+    "nome": "Anel da Recarga de Magia",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização por um Conjurador)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um Conjurador",
+    "resumo": "Com uma Ação Bônus, você recupera um espaço de magia gasto de até 3º círculo (1x ao amanhecer).",
+    "descricao": "Enquanto estiver usando este anel, você pode usar uma Ação Bônus para recuperar um espaço de magia gasto de até 3º círculo. Uma vez utilizado, o anel não pode ser usado novamente até o próximo amanhecer."
   },
   {
     "nome": "Anel das Estrelas Cadentes",
@@ -352,6 +412,45 @@ export default [
     "descricao": "Ao colocar uma flecha neste arco, ele sussurra em Élfico: “Célere derrota aos meus inimigos”. Ao usar esta arma para um ataque à distância, você pode proferir as palavras de comando: “Morte rápida àquele que me feriu”. O alvo do seu ataque se torna seu inimigo jurado até morrer ou até o amanhecer 7 dias depois. Você pode ter apenas um inimigo jurado por vez.\n\nAo realizar ataque à distância contra o inimigo jurado, você tem Vantagem, ignora Cobertura Parcial e Três Quartos, e não sofre Desvantagem por alcance máximo. Em caso de acerto, causa 3d6 pontos de dano Perfurante adicionais.\n\nEnquanto seu inimigo jurado viver, você tem Desvantagem em jogadas de ataque com todas as outras armas."
   },
   {
+    "nome": "Arma +1",
+    "tipo": "Arma",
+    "subtipo": "Qualquer Simples ou Marcial",
+    "tipo_linha": "Arma (Qualquer Simples ou Marcial), Incomum",
+    "raridade": "Incomum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ataque": 1,
+    "bonus_dano": 1,
+    "resumo": "Concede um bônus de +1 nas jogadas de ataque e dano realizadas com ela.",
+    "descricao": "Você adquire um bônus de +1 em jogadas de ataque e dano realizadas com esta arma mágica."
+  },
+  {
+    "nome": "Arma +2",
+    "tipo": "Arma",
+    "subtipo": "Qualquer Simples ou Marcial",
+    "tipo_linha": "Arma (Qualquer Simples ou Marcial), Raro",
+    "raridade": "Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ataque": 2,
+    "bonus_dano": 2,
+    "resumo": "Concede um bônus de +2 nas jogadas de ataque e dano realizadas com ela.",
+    "descricao": "Você adquire um bônus de +2 em jogadas de ataque e dano realizadas com esta arma mágica."
+  },
+  {
+    "nome": "Arma +3",
+    "tipo": "Arma",
+    "subtipo": "Qualquer Simples ou Marcial",
+    "tipo_linha": "Arma (Qualquer Simples ou Marcial), Muito Raro",
+    "raridade": "Muito Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ataque": 3,
+    "bonus_dano": 3,
+    "resumo": "Concede um bônus de +3 nas jogadas de ataque e dano realizadas com ela.",
+    "descricao": "Você adquire um bônus de +3 em jogadas de ataque e dano realizadas com esta arma mágica."
+  },
+  {
     "nome": "Arma de Adamantina",
     "tipo": "Arma",
     "subtipo": "Qualquer Munição ou Arma Corpo a Corpo",
@@ -396,6 +495,28 @@ export default [
     "descricao": "Esta arma contém uma magia de 8º círculo ou inferior vinculada a ela (Adivinhação, Evocação, Invocação, Necromancia ou Transmutação). A arma possui 6 cargas e recupera 1d6 cargas gastas diariamente ao amanhecer. Enquanto estiver segurando a arma, você pode gastar 1 carga para conjurar a magia vinculada a ela.\n\n| Círculo de Magia | Raridade | CD da Salvaguarda | Bônus de Ataque |\n| :---- | :---- | :---- | :---- |\n| Truque | Incomum | 13 | +5 |\n| 1 | Incomum | 13 | +5 |\n| 2 | Raro | 13 | +5 |\n| 3 | Raro | 15 | +7 |\n| 4 | Muito Raro | 15 | +7 |\n| 5 | Muito Raro | 17 | +9 |\n| 6 | Lendário | 17 | +9 |\n| 7 | Lendário | 18 | +10 |\n| 8 | Lendário | 18 | +10 |"
   },
   {
+    "nome": "Arma Radiante",
+    "tipo": "Arma",
+    "subtipo": "Qualquer Simples ou Marcial",
+    "tipo_linha": "Arma (Qualquer Simples ou Marcial), Raro (Requer Sintonização por um Conjurador)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um Conjurador",
+    "resumo": "Concede +1 em jogadas de ataque e dano, emite luz e pode usar uma Reação para Cegar uma criatura que lhe atingir (4 cargas).",
+    "descricao": "Esta arma mágica concede um bônus de +1 nas jogadas de ataque e dano realizadas com ela. Enquanto a empunhar, você pode usar uma Ação Bônus para fazer com que a arma emita luz plena em um raio de 9 metros e meia-luz por mais 9 metros, ou para apagar a luz.\n\nA arma possui 4 cargas e recupera 1d4 cargas diariamente ao amanhecer. Quando uma criatura à sua vista a até 9 metros de você acertar uma jogada de ataque contra você, você pode usar uma Reação para gastar 1 carga e forçar o atacante a realizar uma salvaguarda de Constituição contra a CD de suas magias. Em uma falha, o atacante recebe a condição Cegado até o final do próximo turno dele."
+  },
+  {
+    "nome": "Arma Retornante",
+    "tipo": "Arma",
+    "subtipo": "Qualquer Simples ou Marcial com Arremesso",
+    "tipo_linha": "Arma (Qualquer Simples ou Marcial com Arremesso), Incomum",
+    "raridade": "Incomum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Concede +1 em jogadas de ataque e dano com esta arma arremessada, e ela retorna à sua mão imediatamente após o ataque.",
+    "descricao": "Esta arma mágica concede um bônus de +1 nas jogadas de ataque e dano realizadas com ela. Imediatamente após você realizar uma jogada de ataque à distância usando esta arma através da propriedade Arremesso, a arma retorna magicamente para a sua mão livre."
+  },
+  {
     "nome": "Arma Sempre Alerta",
     "tipo": "Arma",
     "subtipo": "Qualquer Simples ou Marcial",
@@ -407,15 +528,40 @@ export default [
     "descricao": "Contanto que esta arma esteja ao seu alcance e você esteja sintonizado com ela, você e seus aliados a até 9 metros de distância adquirem os seguintes benefícios:\n\n***Alarme.*** A arma desperta magicamente cada sujeito que está dormindo naturalmente quando um combate se inicia.\n\n***Prontidão Sobrenatural.*** Cada sujeito tem Vantagem em jogadas de Iniciativa."
   },
   {
-    "nome": "Arma, +1, +2 ou +3",
-    "tipo": "Arma",
-    "subtipo": "Qualquer Simples ou Marcial",
-    "tipo_linha": "Arma (Qualquer Simples ou Marcial), Incomum (+1), Raro (+2) ou Muito Raro (+3)",
-    "raridade": "Incomum (+1), Raro (+2), Muito Raro (+3)",
+    "nome": "Armadura +1",
+    "tipo": "Armadura",
+    "subtipo": "Qualquer Leve, Média ou Pesada",
+    "tipo_linha": "Armadura (Qualquer Leve, Média ou Pesada), Raro",
+    "raridade": "Raro",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Concede um bônus de +1, +2 ou +3 nas jogadas de ataque e dano realizadas com ela.",
-    "descricao": "Você adquire um bônus em jogadas de ataque e dano realizadas com esta arma mágica. O bônus é determinado pela raridade da arma (+1 Incomum, +2 Raro, +3 Muito Raro)."
+    "bonus_ca": 1,
+    "resumo": "Concede um bônus de +1 na Classe de Armadura enquanto estiver usando esta armadura.",
+    "descricao": "Você tem um bônus de +1 na Classe de Armadura enquanto estiver usando esta armadura mágica."
+  },
+  {
+    "nome": "Armadura +2",
+    "tipo": "Armadura",
+    "subtipo": "Qualquer Leve, Média ou Pesada",
+    "tipo_linha": "Armadura (Qualquer Leve, Média ou Pesada), Muito Raro",
+    "raridade": "Muito Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ca": 2,
+    "resumo": "Concede um bônus de +2 na Classe de Armadura enquanto estiver usando esta armadura.",
+    "descricao": "Você tem um bônus de +2 na Classe de Armadura enquanto estiver usando esta armadura mágica."
+  },
+  {
+    "nome": "Armadura +3",
+    "tipo": "Armadura",
+    "subtipo": "Qualquer Leve, Média ou Pesada",
+    "tipo_linha": "Armadura (Qualquer Leve, Média ou Pesada), Lendário",
+    "raridade": "Lendário",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ca": 3,
+    "resumo": "Concede um bônus de +3 na Classe de Armadura enquanto estiver usando esta armadura.",
+    "descricao": "Você tem um bônus de +3 na Classe de Armadura enquanto estiver usando esta armadura mágica."
   },
   {
     "nome": "Armadura Adamantina",
@@ -427,6 +573,39 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Reforçada com adamantina; qualquer Acerto Crítico sofrido pelo portador se torna um acerto normal.",
     "descricao": "Esta armadura é reforçada com adamantina, uma das substâncias mais duras existentes. Enquanto estiver usando, qualquer Acerto Crítico contra você se torna um acerto normal."
+  },
+  {
+    "nome": "Armadura Ardente",
+    "tipo": "Armadura",
+    "subtipo": "Qualquer armadura",
+    "tipo_linha": "Armadura (qualquer), Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Inofensivos e inodoros fios de fumaça emanam continuamente desta armadura enquanto ela estiver equipada.",
+    "descricao": "Inofensivos e inodoros fios de fumaça emanam desta armadura enquanto é equipada."
+  },
+  {
+    "nome": "Armadura Brilhante",
+    "tipo": "Armadura",
+    "subtipo": "Qualquer armadura média ou pesada",
+    "tipo_linha": "Armadura (qualquer média ou pesada), Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Esta armadura mágica média ou pesada nunca se suja.",
+    "descricao": "Esta armadura nunca se suja."
+  },
+  {
+    "nome": "Armadura da Libertação",
+    "tipo": "Armadura",
+    "subtipo": "Qualquer armadura leve, média ou pesada",
+    "tipo_linha": "Armadura (leve, média ou pesada), Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Você pode desequipar e retirar esta armadura usando apenas uma ação simples.",
+    "descricao": "Você pode retirar esta armadura como uma ação."
   },
   {
     "nome": "Armadura de Invulnerabilidade",
@@ -449,6 +628,18 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Feita de mitral leve e flexível; pode ser vestida sob roupas e não impõe Desvantagem em Furtividade nem exigência de Força.",
     "descricao": "O mitral é um metal leve e flexível. Armaduras feitas dessa substância podem ser usadas sob roupas normais. Caso a armadura imponha Desvantagem em testes de Destreza (Furtividade) ou possua exigência de Força, a versão em mitral ignora essas limitações."
+  },
+  {
+    "nome": "Armadura de Mizzium",
+    "tipo": "Armadura",
+    "subtipo": "Média ou Pesada",
+    "tipo_linha": "Armadura (Média ou Pesada), Raro",
+    "raridade": "Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "categoria": "Média ou Pesada",
+    "resumo": "Críticos contra você viram acertos normais e você anula o dano de efeitos mágicos ao passar em salvaguarda de Força ou Constituição.",
+    "descricao": "Esta armadura é reforçada com uma liga de metal magicamente aprimorada chamada mizzium, que é feita em fundições Izzet.\n\nEnquanto você está usando a armadura, qualquer acerto crítico contra você se torna um acerto normal.\n\nAlém disso, quando você está sujeito a um efeito mágico que permite que você faça um teste de resistência de Força ou Constituição para receber apenas metade do dano, ao invés disso, você não recebe nenhum dano se tiver sucesso no teste de resistência."
   },
   {
     "nome": "Armadura de Placas das Formas Etéreas",
@@ -561,26 +752,46 @@ export default [
     "descricao": "Esta armadura nunca fica suja."
   },
   {
-    "nome": "Armadura, +1, +2 ou +3",
-    "tipo": "Armadura",
-    "subtipo": "Leve, Média ou Pesada",
-    "tipo_linha": "Armadura (Qualquer Leve, Média ou Pesada), Raro (+1), Muito Raro (+2) ou Lendário (+3)",
-    "raridade": "Raro (+1), Muito Raro (+2), Lendário (+3)",
-    "sintonizacao": false,
-    "detalhe_sintonizacao": "",
-    "resumo": "Concede um bônus de +1, +2 ou +3 na Classe de Armadura.",
-    "descricao": "Você tem um bônus na Classe de Armadura enquanto estiver usando esta armadura. O bônus é determinado pela raridade da armadura (+1 Raro, +2 Muito Raro, +3 Lendário)."
-  },
-  {
-    "nome": "Ataduras do Poder Desarmado",
+    "nome": "Ataduras do Poder Desarmado +1",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
-    "tipo_linha": "Item Maravilhoso, Incomum (+1), Raro (+2) ou Muito Raro (+3)",
-    "raridade": "Incomum (+1), Raro (+2), Muito Raro (+3)",
+    "tipo_linha": "Item Maravilhoso, Incomum",
+    "raridade": "Incomum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Concede bônus de +1 a +3 em ataque e dano desarmados, e permite causar dano Energético opcional.",
-    "descricao": "Enquanto estiver vestindo estas ataduras, você tem um bônus em jogadas de ataque e dano realizadas com seus Ataques Desarmados. O bônus é determinado pela raridade das ataduras (+1, +2 ou +3), e esses golpes causam, à sua escolha, dano Energético ou o tipo de dano normal."
+    "bonus_desarmado": 1,
+    "bonus_ataque": 1,
+    "bonus_dano": 1,
+    "resumo": "Concede bônus de +1 em ataque e dano desarmados, e permite causar dano Energético opcional.",
+    "descricao": "Enquanto estiver vestindo estas ataduras, você tem um bônus de +1 em jogadas de ataque e dano realizadas com seus Ataques Desarmados, e esses golpes causam, à sua escolha, dano Energético ou o tipo de dano normal."
+  },
+  {
+    "nome": "Ataduras do Poder Desarmado +2",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro",
+    "raridade": "Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_desarmado": 2,
+    "bonus_ataque": 2,
+    "bonus_dano": 2,
+    "resumo": "Concede bônus de +2 em ataque e dano desarmados, e permite causar dano Energético opcional.",
+    "descricao": "Enquanto estiver vestindo estas ataduras, você tem um bônus de +2 em jogadas de ataque e dano realizadas com seus Ataques Desarmados, e esses golpes causam, à sua escolha, dano Energético ou o tipo de dano normal."
+  },
+  {
+    "nome": "Ataduras do Poder Desarmado +3",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro",
+    "raridade": "Muito Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_desarmado": 3,
+    "bonus_ataque": 3,
+    "bonus_dano": 3,
+    "resumo": "Concede bônus de +3 em ataque e dano desarmados, e permite causar dano Energético opcional.",
+    "descricao": "Enquanto estiver vestindo estas ataduras, você tem um bônus de +3 em jogadas de ataque e dano realizadas com seus Ataques Desarmados, e esses golpes causam, à sua escolha, dano Energético ou o tipo de dano normal."
   },
   {
     "nome": "Azagaia Relâmpago",
@@ -649,6 +860,17 @@ export default [
     "descricao": "Como uma Ação Bônus, você pode transformar esta bengala em uma Espada Longa comum ou transformar a Espada Longa de volta em uma bengala."
   },
   {
+    "nome": "Bengala do Veterano",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Bastão / Bengala",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Ação bônus com palavra de comando transforma a bengala em uma espada longa normal e deixa de ser mágica.",
+    "descricao": "Quando você empunha esta bengala e usa uma ação bônus para proferir uma palavra de comando, ela se transforma em uma espada longa normal e deixa de ser mágica."
+  },
+  {
     "nome": "Bola de Cristal",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -702,6 +924,19 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Bolsa extradimensional que armazena até 250 kg e 1,8 m³ de volume pesando sempre 7,5 kg.",
     "descricao": "Esta bolsa tem espaço interno de 60 cm de diâmetro e 1,2 m de profundidade, comportando até 250 kg (1,8 m³). Pesa sempre 7,5 kg. Retirar item requer ação Usar Objeto. Destruída se perfurada/sobrecarregada; colocar dentro de outro espaço extradimensional abre portal para o Plano Astral."
+  },
+  {
+    "nome": "Bolsa Conveniente de Especiarias de Heward",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Bolsa",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "cargas": 10,
+    "recarga": "1d6 + 4 ao amanhecer",
+    "resumo": "10 cargas. Gasta 1 carga como ação para produzir uma pitada de tempero não-mágico para temperar uma refeição (recupera 1d6+4 cargas ao amanhecer).",
+    "descricao": "Esta bolsa aparenta estar vazia e tem 10 cargas. Enquanto segura a bolsa, você pode usar uma ação para gastar 1 de suas cargas, falar o nome de qualquer tempero não-mágico (como sal, pimenta, açafrão ou coentro) e remover uma pitada desse tempero do interior da bolsa. Uma pitada é suficiente para temperar uma refeição. A bolsa recupera diariamente 1d6 + 4 cargas gastas ao amanhecer."
   },
   {
     "nome": "Bolsa das Tropelias",
@@ -759,6 +994,17 @@ export default [
     "descricao": "Durante um Descanso Curto, você pode programar até seis frases (de até 6 palavras) com condições que ativam a fala da boneca quando ocorrem a até 1,5 m dela."
   },
   {
+    "nome": "Boneca Falante",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Boneca",
+    "tipo_linha": "Item Maravilhoso, Comum (Requer Sintonização)",
+    "raridade": "Comum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Durante descanso curto, instrui a boneca a falar até 6 frases de 6 palavras cada com gatilhos a até 1,5m.",
+    "descricao": "Enquanto esta boneca de pelúcia está a até 1,5 metros de você, pode-se gastar um descanso curto dizendo-a para proferir até seis frases, nenhuma das quais pode ter mais de seis palavras, e definir uma condição na qual a boneca falará cada frase. Você também pode substituir frases antigas por frases novas. Qualquer que seja a condição definida, ela deve ocorrer a até 1,5 metros da boneca para que ela fale. Por exemplo, sempre que alguém pegar a boneca ela pode dizer \"Quero um pouco de doce\". As frases da boneca se perdem quando sua sintonização com ela termina."
+  },
+  {
     "nome": "Botas Aladas",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -803,6 +1049,17 @@ export default [
     "descricao": "Enquanto estiver usando estas botas, você pode conjurar *Levitação* em si mesmo."
   },
   {
+    "nome": "Botas de Pegadas Falsas",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Botas",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Humanoides podem usar as botas para deixar pegadas de outro tipo de humanoide do mesmo tamanho.",
+    "descricao": "Apenas humanoides podem usar estas botas. Ao usar as botas você pode escolher que elas deixem pegadas semelhantes a outro tipo de humanoide de seu tamanho."
+  },
+  {
     "nome": "Botas de Velocidade",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -825,6 +1082,17 @@ export default [
     "descricao": "Enquanto estiver usando essas botas, você pode fazer com que elas deixem pegadas como as de qualquer tipo de humanoide do seu tamanho."
   },
   {
+    "nome": "Botas do Caminho em Espiral",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Pés",
+    "tipo_linha": "Item Maravilhoso, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Com Ação Bônus, teletransporta-se até 4,5m para um espaço desocupado que você tenha pisado durante o turno atual.",
+    "descricao": "Enquanto estiver usando estas botas, você pode usar uma Ação Bônus para se teletransportar por até 4,5 metros para um espaço desocupado que você possa ver e que você tenha ocupado em algum momento durante o seu turno atual."
+  },
+  {
     "nome": "Botas Élficas",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -834,6 +1102,17 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Passos completamente silenciosos e Vantagem em testes de Destreza (Furtividade).",
     "descricao": "Seus passos não fazem barulho, independentemente da superfície. Você também tem Vantagem em testes de Destreza (Furtividade)."
+  },
+  {
+    "nome": "Braçadeiras do Ilusionista",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização por um Conjurador)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um Conjurador",
+    "resumo": "Sempre que você lançar um truque, pode usar uma Ação Bônus no mesmo turno para lançá-lo uma segunda vez.",
+    "descricao": "Um poderoso ilusionista da Casa Dimir desenvolveu originalmente essas braçadeiras, que lhe permitiram criar várias ilusões menores de uma vez. O poder das braçadeiras, no entanto, vai muito além das ilusões.\n\nEnquanto estiver usando as braçadeiras, sempre que lançar um truque, você pode usar uma ação bônus no mesmo turno para lançá-lo uma segunda vez."
   },
   {
     "nome": "Braceletes de Arquearia",
@@ -891,6 +1170,17 @@ export default [
     "descricao": "Pode ser desdobrado sobre uma superfície para abrir um buraco extradimensional de 1,8 m de diâmetro e 3 m de profundidade. Dobrar o tecido fecha o buraco mantendo o conteúdo dentro. Pesa quase nada. Contém ar para 1 hora."
   },
   {
+    "nome": "Cachimbo dos Monstros de Fumaça",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Cachimbo",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Ação ao fumar para baforar fumaça em formato tridimensional de criatura (cubo 30 cm) por alguns segundos.",
+    "descricao": "Ao fumar este cachimbo você pode usar uma ação para baforar fumaça que assume a forma de uma criatura, como um dragão, um flumph ou um froghemoth. A forma deve ser pequena o suficiente para caber em um cubo com 30 centímetros e perde sua forma depois de alguns segundos, tornando-se fumaça normal."
+  },
+  {
     "nome": "Cachimbo Teratológico",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -913,6 +1203,17 @@ export default [
     "descricao": "Este cadeado parece comum e vem com uma única chave. Os pinos se ajustam magicamente para frustrar ladrões. Testes de Destreza realizados para abrir o cadeado têm Desvantagem."
   },
   {
+    "nome": "Cadeado da Enganação",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Cadeado",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Cadeado com mecanismo mágico onde testes de Destreza feitos para arrombar têm desvantagem.",
+    "descricao": "Este cadeado aparenta ser comum (do tipo descrito no capítulo 5 do Livro do Jogador) e é acompanhado de uma chave. O mecanismo da fechadura ajusta-se magicamente para impedir ladrões. Testes de Destreza feitos para abrir a fechadura têm desvantagem."
+  },
+  {
     "nome": "Cajado Avicular",
     "tipo": "Cajado",
     "subtipo": "",
@@ -924,6 +1225,36 @@ export default [
     "descricao": "Este cajado de madeira possui 10 cargas (1d6+4 ao amanhecer). Permite gastar 1 carga para emitir o som de aves (corvo, galinha, pato, águia, etc.) a até 36 m."
   },
   {
+    "nome": "Cajado Canoro",
+    "tipo": "Cajado",
+    "subtipo": "Cajado",
+    "tipo_linha": "Cajado, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "cargas": 10,
+    "recarga": "1d6 + 4 ao amanhecer",
+    "resumo": "10 cargas. Ação e 1 carga cria sons de pássaros a até 18m. Recupera 1d6+4 cargas ao amanhecer (se gastar última carga d20=1 explode em nuvem de penas).",
+    "descricao": "Este cajado de madeira é decorado com xilogravuras de pássaros. Ele tem 10 cargas. Ao segurá-lo você pode usar uma ação para gastar 1 carga do cajado e fazê-lo criar um dos seguintes sons a até 18 metros de distância: o chilrear, gorjeio, chamado, grito ou canto de um canário, um corvo, um pato, uma galinha, um ganso, um mergulhão, uma gaivota, uma coruja, ou uma águia.\n\nO cajado recupera diariamente 1d6 + 4 cargas gastas ao amanhecer. Se você gastar a última carga, role um d20. Em um resultado 1, o cajado explode em uma nuvem inofensiva de penas de pássaros e é perdido."
+  },
+  {
+    "nome": "Cajado Cegador",
+    "tipo": "Cajado",
+    "subtipo": "Cajado",
+    "tipo_linha": "Cajado, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_ataque": 1,
+    "bonus_dano": 1,
+    "bonus_ataque_magico": 1,
+    "dano": "1d6 concussão (1d8 versátil)",
+    "propriedades": "Versátil",
+    "categoria": "Arma Simples Corpo a Corpo",
+    "resumo": "Cajado +1 (+1 em ataque, dano e ataques mágicos). Permite usar Reação para cegar e impor Desvantagem a criatura voadora atacante (CD 15 Con).",
+    "descricao": "Você ganha um bônus de +1 nas jogadas de ataque e dano feitas com este cajado mágico. Enquanto o segura, você ganha um bônus de +1 para jogadas de ataque com magia.\n\nSe uma criatura voadora que você puder ver a até 9 metros de você faz uma jogada de ataque contra você, você pode usar sua reação para segurar o cajado no alto e fazer com que ele brilhe com luz. O atacante tem desvantagem na jogada de ataque e deve ser bem-sucedido em um teste de resistência de Constituição CD 15 ou ficará cego até o início de seu próximo turno."
+  },
+  {
     "nome": "Cajado da Cura",
     "tipo": "Cajado",
     "subtipo": "",
@@ -933,6 +1264,17 @@ export default [
     "detalhe_sintonizacao": "Requer Sintonização por um Bardo, Clérigo ou Druida",
     "resumo": "Possui 10 cargas para conjurar Curar Ferimentos (1-4 cargas), Restauração Menor (2 cargas) e Curar Ferimentos em Massa (5 cargas).",
     "descricao": "Possui 10 cargas (1d6+4 ao amanhecer). Permite conjurar *Curar Ferimentos* (1 carga/círculo até 4º), *Restauração Menor* (2 cargas) e *Curar Ferimentos em Massa* (5 cargas)."
+  },
+  {
+    "nome": "Cajado da Ornamentação",
+    "tipo": "Cajado",
+    "subtipo": "Cajado",
+    "tipo_linha": "Cajado, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Permite fazer até 3 objetos de até 0,5 kg flutuarem e rotacionarem suavemente na ponta do cajado.",
+    "descricao": "Ao colocar um objeto pesando não mais de 0,5 quilos (como um fragmento de cristal, um ovo ou uma rocha) na ponta do cajado enquanto o segura, esse objeto flutua a poucos centímetros do cajado, e permanece ali até ser removido ou até o que cajado não esteja mais em sua posse. O cajado pode carregar até três desses objetos flutuando sobre sua ponta. Ao segurar o cajado você pode fazer com que um ou mais objetos rotacionem lentamente."
   },
   {
     "nome": "Cajado da Píton",
@@ -966,6 +1308,19 @@ export default [
     "detalhe_sintonizacao": "Requer Sintonização",
     "resumo": "Ação Bônus para transformar a ponta em Cobra Peçonhenta, atacando com bônus de Sabedoria e causando 1d6 perfurante + 3d6 veneno.",
     "descricao": "Como Ação Bônus, transforma a cabeça do cajado em Cobra Peçonhenta por 1 min. Em ataques, causa 1d6 perfurante + 3d6 venenoso usando Proficiência + Sabedoria."
+  },
+  {
+    "nome": "Cajado das Flores",
+    "tipo": "Cajado",
+    "subtipo": "Cajado",
+    "tipo_linha": "Cajado, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "cargas": 10,
+    "recarga": "1d6 + 4 ao amanhecer",
+    "resumo": "10 cargas. Ação e 1 carga faz brotar uma flor inofensiva e perfumada do cajado ou solo a 1,5m (recupera 1d6+4 ao amanhecer; d20=1 na última vira pétalas).",
+    "descricao": "Este cajado de madeira tem 10 cargas. Ao segurá-lo você pode usar uma ação para gastar 1 carga do cajado, fazendo uma flor brotar do próprio cajado, ou de um pedaço de terra ou solo a 1,5 metros de você. Caso você não escolha uma flor específica, o cajado gera uma margarida suavemente perfumada. A flor é inofensiva e não-mágica, e cresce ou murcha como uma flor normal.\n\nO cajado recupera diariamente 1d6 + 4 cargas gastas ao amanhecer. Se você gastar a última carga, role um d20. Em um resultado 1, o cajado se transforma em pétalas de flores e é perdido."
   },
   {
     "nome": "Cajado das Matas",
@@ -1067,6 +1422,23 @@ export default [
     "descricao": "Cajado +2 em ataque/dano, +2 na CA, salvaguardas e ataque mágico. Possui 20 cargas (2d8+4 ao amanhecer).\n- **Magias (CD 17):** Mísseis Mágicos (1), Raio do Enfraquecimento (1), Levitação (2), Bola de Fogo 5º (5), Cone de Frio (5), Muralha de Energia (5), Paralisar Monstro (5), Relâmpago 5º (5), Globo de Invulnerabilidade (6).\n- **Golpe Retributivo:** Quebra o cajado liberando explosão devastadora de dano energético."
   },
   {
+    "nome": "Cajado do Viajante",
+    "tipo": "Cajado",
+    "subtipo": "Cajado",
+    "tipo_linha": "Cajado, Muito Raro (Requer Sintonização por um Conjurador)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um Conjurador",
+    "bonus_ataque": 1,
+    "bonus_dano": 1,
+    "bonus_ataque_magico": 1,
+    "dano": "1d6 concussão (1d8 versátil)",
+    "propriedades": "Versátil",
+    "categoria": "Arma Simples Corpo a Corpo",
+    "resumo": "Cajado +1 (+1 em ataque, dano e ataques mágicos) com 10 cargas para conjurar Banimento, Piscar, Passo Nebuloso, Criar Passagem ou Teletransporte.",
+    "descricao": "Você ganha +1 de bônus nas jogadas de ataque e dano feitas com este cajado mágico. Enquanto o segura, você ganha um bônus de +1 para jogadas de ataque com magia.\n\nEste cajado tem 10 cargas. Enquanto o segura, você pode usar uma ação para gastar 1 ou mais cargas do cajado para lançar uma das seguintes magias dele, usando sua CD de resistência de magia:\n• *Passo Nebuloso* (2 cargas)\n• *Piscar* (3 cargas)\n• *Banimento* (4 cargas)\n• *Criar Passagem* (5 cargas)\n• *Teletransporte* (7 cargas)\n\nO cajado recupera 1d6 + 4 cobranças gastas diariamente ao amanhecer. Se você gastar a última carga, role um d20. Em um 1, o bastão desaparece para sempre."
+  },
+  {
     "nome": "Cajado dos Magi",
     "tipo": "Cajado",
     "subtipo": "",
@@ -1124,13 +1496,13 @@ export default [
   {
     "nome": "Caneca da Sobriedade",
     "tipo": "Item Maravilhoso",
-    "subtipo": "",
+    "subtipo": "Recipiente",
     "tipo_linha": "Item Maravilhoso, Comum",
     "raridade": "Comum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Permite beber qualquer bebida alcoólica colocada nela sem sofrer embriaguez.",
-    "descricao": "Esta caneca possui um rosto sério esculpido em um dos lados. Você pode beber cerveja, vinho ou qualquer outra bebida alcoólica não mágica colocada nela sem ficar embriagado."
+    "resumo": "Permite beber qualquer bebida alcoólica não-mágica sem se embriagar.",
+    "descricao": "Esta caneca tem um rosto severo esculpido em um dos lados. Você pode beber qualquer cerveja, vinho ou qualquer bebida alcoólica não mágica sem se embriagar.\n\nA caneca não faz efeito em líquidos mágicos ou substâncias perigosas, como veneno."
   },
   {
     "nome": "Capa Aracnídea",
@@ -1144,15 +1516,37 @@ export default [
     "descricao": "Concede imunidade a aprisionamento em teias, Deslocamento de Escalada com mãos livres no teto/paredes, Resistência a dano Venenoso e conjura *Teia* com dobro da área 1x ao dia."
   },
   {
-    "nome": "Capa de Muitas Modas",
+    "nome": "Capa da Ondulação",
     "tipo": "Item Maravilhoso",
-    "subtipo": "",
+    "subtipo": "Capa",
     "tipo_linha": "Item Maravilhoso, Comum",
     "raridade": "Comum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Ação Bônus para alterar estilo, cor e qualidade aparente da capa à vontade.",
-    "descricao": "Enquanto estiver vestindo esta capa, você pode executar uma Ação Bônus para alterar o estilo, a cor e a qualidade aparente dela."
+    "resumo": "Ação bônus para fazer a capa ondular dramaticamente.",
+    "descricao": "Ao usar esta capa você pode usar uma ação bônus para fazê-la ondular dramaticamente."
+  },
+  {
+    "nome": "Capa de Muitas Modas",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Capa",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Ação bônus para alterar o estilo, cor e qualidade aparente do vestuário.",
+    "descricao": "Ao usar esta capa você pode usar uma ação bônus para alterar o estilo, cor e qualidade aparente do vestuário. O peso da capa não se altera. Independente da aparência a capa não pode ser nada além de uma capa. Embora possa duplicar a aparência de outras capas mágicas, ela não ganha suas propriedades mágicas."
+  },
+  {
+    "nome": "Capa de Respirar na Água",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Incomum",
+    "raridade": "Incomum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Permite respirar debaixo d'água enquanto estiver usando o capuz do manto.",
+    "descricao": "Enquanto estiver usando este manto, você pode puxar o capuz sobre a cabeça para respirar debaixo d'água normalmente. Puxar o capuz para cima ou para baixo requer uma ação."
   },
   {
     "nome": "Capa Deslocadora",
@@ -1276,15 +1670,46 @@ export default [
     "descricao": "Possui 5 cargas (1 recuperada ao amanhecer). Permite conjurar *Cura Completa* (1 carga) ou *Ressurreição* (5 cargas)."
   },
   {
-    "nome": "Cetro do Protetor do Pacto",
+    "nome": "Cetro do Protetor do Pacto +1",
     "tipo": "Cetro",
     "subtipo": "",
-    "tipo_linha": "Cetro, Incomum (+1), Raro (+2) ou Muito Raro (+3) (Requer Sintonização por um Bruxo)",
-    "raridade": "Incomum (+1), Raro (+2), Muito Raro (+3)",
+    "tipo_linha": "Cetro, Incomum (Requer Sintonização por um Bruxo)",
+    "raridade": "Incomum",
     "sintonizacao": true,
     "detalhe_sintonizacao": "Requer Sintonização por um Bruxo",
-    "resumo": "Concede bônus de +1 a +3 no ataque e CD de magias de Bruxo, e permite recuperar 1 espaço de magia de Bruxo por Descanso Longo.",
-    "descricao": "Concede bônus de +1, +2 ou +3 em ataques mágicos e CDs de salvaguarda de Bruxo. Permite recuperar 1 espaço de magia de Bruxo como ação Usar Magia 1x por Descanso Longo."
+    "bonus_magia": 1,
+    "bonus_cd_magia": 1,
+    "bonus_ataque_magico": 1,
+    "resumo": "Concede bônus de +1 no ataque e CD de magias de Bruxo, e permite recuperar 1 espaço de magia de Bruxo por Descanso Longo.",
+    "descricao": "Enquanto estiver segurando este cetro, você ganha um bônus de +1 nas jogadas de ataque mágico e na CD das salvaguardas de suas magias de Bruxo. Permite recuperar 1 espaço de magia de Bruxo como ação Usar Magia 1x por Descanso Longo."
+  },
+  {
+    "nome": "Cetro do Protetor do Pacto +2",
+    "tipo": "Cetro",
+    "subtipo": "",
+    "tipo_linha": "Cetro, Raro (Requer Sintonização por um Bruxo)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um Bruxo",
+    "bonus_magia": 2,
+    "bonus_cd_magia": 2,
+    "bonus_ataque_magico": 2,
+    "resumo": "Concede bônus de +2 no ataque e CD de magias de Bruxo, e permite recuperar 1 espaço de magia de Bruxo por Descanso Longo.",
+    "descricao": "Enquanto estiver segurando este cetro, você ganha um bônus de +2 nas jogadas de ataque mágico e na CD das salvaguardas de suas magias de Bruxo. Permite recuperar 1 espaço de magia de Bruxo como ação Usar Magia 1x por Descanso Longo."
+  },
+  {
+    "nome": "Cetro do Protetor do Pacto +3",
+    "tipo": "Cetro",
+    "subtipo": "",
+    "tipo_linha": "Cetro, Muito Raro (Requer Sintonização por um Bruxo)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um Bruxo",
+    "bonus_magia": 3,
+    "bonus_cd_magia": 3,
+    "bonus_ataque_magico": 3,
+    "resumo": "Concede bônus de +3 no ataque e CD de magias de Bruxo, e permite recuperar 1 espaço de magia de Bruxo por Descanso Longo.",
+    "descricao": "Enquanto estiver segurando este cetro, você ganha um bônus de +3 nas jogadas de ataque mágico e na CD das salvaguardas de suas magias de Bruxo. Permite recuperar 1 espaço de magia de Bruxo como ação Usar Magia 1x por Descanso Longo."
   },
   {
     "nome": "Cetro Imóvel",
@@ -1307,6 +1732,17 @@ export default [
     "detalhe_sintonizacao": "Requer Sintonização",
     "resumo": "Ação para realizar 3 ataques de tentáculos (+9 atq, 1d6 psíquico); se todos acertarem, impõe Contido e 3d6 dano psíquico por turno.",
     "descricao": "Com uma ação Usar Magia, realiza 3 ataques de tentáculos a até 4,5 m (+9 no ataque, 1d6 psíquico). Se os três acertarem o mesmo alvo, ele deve ser bem-sucedido em salvaguarda de Destreza CD 15 ou fica Contido sofrendo 3d6 pontos de dano Psíquico por turno."
+  },
+  {
+    "nome": "Chapéu da Feitiçaria",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Chapéu",
+    "tipo_linha": "Item Maravilhoso (Chapéu), Comum (Requer Sintonização por um Mago)",
+    "raridade": "Comum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer sintonização por um Mago",
+    "resumo": "Foco arcano de mago. Permite tentar conjurar um truque de mago desconhecido com teste de Inteligência (Arcanismo) CD 10 (1x por descanso longo).",
+    "descricao": "Este chapéu antiquado em formato de cone é adornado com luas crescentes e estrelas. Ao usá-lo você recebe os seguintes benefícios:\n\n• Você pode usar o chapéu como o foco arcano de suas magias de mago.\n• Você pode tentar conjurar um truque que não conheça. O truque deve estar na lista de magias do mago e você deve fazer um teste de Inteligência (Arcanismo) com CD 10. Se o teste for bem-sucedido, você conjura a magia. Se o teste falhar, a magia também falha, e a ação usada para tentar conjurar a magia é desperdiçada. Qualquer que seja o resultado, você não pode usar esta propriedade novamente até o fim de um descanso longo."
   },
   {
     "nome": "Chapéu das Muitas Magias",
@@ -1344,24 +1780,147 @@ export default [
   {
     "nome": "Chapéu dos Vermes",
     "tipo": "Item Maravilhoso",
-    "subtipo": "",
+    "subtipo": "Chapéu",
     "tipo_linha": "Item Maravilhoso, Comum",
     "raridade": "Comum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Possui 3 cargas para invocar um Morcego, Rato ou Sapo inofensivo do interior do chapéu.",
-    "descricao": "Possui 3 cargas (recuperadas ao amanhecer). Permite gastar 1 carga para invocar um Morcego, Rato ou Sapo inofensivo que tenta se afastar de você."
+    "resumo": "3 cargas. Ação e 1 carga conjura um morcego, sapo ou rato de dentro do chapéu (dura 1h ou até 0 PV; recupera todas ao amanhecer).",
+    "descricao": "Este chapéu tem 3 cargas. Ao segurar o chapéu, você pode usar uma ação para gastar 1 de suas cargas e falar uma palavra de comando que conjura, à sua escolha, um morcego, um sapo ou um rato. A criatura magicamente conjurada aparece dentro do chapéu e tenta escapar de você o mais rápido possível. A criatura não é amigável ou hostil, e não está sob seu controle. Ela se comporta como uma criatura ordinária de seu tipo, e desaparece depois de 1 hora ou quando cair a 0 pontos de vida. O chapéu recupera diariamente todas as cargas gastas ao amanhecer.",
+    "cargas": 3,
+    "recarga": "3 ao amanhecer"
   },
   {
     "nome": "Chave Misteriosa",
     "tipo": "Item Maravilhoso",
-    "subtipo": "",
+    "subtipo": "Chave",
     "tipo_linha": "Item Maravilhoso, Comum",
     "raridade": "Comum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Possui 5% de chance de destrancar qualquer fechadura na qual seja inserida, desaparecendo após o sucesso.",
-    "descricao": "A chave possui 5% de chance de destrancar qualquer fechadura na qual esteja inserida. Assim que destranca algo, a chave desaparece."
+    "resumo": "5% de chance de destravar qualquer fechadura na qual for inserida; desaparece ao abrir.",
+    "descricao": "Um símbolo de interrogação está entalhado na cabeça da chave. A chave tem 5% de chance de destravar qualquer fechadura na qual é inserida. Uma vez que a chave destranque algo, ela desaparece."
+  },
+  {
+    "nome": "Chave-rúnica Azorius",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização por um membro do Senado Azorius)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro do Senado Azorius",
+    "resumo": "Transforma-se em uma Águia Gigante por até 1 hora com telepatia a até 1,5 km e percepção sensorial compartilhada.",
+    "descricao": "Esta Chave-rúnica é esculpida em mármore branco e lápis-lazúli para se assemelhar a uma nobre ave de rapina. Pode se tornar uma **águia gigante** por até 1 hora. Enquanto a águia transformada está a menos de 1,5 km de você, você pode se comunicar com ela telepaticamente. Como ação, você pode ver através dos olhos da águia e ouvir o que ela ouve até o início de seu próximo turno, e você obtém o benefício de sua visão aguçada. Durante esse tempo, você fica surdo e cego em relação aos seus próprios sentidos.\n\nA criatura é amigável a você e companheiros e obedece a seus comandos falados. Reverte se cair a 0 PV ou com uma ação para tocá-la e falar o comando. Quando a criatura reverte para sua forma de Chave-rúnica, ela não pode se transformar novamente até que 36 horas tenham se passado."
+  },
+  {
+    "nome": "Chave-rúnica Boros",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização por um membro da Legião Boros)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro da Legião Boros",
+    "resumo": "Transforma-se em um Veterano (humano artificial) por até 8 horas que luta e oferece conselhos táticos válidos.",
+    "descricao": "Esculpido em arenito vermelho com elementos de granito branco para se assemelhar a um membro da Legião de Boros, esta Chave-rúnica pode se tornar um **veterano** (humano) por até 8 horas. Além de lutar em seu nome, esse veterano oferece conselhos táticos com alegria, que geralmente são válidos. Qualquer pessoa que fale com a Chave-rúnica transformada ou a examine de perto pode reconhecer facilmente que se trata de um ser humano artificial.\n\nA criatura é amigável a você e companheiros e obedece a seus comandos falados. Reverte se cair a 0 PV ou com uma ação para tocá-la e falar o comando. Quando a criatura reverte para sua forma de Chave-rúnica, ela não pode se transformar novamente até que 36 horas tenham se passado."
+  },
+  {
+    "nome": "Chave-rúnica da Guilda",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raridade Varia por Guilda (Requer Sintonização por um membro da guilda)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro da guilda em questão",
+    "resumo": "Chave cerimonial de pedra que se transforma em uma criatura aliada obediente por tempo limitado (recarga de 36 horas).",
+    "descricao": "Associada a uma guilda em particular, uma Chave-rúnica da guilda é uma chave cerimonial estilizada, com cerca de 30 centímetros de comprimento, feita de pedra esculpida. Não sendo uma chave literal, o item é um distintivo de autoridade que dá ao seu portador acesso a lugares privilegiados na sede da guilda e postos avançados. Na discrição do Mestre, um personagem pode receber uma Chave-rúnica ao atingir uma pontuação de renome de 25 em sua guilda.\n\nQuando você usa uma ação para falar a palavra de comando do item e coloca a Chave-rúnica no chão em um espaço desocupado a menos de 1,5 m de você, ela se transforma em uma criatura. A criatura é amigável com você, seus companheiros e outros membros de sua guilda. Ela entende seus idiomas e obedece a seus comandos falados (se não emitir comandos, executa Esquiva e evita perigo).\n\nNo final da duração ou se cair a 0 PV (ou ao tocar e falar a palavra de comando com uma ação), ela retorna à forma de chave e não pode se transformar novamente até que 36 horas tenham se passado.\n\n• **Azorius (Rara):** Águia gigante por até 1 hora (telepatia e sentidos compartilhados).\n• **Boros (Rara):** Veterano (humano) por até 8 horas (luta e conselhos táticos).\n• **Dimir (Muito Rara):** Devorador de intelecto por até 24 horas (missão única de posse/extração).\n• **Golgari (Muito Rara):** Escorpião gigante por até 6 horas (telepatia até 18 m).\n• **Gruul (Rara):** Ceratok (rinoceronte) por até 1 hora.\n• **Izzet (Rara):** Galvânico estranho por até 3 horas.\n• **Orzhov (Rara):** Thrull alado por até 2 horas.\n• **Rakdos (Incomum):** Cackler por até 1 hora.\n• **Selesnya (Rara):** Lobo atroz por até 8 horas (telepatia até 1,5 km).\n• **Simic (Incomum):** Krasis de categoria 1 por até 5 horas."
+  },
+  {
+    "nome": "Chave-rúnica Dimir",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização por um membro da Casa Dimir)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro da Casa Dimir",
+    "resumo": "Transforma-se em um Devorador de Intelecto por até 24 horas para assumir um corpo ou extrair segredos mentais.",
+    "descricao": "Esta Chave-rúnica, esculpida em pedra preta acentuada com aço, assemelha-se a um horror estilizado. No comando, ele se transforma em um **devorador de intelecto** que se assemelha ao símbolo da Guilda Dimir, com seis pernas semelhantes a lâminas. A criatura existe por até 24 horas. Durante esse tempo, ele cumpre apenas uma única missão que você atribui a ele, geralmente uma atribuição de assumir o corpo de alguém, seja para personificar essa pessoa por um breve período ou para extrair segredos de sua mente. Quando a missão é completada, a criatura retorna para você, relata seu sucesso e retorna à sua forma de Chave-rúnica.\n\nQuando a criatura reverte para sua forma de Chave-rúnica, ela não pode se transformar novamente até que 36 horas tenham se passado."
+  },
+  {
+    "nome": "Chave-rúnica Golgari",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização por um membro do Enxame Golgari)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro do Enxame Golgari",
+    "resumo": "Transforma-se em um Escorpião Gigante por até 6 horas com telepatia a até 18 metros.",
+    "descricao": "Feito de jade verde profundo com veios pretos, esta Chave-rúnica tem forma de inseto. Ele pode se transformar em um **escorpião gigante** por até 6 horas. O escorpião tem uma inteligência de 4 e pode se comunicar com você telepaticamente enquanto estiver a menos de 18 metros de você, embora suas mensagens sejam amplamente limitadas a descrever a passagem de uma presa em potencial.\n\nA criatura é amigável a você e companheiros e obedece a seus comandos falados. Reverte se cair a 0 PV ou com uma ação para tocá-la e falar o comando. Quando a criatura reverte para sua forma de Chave-rúnica, ela não pode se transformar novamente até que 36 horas tenham se passado."
+  },
+  {
+    "nome": "Chave-rúnica Gruul",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização por um membro dos Clãs Gruul)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro dos Clãs Gruul",
+    "resumo": "Transforma-se em um Ceratok (com as mesmas estatísticas de um Rinoceronte) por até 1 hora.",
+    "descricao": "Esta Chave-rúnica imperfeita é feita de pedaços de entulho, vidro quebrado, ossos e pêlos de animais. Uma extremidade se assemelha a uma besta com chifres. No comando, a Chave-rúnica se transforma em um ceratok, uma criatura com chifres muito parecida com um **rinoceronte** (e com as mesmas estatísticas). Ele permanece em sua forma ceratok por 1 hora.\n\nA criatura é amigável a você e companheiros e obedece a seus comandos falados. Reverte se cair a 0 PV ou com uma ação para tocá-la e falar o comando. Quando a criatura reverte para sua forma de Chave-rúnica, ela não pode se transformar novamente até que 36 horas tenham se passado."
+  },
+  {
+    "nome": "Chave-rúnica Izzet",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização por um membro da Liga Izzet)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro da Liga Izzet",
+    "resumo": "Transforma-se em um Galvânico Estranho por até 3 horas para servir como guarda-costas e cobaia de testes.",
+    "descricao": "Formada em pedra vermelha e azul esculpida e polida, a chave de ouro inclui pedaços de cabo e fio. Uma das extremidades se assemelha a uma cabeça semelhante a um humano, sugerindo a forma elementar chamada de **galvânico estranho** (*galvanice weird*) que pode se tornar por uma duração de 3 horas. Nessa forma, ele servirá como guarda-costas, levantará e carregará coisas para você, atuará como objeto de teste para seus experimentos ou ajudará de qualquer outra forma que suas capacidades permitirem.\n\nA criatura é amigável a você e companheiros e obedece a seus comandos falados. Reverte se cair a 0 PV ou com uma ação para tocá-la e falar o comando. Quando a criatura reverte para sua forma de Chave-rúnica, ela não pode se transformar novamente até que 36 horas tenham se passado."
+  },
+  {
+    "nome": "Chave-rúnica Orzhov",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização por um membro do Sindicato Orzhov)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro do Sindicato Orzhov",
+    "resumo": "Transforma-se em um Thrull Alado (Winged Thrull) por até 2 horas.",
+    "descricao": "Esta Chave-rúnica é esculpida em mármore branco com veios de preto. A extremidade tem o formato de uma cabeça de thrull, com uma placa frontal de ouro afixada. No comando, a Chave-rúnica se transforma em um **thrull alado** (*winged thrull*) por até 2 horas. Se você não vem de uma família de oligarcas Orzhov, isso o atende com relutância, imitando seus movimentos e maneirismos de maneira palhaço enquanto cumpre suas ordens.\n\nA criatura é amigável a você e companheiros e obedece a seus comandos falados. Reverte se cair a 0 PV ou com uma ação para tocá-la e falar o comando. Quando a criatura reverte para sua forma de Chave-rúnica, ela não pode se transformar novamente até que 36 horas tenham se passado."
+  },
+  {
+    "nome": "Chave-rúnica Rakdos",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Incomum (Requer Sintonização por um membro do Culto de Rakdos)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro do Culto de Rakdos",
+    "resumo": "Transforma-se em um Cackler (demônio travesso) por até 1 hora.",
+    "descricao": "Esta Chave-rúnica de granito escuro é marmorizada com veios escarlates e esculpida com o rosto malicioso de um demônio travesso. Quando ativada, ela se transforma em um **cackler** por até 1 hora.\n\nA criatura é amigável a você e companheiros e obedece a seus comandos falados. Reverte se cair a 0 PV ou com uma ação para tocá-la e falar o comando. Quando a criatura reverte para sua forma de Chave-rúnica, ela não pode se transformar novamente até que 36 horas tenham se passado."
+  },
+  {
+    "nome": "Chave-rúnica Selesnya",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização por um membro do Conclave Selesnya)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro do Conclave Selesnya",
+    "resumo": "Transforma-se em um Lobo Atroz por até 8 horas com Inteligência 6 e telepatia a até 1,5 km.",
+    "descricao": "Esculpida em mármore branco e verde em forma de cabeça de lobo, esta Chave-rúnica se transforma em um **lobo atroz**. O lobo persiste por 8 horas. Sua inteligência é 6 e ele entende élfico e silvestre, mas não fala esses idiomas. Enquanto estiver a menos de 1,5 quilômetros de você, vocês podem se comunicar telepaticamente.\n\nA criatura é amigável a você e companheiros e obedece a seus comandos falados. Reverte se cair a 0 PV ou com uma ação para tocá-la e falar o comando. Quando a criatura reverte para sua forma de Chave-rúnica, ela não pode se transformar novamente até que 36 horas tenham se passado."
+  },
+  {
+    "nome": "Chave-rúnica Simic",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Incomum (Requer Sintonização por um membro do Combinado Simic)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um membro do Combinado Simic",
+    "resumo": "Transforma-se em um Krasis de Categoria 1 (com adaptações Grabber e Stabilizing Legs) por até 5 horas.",
+    "descricao": "Esta Chave-rúnica é composta de coral, madrepérola e cromo e adornado com espirais e curvas características da ornamentação Simic. A cabeça lembra a concha de uma criatura marinha. No comando, a Chave-rúnica se transforma em um **krasis de categoria 1** que tem as adaptações Grabber e Stabilizing Legs. A transformação dura até 5 horas.\n\nA criatura é amigável a você e companheiros e obedece a seus comandos falados. Reverte se cair a 0 PV ou com uma ação para tocá-la e falar o comando. Quando a criatura reverte para sua forma de Chave-rúnica, ela não pode se transformar novamente até que 36 horas tenham se passado."
   },
   {
     "nome": "Chifre de Escutar",
@@ -1377,13 +1936,15 @@ export default [
   {
     "nome": "Chifre do Alarme Silencioso",
     "tipo": "Item Maravilhoso",
-    "subtipo": "",
+    "subtipo": "Chifre / Instrumento",
     "tipo_linha": "Item Maravilhoso, Comum",
     "raridade": "Comum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Possui 4 cargas para soprar um som audível exclusivamente para uma única criatura escolhida a até 180 metros.",
-    "descricao": "Possui 4 cargas (1d4 ao amanhecer). Permite soprar o chifre para que uma criatura escolhida a até 180 m escute o estrondo. Nenhuma outra criatura ouve nada."
+    "resumo": "4 cargas. Ação e 1 carga emite toque audível exclusivamente por uma criatura escolhida a até 180m (recupera 1d4 ao amanhecer).",
+    "descricao": "Este chifre tem 4 cargas. Ao usar uma ação para soprá-lo, uma criatura de sua escolha que possa ouvir o toque, desde que ela esteja dentro de 180 metros do chifre e não esteja surda. Nenhuma outra criatura ouve qualquer som emitido pelo chifre. O chifre recupera diariamente 1d4 cargas gastas ao amanhecer.",
+    "cargas": 4,
+    "recarga": "1d4 ao amanhecer"
   },
   {
     "nome": "Cimitarra da Velocidade",
@@ -1397,15 +1958,64 @@ export default [
     "descricao": "Você adquire um bônus de +2 em jogadas de ataque e dano realizadas com esta arma mágica. Além disso, você pode realizar um ataque com ela como uma Ação Bônus em cada um dos seus turnos."
   },
   {
-    "nome": "Cinturão de Força de Gigante",
+    "nome": "Cinturão de Força do Gigante da Colina",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
-    "tipo_linha": "Item Maravilhoso, Raridade Variável (Requer Sintonização)",
-    "raridade": "Raridade Variável",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização)",
+    "raridade": "Raro",
     "sintonizacao": true,
     "detalhe_sintonizacao": "Requer Sintonização",
-    "resumo": "Fixa o valor de Força em 21 (Colina), 23 (Pedra/Gelo), 25 (Fogo), 27 (Nuvens) ou 29 (Tempestade).",
-    "descricao": "Ao usar este cinturão, seu valor de Força muda para o fornecido pelo item conforme o tipo de gigante:\n- Colina: Força 21 (Raro)\n- Pedra/Gelo: Força 23 (Muito Raro)\n- Fogo: Força 25 (Muito Raro)\n- Nuvens: Força 27 (Lendário)\n- Tempestade: Força 29 (Lendário)"
+    "forca_fixa": 21,
+    "resumo": "Enquanto estiver usando este cinturão sintonizado, seu valor de Força torna-se 21.",
+    "descricao": "Enquanto estiver usando este cinturão, seu valor de Força torna-se 21. O item não tem efeito se a sua Força já for igual ou superior a 21."
+  },
+  {
+    "nome": "Cinturão de Força do Gigante da Pedra ou Gelo",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "forca_fixa": 23,
+    "resumo": "Enquanto estiver usando este cinturão sintonizado, seu valor de Força torna-se 23.",
+    "descricao": "Enquanto estiver usando este cinturão, seu valor de Força torna-se 23. O item não tem efeito se a sua Força já for igual ou superior a 23."
+  },
+  {
+    "nome": "Cinturão de Força do Gigante da Tempestade",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Lendário (Requer Sintonização)",
+    "raridade": "Lendário",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "forca_fixa": 29,
+    "resumo": "Enquanto estiver usando este cinturão sintonizado, seu valor de Força torna-se 29.",
+    "descricao": "Enquanto estiver usando este cinturão, seu valor de Força torna-se 29. O item não tem efeito se a sua Força já for igual ou superior a 29."
+  },
+  {
+    "nome": "Cinturão de Força do Gigante das Nuvens",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Lendário (Requer Sintonização)",
+    "raridade": "Lendário",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "forca_fixa": 27,
+    "resumo": "Enquanto estiver usando este cinturão sintonizado, seu valor de Força torna-se 27.",
+    "descricao": "Enquanto estiver usando este cinturão, seu valor de Força torna-se 27. O item não tem efeito se a sua Força já for igual ou superior a 27."
+  },
+  {
+    "nome": "Cinturão de Força do Gigante do Fogo",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "forca_fixa": 25,
+    "resumo": "Enquanto estiver usando este cinturão sintonizado, seu valor de Força torna-se 25.",
+    "descricao": "Enquanto estiver usando este cinturão, seu valor de Força torna-se 25. O item não tem efeito se a sua Força já for igual ou superior a 25."
   },
   {
     "nome": "Cinturão do Povo Anão",
@@ -1439,6 +2049,17 @@ export default [
     "detalhe_sintonizacao": "Requer Sintonização",
     "resumo": "Permite respirar normalmente em qualquer ambiente e concede Vantagem em salvaguardas contra Envenenado.",
     "descricao": "Ao usar este colar, você pode respirar normalmente em qualquer ambiente e tem Vantagem em salvaguardas realizadas para evitar ou encerrar a condição Envenenado."
+  },
+  {
+    "nome": "Colar de Adaptação",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Permite respirar normalmente em qualquer ambiente (inclusive no vácuo ou debaixo d'água) e concede vantagem contra gases e vapores nocivos.",
+    "descricao": "Enquanto estiver usando este colar sintonizado, você pode respirar normalmente em qualquer ambiente (inclusive debaixo d'água ou no vácuo) e tem vantagem em salvaguardas contra gases e vapores nocivos (como efeitos criados por magias como *Nuvem Assassina* e *Névoa Fétida*, além de venenos inalados)."
   },
   {
     "nome": "Colar de Bolas de Fogo",
@@ -1529,6 +2150,17 @@ export default [
     "descricao": "Com ação Usar Magia, comanda a corda a disparar e enredar alvo a até 6 m (salvaguarda de Destreza CD 15 ou fica Contido). Possui CA 20 e 20 PV."
   },
   {
+    "nome": "Corda do Reparo",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Corda",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Corda de 15m que pode ser cortada em pedaços e depois reunida sem emendas por uma ação com palavra de comando.",
+    "descricao": "Você pode cortar esta corda de cânhamo de 15 metros em vários pedaços menores, e então usar uma ação para falar uma palavra de comando que faz os pedaços se unirem novamente. Os fragmentos devem estar em contato entre si e não sendo utilizados para qualquer fim. Uma corda do reparo é permanentemente encurtada se um fragmento for perdido ou destruído."
+  },
+  {
     "nome": "Corda Encantada",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -1608,13 +2240,24 @@ export default [
   {
     "nome": "Dado do Charlatão",
     "tipo": "Item Maravilhoso",
-    "subtipo": "",
+    "subtipo": "Dado",
     "tipo_linha": "Item Maravilhoso, Comum (Requer Sintonização)",
     "raridade": "Comum",
     "sintonizacao": true,
     "detalhe_sintonizacao": "Requer Sintonização",
-    "resumo": "Permite controlar voluntariamente o número obtido em qualquer rolagem deste dado de 6 lados.",
-    "descricao": "Sempre que você jogar este dado de seis lados, você pode controlar qual número obtido na jogada."
+    "resumo": "Permite controlar qual número de 1 a 6 irá rolar no dado.",
+    "descricao": "Sempre que rolar este dado de seis lados, você pode controlar qual número irá rolar."
+  },
+  {
+    "nome": "Decantador de Água Infinita",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Incomum",
+    "raridade": "Incomum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Frasco de metal que produz água doce ou salgada sob comando em três modos: Córrego (4 L), Fonte (19 L) ou Gêiser (114 L em jato de 9 m).",
+    "descricao": "Este frasco de metal tem uma rolha. Você pode usar uma ação para remover a rolha e falar uma das três palavras de comando para que o frasco comece a produzir água doce ou salgada (à sua escolha):\n\n• **Córrego:** Produz 4 litros (1 galão) de água por rodada.\n• **Fonte:** Produz 19 litros (5 galões) de água por rodada.\n• **Gêiser:** Produz 114 litros (30 galões) de água em um jato de 9 metros de comprimento e 30 centímetros de largura. Como uma ação de ataque com o gêiser, uma criatura atingida deve passar em uma salvaguarda de Força CD 13 ou sofre 1d4 de dano de Concussão e fica com a condição Caído. Se for de tamanho Grande ou menor, é empurrada até 4,5 metros.\n\nA água para de jorrar quando você usar uma ação bônus para falar a palavra de parada ou colocar a rolha de volta."
   },
   {
     "nome": "Defensora",
@@ -1650,6 +2293,17 @@ export default [
     "descricao": "Enquanto estiver vestindo esta diadema, você pode conjurar *Raio Ardente* com ela (bônus de +5 para acertar) 1x ao dia."
   },
   {
+    "nome": "Disparo de Repetição",
+    "tipo": "Arma",
+    "subtipo": "Qualquer Arma com Munição",
+    "tipo_linha": "Arma (Qualquer Arma Simples ou Marcial com Munição), Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Concede +1 em jogadas de ataque e dano, ignora a propriedade Carregamento e gera sua própria munição mágica automaticamente.",
+    "descricao": "Esta arma mágica concede um bônus de +1 nas jogadas de ataque e dano realizadas com ela, e ignora a propriedade Carregamento se a possuir.\n\nSe você não colocar munição na arma ao atacar com ela, a arma produz magicamente sua própria munição mágica, criando um projétil ou virote quando você realiza uma jogada de ataque à distância com ela. A munição criada desaparece no instante em que atinge ou erra o alvo."
+  },
+  {
     "nome": "Dispositivo de Kwalish",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -1661,6 +2315,18 @@ export default [
     "descricao": "Barril mecânico blindado de 250 kg para 2 tripulantes com ar para 10h e submersão até 275 m. Possui 10 alavancas para locomoção, visão, iluminação, garras de ataque (+8, 2d6 ou contenção) e flutuação."
   },
   {
+    "nome": "Dispositivo de Mizzium",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Incomum (Requer Sintonização por um Bruxo, Feiticeiro ou Mago)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um Bruxo, Feiticeiro ou Mago",
+    "peso": "3,6 kg",
+    "resumo": "Foco Arcano que permite tentar lançar qualquer magia da lista da sua classe gastando o espaço de magia e fazendo um teste de Arcanismo (CD 10 + 2x círculo).",
+    "descricao": "A inovação é uma busca perigosa, pelo menos a maneira como os magos da Liga Izzet se envolvem nela. Como proteção contra o risco de um experimento dar errado, eles desenvolveram um dispositivo para ajudar a canalizar e controlar sua magia. Este aparelho é uma coleção de tiras de couro, tubos flexíveis, cilindros de vidro e placas, braçadeiras e acessórios feitos de uma liga de metal com infusão de magia chamada mizzium, todos montados em uma armadura. O item pesa 3,6 quilos.\n\nEnquanto estiver usando o dispositivo de mizzium, você pode usá-lo como um foco arcano. Além disso, você pode tentar lançar uma magia que não conhece ou que não tenha preparado. A magia que você escolher deve estar na lista de magias de sua classe e de um nível para o qual você tem um slot de magia, e você deve fornecer os seus respectivos componentes.\n\nVocê gasta um espaço de magia para lançar a magia normalmente, mas antes de resolvê-la você deve fazer um teste de Inteligência (Arcanismo). A CD é 10 + duas vezes o nível do espaço de magia que você gasta.\n\nEm um teste bem-sucedido, você conjura a magia normalmente, usando sua CD de salvaguarda de magia e modificador de habilidade de lançamento de magia. Em uma falha no teste, você lança uma magia diferente daquela que pretendia. Determine aleatoriamente a magia que você lançou rolando na tabela para o nível do espaço de magia que você gastou (se o slot for de 6º nível ou superior, role na tabela para magias de 5º nível):\n\n• **1º Nível (d6):** 1: Mãos Flamejantes, 2: Raio do Caos, 3: Leque Cromático, 4: Fogo das Fadas, 5: Névoa Obscurecente, 6: Onda Trovejante.\n• **2º Nível (d6):** 1: Nublar, 2: Lufada de Vento, 3: Esquentar Metal, 4: Flecha Ácida de Melf, 5: Raio Ardente, 6: Despedaçar.\n• **3º Nível (d6):** 1: Medo, 2: Forjar Morte, 3: Bola de Fogo, 4: Forma Gasosa, 5: Nevasca, 6: Névoa Fétida.\n• **4º Nível (d4):** 1: Confusão, 2: Conjurar Elementais Menores, 3: Tentáculos Negros de Evard, 4: Tempestade de Gelo.\n• **5º Nível (d4):** 1: Animar Objetos, 2: Névoa Mortal, 3: Cone de Frio, 4: Coluna de Chamas.\n\nSe você tentar lançar um truque que não conhece, a CD para o teste de Inteligência (Arcanismo) é 10, e em caso de falha, não há efeito."
+  },
+  {
     "nome": "Elmo da Compreensão de Idiomas",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -1670,6 +2336,17 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Permite conjurar Compreender Idiomas à vontade enquanto usado.",
     "descricao": "Enquanto estiver vestindo este elmo, você pode conjurar *Compreender Idiomas* a partir dele."
+  },
+  {
+    "nome": "Elmo da Percepção",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Cabeça",
+    "tipo_linha": "Item Maravilhoso, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Concede Vantagem em testes de Percepção e Salvaguardas de Iniciativa, e você não pode ser surpreendido enquanto consciente.",
+    "descricao": "Enquanto estiver usando este elmo e sintonizado com ele, você possui Vantagem em testes de Sabedoria (Percepção) e em jogadas de Iniciativa. Além disso, você não pode ser surpreendido enquanto estiver consciente."
   },
   {
     "nome": "Elmo de Telepatia",
@@ -1705,6 +2382,17 @@ export default [
     "descricao": "Cravejado com diamantes, rubis e opalas.\n- **Chamas:** Arma em chamas causando +1d6 dano Ígneo.\n- **Luz Diamantina:** Mortos-vivos em 9 m sofrem 1d6 radiante por turno.\n- **Resistência de Rubi:** Resistência a dano Ígneo.\n- **Magias:** Luz do Dia (opala), Bola de Fogo (opala de fogo), Rajada Prismática (diamante), Muralha de Fogo (rubi)."
   },
   {
+    "nome": "Elmo do Horror",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Elmo",
+    "tipo_linha": "Item Maravilhoso (Elmo), Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Faz os olhos de quem o veste brilharem em vermelho sinistro enquanto estiver em uso.",
+    "descricao": "Este temível elmo de aço faz seus olhos brilharem de vermelho enquanto o usa."
+  },
+  {
     "nome": "Elmo do Medo",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -1736,6 +2424,45 @@ export default [
     "detalhe_sintonizacao": "Requer Sintonização",
     "resumo": "Concede +1 CA, Vantagem em salvaguardas contra magias e 12 cargas para converter falhas contra Necromancia/mortos-vivos em sucessos.",
     "descricao": "Concede bônus de +1 na CA e Vantagem em salvaguardas contra magias. Possui 12 cargas: ao falhar em salvaguarda contra Necromancia ou mortos-vivos, gasta 1 carga como Reação para transformar a falha em sucesso."
+  },
+  {
+    "nome": "Escudo +1",
+    "tipo": "Armadura",
+    "subtipo": "Escudo",
+    "tipo_linha": "Armadura (Escudo), Incomum",
+    "raridade": "Incomum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ca": 1,
+    "ca": "+3",
+    "resumo": "Concede um bônus total de +3 na Classe de Armadura (+2 base do escudo e +1 mágico).",
+    "descricao": "Ao ter este Escudo equipado, você tem um bônus de +1 na Classe de Armadura, além do bônus normal de +2 do escudo (totalizando +3 na CA)."
+  },
+  {
+    "nome": "Escudo +2",
+    "tipo": "Armadura",
+    "subtipo": "Escudo",
+    "tipo_linha": "Armadura (Escudo), Raro",
+    "raridade": "Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ca": 2,
+    "ca": "+4",
+    "resumo": "Concede um bônus total de +4 na Classe de Armadura (+2 base do escudo e +2 mágico).",
+    "descricao": "Ao ter este Escudo equipado, você tem um bônus de +2 na Classe de Armadura, além do bônus normal de +2 do escudo (totalizando +4 na CA)."
+  },
+  {
+    "nome": "Escudo +3",
+    "tipo": "Armadura",
+    "subtipo": "Escudo",
+    "tipo_linha": "Armadura (Escudo), Muito Raro",
+    "raridade": "Muito Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ca": 3,
+    "ca": "+5",
+    "resumo": "Concede um bônus total de +5 na Classe de Armadura (+2 base do escudo e +3 mágico).",
+    "descricao": "Ao ter este Escudo equipado, você tem um bônus de +3 na Classe de Armadura, além do bônus normal de +2 do escudo (totalizando +5 na CA)."
   },
   {
     "nome": "Escudo Animado",
@@ -1771,6 +2498,20 @@ export default [
     "descricao": "Ao estar equipado com este Escudo, você tem Vantagem em salvaguardas contra magias e outros efeitos mágicos, e jogadas de ataque mágico têm Desvantagem contra você."
   },
   {
+    "nome": "Escudo da Expressão",
+    "tipo": "Armadura",
+    "subtipo": "Escudo",
+    "tipo_linha": "Armadura (Escudo), Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "ca": "+2",
+    "bonus_ca": 0,
+    "categoria": "Escudo",
+    "resumo": "Escudo (+2 CA) com face frontal esculpida cuja expressão pode ser alterada usando uma ação bônus.",
+    "descricao": "O formato frontal deste escudo assemelha-se a uma face. Ao usar este escudo (+2 na CA), você pode usar uma ação bônus para alterar a expressão dessa face."
+  },
+  {
     "nome": "Escudo de Atração de Projéteis",
     "tipo": "Armadura",
     "subtipo": "Escudo",
@@ -1780,6 +2521,19 @@ export default [
     "detalhe_sintonizacao": "Requer Sintonização",
     "resumo": "Resistência a dano de armas à distância; amaldiçoado atraindo ataques disparados contra aliados a até 3 m.",
     "descricao": "Concede Resistência a dano de armas à distância.\n\n***Maldição.*** Sempre que um ataque com arma à distância tiver como alvo criatura a até 3 m de você, a maldição redireciona o ataque para você."
+  },
+  {
+    "nome": "Escudo de Pariah",
+    "tipo": "Armadura",
+    "subtipo": "Escudo",
+    "tipo_linha": "Armadura (Escudo), Raro (Requer Sintonização)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "ca": "+2",
+    "categoria": "Escudo",
+    "resumo": "Escudo (+2 CA) que concede +1 CA extra para cada dois aliados a até 1,5 m (máx +3) e permite usar Reação para absorver dano de aliados como energia.",
+    "descricao": "Os soldados da Legião Boros consideram uma honra carregar este escudo, mesmo sabendo que pode ser a última honra que receberão. A frente do escudo é esculpida para representar um rosto humano em luto.\n\nVocê ganha +1 de bônus na CA para cada dois aliados em um raio de 1,5 m de você (até um máximo de +3) enquanto empunha este escudo. Este bônus é adicionado ao bônus normal do escudo para CA (+2).\n\nQuando uma criatura que você pode ver a menos de 1,5 m de você sofre dano, você pode usar sua reação para receber aquele dano, em vez da criatura sofrendo. Ao fazer isso, o tipo de dano muda para energia."
   },
   {
     "nome": "Escudo do Cavaleiro",
@@ -1804,6 +2558,17 @@ export default [
     "descricao": "O Escudo está estampado com o símbolo de um rosto. Ao ter este Escudo equipado, você pode executar uma Ação Bônus para alterar a expressão do rosto."
   },
   {
+    "nome": "Escudo Repulsor",
+    "tipo": "Armadura",
+    "subtipo": "Escudo",
+    "tipo_linha": "Armadura (Escudo), Incomum",
+    "raridade": "Incomum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Concede +1 de bônus na CA e possui 4 cargas para empurrar um atacante corpo a corpo em até 4,5 metros como Reação.",
+    "descricao": "Este escudo mágico concede um bônus de +1 na Classe de Armadura adicional ao bônus normal de escudo.\n\nO escudo possui 4 cargas e recupera 1d4 cargas diariamente ao amanhecer. Enquanto empunhar o escudo, quando uma criatura a até 1,5 metros acertar uma jogada de ataque corpo a corpo contra você, você pode usar uma Reação para gastar 1 carga do escudo e empurrar o atacante por até 4,5 metros em linha reta para longe de você."
+  },
+  {
     "nome": "Escudo Sentinela",
     "tipo": "Armadura",
     "subtipo": "Escudo",
@@ -1813,17 +2578,6 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Concede Vantagem em jogadas de Iniciativa e testes de Sabedoria (Percepção).",
     "descricao": "Ao ter este Escudo equipado, você tem Vantagem em jogadas de Iniciativa e testes de Sabedoria (Percepção). O Escudo está estampado com o símbolo de um olho."
-  },
-  {
-    "nome": "Escudo, +1, +2 ou +3",
-    "tipo": "Armadura",
-    "subtipo": "Escudo",
-    "tipo_linha": "Armadura (Escudo), Incomum (+1), Raro (+2) ou Muito Raro (+3)",
-    "raridade": "Incomum (+1), Raro (+2), Muito Raro (+3)",
-    "sintonizacao": false,
-    "detalhe_sintonizacao": "",
-    "resumo": "Concede um bônus adicional de +1, +2 ou +3 na Classe de Armadura além dos +2 normais do escudo.",
-    "descricao": "Ao ter este Escudo equipado, você tem um bônus na Classe de Armadura determinado pela raridade do Escudo (+1 Incomum, +2 Raro, +3 Muito Raro), além do bônus normal do Escudo para a CA."
   },
   {
     "nome": "Esfera da Aniquilação",
@@ -1839,24 +2593,24 @@ export default [
   {
     "nome": "Esfera da Direção",
     "tipo": "Item Maravilhoso",
-    "subtipo": "",
+    "subtipo": "Esfera",
     "tipo_linha": "Item Maravilhoso, Comum",
     "raridade": "Comum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Foco arcano que aponta a direção do norte magnético com ação Usar Magia.",
-    "descricao": "Pode ser usada como Foco Arcano. Permite descobrir o norte magnético com uma ação Usar Magia."
+    "resumo": "Ação para determinar com exatidão onde está o norte magnético (somente no Plano Material).",
+    "descricao": "Ao segurar esta esfera você pode usar uma ação para determinar onde está o norte. Esta propriedade funciona apenas no Plano Material."
   },
   {
     "nome": "Esfera do Tempo",
     "tipo": "Item Maravilhoso",
-    "subtipo": "",
+    "subtipo": "Esfera",
     "tipo_linha": "Item Maravilhoso, Comum",
     "raridade": "Comum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Foco arcano que informa se é manhã, tarde, noite ou madrugada no Plano Material.",
-    "descricao": "Pode ser usada como Foco Arcano. Permite descobrir o período do dia (manhã, tarde, noite ou madrugada) com ação Usar Magia."
+    "resumo": "Ação para determinar se é de manhã, tarde ou noite no Plano Material.",
+    "descricao": "Ao segurar esta esfera você pode usar uma ação para determinar se é de manhã, tarde ou noite. Esta propriedade funciona apenas no Plano Material."
   },
   {
     "nome": "Espada da Precisão",
@@ -1914,6 +2668,22 @@ export default [
     "descricao": "Lendária espada forjada para destruir Vecna. Bônus de +3 em ataque/dano, crítico 19-20 e +2d10 cortante contra mortos-vivos. Concede +1d10 na Iniciativa, permite transferir bônus de ataque para a CA e concede Resistência a dano Necrótico. Conjura *Convocar Relâmpagos*, *Dedo da Morte* e *Palavra Sagrada* (CD 18). Arma senciente sedenta por sangue."
   },
   {
+    "nome": "Espada dos Paruns",
+    "tipo": "Arma",
+    "subtipo": "Espada Longa",
+    "tipo_linha": "Arma (Espada Longa), Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_ataque": 1,
+    "bonus_dano": 1,
+    "dano": "1d8 cortante (1d10 versátil)",
+    "propriedades": "Versátil",
+    "categoria": "Arma Marcial Corpo a Corpo",
+    "resumo": "Espada Longa +1 que permite conceder reações táticas a aliados a até 18 metros ao Atacar, Disparar ou Esquivar.",
+    "descricao": "Você ganha um bônus de +1 nas jogadas de ataque e dano feitas com esta arma mágica. Além disso, uma vez em cada um de seus turnos, você pode usar uma das seguintes propriedades se estiver segurando a espada:\n\n• Imediatamente após usar a Ação de ataque para atacar com a espada, você pode habilitar uma criatura dentro de 18 metros de você para usar sua reação para fazer um ataque com uma arma.\n• Imediatamente depois de realizar a Ação de disparada, você pode permitir que uma criatura a até 18 metros de você use sua reação para mover-se mais rápido.\n• Imediatamente após realizar a ação de Esquiva, você pode permitir que uma criatura a até 18 metros de você use sua reação para obter os benefícios da ação de Esquiva."
+  },
+  {
     "nome": "Espada Laceradora",
     "tipo": "Arma",
     "subtipo": "Cimitarra, Espada Curta, Grande, Longa, Glaive ou Rapieira",
@@ -1927,13 +2697,16 @@ export default [
   {
     "nome": "Espada Lunar",
     "tipo": "Arma",
-    "subtipo": "Cimitarra, Espada Curta, Grande, Longa, Glaive ou Rapieira",
-    "tipo_linha": "Arma (Cimitarra, Espada Curta, Espada Grande, Espada Longa, Glaive, Rapieira), Comum",
+    "subtipo": "Espada Longa",
+    "tipo_linha": "Arma (Espada Longa), Comum",
     "raridade": "Comum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Emite luz prateada de luar em 4,5 m de raio plena e 4,5 m meia-luz quando desembainhada na escuridão.",
-    "descricao": "Na Escuridão, a lâmina desembainhada desta arma emite a luz do luar, criando Luz Plena em um raio de 4,5 metros e Meia-luz por mais 4,5 metros."
+    "resumo": "Na escuridão, a lâmina desembainhada emana luar com luz brilhante em 4,5m e luz fraca por mais 4,5m.",
+    "descricao": "Na escuridão a lâmina desembainhada desta espada emana luar, criando luz brilhante em um raio de 4,5 metros e luz fraca por mais 4,5 metros.",
+    "dano": "1d8 cortante",
+    "propriedades": "Versátil (1d10)",
+    "categoria": "Arma Marcial Corpo a Corpo"
   },
   {
     "nome": "Espada Usurpadora de Vida",
@@ -2035,6 +2808,34 @@ export default [
     "descricao": "Possui 3 cargas (1d3 ao amanhecer). Com teste de Carisma (Atuação) CD 10, convoca de 1 a 3 Enxames de Ratos que obedecem a comandos telepáticos simples."
   },
   {
+    "nome": "Flecha Inquebrável",
+    "tipo": "Arma",
+    "subtipo": "Munição",
+    "tipo_linha": "Arma (Munição / Flecha), Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "categoria": "Munição",
+    "resumo": "Esta flecha nunca se quebra nem se danifica, exceto se inserida em um campo antimagia.",
+    "descricao": "Esta flecha não se quebra, exceto se inserida em um campo antimagia."
+  },
+  {
+    "nome": "Forjador Solar",
+    "tipo": "Arma",
+    "subtipo": "Martelo de Guerra",
+    "tipo_linha": "Arma (Martelo de Guerra), Raro (Requer Sintonização)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_ataque": 2,
+    "bonus_dano": 2,
+    "dano": "1d8 concussão (1d10 versátil)",
+    "propriedades": "Versátil",
+    "categoria": "Arma Marcial Corpo a Corpo",
+    "resumo": "Martelo de Guerra +2 que pode ser arremessado a 36 metros para explodir em esfera de fogo de 6 metros de raio (6d6 fogo, CD 15 Des, 1x descanso).",
+    "descricao": "Você ganha +2 de bônus nas jogadas de ataque e dano feitas com esta arma mágica.\n\nComo uma ação, você pode arremessar a arma a até 36 metros até um ponto que você possa ver. Quando chega a esse ponto, a arma desaparece em uma explosão, e cada criatura em uma esfera de 6 metros de raio centrada naquele ponto deve fazer um teste de resistência de Destreza com CD 15, recebendo 6d6 de dano de fogo em uma falha de resistência, ou metade desse dano em um bem-sucedido.\n\nDepois, você pode usar uma ação para fazer a arma reaparecer em sua mão vazia. Você não pode fazer com que ele exploda novamente até que termine um descanso curto ou longo. Se você não chamar a arma de volta para sua mão, ela reaparece no ponto em que explodiu quando você não está mais sintonizado com ela ou quando 24 horas se passaram."
+  },
+  {
     "nome": "Fortaleza Instantânea de Daern",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -2123,6 +2924,28 @@ export default [
     "descricao": "Ao ser esmagada no chão como ação Usar Magia, invoca um Elemental sob seu controle por 1 hora sem requerer Concentração (Diamante Amarelo: Ar; Esmeralda: Água; Rubi: Fogo; Safira: Terra)."
   },
   {
+    "nome": "Gota de Nutrição",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Consumível",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Miçanga gelatinosa que se dissolve na língua e fornece nutrição equivalente a 1 dia de provisões.",
+    "descricao": "Esta miçanga esponjosa, sem gosto e gelatinosa se dissolve em sua língua e fornece alimentação como 1 dia de provisões."
+  },
+  {
+    "nome": "Gota de Refrescância",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Consumível",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Dissolve-se em meio líquido transformando até 500 ml em água fresca, pura e gelada.",
+    "descricao": "Esta miçanga esponjosa, sem gosto e gelatinosa se dissolve em meio líquido, transformando até meio litro desse líquido em água fresca e gelada. A gota não tem efeito em líquidos mágicos ou danosos, como veneno."
+  },
+  {
     "nome": "Grilhões Dimensionais",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -2132,6 +2955,17 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Algemas mágicas que impedem completamente teleporte, viagem planar e movimento extradimensional da criatura aprisionada.",
     "descricao": "Prendem criatura Pequena, Média ou Grande. A criatura algemada não pode se teleportar, viajar entre planos ou acessar espaços extradimensionais (Atletismo CD 30 a cada 30 dias para escapar)."
+  },
+  {
+    "nome": "Grimório Duradouro",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Grimório",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Grimório e suas páginas imunes a dano por fogo, imersão em água e à deterioração do tempo.",
+    "descricao": "Este grimório, assim como tudo que está escrito em suas páginas, não pode ser danificado por fogo ou imersão em água. Além disso, o grimório não se deteriora com o tempo."
   },
   {
     "nome": "Haste Retrátil",
@@ -2165,6 +2999,30 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Pena mágica consumível com efeito único (Árvore de 18 m, Barco a Remo de 24h, Cisne voador, Chicote animado ou Âncora imovível).",
     "descricao": "Pena mágica de uso único ativada com ação Usar Magia:\n- **Árvore:** Brota um carvalho de 18 m de altura instantaneamente.\n- **Barco a Remo:** Cria barco a remo por 24 horas.\n- **Cisne:** Cria cisne voador gigante para transporte rápido por 24h.\n- **Chicote:** Flutua e ataca como arma mágica (+9 atq, 1d6+5 de força).\n- **Âncora:** Prende embarcação no lugar por 24h suportando tempestades."
+  },
+  {
+    "nome": "Instrumento da Escrita",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Instrumento Musical",
+    "tipo_linha": "Item Maravilhoso, Comum (Requer Sintonização)",
+    "raridade": "Comum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "cargas": 3,
+    "recarga": "3 ao amanhecer",
+    "resumo": "3 cargas. Ação ao tocar escreve mensagem de até 6 palavras em objeto a até 9m por 24h (bardo: 7 palavras e brilho suave).",
+    "descricao": "Este instrumento musical tem 3 cargas. Ao tocá-lo você pode usar uma ação para gastar 1 carga do instrumento e escrever uma mensagem mágica em um objeto ou superfície não-mágicos que você possa ver dentro a até 9 metros de distância. A mensagem pode ter até seis palavras e é escrita em um idioma que você conheça. Se você é um bardo, você pode escrever uma sétima palavra e optar se deseja que a mensagem brilhe suavemente, permitindo que seja vista em escuridão não-mágica. Conjurar dissipar magia sobre ela apaga a mensagem. Do contrário a mensagem desaparece em 24 horas.\n\nO instrumento recupera diariamente todas as cargas gastas ao amanhecer."
+  },
+  {
+    "nome": "Instrumento de Ilusões",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Instrumento Musical",
+    "tipo_linha": "Item Maravilhoso, Comum (Requer Sintonização)",
+    "raridade": "Comum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Ao tocar, cria ilusões visuais inofensivas em esfera de 1,5m de raio (4,5m se for bardo) enquanto continuar tocando.",
+    "descricao": "Ao tocar este instrumento musical, você pode criar efeitos visuais ilusórios inofensivos em uma esfera com raio de 1,5 metros ao redor do instrumento. Se você é um bardo, este raio aumenta para 4,5 metros. Exemplos de efeitos incluem notas musicais ilusórias, um dançarino espectral, borboletas, ou neve caindo suavemente. Os efeitos mágicos não têm substância nem emitem sons, e são obviamente ilusórios. Os efeitos terminam quando você para de tocar."
   },
   {
     "nome": "Instrumento Musical de Escrita",
@@ -2585,6 +3443,41 @@ export default [
     "descricao": "Concede +1 em ataque e dano e +4 no valor de Força (máx 30).\nSe sintonizado em conjunto com *Manoplas de Poder do Ogro* e *Cinturão de Força de Gigante*:\n- O bônus passa a ser +3.\n- No resultado 20 natural contra um Gigante, ele deve passar em salvaguarda de Constituição CD 17 ou morre instantaneamente.\n- Arremesso 6/18 m que explode em estrondo sônico forçando salvaguarda CD 17 Con ou criaturas em 9 m ficam Atordoadas até o início do seu próximo turno."
   },
   {
+    "nome": "Máscara do Peregrino",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "voo_metros": 18,
+    "vantagem_iniciativa": true,
+    "resumo": "Concede deslocamento de Voo de 18 metros e Vantagem nos testes de Iniciativa.",
+    "descricao": "Enquanto usa este elmo alado, você tem uma velocidade de vôo de 18 metros. Além disso, você tem vantagem nos testes de iniciativa."
+  },
+  {
+    "nome": "Mastro da Diminuição",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Mastro / Bastão",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Palavra de comando encolhe o mastro de 3 metros para um bastão de 30 cm e vice-versa.",
+    "descricao": "Ao segurar este mastro de 3 metros você pode falar uma palavra de comando e transformá-lo em um bastão de 30 centímetros, facilitando seu armazenamento. O peso do mastro não se altera. Você pode usar uma palavra de comando diferente para reverter o bastão ao mastro; no entanto, o bastão irá se alongar somente se há espaço disponível ao redor."
+  },
+  {
+    "nome": "Mastro da Pescaria",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Mastro / Vara de Pesca",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Palavra de comando transforma o mastro de 3 metros em uma vara de pesca com anzol, linha e molinete e vice-versa.",
+    "descricao": "Ao segurar este mastro de 3 metros você pode falar uma palavra de comando e transformá-lo em uma vara de pesca com anzol, linha e molinete. Falar a palavra de comando novamente a transforma de volta em um mastro de 3 metros normal."
+  },
+  {
     "nome": "Matadora de Dragões",
     "tipo": "Arma",
     "subtipo": "Qualquer Simples ou Marcial",
@@ -2640,6 +3533,68 @@ export default [
     "descricao": "Ao jogar esta moeda de prata para cima, você pode decidir mentalmente se ela cairá em cara ou coroa."
   },
   {
+    "nome": "Morteiro de Mizzium",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro",
+    "raridade": "Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Possui 4 cargas (1d4 diário) para Spray Fundido (cone de 9m, 5d4 fogo, CD 15 Des) ou Bombardeio (cilindro 6m raio, 5d8 fogo, CD 15 Des).",
+    "descricao": "Este tubo curto, com cerca de 60 centímetros de comprimento e 15 centímetros de diâmetro, é feito de mizzium, uma liga de metal magicamente aprimorada forjada pela Liga Izzet. A extremidade apontada para um alvo está aberta e uma bola brilhante de metal derretido pode ser vista na outra extremidade, desde que o morteiro tenha pelo menos 1 carga restante.\n\nO morteiro possui 4 cargas para as seguintes propriedades. Ele recupera cobranças gastas de 1d4 diariamente ao amanhecer:\n\n• **Spray Fundido:** Você pode gastar 1 carga como uma ação para lançar um cone de mizzium derretido de 9 metros. Cada criatura na área deve fazer um teste de resistência de Destreza CD 15, recebendo 5d4 de dano por fogo em um teste falhado, ou metade do dano em um teste bem-sucedido.\n\n• **Bombardeio de Mizzium:** Você pode gastar 3 cargas como uma ação para lançar uma chuva de projéteis derretidos em um cilindro de 6 metros de raio e 12 metros de altura centrado em um ponto que você pode ver a 18 metros de você. Cada criatura na área deve fazer um teste de resistência com Destreza CD 15. Uma criatura sofre 5d8 de dano de fogo em um teste de resistência falhado, ou metade do dano em um teste bem-sucedido."
+  },
+  {
+    "nome": "Munição +1",
+    "tipo": "Arma",
+    "subtipo": "Qualquer Munição",
+    "tipo_linha": "Arma (Qualquer Munição), Incomum",
+    "raridade": "Incomum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ataque": 1,
+    "bonus_dano": 1,
+    "resumo": "Concede um bônus de +1 em jogadas de ataque e dano com a munição disparada.",
+    "descricao": "Você adquire um bônus de +1 em jogadas de ataque e dano realizadas com esta munição mágica. A magia se dissipa após atingir um alvo."
+  },
+  {
+    "nome": "Munição +2",
+    "tipo": "Arma",
+    "subtipo": "Qualquer Munição",
+    "tipo_linha": "Arma (Qualquer Munição), Raro",
+    "raridade": "Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ataque": 2,
+    "bonus_dano": 2,
+    "resumo": "Concede um bônus de +2 em jogadas de ataque e dano com a munição disparada.",
+    "descricao": "Você adquire um bônus de +2 em jogadas de ataque e dano realizadas com esta munição mágica. A magia se dissipa após atingir um alvo."
+  },
+  {
+    "nome": "Munição +3",
+    "tipo": "Arma",
+    "subtipo": "Qualquer Munição",
+    "tipo_linha": "Arma (Qualquer Munição), Muito Raro",
+    "raridade": "Muito Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "bonus_ataque": 3,
+    "bonus_dano": 3,
+    "resumo": "Concede um bônus de +3 em jogadas de ataque e dano com a munição disparada.",
+    "descricao": "Você adquire um bônus de +3 em jogadas de ataque e dano realizadas com esta munição mágica. A magia se dissipa após atingir um alvo."
+  },
+  {
+    "nome": "Munição Colossal",
+    "tipo": "Arma",
+    "subtipo": "Munição",
+    "tipo_linha": "Arma (qualquer munição), Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "categoria": "Munição",
+    "resumo": "Munição de grande impacto: qualquer criatura atingida deve passar em teste de Força CD 10 ou ser derrubada (Caído).",
+    "descricao": "Esta munição dá uma pancada assombrosa. Uma criatura atingida por ela deve passar em um teste CD 10 de Força ou ser derrubada."
+  },
+  {
     "nome": "Munição Exterminadora",
     "tipo": "Arma",
     "subtipo": "Flecha, Virote ou Bala de Funda",
@@ -2662,15 +3617,15 @@ export default [
     "descricao": "Ao atingir uma criatura, esta munição causa 1d10 pontos de dano Energético adicionais e empurra o alvo 3 metros em linha reta para longe de você."
   },
   {
-    "nome": "Munição, +1, +2 ou +3",
-    "tipo": "Arma",
-    "subtipo": "Qualquer Munição",
-    "tipo_linha": "Arma (Qualquer Munição), Incomum (+1), Raro (+2) ou Muito Raro (+3)",
-    "raridade": "Incomum (+1), Raro (+2), Muito Raro (+3)",
-    "sintonizacao": false,
-    "detalhe_sintonizacao": "",
-    "resumo": "Concede um bônus de +1, +2 ou +3 em jogadas de ataque e dano com a munição disparada.",
-    "descricao": "Você adquire um bônus em jogadas de ataque e dano realizadas com esta munição mágica (+1 Incomum, +2 Raro, +3 Muito Raro). A magia se dissipa após atingir um alvo."
+    "nome": "Murmúrio dos Espiões",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Tiara auricular que permite comunicação telepática a até 1,5 km e compartilhamento de audição por 1 hora com outro usuário.",
+    "descricao": "Esta tiara, feita de metal escuro, é usada curvada ao redor da orelha. Se você conhece uma criatura usando outro murmúrio dos espiões e essa criatura está a menos de 1,5 quilômetros de você, vocês podem se comunicar telepaticamente entre si.\n\nComo uma ação bônus, você pode permitir que aquela criatura ouça tudo o que você ouve por 1 hora. Você pode encerrar este efeito com uma ação bônus, e ele termina se você estiver incapacitado."
   },
   {
     "nome": "Óleo de Forma Etérea",
@@ -2704,6 +3659,17 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Concede os benefícios de Movimentação Livre por 8 horas, ou derramado no chão cria área escorregadia idêntica a Área Escorregadia por 8 horas.",
     "descricao": "Aplicar no corpo concede os benefícios da magia *Movimentação Livre* por 8 horas. Despejar no chão cobre um quadrado de 3 metros como na magia *Área Escorregadia* por 8 horas."
+  },
+  {
+    "nome": "Olho de Ersatz",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Prótese Ocular",
+    "tipo_linha": "Item Maravilhoso, Comum (Requer Sintonização)",
+    "raridade": "Comum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Substitui um olho perdido ou removido, permitindo enxergar normalmente através dele.",
+    "descricao": "Este olho artificial substitui um olho real que foi perdido ou removido. Enquanto o olho de ersatz estiver em sua cavidade ocular, ele só pode ser retirado por você, e você pode ver pela pequena orbe como se fosse um olho normal."
   },
   {
     "nome": "Olho de Megera",
@@ -2849,15 +3815,156 @@ export default [
     "descricao": "Ao colocar esta pedra no chão ou na rocha por 1 minuto, invoca um **Elemental da Terra** leal por 1 hora (1x ao dia)."
   },
   {
-    "nome": "Pedra de Ioun",
+    "nome": "Pedra de Ioun (Absorção)",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
-    "tipo_linha": "Item Maravilhoso, Raridade Variável (Requer Sintonização)",
-    "raridade": "Raridade Variável",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
     "sintonizacao": true,
     "detalhe_sintonizacao": "Requer Sintonização",
-    "resumo": "Pedras mágicas lapidadas que orbitam a cabeça concedendo bônus contínuos (+2 em atributos, absorção de magias, +1 CA, mestria, etc.).",
-    "descricao": "Flutuam em órbita ao redor da cabeça do usuário:\n- **Absorção (Muito Raro):** Absorve até 20 círculos de magias.\n- **Agilidade (Muito Raro):** +2 em Destreza (máx 20).\n- **Compreensão (Muito Raro):** +2 em Sabedoria (máx 20).\n- **Fortaleza (Muito Raro):** +2 em Constituição (máx 20).\n- **Força (Muito Raro):** +2 em Força (máx 20).\n- **Intelecto (Muito Raro):** +2 em Inteligência (máx 20).\n- **Liderança (Muito Raro):** +2 em Carisma (máx 20).\n- **Mestria (Lendário):** Bônus de Proficiência aumenta em +1.\n- **Proteção (Raro):** +1 na Classe de Armadura.\n- **Regeneração (Lendário):** Recupera 15 PV por hora.\n- **Reserva (Raro):** Armazena até 3 círculos de magias.\n- **Sustento (Raro):** Não precisa comer ou beber."
+    "resumo": "Flutua ao redor da sua cabeça e absorve até 20 círculos de magias direcionadas a você.",
+    "descricao": "Esta pedra elipsóide lavanda pálida orbita sua cabeça. Como Reação quando uma criatura conjura uma magia que tem você como único alvo, você pode cancelar o efeito da magia sobre você, gastando um número de círculos de magia absorvidos igual ao círculo da magia. A pedra pode absorver até 20 círculos de magia no total antes de perder sua magia."
+  },
+  {
+    "nome": "Pedra de Ioun (Agilidade)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_atributo": {
+      "destreza": 2
+    },
+    "resumo": "Flutua ao redor da sua cabeça e concede +2 no valor de Destreza (máximo de 20).",
+    "descricao": "Esta esfera azul-escura orbita sua cabeça e aumenta seu valor de Destreza em 2, até um máximo de 20 enquanto estiver sintonizado."
+  },
+  {
+    "nome": "Pedra de Ioun (Compreensão)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_atributo": {
+      "sabedoria": 2
+    },
+    "resumo": "Flutua ao redor da sua cabeça e concede +2 no valor de Sabedoria (máximo de 20).",
+    "descricao": "Esta esfera azul-marinho orbita sua cabeça e aumenta seu valor de Sabedoria em 2, até um máximo de 20 enquanto estiver sintonizado."
+  },
+  {
+    "nome": "Pedra de Ioun (Força)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_atributo": {
+      "forca": 2
+    },
+    "resumo": "Flutua ao redor da sua cabeça e concede +2 no valor de Força (máximo de 20).",
+    "descricao": "Este losango escarlate e azul orbita sua cabeça e aumenta seu valor de Força em 2, até um máximo de 20 enquanto estiver sintonizado."
+  },
+  {
+    "nome": "Pedra de Ioun (Fortaleza)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_atributo": {
+      "constituicao": 2
+    },
+    "resumo": "Flutua ao redor da sua cabeça e concede +2 no valor de Constituição (máximo de 20).",
+    "descricao": "Este losango rosa orbita sua cabeça e aumenta seu valor de Constituição em 2, até um máximo de 20 enquanto estiver sintonizado."
+  },
+  {
+    "nome": "Pedra de Ioun (Intelecto)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_atributo": {
+      "inteligencia": 2
+    },
+    "resumo": "Flutua ao redor da sua cabeça e concede +2 no valor de Inteligência (máximo de 20).",
+    "descricao": "Esta esfera escarlate orbita sua cabeça e aumenta seu valor de Inteligência em 2, até um máximo de 20 enquanto estiver sintonizado."
+  },
+  {
+    "nome": "Pedra de Ioun (Liderança)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Muito Raro (Requer Sintonização)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_atributo": {
+      "carisma": 2
+    },
+    "resumo": "Flutua ao redor da sua cabeça e concede +2 no valor de Carisma (máximo de 20).",
+    "descricao": "Este prisma marmorizado rosa e verde orbita sua cabeça e aumenta seu valor de Carisma em 2, até um máximo de 20 enquanto estiver sintonizado."
+  },
+  {
+    "nome": "Pedra de Ioun (Mestria)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Lendário (Requer Sintonização)",
+    "raridade": "Lendário",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_proficiencia": 1,
+    "resumo": "Flutua ao redor da sua cabeça e aumenta seu Bônus de Proficiência em +1.",
+    "descricao": "Este prisma verde pálido orbita sua cabeça e aumenta seu Bônus de Proficiência em +1 enquanto estiver sintonizado."
+  },
+  {
+    "nome": "Pedra de Ioun (Proteção)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "bonus_ca": 1,
+    "resumo": "Flutua ao redor da sua cabeça e concede um bônus de +1 na Classe de Armadura.",
+    "descricao": "Este prisma poeirento orbita sua cabeça e concede um bônus de +1 na Classe de Armadura enquanto estiver sintonizado."
+  },
+  {
+    "nome": "Pedra de Ioun (Regeneração)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Lendário (Requer Sintonização)",
+    "raridade": "Lendário",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Flutua ao redor da sua cabeça e recupera 15 Pontos de Vida a cada hora.",
+    "descricao": "Este fuso branco perolado orbita sua cabeça e restaura 15 Pontos de Vida a cada 1 hora de uso, contanto que você tenha pelo menos 1 Ponto de Vida."
+  },
+  {
+    "nome": "Pedra de Ioun (Reserva)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Flutua ao redor da sua cabeça e pode armazenar até 3 círculos de magias.",
+    "descricao": "Este prisma lavanda e verde armazena magias conjuradas nele, segurando-as até que o usuário sintonizado as use. A pedra pode armazenar até 3 círculos de magias por vez."
+  },
+  {
+    "nome": "Pedra de Ioun (Sustento)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Flutua ao redor da sua cabeça e fornece todo o sustento necessário para o seu corpo sem comer ou beber.",
+    "descricao": "Este fuso transparente orbita sua cabeça e fornece todo o sustento que seu corpo necessita (você não precisa comer ou beber enquanto a pedra estiver ativa)."
   },
   {
     "nome": "Pedras Mensageiras",
@@ -2880,6 +3987,17 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Frasco de perfume com 1d3+1 doses; aplicar concede Vantagem em testes de Carisma contra Humanoides por 1 hora.",
     "descricao": "Frasco com 1d3+1 doses. Aplicar na pele concede Vantagem em todos os testes de Carisma realizados contra Humanoides por 1 hora."
+  },
+  {
+    "nome": "Perfume do Encantamento",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Consumível",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Ação para aplicar: concede Vantagem em testes de Carisma contra humanoides de ND 1 ou menor por 1 hora sem que percebam.",
+    "descricao": "Este minúsculo frasco contém perfume mágico, suficiente para um uso. Você pode usar uma ação para aplicar o perfume em si e seus efeitos duram por 1 hora. Por essa duração você tem vantagem em testes de Carisma direcionados a humanoides com nível de desafio 1 ou menor. Criaturas sujeitas aos efeitos do perfume não se dão conta que foram influenciados por mágica."
   },
   {
     "nome": "Pergaminho da Invocação de Titã",
@@ -2968,6 +4086,28 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Potes de tinta que tornam reais objetos inanimados pintados em superfícies (portas, pontes, ouro, comida, poços).",
     "descricao": "Permite pintar em qualquer superfície. Tudo que for pintado (até 90 m² de área e profundidade) torna-se matéria real inanimada e permanente após 10 minutos de pintura."
+  },
+  {
+    "nome": "Pintura do Humor",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Tinta facial aplicada em 1 minuto que reflete suas emoções por 8 horas (CD 10 Intuição para discernir; Drow tem vantagem).",
+    "descricao": "Essa tinta preta espessa é armazenada em um pequeno frasco, contendo tinta suficiente para aplicar marcas de humor a uma criatura. A tinta é aplicada no rosto em pontos ou marcas que muitas vezes lembram olhos de insetos ou aranhas. Aplicar a tinta desta forma leva 1 minuto.\n\nNas próximas 8 horas, as marcas mudam para refletir seu estado mental. Uma criatura que pode ver você e passar por um teste bem-sucedido de Sabedoria (Intuição) CD 10 pode discernir se você está feliz, triste, zangado, enojado, surpreso ou com medo, bem como a principal fonte dessa emoção. Por exemplo, você pode comunicar o medo causado por um monstro que você acabou de ver ao virar da esquina, tristeza pela perda de um amigo ou felicidade derivada do orgulho por seu desempenho em combate. Um elfo negro tem vantagem neste teste."
+  },
+  {
+    "nome": "Piroconversor",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Lança-chamas em cone de 3 metros (4d6 fogo, CD 13 Des). Risco de mau funcionamento (d10 + usos >= 11 causa 4d6 em você).",
+    "descricao": "Um piroconversor é um lança-chamas feito pelos Izzet. Ele traz o risco de mau funcionamento cada vez que você o usa.\n\nComo uma ação, você pode fazer com que o piroconversor projete fogo em um cone de 3 metros. Cada criatura naquela área deve fazer um teste de resistência de Destreza com CD 13, recebendo 4d6 de dano de fogo em uma falha de resistência, ou metade do dano em uma resistência bem-sucedida.\n\nCada vez que você usar o piroconversor, role um d10 e some o número de vezes que você o usou desde seu último longo descanso. Se o total for 11 ou mais, o piroconversor não funcionará corretamente: você sofre 4d6 de dano de fogo e não pode usá-lo novamente até terminar um descanso longo."
   },
   {
     "nome": "Pó da Seca",
@@ -3072,12 +4212,45 @@ export default [
     "nome": "Poção de Cura",
     "tipo": "Poção",
     "subtipo": "",
-    "tipo_linha": "Poção, Raridade Variável",
-    "raridade": "Raridade Variável",
+    "tipo_linha": "Poção, Comum",
+    "raridade": "Comum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Recupera Pontos de Vida ao beber ou aplicar em outra criatura: Comum (2d4+2), Maior (4d4+4), Superior (8d4+8) ou Suprema (10d4+20).",
-    "descricao": "Você recupera Pontos de Vida ao beber esta poção vermelha translúcida:\n- **Cura (Comum):** 2d4 + 2 Pontos de Vida\n- **Maior (Incomum):** 4d4 + 4 Pontos de Vida\n- **Superior (Raro):** 8d4 + 8 Pontos de Vida\n- **Suprema (Muito Raro):** 10d4 + 20 Pontos de Vida"
+    "resumo": "Você recupera 2d4 + 2 Pontos de Vida ao beber ou administrar esta poção.",
+    "descricao": "Você recupera 2d4 + 2 Pontos de Vida ao beber esta poção vermelha translúcida (como uma Ação Bônus ou Ação) ou ao administrá-la a outra criatura."
+  },
+  {
+    "nome": "Poção de Cura Maior",
+    "tipo": "Poção",
+    "subtipo": "",
+    "tipo_linha": "Poção, Incomum",
+    "raridade": "Incomum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Você recupera 4d4 + 4 Pontos de Vida ao beber ou administrar esta poção.",
+    "descricao": "Você recupera 4d4 + 4 Pontos de Vida ao beber esta poção vermelha translúcida (como uma Ação Bônus ou Ação) ou ao administrá-la a outra criatura."
+  },
+  {
+    "nome": "Poção de Cura Superior",
+    "tipo": "Poção",
+    "subtipo": "",
+    "tipo_linha": "Poção, Raro",
+    "raridade": "Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Você recupera 8d4 + 8 Pontos de Vida ao beber ou administrar esta poção.",
+    "descricao": "Você recupera 8d4 + 8 Pontos de Vida ao beber esta poção vermelha translúcida (como uma Ação Bônus ou Ação) ou ao administrá-la a outra criatura."
+  },
+  {
+    "nome": "Poção de Cura Suprema",
+    "tipo": "Poção",
+    "subtipo": "",
+    "tipo_linha": "Poção, Muito Raro",
+    "raridade": "Muito Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Você recupera 10d4 + 20 Pontos de Vida ao beber ou administrar esta poção.",
+    "descricao": "Você recupera 10d4 + 20 Pontos de Vida ao beber esta poção vermelha translúcida (como uma Ação Bônus ou Ação) ou ao administrá-la a outra criatura."
   },
   {
     "nome": "Poção de Escalada",
@@ -3091,15 +4264,59 @@ export default [
     "descricao": "Ao beber esta poção marrom espessa, você adquire um Deslocamento de Escalada igual ao seu Deslocamento e tem Vantagem em testes de Força (Atletismo) para escalar por 1 hora."
   },
   {
-    "nome": "Poção de Força de Gigante",
+    "nome": "Poção de Força do Gigante da Colina",
     "tipo": "Poção",
     "subtipo": "",
-    "tipo_linha": "Poção, Raridade Variável",
-    "raridade": "Raridade Variável",
+    "tipo_linha": "Poção, Incomum",
+    "raridade": "Incomum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Muda temporariamente o seu valor de Força por 1 hora: Colina (21), Pedra/Gelo (23), Fogo (25), Nuvens (27) ou Tempestade (29).",
-    "descricao": "Ao beber esta poção transparente com substância flutuante, seu valor de Força muda por 1 hora conforme o tipo de gigante:\n- Colina: Força 21 (Incomum)\n- Pedra/Gelo: Força 23 (Raro)\n- Fogo: Força 25 (Muito Raro)\n- Nuvens: Força 27 (Muito Raro)\n- Tempestade: Força 29 (Lendário)"
+    "resumo": "Ao beber esta poção, seu valor de Força muda para 21 por 1 hora.",
+    "descricao": "Ao beber esta poção transparente, seu valor de Força muda para 21 por 1 hora. O item não tem efeito se a sua Força já for igual ou superior a 21."
+  },
+  {
+    "nome": "Poção de Força do Gigante da Pedra ou Gelo",
+    "tipo": "Poção",
+    "subtipo": "",
+    "tipo_linha": "Poção, Raro",
+    "raridade": "Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Ao beber esta poção, seu valor de Força muda para 23 por 1 hora.",
+    "descricao": "Ao beber esta poção transparente, seu valor de Força muda para 23 por 1 hora. O item não tem efeito se a sua Força já for igual ou superior a 23."
+  },
+  {
+    "nome": "Poção de Força do Gigante da Tempestade",
+    "tipo": "Poção",
+    "subtipo": "",
+    "tipo_linha": "Poção, Lendário",
+    "raridade": "Lendário",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Ao beber esta poção, seu valor de Força muda para 29 por 1 hora.",
+    "descricao": "Ao beber esta poção transparente, seu valor de Força muda para 29 por 1 hora. O item não tem efeito se a sua Força já for igual ou superior a 29."
+  },
+  {
+    "nome": "Poção de Força do Gigante das Nuvens",
+    "tipo": "Poção",
+    "subtipo": "",
+    "tipo_linha": "Poção, Muito Raro",
+    "raridade": "Muito Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Ao beber esta poção, seu valor de Força muda para 27 por 1 hora.",
+    "descricao": "Ao beber esta poção transparente, seu valor de Força muda para 27 por 1 hora. O item não tem efeito se a sua Força já for igual ou superior a 27."
+  },
+  {
+    "nome": "Poção de Força do Gigante do Fogo",
+    "tipo": "Poção",
+    "subtipo": "",
+    "tipo_linha": "Poção, Muito Raro",
+    "raridade": "Muito Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Ao beber esta poção, seu valor de Força muda para 25 por 1 hora.",
+    "descricao": "Ao beber esta poção transparente, seu valor de Força muda para 25 por 1 hora. O item não tem efeito se a sua Força já for igual ou superior a 25."
   },
   {
     "nome": "Poção de Heroísmo",
@@ -3322,6 +4539,28 @@ export default [
     "descricao": "Estas roupas se remendam e reparam magicamente de rasgos, furos e queimaduras de forma instantânea e contínua."
   },
   {
+    "nome": "Roupas do Remendo",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Vestuário",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Roupa elegante de viajante que se repara magicamente de desgastes, rasgos e furos diários.",
+    "descricao": "Esta elegante roupa de viajante é capaz de reparar-se magicamente para neutralizar o desgaste diário. Fragmentos da roupa que sejam destruídos não podem ser reparados desta forma."
+  },
+  {
+    "nome": "Rubi do Mago da Guerra",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Gema Mágica",
+    "tipo_linha": "Item Maravilhoso, Comum (Requer Sintonização por um Conjurador)",
+    "raridade": "Comum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer sintonização por um Conjurador",
+    "resumo": "Gema sintonizada afixada em uma arma simples ou marcial, permitindo utilizá-la como foco arcano de magias.",
+    "descricao": "Entalhado com runas arcanas, este rubi de 2,5 centímetros de diâmetro permite a você usar uma arma simples ou marcial como foco arcano de suas magias. Para que esta propriedade funcione você deve encravar o rubi na arma, pressionando os objetos um ao outro por pelo menos 10 minutos. O rubi não pode ser removido posteriormente, exceto se você usar uma ação para desacoplá-lo ou se a arma for destruída. Nem mesmo um campo antimagia é capaz de retirá-lo. No entanto, o rubi cairá da arma se sua sintonização com a gema terminar."
+  },
+  {
     "nome": "Rubi do Mago de Batalha",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -3364,6 +4603,127 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Impede você de ser derrubado da sela contra a sua vontade e impõe Desvantagem em ataques direcionados à sua montaria.",
     "descricao": "Enquanto estiver nesta sela, você não pode ser derrubado de sua montaria contra a sua vontade se estiver consciente. Além disso, jogadas de ataque contra sua montaria têm Desvantagem."
+  },
+  {
+    "nome": "Sinete da Guilda",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Anel de guilda com 3 cargas (recupera 1d3 ao amanhecer) para lançar a magia característica da guilda associada (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo de uma guilda, permite que você lance uma magia intimamente associada a essa guilda.\n\nUm sinete tem 3 cargas e recupera as cargas 1d3 gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar a magia associada (CD 13):\n\n• **Azorius:** *Golpe Constritor*\n• **Boros:** *Heroísmo*\n• **Dimir:** *Disfarçar-se*\n• **Golgari:** *Constrição*\n• **Gruul:** *Duelo Compelido*\n• **Izzet:** *Raio do Caos*\n• **Orzhov:** *Comando*\n• **Rakdos:** *Repreensão Infernal*\n• **Selesnya:** *Enfeitiçar Pessoa*\n• **Simic:** *Recuo Acelerado*"
+  },
+  {
+    "nome": "Sinete da Guilda Azorius",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Possui 3 cargas (1d3 diário) para conjurar a magia Golpe Constritor (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo do Senado Azorius, permite que você lance a magia *Golpe Constritor* (*Ensnaring Strike*).\n\nO sinete tem 3 cargas e recupera 1d3 cargas gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar *Golpe Constritor* (CD 13)."
+  },
+  {
+    "nome": "Sinete da Guilda Boros",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Possui 3 cargas (1d3 diário) para conjurar a magia Heroísmo (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo da Legião Boros, permite que você lance a magia *Heroísmo* (*Heroism*).\n\nO sinete tem 3 cargas e recupera 1d3 cargas gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar *Heroísmo* (CD 13)."
+  },
+  {
+    "nome": "Sinete da Guilda Dimir",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Possui 3 cargas (1d3 diário) para conjurar a magia Disfarçar-se (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo da Casa Dimir, permite que você lance a magia *Disfarçar-se* (*Disguise Self*).\n\nO sinete tem 3 cargas e recupera 1d3 cargas gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar *Disfarçar-se* (CD 13)."
+  },
+  {
+    "nome": "Sinete da Guilda Golgari",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Possui 3 cargas (1d3 diário) para conjurar a magia Constrição (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo do Enxame Golgari, permite que você lance a magia *Constrição* (*Entangle*).\n\nO sinete tem 3 cargas e recupera 1d3 cargas gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar *Constrição* (CD 13)."
+  },
+  {
+    "nome": "Sinete da Guilda Gruul",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Possui 3 cargas (1d3 diário) para conjurar a magia Duelo Compelido (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo dos Clãs Gruul, permite que você lance a magia *Duelo Compelido* (*Compelled Duel*).\n\nO sinete tem 3 cargas e recupera 1d3 cargas gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar *Duelo Compelido* (CD 13)."
+  },
+  {
+    "nome": "Sinete da Guilda Izzet",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Possui 3 cargas (1d3 diário) para conjurar a magia Raio do Caos (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo da Liga Izzet, permite que você lance a magia *Raio do Caos* (*Chaos Bolt*).\n\nO sinete tem 3 cargas e recupera 1d3 cargas gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar *Raio do Caos* (CD 13)."
+  },
+  {
+    "nome": "Sinete da Guilda Orzhov",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Possui 3 cargas (1d3 diário) para conjurar a magia Comando (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo do Sindicato Orzhov, permite que você lance a magia *Comando* (*Command*).\n\nO sinete tem 3 cargas e recupera 1d3 cargas gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar *Comando* (CD 13)."
+  },
+  {
+    "nome": "Sinete da Guilda Rakdos",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Possui 3 cargas (1d3 diário) para conjurar a magia Repreensão Infernal (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo do Culto de Rakdos, permite que você lance a magia *Repreensão Infernal* (*Hellish Rebuke*).\n\nO sinete tem 3 cargas e recupera 1d3 cargas gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar *Repreensão Infernal* (CD 13)."
+  },
+  {
+    "nome": "Sinete da Guilda Selesnya",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Possui 3 cargas (1d3 diário) para conjurar a magia Enfeitiçar Pessoa (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo do Conclave Selesnya, permite que você lance a magia *Enfeitiçar Pessoa* (*Charm Person*).\n\nO sinete tem 3 cargas e recupera 1d3 cargas gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar *Enfeitiçar Pessoa* (CD 13)."
+  },
+  {
+    "nome": "Sinete da Guilda Simic",
+    "tipo": "Anel",
+    "subtipo": "Anel",
+    "tipo_linha": "Anel, Incomum (Requer Sintonização)",
+    "raridade": "Incomum",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Possui 3 cargas (1d3 diário) para conjurar a magia Recuo Acelerado (CD 13).",
+    "descricao": "Este anel, adornado com o símbolo do Combinado Simic, permite que você lance a magia *Recuo Acelerado* (*Expeditious Retreat*).\n\nO sinete tem 3 cargas e recupera 1d3 cargas gastas diariamente ao amanhecer. Enquanto o usa, você pode gastar 1 carga para lançar *Recuo Acelerado* (CD 13)."
   },
   {
     "nome": "Solvente Universal",
@@ -3542,6 +4902,17 @@ export default [
     "descricao": "Possui 3 cargas (1d3 ao amanhecer). Permite gastar 1 carga para conjurar *Dominar Fera* (CD 15) tendo como alvo qualquer criatura com Deslocamento de Natação nativo."
   },
   {
+    "nome": "Trombeta da Audição",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Trombeta Auricular",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Segurada no ouvido, suprime os efeitos da condição Surdo permitindo ouvir normalmente.",
+    "descricao": "Ao segurar este item em seu ouvido, a trombeta suprime efeitos da condição surdo sobre você, permitindo-o ouvir normalmente."
+  },
+  {
     "nome": "Trombeta de Explosão",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
@@ -3553,15 +4924,48 @@ export default [
     "descricao": "Ao soprar com ação Usar Objeto, emite cone de 9 metros causando 5d6 pontos de dano Trovejante e Surdez (CD 15 Con). Se usada mais de uma vez ao dia, possui 20% cumulativo de chance de explodir causando 10d6 de dano a quem soprou."
   },
   {
-    "nome": "Trombeta do Valhalla",
+    "nome": "Trombeta do Valhalla (Bronze)",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
-    "tipo_linha": "Item Maravilhoso, Raridade Variável",
-    "raridade": "Raridade Variável",
+    "tipo_linha": "Item Maravilhoso, Muito Raro",
+    "raridade": "Muito Raro",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Soprar a trombeta convoca guerreiros berserkers espirituais heroicos de Ysgard para lutar ao seu lado por 1 hora (1x a cada 7 dias).",
-    "descricao": "Soprar esta trombeta prateada convoca guerreiros berserkers espirituais leais de Ysgard que obedecem a seus comandos por até 1 hora (1x a cada 7 dias):\n- **Prata (Raro):** 2d4 + 2 guerreiros\n- **Latão (Raro):** 3d4 + 3 guerreiros\n- **Bronze (Muito Raro):** 4d4 + 4 guerreiros\n- **Ferro (Lendário):** 5d4 + 5 guerreiros"
+    "resumo": "Soprar esta trombeta convoca 4d4 + 4 guerreiros berserkers espirituais de Ysgard por até 1 hora (1x a cada 7 dias).",
+    "descricao": "Soprar esta trombeta de bronze convoca 4d4 + 4 guerreiros berserkers espirituais leais de Ysgard que obedecem a seus comandos por até 1 hora (1x a cada 7 dias)."
+  },
+  {
+    "nome": "Trombeta do Valhalla (Ferro)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Lendário",
+    "raridade": "Lendário",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Soprar esta trombeta convoca 5d4 + 5 guerreiros berserkers espirituais de Ysgard por até 1 hora (1x a cada 7 dias).",
+    "descricao": "Soprar esta trombeta de ferro convoca 5d4 + 5 guerreiros berserkers espirituais leais de Ysgard que obedecem a seus comandos por até 1 hora (1x a cada 7 dias)."
+  },
+  {
+    "nome": "Trombeta do Valhalla (Latão)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro",
+    "raridade": "Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Soprar esta trombeta convoca 3d4 + 3 guerreiros berserkers espirituais de Ysgard por até 1 hora (1x a cada 7 dias).",
+    "descricao": "Soprar esta trombeta de latão convoca 3d4 + 3 guerreiros berserkers espirituais leais de Ysgard que obedecem a seus comandos por até 1 hora (1x a cada 7 dias)."
+  },
+  {
+    "nome": "Trombeta do Valhalla (Prata)",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro",
+    "raridade": "Raro",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Soprar esta trombeta convoca 2d4 + 2 guerreiros berserkers espirituais de Ysgard por até 1 hora (1x a cada 7 dias).",
+    "descricao": "Soprar esta trombeta prateada convoca 2d4 + 2 guerreiros berserkers espirituais leais de Ysgard que obedecem a seus comandos por até 1 hora (1x a cada 7 dias)."
   },
   {
     "nome": "Túnica das Cores Cintilantes",
@@ -3641,6 +5045,19 @@ export default [
     "descricao": "Com uma linha espectral brilhante, pescar com esta vara em qualquer lago, rio ou mar garante a captura de 1 peixe fresco comestível de porte médio a cada 10 minutos de pesca relaxante."
   },
   {
+    "nome": "Varinha Carrancuda",
+    "tipo": "Varinha",
+    "subtipo": "Varinha",
+    "tipo_linha": "Varinha, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "cargas": 3,
+    "recarga": "3 ao amanhecer",
+    "resumo": "3 cargas. Ação e 1 carga em humanoide a até 9m: CD 10 Carisma ou forçado a ficar carrancudo por 1 min (recupera 3 ao amanhecer; d20=1 na última vira Varinha Sorridente).",
+    "descricao": "Esta varinha tem 3 cargas. Ao segurá-la você pode usar uma ação para gastar 1 das cargas e selecionar um humanoide a até 9 metros de distância que você possa ver. O alvo deve passar em um teste CD 10 de Carisma ou ser forçado a ficar carrancudo por 1 minuto.\n\nA varinha recupera diariamente todas as cargas gastas ao amanhecer. Se você gastar a última carga, role um d20. Em um resultado 1, a varinha se transforma em uma varinha sorridente."
+  },
+  {
     "nome": "Varinha Cuspidora de Fogo",
     "tipo": "Varinha",
     "subtipo": "",
@@ -3650,6 +5067,32 @@ export default [
     "detalhe_sintonizacao": "",
     "resumo": "Possui 7 cargas para conjurar Mãos Flamejantes (1 carga) ou Raio de Fogo (0 cargas) com CD 13.",
     "descricao": "Possui 7 cargas (1d6+1 ao amanhecer). Permite conjurar *Mãos Flamejantes* de 1º círculo (1 carga) ou o truque *Raio de Fogo* (0 cargas) com CD 13."
+  },
+  {
+    "nome": "Varinha da Pirotecnia",
+    "tipo": "Varinha",
+    "subtipo": "Varinha",
+    "tipo_linha": "Varinha, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "cargas": 7,
+    "recarga": "1d6 + 1 ao amanhecer",
+    "resumo": "7 cargas. Ação e 1 carga cria explosão de luzes coloridas a até 18m audível a 90m (recupera 1d6+1 ao amanhecer; d20=1 na última se destrói).",
+    "descricao": "Esta varinha tem 7 cargas. Ao segurá-la você pode usar uma ação para gastar 1 das cargas e criar uma explosão inofensiva de luzes multicoloridas em um ponto que você possa ver a até 18 metros de distância. A explosão é acompanhada de ruídos estalidos que podem ser ouvidos a até 90 metros. A luz ilumina como uma tocha, mas dura apenas um segundo.\n\nA varinha recupera diariamente 1d6 + 1 cargas gastas ao amanhecer. Se você gastar a última carga, role um d20. Em um resultado 1, a varinha irrompe em um show pirotécnico inofensivo, sendo destruída."
+  },
+  {
+    "nome": "Varinha da Regência",
+    "tipo": "Varinha",
+    "subtipo": "Varinha",
+    "tipo_linha": "Varinha, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "cargas": 3,
+    "recarga": "3 ao amanhecer",
+    "resumo": "3 cargas. Ação e 1 carga toca música orquestral audível a até 18m enquanto for agitada (recupera 3 ao amanhecer; d20=1 na última vira pó).",
+    "descricao": "Esta varinha tem 3 cargas. Ao segurá-la você pode usar uma ação para gastar 1 das cargas e criar música orquestral ao agitá-la. A música pode ser ouvida a uma distância de até 18 metros e termina quando você para de agitar a varinha.\n\nA varinha recupera diariamente todas as cargas gastas ao amanhecer. Se você gastar a última carga, role um d20. Em um resultado 1, um som triste de tuba toca enquanto a varinha se desintegra em poeira, sendo destruída."
   },
   {
     "nome": "Varinha das Maravilhas",
@@ -3672,6 +5115,17 @@ export default [
     "detalhe_sintonizacao": "Requer Sintonização",
     "resumo": "Possui 3 cargas para detectar a direção e distância de qualquer criatura hostil a até 18 metros.",
     "descricao": "Possui 3 cargas (1d3 ao amanhecer). Permite gastar 1 carga como ação Usar Magia para sentir a direção e distância da criatura hostil mais próxima em um raio de 18 metros."
+  },
+  {
+    "nome": "Varinha de Metamorfose",
+    "tipo": "Varinha",
+    "subtipo": "Varinha",
+    "tipo_linha": "Varinha, Muito Raro (Requer Sintonização por um Conjurador)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um Conjurador",
+    "resumo": "Possui 7 cargas para conjurar a magia Metamorfose (CD 15), recuperando 1d6 + 1 cargas ao amanhecer.",
+    "descricao": "Esta varinha tem 7 cargas. Enquanto a empunha sintonizado, você pode usar uma ação para gastar 1 de suas cargas para lançar a magia *Metamorfose* (CD 15 da salvaguarda).\n\nA varinha recupera 1d6 + 1 cargas gastas diariamente ao amanhecer. Se você gastar a última carga da varinha, role um d20. Em um resultado 1, a varinha se desintegra em cinzas e é destruída."
   },
   {
     "nome": "Varinha de Mísseis Mágicos",
@@ -3740,15 +5194,40 @@ export default [
     "descricao": "Possui 7 cargas (1d6+1 ao amanhecer). Permite gastar 1 carga como ação Usar Magia para conjurar a magia *Teia* (CD 15 para evitar) com alcance de 18 metros."
   },
   {
-    "nome": "Varinha do Mago de Guerra, +1, +2 ou +3",
+    "nome": "Varinha do Mago de Guerra +1",
     "tipo": "Varinha",
     "subtipo": "",
-    "tipo_linha": "Varinha, Incomum (+1), Raro (+2) ou Muito Raro (+3) (Requer Sintonização por um Conjurador)",
-    "raridade": "Incomum (+1), Raro (+2), Muito Raro (+3)",
+    "tipo_linha": "Varinha, Incomum (Requer Sintonização por um Conjurador)",
+    "raridade": "Incomum",
     "sintonizacao": true,
     "detalhe_sintonizacao": "Requer Sintonização por um Conjurador",
-    "resumo": "Concede um bônus de +1, +2 ou +3 nas jogadas de ataque mágico e ignora Cobertura Parcial ao realizar ataques mágicos.",
-    "descricao": "Enquanto estiver segurando esta varinha, você adquire um bônus em jogadas de ataque mágico determinado pela raridade da varinha (+1 Incomum, +2 Raro, +3 Muito Raro). Além disso, você ignora Cobertura Parcial e Três Quartos ao realizar jogadas de ataque mágico."
+    "bonus_ataque_magico": 1,
+    "resumo": "Concede um bônus de +1 nas jogadas de ataque mágico e ignora Cobertura Parcial ao realizar ataques mágicos.",
+    "descricao": "Enquanto estiver segurando esta varinha, você adquire um bônus de +1 em jogadas de ataque mágico. Além disso, você ignora Cobertura Parcial e Três Quartos ao realizar jogadas de ataque mágico."
+  },
+  {
+    "nome": "Varinha do Mago de Guerra +2",
+    "tipo": "Varinha",
+    "subtipo": "",
+    "tipo_linha": "Varinha, Raro (Requer Sintonização por um Conjurador)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um Conjurador",
+    "bonus_ataque_magico": 2,
+    "resumo": "Concede um bônus de +2 nas jogadas de ataque mágico e ignora Cobertura Parcial ao realizar ataques mágicos.",
+    "descricao": "Enquanto estiver segurando esta varinha, você adquire um bônus de +2 em jogadas de ataque mágico. Além disso, você ignora Cobertura Parcial e Três Quartos ao realizar jogadas de ataque mágico."
+  },
+  {
+    "nome": "Varinha do Mago de Guerra +3",
+    "tipo": "Varinha",
+    "subtipo": "",
+    "tipo_linha": "Varinha, Muito Raro (Requer Sintonização por um Conjurador)",
+    "raridade": "Muito Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização por um Conjurador",
+    "bonus_ataque_magico": 3,
+    "resumo": "Concede um bônus de +3 nas jogadas de ataque mágico e ignora Cobertura Parcial ao realizar ataques mágicos.",
+    "descricao": "Enquanto estiver segurando esta varinha, você adquire um bônus de +3 em jogadas de ataque mágico. Além disso, você ignora Cobertura Parcial e Três Quartos ao realizar jogadas de ataque mágico."
   },
   {
     "nome": "Varinha do Medo",
@@ -3806,6 +5285,30 @@ export default [
     "descricao": "Possui 7 cargas (1d6+1 ao amanhecer). Permite gastar 1 carga para lançar um feixe de luz que explode no ar como fogos de artifício inofensivos em cores vibrantes a até 18 metros."
   },
   {
+    "nome": "Varinha Sorridente",
+    "tipo": "Varinha",
+    "subtipo": "Varinha",
+    "tipo_linha": "Varinha, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "cargas": 3,
+    "recarga": "3 ao amanhecer",
+    "resumo": "3 cargas. Ação e 1 carga em humanoide a até 9m: CD 10 Carisma ou forçado a sorrir por 1 min (recupera 3 ao amanhecer; d20=1 na última vira Varinha Carrancuda).",
+    "descricao": "Esta varinha tem 3 cargas. Ao segurá-la você pode usar uma ação para gastar 1 das cargas e selecionar um humanoide a até 9 metros de distância que você possa ver. O alvo deve passar em um teste CD 10 de Carisma ou ser forçado a sorrir por 1 minuto.\n\nA varinha recupera diariamente todas as cargas gastas ao amanhecer. Se você gastar a última carga, role um d20. Em um resultado 1, a varinha se transforma em uma varinha carrancuda."
+  },
+  {
+    "nome": "Vaso do Despertar",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "Vaso",
+    "tipo_linha": "Item Maravilhoso, Comum",
+    "raridade": "Comum",
+    "sintonizacao": false,
+    "detalhe_sintonizacao": "",
+    "resumo": "Arbusto comum plantado neste vaso de 4,5 kg por 30 dias transforma-se magicamente em um Arbusto Desperto amigável.",
+    "descricao": "Se você plantar um arbusto comum neste vaso de barro de 4,5 quilos, e deixá-lo crescer por 30 dias, ao término desse prazo o arbusto transforma-se magicamente em um arbusto desperto (ver o Manual dos Monstros para estatísticas).\n\nQuando o arbusto desperta, ele é amigável com você. Sem comandos seus, ele não faz nada."
+  },
+  {
     "nome": "Vassoura Dançante de Baba Yaga",
     "tipo": "Item Maravilhoso",
     "subtipo": "Artefato",
@@ -3830,13 +5333,13 @@ export default [
   {
     "nome": "Vela das Profundezas",
     "tipo": "Item Maravilhoso",
-    "subtipo": "",
+    "subtipo": "Iluminação",
     "tipo_linha": "Item Maravilhoso, Comum",
     "raridade": "Comum",
     "sintonizacao": false,
     "detalhe_sintonizacao": "",
-    "resumo": "Vela mágica impermeável que queima debaixo d'água emitindo luz por até 8 horas.",
-    "descricao": "A chama desta vela não pode ser apagada por água e queima normalmente mesmo quando totalmente submersa, emitindo Luz Plena em 1,5 m e Meia-luz por mais 1,5 m por até 8 horas."
+    "resumo": "A chama desta vela não se apaga quando imersa em água, emanando luz e calor como vela normal.",
+    "descricao": "A chama desta vela não se extingue ao ser imersa em água. Ela emana luz e calor como uma vela normal."
   },
   {
     "nome": "Vela de Invocação",

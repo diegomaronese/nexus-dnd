@@ -482,3 +482,46 @@ test('validarAtributosEditados: metodo manual permite alterar valores base livre
   assert.equal(resEstouroTeto.ok, false, 'deve recusar se estourar teto de 20');
 });
 
+test('Tenacidade Anã: adiciona +1 PV por nível no cálculo de PV e no level up (fixo e rolado)', async () => {
+  const charAnao = {
+    nome: 'Thorin',
+    especie: 'Anão',
+    classe: 'Guerreiro',
+    nivel: 1,
+    atributos: { forca: 16, destreza: 12, constituicao: 14, inteligencia: 10, sabedoria: 12, carisma: 8 },
+    pv_max: 13, // 10 (d10) + 2 (mod CON) + 1 (Tenacidade Anã)
+    pv_atual: 13,
+    classes: [{ classe: 'Guerreiro', nivel: 1 }]
+  };
+
+  // sincronizarCamposVinculadosNivel deve recalcular considerando +1 por nível para Anão
+  utils.sincronizarCamposVinculadosNivel(charAnao);
+  assert.equal(charAnao.pv_max, 13, 'Nível 1 Guerreiro Anão com CON 14 deve ter 13 PV (10 + 2 + 1)');
+
+  // Subir para nível 2 com HP fixo (média Guerreiro = 6 + mod CON 2 + Tenacidade 1 = +9 PV)
+  const resLevelUp = await levelup.subirDeNivel(charAnao, {
+    hp_modo: 'fixo',
+    ignorar_xp: true
+  });
+
+  assert.equal(resLevelUp.sucesso, true, 'Level up deve ser bem sucedido');
+  assert.equal(charAnao.nivel, 2, 'Personagem deve estar no nível 2');
+  assert.equal(charAnao.pv_max, 22, 'Nível 2 Guerreiro Anão deve ter 22 PV (13 + 6 + 2 + 1)');
+  assert.equal(charAnao.bonus_pv_anao_aplicado, 2, 'bonus_pv_anao_aplicado deve ser 2');
+
+  // Subir para nível 3 com HP rolado (d10 = 7, mod CON = 2, Tenacidade = 1 -> ganho total = 7 + 2 + 1 = 10)
+  const resLevelUpRolado = await levelup.subirDeNivel(charAnao, {
+    hp_modo: 'rolado',
+    hp_rolado: 7,
+    subclasse: 'Campeão',
+    ignorar_xp: true
+  });
+
+  assert.equal(resLevelUpRolado.sucesso, true, 'Level up rolado deve ser bem sucedido');
+  assert.equal(charAnao.nivel, 3, 'Personagem deve estar no nível 3');
+  assert.equal(resLevelUpRolado.hp_ganho, 10, 'HP ganho deve ser 7 (rolado) + 2 (CON) + 1 (Tenacidade) = 10');
+  assert.equal(charAnao.pv_max, 32, 'Nível 3 Guerreiro Anão deve ter 32 PV (22 + 10)');
+  assert.equal(charAnao.bonus_pv_anao_aplicado, 3, 'bonus_pv_anao_aplicado deve ser 3');
+});
+
+

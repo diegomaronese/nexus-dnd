@@ -50,7 +50,13 @@ export async function buildLevelUpContext(char, classeData, helpers = {}, classe
   const nivelNovo = nivelAtual + 1;
   const info = CLASSES_INFO[classeAlvo] || CLASSES_INFO[char.classe] || { dado_vida: 8 };
   const modCon = calcMod(char.atributos.constituicao);
-  const hpGanhoFixo = Math.max(1, Math.floor(info.dado_vida / 2) + 1 + modCon);
+
+  const ehAnao = semAcento(char.especie || '') === 'Anao' || char.especie === 'Anão';
+  const bonusPvAnao = ehAnao ? 1 : 0;
+  const temVigoroso = (char.talentos || []).some(t => (typeof t === 'string' ? t : t?.nome) === 'Vigoroso');
+  const bonusPvVigoroso = temVigoroso ? 2 : 0;
+  const bonusPvPassivos = bonusPvAnao + bonusPvVigoroso;
+  const hpGanhoFixo = Math.max(1, Math.floor(info.dado_vida / 2) + 1 + modCon) + bonusPvPassivos;
 
   // Catálogo de elegibilidade multiclasse
   const catalogoMulticlasse = getCatalogoElegibilidadeMulticlasse(char);
@@ -229,6 +235,9 @@ export async function buildLevelUpContext(char, classeData, helpers = {}, classe
     nivelAtual,
     nivelNovo,
     modCon,
+    bonusPvAnao,
+    bonusPvVigoroso,
+    bonusPvPassivos,
     hpGanhoFixo,
     precisaSubclasse,
     ganhaASI,

@@ -104,14 +104,16 @@ function addExtraVelocidade(extrasSet, tipo, metros, sufixo = '') {
 // Popup com o cálculo real da capacidade de carga (clique no peso do inventário).
 window.mostrarCalculoCarga = function () {
   const forca = char?.atributos?.forca || 0;
-  const tamanho = char?.tamanho || 'Médio';
-  const mult = getMultiplicadorCarga(tamanho);
+  const ehGolias = char?.especie === 'Golias';
+  const tamanhoReal = char?.tamanho || 'Médio';
+  const tamanhoCarga = ehGolias ? 'Grande' : tamanhoReal;
+  const mult = getMultiplicadorCarga(tamanhoCarga);
   const _c = getEstadoCarga();
   const disp = _c.capacidade - _c.pesoAtual;
   abrirModal('Capacidade de Carga', `
     <div style="font-size:0.9rem;line-height:1.7">
       <div style="font-weight:700;margin-bottom:4px">Cálculo do peso máximo</div>
-      <div>Força ${forca} × ${fmtPeso(mult)} (${escHtml(tamanho)}) = <strong>${fmtPeso(_c.capacidade)} kg</strong></div>
+      <div>Força ${forca} × ${fmtPeso(mult)} (${escHtml(tamanhoReal)}${ehGolias ? ' — Porte Poderoso: conta como Grande' : ''}) = <strong>${fmtPeso(_c.capacidade)} kg</strong></div>
       <hr style="border:none;border-top:1px solid var(--border-light);margin:8px 0">
       <div>Peso atual: <strong>${fmtPeso(_c.pesoAtual)} kg</strong></div>
       <div>${disp >= 0
@@ -144,8 +146,10 @@ export function getDeslocamentoFinal(baseDeslocamento) {
   }
   if (char?.classe === 'Monge' && (char?.nivel || 1) >= 2) {
     const inv = char?.inventario || [];
-    const temArmadura = inv.some(i => i.equipado && i.tipo === 'armadura' && i.nome !== 'Escudo');
-    const temEscudo = inv.some(i => i.equipado && (i.nome === 'Escudo' || i.tipo === 'escudo'));
+    const isEscudoItem = (i) => i.tipo === 'escudo' || (i.nome || '').toLowerCase().startsWith('escudo') || i.dados?.subtipo === 'Escudo';
+    const isArmaduraItem = (i) => (i.tipo === 'armadura' || i.dados?.tipo === 'Armadura') && !isEscudoItem(i);
+    const temArmadura = inv.some(i => i.equipado && isArmaduraItem(i));
+    const temEscudo = inv.some(i => i.equipado && isEscudoItem(i));
     if (!temArmadura && !temEscudo) {
       const progMonge = getProgressaoMonge();
       if (progMonge) final += progMonge.bonusMovimento;
@@ -164,6 +168,12 @@ export function getDeslocamentoFinal(baseDeslocamento) {
   if (char?.exaustao > 0) {
     final -= 1.5 * char.exaustao;
     if (final < 0) final = 0;
+  }
+
+  // Maldição do Escudo da Tartaruga: deslocamento pela metade
+  const temEscudoTartaruga = (char?.inventario || []).some(i => i.equipado && (i.nome || '').toLowerCase().includes('tartaruga'));
+  if (temEscudoTartaruga) {
+    final = Math.max(1.5, Math.floor(final / 2 * 10) / 10);
   }
 
   const efMag = char?.efeitos_magicos || [];
@@ -200,7 +210,8 @@ export function getDeslocamentoFinal(baseDeslocamento) {
   // Bárbaro Trilha do Coração Selvagem nível 14: Voo (Falcão) durante Fúria sem armadura
   const emFuria = !!char?.recursos?.furia_ativa;
   const animalFuria = char?.recursos?.furia_animal;
-  const temQualquerArmaduraEquipada = (char?.inventario || []).some(i => i.equipado && i.tipo === 'armadura' && i.nome !== 'Escudo');
+  const isEscudoItem = (i) => i.tipo === 'escudo' || (i.nome || '').toLowerCase().startsWith('escudo') || i.dados?.subtipo === 'Escudo';
+  const temQualquerArmaduraEquipada = (char?.inventario || []).some(i => i.equipado && (i.tipo === 'armadura' || i.dados?.tipo === 'Armadura') && !isEscudoItem(i));
   if (char?.classe === 'Bárbaro' && char?.subclasse === 'Trilha do Coração Selvagem' && (char?.nivel || 1) >= 14
       && emFuria && animalFuria === 'Falcão' && !temQualquerArmaduraEquipada) {
     addExtraVelocidade(extras, 'Voo', final);
@@ -217,6 +228,22 @@ export function getDeslocamentoFinal(baseDeslocamento) {
   if (char?.classe === 'Ladino' && char?.subclasse === 'Ladrão' && (char?.nivel || 1) >= 3) {
     addExtraVelocidade(extras, 'Escalada', final);
   }
+
+  // Itens mágicos equipados no inventário
+  const inv = char?.inventario || [];
+  inv.filter(i => i.equipado).forEach(i => {
+    const d = i.dados || {};
+    const nome = (i.nome || '').toLowerCase();
+    if (d.voo_metros || nome === 'máscara do peregrino' || nome === 'manto das asas') {
+      addExtraVelocidade(extras, 'Voo', d.voo_metros || 18);
+    }
+    if (d.natacao_metros || nome === 'anel de natação' || nome === 'capa de respirar na água' || nome === 'manto da arraia') {
+      addExtraVelocidade(extras, 'Natação', d.natacao_metros || final);
+    }
+    if (d.escalada_metros || nome === 'chinelos de patinhas de aranha') {
+      addExtraVelocidade(extras, 'Escalada', d.escalada_metros || final);
+    }
+  });
 
   for (const ef of efMag) {
     if (ef.tipo === 'deslocamento') {
@@ -253,10 +280,14 @@ export function getAtaquesPorAcao() {
 export function getModIniciativa() {
   const base = calcMod(char.atributos.destreza);
   const passivos = passivosTalentosCache || {};
-  // Bárbaro nível 7+ (Instinto Selvagem) ou Guerreiro/Campeão nível 3+ (Atleta Extraordinário)
-  const vantagem = (char?.classe === 'Bárbaro' && (char?.nivel || 1) >= 7)
-    || (char?.classe === 'Guerreiro' && char?.subclasse === 'Campeão' && (char?.nivel || 1) >= 3);
-  return { valor: base + (passivos.bonusIniciativa || 0), vantagem };
+  const inv = char?.inventario || [];
+  const temItemVantagemIniciativa = inv.some(i => i.equipado && (i.dados?.vantagem_iniciativa || (i.nome || '').toLowerCase() === 'máscara do peregrino' || (i.nome || '').toLowerCase() === 'arma de alerta'));
+  const temEscudoTartaruga = inv.some(i => i.equipado && (i.nome || '').toLowerCase().includes('tartaruga'));
+  // Bárbaro nível 7+ (Instinto Selvagem) ou Guerreiro/Campeão nível 3+ (Atleta Extraordinário) ou Item Mágico
+  const vantagem = !temEscudoTartaruga && ((char?.classe === 'Bárbaro' && (char?.nivel || 1) >= 7)
+    || (char?.classe === 'Guerreiro' && char?.subclasse === 'Campeão' && (char?.nivel || 1) >= 3)
+    || temItemVantagemIniciativa);
+  return { valor: base + (passivos.bonusIniciativa || 0), vantagem, d20Fixo: temEscudoTartaruga ? 1 : null };
 }
 
 export function forcaPrimordialAtiva() {

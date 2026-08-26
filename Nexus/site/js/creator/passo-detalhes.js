@@ -72,7 +72,7 @@ export function renderStepDetalhes(el) {
   const info = CLASSES_INFO[personagem.classe];
   const modCon = calcMod(personagem.atributos.constituicao);
   const pvCalc = info ? calcPVNivel1(info.dado_vida, modCon) 
-    + (personagem.especie === 'Anão' ? (personagem.nivel || 1) : 0) 
+    + ((semAcento(personagem.especie || '') === 'Anao' || personagem.especie === 'Anão') ? (personagem.nivel || 1) : 0) 
     + ((personagem.talentos || []).some(t => (typeof t === 'string' ? t : t.nome) === 'Vigoroso') ? (personagem.nivel || 1) * 2 : 0)
     : 0;
   const regraIdiomas = obterRegraIdiomasAtual();

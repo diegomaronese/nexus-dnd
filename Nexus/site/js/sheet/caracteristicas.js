@@ -262,14 +262,24 @@ function renderTracoEspecie(traco, herdaAncestralidade = false, ehSubRevelacao =
   // Deteccao de traits especificas de especie para UI customizada
   const ehSortePequenino = char.especie === 'Pequenino' && traco.nome === 'Sorte';
   const ehVigorImplacavel = char.especie === 'Orc' && traco.nome === 'Vigor Implacável';
+  const ehPicoAdrenalina = char.especie === 'Orc' && traco.nome === 'Pico de Adrenalina';
   const ehAtaqueSopro = char.especie === 'Draconato' && traco.nome === 'Ataque de Sopro';
+  const ehVooDraconico = char.especie === 'Draconato' && traco.nome === 'Voo Dracônico';
   const ehMaosCurativas = char.especie === 'Aasimar' && traco.nome === 'Mãos Curativas';
+  const ehRevelacaoCelestial = char.especie === 'Aasimar' && traco.nome === 'Revelação Celestial';
+  const ehFormaGrande = char.especie === 'Golias' && traco.nome === 'Forma Grande';
+  const ehConhecimentoPedras = char.especie === 'Anão' && traco.nome === 'Conhecimento de Pedras';
+  const ehMemoriaKenku = char.especie === 'Kenku' && traco.nome === 'Memória Kenku';
 
   let usosMax = detectarUsosMaximos(traco.descricao) || (recarga ? bonusProficiencia(char.nivel) : null);
 
   // Correcao de usos para traits que sao 1x/descanso (sem numero explicito na descricao)
-  if (ehVigorImplacavel) usosMax = 1;
-  if (ehMaosCurativas) usosMax = 1;
+  if (ehVigorImplacavel || ehMaosCurativas || ehVooDraconico || ehFormaGrande || ehRevelacaoCelestial) usosMax = 1;
+  if (ehPicoAdrenalina || ehConhecimentoPedras || ehMemoriaKenku) {
+    usosMax = bonusProficiencia(char.nivel || 1);
+    recarga = ehPicoAdrenalina ? 'curto_ou_longo' : 'longo';
+    ativa = true;
+  }
 
   const temMultiplosUsos = usosMax && usosMax > 1 && recarga;
 
@@ -346,7 +356,50 @@ function renderTracoEspecie(traco, herdaAncestralidade = false, ehSubRevelacao =
         <button class="btn btn-sm" style="padding:2px 8px;font-size:0.7rem;${usado ? 'opacity:0.5' : ''}" data-toggle-uso="${key}">
           ${usado ? '✗ Usado' : '✓ Disponivel'}
         </button>
-        <span style="font-size:0.75rem;color:var(--text-muted)">Ao cair a 0 PV: fica com 1 PV.</span>
+        <span style="font-size:0.75rem;color:var(--text-muted)">Ao cair a 0 PV: fica com 1 PV (1x/Descanso Longo).</span>
+      </div>
+    `;
+  } else if (ehPicoAdrenalina) {
+    // Pico de Adrenalina: PB usos / descanso curto ou longo
+    const pb = bonusProficiencia(char.nivel || 1);
+    usosHtmlSummary = `<span style="font-size:0.7rem;font-weight:600;margin-left:auto">${usosMax - usosAtual}/${usosMax}</span>`;
+    usosHtmlBody = `
+      <div class="no-print" style="padding:4px 0 4px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-sm" style="padding:2px 8px;font-size:0.7rem" data-usar-habilidade="${key}" data-usos-max="${usosMax}">
+          ${usosAtual >= usosMax ? '✗ Esgotado' : `Usar Surtada (+${pb} PV Temp)`}
+        </button>
+        <span style="font-size:0.75rem;color:var(--text-muted)">Ação Bônus Correr | Concede +${pb} PV Temporários</span>
+      </div>
+    `;
+  } else if (ehConhecimentoPedras) {
+    // Conhecimento de Pedras: PB usos / descanso longo
+    usosHtmlSummary = `<span style="font-size:0.7rem;font-weight:600;margin-left:auto">${usosMax - usosAtual}/${usosMax}</span>`;
+    usosHtmlBody = `
+      <div class="no-print" style="padding:4px 0 4px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-sm" style="padding:2px 8px;font-size:0.7rem" data-usar-habilidade="${key}" data-usos-max="${usosMax}">
+          ${usosAtual >= usosMax ? '✗ Esgotado' : 'Ativar Sismiconsciência'}
+        </button>
+        <span style="font-size:0.75rem;color:var(--text-muted)">Ação Bônus | Sismiconsciência 18m por 10 min em pedra</span>
+      </div>
+    `;
+  } else if (ehVooDraconico) {
+    // Voo Draconico: 1x/descanso longo
+    usosHtmlBody = `
+      <div class="no-print" style="padding:4px 0 4px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-sm" style="padding:2px 8px;font-size:0.7rem;${usado ? 'opacity:0.5' : ''}" data-toggle-uso="${key}">
+          ${usado ? '✗ Usado' : 'Ativar Asas de Voo'}
+        </button>
+        <span style="font-size:0.75rem;color:var(--text-muted)">Ação Bônus | Deslocamento de Voo por 10 min</span>
+      </div>
+    `;
+  } else if (ehFormaGrande) {
+    // Forma Grande: 1x/descanso longo
+    usosHtmlBody = `
+      <div class="no-print" style="padding:4px 0 4px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-sm" style="padding:2px 8px;font-size:0.7rem;${usado ? 'opacity:0.5' : ''}" data-toggle-uso="${key}">
+          ${usado ? '✗ Usado' : 'Ativar Forma Grande'}
+        </button>
+        <span style="font-size:0.75rem;color:var(--text-muted)">Ação Bônus | Tamanho Grande por 10 min (+3m Desloc., Vantagem em Força)</span>
       </div>
     `;
   } else if (temMultiplosUsos) {
@@ -370,6 +423,9 @@ function renderTracoEspecie(traco, herdaAncestralidade = false, ehSubRevelacao =
 
   // Informacoes de escolhas vinculadas ao traco
   let infoEscolhaTraco = '';
+  if (traco.nome === 'Tenacidade Anã') {
+    infoEscolhaTraco = `<div class="info-box success" style="font-size:0.8rem;margin-top:6px"><strong>Bônus Ativo:</strong> +${char.nivel || 1} PV máximos (+1 por nível de personagem, já somado aos seus PV).</div>`;
+  }
   if ((traco.nome === 'Hábil' || traco.nome === 'Sentidos Aguçados') && char.pericia_especie) {
     infoEscolhaTraco = `<div class="info-box info" style="font-size:0.8rem;margin-top:6px"><strong>Pericia escolhida:</strong> ${escHtml(char.pericia_especie || '')}</div>`;
   }
@@ -383,6 +439,15 @@ function renderTracoEspecie(traco, herdaAncestralidade = false, ehSubRevelacao =
   if (traco.nome === 'Mimetismo' && char.especie === 'Kenku') {
     const cdMimetismo = 8 + bonusProficiencia(char.nivel) + calcMod(char.atributos?.carisma || 10);
     infoEscolhaTraco = `<div class="info-box info" style="font-size:0.8rem;margin-top:6px"><strong>CD do Mimetismo:</strong> ${cdMimetismo} (8 + Bônus Prof. + mod. Carisma)</div>`;
+  }
+  if (traco.nome === 'Porte Poderoso' && char.especie === 'Golias') {
+    infoEscolhaTraco = `<div class="info-box info" style="font-size:0.8rem;margin-top:6px"><strong>Porte Poderoso Ativo:</strong> Conta como tamanho Grande para cálculo de capacidade de carga e possui Vantagem para encerrar a condição Imobilizado.</div>`;
+  }
+  if (traco.nome === 'Gnomo do Bosque') {
+    infoEscolhaTraco = `<div class="info-box info" style="font-size:0.8rem;margin-top:6px"><strong>Magia de Linhagem:</strong> Você sempre tem <em>Falar com Animais</em> preparada e pode conjurá-la sem gastar espaço ${bonusProficiencia(char.nivel || 1)}x por Descanso Longo.</div>`;
+  }
+  if (traco.nome === 'Eficiente' && char.especie === 'Humano') {
+    infoEscolhaTraco = `<div class="info-box info" style="font-size:0.8rem;margin-top:6px"><strong>Inspiração Heroica:</strong> Você ganha automaticamente Inspiração Heroica sempre que completa um Descanso Longo.</div>`;
   }
   if (traco.nome === 'Versátil' && char.talento_versatil) {
     // Mostrar o talento escolhido e, se houver escolhas associadas (ex: Habilidoso), tambem
@@ -407,4 +472,4 @@ function renderTracoEspecie(traco, herdaAncestralidade = false, ehSubRevelacao =
       ${infoEscolhaTraco}
     </details>
   `;
-}
+}

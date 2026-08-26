@@ -37,7 +37,7 @@ export function sheetTemProfArmadura(armadura) {
   const nome = (armadura.nome || '').toLowerCase();
   const extras = (char.proficiencias_extra || []).map(p => p.toLowerCase());
 
-  if (nome === 'escudo') return info.armaduras.includes('Escudo') || extras.includes('escudo');
+  if (nome === 'escudo' || nome.startsWith('escudo') || cat === 'escudo' || (armadura.subtipo || '').toLowerCase() === 'escudo') return info.armaduras.includes('Escudo') || extras.includes('escudo');
   if (info.armaduras.includes('Pesada') && cat === 'pesada') return true;
   if (info.armaduras.includes('Média') && (cat === 'média' || cat === 'media')) return true;
   if (info.armaduras.includes('Leve') && cat === 'leve') return true;

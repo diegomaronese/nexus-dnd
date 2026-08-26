@@ -521,7 +521,7 @@ async function finalizar() {
     const modCon = calcMod(personagem.atributos.constituicao);
     personagem.pv_max = calcPVNivel1(info.dado_vida, modCon);
     // Tenacidade Anã: +1 PV por nível
-    if (personagem.especie === 'Anão') {
+    if (semAcento(personagem.especie || '') === 'Anao' || personagem.especie === 'Anão') {
       personagem.pv_max += personagem.nivel || 1;
       personagem.bonus_pv_anao_aplicado = personagem.nivel || 1;
     }

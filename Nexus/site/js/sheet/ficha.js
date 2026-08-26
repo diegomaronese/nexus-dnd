@@ -167,16 +167,18 @@ export function renderFichaCompleta() {
   const estadoArtifice = getEstadoRecursosArtifice();
   const progArtifice = getProgressaoArtifice();
 
+  // Recalcular PV max se necessário
+  if ((!char.pv_max || char.pv_max <= 0) && info.dado_vida) {
+    char.pv_max = calcPVTotal(info.dado_vida, char.nivel, modCon);
+    char.pv_atual = char.pv_max;
+    delete char.bonus_pv_anao_aplicado;
+    delete char.bonus_pv_vigoroso_aplicado;
+    salvar();
+  }
+
   sincronizarBonusPvDraconico();
   sincronizarBonusPvAnao();
   sincronizarBonusPvVigoroso();
-
-  // Recalcular PV max se necessário
-  if (char.pv_max <= 0 && info.dado_vida) {
-    char.pv_max = calcPVTotal(info.dado_vida, char.nivel, modCon);
-    char.pv_atual = char.pv_max;
-    salvar();
-  }
 
   // Calcular deslocamento e tamanho a partir dos dados da espécie
   const _espData = especiesCache?.especies?.find(e => e.nome === char.especie);

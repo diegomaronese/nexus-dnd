@@ -148,9 +148,14 @@ export function calcCA(personagem, passivos = null) {
   const modCar = calcMod(personagem.atributos.carisma);
   const inv = personagem.inventario || [];
 
+  // Helper para identificar escudo
+  const isEscudo = (i) => i.tipo === 'escudo' || (i.nome || '').toLowerCase().startsWith('escudo') || i.dados?.subtipo === 'Escudo';
+  // Helper para identificar armadura de corpo
+  const isArmadura = (i) => (i.tipo === 'armadura' || i.dados?.tipo === 'Armadura') && !isEscudo(i);
+
   // Verificar armadura equipada
-  const armadura = inv.find(i => i.equipado && i.tipo === 'armadura' && i.nome !== 'Escudo');
-  const escudo = inv.find(i => i.equipado && (i.nome === 'Escudo' || i.tipo === 'escudo'));
+  const armadura = inv.find(i => i.equipado && isArmadura(i));
+  const escudo = inv.find(i => i.equipado && isEscudo(i));
 
   let ca = 10 + modDes; // Sem armadura
 
@@ -174,6 +179,27 @@ export function calcCA(personagem, passivos = null) {
     !armadura
   ) {
     ca = 10 + modDes + modCar;
+  }
+
+  // Tatuagem da Barreira (sem armadura de corpo; compatível com escudo)
+  if (!armadura) {
+    const tatBarreira = inv.find(i => i.equipado && (
+      (i.nome || '').toLowerCase().includes('tatuagem da barreira') ||
+      (i.nome || '').toLowerCase().includes('tatuagem barreira') ||
+      i.dados?.ca_tatuagem_barreira
+    ));
+    if (tatBarreira) {
+      const rar = (tatBarreira.dados?.raridade || tatBarreira.raridade || tatBarreira.nome || '').toLowerCase();
+      let caTat = 12 + modDes;
+      if (rar.includes('muito rara') || rar.includes('18')) {
+        caTat = 18;
+      } else if (rar.includes('rara') || rar.includes('15')) {
+        caTat = 15 + Math.min(modDes, 2);
+      } else {
+        caTat = 12 + modDes;
+      }
+      if (caTat > ca) ca = caTat;
+    }
   }
 
   if (armadura) {
@@ -203,9 +229,22 @@ export function calcCA(personagem, passivos = null) {
     }
   }
 
-  // Escudo: +2
+  // Escudo (+2 base normal, +3 com Escudo +1, +4 com Escudo +2, +5 com Escudo +3)
   if (escudo) {
-    ca += 2;
+    let bonusEscudo = 2; // base do escudo normal
+    if (escudo.dados?.bonus_ca !== undefined && escudo.dados?.bonus_ca !== null && escudo.dados?.bonus_ca !== '') {
+      bonusEscudo = 2 + (parseInt(escudo.dados.bonus_ca) || 0);
+    } else if (escudo.dados?.ca) {
+      const match = String(escudo.dados.ca).match(/\+?(\d+)/);
+      if (match) bonusEscudo = parseInt(match[1]);
+    } else if (escudo.nome?.includes('+3')) {
+      bonusEscudo = 5;
+    } else if (escudo.nome?.includes('+2')) {
+      bonusEscudo = 4;
+    } else if (escudo.nome?.includes('+1')) {
+      bonusEscudo = 3;
+    }
+    ca += bonusEscudo;
   }
 
   // Estilo de Luta: Defensivo (+1 CA enquanto usa armadura)
@@ -214,8 +253,9 @@ export function calcCA(personagem, passivos = null) {
     ca += 1;
   }
 
-  // Bônus de CA de itens customizados
-  inv.filter(i => i.equipado && i.dados?.bonus_ca).forEach(i => {
+  // Bônus de CA de itens equipados (ex: Armadura +1/+2/+3, Anel de Proteção, Capa de Proteção, Pedra de Ioun (Proteção))
+  // O escudo já teve seu bônus contabilizado acima
+  inv.filter(i => i.equipado && i !== escudo && i.dados?.bonus_ca).forEach(i => {
     ca += parseInt(i.dados.bonus_ca) || 0;
   });
 
@@ -304,6 +344,13 @@ export function calcCDMagia(personagem) {
     cd += 1;
   }
 
+  // Bônus de itens mágicos equipados (ex: Cetro do Protetor do Pacto)
+  const inv = personagem.inventario || [];
+  inv.filter(i => i.equipado).forEach(i => {
+    const b = parseInt(i.dados?.bonus_cd_magia || i.dados?.bonus_magia) || 0;
+    if (b) cd += b;
+  });
+
   return cd;
 }
 
@@ -313,7 +360,16 @@ export function calcAtaqueMagia(personagem) {
   if (!info || !info.atributo_conjuracao) return 0;
   const key = ATRIBUTO_NOME_PARA_KEY[info.atributo_conjuracao];
   const modAttr = calcMod(personagem.atributos[key]);
-  return bonusProficiencia(personagem.nivel) + modAttr;
+
+  // Bônus de itens mágicos equipados (ex: Varinha do Mago de Guerra, Cetro do Protetor do Pacto)
+  const inv = personagem.inventario || [];
+  let bonusMagico = 0;
+  inv.filter(i => i.equipado).forEach(i => {
+    const b = parseInt(i.dados?.bonus_ataque_magico || i.dados?.bonus_magia) || 0;
+    if (b > bonusMagico) bonusMagico = b;
+  });
+
+  return bonusProficiencia(personagem.nivel) + modAttr + bonusMagico;
 }
 
 /** Calcula Percepção Passiva */

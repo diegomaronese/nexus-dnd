@@ -21,7 +21,11 @@ import { renderFichaCompleta } from './ficha.js';
 /** Estado de carga do personagem: peso atual, capacidade e flag de sobrecarga. */
 export function getEstadoCarga() {
   const forca = char?.atributos?.forca || 0;
-  const tamanho = char?.tamanho || 'Médio';
+  let tamanho = char?.tamanho || 'Médio';
+  // Golias: Porte Poderoso conta como uma categoria de tamanho maior para capacidade de carga
+  if (char?.especie === 'Golias') {
+    tamanho = 'Grande';
+  }
   const pesoAtual = getPesoTotalInventario(char?.inventario || []);
   const capacidade = getCapacidadeCarga(forca, tamanho);
   const sobrecarregado = capacidade > 0 && pesoAtual > capacidade;
@@ -139,7 +143,8 @@ function renderSheetInvItem(item, idx) {
   let vantagemInfo = '';
   let estiloLutaInfo = '';
   let danoExibicao = item.dados?.dano || '';
-  if (item.tipo === 'arma' && item.dados) {
+  const ehArmaOuItemArma = (item.tipo === 'arma' || (item.tipo === 'magico' && (item.dados?.tipo === 'Arma' || item.dados?.tipo === 'Cajado' || item.dados?.dano))) && item.dados;
+  if (ehArmaOuItemArma) {
     const info = CLASSES_INFO[char.classe];
     const prof = bonusProficiencia(char.nivel);
     const props = (item.dados.propriedades || '').toLowerCase();
@@ -163,11 +168,12 @@ function renderSheetInvItem(item, idx) {
 
     const temProf = sheetTemProfArma({ categoria: item.dados.categoria, propriedades: item.dados.propriedades || '' });
     const bonusAtq = modAtq + (temProf ? prof : 0);
-    // Bônus de ataque de talentos
+    // Bônus de ataque de talentos e itens mágicos
     let bonusAtqTalento = 0;
     const _passivos = passivosTalentosCache || {};
     if (isDistancia) bonusAtqTalento += _passivos.bonusAtaqueDistancia || 0;
-    const bonusAtqFinal = bonusAtq + bonusAtqTalento;
+    const bonusAtqMagico = parseInt(item.dados.bonus_ataque) || 0;
+    const bonusAtqFinal = bonusAtq + bonusAtqTalento + bonusAtqMagico;
     ataqueInfo = `<span class="badge badge-secondary" style="font-size:0.65rem">Atq ${fmtMod(bonusAtqFinal)}</span>`;
     if (ataqueImprudenteAtivo() && usaForcaNoAtaque) {
       vantagemInfo = '<span class="badge" style="font-size:0.6rem;background:#fff3cd;color:#8a6d3b;border:1px solid #ffeeba">Vantagem (Imprudente)</span>';
@@ -178,32 +184,6 @@ function renderSheetInvItem(item, idx) {
     }
 
     // Estilo de Luta: Combate com Armas Grandes / Combate com Duas Armas
-    // (Talentos.md:764/770) -- as duas flags que talentos-effects.js grava em
-    // passivos.flags.estilo_armas_grandes/estilo_duas_armas, sem consumidor
-    // até esta correção. NÃO entram no cálculo de bonusDanoTalento acima
-    // (padrão de bonusDanoUmaMao/bonusDanoArremesso) de propósito:
-    // - Armas Grandes altera o RESULTADO de cada dado de dano ("trata 1 ou 2
-    //   como 3"), não é um modificador fixo somado uma vez -- e o app não tem
-    //   nenhum motor de rolagem de dados para interceptar (danoExibicao só
-    //   mostra a FÓRMULA "XdY+Z", nunca rola). Fabricar um "bônus médio"
-    //   (esperança estatística de +3/faces por dado) misturaria um número
-    //   probabilístico com modificadores exatos na mesma badge, o que é mais
-    //   enganoso do que informativo.
-    // - Duas Armas só vale para o ATAQUE ADICIONAL (bônus de arma Leve), e a
-    //   ficha não modela "ataque adicional" como uma linha separada da arma
-    //   principal -- bonusTotalDano (abaixo) já soma modAtq à ÚNICA linha de
-    //   dano exibida por item, então somar de novo aqui contaria o mesmo
-    //   modificador duas vezes para a mesma arma.
-    // Por isso os dois viram um selo informativo na arma qualificada (mesmo
-    // padrão de vantagemInfo acima), e não um número dentro de danoExibicao.
-    //
-    // O gatilho de Armas Grandes usa a PROPRIEDADE da arma (Duas Mãos ou
-    // Versátil, exatamente o que Talentos.md:764 exige) -- não a
-    // empunhadura escolhida pelo jogador, que o app não rastreia. Uma arma
-    // Versátil pode estar sendo empunhada com UMA mão só (aí o benefício
-    // não se aplica de verdade), e o app não tem como saber -- por isso o
-    // texto do selo é condicional ("se empunhada com as duas mãos"), não
-    // uma afirmação incondicional de que o benefício está valendo.
     const ehArmaCorpoACorpoDuasMaosOuVersatil = !isDistancia && (props.includes('duas mãos') || props.includes('versátil'));
     if (_passivos.flags?.estilo_armas_grandes && ehArmaCorpoACorpoDuasMaosOuVersatil) {
       estiloLutaInfo += '<span class="badge" style="font-size:0.6rem;background:#ede7f6;color:#4527a0;border:1px solid #b39ddb" title="Combate com Armas Grandes: se estiver empunhando esta arma com as DUAS mãos, trata qualquer 1 ou 2 no dado de dano como um 3 (Talentos.md) -- a ficha não sabe a empunhadura escolhida em armas Versáteis">1-2→3</span>';
@@ -221,17 +201,18 @@ function renderSheetInvItem(item, idx) {
       const estadoFuria = getEstadoFuria();
       const bonusFuria = estadoFuria?.ativa && usaForcaNoAtaque ? (estadoFuria.dano || 0) : 0;
       const bonusTotalDano = modAtq + bonusFuria;
-      // Bônus de dano de talentos
+      // Bônus de dano de talentos e itens mágicos
       let bonusDanoTalento = 0;
       const ehArremesso = props.includes('arremesso');
       const usaUmaMao = !props.includes('duas mãos') && !props.includes('pesada');
       if (usaUmaMao && !isDistancia) bonusDanoTalento += _passivos.bonusDanoUmaMao || 0;
       if (ehArremesso) bonusDanoTalento += _passivos.bonusDanoArremesso || 0;
-      const bonusTotalDanoFinal = bonusTotalDano + bonusDanoTalento;
+      const bonusDanoMagico = parseInt(item.dados.bonus_dano) || parseInt(item.dados.bonus_ataque) || 0;
+      const bonusTotalDanoFinal = bonusTotalDano + bonusDanoTalento + bonusDanoMagico;
 
       if (modExistente) {
         const modBase = parseInt(String(modExistente).replace(/\s+/g, '')) || 0;
-        const modFinal = modBase + bonusFuria + bonusDanoTalento;
+        const modFinal = modBase + bonusFuria + bonusDanoTalento + bonusDanoMagico;
         const sinal = modFinal >= 0 ? `+${modFinal}` : `${modFinal}`;
         danoExibicao = `${dado}${sinal}${sufixo}`.replace(/\s+/g, ' ').trim();
       } else if (bonusTotalDanoFinal !== 0) {
@@ -269,6 +250,24 @@ function renderSheetInvItem(item, idx) {
     if (item.dados?.sintonizacao) {
       magicoBadges += `<span class="badge" style="font-size:0.6rem;background:rgba(108,92,231,0.2);color:#a29bfe;border:1px solid rgba(108,92,231,0.4)">Sint.</span> `;
     }
+    if (item.dados?.bonus_ca || item.dados?.ca) {
+      const caVal = item.dados?.ca || `+${item.dados.bonus_ca}`;
+      magicoBadges += `<span class="badge" style="font-size:0.6rem;background:#e8eaf6;color:#3949ab;border:1px solid #9fa8da">CA ${caVal}</span> `;
+    }
+    if (item.dados?.bonus_ataque) {
+      const labelAtq = (item.nome || '').toLowerCase().includes('desarmada') || (item.nome || '').toLowerCase().includes('wraps') ? `Desarmado +${item.dados.bonus_ataque}` : `Atq +${item.dados.bonus_ataque}`;
+      magicoBadges += `<span class="badge badge-secondary" style="font-size:0.65rem">${labelAtq}</span> `;
+    }
+    if (item.dados?.bonus_magia || item.dados?.bonus_ataque_magico || item.dados?.bonus_cd_magia) {
+      const bMag = item.dados.bonus_magia || item.dados.bonus_ataque_magico || item.dados.bonus_cd_magia;
+      magicoBadges += `<span class="badge" style="font-size:0.6rem;background:#ede7f6;color:#512da8;border:1px solid #d1c4e9">Magia +${bMag}</span> `;
+    }
+    if (item.dados?.cargas) {
+      magicoBadges += `<span class="badge" style="font-size:0.6rem;background:#e0f7fa;color:#006064;border:1px solid #b2ebf2">${item.dados.cargas} Cargas</span> `;
+    }
+    if (item.dados?.forca_fixa) {
+      magicoBadges += `<span class="badge" style="font-size:0.6rem;background:#fff3e0;color:#e65100;border:1px solid #ffe0b2">Força ${item.dados.forca_fixa}</span> `;
+    }
   }
 
   // Badge de maestria com a arma
@@ -296,9 +295,9 @@ function renderSheetInvItem(item, idx) {
         <div class="inv-item-detalhe">
           ${item.tipo === 'arma' ? `${danoExibicao} | ${item.dados?.propriedades || ''}` : ''}
           ${item.tipo === 'armadura' ? `CA: ${item.dados?.ca || ''} | ${item.dados?.categoria || ''}` : ''}
-          ${item.tipo === 'escudo' ? `CA: ${item.dados?.ca || ''} | Escudo` : ''}
+          ${item.tipo === 'escudo' ? `CA: ${item.dados?.ca || '+2'} | Escudo` : ''}
           ${item.tipo === 'equipamento' ? `${item.dados?.custo || ''} ${item.dados?.peso ? '| ' + item.dados.peso : ''}` : ''}
-          ${item.tipo === 'magico' ? `${item.dados?.tipo || 'Item Mágico'}${item.dados?.subtipo ? ' (' + item.dados.subtipo + ')' : ''} | ${item.dados?.raridade || 'Mágico'}` : ''}
+          ${item.tipo === 'magico' ? `${item.dados?.tipo || 'Item Mágico'}${item.dados?.subtipo ? ' (' + item.dados.subtipo + ')' : ''} | ${item.dados?.raridade || 'Mágico'}${item.dados?.ca ? ' | CA: ' + item.dados.ca : ''}` : ''}
           ${item.tipo === 'customizado' ? `${item.descricao ? (item.descricao.length > 60 ? item.descricao.substring(0, 60) + '...' : item.descricao) : ''}` : ''}
           ${item.tipo === 'generico' ? `${item.descricao || ''}` : ''}
         </div>

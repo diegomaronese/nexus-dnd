@@ -1867,8 +1867,12 @@ function _checarTipoItemMagico(itemTipo, selTipo) {
     return tipoNorm === 'arma' || tipoNorm.startsWith('arma ');
   }
 
+  if (selTipoNorm === 'tatuagem magica' || selTipoNorm === 'tatuagem') {
+    return tipoNorm.includes('tatuagem');
+  }
+
   const partes = tipoNorm.split(/[,/]| ou /).map(p => p.trim());
-  return partes.includes(selTipoNorm);
+  return partes.includes(selTipoNorm) || tipoNorm.includes(selTipoNorm);
 }
 
 function _obterClasseBadgeRaridade(raridade) {
@@ -1901,7 +1905,7 @@ async function _renderItensMagicos(container) {
     <div class="compendio-secao-header">
       <h2>Itens Mágicos</h2>
       <p>
-        Acervo completo com 350 itens mágicos: armas lendárias, anéis, pergaminhos, poções, varinhas, cetros, cajados, armaduras e itens maravilhosos.
+        Acervo completo com centenas de itens mágicos: armas lendárias, anéis, pergaminhos, poções, varinhas, cetros, cajados, armaduras e itens maravilhosos.
       </p>
     </div>
 
@@ -1922,6 +1926,7 @@ async function _renderItensMagicos(container) {
           <option value="Cajado">Cajados</option>
           <option value="Cetro">Cetros</option>
           <option value="Anel">Anéis</option>
+          <option value="Tatuagem Mágica">Tatuagens Mágicas</option>
           <option value="Item Maravilhoso">Itens Maravilhosos</option>
         </select>
         <label class="form-check" style="margin: 0; padding: 0; font-size: 0.8rem; color: var(--text-muted); white-space: nowrap;">

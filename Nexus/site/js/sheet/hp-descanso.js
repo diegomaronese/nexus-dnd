@@ -48,7 +48,7 @@ export function sincronizarBonusPvDraconico() {
 
 /** Sincroniza bonus de PV da Tenacidade Anã (+1 por nivel) */
 export function sincronizarBonusPvAnao() {
-  const ehAnao = char?.especie === 'Anão';
+  const ehAnao = semAcento(char?.especie || '') === 'Anao' || char?.especie === 'Anão';
   const esperado = ehAnao ? (char.nivel || 1) : 0;
   const aplicado = char.bonus_pv_anao_aplicado || 0;
 
@@ -1173,4 +1173,4 @@ export function setupEventosDescanso() {
       window.navegar('home');
     });
   });
-}
+}

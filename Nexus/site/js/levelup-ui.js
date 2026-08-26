@@ -501,6 +501,7 @@ function bindEventosGanhosNivel(ctx, state, caches) {
 // --- HP ---
 function bindEventosHP(ctx, state) {
   const { info, modCon } = ctx;
+  const bonusPassivosValor = ctx.bonusPvPassivos || 0;
   const hpRoladoInput = document.getElementById('levelup-hp-rolado');
   const hpPreviaRolado = document.getElementById('levelup-hp-previa-rolado');
 
@@ -510,7 +511,7 @@ function bindEventosHP(ctx, state) {
     if (hpRoladoInput && hpPreviaRolado) {
       const rolado = Math.max(1, Math.min(info.dado_vida, parseInt(hpRoladoInput.value) || 1));
       hpRoladoInput.value = String(rolado);
-      hpPreviaRolado.textContent = `= +${Math.max(1, rolado + modCon)} PV`;
+      hpPreviaRolado.textContent = `= +${Math.max(1, rolado + modCon + bonusPassivosValor)} PV`;
     }
   }
 
@@ -1646,7 +1647,7 @@ function montarResumoFinal(resultado, char, truquesAdicionados, magiasAdicionada
           +${resultado.hp_ganho} HP
         </div>
         <div style="font-size:0.9rem; color:var(--text-muted)">
-          ${resultado.hp_mode === 'rolado' ? `(Rolado: ${resultado.hp_rolado})` : '(Valor Fixo)'}
+          ${(resultado.hp_modo || resultado.hp_mode) === 'rolado' ? `(Rolado: ${resultado.hp_rolado})` : '(Valor Fixo)'}
           ${resultado.bonus_con_retroativo > 0 ? `<br><small>+${resultado.bonus_con_retroativo} (CON Retroativo)</small>` : ''}
         </div>
         <div style="margin-top:8px; border-top:1px solid var(--border); paddingTop:4px; font-weight:600; color:var(--text)">

@@ -111,6 +111,12 @@ export function renderCardGanhosNivel(ctx, state) {
   `;
 
   // Card de PV
+  const bonusPassivos = [];
+  if (ctx.bonusPvAnao) bonusPassivos.push('+1 Tenacidade Anã');
+  if (ctx.bonusPvVigoroso) bonusPassivos.push('+2 Vigoroso');
+  const bonusPassivosStr = bonusPassivos.length > 0 ? ` + ${bonusPassivos.join(' + ')}` : '';
+  const bonusPassivosValor = ctx.bonusPvPassivos || 0;
+
   html += `
     <div class="levelup-card">
       <div class="levelup-card-header">Pontos de Vida</div>
@@ -118,15 +124,15 @@ export function renderCardGanhosNivel(ctx, state) {
         <div style="display:flex;flex-direction:column;gap:8px;font-size:0.9rem">
           <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
             <input type="radio" name="levelup-hp-modo" value="fixo" ${state.hpModo === 'fixo' ? 'checked' : ''}>
-            <span>Valor fixo: <strong>+${hpGanhoFixo} PV</strong> (média do d${info.dado_vida} + CON)</span>
+            <span>Valor fixo: <strong>+${hpGanhoFixo} PV</strong> (média do d${info.dado_vida} + CON${bonusPassivosStr})</span>
           </label>
           <label style="display:flex;align-items:center;gap:8px;cursor:pointer;flex-wrap:wrap">
             <input type="radio" name="levelup-hp-modo" value="rolado" ${state.hpModo === 'rolado' ? 'checked' : ''}>
-            <span>Rolagem: d${info.dado_vida} + CON</span>
+            <span>Rolagem: d${info.dado_vida} + CON${bonusPassivosStr}</span>
             <input type="number" class="form-input" id="levelup-hp-rolado" min="1" max="${info.dado_vida}" step="1"
                    value="${state.hpRolado}" style="width:88px" ${state.hpModo !== 'rolado' ? 'disabled' : ''}>
             <span id="levelup-hp-previa-rolado" style="font-size:0.85rem;color:var(--text-muted)">
-              = +${Math.max(1, state.hpRolado + modCon)} PV
+              = +${Math.max(1, state.hpRolado + modCon + bonusPassivosValor)} PV
             </span>
           </label>
         </div>
@@ -811,9 +817,15 @@ export function renderCardRevisao(ctx, state, steps) {
   const incompletos = steps.filter(s => s.obrigatorio && !s._completo && s.id !== 'revisao_confirmacao');
 
   // Calcular HP que será ganho
+  const bonusPassivosValor = ctx.bonusPvPassivos || 0;
   const hpGanho = state.hpModo === 'rolado'
-    ? Math.max(1, state.hpRolado + modCon)
+    ? Math.max(1, state.hpRolado + modCon + bonusPassivosValor)
     : hpGanhoFixo;
+
+  const bonusPassivos = [];
+  if (ctx.bonusPvAnao) bonusPassivos.push('+1 Tenacidade Anã');
+  if (ctx.bonusPvVigoroso) bonusPassivos.push('+2 Vigoroso');
+  const bonusBadge = bonusPassivos.length > 0 ? ` [${bonusPassivos.join(', ')}]` : '';
 
   let html = `
     <div class="levelup-card">
@@ -823,7 +835,7 @@ export function renderCardRevisao(ctx, state, steps) {
           <li><strong>Classe:</strong> ${ctx.classeAlvo || char.classe} (Nível ${ctx.novoNivelClasse}) ${ctx.ehNovaClasse ? '<span class="badge badge-sm badge-accent">Nova Multiclasse</span>' : ''}</li>
           ${ctx.precisaPericiaMulticlasse && state.multiclassePericia ? `<li><strong>Perícia de Multiclasse:</strong> ${state.multiclassePericia}</li>` : ''}
           ${ctx.precisaInstrumentoMulticlasse && state.multiclasseInstrumento ? `<li><strong>Instrumento de Multiclasse:</strong> ${state.multiclasseInstrumento}</li>` : ''}
-          <li><strong>HP:</strong> +${hpGanho} PV (${state.hpModo === 'rolado' ? `rolagem ${state.hpRolado}` : 'fixo'})</li>
+          <li><strong>HP:</strong> +${hpGanho} PV (${state.hpModo === 'rolado' ? `rolagem ${state.hpRolado}` : 'fixo'}${bonusBadge})</li>
   `;
 
   if (state.subclasse) html += `<li><strong>Subclasse:</strong> ${state.subclasse}</li>`;

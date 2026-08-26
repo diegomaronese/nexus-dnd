@@ -713,11 +713,35 @@ export async function obterCaracteristicasEspecieNivel(especie, nivel, tracosEsc
 
   const caracteristicas = [];
 
+  // Draconato: Voo Dracônico no nível 5 e escalonamento do Ataque de Sopro
+  if (especie === 'Draconato') {
+    if (nivel === 5) {
+      caracteristicas.push({
+        nome: 'Voo Dracônico',
+        descricao: 'No nível 5, você pode canalizar magia dracônica como uma Ação Bônus para criar asas espectrais por 10 minutos, ganhando Deslocamento de Voo igual ao seu Deslocamento (1x por Descanso Longo).'
+      });
+      caracteristicas.push({
+        nome: 'Ataque de Sopro (2d10)',
+        descricao: 'O dano do seu Ataque de Sopro aumenta para 2d10.'
+      });
+    } else if (nivel === 11) {
+      caracteristicas.push({
+        nome: 'Ataque de Sopro (3d10)',
+        descricao: 'O dano do seu Ataque de Sopro aumenta para 3d10.'
+      });
+    } else if (nivel === 17) {
+      caracteristicas.push({
+        nome: 'Ataque de Sopro (4d10)',
+        descricao: 'O dano do seu Ataque de Sopro aumenta para 4d10.'
+      });
+    }
+  }
+
   // Golias: Forma Grande no nível 5
   if (especie === 'Golias' && nivel === 5) {
     caracteristicas.push({
       nome: 'Forma Grande',
-      descricao: 'A partir do nível 5, você pode alterar seu tamanho para Grande como uma Ação Bônus.'
+      descricao: 'A partir do nível 5, você pode alterar seu tamanho para Grande como uma Ação Bônus por 10 minutos (Vantagem em testes de Força e +3m de Deslocamento, 1x por Descanso Longo).'
     });
   }
 
@@ -725,7 +749,7 @@ export async function obterCaracteristicasEspecieNivel(especie, nivel, tracosEsc
   if (especie === 'Aasimar' && nivel === 3) {
     caracteristicas.push({
       nome: 'Revelação Celestial',
-      descricao: 'No nível 3, você pode se transformar como uma Ação Bônus.'
+      descricao: 'No nível 3, você pode se transformar como uma Ação Bônus por 1 minuto (escolha Asas Celestiais, Manto Necrótico ou Transfiguração Radiante; causa dano extra igual ao seu Bônus de Proficiência 1x/turno, 1x por Descanso Longo).'
     });
   }
 
@@ -1279,9 +1303,23 @@ export async function subirDeNivel(personagem, opcoes = {}) {
   }
   
   // Aplicar mudanças ao personagem
+  const ehAnao = semAcento(personagem.especie || '') === 'Anao' || personagem.especie === 'Anão';
+  const bonusPvAnao = ehAnao ? 1 : 0;
+  if (ehAnao) {
+    personagem.bonus_pv_anao_aplicado = novoNivel;
+  }
+
+  const jaTinhaVigoroso = (personagem.talentos || []).some(t => (typeof t === 'string' ? t : t?.nome) === 'Vigoroso');
+  const bonusPvVigorosoNivel = (jaTinhaVigoroso && opcoes.talento !== 'Vigoroso') ? 2 : 0;
+  if (jaTinhaVigoroso && opcoes.talento !== 'Vigoroso') {
+    personagem.bonus_pv_vigoroso_aplicado = novoNivel * 2;
+  }
+
+  const hpTotalGanho = hpGanho + bonusPvAnao + bonusPvVigorosoNivel;
+
   personagem.nivel = novoNivel;
-  personagem.pv_max += hpGanho;
-  personagem.pv_atual += hpGanho; // Também aumenta PV atual (cura ao subir de nível)
+  personagem.pv_max += hpTotalGanho;
+  personagem.pv_atual += hpTotalGanho; // Também aumenta PV atual (cura ao subir de nível)
   personagem.dados_vida_total = novoNivel;
 
   if (ehNovaClasse) {
@@ -1789,7 +1827,10 @@ export async function subirDeNivel(personagem, opcoes = {}) {
     sucesso: true,
     nivel_anterior: nivelAnterior,
     nivel_novo: novoNivel,
-    hp_ganho: hpGanho,
+    hp_ganho: hpTotalGanho,
+    bonus_pv_base: hpGanho,
+    bonus_pv_anao: bonusPvAnao,
+    bonus_pv_vigoroso: bonusPvVigorosoNivel,
     hp_modo: opcoes.hp_modo === 'rolado' ? 'rolado' : 'fixo',
     hp_rolado: opcoes.hp_modo === 'rolado' ? (parseInt(opcoes.hp_rolado) || null) : null,
     bonus_con_retroativo: bonusConRetroativo,
