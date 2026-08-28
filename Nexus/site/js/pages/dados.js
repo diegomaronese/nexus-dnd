@@ -1341,7 +1341,7 @@ function _gerarHtmlItemHistorico(item, idx) {
 /**
  * Gera SVGs estilizados para cada tipo de dado poliédrico de D&D
  */
-function _gerarSvgDado(tipo, cor, ativo, tamanho = 36) {
+export function gerarSvgDado(tipo, cor, ativo, tamanho = 36) {
   const stroke = ativo ? '#ffffff' : cor;
   const fill = ativo ? cor : 'rgba(255,255,255,0.04)';
   const t = tamanho;
@@ -1419,3 +1419,4 @@ function _gerarSvgDado(tipo, cor, ativo, tamanho = 36) {
       return `<img src="img/icons/ico-home-dados.png" class="dice-roll-icon-img" alt="">`;
   }
 }
+const _gerarSvgDado = gerarSvgDado;

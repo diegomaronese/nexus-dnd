@@ -31,6 +31,7 @@ import { setupEventosEdicao } from './edicao.js';
 import { ATRIBUTO_ESTILO, char, classeData, containerRef, especiesCache, passivosTalentosCache, salvar, seloEdicao } from './estado.js';
 import { setupEventosHabilidades } from './habilidades.js';
 import { setupEventosDescanso, setupEventosHP, sincronizarBonusPvAnao, sincronizarBonusPvDraconico, sincronizarBonusPvVigoroso } from './hp-descanso.js';
+import { setupEventosRolagemRapida } from './quick-dice.js';
 import { getEstadoCarga, renderSecaoInventario, setupEventosInventarioSheet } from './inventario.js';
 import { ehSubclasseConjuradora, renderSecaoMagias, setupEventosEspacosMagia } from './magias.js';
 import { abrirModalRecuperarDadivaEpica, precisaRecuperarDadivaEpica, renderSecaoTalentos } from './talentos.js';
@@ -782,6 +783,13 @@ export function renderFichaCompleta() {
       ` : ''}
     </div>
 
+    <!-- FAB Rolagem Rápida de Dados (flutuante, acima do descanso) -->
+    <div id="fab-dados" class="fab-dados no-print">
+      <button class="fab-btn fab-btn-dados" id="fab-toggle-dados" title="Rolagem Rápida de Dados" aria-label="Rolagem Rápida de Dados">
+        <img src="img/icons/ico-home-dados.png" style="width:26px;height:26px;object-fit:contain" alt="Dados" onerror="this.outerHTML='<svg width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\'><polygon points=\'12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5\'/><line x1=\'12\' y1=\'22\' x2=\'12\' y2=\'15.5\'/><polyline points=\'22 8.5 12 15.5 2 8.5\'/><polyline points=\'2 15.5 12 8.5 22 15.5\'/></svg>'">
+      </button>
+    </div>
+
     <!-- FAB Descanso (flutuante) -->
     <div id="fab-descanso" class="fab-descanso no-print">
       <button class="fab-btn" id="fab-toggle-descanso" title="Descanso (Curto / Longo)" aria-label="Menu de Descanso">
@@ -1014,6 +1022,7 @@ export function renderFichaCompleta() {
   setupEventosAtalhosSheet();
   setupEventosHP();
   setupEventosDescanso();
+  setupEventosRolagemRapida();
   setupEventosEdicao();
   setupEventosInventarioSheet();
   setupEventosEspacosMagia();

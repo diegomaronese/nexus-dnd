@@ -1173,4 +1173,4 @@ export function setupEventosDescanso() {
       window.navegar('home');
     });
   });
-}
+}

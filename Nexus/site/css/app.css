@@ -1852,6 +1852,233 @@ tr:hover td { background: rgba(200, 160, 81, 0.05); }
   animation: fadeIn 0.2s;
 }
 
+/* --- FAB Rolagem Rápida de Dados (Acima do Descanso) --- */
+.fab-dados {
+  position: fixed;
+  bottom: calc(80px + var(--safe-bottom, 0px));
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.fab-btn-dados {
+  background: linear-gradient(135deg, #c8a051 0%, #8e6a25 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(200, 160, 81, 0.45);
+}
+.fab-btn-dados:hover {
+  background: linear-gradient(135deg, #d4af37 0%, #a1782a 100%);
+  transform: scale(1.06);
+  box-shadow: 0 6px 20px rgba(200, 160, 81, 0.6);
+}
+.fab-btn-dados:active {
+  transform: scale(0.92);
+}
+
+/* --- Estilos da Janela de Rolagem Rápida (Mesa de Dados Simplificada) --- */
+.quick-dice-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.quick-dice-display {
+  background: linear-gradient(180deg, rgba(22, 27, 34, 0.95) 0%, rgba(13, 17, 23, 0.98) 100%);
+  border: 1.5px solid rgba(200, 160, 81, 0.3);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+  position: relative;
+  text-align: center;
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+.quick-dice-display.empty-state-display {
+  background: rgba(22, 27, 34, 0.6);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+}
+.quick-dice-display.is-rolling {
+  border-color: #f39c12 !important;
+  box-shadow: 0 0 16px rgba(243, 156, 18, 0.35), inset 0 0 12px rgba(243, 156, 18, 0.2);
+}
+.quick-dice-display.is-nat20 {
+  border-color: #2ecc71 !important;
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.4), inset 0 0 16px rgba(46, 204, 113, 0.2);
+}
+.quick-dice-display.is-nat1 {
+  border-color: #e74c3c !important;
+  box-shadow: 0 0 20px rgba(231, 76, 60, 0.4), inset 0 0 16px rgba(231, 76, 60, 0.2);
+}
+.quick-dice-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+}
+.quick-dice-empty-icon {
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 8px rgba(200, 160, 81, 0.4));
+  margin-bottom: 2px;
+}
+.quick-dice-result-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 4px;
+}
+.quick-dice-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.4px;
+}
+.quick-dice-number {
+  font-size: 3.4rem;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+  font-family: 'Cinzel', 'Geist', Georgia, serif;
+  margin: 6px 0;
+  letter-spacing: 1px;
+}
+.quick-dice-display.is-nat20 .quick-dice-number {
+  color: #2ecc71 !important;
+  text-shadow: 0 0 20px rgba(46, 204, 113, 0.7);
+}
+.quick-dice-display.is-nat1 .quick-dice-number {
+  color: #e74c3c !important;
+  text-shadow: 0 0 20px rgba(231, 76, 60, 0.7);
+}
+.quick-dice-crit-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: pulseGlow 1.5s infinite alternate;
+}
+.quick-dice-crit-badge.nat20 {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.45);
+}
+.quick-dice-crit-badge.nat1 {
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.45);
+}
+.quick-dice-history-strip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  width: 100%;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.quick-dice-history-pill {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e6edf3;
+}
+.quick-dice-history-pill.pill-current {
+  background: rgba(200, 160, 81, 0.15);
+  border-color: rgba(200, 160, 81, 0.35);
+}
+.quick-dice-selector-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.quick-dice-section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.quick-dice-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+@media (min-width: 520px) {
+  .quick-dice-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+.quick-dice-btn {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.quick-dice-btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--dice-color, var(--primary));
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+}
+.quick-dice-btn:active {
+  transform: scale(0.93);
+}
+.quick-dice-btn.ativo {
+  border-color: var(--dice-color, #c8a051);
+  background: rgba(200, 160, 81, 0.12);
+  box-shadow: 0 0 10px rgba(200, 160, 81, 0.3);
+}
+.quick-dice-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+.quick-dice-btn:hover .quick-dice-btn-icon {
+  transform: scale(1.1);
+}
+.quick-dice-btn-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+.quick-dice-btn-sub {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
 /* ============================================================
    ESTILOS DE IMPRESSÃO / PDF
    ============================================================ */

@@ -472,4 +472,4 @@ function renderTracoEspecie(traco, herdaAncestralidade = false, ehSubRevelacao =
       ${infoEscolhaTraco}
     </details>
   `;
-}
+}
