@@ -8,7 +8,7 @@ import { CLASSES_INFO } from '../dados-classes.js';
 import { getArmaduras, getArmas, getEquipamentoAventura, getItensMagicos } from '../db.js';
 import { DENOMINACOES, ICONE_MOEDA, NOMES_MOEDA, adicionarMoeda, converterParaMaior, formatarCarteira, pagarCusto, parseCusto, podePagarCusto, proximaDenominacaoMaior, removerQuantidadeMoeda, taxasSaoPadrao } from '../moedas.js';
 import { carregarComprarAtivoPadrao, resetarTaxasMoeda, salvarComprarAtivoPadrao, salvarTaxasMoeda } from '../store.js';
-import { abrirModal, bonusProficiencia, calcMod, fmtMod, fmtPeso, getCapacidadeCarga, getPesoTotalInventario, mdParaHtml, semAcento, toast } from '../utils.js';
+import { abrirModal, bonusProficiencia, calcMod, fmtMod, fmtPeso, getCapacidadeCarga, getItensSintonizados, getLimiteSintonizacao, getPesoTotalInventario, itemRequerSintonizacao, mdParaHtml, semAcento, toast } from '../utils.js';
 import { getEstadoFuria } from './classes/barbaro.js';
 import { getEstadoRecursosGuardiao } from './classes/guardiao.js';
 import { _salvarEstadoColapso, _secoesInvColapsadas } from './colapso.js';
@@ -39,6 +39,10 @@ export function renderSecaoInventario() {
   const _mostrarSobrecarga = _carga.sobrecarregado && !!char?.config?.sobrecarga_afeta_deslocamento;
   const _corCarga = _mostrarSobrecarga ? 'var(--danger)' : 'var(--text-muted)';
 
+  const sintonizados = getItensSintonizados(inv);
+  const totalSintonizados = sintonizados.length;
+  const limiteSint = getLimiteSintonizacao(char);
+
   // Separar equipados, não equipados, e zerados
   const equipados = [];
   const naoEquipados = [];
@@ -60,10 +64,21 @@ export function renderSecaoInventario() {
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 0;border-bottom:1px solid var(--border-light);margin-bottom:6px">
-        <span id="sheet-peso-valor" style="font-size:0.8rem;cursor:pointer;color:${_corCarga}" onclick="window.mostrarCalculoCarga()" title="Ver cálculo da capacidade de carga">
-          Peso: <strong>${fmtPeso(_carga.pesoAtual)}</strong> / ${fmtPeso(_carga.capacidade)} kg
-          ${_mostrarSobrecarga ? '<span style="font-weight:700;margin-left:4px">&#9888; Sobrecarregado</span>' : ''}
-        </span>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <span id="sheet-peso-valor" style="font-size:0.8rem;cursor:pointer;color:${_corCarga}" onclick="window.mostrarCalculoCarga()" title="Ver cálculo da capacidade de carga">
+            Peso: <strong>${fmtPeso(_carga.pesoAtual)}</strong> / ${fmtPeso(_carga.capacidade)} kg
+            ${_mostrarSobrecarga ? '<span style="font-weight:700;margin-left:4px">&#9888; Sobrecarregado</span>' : ''}
+          </span>
+          <span id="sheet-sintonizacao-status" class="inv-attunement-status" style="font-size:0.8rem;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:12px;background:rgba(147,51,234,0.12);border:1px solid rgba(168,85,247,0.3);color:var(--text-color, #d8b4fe);user-select:none" title="Itens Sintonizados (${totalSintonizados}/${limiteSint}). Clique para gerenciar sintonizações.">
+            <span style="font-size:0.8rem;color:#a855f7">✦</span>
+            <span>Sintonização: <strong>${totalSintonizados}</strong>/${limiteSint}</span>
+            <span class="inv-attunement-dots" style="display:inline-flex;gap:3px;margin-left:2px">
+              ${Array.from({ length: limiteSint }).map((_, i) => `
+                <span class="attunement-dot ${i < totalSintonizados ? 'active' : ''}" style="width:7px;height:7px;border-radius:50%;background:${i < totalSintonizados ? '#a855f7' : 'rgba(160,160,160,0.3)'};display:inline-block;box-shadow:${i < totalSintonizados ? '0 0 4px #a855f7' : 'none'}"></span>
+              `).join('')}
+            </span>
+          </span>
+        </div>
         <label class="no-print" style="display:flex;align-items:center;gap:4px;font-size:0.72rem;color:var(--text-muted);cursor:pointer" title="Se ligado, sobrecarga reduz o Deslocamento para 1,5 m">
           <input type="checkbox" id="cfg-sobrecarga" ${char?.config?.sobrecarga_afeta_deslocamento ? 'checked' : ''}>
           Sobrecarga afeta deslocamento
@@ -121,6 +136,10 @@ function renderSheetInvLista(equipados, naoEquipados, zerados) {
 
 /** Renderiza um item do inventário na ficha */
 function renderSheetInvItem(item, idx) {
+  const requerSint = itemRequerSintonizacao(item);
+  const isSintonizado = requerSint && !!item.sintonizado;
+  const sintOk = !requerSint || item.sintonizado;
+
   // Badge de proficiência
   let profBadge = '';
   if (item.tipo === 'arma' && item.dados?.categoria) {
@@ -168,11 +187,11 @@ function renderSheetInvItem(item, idx) {
 
     const temProf = sheetTemProfArma({ categoria: item.dados.categoria, propriedades: item.dados.propriedades || '' });
     const bonusAtq = modAtq + (temProf ? prof : 0);
-    // Bônus de ataque de talentos e itens mágicos
+    // Bônus de ataque de talentos e itens mágicos (aplica bônus mágico apenas se sintOk)
     let bonusAtqTalento = 0;
     const _passivos = passivosTalentosCache || {};
     if (isDistancia) bonusAtqTalento += _passivos.bonusAtaqueDistancia || 0;
-    const bonusAtqMagico = parseInt(item.dados.bonus_ataque) || 0;
+    const bonusAtqMagico = sintOk ? (parseInt(item.dados.bonus_ataque) || 0) : 0;
     const bonusAtqFinal = bonusAtq + bonusAtqTalento + bonusAtqMagico;
     ataqueInfo = `<span class="badge badge-secondary" style="font-size:0.65rem">Atq ${fmtMod(bonusAtqFinal)}</span>`;
     if (ataqueImprudenteAtivo() && usaForcaNoAtaque) {
@@ -201,13 +220,13 @@ function renderSheetInvItem(item, idx) {
       const estadoFuria = getEstadoFuria();
       const bonusFuria = estadoFuria?.ativa && usaForcaNoAtaque ? (estadoFuria.dano || 0) : 0;
       const bonusTotalDano = modAtq + bonusFuria;
-      // Bônus de dano de talentos e itens mágicos
+      // Bônus de dano de talentos e itens mágicos (aplica bônus mágico apenas se sintOk)
       let bonusDanoTalento = 0;
       const ehArremesso = props.includes('arremesso');
       const usaUmaMao = !props.includes('duas mãos') && !props.includes('pesada');
       if (usaUmaMao && !isDistancia) bonusDanoTalento += _passivos.bonusDanoUmaMao || 0;
       if (ehArremesso) bonusDanoTalento += _passivos.bonusDanoArremesso || 0;
-      const bonusDanoMagico = parseInt(item.dados.bonus_dano) || parseInt(item.dados.bonus_ataque) || 0;
+      const bonusDanoMagico = sintOk ? (parseInt(item.dados.bonus_dano) || parseInt(item.dados.bonus_ataque) || 0) : 0;
       const bonusTotalDanoFinal = bonusTotalDano + bonusDanoTalento + bonusDanoMagico;
 
       if (modExistente) {
@@ -236,6 +255,13 @@ function renderSheetInvItem(item, idx) {
   if (item.tipo === 'customizado') {
     const bca = parseInt(item.dados?.bonus_ca) || 0;
     const batq = parseInt(item.dados?.bonus_ataque) || 0;
+    if (requerSint) {
+      if (item.sintonizado) {
+        customBadges += `<span class="badge badge-sintonizado" style="font-size:0.6rem;background:rgba(147,51,234,0.18);color:#c084fc;border:1px solid rgba(168,85,247,0.45);font-weight:600" title="Item Sintonizado">✦ Sintonizado</span> `;
+      } else {
+        customBadges += `<span class="badge badge-nao-sintonizado" style="font-size:0.6rem;background:rgba(255,255,255,0.05);color:var(--text-muted);border:1px dashed rgba(160,160,160,0.3)" title="Requer sintonização para ativar">Requer Sint.</span> `;
+      }
+    }
     if (bca !== 0) customBadges += `<span class="badge" style="font-size:0.6rem;background:#e8eaf6;color:#3949ab;border:1px solid #9fa8da">CA ${bca > 0 ? '+' : ''}${bca}</span> `;
     if (batq !== 0) customBadges += `<span class="badge badge-secondary" style="font-size:0.65rem">Atq ${batq > 0 ? '+' : ''}${batq}</span> `;
     if (item.dados?.dano) customBadges += `<span class="badge" style="font-size:0.6rem;background:#fce4ec;color:#c62828;border:1px solid #ef9a9a">${item.dados.dano}</span> `;
@@ -247,8 +273,12 @@ function renderSheetInvItem(item, idx) {
     if (item.dados?.raridade) {
       magicoBadges += `<span class="badge badge-accent" style="font-size:0.6rem">${item.dados.raridade}</span> `;
     }
-    if (item.dados?.sintonizacao) {
-      magicoBadges += `<span class="badge" style="font-size:0.6rem;background:rgba(108,92,231,0.2);color:#a29bfe;border:1px solid rgba(108,92,231,0.4)">Sint.</span> `;
+    if (requerSint) {
+      if (item.sintonizado) {
+        magicoBadges += `<span class="badge badge-sintonizado" style="font-size:0.6rem;background:rgba(147,51,234,0.18);color:#c084fc;border:1px solid rgba(168,85,247,0.45);font-weight:600" title="Item Sintonizado (propriedades mágicas especiais ativas)">✦ Sintonizado</span> `;
+      } else {
+        magicoBadges += `<span class="badge badge-nao-sintonizado" style="font-size:0.6rem;background:rgba(255,255,255,0.05);color:var(--text-muted);border:1px dashed rgba(160,160,160,0.3)" title="Requer sintonização para ativar habilidades especiais">Requer Sint.</span> `;
+      }
     }
     if (item.dados?.bonus_ca || item.dados?.ca) {
       const caVal = item.dados?.ca || `+${item.dados.bonus_ca}`;
@@ -282,7 +312,7 @@ function renderSheetInvItem(item, idx) {
   const isZeroQtd = (item.quantidade ?? 1) <= 0;
 
   return `
-    <div class="inv-item ${item.equipado ? 'inv-item-equipado' : ''} ${isZeroQtd ? 'inv-item-zerado' : ''}" data-idx="${idx}">
+    <div class="inv-item ${item.equipado ? 'inv-item-equipado' : ''} ${isSintonizado ? 'inv-item-sintonizado' : ''} ${isZeroQtd ? 'inv-item-zerado' : ''}" data-idx="${idx}">
       <div class="inv-drag-handle no-print" title="Arrastar para reordenar">&#9776;</div>
       <div style="flex:1;min-width:0;cursor:pointer" data-info-inv-sheet="${idx}" title="Ver detalhes">
         <div class="inv-item-nome">
@@ -312,6 +342,11 @@ function renderSheetInvItem(item, idx) {
         <label class="form-check inv-equip-label" title="Equipar/Desequipar">
           <input type="checkbox" data-sheet-equip="${idx}" ${item.equipado ? 'checked' : ''}> Eq.
         </label>
+        ${requerSint ? `
+          <label class="form-check inv-sint-label ${item.sintonizado ? 'inv-sint-ativo' : ''}" title="${item.sintonizado ? 'Sintonizado (clique para dessintonizar)' : 'Sintonizar item (Máx: ' + getLimiteSintonizacao(char) + ')'}">
+            <input type="checkbox" data-sheet-sint="${idx}" ${item.sintonizado ? 'checked' : ''}> Sint.
+          </label>
+        ` : ''}
         <button class="btn btn-sm btn-danger btn-icon" data-sheet-rem-inv="${idx}">&times;</button>
       </div>
     </div>
@@ -328,6 +363,12 @@ export function setupEventosInventarioSheet() {
       salvar();
       renderFichaCompleta();
     });
+  }
+
+  // Gerenciamento de sintonização via status bar
+  const btnSintStatus = document.getElementById('sheet-sintonizacao-status');
+  if (btnSintStatus) {
+    btnSintStatus.onclick = () => abrirModalGerenciarSintonizacao();
   }
 
   const invContainer = document.getElementById('sheet-inventario');
@@ -365,6 +406,33 @@ export function setupEventosInventarioSheet() {
         // Re-renderizar ficha inteira para recalcular CA e outros stats
         renderFichaCompleta();
       }
+    });
+  });
+
+  // Sintonizar / dessintonizar item mágico
+  document.querySelectorAll('[data-sheet-sint]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const idx = parseInt(cb.dataset.sheetSint);
+      const item = char.inventario[idx];
+      if (!item) return;
+
+      if (cb.checked) {
+        const sintonizados = getItensSintonizados(char.inventario);
+        const limite = getLimiteSintonizacao(char);
+        if (sintonizados.length >= limite) {
+          cb.checked = false;
+          toast(`Limite de sintonização atingido (${limite} itens). Dessintonize um item antes de sintonizar outro.`, 'warning');
+          return;
+        }
+        item.sintonizado = true;
+        toast(`✦ ${item.nome} sintonizado!`, 'success');
+      } else {
+        item.sintonizado = false;
+        toast(`${item.nome} dessintonizado.`, 'info');
+      }
+
+      salvar();
+      renderFichaCompleta();
     });
   });
 
@@ -459,6 +527,12 @@ export function setupEventosInventarioSheet() {
         <input type="number" class="form-input" id="ic-peso" placeholder="0" min="0" step="0.1" style="max-width:140px">
         <div style="font-size:0.65rem;color:var(--text-muted)">em kg (ex: 0,5)</div>
       </div>
+      <div class="form-group" style="margin-top:8px">
+        <label class="form-check" style="cursor:pointer">
+          <input type="checkbox" id="ic-sint"> Requer Sintonização
+        </label>
+        <div style="font-size:0.65rem;color:var(--text-muted)">Se marcado, o item só concederá bônus mágicos especiais quando estiver sintonizado na ficha.</div>
+      </div>
       <div id="ic-erros" style="display:none;color:var(--danger);font-size:0.8rem;margin-top:8px"></div>
     `, '<button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button><button class="btn btn-primary" id="btn-add-ic">Adicionar</button>');
 
@@ -470,6 +544,7 @@ export function setupEventosInventarioSheet() {
       const atq = parseInt(document.getElementById('ic-atq')?.value) || 0;
       const pesoRaw = document.getElementById('ic-peso')?.value?.trim() || '';
       const pesoNum = pesoRaw ? parseFloat(pesoRaw.replace(',', '.')) : 0;
+      const reqSint = document.getElementById('ic-sint')?.checked || false;
       const errosEl = document.getElementById('ic-erros');
       const erros = [];
 
@@ -503,11 +578,13 @@ export function setupEventosInventarioSheet() {
         tipo: 'customizado',
         quantidade: 1,
         equipado: false,
+        sintonizado: false,
         descricao: desc,
         dados: {
           bonus_ca: String(ca),
           dano: danoVal,
           bonus_ataque: String(atq),
+          sintonizacao: reqSint,
           peso: (pesoNum > 0 ? `${fmtPeso(pesoNum)} kg` : '')
         }
       });
@@ -702,6 +779,12 @@ function abrirModalEditarItemCustomizado(item, idx) {
         <div style="font-size:0.65rem;color:var(--text-muted)">-5 a +10</div>
       </div>
     </div>
+    <div class="form-group" style="margin-top:8px">
+      <label class="form-check" style="cursor:pointer">
+        <input type="checkbox" id="ic-sint" ${(d.sintonizacao || item.sintonizado) ? 'checked' : ''}> Requer Sintonização
+      </label>
+      <div style="font-size:0.65rem;color:var(--text-muted)">Se marcado, o item só concederá bônus mágicos especiais quando estiver sintonizado na ficha.</div>
+    </div>
     <div id="ic-erros" style="display:none;color:var(--danger);font-size:0.8rem;margin-top:8px"></div>
   `, '<button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button><button class="btn btn-primary" id="btn-salvar-ic">Salvar</button>');
 
@@ -711,6 +794,7 @@ function abrirModalEditarItemCustomizado(item, idx) {
     const ca = parseInt(document.getElementById('ic-ca')?.value) || 0;
     const danoVal = document.getElementById('ic-dano')?.value?.trim() || '';
     const atq = parseInt(document.getElementById('ic-atq')?.value) || 0;
+    const reqSint = document.getElementById('ic-sint')?.checked || false;
     const errosEl = document.getElementById('ic-erros');
     const erros = [];
 
@@ -733,6 +817,10 @@ function abrirModalEditarItemCustomizado(item, idx) {
     char.inventario[idx].dados.bonus_ca = String(ca);
     char.inventario[idx].dados.dano = danoVal;
     char.inventario[idx].dados.bonus_ataque = String(atq);
+    char.inventario[idx].dados.sintonizacao = reqSint;
+    if (!reqSint) {
+      char.inventario[idx].sintonizado = false;
+    }
     salvar();
     window.fecharModal();
     renderFichaCompleta();
@@ -948,7 +1036,26 @@ async function mostrarDetalheItemSheet(item) {
   if (!item) return;
   const dados = await carregarDadosEquipSheet();
   const propsDescs = dados.propriedadesArmas || [];
+  const requerSint = itemRequerSintonizacao(item);
   let corpo = '';
+
+  if (requerSint) {
+    corpo += `
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;background:rgba(147,51,234,0.1);border:1px solid rgba(168,85,247,0.35);border-radius:var(--radius);margin-bottom:12px">
+        <div>
+          <div style="font-weight:700;font-size:0.85rem;color:#c084fc;display:flex;align-items:center;gap:6px">
+            <span>✦</span> Sintonização Mágica
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-muted)">
+            ${item.sintonizado ? 'Este item está sintonizado e ativo no personagem.' : 'Este item requer sintonização para liberar todas as suas propriedades mágicas.'}
+          </div>
+        </div>
+        <button class="btn btn-sm ${item.sintonizado ? 'btn-secondary' : 'btn-accent'}" id="btn-toggle-sint-modal">
+          ${item.sintonizado ? 'Dessintonizar' : '✦ Sintonizar'}
+        </button>
+      </div>
+    `;
+  }
 
   if (item.tipo === 'arma') {
     const d = item.dados || {};
@@ -1065,6 +1172,124 @@ async function mostrarDetalheItemSheet(item) {
   } else {
     abrirModal(item.nome, corpo);
   }
+
+  // Evento do botão de toggle de sintonização dentro do modal de detalhes
+  if (requerSint) {
+    document.getElementById('btn-toggle-sint-modal')?.addEventListener('click', () => {
+      if (!item.sintonizado) {
+        const sintonizados = getItensSintonizados(char.inventario);
+        const limite = getLimiteSintonizacao(char);
+        if (sintonizados.length >= limite) {
+          toast(`Limite de sintonização atingido (${limite} itens). Dessintonize um item antes.`, 'warning');
+          return;
+        }
+        item.sintonizado = true;
+        toast(`✦ ${item.nome} sintonizado!`, 'success');
+      } else {
+        item.sintonizado = false;
+        toast(`${item.nome} dessintonizado.`, 'info');
+      }
+      salvar();
+      renderFichaCompleta();
+      window.fecharModal();
+    });
+  }
+}
+
+/** Modal centralizado para visualizar e gerenciar sintonizações de itens mágicos */
+export function abrirModalGerenciarSintonizacao() {
+  const inv = char.inventario || [];
+  const limite = getLimiteSintonizacao(char);
+  const itensSint = inv.filter(item => itemRequerSintonizacao(item));
+  const sintonizados = getItensSintonizados(inv);
+  const total = sintonizados.length;
+
+  let classeExtraInfo = '';
+  if (char.classe === 'Artífice') {
+    classeExtraInfo = ` <span style="font-size:0.75rem;color:var(--secondary)">(Artífice nível ${char.nivel || 1} possui limite expandido)</span>`;
+  }
+
+  let html = `
+    <div style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-weight:700;font-size:0.95rem">Slots de Sintonização: <span style="color:#a855f7">${total} / ${limite}</span></span>
+        <span style="display:inline-flex;gap:4px">
+          ${Array.from({ length: limite }).map((_, i) => `
+            <span style="width:10px;height:10px;border-radius:50%;background:${i < total ? '#a855f7' : 'rgba(160,160,160,0.25)'};display:inline-block;box-shadow:${i < total ? '0 0 5px #a855f7' : 'none'}"></span>
+          `).join('')}
+        </span>
+      </div>
+      <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.4">
+        Um personagem pode sintonizar-se com até <strong>${limite}</strong> itens mágicos simultaneamente${classeExtraInfo}.
+        Apenas itens sintonizados concedem suas propriedades mágicas e bônus especiais.
+      </div>
+    </div>
+    <div class="section-divider mt-1 mb-1"><span>Itens no Inventário</span></div>
+  `;
+
+  if (itensSint.length === 0) {
+    html += `
+      <div style="text-align:center;padding:24px 12px;color:var(--text-muted);font-size:0.85rem">
+        Nenhum item que requer sintonização foi encontrado no inventário.<br>
+        <span style="font-size:0.75rem">Adicione itens mágicos ao inventário para sintonizá-los.</span>
+      </div>
+    `;
+  } else {
+    html += `<div style="display:flex;flex-direction:column;gap:8px;max-height:360px;overflow-y:auto;padding-right:4px">`;
+    itensSint.forEach((item) => {
+      const idx = inv.indexOf(item);
+      const isSint = !!item.sintonizado;
+      const raridade = item.dados?.raridade || item.tipo;
+      const detalheSint = item.dados?.detalhe_sintonizacao || 'Requer Sintonização';
+
+      html += `
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--radius);background:${isSint ? 'rgba(147,51,234,0.1)' : 'var(--bg-secondary, rgba(0,0,0,0.03))'};border:1px solid ${isSint ? 'rgba(168,85,247,0.4)' : 'var(--border-light)'}">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:700;font-size:0.85rem;color:${isSint ? '#c084fc' : 'inherit'}">
+              ${isSint ? '✦ ' : ''}${item.nome}
+            </div>
+            <div style="font-size:0.72rem;color:var(--text-muted);display:flex;gap:4px;flex-wrap:wrap;margin-top:2px">
+              <span class="badge" style="font-size:0.6rem">${raridade}</span>
+              <span>${detalheSint}</span>
+            </div>
+          </div>
+          <button class="btn btn-sm ${isSint ? 'btn-secondary' : 'btn-accent'}" data-modal-sint-toggle="${idx}" style="font-size:0.75rem;padding:4px 10px;white-space:nowrap">
+            ${isSint ? 'Dessintonizar' : '✦ Sintonizar'}
+          </button>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  }
+
+  abrirModal('Sintonização de Itens Mágicos', html, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+
+  // Eventos de toggle no modal de gerenciamento
+  document.querySelectorAll('[data-modal-sint-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.modalSintToggle);
+      const item = char.inventario[idx];
+      if (!item) return;
+
+      if (!item.sintonizado) {
+        const sintonizadosAgora = getItensSintonizados(char.inventario);
+        if (sintonizadosAgora.length >= limite) {
+          toast(`Limite atingido (${limite} itens). Dessintonize outro item antes.`, 'warning');
+          return;
+        }
+        item.sintonizado = true;
+        toast(`✦ ${item.nome} sintonizado!`, 'success');
+      } else {
+        item.sintonizado = false;
+        toast(`${item.nome} dessintonizado.`, 'info');
+      }
+
+      salvar();
+      renderFichaCompleta();
+      // Re-abrir para atualizar a visualização no modal
+      abrirModalGerenciarSintonizacao();
+    });
+  });
 }
 
 /** Abre o seletor de itens dividido por categorias */
@@ -1353,6 +1578,7 @@ async function mostrarSeletorCategoria() {
             tipo: item.tipo,
             quantidade: quantidadeSelecionada,
             equipado: false,
+            sintonizado: false,
             descricao: item.tipo === 'arma' ? `${item.dados.dano}` : item.tipo === 'armadura' ? `CA: ${item.dados.ca}` : item.tipo === 'magico' ? `${item.dados.raridade || 'Mágico'}` : '',
             dados: { ...item.dados }
           };

@@ -7,7 +7,7 @@
 // Extraido de site/js/pages/sheet.js sem alteracao de comportamento.
 // ============================================================
 import { PERICIAS } from '../dados-classes.js';
-import { abrirModal, calcMod, escHtml, fmtPeso, getMultiplicadorCarga, toast } from '../utils.js';
+import { abrirModal, calcMod, escHtml, fmtPeso, getMultiplicadorCarga, itemRequerSintonizacao, toast } from '../utils.js';
 import { getEstadoFuria } from './classes/barbaro.js';
 import { getProgressaoMonge } from './classes/monge.js';
 import { char, passivosTalentosCache } from './estado.js';
@@ -231,7 +231,7 @@ export function getDeslocamentoFinal(baseDeslocamento) {
 
   // Itens mágicos equipados no inventário
   const inv = char?.inventario || [];
-  inv.filter(i => i.equipado).forEach(i => {
+  inv.filter(i => i.equipado && (!itemRequerSintonizacao(i) || i.sintonizado)).forEach(i => {
     const d = i.dados || {};
     const nome = (i.nome || '').toLowerCase();
     if (d.voo_metros || nome === 'máscara do peregrino' || nome === 'manto das asas') {
@@ -281,7 +281,7 @@ export function getModIniciativa() {
   const base = calcMod(char.atributos.destreza);
   const passivos = passivosTalentosCache || {};
   const inv = char?.inventario || [];
-  const temItemVantagemIniciativa = inv.some(i => i.equipado && (i.dados?.vantagem_iniciativa || (i.nome || '').toLowerCase() === 'máscara do peregrino' || (i.nome || '').toLowerCase() === 'arma de alerta'));
+  const temItemVantagemIniciativa = inv.some(i => i.equipado && (!itemRequerSintonizacao(i) || i.sintonizado) && (i.dados?.vantagem_iniciativa || (i.nome || '').toLowerCase() === 'máscara do peregrino' || (i.nome || '').toLowerCase() === 'arma de alerta'));
   const temEscudoTartaruga = inv.some(i => i.equipado && (i.nome || '').toLowerCase().includes('tartaruga'));
   // Bárbaro nível 7+ (Instinto Selvagem) ou Guerreiro/Campeão nível 3+ (Atleta Extraordinário) ou Item Mágico
   const vantagem = !temEscudoTartaruga && ((char?.classe === 'Bárbaro' && (char?.nivel || 1) >= 7)

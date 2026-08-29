@@ -183,7 +183,7 @@ export function calcCA(personagem, passivos = null) {
 
   // Tatuagem da Barreira (sem armadura de corpo; compatível com escudo)
   if (!armadura) {
-    const tatBarreira = inv.find(i => i.equipado && (
+    const tatBarreira = inv.find(i => i.equipado && (!itemRequerSintonizacao(i) || i.sintonizado) && (
       (i.nome || '').toLowerCase().includes('tatuagem da barreira') ||
       (i.nome || '').toLowerCase().includes('tatuagem barreira') ||
       i.dados?.ca_tatuagem_barreira
@@ -255,7 +255,7 @@ export function calcCA(personagem, passivos = null) {
 
   // Bônus de CA de itens equipados (ex: Armadura +1/+2/+3, Anel de Proteção, Capa de Proteção, Pedra de Ioun (Proteção))
   // O escudo já teve seu bônus contabilizado acima
-  inv.filter(i => i.equipado && i !== escudo && i.dados?.bonus_ca).forEach(i => {
+  inv.filter(i => i.equipado && i !== escudo && i.dados?.bonus_ca && (!itemRequerSintonizacao(i) || i.sintonizado)).forEach(i => {
     ca += parseInt(i.dados.bonus_ca) || 0;
   });
 
@@ -346,7 +346,7 @@ export function calcCDMagia(personagem) {
 
   // Bônus de itens mágicos equipados (ex: Cetro do Protetor do Pacto)
   const inv = personagem.inventario || [];
-  inv.filter(i => i.equipado).forEach(i => {
+  inv.filter(i => i.equipado && (!itemRequerSintonizacao(i) || i.sintonizado)).forEach(i => {
     const b = parseInt(i.dados?.bonus_cd_magia || i.dados?.bonus_magia) || 0;
     if (b) cd += b;
   });
@@ -364,7 +364,7 @@ export function calcAtaqueMagia(personagem) {
   // Bônus de itens mágicos equipados (ex: Varinha do Mago de Guerra, Cetro do Protetor do Pacto)
   const inv = personagem.inventario || [];
   let bonusMagico = 0;
-  inv.filter(i => i.equipado).forEach(i => {
+  inv.filter(i => i.equipado && (!itemRequerSintonizacao(i) || i.sintonizado)).forEach(i => {
     const b = parseInt(i.dados?.bonus_ataque_magico || i.dados?.bonus_magia) || 0;
     if (b > bonusMagico) bonusMagico = b;
   });
@@ -1071,5 +1071,34 @@ export function sincronizarCamposVinculadosNivel(personagem, classeData = null) 
       });
     }
   }
+}
+
+/** Verifica se um item do inventário requer sintonização */
+export function itemRequerSintonizacao(item) {
+  if (!item) return false;
+  if (item.sintonizacao === true || item.dados?.sintonizacao === true || item.dados?.requer_sintonizacao === true) return true;
+  const detalhe = String(item.dados?.detalhe_sintonizacao || '').toLowerCase();
+  if (detalhe.includes('sintoniza')) return true;
+  const tipoLinha = String(item.dados?.tipo_linha || '').toLowerCase();
+  if (tipoLinha.includes('sintoniza')) return true;
+  return false;
+}
+
+/** Retorna o limite máximo de sintonização do personagem (padrão 3, ou até 6 para Artífice) */
+export function getLimiteSintonizacao(personagem) {
+  if (!personagem) return 3;
+  if (personagem.classe === 'Artífice') {
+    const nv = personagem.nivel || 1;
+    if (nv >= 18) return 6;
+    if (nv >= 14) return 5;
+    if (nv >= 10) return 4;
+  }
+  return 3;
+}
+
+/** Retorna a lista de itens atualmente sintonizados no inventário */
+export function getItensSintonizados(inventario) {
+  if (!Array.isArray(inventario)) return [];
+  return inventario.filter(i => itemRequerSintonizacao(i) && !!i.sintonizado);
 }
 
