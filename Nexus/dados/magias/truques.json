@@ -5,6 +5,7 @@
   "magias": [
     {
       "nome": "Acudir os Moribundos",
+      "nome_original": "Spare the Dying",
       "circulo": 0,
       "escola": "Necromancia",
       "classes": [
@@ -21,6 +22,7 @@
     },
     {
       "nome": "Amigos",
+      "nome_original": "Friends",
       "circulo": 0,
       "escola": "Encantamento",
       "classes": [
@@ -38,6 +40,7 @@
     },
     {
       "nome": "Arte Druídica",
+      "nome_original": "Druidcraft",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -52,6 +55,7 @@
     },
     {
       "nome": "Badalar Fúnebre",
+      "nome_original": "Toll the Dead",
       "circulo": 0,
       "escola": "Necromancia",
       "classes": [
@@ -68,6 +72,7 @@
     },
     {
       "nome": "Bolha Ácida",
+      "nome_original": "Acid Splash",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -84,6 +89,7 @@
     },
     {
       "nome": "Bordão Místico",
+      "nome_original": "Shillelagh",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -98,6 +104,7 @@
     },
     {
       "nome": "Chama Sagrada",
+      "nome_original": "Sacred Flame",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -112,6 +119,7 @@
     },
     {
       "nome": "Chicote de Espinhos",
+      "nome_original": "Thorn Whip",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -127,6 +135,7 @@
     },
     {
       "nome": "Criar Chamas",
+      "nome_original": "Produce Flame",
       "circulo": 0,
       "escola": "Invocação",
       "classes": [
@@ -141,6 +150,7 @@
     },
     {
       "nome": "Elementalismo",
+      "nome_original": "Elementalism",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -158,6 +168,7 @@
     },
     {
       "nome": "Explosão Elemental",
+      "nome_original": "Sorcerous Burst",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -172,6 +183,7 @@
     },
     {
       "nome": "Fagulha Estelar",
+      "nome_original": "Starry Wisp",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -187,6 +199,7 @@
     },
     {
       "nome": "Golpe Certeiro",
+      "nome_original": "True Strike",
       "circulo": 0,
       "escola": "Adivinhação",
       "classes": [
@@ -205,6 +218,7 @@
     },
     {
       "nome": "Ilusão Menor",
+      "nome_original": "Minor Illusion",
       "circulo": 0,
       "escola": "Ilusão",
       "classes": [
@@ -222,6 +236,7 @@
     },
     {
       "nome": "Luz",
+      "nome_original": "Light",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -240,6 +255,7 @@
     },
     {
       "nome": "Luzes Dançantes",
+      "nome_original": "Dancing Lights",
       "circulo": 0,
       "escola": "Ilusão",
       "classes": [
@@ -257,6 +273,7 @@
     },
     {
       "nome": "Mensagem",
+      "nome_original": "Message",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -275,6 +292,7 @@
     },
     {
       "nome": "Mãos Mágicas",
+      "nome_original": "Mage Hand",
       "circulo": 0,
       "escola": "Invocação",
       "classes": [
@@ -293,6 +311,7 @@
     },
     {
       "nome": "Orientação",
+      "nome_original": "Guidance",
       "circulo": 0,
       "escola": "Adivinhação",
       "classes": [
@@ -309,6 +328,7 @@
     },
     {
       "nome": "Palavra de Radiância",
+      "nome_original": "Word of Radiance",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -323,6 +343,7 @@
     },
     {
       "nome": "Prestidigitação Arcana",
+      "nome_original": "Prestidigitation",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -341,6 +362,7 @@
     },
     {
       "nome": "Proteção Contra Lâminas",
+      "nome_original": "Blade Ward",
       "circulo": 0,
       "escola": "Abjuração",
       "classes": [
@@ -358,6 +380,7 @@
     },
     {
       "nome": "Raio Místico",
+      "nome_original": "Eldritch Blast",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -372,6 +395,7 @@
     },
     {
       "nome": "Raio de Fogo",
+      "nome_original": "Fire Bolt",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -388,6 +412,7 @@
     },
     {
       "nome": "Raio de Gelo",
+      "nome_original": "Ray of Frost",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -404,6 +429,7 @@
     },
     {
       "nome": "Rajada de Veneno",
+      "nome_original": "Poison Spray",
       "circulo": 0,
       "escola": "Necromancia",
       "classes": [
@@ -422,6 +448,7 @@
     },
     {
       "nome": "Reparar",
+      "nome_original": "Mending",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -441,6 +468,7 @@
     },
     {
       "nome": "Resistência",
+      "nome_original": "Resistance",
       "circulo": 0,
       "escola": "Abjuração",
       "classes": [
@@ -457,6 +485,7 @@
     },
     {
       "nome": "Talho Mental",
+      "nome_original": "Mind Sliver",
       "circulo": 0,
       "escola": "Encantamento",
       "classes": [
@@ -474,6 +503,7 @@
     },
     {
       "nome": "Taumaturgia",
+      "nome_original": "Thaumaturgy",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -488,6 +518,7 @@
     },
     {
       "nome": "Toque Chocante",
+      "nome_original": "Shocking Grasp",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -504,6 +535,7 @@
     },
     {
       "nome": "Toque Necrótico",
+      "nome_original": "Chill Touch",
       "circulo": 0,
       "escola": "Necromancia",
       "classes": [
@@ -520,6 +552,7 @@
     },
     {
       "nome": "Trovão",
+      "nome_original": "Thunderclap",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -539,6 +572,7 @@
     },
     {
       "nome": "Zombaria Perversa",
+      "nome_original": "Vicious Mockery",
       "circulo": 0,
       "escola": "Encantamento",
       "classes": [

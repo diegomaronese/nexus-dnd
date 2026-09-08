@@ -3,7 +3,7 @@
 // Extraido de site/js/pages/creator.js sem alteracao de comportamento.
 // ============================================================
 import { ATRIBUTOS_NOMES, CLASSES_INFO } from '../dados-classes.js';
-import { calcMod, calcPVNivel1, descreverCapacidadeCarga, escHtml, getTamanho, processarImagemArquivo, recortarImagemArquivo, toast } from '../utils.js';
+import { calcMod, calcPVNivel1, descreverCapacidadeCarga, escHtml, getTamanho, processarImagemArquivo, recortarImagemArquivo, semAcento, toast } from '../utils.js';
 import { dadosCache, personagem } from './wizard.js';
 
 // ============================================================

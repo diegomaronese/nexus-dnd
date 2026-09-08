@@ -5,6 +5,7 @@
   "magias": [
     {
       "nome": "Antipatia/Simpatia",
+      "nome_original": "Antipathy/Sympathy",
       "circulo": 8,
       "escola": "Encantamento",
       "classes": [
@@ -21,6 +22,7 @@
     },
     {
       "nome": "Aura Sagrada",
+      "nome_original": "Holy Aura",
       "circulo": 8,
       "escola": "Abjuração",
       "classes": [
@@ -35,6 +37,7 @@
     },
     {
       "nome": "Campo Antimagia",
+      "nome_original": "Antimagic Field",
       "circulo": 8,
       "escola": "Abjuração",
       "classes": [
@@ -50,6 +53,7 @@
     },
     {
       "nome": "Clone",
+      "nome_original": "Clone",
       "circulo": 8,
       "escola": "Necromancia",
       "classes": [
@@ -64,6 +68,7 @@
     },
     {
       "nome": "Controlar o Clima",
+      "nome_original": "Control Weather",
       "circulo": 8,
       "escola": "Transmutação",
       "classes": [
@@ -80,6 +85,7 @@
     },
     {
       "nome": "Dominar Monstro",
+      "nome_original": "Dominate Monster",
       "circulo": 8,
       "escola": "Encantamento",
       "classes": [
@@ -97,6 +103,7 @@
     },
     {
       "nome": "Explosão Solar",
+      "nome_original": "Sunburst",
       "circulo": 8,
       "escola": "Evocação",
       "classes": [
@@ -114,6 +121,7 @@
     },
     {
       "nome": "Formas Animais",
+      "nome_original": "Animal Shapes",
       "circulo": 8,
       "escola": "Transmutação",
       "classes": [
@@ -128,6 +136,7 @@
     },
     {
       "nome": "Labirinto",
+      "nome_original": "Maze",
       "circulo": 8,
       "escola": "Invocação",
       "classes": [
@@ -142,6 +151,7 @@
     },
     {
       "nome": "Limpar a Mente",
+      "nome_original": "Mind Blank",
       "circulo": 8,
       "escola": "Abjuração",
       "classes": [
@@ -157,6 +167,7 @@
     },
     {
       "nome": "Loquacidade",
+      "nome_original": "Glibness",
       "circulo": 8,
       "escola": "Encantamento",
       "classes": [
@@ -172,6 +183,7 @@
     },
     {
       "nome": "Nuvem Incendiária",
+      "nome_original": "Incendiary Cloud",
       "circulo": 8,
       "escola": "Invocação",
       "classes": [
@@ -188,6 +200,7 @@
     },
     {
       "nome": "Palavra de Poder: Atordoar",
+      "nome_original": "Power Word Stun",
       "circulo": 8,
       "escola": "Encantamento",
       "classes": [
@@ -205,6 +218,7 @@
     },
     {
       "nome": "Semiplano",
+      "nome_original": "Demiplane",
       "circulo": 8,
       "escola": "Invocação",
       "classes": [
@@ -221,6 +235,7 @@
     },
     {
       "nome": "Suplício",
+      "nome_original": "Befuddlement",
       "circulo": 8,
       "escola": "Encantamento",
       "classes": [
@@ -238,6 +253,7 @@
     },
     {
       "nome": "Telepatia",
+      "nome_original": "Telepathy",
       "circulo": 8,
       "escola": "Adivinhação",
       "classes": [
@@ -252,6 +268,7 @@
     },
     {
       "nome": "Terremoto",
+      "nome_original": "Earthquake",
       "circulo": 8,
       "escola": "Transmutação",
       "classes": [
@@ -268,6 +285,7 @@
     },
     {
       "nome": "Tsunami",
+      "nome_original": "Tsunami",
       "circulo": 8,
       "escola": "Invocação",
       "classes": [

@@ -671,7 +671,10 @@ export function debounce(fn, ms = 300) {
 
 /** Remove acentos para busca */
 export function semAcento(str) {
-  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  return (str || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+if (typeof window !== 'undefined') {
+  window.semAcento = semAcento;
 }
 
 /** Contador de sub-modais ativos */

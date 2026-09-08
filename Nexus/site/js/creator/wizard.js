@@ -15,7 +15,7 @@ import { ATRIBUTOS_KEYS, CLASSES_INFO, POINT_BUY_CUSTOS, POINT_BUY_TOTAL } from 
 import { criarCarteiraVazia } from '../moedas.js';
 import { validarEscolhasTalento } from '../regras-cobertura.js';
 import { salvarPersonagem } from '../store.js';
-import { calcMod, calcPVNivel1, getBonusTruquesOrdem, getEspacosMagia, getMagiaPreparadas, getTruquesConhecidos, magiaMagoEstaNoGrimorio, toast } from '../utils.js';
+import { calcMod, calcPVNivel1, getBonusTruquesOrdem, getEspacosMagia, getMagiaPreparadas, getTruquesConhecidos, magiaMagoEstaNoGrimorio, semAcento, toast } from '../utils.js';
 import { ANTECEDENTES_ESCOLHAS, CLASSES_ESCOLHAS, ESPECIES_TRACOS_ESCOLHA, FERRAMENTAS_TODAS, INSTRUMENTOS_MUSICAIS, consolidarPericiasProficientes, obterTruquesEspecie } from './comum.js';
 import { renderStepAntecedente } from './passo-antecedente.js';
 import { renderStepAtributos } from './passo-atributos.js';

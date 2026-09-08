@@ -4,96 +4,115 @@
     "Truques": [
       {
         "nome": "Acudir os Moribundos",
+        "nome_original": "Spare the Dying",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Bolha Ácida",
+        "nome_original": "Acid Splash",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Chicote de Espinhos",
+        "nome_original": "Thorn Whip",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Elementalismo",
+        "nome_original": "Elementalism",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Golpe Certeiro",
+        "nome_original": "True Strike",
         "escola": "Adivinhação",
         "especial": "—"
       },
       {
         "nome": "Luz",
+        "nome_original": "Light",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Luzes Dançantes",
+        "nome_original": "Dancing Lights",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Mãos Mágicas",
+        "nome_original": "Mage Hand",
         "escola": "Conjuração",
         "especial": "—"
       },
       {
         "nome": "Mensagem",
+        "nome_original": "Message",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Orientação",
+        "nome_original": "Guidance",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Prestidigitação Arcana",
+        "nome_original": "Prestidigitation",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Raio de Fogo",
+        "nome_original": "Fire Bolt",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Raio de Gelo",
+        "nome_original": "Ray of Frost",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Rajada de Veneno",
+        "nome_original": "Poison Spray",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Reparar",
+        "nome_original": "Mending",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Resistência",
+        "nome_original": "Resistance",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Talho Mental",
+        "nome_original": "Mind Sliver",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Toque Chocante",
+        "nome_original": "Shocking Grasp",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Trovão",
+        "nome_original": "Thunderclap",
         "escola": "Evocação",
         "especial": "—"
       }
@@ -101,76 +120,91 @@
     "1º Círculo": [
       {
         "nome": "Alarme",
+        "nome_original": "Alarm",
         "escola": "Abjuração",
         "especial": "R"
       },
       {
         "nome": "Curar Ferimentos",
+        "nome_original": "Cure Wounds",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Detectar Magia",
+        "nome_original": "Detect Magic",
         "escola": "Adivinhação",
         "especial": "C, R"
       },
       {
         "nome": "Detectar Veneno e Doença",
+        "nome_original": "Detect Poison and Disease",
         "escola": "Adivinhação",
         "especial": "C, R"
       },
       {
         "nome": "Disfarçar-se",
+        "nome_original": "Disguise Self",
         "escola": "Ilusão",
         "especial": "—"
       },
       {
         "nome": "Fogo das Fadas",
+        "nome_original": "Faerie Fire",
         "escola": "Evocação",
         "especial": "C"
       },
       {
         "nome": "Graxa",
+        "nome_original": "Grease",
         "escola": "Conjuração",
         "especial": "—"
       },
       {
         "nome": "Identificar",
+        "nome_original": "Identify",
         "escola": "Adivinhação",
         "especial": "R"
       },
       {
         "nome": "Passos Largos",
+        "nome_original": "Longstrider",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Purificar Alimentos e Bebidas",
+        "nome_original": "Purify Food and Drink",
         "escola": "Transmutação",
         "especial": "R"
       },
       {
         "nome": "Queda Suave",
+        "nome_original": "Feather Fall",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Retirada Acelerada",
+        "nome_original": "Expeditious Retreat",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Salto",
+        "nome_original": "Jump",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Santuário",
+        "nome_original": "Sanctuary",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Vitalidade Vazia",
+        "nome_original": "False Life",
         "escola": "Necromancia",
         "especial": "—"
       }
@@ -178,121 +212,145 @@
     "2º Círculo": [
       {
         "nome": "Alterar-se",
+        "nome_original": "Alter Self",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Aprimorar Atributo",
+        "nome_original": "Enhance Ability",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Arma Mágica",
+        "nome_original": "Magic Weapon",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Aumentar/Reduzir",
+        "nome_original": "Enlarge/Reduce",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Auxílio",
+        "nome_original": "Aid",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Boca Encantada",
+        "nome_original": "Magic Mouth",
         "escola": "Ilusão",
         "especial": "R"
       },
       {
         "nome": "Chama Contínua",
+        "nome_original": "Continual Flame",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Corda Extradimensional",
+        "nome_original": "Rope Trick",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Escalada de Aranha",
+        "nome_original": "Spider Climb",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Esquentar Metal",
+        "nome_original": "Heat Metal",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Invisibilidade",
+        "nome_original": "Invisibility",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Levitação",
+        "nome_original": "Levitate",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Localizar Objeto",
+        "nome_original": "Locate Object",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Proteção Contra Veneno",
+        "nome_original": "Protection from Poison",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Repouso Tranquilo",
+        "nome_original": "Gentle Repose",
         "escola": "Necromancia",
         "especial": "R"
       },
       {
         "nome": "Restauração Menor",
+        "nome_original": "Lesser Restoration",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Servo Homúnculo",
+        "nome_original": "Homunculus Servant",
         "escola": "Conjuração",
         "especial": "R"
       },
       {
         "nome": "Sopro de Dragão",
+        "nome_original": "Dragon's Breath",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Teia",
+        "nome_original": "Web",
         "escola": "Conjuração",
         "especial": "C"
       },
       {
         "nome": "Tranca Arcana",
+        "nome_original": "Arcane Lock",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Turvar",
+        "nome_original": "Blur",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Ver o Invisível",
+        "nome_original": "See Invisibility",
         "escola": "Adivinhação",
         "especial": "—"
       },
       {
         "nome": "Vigor Arcano",
+        "nome_original": "Arcane Vigor",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Visão no Escuro",
+        "nome_original": "Darkvision",
         "escola": "Transmutação",
         "especial": "—"
       }
@@ -300,71 +358,85 @@
     "3º Círculo": [
       {
         "nome": "Arma Elemental",
+        "nome_original": "Elemental Weapon",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Caminhar Sobre as Águas",
+        "nome_original": "Water Walk",
         "escola": "Transmutação",
         "especial": "R"
       },
       {
         "nome": "Celeridade",
+        "nome_original": "Haste",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Criar Comida e Água",
+        "nome_original": "Create Food and Water",
         "escola": "Conjuração",
         "especial": "—"
       },
       {
         "nome": "Dissipar Magia",
+        "nome_original": "Dispel Magic",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Falar com Mortos",
+        "nome_original": "Speak with Dead",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Forma Gasosa",
+        "nome_original": "Gaseous Form",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Glifo de Proteção",
+        "nome_original": "Glyph of Warding",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Pequeno Refúgio de Leomund",
+        "nome_original": "Leomund's Tiny Hut",
         "escola": "Evocação",
         "especial": "R"
       },
       {
         "nome": "Piscar",
+        "nome_original": "Blink",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Proteção Contra Energia",
+        "nome_original": "Protection from Energy",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Respirar na Água",
+        "nome_original": "Water Breathing",
         "escola": "Transmutação",
         "especial": "R"
       },
       {
         "nome": "Revivificar",
+        "nome_original": "Revivify",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Voo",
+        "nome_original": "Fly",
         "escola": "Transmutação",
         "especial": "C"
       }
@@ -372,51 +444,61 @@
     "4º Círculo": [
       {
         "nome": "Arca Secreta de Leomund",
+        "nome_original": "Leomund's Secret Chest",
         "escola": "Conjuração",
         "especial": "—"
       },
       {
         "nome": "Cão Fiel de Mordenkainen",
+        "nome_original": "Mordenkainen's Faithful Hound",
         "escola": "Conjuração",
         "especial": "—"
       },
       {
         "nome": "Esfera Resiliente de Otiluke",
+        "nome_original": "Otiluke's Resilient Sphere",
         "escola": "Evocação",
         "especial": "C"
       },
       {
         "nome": "Fabricar",
+        "nome_original": "Fabricate",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Invocar Constructo",
+        "nome_original": "Summon Construct",
         "escola": "Conjuração",
         "especial": "C"
       },
       {
         "nome": "Moldar Rochas",
+        "nome_original": "Stone Shape",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Movimentação Livre",
+        "nome_original": "Freedom of Movement",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Olho Arcano",
+        "nome_original": "Arcane Eye",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Pele-Rocha",
+        "nome_original": "Stoneskin",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Santuário Particular de Mordenkainen",
+        "nome_original": "Mordenkainen's Private Sanctum",
         "escola": "Abjuração",
         "especial": "—"
       }
@@ -424,31 +506,37 @@
     "5º Círculo": [
       {
         "nome": "Animar Objetos",
+        "nome_original": "Animate Objects",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Criação",
+        "nome_original": "Creation",
         "escola": "Ilusão",
         "especial": "—"
       },
       {
         "nome": "Círculo de Poder",
+        "nome_original": "Circle of Power",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Muralha de Pedra",
+        "nome_original": "Wall of Stone",
         "escola": "Evocação",
         "especial": "C"
       },
       {
         "nome": "Mão de Bigby",
+        "nome_original": "Bigby's Hand",
         "escola": "Evocação",
         "especial": "C"
       },
       {
         "nome": "Restauração Maior",
+        "nome_original": "Greater Restoration",
         "escola": "Abjuração",
         "especial": "—"
       }

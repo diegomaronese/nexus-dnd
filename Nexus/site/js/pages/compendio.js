@@ -1081,7 +1081,7 @@ async function _renderMagias(container) {
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
         <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
-        <input type="text" class="compendio-search-input" id="busca-magia" placeholder="Buscar magia pelo nome ou descrição...">
+        <input type="text" class="compendio-search-input" id="busca-magia" placeholder="Buscar por nome em português, inglês ou efeito...">
       </div>
 
       <!-- Filtro de Escola -->
@@ -1150,6 +1150,8 @@ async function _renderMagias(container) {
       const matchClasse = classe === 'todas' || (m.classes && m.classes.some(c => semAcento(c) === semAcento(classe)));
       const matchTexto = !termo ||
         semAcento(m.nome).includes(termo) ||
+        (m.nome_original && semAcento(m.nome_original).includes(termo)) ||
+        (m.nome_original === 'Befuddlement' && 'feeblemind'.includes(termo)) ||
         semAcento(m.descricao || '').includes(termo) ||
         semAcento(m.tempo_conjuracao || '').includes(termo);
 
@@ -1192,7 +1194,7 @@ function _gerarCardsMagiaHTML(lista) {
         <div class="compendio-card-header">
           <div style="min-width: 0;">
             <div class="compendio-card-title" style="font-size: 0.95rem;">${escHtml(m.nome)}</div>
-            <div class="compendio-card-subtitle" style="font-size: 0.72rem;">${escHtml(m.escola || '')}</div>
+            <div class="compendio-card-subtitle" style="font-size: 0.72rem;">${escHtml(m.escola || '')}${m.nome_original ? ` &bull; <span style="font-style: italic; opacity: 0.85;">${escHtml(m.nome_original)}</span>` : ''}</div>
           </div>
           <span class="c-badge c-badge-circulo">${circTexto}</span>
         </div>
@@ -1245,6 +1247,7 @@ function _abrirModalMagia(m) {
       </div>
 
       <div style="background: var(--bg-input); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; font-size: 0.82rem;">
+        ${m.nome_original ? `<div style="grid-column: 1 / -1; padding-bottom: 6px; margin-bottom: 2px; border-bottom: 1px solid var(--border-light); font-size: 0.84rem;"><strong>Nome Original (Inglês):</strong> <span style="font-style: italic; color: var(--accent);">${escHtml(m.nome_original)}</span></div>` : ''}
         <div><strong>Tempo de Conjuração:</strong> ${escHtml(m.tempo_conjuracao || '1 Ação')}</div>
         <div><strong>Alcance:</strong> ${escHtml(m.alcance || '9 metros')}</div>
         <div><strong>Componentes:</strong> ${escHtml(m.componentes || 'V, S')}</div>
@@ -1272,7 +1275,8 @@ function _abrirModalMagia(m) {
     </div>
   `;
 
-  abrirModal(m.nome, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
+  const tituloModal = m.nome_original ? `${escHtml(m.nome)} <span style="font-size: 0.8em; font-weight: normal; opacity: 0.8;">(${escHtml(m.nome_original)})</span>` : escHtml(m.nome);
+  abrirModal(tituloModal, corpo, '<button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>');
 }
 
 // ============================================================
@@ -1913,7 +1917,7 @@ async function _renderItensMagicos(container) {
     <div class="compendio-toolbar">
       <div class="compendio-search-wrap">
         <span class="compendio-search-icon">${ICONE_BUSCA_SVG}</span>
-        <input type="text" class="compendio-search-input" id="busca-item-magico" placeholder="Buscar por nome, tipo, propriedade ou efeito...">
+        <input type="text" class="compendio-search-input" id="busca-item-magico" placeholder="Buscar por nome (português ou inglês), tipo, propriedade ou efeito...">
       </div>
       <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
         <select id="filtro-tipo-magico" class="form-select" style="width: auto; min-width: 150px; padding: 6px 28px 6px 10px; font-size: 0.82rem; height: 36px;">
@@ -1999,13 +2003,14 @@ async function _renderItensMagicos(container) {
       // Filtro Texto
       if (termo) {
         const matchNome = semAcento(it.nome || '').includes(termo);
+        const matchOrig = semAcento(it.nome_original || '').includes(termo);
         const matchTipo = semAcento(it.tipo || '').includes(termo);
         const matchSubtipo = semAcento(it.subtipo || '').includes(termo);
         const matchTipoLinha = semAcento(it.tipo_linha || '').includes(termo);
         const matchResumo = semAcento(it.resumo || '').includes(termo);
         const matchDesc = semAcento(it.descricao || '').includes(termo);
         const matchSint = semAcento(it.detalhe_sintonizacao || '').includes(termo);
-        if (!matchNome && !matchTipo && !matchSubtipo && !matchTipoLinha && !matchResumo && !matchDesc && !matchSint) {
+        if (!matchNome && !matchOrig && !matchTipo && !matchSubtipo && !matchTipoLinha && !matchResumo && !matchDesc && !matchSint) {
           return false;
         }
       }
@@ -2049,7 +2054,7 @@ function _gerarCardsItensMagicosHTML(lista) {
           <div>
             <div class="compendio-card-title">${escHtml(it.nome)}</div>
             <div class="compendio-card-subtitle" style="color: var(--text-muted); font-weight: 500;">
-              ${escHtml(it.tipo)}${it.subtipo ? ` (${escHtml(it.subtipo)})` : ''}
+              ${escHtml(it.tipo)}${it.subtipo ? ` (${escHtml(it.subtipo)})` : ''}${it.nome_original ? ` &bull; <span style="font-style: italic; opacity: 0.85;">${escHtml(it.nome_original)}</span>` : ''}
             </div>
           </div>
           <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
@@ -2084,6 +2089,7 @@ function _abrirModalItemMagico(it) {
       </div>
 
       <div style="background: var(--bg-input); padding: 10px 14px; border-radius: var(--radius-sm); margin-bottom: 16px; border-left: 3px solid var(--accent);">
+        ${it.nome_original ? `<div style="font-size: 0.84rem; margin-bottom: 4px; color: var(--ink); padding-bottom: 4px; border-bottom: 1px solid var(--border-light);"><strong>Nome Original (Inglês):</strong> <span style="font-style: italic; color: var(--accent);">${escHtml(it.nome_original)}</span></div>` : ''}
         <div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">
           ${escHtml(tipoLinha)}
         </div>

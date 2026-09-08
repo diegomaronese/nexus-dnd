@@ -5,6 +5,7 @@
   "magias": [
     {
       "nome": "Arca Secreta de Leomund",
+      "nome_original": "Leomund's Secret Chest",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -20,6 +21,7 @@
     },
     {
       "nome": "Assassino Fantasmagórico",
+      "nome_original": "Phantasmal Killer",
       "circulo": 4,
       "escola": "Ilusão",
       "classes": [
@@ -35,6 +37,7 @@
     },
     {
       "nome": "Aura de Pureza",
+      "nome_original": "Aura of Purity",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -50,6 +53,7 @@
     },
     {
       "nome": "Aura de Vida",
+      "nome_original": "Aura of Life",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -65,6 +69,7 @@
     },
     {
       "nome": "Banimento",
+      "nome_original": "Banishment",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -83,6 +88,7 @@
     },
     {
       "nome": "Compulsão",
+      "nome_original": "Compulsion",
       "circulo": 4,
       "escola": "Encantamento",
       "classes": [
@@ -97,6 +103,7 @@
     },
     {
       "nome": "Confusão",
+      "nome_original": "Confusion",
       "circulo": 4,
       "escola": "Encantamento",
       "classes": [
@@ -114,6 +121,7 @@
     },
     {
       "nome": "Controlar Água",
+      "nome_original": "Control Water",
       "circulo": 4,
       "escola": "Transmutação",
       "classes": [
@@ -130,6 +138,7 @@
     },
     {
       "nome": "Convocar Elemental",
+      "nome_original": "Summon Elemental",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -146,6 +155,7 @@
     },
     {
       "nome": "Cão Fiel de Mordenkainen",
+      "nome_original": "Mordenkainen's Faithful Hound",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -161,6 +171,7 @@
     },
     {
       "nome": "Defensor da Fé",
+      "nome_original": "Guardian of Faith",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -175,6 +186,7 @@
     },
     {
       "nome": "Destruição Atordoante",
+      "nome_original": "Staggering Smite",
       "circulo": 4,
       "escola": "Encantamento",
       "classes": [
@@ -189,6 +201,7 @@
     },
     {
       "nome": "Dominar Fera",
+      "nome_original": "Dominate Beast",
       "circulo": 4,
       "escola": "Encantamento",
       "classes": [
@@ -205,6 +218,7 @@
     },
     {
       "nome": "Enfeitiçar Monstro",
+      "nome_original": "Charm Monster",
       "circulo": 4,
       "escola": "Encantamento",
       "classes": [
@@ -223,6 +237,7 @@
     },
     {
       "nome": "Escudo Ardente",
+      "nome_original": "Fire Shield",
       "circulo": 4,
       "escola": "Evocação",
       "classes": [
@@ -239,6 +254,7 @@
     },
     {
       "nome": "Esfera Resiliente de Otiluke",
+      "nome_original": "Otiluke's Resilient Sphere",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -254,6 +270,7 @@
     },
     {
       "nome": "Esfera Vitriólica",
+      "nome_original": "Vitriolic Sphere",
       "circulo": 4,
       "escola": "Evocação",
       "classes": [
@@ -269,6 +286,7 @@
     },
     {
       "nome": "Fabricar",
+      "nome_original": "Fabricate",
       "circulo": 4,
       "escola": "Transmutação",
       "classes": [
@@ -284,6 +302,7 @@
     },
     {
       "nome": "Fonte do Luar",
+      "nome_original": "Font of Moonlight",
       "circulo": 4,
       "escola": "Evocação",
       "classes": [
@@ -299,6 +318,7 @@
     },
     {
       "nome": "Inseto Gigante",
+      "nome_original": "Giant Insect",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -313,6 +333,7 @@
     },
     {
       "nome": "Invisibilidade Maior",
+      "nome_original": "Greater Invisibility",
       "circulo": 4,
       "escola": "Ilusão",
       "classes": [
@@ -329,6 +350,7 @@
     },
     {
       "nome": "Invocar Aberração",
+      "nome_original": "Summon Aberration",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -344,6 +366,7 @@
     },
     {
       "nome": "Invocar Constructo",
+      "nome_original": "Summon Construct",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -359,6 +382,7 @@
     },
     {
       "nome": "Invocar Elementais Menores",
+      "nome_original": "Conjure Minor Elementals",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -374,6 +398,7 @@
     },
     {
       "nome": "Invocar Seres da Floresta",
+      "nome_original": "Conjure Woodland Beings",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -389,6 +414,7 @@
     },
     {
       "nome": "Localizar Criatura",
+      "nome_original": "Locate Creature",
       "circulo": 4,
       "escola": "Adivinhação",
       "classes": [
@@ -408,6 +434,7 @@
     },
     {
       "nome": "Malogro",
+      "nome_original": "Blight",
       "circulo": 4,
       "escola": "Necromancia",
       "classes": [
@@ -425,6 +452,7 @@
     },
     {
       "nome": "Moldar Rochas",
+      "nome_original": "Stone Shape",
       "circulo": 4,
       "escola": "Transmutação",
       "classes": [
@@ -442,6 +470,7 @@
     },
     {
       "nome": "Movimentação Livre",
+      "nome_original": "Freedom of Movement",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -460,6 +489,7 @@
     },
     {
       "nome": "Muralha de Fogo",
+      "nome_original": "Wall of Fire",
       "circulo": 4,
       "escola": "Evocação",
       "classes": [
@@ -476,6 +506,7 @@
     },
     {
       "nome": "Olho Arcano",
+      "nome_original": "Arcane Eye",
       "circulo": 4,
       "escola": "Adivinhação",
       "classes": [
@@ -491,6 +522,7 @@
     },
     {
       "nome": "Pele-Rocha",
+      "nome_original": "Stoneskin",
       "circulo": 4,
       "escola": "Transmutação",
       "classes": [
@@ -509,6 +541,7 @@
     },
     {
       "nome": "Polimorfia",
+      "nome_original": "Polymorph",
       "circulo": 4,
       "escola": "Transmutação",
       "classes": [
@@ -526,6 +559,7 @@
     },
     {
       "nome": "Porta Dimensional",
+      "nome_original": "Dimension Door",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -543,6 +577,7 @@
     },
     {
       "nome": "Presságio",
+      "nome_original": "Divination",
       "circulo": 4,
       "escola": "Adivinhação",
       "classes": [
@@ -559,6 +594,7 @@
     },
     {
       "nome": "Proteção Contra a Morte",
+      "nome_original": "Death Ward",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -574,6 +610,7 @@
     },
     {
       "nome": "Santuário Particular de Mordenkainen",
+      "nome_original": "Mordenkainen's Private Sanctum",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -589,6 +626,7 @@
     },
     {
       "nome": "Tempestade Glacial",
+      "nome_original": "Ice Storm",
       "circulo": 4,
       "escola": "Evocação",
       "classes": [
@@ -605,6 +643,7 @@
     },
     {
       "nome": "Tentáculos Negros de Evard",
+      "nome_original": "Evard's Black Tentacles",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -619,6 +658,7 @@
     },
     {
       "nome": "Terreno Alucinatório",
+      "nome_original": "Hallucinatory Terrain",
       "circulo": 4,
       "escola": "Ilusão",
       "classes": [
@@ -636,6 +676,7 @@
     },
     {
       "nome": "Vinha Agarradora",
+      "nome_original": "Grasping Vine",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [

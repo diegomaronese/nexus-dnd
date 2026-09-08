@@ -3,6 +3,7 @@
   "magias": [
     {
       "nome": "Acalmar Emoções",
+      "nome_original": "Calm Emotions",
       "circulo": 2,
       "escola": "Encantamento",
       "classes": [
@@ -16,6 +17,7 @@
     },
     {
       "nome": "Acudir os Moribundos",
+      "nome_original": "Spare the Dying",
       "circulo": 0,
       "escola": "Necromancia",
       "classes": [
@@ -30,6 +32,7 @@
     },
     {
       "nome": "Alarme",
+      "nome_original": "Alarm",
       "circulo": 1,
       "escola": "Abjuração",
       "classes": [
@@ -44,6 +47,7 @@
     },
     {
       "nome": "Aliado Extraplanar",
+      "nome_original": "Planar Ally",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -56,6 +60,7 @@
     },
     {
       "nome": "Aljava Veloz",
+      "nome_original": "Swift Quiver",
       "circulo": 5,
       "escola": "Transmutação",
       "classes": [
@@ -68,6 +73,7 @@
     },
     {
       "nome": "Alterar-se",
+      "nome_original": "Alter Self",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -82,6 +88,7 @@
     },
     {
       "nome": "Amigos",
+      "nome_original": "Friends",
       "circulo": 0,
       "escola": "Encantamento",
       "classes": [
@@ -97,6 +104,7 @@
     },
     {
       "nome": "Amizade Animal",
+      "nome_original": "Animal Friendship",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -111,6 +119,7 @@
     },
     {
       "nome": "Âncora Planar",
+      "nome_original": "Planar Binding",
       "circulo": 5,
       "escola": "Abjuração",
       "classes": [
@@ -127,6 +136,7 @@
     },
     {
       "nome": "Animar Mortos",
+      "nome_original": "Animate Dead",
       "circulo": 3,
       "escola": "Necromancia",
       "classes": [
@@ -140,6 +150,7 @@
     },
     {
       "nome": "Animar Objetos",
+      "nome_original": "Animate Objects",
       "circulo": 5,
       "escola": "Transmutação",
       "classes": [
@@ -155,6 +166,7 @@
     },
     {
       "nome": "Antipatia/Simpatia",
+      "nome_original": "Antipathy/Sympathy",
       "circulo": 8,
       "escola": "Encantamento",
       "classes": [
@@ -169,6 +181,7 @@
     },
     {
       "nome": "Aprimorar Atributo",
+      "nome_original": "Enhance Ability",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -187,6 +200,7 @@
     },
     {
       "nome": "Aprisionamento",
+      "nome_original": "Imprisonment",
       "circulo": 9,
       "escola": "Abjuração",
       "classes": [
@@ -200,6 +214,7 @@
     },
     {
       "nome": "Arca Secreta de Leomund",
+      "nome_original": "Leomund's Secret Chest",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -213,6 +228,7 @@
     },
     {
       "nome": "Arma Elemental",
+      "nome_original": "Elemental Weapon",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -228,6 +244,7 @@
     },
     {
       "nome": "Arma Espiritual",
+      "nome_original": "Spiritual Weapon",
       "circulo": 2,
       "escola": "Evocação",
       "classes": [
@@ -240,6 +257,7 @@
     },
     {
       "nome": "Arma Mágica",
+      "nome_original": "Magic Weapon",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -256,6 +274,7 @@
     },
     {
       "nome": "Armadura Arcana",
+      "nome_original": "Mage Armor",
       "circulo": 1,
       "escola": "Abjuração",
       "classes": [
@@ -269,6 +288,7 @@
     },
     {
       "nome": "Armadura de Agathys",
+      "nome_original": "Armor of Agathys",
       "circulo": 1,
       "escola": "Abjuração",
       "classes": [
@@ -281,6 +301,7 @@
     },
     {
       "nome": "Arrombar",
+      "nome_original": "Knock",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -295,6 +316,7 @@
     },
     {
       "nome": "Arte Druídica",
+      "nome_original": "Druidcraft",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -307,6 +329,7 @@
     },
     {
       "nome": "Assassino Fantasmagórico",
+      "nome_original": "Phantasmal Killer",
       "circulo": 4,
       "escola": "Ilusão",
       "classes": [
@@ -320,6 +343,7 @@
     },
     {
       "nome": "Augúrio",
+      "nome_original": "Augury",
       "circulo": 2,
       "escola": "Adivinhação",
       "classes": [
@@ -334,6 +358,7 @@
     },
     {
       "nome": "Aumentar/Reduzir",
+      "nome_original": "Enlarge/Reduce",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -350,6 +375,7 @@
     },
     {
       "nome": "Aura de Pureza",
+      "nome_original": "Aura of Purity",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -363,6 +389,7 @@
     },
     {
       "nome": "Aura de Vida",
+      "nome_original": "Aura of Life",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -376,6 +403,7 @@
     },
     {
       "nome": "Aura de Vitalidade",
+      "nome_original": "Aura of Vitality",
       "circulo": 3,
       "escola": "Abjuração",
       "classes": [
@@ -390,6 +418,7 @@
     },
     {
       "nome": "Aura Mágica de Nystul",
+      "nome_original": "Nystul's Magic Aura",
       "circulo": 2,
       "escola": "Ilusão",
       "classes": [
@@ -402,6 +431,7 @@
     },
     {
       "nome": "Aura Sagrada",
+      "nome_original": "Holy Aura",
       "circulo": 8,
       "escola": "Abjuração",
       "classes": [
@@ -414,6 +444,7 @@
     },
     {
       "nome": "Auxílio",
+      "nome_original": "Aid",
       "circulo": 2,
       "escola": "Abjuração",
       "classes": [
@@ -431,6 +462,7 @@
     },
     {
       "nome": "Badalar Fúnebre",
+      "nome_original": "Toll the Dead",
       "circulo": 0,
       "escola": "Necromancia",
       "classes": [
@@ -445,6 +477,7 @@
     },
     {
       "nome": "Banimento",
+      "nome_original": "Banishment",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -461,6 +494,7 @@
     },
     {
       "nome": "Banquete de Heróis",
+      "nome_original": "Heroes' Feast",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -475,6 +509,7 @@
     },
     {
       "nome": "Barreira de Lâminas",
+      "nome_original": "Blade Barrier",
       "circulo": 6,
       "escola": "Evocação",
       "classes": [
@@ -487,6 +522,7 @@
     },
     {
       "nome": "Bênção",
+      "nome_original": "Bless",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -500,6 +536,7 @@
     },
     {
       "nome": "Boca Encantada",
+      "nome_original": "Magic Mouth",
       "circulo": 2,
       "escola": "Ilusão",
       "classes": [
@@ -514,6 +551,7 @@
     },
     {
       "nome": "Bola de Fogo",
+      "nome_original": "Fireball",
       "circulo": 3,
       "escola": "Evocação",
       "classes": [
@@ -527,6 +565,7 @@
     },
     {
       "nome": "Bola de Fogo Adiável",
+      "nome_original": "Delayed Blast Fireball",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -540,6 +579,7 @@
     },
     {
       "nome": "Bolha Ácida",
+      "nome_original": "Acid Splash",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -554,6 +594,7 @@
     },
     {
       "nome": "Bom Fruto",
+      "nome_original": "Goodberry",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -567,6 +608,7 @@
     },
     {
       "nome": "Bordão Místico",
+      "nome_original": "Shillelagh",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -579,6 +621,7 @@
     },
     {
       "nome": "Braços de Hadar",
+      "nome_original": "Arms of Hadar",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -591,6 +634,7 @@
     },
     {
       "nome": "Caldeirão Borbulhante de Tasha",
+      "nome_original": "Tasha's Bubbling Cauldron",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -604,6 +648,7 @@
     },
     {
       "nome": "Caminhar no Vento",
+      "nome_original": "Wind Walk",
       "circulo": 6,
       "escola": "Transmutação",
       "classes": [
@@ -616,6 +661,7 @@
     },
     {
       "nome": "Caminhar Sobre as Águas",
+      "nome_original": "Water Walk",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -632,6 +678,7 @@
     },
     {
       "nome": "Campo Antimagia",
+      "nome_original": "Antimagic Field",
       "circulo": 8,
       "escola": "Abjuração",
       "classes": [
@@ -645,6 +692,7 @@
     },
     {
       "nome": "Cão Fiel de Mordenkainen",
+      "nome_original": "Mordenkainen's Faithful Hound",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -658,6 +706,7 @@
     },
     {
       "nome": "Cárcere de Energia",
+      "nome_original": "Forcecage",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -672,6 +721,7 @@
     },
     {
       "nome": "Cativar",
+      "nome_original": "Enthrall",
       "circulo": 2,
       "escola": "Encantamento",
       "classes": [
@@ -685,6 +735,7 @@
     },
     {
       "nome": "Cegueira/Surdez",
+      "nome_original": "Blindness/Deafness",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -700,6 +751,7 @@
     },
     {
       "nome": "Celeridade",
+      "nome_original": "Haste",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -714,6 +766,7 @@
     },
     {
       "nome": "Chama Contínua",
+      "nome_original": "Continual Flame",
       "circulo": 2,
       "escola": "Evocação",
       "classes": [
@@ -729,6 +782,7 @@
     },
     {
       "nome": "Chama Sagrada",
+      "nome_original": "Sacred Flame",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -741,6 +795,7 @@
     },
     {
       "nome": "Chicote de Espinhos",
+      "nome_original": "Thorn Whip",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -754,6 +809,7 @@
     },
     {
       "nome": "Chuva de Meteoros",
+      "nome_original": "Meteor Swarm",
       "circulo": 9,
       "escola": "Evocação",
       "classes": [
@@ -767,6 +823,7 @@
     },
     {
       "nome": "Círculo da Morte",
+      "nome_original": "Circle of Death",
       "circulo": 6,
       "escola": "Necromancia",
       "classes": [
@@ -781,6 +838,7 @@
     },
     {
       "nome": "Círculo de Poder",
+      "nome_original": "Circle of Power",
       "circulo": 5,
       "escola": "Abjuração",
       "classes": [
@@ -796,6 +854,7 @@
     },
     {
       "nome": "Círculo de Teleporte",
+      "nome_original": "Teleportation Circle",
       "circulo": 5,
       "escola": "Invocação",
       "classes": [
@@ -811,6 +870,7 @@
     },
     {
       "nome": "Círculo Mágico",
+      "nome_original": "Magic Circle",
       "circulo": 3,
       "escola": "Abjuração",
       "classes": [
@@ -826,6 +886,7 @@
     },
     {
       "nome": "Clarividência",
+      "nome_original": "Clairvoyance",
       "circulo": 3,
       "escola": "Adivinhação",
       "classes": [
@@ -841,6 +902,7 @@
     },
     {
       "nome": "Clone",
+      "nome_original": "Clone",
       "circulo": 8,
       "escola": "Necromancia",
       "classes": [
@@ -853,6 +915,7 @@
     },
     {
       "nome": "Coluna de Chamas",
+      "nome_original": "Flame Strike",
       "circulo": 5,
       "escola": "Evocação",
       "classes": [
@@ -865,6 +928,7 @@
     },
     {
       "nome": "Comando",
+      "nome_original": "Command",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -879,6 +943,7 @@
     },
     {
       "nome": "Compreender Idiomas",
+      "nome_original": "Comprehend Languages",
       "circulo": 1,
       "escola": "Adivinhação",
       "classes": [
@@ -894,6 +959,7 @@
     },
     {
       "nome": "Compulsão",
+      "nome_original": "Compulsion",
       "circulo": 4,
       "escola": "Encantamento",
       "classes": [
@@ -906,6 +972,7 @@
     },
     {
       "nome": "Comunhão",
+      "nome_original": "Commune",
       "circulo": 5,
       "escola": "Adivinhação",
       "classes": [
@@ -918,6 +985,7 @@
     },
     {
       "nome": "Comunhão com a Natureza",
+      "nome_original": "Commune with Nature",
       "circulo": 5,
       "escola": "Adivinhação",
       "classes": [
@@ -931,6 +999,7 @@
     },
     {
       "nome": "Cone de Frio",
+      "nome_original": "Cone of Cold",
       "circulo": 5,
       "escola": "Evocação",
       "classes": [
@@ -945,6 +1014,7 @@
     },
     {
       "nome": "Confusão",
+      "nome_original": "Confusion",
       "circulo": 4,
       "escola": "Encantamento",
       "classes": [
@@ -960,6 +1030,7 @@
     },
     {
       "nome": "Consagrar",
+      "nome_original": "Hallow",
       "circulo": 5,
       "escola": "Abjuração",
       "classes": [
@@ -972,6 +1043,7 @@
     },
     {
       "nome": "Contágio",
+      "nome_original": "Contagion",
       "circulo": 5,
       "escola": "Necromancia",
       "classes": [
@@ -985,6 +1057,7 @@
     },
     {
       "nome": "Contato Extraplanar",
+      "nome_original": "Contact Other Plane",
       "circulo": 5,
       "escola": "Adivinhação",
       "classes": [
@@ -998,6 +1071,7 @@
     },
     {
       "nome": "Contingência",
+      "nome_original": "Contingency",
       "circulo": 6,
       "escola": "Abjuração",
       "classes": [
@@ -1010,6 +1084,7 @@
     },
     {
       "nome": "Contramagia",
+      "nome_original": "Counterspell",
       "circulo": 3,
       "escola": "Abjuração",
       "classes": [
@@ -1024,6 +1099,7 @@
     },
     {
       "nome": "Controlar Água",
+      "nome_original": "Control Water",
       "circulo": 4,
       "escola": "Transmutação",
       "classes": [
@@ -1038,6 +1114,7 @@
     },
     {
       "nome": "Controlar o Clima",
+      "nome_original": "Control Weather",
       "circulo": 8,
       "escola": "Transmutação",
       "classes": [
@@ -1052,6 +1129,7 @@
     },
     {
       "nome": "Convocar Celestial",
+      "nome_original": "Summon Celestial",
       "circulo": 5,
       "escola": "Invocação",
       "classes": [
@@ -1065,6 +1143,7 @@
     },
     {
       "nome": "Convocar Elemental",
+      "nome_original": "Summon Elemental",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -1079,6 +1158,7 @@
     },
     {
       "nome": "Convocar Familiar",
+      "nome_original": "Find Familiar",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -1091,6 +1171,7 @@
     },
     {
       "nome": "Convocar Feérico",
+      "nome_original": "Summon Fey",
       "circulo": 3,
       "escola": "Invocação",
       "classes": [
@@ -1106,6 +1187,7 @@
     },
     {
       "nome": "Convocar Montaria",
+      "nome_original": "Find Steed",
       "circulo": 2,
       "escola": "Invocação",
       "classes": [
@@ -1118,6 +1200,7 @@
     },
     {
       "nome": "Convocar Relâmpagos",
+      "nome_original": "Call Lightning",
       "circulo": 3,
       "escola": "Invocação",
       "classes": [
@@ -1130,6 +1213,7 @@
     },
     {
       "nome": "Corda Extradimensional",
+      "nome_original": "Rope Trick",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -1143,6 +1227,7 @@
     },
     {
       "nome": "Cordão de Flechas",
+      "nome_original": "Cordon of Arrows",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -1155,6 +1240,7 @@
     },
     {
       "nome": "Coroa da Loucura",
+      "nome_original": "Crown of Madness",
       "circulo": 2,
       "escola": "Encantamento",
       "classes": [
@@ -1170,6 +1256,7 @@
     },
     {
       "nome": "Corrente de Relâmpagos",
+      "nome_original": "Chain Lightning",
       "circulo": 6,
       "escola": "Evocação",
       "classes": [
@@ -1183,6 +1270,7 @@
     },
     {
       "nome": "Crescer Espinhos",
+      "nome_original": "Spike Growth",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -1196,6 +1284,7 @@
     },
     {
       "nome": "Crescimento de Plantas",
+      "nome_original": "Plant Growth",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -1210,6 +1299,7 @@
     },
     {
       "nome": "Criação",
+      "nome_original": "Creation",
       "circulo": 5,
       "escola": "Ilusão",
       "classes": [
@@ -1224,6 +1314,7 @@
     },
     {
       "nome": "Criar Chamas",
+      "nome_original": "Produce Flame",
       "circulo": 0,
       "escola": "Invocação",
       "classes": [
@@ -1236,6 +1327,7 @@
     },
     {
       "nome": "Criar Comida e Água",
+      "nome_original": "Create Food and Water",
       "circulo": 3,
       "escola": "Invocação",
       "classes": [
@@ -1250,6 +1342,7 @@
     },
     {
       "nome": "Criar Mortos-Vivos",
+      "nome_original": "Create Undead",
       "circulo": 6,
       "escola": "Necromancia",
       "classes": [
@@ -1264,6 +1357,7 @@
     },
     {
       "nome": "Criar ou Destruir Água",
+      "nome_original": "Create or Destroy Water",
       "circulo": 1,
       "escola": "Transmutação",
       "classes": [
@@ -1277,6 +1371,7 @@
     },
     {
       "nome": "Criar Passagem",
+      "nome_original": "Passwall",
       "circulo": 5,
       "escola": "Transmutação",
       "classes": [
@@ -1289,6 +1384,7 @@
     },
     {
       "nome": "Cúpula Antivida",
+      "nome_original": "Antilife Shell",
       "circulo": 5,
       "escola": "Abjuração",
       "classes": [
@@ -1301,6 +1397,7 @@
     },
     {
       "nome": "Cura Completa",
+      "nome_original": "Heal",
       "circulo": 6,
       "escola": "Abjuração",
       "classes": [
@@ -1314,6 +1411,7 @@
     },
     {
       "nome": "Cura Completa em Massa",
+      "nome_original": "Mass Heal",
       "circulo": 9,
       "escola": "Abjuração",
       "classes": [
@@ -1326,6 +1424,7 @@
     },
     {
       "nome": "Curar Ferimentos",
+      "nome_original": "Cure Wounds",
       "circulo": 1,
       "escola": "Abjuração",
       "classes": [
@@ -1343,6 +1442,7 @@
     },
     {
       "nome": "Curar Ferimentos em Massa",
+      "nome_original": "Mass Cure Wounds",
       "circulo": 5,
       "escola": "Abjuração",
       "classes": [
@@ -1357,6 +1457,7 @@
     },
     {
       "nome": "Danação",
+      "nome_original": "Hex",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -1369,6 +1470,7 @@
     },
     {
       "nome": "Dança Irresistível de Otto",
+      "nome_original": "Otto's Irresistible Dance",
       "circulo": 6,
       "escola": "Encantamento",
       "classes": [
@@ -1382,6 +1484,7 @@
     },
     {
       "nome": "De Carne para Pedra",
+      "nome_original": "Flesh to Stone",
       "circulo": 6,
       "escola": "Transmutação",
       "classes": [
@@ -1396,6 +1499,7 @@
     },
     {
       "nome": "Dedo da Morte",
+      "nome_original": "Finger of Death",
       "circulo": 7,
       "escola": "Necromancia",
       "classes": [
@@ -1410,6 +1514,7 @@
     },
     {
       "nome": "Defensor da Fé",
+      "nome_original": "Guardian of Faith",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -1422,6 +1527,7 @@
     },
     {
       "nome": "Desejo",
+      "nome_original": "Wish",
       "circulo": 9,
       "escola": "Invocação",
       "classes": [
@@ -1435,6 +1541,7 @@
     },
     {
       "nome": "Desintegrar",
+      "nome_original": "Disintegrate",
       "circulo": 6,
       "escola": "Transmutação",
       "classes": [
@@ -1448,6 +1555,7 @@
     },
     {
       "nome": "Despedaçar",
+      "nome_original": "Shatter",
       "circulo": 2,
       "escola": "Evocação",
       "classes": [
@@ -1462,6 +1570,7 @@
     },
     {
       "nome": "Despertar",
+      "nome_original": "Awaken",
       "circulo": 5,
       "escola": "Transmutação",
       "classes": [
@@ -1475,6 +1584,7 @@
     },
     {
       "nome": "Despistar",
+      "nome_original": "Mislead",
       "circulo": 5,
       "escola": "Ilusão",
       "classes": [
@@ -1489,6 +1599,7 @@
     },
     {
       "nome": "Destruição Atordoante",
+      "nome_original": "Staggering Smite",
       "circulo": 4,
       "escola": "Encantamento",
       "classes": [
@@ -1501,6 +1612,7 @@
     },
     {
       "nome": "Destruição Banidora",
+      "nome_original": "Banishing Smite",
       "circulo": 5,
       "escola": "Invocação",
       "classes": [
@@ -1513,6 +1625,7 @@
     },
     {
       "nome": "Destruição Cauterizante",
+      "nome_original": "Searing Smite",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -1525,6 +1638,7 @@
     },
     {
       "nome": "Destruição Cegante",
+      "nome_original": "Blinding Smite",
       "circulo": 3,
       "escola": "Evocação",
       "classes": [
@@ -1537,6 +1651,7 @@
     },
     {
       "nome": "Destruição Colérica",
+      "nome_original": "Wrathful Smite",
       "circulo": 1,
       "escola": "Necromancia",
       "classes": [
@@ -1549,6 +1664,7 @@
     },
     {
       "nome": "Destruição Divina",
+      "nome_original": "Divine Smite",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -1561,6 +1677,7 @@
     },
     {
       "nome": "Destruição Estrondosa",
+      "nome_original": "Thunderous Smite",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -1573,6 +1690,7 @@
     },
     {
       "nome": "Destruição Radiante",
+      "nome_original": "Shining Smite",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -1585,6 +1703,7 @@
     },
     {
       "nome": "Detectar Magia",
+      "nome_original": "Detect Magic",
       "circulo": 1,
       "escola": "Adivinhação",
       "classes": [
@@ -1605,6 +1724,7 @@
     },
     {
       "nome": "Detectar o Bem e o Mal",
+      "nome_original": "Detect Evil and Good",
       "circulo": 1,
       "escola": "Adivinhação",
       "classes": [
@@ -1618,6 +1738,7 @@
     },
     {
       "nome": "Detectar Pensamentos",
+      "nome_original": "Detect Thoughts",
       "circulo": 2,
       "escola": "Adivinhação",
       "classes": [
@@ -1632,6 +1753,7 @@
     },
     {
       "nome": "Detectar Veneno e Doença",
+      "nome_original": "Detect Poison and Disease",
       "circulo": 1,
       "escola": "Adivinhação",
       "classes": [
@@ -1648,6 +1770,7 @@
     },
     {
       "nome": "Disco Flutuante de Tenser",
+      "nome_original": "Tenser's Floating Disk",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -1660,6 +1783,7 @@
     },
     {
       "nome": "Disfarçar-se",
+      "nome_original": "Disguise Self",
       "circulo": 1,
       "escola": "Ilusão",
       "classes": [
@@ -1675,6 +1799,7 @@
     },
     {
       "nome": "Dissipar Magia",
+      "nome_original": "Dispel Magic",
       "circulo": 3,
       "escola": "Abjuração",
       "classes": [
@@ -1695,6 +1820,7 @@
     },
     {
       "nome": "Dissipar o Bem e o Mal",
+      "nome_original": "Dispel Evil and Good",
       "circulo": 5,
       "escola": "Abjuração",
       "classes": [
@@ -1708,6 +1834,7 @@
     },
     {
       "nome": "Dominar Fera",
+      "nome_original": "Dominate Beast",
       "circulo": 4,
       "escola": "Encantamento",
       "classes": [
@@ -1722,6 +1849,7 @@
     },
     {
       "nome": "Dominar Monstro",
+      "nome_original": "Dominate Monster",
       "circulo": 8,
       "escola": "Encantamento",
       "classes": [
@@ -1737,6 +1865,7 @@
     },
     {
       "nome": "Dominar Pessoa",
+      "nome_original": "Dominate Person",
       "circulo": 5,
       "escola": "Encantamento",
       "classes": [
@@ -1751,6 +1880,7 @@
     },
     {
       "nome": "Duelo Compelido",
+      "nome_original": "Compelled Duel",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -1763,6 +1893,7 @@
     },
     {
       "nome": "Elementalismo",
+      "nome_original": "Elementalism",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -1778,6 +1909,7 @@
     },
     {
       "nome": "Emaranhar",
+      "nome_original": "Entangle",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -1791,6 +1923,7 @@
     },
     {
       "nome": "Encarnação Fantasmagórica",
+      "nome_original": "Weird",
       "circulo": 9,
       "escola": "Ilusão",
       "classes": [
@@ -1804,6 +1937,7 @@
     },
     {
       "nome": "Encontrar Armadilhas",
+      "nome_original": "Find Traps",
       "circulo": 2,
       "escola": "Adivinhação",
       "classes": [
@@ -1818,6 +1952,7 @@
     },
     {
       "nome": "Encontrar o Caminho",
+      "nome_original": "Find the Path",
       "circulo": 6,
       "escola": "Adivinhação",
       "classes": [
@@ -1832,6 +1967,7 @@
     },
     {
       "nome": "Enfeitiçar Monstro",
+      "nome_original": "Charm Monster",
       "circulo": 4,
       "escola": "Encantamento",
       "classes": [
@@ -1848,6 +1984,7 @@
     },
     {
       "nome": "Enfeitiçar Pessoa",
+      "nome_original": "Charm Person",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -1864,6 +2001,7 @@
     },
     {
       "nome": "Escalada de Aranha",
+      "nome_original": "Spider Climb",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -1879,6 +2017,7 @@
     },
     {
       "nome": "Escrita Ilusória",
+      "nome_original": "Illusory Script",
       "circulo": 1,
       "escola": "Ilusão",
       "classes": [
@@ -1893,6 +2032,7 @@
     },
     {
       "nome": "Escudo Arcano",
+      "nome_original": "Shield",
       "circulo": 1,
       "escola": "Abjuração",
       "classes": [
@@ -1906,6 +2046,7 @@
     },
     {
       "nome": "Escudo Ardente",
+      "nome_original": "Fire Shield",
       "circulo": 4,
       "escola": "Evocação",
       "classes": [
@@ -1920,6 +2061,7 @@
     },
     {
       "nome": "Escudo da Fé",
+      "nome_original": "Shield of Faith",
       "circulo": 1,
       "escola": "Abjuração",
       "classes": [
@@ -1933,6 +2075,7 @@
     },
     {
       "nome": "Escuridão",
+      "nome_original": "Darkness",
       "circulo": 2,
       "escola": "Evocação",
       "classes": [
@@ -1947,6 +2090,7 @@
     },
     {
       "nome": "Esfera Congelante de Otiluke",
+      "nome_original": "Otiluke's Freezing Sphere",
       "circulo": 6,
       "escola": "Evocação",
       "classes": [
@@ -1960,6 +2104,7 @@
     },
     {
       "nome": "Esfera Flamejante",
+      "nome_original": "Flaming Sphere",
       "circulo": 2,
       "escola": "Invocação",
       "classes": [
@@ -1974,6 +2119,7 @@
     },
     {
       "nome": "Esfera Resiliente de Otiluke",
+      "nome_original": "Otiluke's Resilient Sphere",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -1987,6 +2133,7 @@
     },
     {
       "nome": "Esfera Vitriólica",
+      "nome_original": "Vitriolic Sphere",
       "circulo": 4,
       "escola": "Evocação",
       "classes": [
@@ -2000,6 +2147,7 @@
     },
     {
       "nome": "Espada de Mordenkainen",
+      "nome_original": "Mordenkainen's Sword",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -2013,6 +2161,7 @@
     },
     {
       "nome": "Espinho Mental",
+      "nome_original": "Mind Spike",
       "circulo": 2,
       "escola": "Adivinhação",
       "classes": [
@@ -2027,6 +2176,7 @@
     },
     {
       "nome": "Esquentar Metal",
+      "nome_original": "Heat Metal",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -2041,6 +2191,7 @@
     },
     {
       "nome": "Estática Sináptica",
+      "nome_original": "Synaptic Static",
       "circulo": 5,
       "escola": "Encantamento",
       "classes": [
@@ -2056,6 +2207,7 @@
     },
     {
       "nome": "Explosão Elemental",
+      "nome_original": "Sorcerous Burst",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -2068,6 +2220,7 @@
     },
     {
       "nome": "Explosão Solar",
+      "nome_original": "Sunburst",
       "circulo": 8,
       "escola": "Evocação",
       "classes": [
@@ -2083,6 +2236,7 @@
     },
     {
       "nome": "Fabricar",
+      "nome_original": "Fabricate",
       "circulo": 4,
       "escola": "Transmutação",
       "classes": [
@@ -2096,6 +2250,7 @@
     },
     {
       "nome": "Faca de Gelo",
+      "nome_original": "Ice Knife",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -2110,6 +2265,7 @@
     },
     {
       "nome": "Fagulha Estelar",
+      "nome_original": "Starry Wisp",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -2123,6 +2279,7 @@
     },
     {
       "nome": "Falar com Animais",
+      "nome_original": "Speak with Animals",
       "circulo": 1,
       "escola": "Adivinhação",
       "classes": [
@@ -2138,6 +2295,7 @@
     },
     {
       "nome": "Falar com Mortos",
+      "nome_original": "Speak with Dead",
       "circulo": 3,
       "escola": "Necromancia",
       "classes": [
@@ -2153,6 +2311,7 @@
     },
     {
       "nome": "Falar com Plantas",
+      "nome_original": "Speak with Plants",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -2167,6 +2326,7 @@
     },
     {
       "nome": "Favor Divino",
+      "nome_original": "Divine Favor",
       "circulo": 1,
       "escola": "Transmutação",
       "classes": [
@@ -2179,6 +2339,7 @@
     },
     {
       "nome": "Flecha Ácida de Melf",
+      "nome_original": "Melf's Acid Arrow",
       "circulo": 2,
       "escola": "Evocação",
       "classes": [
@@ -2191,6 +2352,7 @@
     },
     {
       "nome": "Flecha Relâmpago",
+      "nome_original": "Lightning Arrow",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -2203,6 +2365,7 @@
     },
     {
       "nome": "Fogo das Fadas",
+      "nome_original": "Faerie Fire",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -2217,6 +2380,7 @@
     },
     {
       "nome": "Fome de Hadar",
+      "nome_original": "Hunger of Hadar",
       "circulo": 3,
       "escola": "Invocação",
       "classes": [
@@ -2229,6 +2393,7 @@
     },
     {
       "nome": "Fonte do Luar",
+      "nome_original": "Font of Moonlight",
       "circulo": 4,
       "escola": "Evocação",
       "classes": [
@@ -2242,6 +2407,7 @@
     },
     {
       "nome": "Força Espectral",
+      "nome_original": "Phantasmal Force",
       "circulo": 2,
       "escola": "Ilusão",
       "classes": [
@@ -2256,6 +2422,7 @@
     },
     {
       "nome": "Forma Etérea",
+      "nome_original": "Etherealness",
       "circulo": 7,
       "escola": "Invocação",
       "classes": [
@@ -2272,6 +2439,7 @@
     },
     {
       "nome": "Forma Gasosa",
+      "nome_original": "Gaseous Form",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -2287,6 +2455,7 @@
     },
     {
       "nome": "Formas Animais",
+      "nome_original": "Animal Shapes",
       "circulo": 8,
       "escola": "Transmutação",
       "classes": [
@@ -2299,6 +2468,7 @@
     },
     {
       "nome": "Gargalhada Nefasta de Tasha",
+      "nome_original": "Tasha's Hideous Laughter",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -2313,6 +2483,7 @@
     },
     {
       "nome": "Glifo de Proteção",
+      "nome_original": "Glyph of Warding",
       "circulo": 3,
       "escola": "Abjuração",
       "classes": [
@@ -2328,6 +2499,7 @@
     },
     {
       "nome": "Globo de Invulnerabilidade",
+      "nome_original": "Globe of Invulnerability",
       "circulo": 6,
       "escola": "Abjuração",
       "classes": [
@@ -2341,6 +2513,7 @@
     },
     {
       "nome": "Golpe Certeiro",
+      "nome_original": "True Strike",
       "circulo": 0,
       "escola": "Adivinhação",
       "classes": [
@@ -2357,6 +2530,7 @@
     },
     {
       "nome": "Golpe Constritor",
+      "nome_original": "Ensnaring Strike",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -2369,6 +2543,7 @@
     },
     {
       "nome": "Golpe de Arço",
+      "nome_original": "Steel Wind Strike",
       "circulo": 5,
       "escola": "Invocação",
       "classes": [
@@ -2382,6 +2557,7 @@
     },
     {
       "nome": "Graxa",
+      "nome_original": "Grease",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -2396,6 +2572,7 @@
     },
     {
       "nome": "Guardiões Espirituais",
+      "nome_original": "Spirit Guardians",
       "circulo": 3,
       "escola": "Invocação",
       "classes": [
@@ -2408,6 +2585,7 @@
     },
     {
       "nome": "Heroísmo",
+      "nome_original": "Heroism",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -2421,6 +2599,7 @@
     },
     {
       "nome": "Identificar",
+      "nome_original": "Identify",
       "circulo": 1,
       "escola": "Adivinhação",
       "classes": [
@@ -2435,6 +2614,7 @@
     },
     {
       "nome": "Ilusão Menor",
+      "nome_original": "Minor Illusion",
       "circulo": 0,
       "escola": "Ilusão",
       "classes": [
@@ -2450,6 +2630,7 @@
     },
     {
       "nome": "Ilusão Programada",
+      "nome_original": "Programmed Illusion",
       "circulo": 6,
       "escola": "Ilusão",
       "classes": [
@@ -2463,6 +2644,7 @@
     },
     {
       "nome": "Imagem Maior",
+      "nome_original": "Major Image",
       "circulo": 3,
       "escola": "Ilusão",
       "classes": [
@@ -2478,6 +2660,7 @@
     },
     {
       "nome": "Imagem Silenciosa",
+      "nome_original": "Silent Image",
       "circulo": 1,
       "escola": "Ilusão",
       "classes": [
@@ -2492,6 +2675,7 @@
     },
     {
       "nome": "Indetectável",
+      "nome_original": "Nondetection",
       "circulo": 3,
       "escola": "Abjuração",
       "classes": [
@@ -2506,6 +2690,7 @@
     },
     {
       "nome": "Infligir Ferimentos",
+      "nome_original": "Inflict Wounds",
       "circulo": 1,
       "escola": "Necromancia",
       "classes": [
@@ -2518,6 +2703,7 @@
     },
     {
       "nome": "Inseto Gigante",
+      "nome_original": "Giant Insect",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -2530,6 +2716,7 @@
     },
     {
       "nome": "Inverter a Gravidade",
+      "nome_original": "Reverse Gravity",
       "circulo": 7,
       "escola": "Transmutação",
       "classes": [
@@ -2544,6 +2731,7 @@
     },
     {
       "nome": "Invisibilidade",
+      "nome_original": "Invisibility",
       "circulo": 2,
       "escola": "Ilusão",
       "classes": [
@@ -2560,6 +2748,7 @@
     },
     {
       "nome": "Invisibilidade Maior",
+      "nome_original": "Greater Invisibility",
       "circulo": 4,
       "escola": "Ilusão",
       "classes": [
@@ -2574,6 +2763,7 @@
     },
     {
       "nome": "Invocação Instantânea de Drawmij",
+      "nome_original": "Drawmij's Instant Summons",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -2586,6 +2776,7 @@
     },
     {
       "nome": "Invocar Aberração",
+      "nome_original": "Summon Aberration",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -2599,6 +2790,7 @@
     },
     {
       "nome": "Invocar Animais",
+      "nome_original": "Conjure Animals",
       "circulo": 3,
       "escola": "Invocação",
       "classes": [
@@ -2612,6 +2804,7 @@
     },
     {
       "nome": "Invocar Barragem",
+      "nome_original": "Conjure Barrage",
       "circulo": 3,
       "escola": "Invocação",
       "classes": [
@@ -2624,6 +2817,7 @@
     },
     {
       "nome": "Invocar Celestial",
+      "nome_original": "Conjure Celestial",
       "circulo": 7,
       "escola": "Invocação",
       "classes": [
@@ -2636,6 +2830,7 @@
     },
     {
       "nome": "Invocar Constructo",
+      "nome_original": "Summon Construct",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -2649,6 +2844,7 @@
     },
     {
       "nome": "Invocar Dragão",
+      "nome_original": "Summon Dragon",
       "circulo": 5,
       "escola": "Invocação",
       "classes": [
@@ -2661,6 +2857,7 @@
     },
     {
       "nome": "Invocar Elementais Menores",
+      "nome_original": "Conjure Minor Elementals",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -2674,6 +2871,7 @@
     },
     {
       "nome": "Invocar Elemental",
+      "nome_original": "Conjure Elemental",
       "circulo": 5,
       "escola": "Invocação",
       "classes": [
@@ -2687,6 +2885,7 @@
     },
     {
       "nome": "Invocar Feérico",
+      "nome_original": "Conjure Fey",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -2699,6 +2898,7 @@
     },
     {
       "nome": "Invocar Fera",
+      "nome_original": "Summon Beast",
       "circulo": 2,
       "escola": "Invocação",
       "classes": [
@@ -2712,6 +2912,7 @@
     },
     {
       "nome": "Invocar Ínfero",
+      "nome_original": "Summon Fiend",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -2725,6 +2926,7 @@
     },
     {
       "nome": "Invocar Morto-Vivo",
+      "nome_original": "Summon Undead",
       "circulo": 3,
       "escola": "Necromancia",
       "classes": [
@@ -2738,6 +2940,7 @@
     },
     {
       "nome": "Invocar Saraivada",
+      "nome_original": "Conjure Volley",
       "circulo": 5,
       "escola": "Invocação",
       "classes": [
@@ -2750,6 +2953,7 @@
     },
     {
       "nome": "Invocar Seres da Floresta",
+      "nome_original": "Conjure Woodland Beings",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -2763,6 +2967,7 @@
     },
     {
       "nome": "Labirinto",
+      "nome_original": "Maze",
       "circulo": 8,
       "escola": "Invocação",
       "classes": [
@@ -2775,6 +2980,7 @@
     },
     {
       "nome": "Lâmina Flamejante",
+      "nome_original": "Flame Blade",
       "circulo": 2,
       "escola": "Evocação",
       "classes": [
@@ -2788,6 +2994,7 @@
     },
     {
       "nome": "Lendas e Histórias",
+      "nome_original": "Legend Lore",
       "circulo": 5,
       "escola": "Adivinhação",
       "classes": [
@@ -2802,6 +3009,7 @@
     },
     {
       "nome": "Lentidão",
+      "nome_original": "Slow",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -2816,6 +3024,7 @@
     },
     {
       "nome": "Leque Cromático",
+      "nome_original": "Color Spray",
       "circulo": 1,
       "escola": "Ilusão",
       "classes": [
@@ -2830,6 +3039,7 @@
     },
     {
       "nome": "Levitação",
+      "nome_original": "Levitate",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -2844,6 +3054,7 @@
     },
     {
       "nome": "Ligação Telepática de Rary",
+      "nome_original": "Rary's Telepathic Bond",
       "circulo": 5,
       "escola": "Adivinhação",
       "classes": [
@@ -2857,6 +3068,7 @@
     },
     {
       "nome": "Limpar a Mente",
+      "nome_original": "Mind Blank",
       "circulo": 8,
       "escola": "Abjuração",
       "classes": [
@@ -2870,6 +3082,7 @@
     },
     {
       "nome": "Línguas",
+      "nome_original": "Tongues",
       "circulo": 3,
       "escola": "Adivinhação",
       "classes": [
@@ -2886,6 +3099,7 @@
     },
     {
       "nome": "Localizar Animais ou Plantas",
+      "nome_original": "Locate Animals or Plants",
       "circulo": 2,
       "escola": "Adivinhação",
       "classes": [
@@ -2900,6 +3114,7 @@
     },
     {
       "nome": "Localizar Criatura",
+      "nome_original": "Locate Creature",
       "circulo": 4,
       "escola": "Adivinhação",
       "classes": [
@@ -2917,6 +3132,7 @@
     },
     {
       "nome": "Localizar Objeto",
+      "nome_original": "Locate Object",
       "circulo": 2,
       "escola": "Adivinhação",
       "classes": [
@@ -2935,6 +3151,7 @@
     },
     {
       "nome": "Loquacidade",
+      "nome_original": "Glibness",
       "circulo": 8,
       "escola": "Encantamento",
       "classes": [
@@ -2948,6 +3165,7 @@
     },
     {
       "nome": "Lufada de Vento",
+      "nome_original": "Gust of Wind",
       "circulo": 2,
       "escola": "Evocação",
       "classes": [
@@ -2963,6 +3181,7 @@
     },
     {
       "nome": "Luz",
+      "nome_original": "Light",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -2979,6 +3198,7 @@
     },
     {
       "nome": "Luz do Dia",
+      "nome_original": "Daylight",
       "circulo": 3,
       "escola": "Evocação",
       "classes": [
@@ -2995,6 +3215,7 @@
     },
     {
       "nome": "Luzes Dançantes",
+      "nome_original": "Dancing Lights",
       "circulo": 0,
       "escola": "Ilusão",
       "classes": [
@@ -3010,6 +3231,7 @@
     },
     {
       "nome": "Malogro",
+      "nome_original": "Blight",
       "circulo": 4,
       "escola": "Necromancia",
       "classes": [
@@ -3025,6 +3247,7 @@
     },
     {
       "nome": "Mansão Magnífica de Mordenkainen",
+      "nome_original": "Mordenkainen's Magnificent Mansion",
       "circulo": 7,
       "escola": "Invocação",
       "classes": [
@@ -3038,6 +3261,7 @@
     },
     {
       "nome": "Manto do Cruzado",
+      "nome_original": "Crusader's Mantle",
       "circulo": 3,
       "escola": "Evocação",
       "classes": [
@@ -3050,6 +3274,7 @@
     },
     {
       "nome": "Mão de Bigby",
+      "nome_original": "Bigby's Hand",
       "circulo": 5,
       "escola": "Evocação",
       "classes": [
@@ -3064,6 +3289,7 @@
     },
     {
       "nome": "Mãos Flamejantes",
+      "nome_original": "Burning Hands",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -3077,6 +3303,7 @@
     },
     {
       "nome": "Mãos Mágicas",
+      "nome_original": "Mage Hand",
       "circulo": 0,
       "escola": "Invocação",
       "classes": [
@@ -3093,6 +3320,7 @@
     },
     {
       "nome": "Marca do Caçador",
+      "nome_original": "Hunter's Mark",
       "circulo": 1,
       "escola": "Adivinhação",
       "classes": [
@@ -3105,6 +3333,7 @@
     },
     {
       "nome": "Mau Olhado",
+      "nome_original": "Eyebite",
       "circulo": 6,
       "escola": "Necromancia",
       "classes": [
@@ -3120,6 +3349,7 @@
     },
     {
       "nome": "Medo",
+      "nome_original": "Fear",
       "circulo": 3,
       "escola": "Ilusão",
       "classes": [
@@ -3135,6 +3365,7 @@
     },
     {
       "nome": "Mensageiro Animal",
+      "nome_original": "Animal Messenger",
       "circulo": 2,
       "escola": "Encantamento",
       "classes": [
@@ -3149,6 +3380,7 @@
     },
     {
       "nome": "Mensagem",
+      "nome_original": "Message",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -3165,6 +3397,7 @@
     },
     {
       "nome": "Mesclar-se às Rochas",
+      "nome_original": "Meld into Stone",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -3179,6 +3412,7 @@
     },
     {
       "nome": "Metamorfose",
+      "nome_original": "Shapechange",
       "circulo": 9,
       "escola": "Transmutação",
       "classes": [
@@ -3192,6 +3426,7 @@
     },
     {
       "nome": "Miragem Arcana",
+      "nome_original": "Mirage Arcane",
       "circulo": 7,
       "escola": "Ilusão",
       "classes": [
@@ -3206,6 +3441,7 @@
     },
     {
       "nome": "Missão",
+      "nome_original": "Geas",
       "circulo": 5,
       "escola": "Encantamento",
       "classes": [
@@ -3222,6 +3458,7 @@
     },
     {
       "nome": "Mísseis Mágicos",
+      "nome_original": "Magic Missile",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -3235,6 +3472,7 @@
     },
     {
       "nome": "Modificar Memória",
+      "nome_original": "Modify Memory",
       "circulo": 5,
       "escola": "Encantamento",
       "classes": [
@@ -3248,6 +3486,7 @@
     },
     {
       "nome": "Moldar Rochas",
+      "nome_original": "Stone Shape",
       "circulo": 4,
       "escola": "Transmutação",
       "classes": [
@@ -3263,6 +3502,7 @@
     },
     {
       "nome": "Moléstia",
+      "nome_original": "Harm",
       "circulo": 6,
       "escola": "Necromancia",
       "classes": [
@@ -3275,6 +3515,7 @@
     },
     {
       "nome": "Montaria Fantasmagórica",
+      "nome_original": "Phantom Steed",
       "circulo": 3,
       "escola": "Ilusão",
       "classes": [
@@ -3287,6 +3528,7 @@
     },
     {
       "nome": "Mover Terra",
+      "nome_original": "Move Earth",
       "circulo": 6,
       "escola": "Transmutação",
       "classes": [
@@ -3301,6 +3543,7 @@
     },
     {
       "nome": "Movimentação Livre",
+      "nome_original": "Freedom of Movement",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -3317,6 +3560,7 @@
     },
     {
       "nome": "Muralha de Energia",
+      "nome_original": "Wall of Force",
       "circulo": 5,
       "escola": "Evocação",
       "classes": [
@@ -3329,6 +3573,7 @@
     },
     {
       "nome": "Muralha de Espinhos",
+      "nome_original": "Wall of Thorns",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -3341,6 +3586,7 @@
     },
     {
       "nome": "Muralha de Fogo",
+      "nome_original": "Wall of Fire",
       "circulo": 4,
       "escola": "Evocação",
       "classes": [
@@ -3355,6 +3601,7 @@
     },
     {
       "nome": "Muralha de Gelo",
+      "nome_original": "Wall of Ice",
       "circulo": 6,
       "escola": "Evocação",
       "classes": [
@@ -3367,6 +3614,7 @@
     },
     {
       "nome": "Muralha de Pedra",
+      "nome_original": "Wall of Stone",
       "circulo": 5,
       "escola": "Evocação",
       "classes": [
@@ -3382,6 +3630,7 @@
     },
     {
       "nome": "Muralha de Vento",
+      "nome_original": "Wind Wall",
       "circulo": 3,
       "escola": "Evocação",
       "classes": [
@@ -3395,6 +3644,7 @@
     },
     {
       "nome": "Muralha Prismática",
+      "nome_original": "Prismatic Wall",
       "circulo": 9,
       "escola": "Abjuração",
       "classes": [
@@ -3408,6 +3658,7 @@
     },
     {
       "nome": "Nevasca",
+      "nome_original": "Sleet Storm",
       "circulo": 3,
       "escola": "Invocação",
       "classes": [
@@ -3422,6 +3673,7 @@
     },
     {
       "nome": "Névoa Mortal",
+      "nome_original": "Cloudkill",
       "circulo": 5,
       "escola": "Invocação",
       "classes": [
@@ -3435,6 +3687,7 @@
     },
     {
       "nome": "Névoa Obscurecente",
+      "nome_original": "Fog Cloud",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -3450,6 +3703,7 @@
     },
     {
       "nome": "Nuvem de Adagas",
+      "nome_original": "Cloud of Daggers",
       "circulo": 2,
       "escola": "Invocação",
       "classes": [
@@ -3465,6 +3719,7 @@
     },
     {
       "nome": "Nuvem Fétida",
+      "nome_original": "Stinking Cloud",
       "circulo": 3,
       "escola": "Invocação",
       "classes": [
@@ -3479,6 +3734,7 @@
     },
     {
       "nome": "Nuvem Incendiária",
+      "nome_original": "Incendiary Cloud",
       "circulo": 8,
       "escola": "Invocação",
       "classes": [
@@ -3493,6 +3749,7 @@
     },
     {
       "nome": "Olho Arcano",
+      "nome_original": "Arcane Eye",
       "circulo": 4,
       "escola": "Adivinhação",
       "classes": [
@@ -3506,6 +3763,7 @@
     },
     {
       "nome": "Onda Destrutiva",
+      "nome_original": "Destructive Wave",
       "circulo": 5,
       "escola": "Evocação",
       "classes": [
@@ -3518,6 +3776,7 @@
     },
     {
       "nome": "Onda Trovejante",
+      "nome_original": "Thunderwave",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -3533,6 +3792,7 @@
     },
     {
       "nome": "Oração de Cura",
+      "nome_original": "Prayer of Healing",
       "circulo": 2,
       "escola": "Abjuração",
       "classes": [
@@ -3546,6 +3806,7 @@
     },
     {
       "nome": "Orbe Cromático",
+      "nome_original": "Chromatic Orb",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -3559,6 +3820,7 @@
     },
     {
       "nome": "Orientação",
+      "nome_original": "Guidance",
       "circulo": 0,
       "escola": "Adivinhação",
       "classes": [
@@ -3573,6 +3835,7 @@
     },
     {
       "nome": "Padrão Hipnótico",
+      "nome_original": "Hypnotic Pattern",
       "circulo": 3,
       "escola": "Ilusão",
       "classes": [
@@ -3588,6 +3851,7 @@
     },
     {
       "nome": "Palavra Curativa",
+      "nome_original": "Healing Word",
       "circulo": 1,
       "escola": "Abjuração",
       "classes": [
@@ -3602,6 +3866,7 @@
     },
     {
       "nome": "Palavra Curativa em Massa",
+      "nome_original": "Mass Healing Word",
       "circulo": 3,
       "escola": "Abjuração",
       "classes": [
@@ -3615,6 +3880,7 @@
     },
     {
       "nome": "Palavra de Poder: Atordoar",
+      "nome_original": "Power Word Stun",
       "circulo": 8,
       "escola": "Encantamento",
       "classes": [
@@ -3630,6 +3896,7 @@
     },
     {
       "nome": "Palavra de Poder: Fortificar",
+      "nome_original": "Power Word Fortify",
       "circulo": 7,
       "escola": "Encantamento",
       "classes": [
@@ -3643,6 +3910,7 @@
     },
     {
       "nome": "Palavra de Poder: Matar",
+      "nome_original": "Power Word Kill",
       "circulo": 9,
       "escola": "Encantamento",
       "classes": [
@@ -3658,6 +3926,7 @@
     },
     {
       "nome": "Palavra de Poder: Salvar",
+      "nome_original": "Power Word Heal",
       "circulo": 9,
       "escola": "Encantamento",
       "classes": [
@@ -3671,6 +3940,7 @@
     },
     {
       "nome": "Palavra de Radiância",
+      "nome_original": "Word of Radiance",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -3683,6 +3953,7 @@
     },
     {
       "nome": "Palavra de Regresso",
+      "nome_original": "Word of Recall",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -3695,6 +3966,7 @@
     },
     {
       "nome": "Palavra Sagrada",
+      "nome_original": "Divine Word",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -3707,6 +3979,7 @@
     },
     {
       "nome": "Paralisar Monstro",
+      "nome_original": "Hold Monster",
       "circulo": 5,
       "escola": "Encantamento",
       "classes": [
@@ -3722,6 +3995,7 @@
     },
     {
       "nome": "Paralisar Pessoa",
+      "nome_original": "Hold Person",
       "circulo": 2,
       "escola": "Encantamento",
       "classes": [
@@ -3739,6 +4013,7 @@
     },
     {
       "nome": "Parar o Tempo",
+      "nome_original": "Time Stop",
       "circulo": 9,
       "escola": "Transmutação",
       "classes": [
@@ -3752,6 +4027,7 @@
     },
     {
       "nome": "Passo Arbóreo",
+      "nome_original": "Tree Stride",
       "circulo": 5,
       "escola": "Invocação",
       "classes": [
@@ -3765,6 +4041,7 @@
     },
     {
       "nome": "Passo Nebuloso",
+      "nome_original": "Misty Step",
       "circulo": 2,
       "escola": "Invocação",
       "classes": [
@@ -3779,6 +4056,7 @@
     },
     {
       "nome": "Passo Sem Rastro",
+      "nome_original": "Pass without Trace",
       "circulo": 2,
       "escola": "Abjuração",
       "classes": [
@@ -3792,6 +4070,7 @@
     },
     {
       "nome": "Passos Largos",
+      "nome_original": "Longstrider",
       "circulo": 1,
       "escola": "Transmutação",
       "classes": [
@@ -3808,6 +4087,7 @@
     },
     {
       "nome": "Pele-Casca",
+      "nome_original": "Barkskin",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -3821,6 +4101,7 @@
     },
     {
       "nome": "Pele-Rocha",
+      "nome_original": "Stoneskin",
       "circulo": 4,
       "escola": "Transmutação",
       "classes": [
@@ -3837,6 +4118,7 @@
     },
     {
       "nome": "Pequeno Refúgio de Leomund",
+      "nome_original": "Leomund's Tiny Hut",
       "circulo": 3,
       "escola": "Evocação",
       "classes": [
@@ -3851,6 +4133,7 @@
     },
     {
       "nome": "Perdição",
+      "nome_original": "Bane",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -3865,6 +4148,7 @@
     },
     {
       "nome": "Piscar",
+      "nome_original": "Blink",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -3879,6 +4163,7 @@
     },
     {
       "nome": "Polimorfia",
+      "nome_original": "Polymorph",
       "circulo": 4,
       "escola": "Transmutação",
       "classes": [
@@ -3894,6 +4179,7 @@
     },
     {
       "nome": "Polimorfia Total",
+      "nome_original": "True Polymorph",
       "circulo": 9,
       "escola": "Transmutação",
       "classes": [
@@ -3908,6 +4194,7 @@
     },
     {
       "nome": "Porta Dimensional",
+      "nome_original": "Dimension Door",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -3923,6 +4210,7 @@
     },
     {
       "nome": "Portais Arcanos",
+      "nome_original": "Arcane Gate",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -3937,6 +4225,7 @@
     },
     {
       "nome": "Portal",
+      "nome_original": "Gate",
       "circulo": 9,
       "escola": "Invocação",
       "classes": [
@@ -3952,6 +4241,7 @@
     },
     {
       "nome": "Praga de Insetos",
+      "nome_original": "Insect Plague",
       "circulo": 5,
       "escola": "Invocação",
       "classes": [
@@ -3966,6 +4256,7 @@
     },
     {
       "nome": "Presença Régia de Yolande",
+      "nome_original": "Yolande's Regal Presence",
       "circulo": 5,
       "escola": "Encantamento",
       "classes": [
@@ -3979,6 +4270,7 @@
     },
     {
       "nome": "Presságio",
+      "nome_original": "Divination",
       "circulo": 4,
       "escola": "Adivinhação",
       "classes": [
@@ -3993,6 +4285,7 @@
     },
     {
       "nome": "Prestidigitação Arcana",
+      "nome_original": "Prestidigitation",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -4009,6 +4302,7 @@
     },
     {
       "nome": "Proibição",
+      "nome_original": "Forbiddance",
       "circulo": 6,
       "escola": "Abjuração",
       "classes": [
@@ -4021,6 +4315,7 @@
     },
     {
       "nome": "Projeção Astral",
+      "nome_original": "Astral Projection",
       "circulo": 9,
       "escola": "Necromancia",
       "classes": [
@@ -4035,6 +4330,7 @@
     },
     {
       "nome": "Projetar Imagem",
+      "nome_original": "Project Image",
       "circulo": 7,
       "escola": "Ilusão",
       "classes": [
@@ -4048,6 +4344,7 @@
     },
     {
       "nome": "Proteção Contra a Morte",
+      "nome_original": "Death Ward",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -4061,6 +4358,7 @@
     },
     {
       "nome": "Proteção Contra Energia",
+      "nome_original": "Protection from Energy",
       "circulo": 3,
       "escola": "Abjuração",
       "classes": [
@@ -4078,6 +4376,7 @@
     },
     {
       "nome": "Proteção Contra Lâminas",
+      "nome_original": "Blade Ward",
       "circulo": 0,
       "escola": "Abjuração",
       "classes": [
@@ -4093,6 +4392,7 @@
     },
     {
       "nome": "Proteção Contra o Bem e o Mal",
+      "nome_original": "Protection from Evil and Good",
       "circulo": 1,
       "escola": "Abjuração",
       "classes": [
@@ -4109,6 +4409,7 @@
     },
     {
       "nome": "Proteção Contra Veneno",
+      "nome_original": "Protection from Poison",
       "circulo": 2,
       "escola": "Abjuração",
       "classes": [
@@ -4125,6 +4426,7 @@
     },
     {
       "nome": "Proteger Fortaleza",
+      "nome_original": "Guards and Wards",
       "circulo": 6,
       "escola": "Abjuração",
       "classes": [
@@ -4138,6 +4440,7 @@
     },
     {
       "nome": "Purificar Alimentos e Bebidas",
+      "nome_original": "Purify Food and Drink",
       "circulo": 1,
       "escola": "Transmutação",
       "classes": [
@@ -4153,6 +4456,7 @@
     },
     {
       "nome": "Queda Suave",
+      "nome_original": "Feather Fall",
       "circulo": 1,
       "escola": "Transmutação",
       "classes": [
@@ -4168,6 +4472,7 @@
     },
     {
       "nome": "Raio Ardente",
+      "nome_original": "Scorching Ray",
       "circulo": 2,
       "escola": "Evocação",
       "classes": [
@@ -4181,6 +4486,7 @@
     },
     {
       "nome": "Raio de Bruxa",
+      "nome_original": "Witch Bolt",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -4195,6 +4501,7 @@
     },
     {
       "nome": "Raio de Fogo",
+      "nome_original": "Fire Bolt",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -4209,6 +4516,7 @@
     },
     {
       "nome": "Raio de Gelo",
+      "nome_original": "Ray of Frost",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -4223,6 +4531,7 @@
     },
     {
       "nome": "Raio do Enfraquecimento",
+      "nome_original": "Ray of Enfeeblement",
       "circulo": 2,
       "escola": "Necromancia",
       "classes": [
@@ -4236,6 +4545,7 @@
     },
     {
       "nome": "Raio Guia",
+      "nome_original": "Guiding Bolt",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -4248,6 +4558,7 @@
     },
     {
       "nome": "Raio Lunar",
+      "nome_original": "Moonbeam",
       "circulo": 2,
       "escola": "Evocação",
       "classes": [
@@ -4260,6 +4571,7 @@
     },
     {
       "nome": "Raio Místico",
+      "nome_original": "Eldritch Blast",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -4272,6 +4584,7 @@
     },
     {
       "nome": "Raio Nauseante",
+      "nome_original": "Ray of Sickness",
       "circulo": 1,
       "escola": "Necromancia",
       "classes": [
@@ -4285,6 +4598,7 @@
     },
     {
       "nome": "Raio Solar",
+      "nome_original": "Sunbeam",
       "circulo": 6,
       "escola": "Evocação",
       "classes": [
@@ -4300,6 +4614,7 @@
     },
     {
       "nome": "Rajada de Veneno",
+      "nome_original": "Poison Spray",
       "circulo": 0,
       "escola": "Necromancia",
       "classes": [
@@ -4316,6 +4631,7 @@
     },
     {
       "nome": "Rajada Prismática",
+      "nome_original": "Prismatic Spray",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -4330,6 +4646,7 @@
     },
     {
       "nome": "Receptáculo Arcano",
+      "nome_original": "Magic Jar",
       "circulo": 6,
       "escola": "Necromancia",
       "classes": [
@@ -4342,6 +4659,7 @@
     },
     {
       "nome": "Reencarnar",
+      "nome_original": "Reincarnate",
       "circulo": 5,
       "escola": "Necromancia",
       "classes": [
@@ -4354,6 +4672,7 @@
     },
     {
       "nome": "Reflexos",
+      "nome_original": "Mirror Image",
       "circulo": 2,
       "escola": "Ilusão",
       "classes": [
@@ -4369,6 +4688,7 @@
     },
     {
       "nome": "Refugiar",
+      "nome_original": "Sequester",
       "circulo": 7,
       "escola": "Transmutação",
       "classes": [
@@ -4381,6 +4701,7 @@
     },
     {
       "nome": "Regeneração",
+      "nome_original": "Regenerate",
       "circulo": 7,
       "escola": "Transmutação",
       "classes": [
@@ -4395,6 +4716,7 @@
     },
     {
       "nome": "Relâmpago",
+      "nome_original": "Lightning Bolt",
       "circulo": 3,
       "escola": "Evocação",
       "classes": [
@@ -4408,6 +4730,7 @@
     },
     {
       "nome": "Remeter",
+      "nome_original": "Sending",
       "circulo": 3,
       "escola": "Adivinhação",
       "classes": [
@@ -4422,6 +4745,7 @@
     },
     {
       "nome": "Remover Maldição",
+      "nome_original": "Remove Curse",
       "circulo": 3,
       "escola": "Abjuração",
       "classes": [
@@ -4437,6 +4761,7 @@
     },
     {
       "nome": "Reparar",
+      "nome_original": "Mending",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -4454,6 +4779,7 @@
     },
     {
       "nome": "Repouso Tranquilo",
+      "nome_original": "Gentle Repose",
       "circulo": 2,
       "escola": "Necromancia",
       "classes": [
@@ -4469,6 +4795,7 @@
     },
     {
       "nome": "Repreensão Diabólica",
+      "nome_original": "Hellish Rebuke",
       "circulo": 1,
       "escola": "Evocação",
       "classes": [
@@ -4481,6 +4808,7 @@
     },
     {
       "nome": "Resistência",
+      "nome_original": "Resistance",
       "circulo": 0,
       "escola": "Abjuração",
       "classes": [
@@ -4495,6 +4823,7 @@
     },
     {
       "nome": "Respirar na Água",
+      "nome_original": "Water Breathing",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -4511,6 +4840,7 @@
     },
     {
       "nome": "Ressurreição",
+      "nome_original": "Resurrection",
       "circulo": 7,
       "escola": "Necromancia",
       "classes": [
@@ -4524,6 +4854,7 @@
     },
     {
       "nome": "Ressurreição Verdadeira",
+      "nome_original": "True Resurrection",
       "circulo": 9,
       "escola": "Necromancia",
       "classes": [
@@ -4537,6 +4868,7 @@
     },
     {
       "nome": "Restauração Maior",
+      "nome_original": "Greater Restoration",
       "circulo": 5,
       "escola": "Abjuração",
       "classes": [
@@ -4554,6 +4886,7 @@
     },
     {
       "nome": "Restauração Menor",
+      "nome_original": "Lesser Restoration",
       "circulo": 2,
       "escola": "Abjuração",
       "classes": [
@@ -4571,6 +4904,7 @@
     },
     {
       "nome": "Retirada Acelerada",
+      "nome_original": "Expeditious Retreat",
       "circulo": 1,
       "escola": "Transmutação",
       "classes": [
@@ -4586,6 +4920,7 @@
     },
     {
       "nome": "Reviver os Mortos",
+      "nome_original": "Raise Dead",
       "circulo": 5,
       "escola": "Necromancia",
       "classes": [
@@ -4600,6 +4935,7 @@
     },
     {
       "nome": "Revivificar",
+      "nome_original": "Revivify",
       "circulo": 3,
       "escola": "Necromancia",
       "classes": [
@@ -4616,6 +4952,7 @@
     },
     {
       "nome": "Rogar Maldição",
+      "nome_original": "Bestow Curse",
       "circulo": 3,
       "escola": "Necromancia",
       "classes": [
@@ -4630,6 +4967,7 @@
     },
     {
       "nome": "Salto",
+      "nome_original": "Jump",
       "circulo": 1,
       "escola": "Transmutação",
       "classes": [
@@ -4646,6 +4984,7 @@
     },
     {
       "nome": "Santuário",
+      "nome_original": "Sanctuary",
       "circulo": 1,
       "escola": "Abjuração",
       "classes": [
@@ -4659,6 +4998,7 @@
     },
     {
       "nome": "Santuário Particular de Mordenkainen",
+      "nome_original": "Mordenkainen's Private Sanctum",
       "circulo": 4,
       "escola": "Abjuração",
       "classes": [
@@ -4672,6 +5012,7 @@
     },
     {
       "nome": "Saraivada de Espinhos",
+      "nome_original": "Hail of Thorns",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -4684,6 +5025,7 @@
     },
     {
       "nome": "Semiplano",
+      "nome_original": "Demiplane",
       "circulo": 8,
       "escola": "Invocação",
       "classes": [
@@ -4698,6 +5040,7 @@
     },
     {
       "nome": "Sentido Feral",
+      "nome_original": "Beast Sense",
       "circulo": 2,
       "escola": "Adivinhação",
       "classes": [
@@ -4711,6 +5054,7 @@
     },
     {
       "nome": "Servo Homúnculo",
+      "nome_original": "Homunculus Servant",
       "circulo": 2,
       "escola": "Conjuração",
       "classes": [
@@ -4723,6 +5067,7 @@
     },
     {
       "nome": "Servo Invisível",
+      "nome_original": "Unseen Servant",
       "circulo": 1,
       "escola": "Invocação",
       "classes": [
@@ -4737,6 +5082,7 @@
     },
     {
       "nome": "Sexto Sentido",
+      "nome_original": "Foresight",
       "circulo": 9,
       "escola": "Adivinhação",
       "classes": [
@@ -4752,6 +5098,7 @@
     },
     {
       "nome": "Silêncio",
+      "nome_original": "Silence",
       "circulo": 2,
       "escola": "Ilusão",
       "classes": [
@@ -4766,6 +5113,7 @@
     },
     {
       "nome": "Símbolo",
+      "nome_original": "Symbol",
       "circulo": 7,
       "escola": "Abjuração",
       "classes": [
@@ -4781,6 +5129,7 @@
     },
     {
       "nome": "Similaridade",
+      "nome_original": "Seeming",
       "circulo": 5,
       "escola": "Ilusão",
       "classes": [
@@ -4795,6 +5144,7 @@
     },
     {
       "nome": "Simulacro",
+      "nome_original": "Simulacrum",
       "circulo": 7,
       "escola": "Ilusão",
       "classes": [
@@ -4807,6 +5157,7 @@
     },
     {
       "nome": "Simular Morte",
+      "nome_original": "Feign Death",
       "circulo": 3,
       "escola": "Necromancia",
       "classes": [
@@ -4822,6 +5173,7 @@
     },
     {
       "nome": "Sinal de Esperança",
+      "nome_original": "Beacon of Hope",
       "circulo": 3,
       "escola": "Abjuração",
       "classes": [
@@ -4834,6 +5186,7 @@
     },
     {
       "nome": "Sonho",
+      "nome_original": "Dream",
       "circulo": 5,
       "escola": "Ilusão",
       "classes": [
@@ -4848,6 +5201,7 @@
     },
     {
       "nome": "Sono",
+      "nome_original": "Sleep",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -4862,6 +5216,7 @@
     },
     {
       "nome": "Sopro de Dragão",
+      "nome_original": "Dragon's Breath",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -4876,6 +5231,7 @@
     },
     {
       "nome": "Sugestão",
+      "nome_original": "Suggestion",
       "circulo": 2,
       "escola": "Encantamento",
       "classes": [
@@ -4891,6 +5247,7 @@
     },
     {
       "nome": "Sugestão em Massa",
+      "nome_original": "Mass Suggestion",
       "circulo": 6,
       "escola": "Encantamento",
       "classes": [
@@ -4905,6 +5262,7 @@
     },
     {
       "nome": "Suplício",
+      "nome_original": "Befuddlement",
       "circulo": 8,
       "escola": "Encantamento",
       "classes": [
@@ -4920,6 +5278,7 @@
     },
     {
       "nome": "Sussurros Dissonantes",
+      "nome_original": "Dissonant Whispers",
       "circulo": 1,
       "escola": "Encantamento",
       "classes": [
@@ -4932,6 +5291,7 @@
     },
     {
       "nome": "Talho Mental",
+      "nome_original": "Mind Sliver",
       "circulo": 0,
       "escola": "Encantamento",
       "classes": [
@@ -4947,6 +5307,7 @@
     },
     {
       "nome": "Taumaturgia",
+      "nome_original": "Thaumaturgy",
       "circulo": 0,
       "escola": "Transmutação",
       "classes": [
@@ -4959,6 +5320,7 @@
     },
     {
       "nome": "Teia",
+      "nome_original": "Web",
       "circulo": 2,
       "escola": "Invocação",
       "classes": [
@@ -4973,6 +5335,7 @@
     },
     {
       "nome": "Telecinese",
+      "nome_original": "Telekinesis",
       "circulo": 5,
       "escola": "Transmutação",
       "classes": [
@@ -4986,6 +5349,7 @@
     },
     {
       "nome": "Telepatia",
+      "nome_original": "Telepathy",
       "circulo": 8,
       "escola": "Adivinhação",
       "classes": [
@@ -4998,6 +5362,7 @@
     },
     {
       "nome": "Teleporte",
+      "nome_original": "Teleport",
       "circulo": 7,
       "escola": "Invocação",
       "classes": [
@@ -5012,6 +5377,7 @@
     },
     {
       "nome": "Tempestade da Vingança",
+      "nome_original": "Storm of Vengeance",
       "circulo": 9,
       "escola": "Invocação",
       "classes": [
@@ -5024,6 +5390,7 @@
     },
     {
       "nome": "Tempestade de Fogo",
+      "nome_original": "Fire Storm",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -5038,6 +5405,7 @@
     },
     {
       "nome": "Tempestade Glacial",
+      "nome_original": "Ice Storm",
       "circulo": 4,
       "escola": "Evocação",
       "classes": [
@@ -5052,6 +5420,7 @@
     },
     {
       "nome": "Tempestade Radiante de Jallarzi",
+      "nome_original": "Jallarzi's Storm of Radiance",
       "circulo": 5,
       "escola": "Evocação",
       "classes": [
@@ -5065,6 +5434,7 @@
     },
     {
       "nome": "Tentáculos Negros de Evard",
+      "nome_original": "Evard's Black Tentacles",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -5077,6 +5447,7 @@
     },
     {
       "nome": "Terremoto",
+      "nome_original": "Earthquake",
       "circulo": 8,
       "escola": "Transmutação",
       "classes": [
@@ -5091,6 +5462,7 @@
     },
     {
       "nome": "Terreno Alucinatório",
+      "nome_original": "Hallucinatory Terrain",
       "circulo": 4,
       "escola": "Ilusão",
       "classes": [
@@ -5106,6 +5478,7 @@
     },
     {
       "nome": "Toque Chocante",
+      "nome_original": "Shocking Grasp",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -5120,6 +5493,7 @@
     },
     {
       "nome": "Toque Necrótico",
+      "nome_original": "Chill Touch",
       "circulo": 0,
       "escola": "Necromancia",
       "classes": [
@@ -5134,6 +5508,7 @@
     },
     {
       "nome": "Toque Vampírico",
+      "nome_original": "Vampiric Touch",
       "circulo": 3,
       "escola": "Necromancia",
       "classes": [
@@ -5148,6 +5523,7 @@
     },
     {
       "nome": "Tranca Arcana",
+      "nome_original": "Arcane Lock",
       "circulo": 2,
       "escola": "Abjuração",
       "classes": [
@@ -5161,6 +5537,7 @@
     },
     {
       "nome": "Transição Planar",
+      "nome_original": "Plane Shift",
       "circulo": 7,
       "escola": "Invocação",
       "classes": [
@@ -5177,6 +5554,7 @@
     },
     {
       "nome": "Transporte via Plantas",
+      "nome_original": "Transport via Plants",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -5189,6 +5567,7 @@
     },
     {
       "nome": "Trovão",
+      "nome_original": "Thunderclap",
       "circulo": 0,
       "escola": "Evocação",
       "classes": [
@@ -5206,6 +5585,7 @@
     },
     {
       "nome": "Tsunami",
+      "nome_original": "Tsunami",
       "circulo": 8,
       "escola": "Invocação",
       "classes": [
@@ -5218,6 +5598,7 @@
     },
     {
       "nome": "Turvar",
+      "nome_original": "Blur",
       "circulo": 2,
       "escola": "Ilusão",
       "classes": [
@@ -5232,6 +5613,7 @@
     },
     {
       "nome": "Ver o Invisível",
+      "nome_original": "See Invisibility",
       "circulo": 2,
       "escola": "Adivinhação",
       "classes": [
@@ -5247,6 +5629,7 @@
     },
     {
       "nome": "Vidência",
+      "nome_original": "Scrying",
       "circulo": 5,
       "escola": "Adivinhação",
       "classes": [
@@ -5263,6 +5646,7 @@
     },
     {
       "nome": "Vigor Arcano",
+      "nome_original": "Arcane Vigor",
       "circulo": 2,
       "escola": "Abjuração",
       "classes": [
@@ -5277,6 +5661,7 @@
     },
     {
       "nome": "Vínculo de Proteção",
+      "nome_original": "Warding Bond",
       "circulo": 2,
       "escola": "Abjuração",
       "classes": [
@@ -5290,6 +5675,7 @@
     },
     {
       "nome": "Vinha Agarradora",
+      "nome_original": "Grasping Vine",
       "circulo": 4,
       "escola": "Invocação",
       "classes": [
@@ -5303,6 +5689,7 @@
     },
     {
       "nome": "Visão da Verdade",
+      "nome_original": "True Seeing",
       "circulo": 6,
       "escola": "Adivinhação",
       "classes": [
@@ -5319,6 +5706,7 @@
     },
     {
       "nome": "Visão no Escuro",
+      "nome_original": "Darkvision",
       "circulo": 2,
       "escola": "Transmutação",
       "classes": [
@@ -5335,6 +5723,7 @@
     },
     {
       "nome": "Vitalidade Vazia",
+      "nome_original": "False Life",
       "circulo": 1,
       "escola": "Necromancia",
       "classes": [
@@ -5349,6 +5738,7 @@
     },
     {
       "nome": "Voo",
+      "nome_original": "Fly",
       "circulo": 3,
       "escola": "Transmutação",
       "classes": [
@@ -5364,6 +5754,7 @@
     },
     {
       "nome": "Zombaria Perversa",
+      "nome_original": "Vicious Mockery",
       "circulo": 0,
       "escola": "Encantamento",
       "classes": [
@@ -5376,6 +5767,7 @@
     },
     {
       "nome": "Zona da Verdade",
+      "nome_original": "Zone of Truth",
       "circulo": 2,
       "escola": "Encantamento",
       "classes": [

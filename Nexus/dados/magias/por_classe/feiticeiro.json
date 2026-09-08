@@ -4,751 +4,901 @@
   "magias": [
     {
       "nome": "Amigos",
+      "nome_original": "Friends",
       "circulo": 0,
       "escola": "Encantamento"
     },
     {
       "nome": "Bolha Ácida",
+      "nome_original": "Acid Splash",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Elementalismo",
+      "nome_original": "Elementalism",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Explosão Elemental",
+      "nome_original": "Sorcerous Burst",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Golpe Certeiro",
+      "nome_original": "True Strike",
       "circulo": 0,
       "escola": "Adivinhação"
     },
     {
       "nome": "Ilusão Menor",
+      "nome_original": "Minor Illusion",
       "circulo": 0,
       "escola": "Ilusão"
     },
     {
       "nome": "Luz",
+      "nome_original": "Light",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Luzes Dançantes",
+      "nome_original": "Dancing Lights",
       "circulo": 0,
       "escola": "Ilusão"
     },
     {
       "nome": "Mensagem",
+      "nome_original": "Message",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Mãos Mágicas",
+      "nome_original": "Mage Hand",
       "circulo": 0,
       "escola": "Invocação"
     },
     {
       "nome": "Prestidigitação Arcana",
+      "nome_original": "Prestidigitation",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Proteção Contra Lâminas",
+      "nome_original": "Blade Ward",
       "circulo": 0,
       "escola": "Abjuração"
     },
     {
       "nome": "Raio de Fogo",
+      "nome_original": "Fire Bolt",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Raio de Gelo",
+      "nome_original": "Ray of Frost",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Rajada de Veneno",
+      "nome_original": "Poison Spray",
       "circulo": 0,
       "escola": "Necromancia"
     },
     {
       "nome": "Reparar",
+      "nome_original": "Mending",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Talho Mental",
+      "nome_original": "Mind Sliver",
       "circulo": 0,
       "escola": "Encantamento"
     },
     {
       "nome": "Toque Chocante",
+      "nome_original": "Shocking Grasp",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Toque Necrótico",
+      "nome_original": "Chill Touch",
       "circulo": 0,
       "escola": "Necromancia"
     },
     {
       "nome": "Trovão",
+      "nome_original": "Thunderclap",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Armadura Arcana",
+      "nome_original": "Mage Armor",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Compreender Idiomas",
+      "nome_original": "Comprehend Languages",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Detectar Magia",
+      "nome_original": "Detect Magic",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Disfarçar-se",
+      "nome_original": "Disguise Self",
       "circulo": 1,
       "escola": "Ilusão"
     },
     {
       "nome": "Enfeitiçar Pessoa",
+      "nome_original": "Charm Person",
       "circulo": 1,
       "escola": "Encantamento"
     },
     {
       "nome": "Escudo Arcano",
+      "nome_original": "Shield",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Faca de Gelo",
+      "nome_original": "Ice Knife",
       "circulo": 1,
       "escola": "Invocação"
     },
     {
       "nome": "Graxa",
+      "nome_original": "Grease",
       "circulo": 1,
       "escola": "Invocação"
     },
     {
       "nome": "Imagem Silenciosa",
+      "nome_original": "Silent Image",
       "circulo": 1,
       "escola": "Ilusão"
     },
     {
       "nome": "Leque Cromático",
+      "nome_original": "Color Spray",
       "circulo": 1,
       "escola": "Ilusão"
     },
     {
       "nome": "Mãos Flamejantes",
+      "nome_original": "Burning Hands",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Mísseis Mágicos",
+      "nome_original": "Magic Missile",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Névoa Obscurecente",
+      "nome_original": "Fog Cloud",
       "circulo": 1,
       "escola": "Invocação"
     },
     {
       "nome": "Onda Trovejante",
+      "nome_original": "Thunderwave",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Orbe Cromático",
+      "nome_original": "Chromatic Orb",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Queda Suave",
+      "nome_original": "Feather Fall",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Raio Nauseante",
+      "nome_original": "Ray of Sickness",
       "circulo": 1,
       "escola": "Necromancia"
     },
     {
       "nome": "Raio de Bruxa",
+      "nome_original": "Witch Bolt",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Retirada Acelerada",
+      "nome_original": "Expeditious Retreat",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Salto",
+      "nome_original": "Jump",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Sono",
+      "nome_original": "Sleep",
       "circulo": 1,
       "escola": "Encantamento"
     },
     {
       "nome": "Vitalidade Vazia",
+      "nome_original": "False Life",
       "circulo": 1,
       "escola": "Necromancia"
     },
     {
       "nome": "Alterar-se",
+      "nome_original": "Alter Self",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Aprimorar Atributo",
+      "nome_original": "Enhance Ability",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Arma Mágica",
+      "nome_original": "Magic Weapon",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Arrombar",
+      "nome_original": "Knock",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Aumentar/Reduzir",
+      "nome_original": "Enlarge/Reduce",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Cegueira/Surdez",
+      "nome_original": "Blindness/Deafness",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Coroa da Loucura",
+      "nome_original": "Crown of Madness",
       "circulo": 2,
       "escola": "Encantamento"
     },
     {
       "nome": "Despedaçar",
+      "nome_original": "Shatter",
       "circulo": 2,
       "escola": "Evocação"
     },
     {
       "nome": "Detectar Pensamentos",
+      "nome_original": "Detect Thoughts",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Escalada de Aranha",
+      "nome_original": "Spider Climb",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Escuridão",
+      "nome_original": "Darkness",
       "circulo": 2,
       "escola": "Evocação"
     },
     {
       "nome": "Esfera Flamejante",
+      "nome_original": "Flaming Sphere",
       "circulo": 2,
       "escola": "Invocação"
     },
     {
       "nome": "Espinho Mental",
+      "nome_original": "Mind Spike",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Força Espectral",
+      "nome_original": "Phantasmal Force",
       "circulo": 2,
       "escola": "Ilusão"
     },
     {
       "nome": "Invisibilidade",
+      "nome_original": "Invisibility",
       "circulo": 2,
       "escola": "Ilusão"
     },
     {
       "nome": "Levitação",
+      "nome_original": "Levitate",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Lufada de Vento",
+      "nome_original": "Gust of Wind",
       "circulo": 2,
       "escola": "Evocação"
     },
     {
       "nome": "Lâmina Flamejante",
+      "nome_original": "Flame Blade",
       "circulo": 2,
       "escola": "Evocação"
     },
     {
       "nome": "Nuvem de Adagas",
+      "nome_original": "Cloud of Daggers",
       "circulo": 2,
       "escola": "Invocação"
     },
     {
       "nome": "Paralisar Pessoa",
+      "nome_original": "Hold Person",
       "circulo": 2,
       "escola": "Encantamento"
     },
     {
       "nome": "Passo Nebuloso",
+      "nome_original": "Misty Step",
       "circulo": 2,
       "escola": "Invocação"
     },
     {
       "nome": "Raio Ardente",
+      "nome_original": "Scorching Ray",
       "circulo": 2,
       "escola": "Evocação"
     },
     {
       "nome": "Reflexos",
+      "nome_original": "Mirror Image",
       "circulo": 2,
       "escola": "Ilusão"
     },
     {
       "nome": "Sopro de Dragão",
+      "nome_original": "Dragon's Breath",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Sugestão",
+      "nome_original": "Suggestion",
       "circulo": 2,
       "escola": "Encantamento"
     },
     {
       "nome": "Teia",
+      "nome_original": "Web",
       "circulo": 2,
       "escola": "Invocação"
     },
     {
       "nome": "Turvar",
+      "nome_original": "Blur",
       "circulo": 2,
       "escola": "Ilusão"
     },
     {
       "nome": "Ver o Invisível",
+      "nome_original": "See Invisibility",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Vigor Arcano",
+      "nome_original": "Arcane Vigor",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Visão no Escuro",
+      "nome_original": "Darkvision",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Bola de Fogo",
+      "nome_original": "Fireball",
       "circulo": 3,
       "escola": "Evocação"
     },
     {
       "nome": "Caminhar Sobre as Águas",
+      "nome_original": "Water Walk",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Celeridade",
+      "nome_original": "Haste",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Clarividência",
+      "nome_original": "Clairvoyance",
       "circulo": 3,
       "escola": "Adivinhação"
     },
     {
       "nome": "Contramagia",
+      "nome_original": "Counterspell",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Dissipar Magia",
+      "nome_original": "Dispel Magic",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Forma Gasosa",
+      "nome_original": "Gaseous Form",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Imagem Maior",
+      "nome_original": "Major Image",
       "circulo": 3,
       "escola": "Ilusão"
     },
     {
       "nome": "Lentidão",
+      "nome_original": "Slow",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Luz do Dia",
+      "nome_original": "Daylight",
       "circulo": 3,
       "escola": "Evocação"
     },
     {
       "nome": "Línguas",
+      "nome_original": "Tongues",
       "circulo": 3,
       "escola": "Adivinhação"
     },
     {
       "nome": "Medo",
+      "nome_original": "Fear",
       "circulo": 3,
       "escola": "Ilusão"
     },
     {
       "nome": "Nevasca",
+      "nome_original": "Sleet Storm",
       "circulo": 3,
       "escola": "Invocação"
     },
     {
       "nome": "Nuvem Fétida",
+      "nome_original": "Stinking Cloud",
       "circulo": 3,
       "escola": "Invocação"
     },
     {
       "nome": "Padrão Hipnótico",
+      "nome_original": "Hypnotic Pattern",
       "circulo": 3,
       "escola": "Ilusão"
     },
     {
       "nome": "Piscar",
+      "nome_original": "Blink",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Proteção Contra Energia",
+      "nome_original": "Protection from Energy",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Relâmpago",
+      "nome_original": "Lightning Bolt",
       "circulo": 3,
       "escola": "Evocação"
     },
     {
       "nome": "Respirar na Água",
+      "nome_original": "Water Breathing",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Toque Vampírico",
+      "nome_original": "Vampiric Touch",
       "circulo": 3,
       "escola": "Necromancia"
     },
     {
       "nome": "Voo",
+      "nome_original": "Fly",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Banimento",
+      "nome_original": "Banishment",
       "circulo": 4,
       "escola": "Abjuração"
     },
     {
       "nome": "Confusão",
+      "nome_original": "Confusion",
       "circulo": 4,
       "escola": "Encantamento"
     },
     {
       "nome": "Dominar Fera",
+      "nome_original": "Dominate Beast",
       "circulo": 4,
       "escola": "Encantamento"
     },
     {
       "nome": "Enfeitiçar Monstro",
+      "nome_original": "Charm Monster",
       "circulo": 4,
       "escola": "Encantamento"
     },
     {
       "nome": "Escudo Ardente",
+      "nome_original": "Fire Shield",
       "circulo": 4,
       "escola": "Evocação"
     },
     {
       "nome": "Esfera Vitriólica",
+      "nome_original": "Vitriolic Sphere",
       "circulo": 4,
       "escola": "Evocação"
     },
     {
       "nome": "Invisibilidade Maior",
+      "nome_original": "Greater Invisibility",
       "circulo": 4,
       "escola": "Ilusão"
     },
     {
       "nome": "Malogro",
+      "nome_original": "Blight",
       "circulo": 4,
       "escola": "Necromancia"
     },
     {
       "nome": "Muralha de Fogo",
+      "nome_original": "Wall of Fire",
       "circulo": 4,
       "escola": "Evocação"
     },
     {
       "nome": "Pele-Rocha",
+      "nome_original": "Stoneskin",
       "circulo": 4,
       "escola": "Transmutação"
     },
     {
       "nome": "Polimorfia",
+      "nome_original": "Polymorph",
       "circulo": 4,
       "escola": "Transmutação"
     },
     {
       "nome": "Porta Dimensional",
+      "nome_original": "Dimension Door",
       "circulo": 4,
       "escola": "Invocação"
     },
     {
       "nome": "Tempestade Glacial",
+      "nome_original": "Ice Storm",
       "circulo": 4,
       "escola": "Evocação"
     },
     {
       "nome": "Animar Objetos",
+      "nome_original": "Animate Objects",
       "circulo": 5,
       "escola": "Transmutação"
     },
     {
       "nome": "Cone de Frio",
+      "nome_original": "Cone of Cold",
       "circulo": 5,
       "escola": "Evocação"
     },
     {
       "nome": "Criação",
+      "nome_original": "Creation",
       "circulo": 5,
       "escola": "Ilusão"
     },
     {
       "nome": "Círculo de Teleporte",
+      "nome_original": "Teleportation Circle",
       "circulo": 5,
       "escola": "Invocação"
     },
     {
       "nome": "Dominar Pessoa",
+      "nome_original": "Dominate Person",
       "circulo": 5,
       "escola": "Encantamento"
     },
     {
       "nome": "Estática Sináptica",
+      "nome_original": "Synaptic Static",
       "circulo": 5,
       "escola": "Encantamento"
     },
     {
       "nome": "Muralha de Pedra",
+      "nome_original": "Wall of Stone",
       "circulo": 5,
       "escola": "Evocação"
     },
     {
       "nome": "Mão de Bigby",
+      "nome_original": "Bigby's Hand",
       "circulo": 5,
       "escola": "Evocação"
     },
     {
       "nome": "Névoa Mortal",
+      "nome_original": "Cloudkill",
       "circulo": 5,
       "escola": "Invocação"
     },
     {
       "nome": "Paralisar Monstro",
+      "nome_original": "Hold Monster",
       "circulo": 5,
       "escola": "Encantamento"
     },
     {
       "nome": "Praga de Insetos",
+      "nome_original": "Insect Plague",
       "circulo": 5,
       "escola": "Invocação"
     },
     {
       "nome": "Similaridade",
+      "nome_original": "Seeming",
       "circulo": 5,
       "escola": "Ilusão"
     },
     {
       "nome": "Telecinese",
+      "nome_original": "Telekinesis",
       "circulo": 5,
       "escola": "Transmutação"
     },
     {
       "nome": "Corrente de Relâmpagos",
+      "nome_original": "Chain Lightning",
       "circulo": 6,
       "escola": "Evocação"
     },
     {
       "nome": "Círculo da Morte",
+      "nome_original": "Circle of Death",
       "circulo": 6,
       "escola": "Necromancia"
     },
     {
       "nome": "De Carne para Pedra",
+      "nome_original": "Flesh to Stone",
       "circulo": 6,
       "escola": "Transmutação"
     },
     {
       "nome": "Desintegrar",
+      "nome_original": "Disintegrate",
       "circulo": 6,
       "escola": "Transmutação"
     },
     {
       "nome": "Esfera Congelante de Otiluke",
+      "nome_original": "Otiluke's Freezing Sphere",
       "circulo": 6,
       "escola": "Evocação"
     },
     {
       "nome": "Globo de Invulnerabilidade",
+      "nome_original": "Globe of Invulnerability",
       "circulo": 6,
       "escola": "Abjuração"
     },
     {
       "nome": "Mau Olhado",
+      "nome_original": "Eyebite",
       "circulo": 6,
       "escola": "Necromancia"
     },
     {
       "nome": "Mover Terra",
+      "nome_original": "Move Earth",
       "circulo": 6,
       "escola": "Transmutação"
     },
     {
       "nome": "Portais Arcanos",
+      "nome_original": "Arcane Gate",
       "circulo": 6,
       "escola": "Invocação"
     },
     {
       "nome": "Raio Solar",
+      "nome_original": "Sunbeam",
       "circulo": 6,
       "escola": "Evocação"
     },
     {
       "nome": "Sugestão em Massa",
+      "nome_original": "Mass Suggestion",
       "circulo": 6,
       "escola": "Encantamento"
     },
     {
       "nome": "Visão da Verdade",
+      "nome_original": "True Seeing",
       "circulo": 6,
       "escola": "Adivinhação"
     },
     {
       "nome": "Bola de Fogo Adiável",
+      "nome_original": "Delayed Blast Fireball",
       "circulo": 7,
       "escola": "Evocação"
     },
     {
       "nome": "Dedo da Morte",
+      "nome_original": "Finger of Death",
       "circulo": 7,
       "escola": "Necromancia"
     },
     {
       "nome": "Forma Etérea",
+      "nome_original": "Etherealness",
       "circulo": 7,
       "escola": "Invocação"
     },
     {
       "nome": "Inverter a Gravidade",
+      "nome_original": "Reverse Gravity",
       "circulo": 7,
       "escola": "Transmutação"
     },
     {
       "nome": "Rajada Prismática",
+      "nome_original": "Prismatic Spray",
       "circulo": 7,
       "escola": "Evocação"
     },
     {
       "nome": "Teleporte",
+      "nome_original": "Teleport",
       "circulo": 7,
       "escola": "Invocação"
     },
     {
       "nome": "Tempestade de Fogo",
+      "nome_original": "Fire Storm",
       "circulo": 7,
       "escola": "Evocação"
     },
     {
       "nome": "Transição Planar",
+      "nome_original": "Plane Shift",
       "circulo": 7,
       "escola": "Invocação"
     },
     {
       "nome": "Dominar Monstro",
+      "nome_original": "Dominate Monster",
       "circulo": 8,
       "escola": "Encantamento"
     },
     {
       "nome": "Explosão Solar",
+      "nome_original": "Sunburst",
       "circulo": 8,
       "escola": "Evocação"
     },
     {
       "nome": "Nuvem Incendiária",
+      "nome_original": "Incendiary Cloud",
       "circulo": 8,
       "escola": "Invocação"
     },
     {
       "nome": "Palavra de Poder: Atordoar",
+      "nome_original": "Power Word Stun",
       "circulo": 8,
       "escola": "Encantamento"
     },
     {
       "nome": "Semiplano",
+      "nome_original": "Demiplane",
       "circulo": 8,
       "escola": "Invocação"
     },
     {
       "nome": "Terremoto",
+      "nome_original": "Earthquake",
       "circulo": 8,
       "escola": "Transmutação"
     },
     {
       "nome": "Chuva de Meteoros",
+      "nome_original": "Meteor Swarm",
       "circulo": 9,
       "escola": "Evocação"
     },
     {
       "nome": "Desejo",
+      "nome_original": "Wish",
       "circulo": 9,
       "escola": "Invocação"
     },
     {
       "nome": "Palavra de Poder: Matar",
+      "nome_original": "Power Word Kill",
       "circulo": 9,
       "escola": "Encantamento"
     },
     {
       "nome": "Parar o Tempo",
+      "nome_original": "Time Stop",
       "circulo": 9,
       "escola": "Transmutação"
     },
     {
       "nome": "Portal",
+      "nome_original": "Gate",
       "circulo": 9,
       "escola": "Invocação"
     }

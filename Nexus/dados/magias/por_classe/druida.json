@@ -4,676 +4,811 @@
   "magias": [
     {
       "nome": "Acudir os Moribundos",
+      "nome_original": "Spare the Dying",
       "circulo": 0,
       "escola": "Necromancia"
     },
     {
       "nome": "Arte Druídica",
+      "nome_original": "Druidcraft",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Bordão Místico",
+      "nome_original": "Shillelagh",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Chicote de Espinhos",
+      "nome_original": "Thorn Whip",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Criar Chamas",
+      "nome_original": "Produce Flame",
       "circulo": 0,
       "escola": "Invocação"
     },
     {
       "nome": "Elementalismo",
+      "nome_original": "Elementalism",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Fagulha Estelar",
+      "nome_original": "Starry Wisp",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Mensagem",
+      "nome_original": "Message",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Orientação",
+      "nome_original": "Guidance",
       "circulo": 0,
       "escola": "Adivinhação"
     },
     {
       "nome": "Rajada de Veneno",
+      "nome_original": "Poison Spray",
       "circulo": 0,
       "escola": "Necromancia"
     },
     {
       "nome": "Reparar",
+      "nome_original": "Mending",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Resistência",
+      "nome_original": "Resistance",
       "circulo": 0,
       "escola": "Abjuração"
     },
     {
       "nome": "Trovão",
+      "nome_original": "Thunderclap",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Amizade Animal",
+      "nome_original": "Animal Friendship",
       "circulo": 1,
       "escola": "Encantamento"
     },
     {
       "nome": "Bom Fruto",
+      "nome_original": "Goodberry",
       "circulo": 1,
       "escola": "Invocação"
     },
     {
       "nome": "Criar ou Destruir Água",
+      "nome_original": "Create or Destroy Water",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Curar Ferimentos",
+      "nome_original": "Cure Wounds",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Detectar Magia",
+      "nome_original": "Detect Magic",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Detectar Veneno e Doença",
+      "nome_original": "Detect Poison and Disease",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Emaranhar",
+      "nome_original": "Entangle",
       "circulo": 1,
       "escola": "Invocação"
     },
     {
       "nome": "Enfeitiçar Pessoa",
+      "nome_original": "Charm Person",
       "circulo": 1,
       "escola": "Encantamento"
     },
     {
       "nome": "Faca de Gelo",
+      "nome_original": "Ice Knife",
       "circulo": 1,
       "escola": "Invocação"
     },
     {
       "nome": "Falar com Animais",
+      "nome_original": "Speak with Animals",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Fogo das Fadas",
+      "nome_original": "Faerie Fire",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Névoa Obscurecente",
+      "nome_original": "Fog Cloud",
       "circulo": 1,
       "escola": "Invocação"
     },
     {
       "nome": "Onda Trovejante",
+      "nome_original": "Thunderwave",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Palavra Curativa",
+      "nome_original": "Healing Word",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Passos Largos",
+      "nome_original": "Longstrider",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Proteção Contra o Bem e o Mal",
+      "nome_original": "Protection from Evil and Good",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Purificar Alimentos e Bebidas",
+      "nome_original": "Purify Food and Drink",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Salto",
+      "nome_original": "Jump",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Aprimorar Atributo",
+      "nome_original": "Enhance Ability",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Augúrio",
+      "nome_original": "Augury",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Aumentar/Reduzir",
+      "nome_original": "Enlarge/Reduce",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Auxílio",
+      "nome_original": "Aid",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Chama Contínua",
+      "nome_original": "Continual Flame",
       "circulo": 2,
       "escola": "Evocação"
     },
     {
       "nome": "Crescer Espinhos",
+      "nome_original": "Spike Growth",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Encontrar Armadilhas",
+      "nome_original": "Find Traps",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Esfera Flamejante",
+      "nome_original": "Flaming Sphere",
       "circulo": 2,
       "escola": "Invocação"
     },
     {
       "nome": "Esquentar Metal",
+      "nome_original": "Heat Metal",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Invocar Fera",
+      "nome_original": "Summon Beast",
       "circulo": 2,
       "escola": "Invocação"
     },
     {
       "nome": "Localizar Animais ou Plantas",
+      "nome_original": "Locate Animals or Plants",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Localizar Objeto",
+      "nome_original": "Locate Object",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Lufada de Vento",
+      "nome_original": "Gust of Wind",
       "circulo": 2,
       "escola": "Evocação"
     },
     {
       "nome": "Lâmina Flamejante",
+      "nome_original": "Flame Blade",
       "circulo": 2,
       "escola": "Evocação"
     },
     {
       "nome": "Mensageiro Animal",
+      "nome_original": "Animal Messenger",
       "circulo": 2,
       "escola": "Encantamento"
     },
     {
       "nome": "Paralisar Pessoa",
+      "nome_original": "Hold Person",
       "circulo": 2,
       "escola": "Encantamento"
     },
     {
       "nome": "Passo Sem Rastro",
+      "nome_original": "Pass without Trace",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Pele-Casca",
+      "nome_original": "Barkskin",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Proteção Contra Veneno",
+      "nome_original": "Protection from Poison",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Raio Lunar",
+      "nome_original": "Moonbeam",
       "circulo": 2,
       "escola": "Evocação"
     },
     {
       "nome": "Restauração Menor",
+      "nome_original": "Lesser Restoration",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Sentido Feral",
+      "nome_original": "Beast Sense",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Visão no Escuro",
+      "nome_original": "Darkvision",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Arma Elemental",
+      "nome_original": "Elemental Weapon",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Aura de Vitalidade",
+      "nome_original": "Aura of Vitality",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Caminhar Sobre as Águas",
+      "nome_original": "Water Walk",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Convocar Feérico",
+      "nome_original": "Summon Fey",
       "circulo": 3,
       "escola": "Invocação"
     },
     {
       "nome": "Convocar Relâmpagos",
+      "nome_original": "Call Lightning",
       "circulo": 3,
       "escola": "Invocação"
     },
     {
       "nome": "Crescimento de Plantas",
+      "nome_original": "Plant Growth",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Dissipar Magia",
+      "nome_original": "Dispel Magic",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Falar com Plantas",
+      "nome_original": "Speak with Plants",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Invocar Animais",
+      "nome_original": "Conjure Animals",
       "circulo": 3,
       "escola": "Invocação"
     },
     {
       "nome": "Luz do Dia",
+      "nome_original": "Daylight",
       "circulo": 3,
       "escola": "Evocação"
     },
     {
       "nome": "Mesclar-se às Rochas",
+      "nome_original": "Meld into Stone",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Muralha de Vento",
+      "nome_original": "Wind Wall",
       "circulo": 3,
       "escola": "Evocação"
     },
     {
       "nome": "Nevasca",
+      "nome_original": "Sleet Storm",
       "circulo": 3,
       "escola": "Invocação"
     },
     {
       "nome": "Proteção Contra Energia",
+      "nome_original": "Protection from Energy",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Respirar na Água",
+      "nome_original": "Water Breathing",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Revivificar",
+      "nome_original": "Revivify",
       "circulo": 3,
       "escola": "Necromancia"
     },
     {
       "nome": "Simular Morte",
+      "nome_original": "Feign Death",
       "circulo": 3,
       "escola": "Necromancia"
     },
     {
       "nome": "Confusão",
+      "nome_original": "Confusion",
       "circulo": 4,
       "escola": "Encantamento"
     },
     {
       "nome": "Controlar Água",
+      "nome_original": "Control Water",
       "circulo": 4,
       "escola": "Transmutação"
     },
     {
       "nome": "Convocar Elemental",
+      "nome_original": "Summon Elemental",
       "circulo": 4,
       "escola": "Invocação"
     },
     {
       "nome": "Dominar Fera",
+      "nome_original": "Dominate Beast",
       "circulo": 4,
       "escola": "Encantamento"
     },
     {
       "nome": "Enfeitiçar Monstro",
+      "nome_original": "Charm Monster",
       "circulo": 4,
       "escola": "Encantamento"
     },
     {
       "nome": "Escudo Ardente",
+      "nome_original": "Fire Shield",
       "circulo": 4,
       "escola": "Evocação"
     },
     {
       "nome": "Fonte do Luar",
+      "nome_original": "Font of Moonlight",
       "circulo": 4,
       "escola": "Evocação"
     },
     {
       "nome": "Inseto Gigante",
+      "nome_original": "Giant Insect",
       "circulo": 4,
       "escola": "Invocação"
     },
     {
       "nome": "Invocar Elementais Menores",
+      "nome_original": "Conjure Minor Elementals",
       "circulo": 4,
       "escola": "Invocação"
     },
     {
       "nome": "Invocar Seres da Floresta",
+      "nome_original": "Conjure Woodland Beings",
       "circulo": 4,
       "escola": "Invocação"
     },
     {
       "nome": "Localizar Criatura",
+      "nome_original": "Locate Creature",
       "circulo": 4,
       "escola": "Adivinhação"
     },
     {
       "nome": "Malogro",
+      "nome_original": "Blight",
       "circulo": 4,
       "escola": "Necromancia"
     },
     {
       "nome": "Moldar Rochas",
+      "nome_original": "Stone Shape",
       "circulo": 4,
       "escola": "Transmutação"
     },
     {
       "nome": "Movimentação Livre",
+      "nome_original": "Freedom of Movement",
       "circulo": 4,
       "escola": "Abjuração"
     },
     {
       "nome": "Muralha de Fogo",
+      "nome_original": "Wall of Fire",
       "circulo": 4,
       "escola": "Evocação"
     },
     {
       "nome": "Pele-Rocha",
+      "nome_original": "Stoneskin",
       "circulo": 4,
       "escola": "Transmutação"
     },
     {
       "nome": "Polimorfia",
+      "nome_original": "Polymorph",
       "circulo": 4,
       "escola": "Transmutação"
     },
     {
       "nome": "Presságio",
+      "nome_original": "Divination",
       "circulo": 4,
       "escola": "Adivinhação"
     },
     {
       "nome": "Tempestade Glacial",
+      "nome_original": "Ice Storm",
       "circulo": 4,
       "escola": "Evocação"
     },
     {
       "nome": "Terreno Alucinatório",
+      "nome_original": "Hallucinatory Terrain",
       "circulo": 4,
       "escola": "Ilusão"
     },
     {
       "nome": "Vinha Agarradora",
+      "nome_original": "Grasping Vine",
       "circulo": 4,
       "escola": "Invocação"
     },
     {
       "nome": "Comunhão com a Natureza",
+      "nome_original": "Commune with Nature",
       "circulo": 5,
       "escola": "Adivinhação"
     },
     {
       "nome": "Cone de Frio",
+      "nome_original": "Cone of Cold",
       "circulo": 5,
       "escola": "Evocação"
     },
     {
       "nome": "Contágio",
+      "nome_original": "Contagion",
       "circulo": 5,
       "escola": "Necromancia"
     },
     {
       "nome": "Curar Ferimentos em Massa",
+      "nome_original": "Mass Cure Wounds",
       "circulo": 5,
       "escola": "Abjuração"
     },
     {
       "nome": "Cúpula Antivida",
+      "nome_original": "Antilife Shell",
       "circulo": 5,
       "escola": "Abjuração"
     },
     {
       "nome": "Despertar",
+      "nome_original": "Awaken",
       "circulo": 5,
       "escola": "Transmutação"
     },
     {
       "nome": "Invocar Elemental",
+      "nome_original": "Conjure Elemental",
       "circulo": 5,
       "escola": "Invocação"
     },
     {
       "nome": "Missão",
+      "nome_original": "Geas",
       "circulo": 5,
       "escola": "Encantamento"
     },
     {
       "nome": "Muralha de Pedra",
+      "nome_original": "Wall of Stone",
       "circulo": 5,
       "escola": "Evocação"
     },
     {
       "nome": "Passo Arbóreo",
+      "nome_original": "Tree Stride",
       "circulo": 5,
       "escola": "Invocação"
     },
     {
       "nome": "Praga de Insetos",
+      "nome_original": "Insect Plague",
       "circulo": 5,
       "escola": "Invocação"
     },
     {
       "nome": "Reencarnar",
+      "nome_original": "Reincarnate",
       "circulo": 5,
       "escola": "Necromancia"
     },
     {
       "nome": "Restauração Maior",
+      "nome_original": "Greater Restoration",
       "circulo": 5,
       "escola": "Abjuração"
     },
     {
       "nome": "Vidência",
+      "nome_original": "Scrying",
       "circulo": 5,
       "escola": "Adivinhação"
     },
     {
       "nome": "Âncora Planar",
+      "nome_original": "Planar Binding",
       "circulo": 5,
       "escola": "Abjuração"
     },
     {
       "nome": "Banquete de Heróis",
+      "nome_original": "Heroes' Feast",
       "circulo": 6,
       "escola": "Invocação"
     },
     {
       "nome": "Caminhar no Vento",
+      "nome_original": "Wind Walk",
       "circulo": 6,
       "escola": "Transmutação"
     },
     {
       "nome": "Cura Completa",
+      "nome_original": "Heal",
       "circulo": 6,
       "escola": "Abjuração"
     },
     {
       "nome": "De Carne para Pedra",
+      "nome_original": "Flesh to Stone",
       "circulo": 5,
       "escola": "Transmutação"
     },
     {
       "nome": "Encontrar o Caminho",
+      "nome_original": "Find the Path",
       "circulo": 6,
       "escola": "Adivinhação"
     },
     {
       "nome": "Invocar Feérico",
+      "nome_original": "Conjure Fey",
       "circulo": 6,
       "escola": "Invocação"
     },
     {
       "nome": "Mover Terra",
+      "nome_original": "Move Earth",
       "circulo": 6,
       "escola": "Transmutação"
     },
     {
       "nome": "Muralha de Espinhos",
+      "nome_original": "Wall of Thorns",
       "circulo": 6,
       "escola": "Invocação"
     },
     {
       "nome": "Raio Solar",
+      "nome_original": "Sunbeam",
       "circulo": 6,
       "escola": "Evocação"
     },
     {
       "nome": "Transporte via Plantas",
+      "nome_original": "Transport via Plants",
       "circulo": 6,
       "escola": "Invocação"
     },
     {
       "nome": "Inverter a Gravidade",
+      "nome_original": "Reverse Gravity",
       "circulo": 7,
       "escola": "Transmutação"
     },
     {
       "nome": "Miragem Arcana",
+      "nome_original": "Mirage Arcane",
       "circulo": 7,
       "escola": "Ilusão"
     },
     {
       "nome": "Regeneração",
+      "nome_original": "Regenerate",
       "circulo": 7,
       "escola": "Transmutação"
     },
     {
       "nome": "Símbolo",
+      "nome_original": "Symbol",
       "circulo": 7,
       "escola": "Abjuração"
     },
     {
       "nome": "Tempestade de Fogo",
+      "nome_original": "Fire Storm",
       "circulo": 7,
       "escola": "Evocação"
     },
     {
       "nome": "Transição Planar",
+      "nome_original": "Plane Shift",
       "circulo": 7,
       "escola": "Invocação"
     },
     {
       "nome": "Antipatia/Simpatia",
+      "nome_original": "Antipathy/Sympathy",
       "circulo": 8,
       "escola": "Encantamento"
     },
     {
       "nome": "Controlar o Clima",
+      "nome_original": "Control Weather",
       "circulo": 8,
       "escola": "Transmutação"
     },
     {
       "nome": "Explosão Solar",
+      "nome_original": "Sunburst",
       "circulo": 8,
       "escola": "Evocação"
     },
     {
       "nome": "Formas Animais",
+      "nome_original": "Animal Shapes",
       "circulo": 8,
       "escola": "Transmutação"
     },
     {
       "nome": "Nuvem Incendiária",
+      "nome_original": "Incendiary Cloud",
       "circulo": 8,
       "escola": "Invocação"
     },
     {
       "nome": "Suplício",
+      "nome_original": "Befuddlement",
       "circulo": 8,
       "escola": "Encantamento"
     },
     {
       "nome": "Terremoto",
+      "nome_original": "Earthquake",
       "circulo": 8,
       "escola": "Transmutação"
     },
     {
       "nome": "Tsunami",
+      "nome_original": "Tsunami",
       "circulo": 8,
       "escola": "Invocação"
     },
     {
       "nome": "Metamorfose",
+      "nome_original": "Shapechange",
       "circulo": 9,
       "escola": "Transmutação"
     },
     {
       "nome": "Ressurreição Verdadeira",
+      "nome_original": "True Resurrection",
       "circulo": 9,
       "escola": "Necromancia"
     },
     {
       "nome": "Sexto Sentido",
+      "nome_original": "Foresight",
       "circulo": 9,
       "escola": "Adivinhação"
     },
     {
       "nome": "Tempestade da Vingança",
+      "nome_original": "Storm of Vengeance",
       "circulo": 9,
       "escola": "Invocação"
     }

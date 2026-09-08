@@ -327,7 +327,7 @@ function renderSheetInvItem(item, idx) {
           ${item.tipo === 'armadura' ? `CA: ${item.dados?.ca || ''} | ${item.dados?.categoria || ''}` : ''}
           ${item.tipo === 'escudo' ? `CA: ${item.dados?.ca || '+2'} | Escudo` : ''}
           ${item.tipo === 'equipamento' ? `${item.dados?.custo || ''} ${item.dados?.peso ? '| ' + item.dados.peso : ''}` : ''}
-          ${item.tipo === 'magico' ? `${item.dados?.tipo || 'Item Mágico'}${item.dados?.subtipo ? ' (' + item.dados.subtipo + ')' : ''} | ${item.dados?.raridade || 'Mágico'}${item.dados?.ca ? ' | CA: ' + item.dados.ca : ''}` : ''}
+          ${item.tipo === 'magico' ? `${(item.dados?.nome_original || item.nome_original) ? (item.dados?.nome_original || item.nome_original) + ' • ' : ''}${item.dados?.tipo || 'Item Mágico'}${item.dados?.subtipo ? ' (' + item.dados.subtipo + ')' : ''} | ${item.dados?.raridade || 'Mágico'}${item.dados?.ca ? ' | CA: ' + item.dados.ca : ''}` : ''}
           ${item.tipo === 'customizado' ? `${item.descricao ? (item.descricao.length > 60 ? item.descricao.substring(0, 60) + '...' : item.descricao) : ''}` : ''}
           ${item.tipo === 'generico' ? `${item.descricao || ''}` : ''}
         </div>
@@ -1106,6 +1106,7 @@ async function mostrarDetalheItemSheet(item) {
     corpo += `</div>`;
   } else if (item.tipo === 'magico' || item.dados?.raridade) {
     const d = item.dados || {};
+    const nomeOriginal = d.nome_original || item.nome_original;
     const tipoLinha = d.tipo_linha || `${d.tipo || 'Item Mágico'}${d.subtipo ? ' (' + d.subtipo + ')' : ''}, ${d.raridade || 'Mágico'}`;
     const sint = d.detalhe_sintonizacao || (d.sintonizacao ? 'Requer Sintonização' : '');
     corpo += `<div style="font-size:0.85rem;margin-bottom:8px">`;
@@ -1114,6 +1115,9 @@ async function mostrarDetalheItemSheet(item) {
     if (d.raridade) corpo += `<span class="badge badge-accent">${d.raridade}</span>`;
     if (sint) corpo += `<span class="badge" style="background:rgba(108,92,231,0.2);color:#a29bfe;border:1px solid rgba(108,92,231,0.4)">${sint}</span>`;
     corpo += `</div>`;
+    if (nomeOriginal) {
+      corpo += `<div style="font-size:0.82rem;margin-bottom:4px"><strong>Nome Original (Inglês):</strong> <span style="font-style:italic;color:var(--accent)">${nomeOriginal}</span></div>`;
+    }
     corpo += `<div style="font-style:italic;color:var(--text-muted);font-size:0.8rem;margin-bottom:6px">${tipoLinha}</div>`;
     corpo += `</div>`;
     if (d.descricao) {
@@ -1428,7 +1432,8 @@ async function mostrarSeletorCategoria() {
           const sint = m.detalhe_sintonizacao || (m.sintonizacao ? 'Sintonização' : '');
           return {
             nome: m.nome,
-            detalhe: m.tipo_linha || `${m.tipo}${m.subtipo ? ' (' + m.subtipo + ')' : ''} | ${m.raridade}`,
+            nome_original: m.nome_original || '',
+            detalhe: (m.nome_original ? `${m.nome_original} • ` : '') + (m.tipo_linha || `${m.tipo}${m.subtipo ? ' (' + m.subtipo + ')' : ''} | ${m.raridade}`),
             detalhe2: m.resumo || (m.descricao ? (m.descricao.length > 80 ? m.descricao.substring(0, 80) + '…' : m.descricao) : ''),
             badge: `<span class="badge badge-accent" style="font-size:0.65rem">${m.raridade || 'Mágico'}</span>` + (sint ? ` <span class="badge" style="font-size:0.6rem;background:rgba(108,92,231,0.2);color:#a29bfe">Sint.</span>` : ''),
             badgeCat: `<span class="badge badge-secondary">${m.tipo}</span>`,
@@ -1441,7 +1446,12 @@ async function mostrarSeletorCategoria() {
 
     // Filtrar por texto
     if (filtroTexto) {
-      itens = itens.filter(i => semAcento(i.nome).includes(filtroTexto));
+      itens = itens.filter(i => {
+        const matchNome = semAcento(i.nome).includes(filtroTexto);
+        const orig = i.nome_original || i.dados?.nome_original;
+        const matchOrig = orig ? semAcento(orig).includes(filtroTexto) : false;
+        return matchNome || matchOrig;
+      });
     }
 
     listaEl.innerHTML = itens.length === 0
@@ -1488,6 +1498,9 @@ async function mostrarSeletorCategoria() {
           if (d.raridade) descCorpo += `<span class="badge badge-accent">${d.raridade}</span>`;
           if (sint) descCorpo += `<span class="badge" style="background:rgba(108,92,231,0.2);color:#a29bfe;border:1px solid rgba(108,92,231,0.4)">${sint}</span>`;
           descCorpo += `</div>`;
+          if (d.nome_original) {
+            descCorpo += `<div style="font-size:0.82rem;margin-bottom:4px"><strong>Nome Original (Inglês):</strong> <span style="font-style:italic;color:var(--accent)">${d.nome_original}</span></div>`;
+          }
           if (d.tipo_linha) descCorpo += `<div style="font-style:italic;color:var(--text-muted);font-size:0.8rem;margin-bottom:6px">${d.tipo_linha}</div>`;
           descCorpo += `</div>`;
           if (d.descricao) descCorpo += `<div class="md-content" style="font-size:0.85rem">${mdParaHtml(d.descricao)}</div>`;
@@ -1575,6 +1588,7 @@ async function mostrarSeletorCategoria() {
 
           const novoItem = {
             nome: item.nome,
+            nome_original: item.dados?.nome_original || item.nome_original || '',
             tipo: item.tipo,
             quantidade: quantidadeSelecionada,
             equipado: false,

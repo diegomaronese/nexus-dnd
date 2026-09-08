@@ -5,6 +5,7 @@
   "magias": [
     {
       "nome": "Aprisionamento",
+      "nome_original": "Imprisonment",
       "circulo": 9,
       "escola": "Abjuração",
       "classes": [
@@ -20,6 +21,7 @@
     },
     {
       "nome": "Chuva de Meteoros",
+      "nome_original": "Meteor Swarm",
       "circulo": 9,
       "escola": "Evocação",
       "classes": [
@@ -35,6 +37,7 @@
     },
     {
       "nome": "Cura Completa em Massa",
+      "nome_original": "Mass Heal",
       "circulo": 9,
       "escola": "Abjuração",
       "classes": [
@@ -49,6 +52,7 @@
     },
     {
       "nome": "Desejo",
+      "nome_original": "Wish",
       "circulo": 9,
       "escola": "Invocação",
       "classes": [
@@ -64,6 +68,7 @@
     },
     {
       "nome": "Encarnação Fantasmagórica",
+      "nome_original": "Weird",
       "circulo": 9,
       "escola": "Ilusão",
       "classes": [
@@ -79,6 +84,7 @@
     },
     {
       "nome": "Metamorfose",
+      "nome_original": "Shapechange",
       "circulo": 9,
       "escola": "Transmutação",
       "classes": [
@@ -94,6 +100,7 @@
     },
     {
       "nome": "Muralha Prismática",
+      "nome_original": "Prismatic Wall",
       "circulo": 9,
       "escola": "Abjuração",
       "classes": [
@@ -109,6 +116,7 @@
     },
     {
       "nome": "Palavra de Poder: Matar",
+      "nome_original": "Power Word Kill",
       "circulo": 9,
       "escola": "Encantamento",
       "classes": [
@@ -126,6 +134,7 @@
     },
     {
       "nome": "Palavra de Poder: Salvar",
+      "nome_original": "Power Word Heal",
       "circulo": 9,
       "escola": "Encantamento",
       "classes": [
@@ -141,6 +150,7 @@
     },
     {
       "nome": "Parar o Tempo",
+      "nome_original": "Time Stop",
       "circulo": 9,
       "escola": "Transmutação",
       "classes": [
@@ -156,6 +166,7 @@
     },
     {
       "nome": "Polimorfia Total",
+      "nome_original": "True Polymorph",
       "circulo": 9,
       "escola": "Transmutação",
       "classes": [
@@ -172,6 +183,7 @@
     },
     {
       "nome": "Portal",
+      "nome_original": "Gate",
       "circulo": 9,
       "escola": "Invocação",
       "classes": [
@@ -189,6 +201,7 @@
     },
     {
       "nome": "Projeção Astral",
+      "nome_original": "Astral Projection",
       "circulo": 9,
       "escola": "Necromancia",
       "classes": [
@@ -205,6 +218,7 @@
     },
     {
       "nome": "Ressurreição Verdadeira",
+      "nome_original": "True Resurrection",
       "circulo": 9,
       "escola": "Necromancia",
       "classes": [
@@ -220,6 +234,7 @@
     },
     {
       "nome": "Sexto Sentido",
+      "nome_original": "Foresight",
       "circulo": 9,
       "escola": "Adivinhação",
       "classes": [
@@ -237,6 +252,7 @@
     },
     {
       "nome": "Tempestade da Vingança",
+      "nome_original": "Storm of Vengeance",
       "circulo": 9,
       "escola": "Invocação",
       "classes": [

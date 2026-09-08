@@ -152,7 +152,7 @@ export async function mostrarBuscaMagia() {
       // Exibir truques de espécie (não removíveis) primeiro
       if (truquesEsp.length > 0) {
         let listaEsp = truquesEsp;
-        if (termo.length >= 2) listaEsp = listaEsp.filter(m => semAcento(m.nome).includes(termo));
+        if (termo.length >= 2) listaEsp = listaEsp.filter(m => semAcento(m.nome).includes(termo) || (m.nome_original && semAcento(m.nome_original).includes(termo)));
         html += `<div style="font-size:0.75rem;font-weight:700;color:var(--secondary);margin:8px 0 4px">Truques de Espécie</div>`;
         html += `<div class="magias-grid">${listaEsp.map(m => `
           <div class="magia-card selecionada magia-dominio" style="opacity:0.7;cursor:default">
@@ -171,7 +171,7 @@ export async function mostrarBuscaMagia() {
       });
       // Filtrar truques de espécie da lista de classe (evitar duplicatas)
       lista = lista.filter(m => !truquesEspSet.has(m.nome));
-      if (termo.length >= 2) lista = lista.filter(m => semAcento(m.nome).includes(termo));
+      if (termo.length >= 2) lista = lista.filter(m => semAcento(m.nome).includes(termo) || (m.nome_original && semAcento(m.nome_original).includes(termo)));
       const cheioTruq = numTruq >= maxTruq;
 
       html += `<div class="magias-grid">${lista.map(m => {
@@ -204,7 +204,7 @@ export async function mostrarBuscaMagia() {
         const bSel = selecionadasSet.has(b.nome) ? 0 : 1;
         return aSel - bSel || a.nome.localeCompare(b.nome);
       });
-      if (termo.length >= 2) lista = lista.filter(m => semAcento(m.nome).includes(termo));
+      if (termo.length >= 2) lista = lista.filter(m => semAcento(m.nome).includes(termo) || (m.nome_original && semAcento(m.nome_original).includes(termo)));
 
       html += `<div class="magias-grid">${lista.map(m => {
         const sel = selecionadasSet.has(m.nome);
@@ -322,7 +322,8 @@ export async function mostrarBuscaMagia() {
           ${magia.circulo_superior ? `<div class="info-box info mt-1"><strong>Em círculos superiores:</strong><div class="md-content">${mdParaHtml(magia.circulo_superior)}</div></div>` : ''}
           ${(magia.classes || []).length > 0 ? `<div style="font-size:0.8rem;color:var(--text-muted);margin-top:8px">Classes: ${magia.classes.join(', ')}</div>` : ''}
         `;
-        abrirModal(magia.nome, detalhesHtml, '<button class="btn btn-primary" onclick="fecharModal()">Fechar</button>');
+        const titModal = magia.nome_original ? `${magia.nome} (${magia.nome_original})` : magia.nome;
+        abrirModal(titModal, detalhesHtml, '<button class="btn btn-primary" onclick="fecharModal()">Fechar</button>');
       });
     });
   }
@@ -638,7 +639,7 @@ export async function mostrarBuscaGrimorio() {
     const termo = semAcento(document.getElementById('busca-grimorio')?.value || '');
     const jaNoGrimorio = new Set((char.grimorio || []).map(m => m.nome));
     let lista = magias.filter(m => !jaNoGrimorio.has(m.nome) && circulosPreparaveis.has(m.circulo));
-    if (termo.length >= 2) lista = lista.filter(m => semAcento(m.nome).includes(termo));
+    if (termo.length >= 2) lista = lista.filter(m => semAcento(m.nome).includes(termo) || (m.nome_original && semAcento(m.nome_original).includes(termo)));
     lista = lista.sort((a, b) => a.circulo - b.circulo || a.nome.localeCompare(b.nome, 'pt-BR'));
 
     if (lista.length === 0) {
@@ -806,7 +807,7 @@ export async function mostrarTrocaMagias(callbackPosTroca = null) {
 
       if (nomesDominio.size > 0) {
         const domMagias = magiasDisponiveis.filter(m => nomesDominio.has(m.nome));
-        const filtDom = termo.length >= 2 ? domMagias.filter(m => semAcento(m.nome).includes(termo)) : domMagias;
+        const filtDom = termo.length >= 2 ? domMagias.filter(m => semAcento(m.nome).includes(termo) || (m.nome_original && semAcento(m.nome_original).includes(termo))) : domMagias;
         if (filtDom.length > 0 || (termo.length < 2 && nomesDominio.size > 0)) {
           html += `<div style="font-size:0.75rem;font-weight:700;color:var(--secondary);margin:4px 0">Magias Especiais</div>`;
           // Garantir que domínio apareca mesmo se nao esta em magiasDisponiveis
@@ -849,7 +850,7 @@ export async function mostrarTrocaMagias(callbackPosTroca = null) {
         const bS = selecionadasSet.has(b.nome) ? 0 : 1;
         return aS - bS || a.nome.localeCompare(b.nome);
       });
-      if (termo.length >= 2) lista = lista.filter(m => semAcento(m.nome).includes(termo));
+      if (termo.length >= 2) lista = lista.filter(m => semAcento(m.nome).includes(termo) || (m.nome_original && semAcento(m.nome_original).includes(termo)));
 
       html += `<div class="magias-grid">${lista.map(m => {
         const sel = selecionadasSet.has(m.nome);
@@ -916,7 +917,8 @@ export async function mostrarTrocaMagias(callbackPosTroca = null) {
         const dados = await getMagiasPorCirculo(circ);
         const magia = dados?.magias?.find(m => m.nome === nome);
         if (!magia) { toast('Detalhes não encontrados', 'error'); return; }
-        abrirModal(magia.nome, `
+        const titModal = magia.nome_original ? `${magia.nome} (${magia.nome_original})` : magia.nome;
+        abrirModal(titModal, `
           <div class="magia-meta" style="margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;font-size:0.85rem">
             <span class="badge badge-primary">${circ === 0 ? 'Truque' : circ + 'º Círculo'}</span>
             <span class="badge badge-secondary">${magia.escola}</span>
@@ -1024,7 +1026,7 @@ export async function abrirPreenchimentoSlotMagia() {
   function renderLista() {
     const termo = semAcento(document.getElementById('busca-preencher-slot')?.value || '');
     let filtradas = disponiveis;
-    if (termo.length >= 2) filtradas = disponiveis.filter(m => semAcento(m.nome).includes(termo));
+    if (termo.length >= 2) filtradas = disponiveis.filter(m => semAcento(m.nome).includes(termo) || (m.nome_original && semAcento(m.nome_original).includes(termo)));
     filtradas = filtradas.sort((a, b) => a.circulo - b.circulo || a.nome.localeCompare(b.nome, 'pt-BR'));
 
     const porCirculo = filtradas.reduce((acc, m) => { if (!acc[m.circulo]) acc[m.circulo] = []; acc[m.circulo].push(m); return acc; }, {});
@@ -1064,7 +1066,8 @@ export async function abrirPreenchimentoSlotMagia() {
         const dados = await getMagiasPorCirculo(circ);
         const magia = dados?.magias?.find(m => m.nome === nome);
         if (!magia) return;
-        abrirModal(magia.nome, `
+        const titModal = magia.nome_original ? `${magia.nome} (${magia.nome_original})` : magia.nome;
+        abrirModal(titModal, `
           <div class="magia-meta" style="margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;font-size:0.85rem">
             <span class="badge badge-primary">${circ}\u00ba Circulo</span>
             <span class="badge badge-secondary">${magia.escola}</span>
@@ -1162,7 +1165,7 @@ export async function mostrarTrocaMagiaConhecida(callbackPosTroca = null) {
       m.circulo > 0 && m.circulo <= maxCirculo &&
       !jaTemSet.has(m.nome) && m.nome !== magiaRemover
     );
-    if (termo.length >= 2) disponiveis = disponiveis.filter(m => semAcento(m.nome).includes(termo));
+    if (termo.length >= 2) disponiveis = disponiveis.filter(m => semAcento(m.nome).includes(termo) || (m.nome_original && semAcento(m.nome_original).includes(termo)));
     disponiveis = disponiveis.sort((a, b) => a.circulo - b.circulo || a.nome.localeCompare(b.nome, 'pt-BR'));
 
     const porCirculo = disponiveis.reduce((acc, m) => { if (!acc[m.circulo]) acc[m.circulo] = []; acc[m.circulo].push(m); return acc; }, {});

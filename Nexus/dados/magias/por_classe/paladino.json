@@ -4,256 +4,307 @@
   "magias": [
     {
       "nome": "Bênção",
+      "nome_original": "Bless",
       "circulo": 1,
       "escola": "Encantamento"
     },
     {
       "nome": "Comando",
+      "nome_original": "Command",
       "circulo": 1,
       "escola": "Encantamento"
     },
     {
       "nome": "Curar Ferimentos",
+      "nome_original": "Cure Wounds",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Destruição Cauterizante",
+      "nome_original": "Searing Smite",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Destruição Colérica",
+      "nome_original": "Wrathful Smite",
       "circulo": 1,
       "escola": "Necromancia"
     },
     {
       "nome": "Destruição Divina",
+      "nome_original": "Divine Smite",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Destruição Estrondosa",
+      "nome_original": "Thunderous Smite",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Detectar Magia",
+      "nome_original": "Detect Magic",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Detectar Veneno e Doença",
+      "nome_original": "Detect Poison and Disease",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Detectar o Bem e o Mal",
+      "nome_original": "Detect Evil and Good",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Duelo Compelido",
+      "nome_original": "Compelled Duel",
       "circulo": 1,
       "escola": "Encantamento"
     },
     {
       "nome": "Escudo da Fé",
+      "nome_original": "Shield of Faith",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Favor Divino",
+      "nome_original": "Divine Favor",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Heroísmo",
+      "nome_original": "Heroism",
       "circulo": 1,
       "escola": "Encantamento"
     },
     {
       "nome": "Proteção Contra o Bem e o Mal",
+      "nome_original": "Protection from Evil and Good",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Purificar Alimentos e Bebidas",
+      "nome_original": "Purify Food and Drink",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Arma Mágica",
+      "nome_original": "Magic Weapon",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Auxílio",
+      "nome_original": "Aid",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Convocar Montaria",
+      "nome_original": "Find Steed",
       "circulo": 2,
       "escola": "Invocação"
     },
     {
       "nome": "Destruição Radiante",
+      "nome_original": "Shining Smite",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Localizar Objeto",
+      "nome_original": "Locate Object",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Oração de Cura",
+      "nome_original": "Prayer of Healing",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Proteção Contra Veneno",
+      "nome_original": "Protection from Poison",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Repouso Tranquilo",
+      "nome_original": "Gentle Repose",
       "circulo": 2,
       "escola": "Necromancia"
     },
     {
       "nome": "Restauração Menor",
+      "nome_original": "Lesser Restoration",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Vínculo de Proteção",
+      "nome_original": "Warding Bond",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Zona da Verdade",
+      "nome_original": "Zone of Truth",
       "circulo": 2,
       "escola": "Encantamento"
     },
     {
       "nome": "Arma Elemental",
+      "nome_original": "Elemental Weapon",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Aura de Vitalidade",
+      "nome_original": "Aura of Vitality",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Criar Comida e Água",
+      "nome_original": "Create Food and Water",
       "circulo": 3,
       "escola": "Invocação"
     },
     {
       "nome": "Círculo Mágico",
+      "nome_original": "Magic Circle",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Destruição Cegante",
+      "nome_original": "Blinding Smite",
       "circulo": 3,
       "escola": "Evocação"
     },
     {
       "nome": "Dissipar Magia",
+      "nome_original": "Dispel Magic",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Luz do Dia",
+      "nome_original": "Daylight",
       "circulo": 3,
       "escola": "Evocação"
     },
     {
       "nome": "Manto do Cruzado",
+      "nome_original": "Crusader's Mantle",
       "circulo": 3,
       "escola": "Evocação"
     },
     {
       "nome": "Remover Maldição",
+      "nome_original": "Remove Curse",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Revivificar",
+      "nome_original": "Revivify",
       "circulo": 3,
       "escola": "Necromancia"
     },
     {
       "nome": "Aura de Pureza",
+      "nome_original": "Aura of Purity",
       "circulo": 4,
       "escola": "Abjuração"
     },
     {
       "nome": "Aura de Vida",
+      "nome_original": "Aura of Life",
       "circulo": 4,
       "escola": "Abjuração"
     },
     {
       "nome": "Banimento",
+      "nome_original": "Banishment",
       "circulo": 4,
       "escola": "Abjuração"
     },
     {
       "nome": "Destruição Atordoante",
+      "nome_original": "Staggering Smite",
       "circulo": 4,
       "escola": "Encantamento"
     },
     {
       "nome": "Localizar Criatura",
+      "nome_original": "Locate Creature",
       "circulo": 4,
       "escola": "Adivinhação"
     },
     {
       "nome": "Proteção Contra a Morte",
+      "nome_original": "Death Ward",
       "circulo": 4,
       "escola": "Abjuração"
     },
     {
       "nome": "Convocar Celestial",
+      "nome_original": "Summon Celestial",
       "circulo": 5,
       "escola": "Invocação"
     },
     {
       "nome": "Círculo de Poder",
+      "nome_original": "Circle of Power",
       "circulo": 5,
       "escola": "Abjuração"
     },
     {
       "nome": "Destruição Banidora",
+      "nome_original": "Banishing Smite",
       "circulo": 5,
       "escola": "Invocação"
     },
     {
       "nome": "Dissipar o Bem e o Mal",
+      "nome_original": "Dispel Evil and Good",
       "circulo": 5,
       "escola": "Abjuração"
     },
     {
       "nome": "Missão",
+      "nome_original": "Geas",
       "circulo": 5,
       "escola": "Encantamento"
     },
     {
       "nome": "Onda Destrutiva",
+      "nome_original": "Destructive Wave",
       "circulo": 5,
       "escola": "Evocação"
     },
     {
       "nome": "Restauração Maior",
+      "nome_original": "Greater Restoration",
       "circulo": 5,
       "escola": "Abjuração"
     },
     {
       "nome": "Reviver os Mortos",
+      "nome_original": "Raise Dead",
       "circulo": 5,
       "escola": "Necromancia"
     }

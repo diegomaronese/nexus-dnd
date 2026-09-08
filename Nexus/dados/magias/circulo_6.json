@@ -5,6 +5,7 @@
   "magias": [
     {
       "nome": "Aliado Extraplanar",
+      "nome_original": "Planar Ally",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -19,6 +20,7 @@
     },
     {
       "nome": "Banquete de Heróis",
+      "nome_original": "Heroes' Feast",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -35,6 +37,7 @@
     },
     {
       "nome": "Barreira de Lâminas",
+      "nome_original": "Blade Barrier",
       "circulo": 6,
       "escola": "Evocação",
       "classes": [
@@ -49,6 +52,7 @@
     },
     {
       "nome": "Caldeirão Borbulhante de Tasha",
+      "nome_original": "Tasha's Bubbling Cauldron",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -64,6 +68,7 @@
     },
     {
       "nome": "Caminhar no Vento",
+      "nome_original": "Wind Walk",
       "circulo": 6,
       "escola": "Transmutação",
       "classes": [
@@ -78,6 +83,7 @@
     },
     {
       "nome": "Contingência",
+      "nome_original": "Contingency",
       "circulo": 6,
       "escola": "Abjuração",
       "classes": [
@@ -92,6 +98,7 @@
     },
     {
       "nome": "Corrente de Relâmpagos",
+      "nome_original": "Chain Lightning",
       "circulo": 6,
       "escola": "Evocação",
       "classes": [
@@ -107,6 +114,7 @@
     },
     {
       "nome": "Criar Mortos-Vivos",
+      "nome_original": "Create Undead",
       "circulo": 6,
       "escola": "Necromancia",
       "classes": [
@@ -123,6 +131,7 @@
     },
     {
       "nome": "Cura Completa",
+      "nome_original": "Heal",
       "circulo": 6,
       "escola": "Abjuração",
       "classes": [
@@ -138,6 +147,7 @@
     },
     {
       "nome": "Círculo da Morte",
+      "nome_original": "Circle of Death",
       "circulo": 6,
       "escola": "Necromancia",
       "classes": [
@@ -154,6 +164,7 @@
     },
     {
       "nome": "Dança Irresistível de Otto",
+      "nome_original": "Otto's Irresistible Dance",
       "circulo": 6,
       "escola": "Encantamento",
       "classes": [
@@ -169,6 +180,7 @@
     },
     {
       "nome": "De Carne para Pedra",
+      "nome_original": "Flesh to Stone",
       "circulo": 6,
       "escola": "Transmutação",
       "classes": [
@@ -185,6 +197,7 @@
     },
     {
       "nome": "Desintegrar",
+      "nome_original": "Disintegrate",
       "circulo": 6,
       "escola": "Transmutação",
       "classes": [
@@ -200,6 +213,7 @@
     },
     {
       "nome": "Encontrar o Caminho",
+      "nome_original": "Find the Path",
       "circulo": 6,
       "escola": "Adivinhação",
       "classes": [
@@ -216,6 +230,7 @@
     },
     {
       "nome": "Esfera Congelante de Otiluke",
+      "nome_original": "Otiluke's Freezing Sphere",
       "circulo": 6,
       "escola": "Evocação",
       "classes": [
@@ -231,6 +246,7 @@
     },
     {
       "nome": "Globo de Invulnerabilidade",
+      "nome_original": "Globe of Invulnerability",
       "circulo": 6,
       "escola": "Abjuração",
       "classes": [
@@ -246,6 +262,7 @@
     },
     {
       "nome": "Ilusão Programada",
+      "nome_original": "Programmed Illusion",
       "circulo": 6,
       "escola": "Ilusão",
       "classes": [
@@ -261,6 +278,7 @@
     },
     {
       "nome": "Invocar Feérico",
+      "nome_original": "Conjure Fey",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -275,6 +293,7 @@
     },
     {
       "nome": "Invocar Ínfero",
+      "nome_original": "Summon Fiend",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -290,6 +309,7 @@
     },
     {
       "nome": "Invocação Instantânea de Drawmij",
+      "nome_original": "Drawmij's Instant Summons",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -304,6 +324,7 @@
     },
     {
       "nome": "Mau Olhado",
+      "nome_original": "Eyebite",
       "circulo": 6,
       "escola": "Necromancia",
       "classes": [
@@ -321,6 +342,7 @@
     },
     {
       "nome": "Moléstia",
+      "nome_original": "Harm",
       "circulo": 6,
       "escola": "Necromancia",
       "classes": [
@@ -335,6 +357,7 @@
     },
     {
       "nome": "Mover Terra",
+      "nome_original": "Move Earth",
       "circulo": 6,
       "escola": "Transmutação",
       "classes": [
@@ -351,6 +374,7 @@
     },
     {
       "nome": "Muralha de Espinhos",
+      "nome_original": "Wall of Thorns",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -365,6 +389,7 @@
     },
     {
       "nome": "Muralha de Gelo",
+      "nome_original": "Wall of Ice",
       "circulo": 6,
       "escola": "Evocação",
       "classes": [
@@ -379,6 +404,7 @@
     },
     {
       "nome": "Palavra de Regresso",
+      "nome_original": "Word of Recall",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -393,6 +419,7 @@
     },
     {
       "nome": "Portais Arcanos",
+      "nome_original": "Arcane Gate",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -409,6 +436,7 @@
     },
     {
       "nome": "Proibição",
+      "nome_original": "Forbiddance",
       "circulo": 6,
       "escola": "Abjuração",
       "classes": [
@@ -423,6 +451,7 @@
     },
     {
       "nome": "Proteger Fortaleza",
+      "nome_original": "Guards and Wards",
       "circulo": 6,
       "escola": "Abjuração",
       "classes": [
@@ -438,6 +467,7 @@
     },
     {
       "nome": "Raio Solar",
+      "nome_original": "Sunbeam",
       "circulo": 6,
       "escola": "Evocação",
       "classes": [
@@ -455,6 +485,7 @@
     },
     {
       "nome": "Receptáculo Arcano",
+      "nome_original": "Magic Jar",
       "circulo": 6,
       "escola": "Necromancia",
       "classes": [
@@ -469,6 +500,7 @@
     },
     {
       "nome": "Sugestão em Massa",
+      "nome_original": "Mass Suggestion",
       "circulo": 6,
       "escola": "Encantamento",
       "classes": [
@@ -485,6 +517,7 @@
     },
     {
       "nome": "Transporte via Plantas",
+      "nome_original": "Transport via Plants",
       "circulo": 6,
       "escola": "Invocação",
       "classes": [
@@ -499,6 +532,7 @@
     },
     {
       "nome": "Visão da Verdade",
+      "nome_original": "True Seeing",
       "circulo": 6,
       "escola": "Adivinhação",
       "classes": [

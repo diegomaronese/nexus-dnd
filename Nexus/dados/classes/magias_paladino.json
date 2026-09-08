@@ -4,81 +4,97 @@
     "1º Círculo": [
       {
         "nome": "Bênção",
+        "nome_original": "Bless",
         "escola": "Encantamento",
         "especial": "C, M"
       },
       {
         "nome": "Comando",
+        "nome_original": "Command",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Curar Ferimentos",
+        "nome_original": "Cure Wounds",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Destruição Cauterizante",
+        "nome_original": "Searing Smite",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Destruição Colérica",
+        "nome_original": "Wrathful Smite",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Destruição Divina",
+        "nome_original": "Divine Smite",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Destruição Estrondosa",
+        "nome_original": "Thunderous Smite",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Detectar Magia",
+        "nome_original": "Detect Magic",
         "escola": "Adivinhação",
         "especial": "C, R"
       },
       {
         "nome": "Detectar o Bem e o Mal",
+        "nome_original": "Detect Evil and Good",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Detectar Veneno e Doença",
+        "nome_original": "Detect Poison and Disease",
         "escola": "Adivinhação",
         "especial": "C, R"
       },
       {
         "nome": "Duelo Compelido",
+        "nome_original": "Compelled Duel",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Escudo da Fé",
+        "nome_original": "Shield of Faith",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Favor Divino",
+        "nome_original": "Divine Favor",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Heroísmo",
+        "nome_original": "Heroism",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Proteção Contra o Bem e o Mal",
+        "nome_original": "Protection from Evil and Good",
         "escola": "Abjuração",
         "especial": "C, M"
       },
       {
         "nome": "Purificar Alimentos e Bebidas",
+        "nome_original": "Purify Food and Drink",
         "escola": "Transmutação",
         "especial": "R"
       }
@@ -86,56 +102,67 @@
     "2º Círculo": [
       {
         "nome": "Auxílio",
+        "nome_original": "Aid",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Convocar Montaria",
+        "nome_original": "Find Steed",
         "escola": "Invocação",
         "especial": "—"
       },
       {
         "nome": "Repouso Tranquilo",
+        "nome_original": "Gentle Repose",
         "escola": "Necromancia",
         "especial": "R, M"
       },
       {
         "nome": "Restauração Menor",
+        "nome_original": "Lesser Restoration",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Localizar Objeto",
+        "nome_original": "Locate Object",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Arma Mágica",
+        "nome_original": "Magic Weapon",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Oração de Cura",
+        "nome_original": "Prayer of Healing",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Proteção Contra Veneno",
+        "nome_original": "Protection from Poison",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Destruição Radiante",
+        "nome_original": "Shining Smite",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Vínculo de Proteção",
+        "nome_original": "Warding Bond",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Zona da Verdade",
+        "nome_original": "Zone of Truth",
         "escola": "Encantamento",
         "especial": "—"
       }
@@ -143,51 +170,61 @@
     "3º Círculo": [
       {
         "nome": "Arma Elemental",
+        "nome_original": "Elemental Weapon",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Aura de Vitalidade",
+        "nome_original": "Aura of Vitality",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Círculo Mágico",
+        "nome_original": "Magic Circle",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Criar Comida e Água",
+        "nome_original": "Create Food and Water",
         "escola": "Invocação",
         "especial": "—"
       },
       {
         "nome": "Destruição Cegante",
+        "nome_original": "Blinding Smite",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Dissipar Magia",
+        "nome_original": "Dispel Magic",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Luz do Dia",
+        "nome_original": "Daylight",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Manto do Cruzado",
+        "nome_original": "Crusader's Mantle",
         "escola": "Evocação",
         "especial": "C"
       },
       {
         "nome": "Remover Maldição",
+        "nome_original": "Remove Curse",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Revivificar",
+        "nome_original": "Revivify",
         "escola": "Necromancia",
         "especial": "M"
       }
@@ -195,31 +232,37 @@
     "4º Círculo": [
       {
         "nome": "Aura de Pureza",
+        "nome_original": "Aura of Purity",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Aura de Vida",
+        "nome_original": "Aura of Life",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Banimento",
+        "nome_original": "Banishment",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Destruição Atordoante",
+        "nome_original": "Staggering Smite",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Localizar Criatura",
+        "nome_original": "Locate Creature",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Proteção Contra a Morte",
+        "nome_original": "Death Ward",
         "escola": "Abjuração",
         "especial": "—"
       }
@@ -227,41 +270,49 @@
     "5º Círculo": [
       {
         "nome": "Círculo de Poder",
+        "nome_original": "Circle of Power",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Convocar Celestial",
+        "nome_original": "Summon Celestial",
         "escola": "Invocação",
         "especial": "C, M"
       },
       {
         "nome": "Destruição Banidora",
+        "nome_original": "Banishing Smite",
         "escola": "Invocação",
         "especial": "C"
       },
       {
         "nome": "Dissipar o Bem e o Mal",
+        "nome_original": "Dispel Evil and Good",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Missão",
+        "nome_original": "Geas",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Onda Destrutiva",
+        "nome_original": "Destructive Wave",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Restauração Maior",
+        "nome_original": "Greater Restoration",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Reviver os Mortos",
+        "nome_original": "Raise Dead",
         "escola": "Necromancia",
         "especial": "M"
       }

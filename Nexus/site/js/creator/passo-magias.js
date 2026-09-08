@@ -162,6 +162,7 @@ export async function renderStepMagias(el) {
         ? '<div style="color:var(--text-muted);text-align:center;padding:20px">Nenhuma magia disponível neste círculo</div>'
         : `<div class="magias-grid">${magiasDaClasse.map(m => {
             const nome = m.nome || m;
+            const nomeOriginal = m.nome_original ? ` <span style="font-size:0.75rem;color:var(--text-muted);font-style:italic">(${m.nome_original})</span>` : '';
             const sel = selecionadas.includes(nome);
             const bloqueadoPorIM = !sel && jaEscolhidoPorIM.has(nome);
             const bloqueadoPorEspecie = !sel && jaConcedidoPorEspecie.has(nome);
@@ -169,7 +170,7 @@ export async function renderStepMagias(el) {
             return `
               <div class="magia-card ${sel ? 'selecionada' : ''} ${bloqueado ? 'magia-card-bloqueada' : ''}" data-magia-nome="${nome}" data-magia-circ="${circ}" ${bloqueado ? 'style="opacity:0.4"' : ''}>
                 <span class="magia-card-check" data-creator-check="${nome}"></span>
-                <div class="magia-card-nome" data-creator-info="${nome}" data-creator-info-circ="${circ}">${nome}${bloqueadoPorIM ? ' (já conhecido)' : ''}${bloqueadoPorEspecie ? ' (já concedido pela espécie)' : ''}</div>
+                <div class="magia-card-nome" data-creator-info="${nome}" data-creator-info-circ="${circ}">${nome}${nomeOriginal}${bloqueadoPorIM ? ' (já conhecido)' : ''}${bloqueadoPorEspecie ? ' (já concedido pela espécie)' : ''}</div>
                 <div class="magia-card-meta">
                   <span>${m.escola || ''}</span>
                   ${m.especial === 'C' ? '<span>Conc.</span>' : ''}
@@ -451,13 +452,14 @@ async function _bindInstanciaIM(container, idx, aoMudar) {
           ? '<div style="color:var(--text-muted);text-align:center;padding:20px">Nenhuma magia disponível</div>'
           : `<div class="magias-grid">${magias.map(m => {
               const nome = m.nome || m;
+              const nomeOriginal = m.nome_original ? ` <span style="font-size:0.75rem;color:var(--text-muted);font-style:italic">(${m.nome_original})</span>` : '';
               const sel = selecionadas.includes(nome);
               const bloqueado = jaEscolhidos.has(nome) && !sel;
               const bloqueioVisual = isTruque && bloqueado;
               return `
                 <div class="magia-card ${sel ? 'selecionada' : ''} ${bloqueioVisual ? 'magia-card-bloqueada' : ''}" data-im-magia="${nome}" data-im-tipo="${tab}" ${bloqueioVisual ? 'style="opacity:0.4"' : ''}>
                   <span class="magia-card-check" data-im-check="${nome}"></span>
-                  <div class="magia-card-nome" data-im-info="${nome}" data-im-info-circ="${isTruque ? 0 : 1}">${nome}${bloqueado ? ' (já conhecido)' : ''}</div>
+                  <div class="magia-card-nome" data-im-info="${nome}" data-im-info-circ="${isTruque ? 0 : 1}">${nome}${nomeOriginal}${bloqueado ? ' (já conhecido)' : ''}</div>
                   <div class="magia-card-meta">
                     <span>${m.escola || ''}</span>
                     ${m.especial === 'C' ? '<span>Conc.</span>' : ''}
@@ -591,7 +593,8 @@ async function mostrarDetalheMagia(nome, circulo) {
   const magia = dados?.magias?.find(m => m.nome === nome);
   if (!magia) { toast('Magia não encontrada', 'error'); return; }
 
-  abrirModal(magia.nome, `
+  const tituloModal = magia.nome_original ? `${magia.nome} (${magia.nome_original})` : magia.nome;
+  abrirModal(tituloModal, `
     <div class="magia-meta" style="margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;font-size:0.85rem">
       <span class="badge badge-primary">${circulo === 0 ? 'Truque' : circulo + 'º Círculo'}</span>
       <span class="badge badge-secondary">${magia.escola}</span>

@@ -4,66 +4,79 @@
     "Truques": [
       {
         "nome": "Amigos",
+        "nome_original": "Friends",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Fagulha Estelar",
+        "nome_original": "Starry Wisp",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Golpe Certeiro",
+        "nome_original": "True Strike",
         "escola": "Adivinhação",
         "especial": "—"
       },
       {
         "nome": "Ilusão Menor",
+        "nome_original": "Minor Illusion",
         "escola": "Ilusão",
         "especial": "—"
       },
       {
         "nome": "Luz",
+        "nome_original": "Light",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Luzes Dançantes",
+        "nome_original": "Dancing Lights",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Mãos Mágicas",
+        "nome_original": "Mage Hand",
         "escola": "Invocação",
         "especial": "—"
       },
       {
         "nome": "Mensagem",
+        "nome_original": "Message",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Prestidigitação Arcana",
+        "nome_original": "Prestidigitation",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Proteção Contra Lâminas",
+        "nome_original": "Blade Ward",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Reparar",
+        "nome_original": "Mending",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Trovão",
+        "nome_original": "Thunderclap",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Zombaria Perversa",
+        "nome_original": "Vicious Mockery",
         "escola": "Encantamento",
         "especial": "—"
       }
@@ -71,116 +84,139 @@
     "1º Círculo": [
       {
         "nome": "Amizade Animal",
+        "nome_original": "Animal Friendship",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Comando",
+        "nome_original": "Command",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Compreender Idiomas",
+        "nome_original": "Comprehend Languages",
         "escola": "Adivinhação",
         "especial": "R"
       },
       {
         "nome": "Curar Ferimentos",
+        "nome_original": "Cure Wounds",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Detectar Magia",
+        "nome_original": "Detect Magic",
         "escola": "Adivinhação",
         "especial": "C, R"
       },
       {
         "nome": "Disfarçar-se",
+        "nome_original": "Disguise Self",
         "escola": "Ilusão",
         "especial": "—"
       },
       {
         "nome": "Enfeitiçar Pessoa",
+        "nome_original": "Charm Person",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Escrita Ilusória",
+        "nome_original": "Illusory Script",
         "escola": "Ilusão",
         "especial": "R, M"
       },
       {
         "nome": "Falar com Animais",
+        "nome_original": "Speak with Animals",
         "escola": "Adivinhação",
         "especial": "R"
       },
       {
         "nome": "Fogo das Fadas",
+        "nome_original": "Faerie Fire",
         "escola": "Evocação",
         "especial": "C"
       },
       {
         "nome": "Gargalhada Nefasta de Tasha",
+        "nome_original": "Tasha's Hideous Laughter",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Heroísmo",
+        "nome_original": "Heroism",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Identificar",
+        "nome_original": "Identify",
         "escola": "Adivinhação",
         "especial": "R, M"
       },
       {
         "nome": "Imagem Silenciosa",
+        "nome_original": "Silent Image",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Leque Cromático",
+        "nome_original": "Color Spray",
         "escola": "Ilusão",
         "especial": "—"
       },
       {
         "nome": "Onda Trovejante",
+        "nome_original": "Thunderwave",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Palavra Curativa",
+        "nome_original": "Healing Word",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Passos Largos",
+        "nome_original": "Longstrider",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Perdição",
+        "nome_original": "Bane",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Queda Suave",
+        "nome_original": "Feather Fall",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Servo Invisível",
+        "nome_original": "Unseen Servant",
         "escola": "Invocação",
         "especial": "R"
       },
       {
         "nome": "Sono",
+        "nome_original": "Sleep",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Sussurros Dissonantes",
+        "nome_original": "Dissonant Whispers",
         "escola": "Encantamento",
         "especial": "—"
       }
@@ -188,126 +224,151 @@
     "2º Círculo": [
       {
         "nome": "Acalmar Emoções",
+        "nome_original": "Calm Emotions",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Aprimorar Atributo",
+        "nome_original": "Enhance Ability",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Arrombar",
+        "nome_original": "Knock",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Aumentar/Reduzir",
+        "nome_original": "Enlarge/Reduce",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Auxílio",
+        "nome_original": "Aid",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Boca Encantada",
+        "nome_original": "Magic Mouth",
         "escola": "Ilusão",
         "especial": "R, M"
       },
       {
         "nome": "Cativar",
+        "nome_original": "Enthrall",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Cegueira/Surdez",
+        "nome_original": "Blindness/Deafness",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Coroa da Loucura",
+        "nome_original": "Crown of Madness",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Despedaçar",
+        "nome_original": "Shatter",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Detectar Pensamentos",
+        "nome_original": "Detect Thoughts",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Esquentar Metal",
+        "nome_original": "Heat Metal",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Força Espectral",
+        "nome_original": "Phantasmal Force",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Invisibilidade",
+        "nome_original": "Invisibility",
         "escola": "Ilusão",
         "especial": "C, M"
       },
       {
         "nome": "Localizar Animais ou Plantas",
+        "nome_original": "Locate Animals or Plants",
         "escola": "Adivinhação",
         "especial": "R"
       },
       {
         "nome": "Localizar Objeto",
+        "nome_original": "Locate Object",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Mensageiro Animal",
+        "nome_original": "Animal Messenger",
         "escola": "Encantamento",
         "especial": "R"
       },
       {
         "nome": "Nuvem de Adagas",
+        "nome_original": "Cloud of Daggers",
         "escola": "Invocação",
         "especial": "C"
       },
       {
         "nome": "Paralisar Pessoa",
+        "nome_original": "Hold Person",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Reflexos",
+        "nome_original": "Mirror Image",
         "escola": "Ilusão",
         "especial": "—"
       },
       {
         "nome": "Restauração Menor",
+        "nome_original": "Lesser Restoration",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Silêncio",
+        "nome_original": "Silence",
         "escola": "Ilusão",
         "especial": "C, R"
       },
       {
         "nome": "Sugestão",
+        "nome_original": "Suggestion",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Ver o Invisível",
+        "nome_original": "See Invisibility",
         "escola": "Adivinhação",
         "especial": "—"
       },
       {
         "nome": "Zona da Verdade",
+        "nome_original": "Zone of Truth",
         "escola": "Encantamento",
         "especial": "—"
       }
@@ -315,91 +376,109 @@
     "3º Círculo": [
       {
         "nome": "Clarividência",
+        "nome_original": "Clairvoyance",
         "escola": "Adivinhação",
         "especial": "C, M"
       },
       {
         "nome": "Crescimento de Plantas",
+        "nome_original": "Plant Growth",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Dissipar Magia",
+        "nome_original": "Dispel Magic",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Falar com Mortos",
+        "nome_original": "Speak with Dead",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Falar com Plantas",
+        "nome_original": "Speak with Plants",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Glifo de Proteção",
+        "nome_original": "Glyph of Warding",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Imagem Maior",
+        "nome_original": "Major Image",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Indetectável",
+        "nome_original": "Nondetection",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Lentidão",
+        "nome_original": "Slow",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Línguas",
+        "nome_original": "Tongues",
         "escola": "Adivinhação",
         "especial": "—"
       },
       {
         "nome": "Medo",
+        "nome_original": "Fear",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Nuvem Fétida",
+        "nome_original": "Stinking Cloud",
         "escola": "Invocação",
         "especial": "C"
       },
       {
         "nome": "Padrão Hipnótico",
+        "nome_original": "Hypnotic Pattern",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Palavra Curativa em Massa",
+        "nome_original": "Mass Healing Word",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Pequeno Refúgio de Leomund",
+        "nome_original": "Leomund's Tiny Hut",
         "escola": "Evocação",
         "especial": "R"
       },
       {
         "nome": "Remeter",
+        "nome_original": "Sending",
         "escola": "Adivinhação",
         "especial": "—"
       },
       {
         "nome": "Rogar Maldição",
+        "nome_original": "Bestow Curse",
         "escola": "Necromancia",
         "especial": "C"
       },
       {
         "nome": "Simular Morte",
+        "nome_original": "Feign Death",
         "escola": "Necromancia",
         "especial": "R"
       }
@@ -407,56 +486,67 @@
     "4º Círculo": [
       {
         "nome": "Assassino Fantasmagórico",
+        "nome_original": "Phantasmal Killer",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Compulsão",
+        "nome_original": "Compulsion",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Confusão",
+        "nome_original": "Confusion",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Enfeitiçar Monstro",
+        "nome_original": "Charm Monster",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Fonte do Luar",
+        "nome_original": "Font of Moonlight",
         "escola": "Evocação",
         "especial": "C"
       },
       {
         "nome": "Invisibilidade Maior",
+        "nome_original": "Greater Invisibility",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Localizar Criatura",
+        "nome_original": "Locate Creature",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Movimentação Livre",
+        "nome_original": "Freedom of Movement",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Polimorfia",
+        "nome_original": "Polymorph",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Porta Dimensional",
+        "nome_original": "Dimension Door",
         "escola": "Invocação",
         "especial": "—"
       },
       {
         "nome": "Terreno Alucinatório",
+        "nome_original": "Hallucinatory Terrain",
         "escola": "Ilusão",
         "especial": "—"
       }
@@ -464,96 +554,115 @@
     "5º Círculo": [
       {
         "nome": "Âncora Planar",
+        "nome_original": "Planar Binding",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Animar Objetos",
+        "nome_original": "Animate Objects",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Círculo de Teleporte",
+        "nome_original": "Teleportation Circle",
         "escola": "Invocação",
         "especial": "M"
       },
       {
         "nome": "Curar Ferimentos em Massa",
+        "nome_original": "Mass Cure Wounds",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Despertar",
+        "nome_original": "Awaken",
         "escola": "Transmutação",
         "especial": "M"
       },
       {
         "nome": "Despistar",
+        "nome_original": "Mislead",
         "escola": "Ilusão",
         "especial": "C"
       },
       {
         "nome": "Dominar Pessoa",
+        "nome_original": "Dominate Person",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Estática Sináptica",
+        "nome_original": "Synaptic Static",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Lendas e Histórias",
+        "nome_original": "Legend Lore",
         "escola": "Adivinhação",
         "especial": "M"
       },
       {
         "nome": "Ligação Telepática de Rary",
+        "nome_original": "Rary's Telepathic Bond",
         "escola": "Adivinhação",
         "especial": "R"
       },
       {
         "nome": "Missão",
+        "nome_original": "Geas",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Modificar Memória",
+        "nome_original": "Modify Memory",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Paralisar Monstro",
+        "nome_original": "Hold Monster",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Presença Régia de Yolande",
+        "nome_original": "Yolande's Regal Presence",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Restauração Maior",
+        "nome_original": "Greater Restoration",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Reviver os Mortos",
+        "nome_original": "Raise Dead",
         "escola": "Necromancia",
         "especial": "M"
       },
       {
         "nome": "Similaridade",
+        "nome_original": "Seeming",
         "escola": "Ilusão",
         "especial": "—"
       },
       {
         "nome": "Sonho",
+        "nome_original": "Dream",
         "escola": "Ilusão",
         "especial": "—"
       },
       {
         "nome": "Vidência",
+        "nome_original": "Scrying",
         "escola": "Adivinhação",
         "especial": "C, M"
       }
@@ -561,41 +670,49 @@
     "6º Círculo": [
       {
         "nome": "Banquete de Heróis",
+        "nome_original": "Heroes' Feast",
         "escola": "Invocação",
         "especial": "M"
       },
       {
         "nome": "Dança Irresistível de Otto",
+        "nome_original": "Otto's Irresistible Dance",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Encontrar o Caminho",
+        "nome_original": "Find the Path",
         "escola": "Adivinhação",
         "especial": "C, M"
       },
       {
         "nome": "Ilusão Programada",
+        "nome_original": "Programmed Illusion",
         "escola": "Ilusão",
         "especial": "M"
       },
       {
         "nome": "Mau Olhado",
+        "nome_original": "Eyebite",
         "escola": "Necromancia",
         "especial": "C"
       },
       {
         "nome": "Proteger Fortaleza",
+        "nome_original": "Guards and Wards",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Sugestão em Massa",
+        "nome_original": "Mass Suggestion",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Visão da Verdade",
+        "nome_original": "True Seeing",
         "escola": "Adivinhação",
         "especial": "M"
       }
@@ -603,61 +720,73 @@
     "7º Círculo": [
       {
         "nome": "Cárcere de Energia",
+        "nome_original": "Forcecage",
         "escola": "Evocação",
         "especial": "C, M"
       },
       {
         "nome": "Espada de Mordenkainen",
+        "nome_original": "Mordenkainen's Sword",
         "escola": "Evocação",
         "especial": "C, M"
       },
       {
         "nome": "Forma Etérea",
+        "nome_original": "Etherealness",
         "escola": "Invocação",
         "especial": "—"
       },
       {
         "nome": "Mansão Magnífica de Mordenkainen",
+        "nome_original": "Mordenkainen's Magnificent Mansion",
         "escola": "Invocação",
         "especial": "M"
       },
       {
         "nome": "Miragem Arcana",
+        "nome_original": "Mirage Arcane",
         "escola": "Ilusão",
         "especial": "—"
       },
       {
         "nome": "Palavra de Poder: Fortificar",
+        "nome_original": "Power Word Fortify",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Projetar Imagem",
+        "nome_original": "Project Image",
         "escola": "Ilusão",
         "especial": "C, M"
       },
       {
         "nome": "Rajada Prismática",
+        "nome_original": "Prismatic Spray",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Regeneração",
+        "nome_original": "Regenerate",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Ressurreição",
+        "nome_original": "Resurrection",
         "escola": "Necromancia",
         "especial": "M"
       },
       {
         "nome": "Símbolo",
+        "nome_original": "Symbol",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Teleporte",
+        "nome_original": "Teleport",
         "escola": "Invocação",
         "especial": "—"
       }
@@ -665,31 +794,37 @@
     "8º Círculo": [
       {
         "nome": "Antipatia/Simpatia",
+        "nome_original": "Antipathy/Sympathy",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Dominar Monstro",
+        "nome_original": "Dominate Monster",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Limpar a Mente",
+        "nome_original": "Mind Blank",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Loquacidade",
+        "nome_original": "Glibness",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Palavra de Poder: Atordoar",
+        "nome_original": "Power Word Stun",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Suplício",
+        "nome_original": "Befuddlement",
         "escola": "Encantamento",
         "especial": "—"
       }
@@ -697,26 +832,31 @@
     "9º Círculo": [
       {
         "nome": "Muralha Prismática",
+        "nome_original": "Prismatic Wall",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Palavra de Poder: Matar",
+        "nome_original": "Power Word Kill",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Palavra de Poder: Salvar",
+        "nome_original": "Power Word Heal",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Polimorfia Total",
+        "nome_original": "True Polymorph",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Sexto Sentido",
+        "nome_original": "Foresight",
         "escola": "Adivinhação",
         "especial": "—"
       }

@@ -4,46 +4,55 @@
     "Truques": [
       {
         "nome": "Acudir os Moribundos",
+        "nome_original": "Spare the Dying",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Badalar Fúnebre",
+        "nome_original": "Toll the Dead",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Chama Sagrada",
+        "nome_original": "Sacred Flame",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Luz",
+        "nome_original": "Light",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Orientação",
+        "nome_original": "Guidance",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Palavra de Radiância",
+        "nome_original": "Word of Radiance",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Reparar",
+        "nome_original": "Mending",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Resistência",
+        "nome_original": "Resistance",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Taumaturgia",
+        "nome_original": "Thaumaturgy",
         "escola": "Transmutação",
         "especial": "—"
       }
@@ -51,76 +60,91 @@
     "1º Círculo": [
       {
         "nome": "Bênção",
+        "nome_original": "Bless",
         "escola": "Encantamento",
         "especial": "C, M"
       },
       {
         "nome": "Comando",
+        "nome_original": "Command",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Criar ou Destruir Água",
+        "nome_original": "Create or Destroy Water",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Curar Ferimentos",
+        "nome_original": "Cure Wounds",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Detectar Magia",
+        "nome_original": "Detect Magic",
         "escola": "Adivinhação",
         "especial": "C, R"
       },
       {
         "nome": "Detectar o Bem e o Mal",
+        "nome_original": "Detect Evil and Good",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Detectar Veneno e Doença",
+        "nome_original": "Detect Poison and Disease",
         "escola": "Adivinhação",
         "especial": "C, R"
       },
       {
         "nome": "Escudo da Fé",
+        "nome_original": "Shield of Faith",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Infligir Ferimentos",
+        "nome_original": "Inflict Wounds",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Palavra Curativa",
+        "nome_original": "Healing Word",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Perdição",
+        "nome_original": "Bane",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Proteção Contra o Bem e o Mal",
+        "nome_original": "Protection from Evil and Good",
         "escola": "Abjuração",
         "especial": "C, M"
       },
       {
         "nome": "Purificar Alimentos e Bebidas",
+        "nome_original": "Purify Food and Drink",
         "escola": "Transmutação",
         "especial": "R"
       },
       {
         "nome": "Raio Guia",
+        "nome_original": "Guiding Bolt",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Santuário",
+        "nome_original": "Sanctuary",
         "escola": "Abjuração",
         "especial": "—"
       }
@@ -128,86 +152,103 @@
     "2º Círculo": [
       {
         "nome": "Acalmar Emoções",
+        "nome_original": "Calm Emotions",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Aprimorar Atributo",
+        "nome_original": "Enhance Ability",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Arma Espiritual",
+        "nome_original": "Spiritual Weapon",
         "escola": "Evocação",
         "especial": "C"
       },
       {
         "nome": "Augúrio",
+        "nome_original": "Augury",
         "escola": "Adivinhação",
         "especial": "R, M"
       },
       {
         "nome": "Auxílio",
+        "nome_original": "Aid",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Cegueira/Surdez",
+        "nome_original": "Blindness/Deafness",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Chama Contínua",
+        "nome_original": "Continual Flame",
         "escola": "Evocação",
         "especial": "M"
       },
       {
         "nome": "Encontrar Armadilhas",
+        "nome_original": "Find Traps",
         "escola": "Adivinhação",
         "especial": "—"
       },
       {
         "nome": "Localizar Objeto",
+        "nome_original": "Locate Object",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Oração de Cura",
+        "nome_original": "Prayer of Healing",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Paralisar Pessoa",
+        "nome_original": "Hold Person",
         "escola": "Encantamento",
         "especial": "C"
       },
       {
         "nome": "Proteção Contra Veneno",
+        "nome_original": "Protection from Poison",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Repouso Tranquilo",
+        "nome_original": "Gentle Repose",
         "escola": "Necromancia",
         "especial": "R, M"
       },
       {
         "nome": "Restauração Menor",
+        "nome_original": "Lesser Restoration",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Silêncio",
+        "nome_original": "Silence",
         "escola": "Ilusão",
         "especial": "C, R"
       },
       {
         "nome": "Vínculo de Proteção",
+        "nome_original": "Warding Bond",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Zona da Verdade",
+        "nome_original": "Zone of Truth",
         "escola": "Encantamento",
         "especial": "—"
       }
@@ -215,106 +256,127 @@
     "3º Círculo": [
       {
         "nome": "Animar Mortos",
+        "nome_original": "Animate Dead",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Aura de Vitalidade",
+        "nome_original": "Aura of Vitality",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Caminhar Sobre as Águas",
+        "nome_original": "Water Walk",
         "escola": "Transmutação",
         "especial": "R"
       },
       {
         "nome": "Círculo Mágico",
+        "nome_original": "Magic Circle",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Clarividência",
+        "nome_original": "Clairvoyance",
         "escola": "Adivinhação",
         "especial": "C, M"
       },
       {
         "nome": "Criar Comida e Água",
+        "nome_original": "Create Food and Water",
         "escola": "Invocação",
         "especial": "—"
       },
       {
         "nome": "Dissipar Magia",
+        "nome_original": "Dispel Magic",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Falar com Mortos",
+        "nome_original": "Speak with Dead",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Glifo de Proteção",
+        "nome_original": "Glyph of Warding",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Guardiões Espirituais",
+        "nome_original": "Spirit Guardians",
         "escola": "Invocação",
         "especial": "C"
       },
       {
         "nome": "Línguas",
+        "nome_original": "Tongues",
         "escola": "Adivinhação",
         "especial": "—"
       },
       {
         "nome": "Luz do Dia",
+        "nome_original": "Daylight",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Mesclar-se às Rochas",
+        "nome_original": "Meld into Stone",
         "escola": "Transmutação",
         "especial": "R"
       },
       {
         "nome": "Palavra Curativa em Massa",
+        "nome_original": "Mass Healing Word",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Proteção Contra Energia",
+        "nome_original": "Protection from Energy",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Remeter",
+        "nome_original": "Sending",
         "escola": "Adivinhação",
         "especial": "—"
       },
       {
         "nome": "Remover Maldição",
+        "nome_original": "Remove Curse",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Revivificar",
+        "nome_original": "Revivify",
         "escola": "Necromancia",
         "especial": "M"
       },
       {
         "nome": "Rogar Maldição",
+        "nome_original": "Bestow Curse",
         "escola": "Necromancia",
         "especial": "C"
       },
       {
         "nome": "Simular Morte",
+        "nome_original": "Feign Death",
         "escola": "Necromancia",
         "especial": "R"
       },
       {
         "nome": "Sinal de Esperança",
+        "nome_original": "Beacon of Hope",
         "escola": "Abjuração",
         "especial": "C"
       }
@@ -322,51 +384,61 @@
     "4º Círculo": [
       {
         "nome": "Aura de Pureza",
+        "nome_original": "Aura of Purity",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Aura de Vida",
+        "nome_original": "Aura of Life",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Banimento",
+        "nome_original": "Banishment",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Controlar Água",
+        "nome_original": "Control Water",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Defensor da Fé",
+        "nome_original": "Guardian of Faith",
         "escola": "Invocação",
         "especial": "—"
       },
       {
         "nome": "Localizar Criatura",
+        "nome_original": "Locate Creature",
         "escola": "Adivinhação",
         "especial": "C"
       },
       {
         "nome": "Moldar Rochas",
+        "nome_original": "Stone Shape",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Movimentação Livre",
+        "nome_original": "Freedom of Movement",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Presságio",
+        "nome_original": "Divination",
         "escola": "Adivinhação",
         "especial": "R, M"
       },
       {
         "nome": "Proteção Contra a Morte",
+        "nome_original": "Death Ward",
         "escola": "Abjuração",
         "especial": "—"
       }
@@ -374,76 +446,91 @@
     "5º Círculo": [
       {
         "nome": "Âncora Planar",
+        "nome_original": "Planar Binding",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Círculo de Poder",
+        "nome_original": "Circle of Power",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Coluna de Chamas",
+        "nome_original": "Flame Strike",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Comunhão",
+        "nome_original": "Commune",
         "escola": "Adivinhação",
         "especial": "R"
       },
       {
         "nome": "Consagrar",
+        "nome_original": "Hallow",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Contágio",
+        "nome_original": "Contagion",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Convocar Celestial",
+        "nome_original": "Summon Celestial",
         "escola": "Invocação",
         "especial": "C, M"
       },
       {
         "nome": "Curar Ferimentos em Massa",
+        "nome_original": "Mass Cure Wounds",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Dissipar o Bem e o Mal",
+        "nome_original": "Dispel Evil and Good",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Lendas e Histórias",
+        "nome_original": "Legend Lore",
         "escola": "Adivinhação",
         "especial": "M"
       },
       {
         "nome": "Missão",
+        "nome_original": "Geas",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Praga de Insetos",
+        "nome_original": "Insect Plague",
         "escola": "Invocação",
         "especial": "C"
       },
       {
         "nome": "Restauração Maior",
+        "nome_original": "Greater Restoration",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Reviver os Mortos",
+        "nome_original": "Raise Dead",
         "escola": "Necromancia",
         "especial": "M"
       },
       {
         "nome": "Vidência",
+        "nome_original": "Scrying",
         "escola": "Adivinhação",
         "especial": "C, M"
       }
@@ -451,56 +538,67 @@
     "6º Círculo": [
       {
         "nome": "Aliado Extraplanar",
+        "nome_original": "Planar Ally",
         "escola": "Invocação",
         "especial": "—"
       },
       {
         "nome": "Banquete de Heróis",
+        "nome_original": "Heroes' Feast",
         "escola": "Invocação",
         "especial": "M"
       },
       {
         "nome": "Barreira de Lâminas",
+        "nome_original": "Blade Barrier",
         "escola": "Evocação",
         "especial": "C"
       },
       {
         "nome": "Criar Mortos-Vivos",
+        "nome_original": "Create Undead",
         "escola": "Necromancia",
         "especial": "M"
       },
       {
         "nome": "Cura Completa",
+        "nome_original": "Heal",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Encontrar o Caminho",
+        "nome_original": "Find the Path",
         "escola": "Adivinhação",
         "especial": "C, M"
       },
       {
         "nome": "Moléstia",
+        "nome_original": "Harm",
         "escola": "Necromancia",
         "especial": "—"
       },
       {
         "nome": "Palavra de Regresso",
+        "nome_original": "Word of Recall",
         "escola": "Invocação",
         "especial": "—"
       },
       {
         "nome": "Proibição",
+        "nome_original": "Forbiddance",
         "escola": "Abjuração",
         "especial": "R, M"
       },
       {
         "nome": "Raio Solar",
+        "nome_original": "Sunbeam",
         "escola": "Evocação",
         "especial": "C"
       },
       {
         "nome": "Visão da Verdade",
+        "nome_original": "True Seeing",
         "escola": "Adivinhação",
         "especial": "M"
       }
@@ -508,46 +606,55 @@
     "7º Círculo": [
       {
         "nome": "Forma Etérea",
+        "nome_original": "Etherealness",
         "escola": "Invocação",
         "especial": "—"
       },
       {
         "nome": "Invocar Celestial",
+        "nome_original": "Conjure Celestial",
         "escola": "Invocação",
         "especial": "C"
       },
       {
         "nome": "Palavra de Poder: Fortificar",
+        "nome_original": "Power Word Fortify",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Palavra Sagrada",
+        "nome_original": "Divine Word",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Regeneração",
+        "nome_original": "Regenerate",
         "escola": "Transmutação",
         "especial": "—"
       },
       {
         "nome": "Ressurreição",
+        "nome_original": "Resurrection",
         "escola": "Necromancia",
         "especial": "M"
       },
       {
         "nome": "Símbolo",
+        "nome_original": "Symbol",
         "escola": "Abjuração",
         "especial": "M"
       },
       {
         "nome": "Tempestade de Fogo",
+        "nome_original": "Fire Storm",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Transição Planar",
+        "nome_original": "Plane Shift",
         "escola": "Invocação",
         "especial": "M"
       }
@@ -555,26 +662,31 @@
     "8º Círculo": [
       {
         "nome": "Aura Sagrada",
+        "nome_original": "Holy Aura",
         "escola": "Abjuração",
         "especial": "C, M"
       },
       {
         "nome": "Campo Antimagia",
+        "nome_original": "Antimagic Field",
         "escola": "Abjuração",
         "especial": "C"
       },
       {
         "nome": "Controlar o Clima",
+        "nome_original": "Control Weather",
         "escola": "Transmutação",
         "especial": "C"
       },
       {
         "nome": "Explosão Solar",
+        "nome_original": "Sunburst",
         "escola": "Evocação",
         "especial": "—"
       },
       {
         "nome": "Terremoto",
+        "nome_original": "Earthquake",
         "escola": "Transmutação",
         "especial": "C"
       }
@@ -582,26 +694,31 @@
     "9º Círculo": [
       {
         "nome": "Cura Completa em Massa",
+        "nome_original": "Mass Heal",
         "escola": "Abjuração",
         "especial": "—"
       },
       {
         "nome": "Palavra de Poder: Salvar",
+        "nome_original": "Power Word Heal",
         "escola": "Encantamento",
         "especial": "—"
       },
       {
         "nome": "Portal",
+        "nome_original": "Gate",
         "escola": "Invocação",
         "especial": "C, M"
       },
       {
         "nome": "Projeção Astral",
+        "nome_original": "Astral Projection",
         "escola": "Necromancia",
         "especial": "C"
       },
       {
         "nome": "Ressurreição Verdadeira",
+        "nome_original": "True Resurrection",
         "escola": "Necromancia",
         "especial": "M"
       }

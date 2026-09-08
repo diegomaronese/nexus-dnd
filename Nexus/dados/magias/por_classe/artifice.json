@@ -4,441 +4,529 @@
   "magias": [
     {
       "nome": "Acudir os Moribundos",
+      "nome_original": "Spare the Dying",
       "circulo": 0,
       "escola": "Necromancia"
     },
     {
       "nome": "Bolha Ácida",
+      "nome_original": "Acid Splash",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Chicote de Espinhos",
+      "nome_original": "Thorn Whip",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Elementalismo",
+      "nome_original": "Elementalism",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Golpe Certeiro",
+      "nome_original": "True Strike",
       "circulo": 0,
       "escola": "Adivinhação"
     },
     {
       "nome": "Luz",
+      "nome_original": "Light",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Luzes Dançantes",
+      "nome_original": "Dancing Lights",
       "circulo": 0,
       "escola": "Ilusão"
     },
     {
       "nome": "Mãos Mágicas",
+      "nome_original": "Mage Hand",
       "circulo": 0,
       "escola": "Conjuração"
     },
     {
       "nome": "Mensagem",
+      "nome_original": "Message",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Orientação",
+      "nome_original": "Guidance",
       "circulo": 0,
       "escola": "Adivinhação"
     },
     {
       "nome": "Prestidigitação Arcana",
+      "nome_original": "Prestidigitation",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Raio de Fogo",
+      "nome_original": "Fire Bolt",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Raio de Gelo",
+      "nome_original": "Ray of Frost",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Rajada de Veneno",
+      "nome_original": "Poison Spray",
       "circulo": 0,
       "escola": "Necromancia"
     },
     {
       "nome": "Reparar",
+      "nome_original": "Mending",
       "circulo": 0,
       "escola": "Transmutação"
     },
     {
       "nome": "Resistência",
+      "nome_original": "Resistance",
       "circulo": 0,
       "escola": "Abjuração"
     },
     {
       "nome": "Talho Mental",
+      "nome_original": "Mind Sliver",
       "circulo": 0,
       "escola": "Encantamento"
     },
     {
       "nome": "Toque Chocante",
+      "nome_original": "Shocking Grasp",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Trovão",
+      "nome_original": "Thunderclap",
       "circulo": 0,
       "escola": "Evocação"
     },
     {
       "nome": "Alarme",
+      "nome_original": "Alarm",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Curar Ferimentos",
+      "nome_original": "Cure Wounds",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Detectar Magia",
+      "nome_original": "Detect Magic",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Detectar Veneno e Doença",
+      "nome_original": "Detect Poison and Disease",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Disfarçar-se",
+      "nome_original": "Disguise Self",
       "circulo": 1,
       "escola": "Ilusão"
     },
     {
       "nome": "Fogo das Fadas",
+      "nome_original": "Faerie Fire",
       "circulo": 1,
       "escola": "Evocação"
     },
     {
       "nome": "Graxa",
+      "nome_original": "Grease",
       "circulo": 1,
       "escola": "Conjuração"
     },
     {
       "nome": "Identificar",
+      "nome_original": "Identify",
       "circulo": 1,
       "escola": "Adivinhação"
     },
     {
       "nome": "Passos Largos",
+      "nome_original": "Longstrider",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Purificar Alimentos e Bebidas",
+      "nome_original": "Purify Food and Drink",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Queda Suave",
+      "nome_original": "Feather Fall",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Retirada Acelerada",
+      "nome_original": "Expeditious Retreat",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Salto",
+      "nome_original": "Jump",
       "circulo": 1,
       "escola": "Transmutação"
     },
     {
       "nome": "Santuário",
+      "nome_original": "Sanctuary",
       "circulo": 1,
       "escola": "Abjuração"
     },
     {
       "nome": "Vitalidade Vazia",
+      "nome_original": "False Life",
       "circulo": 1,
       "escola": "Necromancia"
     },
     {
       "nome": "Alterar-se",
+      "nome_original": "Alter Self",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Aprimorar Atributo",
+      "nome_original": "Enhance Ability",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Arma Mágica",
+      "nome_original": "Magic Weapon",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Aumentar/Reduzir",
+      "nome_original": "Enlarge/Reduce",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Auxílio",
+      "nome_original": "Aid",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Boca Encantada",
+      "nome_original": "Magic Mouth",
       "circulo": 2,
       "escola": "Ilusão"
     },
     {
       "nome": "Chama Contínua",
+      "nome_original": "Continual Flame",
       "circulo": 2,
       "escola": "Evocação"
     },
     {
       "nome": "Corda Extradimensional",
+      "nome_original": "Rope Trick",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Escalada de Aranha",
+      "nome_original": "Spider Climb",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Esquentar Metal",
+      "nome_original": "Heat Metal",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Invisibilidade",
+      "nome_original": "Invisibility",
       "circulo": 2,
       "escola": "Ilusão"
     },
     {
       "nome": "Levitação",
+      "nome_original": "Levitate",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Localizar Objeto",
+      "nome_original": "Locate Object",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Proteção Contra Veneno",
+      "nome_original": "Protection from Poison",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Repouso Tranquilo",
+      "nome_original": "Gentle Repose",
       "circulo": 2,
       "escola": "Necromancia"
     },
     {
       "nome": "Restauração Menor",
+      "nome_original": "Lesser Restoration",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Servo Homúnculo",
+      "nome_original": "Homunculus Servant",
       "circulo": 2,
       "escola": "Conjuração"
     },
     {
       "nome": "Sopro de Dragão",
+      "nome_original": "Dragon's Breath",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Teia",
+      "nome_original": "Web",
       "circulo": 2,
       "escola": "Conjuração"
     },
     {
       "nome": "Tranca Arcana",
+      "nome_original": "Arcane Lock",
       "circulo": 2,
       "escola": "Abjuração"
     },
     {
       "nome": "Turvar",
+      "nome_original": "Blur",
       "circulo": 2,
       "escola": "Ilusão"
     },
     {
       "nome": "Ver o Invisível",
+      "nome_original": "See Invisibility",
       "circulo": 2,
       "escola": "Adivinhação"
     },
     {
       "nome": "Vigor Arcano",
+      "nome_original": "Arcane Vigor",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Visão no Escuro",
+      "nome_original": "Darkvision",
       "circulo": 2,
       "escola": "Transmutação"
     },
     {
       "nome": "Arma Elemental",
+      "nome_original": "Elemental Weapon",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Caminhar Sobre as Águas",
+      "nome_original": "Water Walk",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Celeridade",
+      "nome_original": "Haste",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Criar Comida e Água",
+      "nome_original": "Create Food and Water",
       "circulo": 3,
       "escola": "Conjuração"
     },
     {
       "nome": "Dissipar Magia",
+      "nome_original": "Dispel Magic",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Falar com Mortos",
+      "nome_original": "Speak with Dead",
       "circulo": 3,
       "escola": "Necromancia"
     },
     {
       "nome": "Forma Gasosa",
+      "nome_original": "Gaseous Form",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Glifo de Proteção",
+      "nome_original": "Glyph of Warding",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Pequeno Refúgio de Leomund",
+      "nome_original": "Leomund's Tiny Hut",
       "circulo": 3,
       "escola": "Evocação"
     },
     {
       "nome": "Piscar",
+      "nome_original": "Blink",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Proteção Contra Energia",
+      "nome_original": "Protection from Energy",
       "circulo": 3,
       "escola": "Abjuração"
     },
     {
       "nome": "Respirar na Água",
+      "nome_original": "Water Breathing",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Revivificar",
+      "nome_original": "Revivify",
       "circulo": 3,
       "escola": "Necromancia"
     },
     {
       "nome": "Voo",
+      "nome_original": "Fly",
       "circulo": 3,
       "escola": "Transmutação"
     },
     {
       "nome": "Arca Secreta de Leomund",
+      "nome_original": "Leomund's Secret Chest",
       "circulo": 4,
       "escola": "Conjuração"
     },
     {
       "nome": "Cão Fiel de Mordenkainen",
+      "nome_original": "Mordenkainen's Faithful Hound",
       "circulo": 4,
       "escola": "Conjuração"
     },
     {
       "nome": "Esfera Resiliente de Otiluke",
+      "nome_original": "Otiluke's Resilient Sphere",
       "circulo": 4,
       "escola": "Evocação"
     },
     {
       "nome": "Fabricar",
+      "nome_original": "Fabricate",
       "circulo": 4,
       "escola": "Transmutação"
     },
     {
       "nome": "Invocar Constructo",
+      "nome_original": "Summon Construct",
       "circulo": 4,
       "escola": "Conjuração"
     },
     {
       "nome": "Moldar Rochas",
+      "nome_original": "Stone Shape",
       "circulo": 4,
       "escola": "Transmutação"
     },
     {
       "nome": "Movimentação Livre",
+      "nome_original": "Freedom of Movement",
       "circulo": 4,
       "escola": "Abjuração"
     },
     {
       "nome": "Olho Arcano",
+      "nome_original": "Arcane Eye",
       "circulo": 4,
       "escola": "Adivinhação"
     },
     {
       "nome": "Pele-Rocha",
+      "nome_original": "Stoneskin",
       "circulo": 4,
       "escola": "Abjuração"
     },
     {
       "nome": "Santuário Particular de Mordenkainen",
+      "nome_original": "Mordenkainen's Private Sanctum",
       "circulo": 4,
       "escola": "Abjuração"
     },
     {
       "nome": "Animar Objetos",
+      "nome_original": "Animate Objects",
       "circulo": 5,
       "escola": "Transmutação"
     },
     {
       "nome": "Criação",
+      "nome_original": "Creation",
       "circulo": 5,
       "escola": "Ilusão"
     },
     {
       "nome": "Círculo de Poder",
+      "nome_original": "Circle of Power",
       "circulo": 5,
       "escola": "Abjuração"
     },
     {
       "nome": "Muralha de Pedra",
+      "nome_original": "Wall of Stone",
       "circulo": 5,
       "escola": "Evocação"
     },
     {
       "nome": "Mão de Bigby",
+      "nome_original": "Bigby's Hand",
       "circulo": 5,
       "escola": "Evocação"
     },
     {
       "nome": "Restauração Maior",
+      "nome_original": "Greater Restoration",
       "circulo": 5,
       "escola": "Abjuração"
     }

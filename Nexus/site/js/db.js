@@ -129,6 +129,19 @@ export async function getItensMagicos() {
   return fetchJSON('equipamento/itens_magicos.json');
 }
 
+/** Busca itens mágicos por nome (português ou inglês) */
+export async function buscarItensMagicos(termo) {
+  const dados = await getItensMagicos();
+  if (!dados) return [];
+  const lista = Array.isArray(dados) ? dados : (dados.itens_magicos || []);
+  const termoNorm = termo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return lista.filter(it => {
+    const nomeNorm = it.nome ? it.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') : '';
+    const origNorm = it.nome_original ? it.nome_original.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') : '';
+    return nomeNorm.includes(termoNorm) || origNorm.includes(termoNorm);
+  });
+}
+
 // --- Magias ---
 
 /** Carrega índice de todas as magias (resumido) */
@@ -154,7 +167,13 @@ export async function getMagiasPorClasseLista(nomeClasse) {
 export async function getMagia(nome, circulo) {
   const dados = await getMagiasPorCirculo(circulo);
   if (!dados) return null;
-  return dados.magias.find(m => m.nome === nome) || null;
+  const nomeNorm = nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return dados.magias.find(m => {
+    if (m.nome === nome) return true;
+    if (m.nome_original && m.nome_original.toLowerCase() === nome.toLowerCase()) return true;
+    const mNorm = m.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return mNorm === nomeNorm;
+  }) || null;
 }
 
 /** Busca magias por nome (busca no índice, retorna matches) */
@@ -164,7 +183,8 @@ export async function buscarMagias(termo) {
   const termoNorm = termo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   return indice.magias.filter(m => {
     const nomeNorm = m.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    return nomeNorm.includes(termoNorm);
+    const origNorm = m.nome_original ? m.nome_original.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') : '';
+    return nomeNorm.includes(termoNorm) || origNorm.includes(termoNorm);
   });
 }
 

@@ -5,6 +5,7 @@
   "magias": [
     {
       "nome": "Bola de Fogo Adiável",
+      "nome_original": "Delayed Blast Fireball",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -20,6 +21,7 @@
     },
     {
       "nome": "Cárcere de Energia",
+      "nome_original": "Forcecage",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -36,6 +38,7 @@
     },
     {
       "nome": "Dedo da Morte",
+      "nome_original": "Finger of Death",
       "circulo": 7,
       "escola": "Necromancia",
       "classes": [
@@ -52,6 +55,7 @@
     },
     {
       "nome": "Espada de Mordenkainen",
+      "nome_original": "Mordenkainen's Sword",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -67,6 +71,7 @@
     },
     {
       "nome": "Forma Etérea",
+      "nome_original": "Etherealness",
       "circulo": 7,
       "escola": "Invocação",
       "classes": [
@@ -85,6 +90,7 @@
     },
     {
       "nome": "Inverter a Gravidade",
+      "nome_original": "Reverse Gravity",
       "circulo": 7,
       "escola": "Transmutação",
       "classes": [
@@ -101,6 +107,7 @@
     },
     {
       "nome": "Invocar Celestial",
+      "nome_original": "Conjure Celestial",
       "circulo": 7,
       "escola": "Invocação",
       "classes": [
@@ -115,6 +122,7 @@
     },
     {
       "nome": "Mansão Magnífica de Mordenkainen",
+      "nome_original": "Mordenkainen's Magnificent Mansion",
       "circulo": 7,
       "escola": "Invocação",
       "classes": [
@@ -130,6 +138,7 @@
     },
     {
       "nome": "Miragem Arcana",
+      "nome_original": "Mirage Arcane",
       "circulo": 7,
       "escola": "Ilusão",
       "classes": [
@@ -146,6 +155,7 @@
     },
     {
       "nome": "Palavra Sagrada",
+      "nome_original": "Divine Word",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -160,6 +170,7 @@
     },
     {
       "nome": "Palavra de Poder: Fortificar",
+      "nome_original": "Power Word Fortify",
       "circulo": 7,
       "escola": "Encantamento",
       "classes": [
@@ -175,6 +186,7 @@
     },
     {
       "nome": "Projetar Imagem",
+      "nome_original": "Project Image",
       "circulo": 7,
       "escola": "Ilusão",
       "classes": [
@@ -190,6 +202,7 @@
     },
     {
       "nome": "Rajada Prismática",
+      "nome_original": "Prismatic Spray",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -206,6 +219,7 @@
     },
     {
       "nome": "Refugiar",
+      "nome_original": "Sequester",
       "circulo": 7,
       "escola": "Transmutação",
       "classes": [
@@ -220,6 +234,7 @@
     },
     {
       "nome": "Regeneração",
+      "nome_original": "Regenerate",
       "circulo": 7,
       "escola": "Transmutação",
       "classes": [
@@ -236,6 +251,7 @@
     },
     {
       "nome": "Ressurreição",
+      "nome_original": "Resurrection",
       "circulo": 7,
       "escola": "Necromancia",
       "classes": [
@@ -251,6 +267,7 @@
     },
     {
       "nome": "Simulacro",
+      "nome_original": "Simulacrum",
       "circulo": 7,
       "escola": "Ilusão",
       "classes": [
@@ -265,6 +282,7 @@
     },
     {
       "nome": "Símbolo",
+      "nome_original": "Symbol",
       "circulo": 7,
       "escola": "Abjuração",
       "classes": [
@@ -282,6 +300,7 @@
     },
     {
       "nome": "Teleporte",
+      "nome_original": "Teleport",
       "circulo": 7,
       "escola": "Invocação",
       "classes": [
@@ -298,6 +317,7 @@
     },
     {
       "nome": "Tempestade de Fogo",
+      "nome_original": "Fire Storm",
       "circulo": 7,
       "escola": "Evocação",
       "classes": [
@@ -314,6 +334,7 @@
     },
     {
       "nome": "Transição Planar",
+      "nome_original": "Plane Shift",
       "circulo": 7,
       "escola": "Invocação",
       "classes": [
