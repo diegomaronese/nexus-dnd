@@ -280,97 +280,116 @@
     {
       "nivel": 3,
       "nome": "Técnica da Mão Espalmada",
-      "descricao": "Ao atingir uma criatura com um ataque concedido por sua Torrente de Golpes, você pode impor um dos seguintes efeitos ao alvo.\n**Derrubar.** O alvo deve ser bem-sucedido em uma salvaguarda de Destreza ou tem a condição Caído.\n**Desorientar.** O alvo não pode realizar Ataques de Oportunidade até o início do próximo turno dele.\n**Empurrar.** O alvo deve ser bem-sucedido em uma salvaguarda de Força ou é empurrado até 4,5 metros para longe de você."
+      "descricao": "Ao atingir uma criatura com um ataque concedido por sua Torrente de Golpes, você pode impor um dos seguintes efeitos ao alvo.\n**Derrubar.** O alvo deve ser bem-sucedido em uma salvaguarda de Destreza ou tem a condição Caído.\n**Desorientar.** O alvo não pode realizar Ataques de Oportunidade até o início do próximo turno dele.\n**Empurrar.** O alvo deve ser bem-sucedido em uma salvaguarda de Força ou é empurrado até 4,5 metros para longe de você.",
+      "subclasse": "Combatente da Mão Espalmada"
     },
     {
       "nivel": 6,
       "nome": "Integridade Corporal",
-      "descricao": "Você adquire a capacidade de se curar. Como uma Ação Bônus, você pode jogar seu dado de Artes Marciais. Você recupera um número de Pontos de Vida igual ao resultado mais seu modificador de Sabedoria (mínimo de 1 Ponto de Vida recuperado).\nVocê pode usar essa característica um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo."
+      "descricao": "Você adquire a capacidade de se curar. Como uma Ação Bônus, você pode jogar seu dado de Artes Marciais. Você recupera um número de Pontos de Vida igual ao resultado mais seu modificador de Sabedoria (mínimo de 1 Ponto de Vida recuperado).\nVocê pode usar essa característica um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.",
+      "subclasse": "Combatente da Mão Espalmada"
     },
     {
       "nivel": 11,
       "nome": "Passo Veloz",
-      "descricao": "Ao executar uma Ação Bônus diferente de Passo do Vento, você também pode usar Passo do Vento imediatamente após essa Ação Bônus."
+      "descricao": "Ao executar uma Ação Bônus diferente de Passo do Vento, você também pode usar Passo do Vento imediatamente após essa Ação Bônus.",
+      "subclasse": "Combatente da Mão Espalmada"
     },
     {
       "nivel": 17,
       "nome": "Palma Vibrante",
-      "descricao": "Você obtém a habilidade de infligir vibrações letais no corpo de outra pessoa. Ao acertar uma criatura com um Ataque Desarmado, você pode gastar 4 Pontos de Foco para iniciar essas vibrações imperceptíveis, que duram por um número de dias igual ao seu nível de Monge. As vibrações são inofensivas, a menos que você execute uma Ação para encerrá-las. Como alternativa, ao executar a ação Atacar no seu turno, você pode renunciar a um dos ataques para acabar com as vibrações. Para encerrá-las, você e o alvo devem estar no mesmo plano de existência. Ao fazer isso, o alvo deve realizar uma salvaguarda de Constituição, sofrendo 10d12 pontos de dano Energético se falhar ou metade do dano em caso de sucesso.\nVocê pode ter apenas uma criatura sob o efeito desta característica por vez. Você pode encerrar as vibrações inofensivamente (nenhuma ação é necessária)."
+      "descricao": "Você obtém a habilidade de infligir vibrações letais no corpo de outra pessoa. Ao acertar uma criatura com um Ataque Desarmado, você pode gastar 4 Pontos de Foco para iniciar essas vibrações imperceptíveis, que duram por um número de dias igual ao seu nível de Monge. As vibrações são inofensivas, a menos que você execute uma Ação para encerrá-las. Como alternativa, ao executar a ação Atacar no seu turno, você pode renunciar a um dos ataques para acabar com as vibrações. Para encerrá-las, você e o alvo devem estar no mesmo plano de existência. Ao fazer isso, o alvo deve realizar uma salvaguarda de Constituição, sofrendo 10d12 pontos de dano Energético se falhar ou metade do dano em caso de sucesso.\nVocê pode ter apenas uma criatura sob o efeito desta característica por vez. Você pode encerrar as vibrações inofensivamente (nenhuma ação é necessária).",
+      "subclasse": "Combatente da Mão Espalmada"
     },
     {
       "nivel": 3,
       "nome": "Implementos de Misericórdia",
-      "descricao": "Você adquire proficiência nas perícias Intuição e Medicina e proficiência com o Kit de Herbalismo."
+      "descricao": "Você adquire proficiência nas perícias Intuição e Medicina e proficiência com o Kit de Herbalismo.",
+      "subclasse": "Combatente da Misericórdia"
     },
     {
       "nivel": 3,
       "nome": "Mão de Cura",
-      "descricao": "Com uma ação Usar Magia, você pode gastar 1 Ponto de Foco para tocar uma criatura e restaurar um número de Pontos de Vida igual a uma jogada de seu dado de Artes Marciais mais seu modificador de Sabedoria. Ao usar sua Torrente de Golpes, você pode substituir um dos Ataques Desarmados pelo uso dessa característica sem gastar um Ponto de Foco para a cura."
+      "descricao": "Com uma ação Usar Magia, você pode gastar 1 Ponto de Foco para tocar uma criatura e restaurar um número de Pontos de Vida igual a uma jogada de seu dado de Artes Marciais mais seu modificador de Sabedoria. Ao usar sua Torrente de Golpes, você pode substituir um dos Ataques Desarmados pelo uso dessa característica sem gastar um Ponto de Foco para a cura.",
+      "subclasse": "Combatente da Misericórdia"
     },
     {
       "nivel": 3,
       "nome": "Mão de Dolo",
-      "descricao": "Uma vez por turno, ao atingir uma criatura com um Ataque Desarmado e causar dano, você pode gastar 1 Ponto de Foco para causar dano Necrótico adicional igual a uma jogada de seu dado de Artes Marciais mais seu modificador de Sabedoria."
+      "descricao": "Uma vez por turno, ao atingir uma criatura com um Ataque Desarmado e causar dano, você pode gastar 1 Ponto de Foco para causar dano Necrótico adicional igual a uma jogada de seu dado de Artes Marciais mais seu modificador de Sabedoria.",
+      "subclasse": "Combatente da Misericórdia"
     },
     {
       "nivel": 6,
       "nome": "Toque de Médico",
-      "descricao": "Sua Mão de Cura e Mão de Dolo melhoram, conforme detalhado abaixo.\n**Mão de Cura.** Ao usar Mão de Cura, você também pode encerrar uma das seguintes condições na criatura que você curar: Atordoado, Cego, Envenenado, Paralisado ou Surdo.\n**Mão de Dolo.** Ao usar Mão de Dolo em uma criatura, você também pode impor a ela a condição Envenenado até o final do seu próximo turno."
+      "descricao": "Sua Mão de Cura e Mão de Dolo melhoram, conforme detalhado abaixo.\n**Mão de Cura.** Ao usar Mão de Cura, você também pode encerrar uma das seguintes condições na criatura que você curar: Atordoado, Cego, Envenenado, Paralisado ou Surdo.\n**Mão de Dolo.** Ao usar Mão de Dolo em uma criatura, você também pode impor a ela a condição Envenenado até o final do seu próximo turno.",
+      "subclasse": "Combatente da Misericórdia"
     },
     {
       "nivel": 11,
       "nome": "Torrente de Cura e Dolo",
-      "descricao": "Ao usar Torrente de Golpes, você pode substituir cada um dos Ataques Desarmados pelo uso da Mão de Cura sem gastar Pontos de Foco para a cura.\nAlém disso, ao realizar um Ataque Desarmado com Torrente de Golpes e causar dano, você pode usar Mão de Dolo com esse ataque sem gastar um Ponto de Foco para Mão de Dolo. Você ainda pode usar Mão de Dolo apenas uma vez por turno.\nVocê pode usar esses benefícios um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo."
+      "descricao": "Ao usar Torrente de Golpes, você pode substituir cada um dos Ataques Desarmados pelo uso da Mão de Cura sem gastar Pontos de Foco para a cura.\nAlém disso, ao realizar um Ataque Desarmado com Torrente de Golpes e causar dano, você pode usar Mão de Dolo com esse ataque sem gastar um Ponto de Foco para Mão de Dolo. Você ainda pode usar Mão de Dolo apenas uma vez por turno.\nVocê pode usar esses benefícios um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.",
+      "subclasse": "Combatente da Misericórdia"
     },
     {
       "nivel": 17,
       "nome": "Mão da Misericórdia Final",
-      "descricao": "Seu domínio da energia vital abre a porta para a misericórdia final. Como uma ação Usar Magia, você pode tocar o cadáver de uma criatura que morreu nas últimas 24 horas e gastar 5 Pontos de Foco. A criatura então retorna à vida com um número de Pontos de Vida igual a 4d10 mais seu modificador de Sabedoria. Se a criatura morreu com quaisquer condições a seguir, a criatura revive com as condições removidas: Atordoado, Cego, Envenenado, Paralisado e Surdo.\nApós usar essa característica, você não pode usá-la novamente até completar um Descanso Longo."
+      "descricao": "Seu domínio da energia vital abre a porta para a misericórdia final. Como uma ação Usar Magia, você pode tocar o cadáver de uma criatura que morreu nas últimas 24 horas e gastar 5 Pontos de Foco. A criatura então retorna à vida com um número de Pontos de Vida igual a 4d10 mais seu modificador de Sabedoria. Se a criatura morreu com quaisquer condições a seguir, a criatura revive com as condições removidas: Atordoado, Cego, Envenenado, Paralisado e Surdo.\nApós usar essa característica, você não pode usá-la novamente até completar um Descanso Longo.",
+      "subclasse": "Combatente da Misericórdia"
     },
     {
       "nivel": 3,
       "nome": "Artes das Sombras",
-      "descricao": "Você aprendeu a aproveitar o poder do Sombral, obtendo os seguintes benefícios.\n**Escuridão.** Você pode gastar 1 Ponto de Foco para conjurar a magia *Escuridão* sem componentes de magia. Você pode ver na área da magia ao conjurar com esta característica. Enquanto a magia persistir, você pode mover sua área de Escuridão para um espaço a até 18 metros de si no início de cada um dos seus turnos.\n**Ilusão Sombria.** Você conhece a magia *Ilusão Menor*. Sabedoria é seu atributo de conjuração para ela.\n**Visão no Escuro.** Você adquire Visão no Escuro com um alcance de 18 metros. Se você já tem Visão no Escuro, seu alcance aumenta em 18 metros."
+      "descricao": "Você aprendeu a aproveitar o poder do Sombral, obtendo os seguintes benefícios.\n**Escuridão.** Você pode gastar 1 Ponto de Foco para conjurar a magia *Escuridão* sem componentes de magia. Você pode ver na área da magia ao conjurar com esta característica. Enquanto a magia persistir, você pode mover sua área de Escuridão para um espaço a até 18 metros de si no início de cada um dos seus turnos.\n**Ilusão Sombria.** Você conhece a magia *Ilusão Menor*. Sabedoria é seu atributo de conjuração para ela.\n**Visão no Escuro.** Você adquire Visão no Escuro com um alcance de 18 metros. Se você já tem Visão no Escuro, seu alcance aumenta em 18 metros.",
+      "subclasse": "Combatente das Sombras"
     },
     {
       "nivel": 6,
       "nome": "Passo da Sombra",
-      "descricao": "Enquanto estiver inteiramente em Meia-luz ou Escuridão, você pode executar uma Ação Bônus para se teleportar até 18 metros para um espaço desocupado à sua vista que também esteja sob Meia-luz ou Escuridão. Você então tem Vantagem no próximo ataque corpo a corpo que realizar antes do final do turno atual."
+      "descricao": "Enquanto estiver inteiramente em Meia-luz ou Escuridão, você pode executar uma Ação Bônus para se teleportar até 18 metros para um espaço desocupado à sua vista que também esteja sob Meia-luz ou Escuridão. Você então tem Vantagem no próximo ataque corpo a corpo que realizar antes do final do turno atual.",
+      "subclasse": "Combatente das Sombras"
     },
     {
       "nivel": 11,
       "nome": "Passo da Sombra Aprimorado",
-      "descricao": "Você pode usar sua conexão com o Sombral para melhorar seu teleporte. Ao usar Passo da Sombra, você pode gastar 1 Ponto de Foco para remover o requisito no qual você deve iniciar ou encerrar seu turno em Meia-luz ou Escuridão para usar esta característica. Como parte desta Ação Bônus, você pode realizar um Ataque Desarmado imediatamente após se teleportar."
+      "descricao": "Você pode usar sua conexão com o Sombral para melhorar seu teleporte. Ao usar Passo da Sombra, você pode gastar 1 Ponto de Foco para remover o requisito no qual você deve iniciar ou encerrar seu turno em Meia-luz ou Escuridão para usar esta característica. Como parte desta Ação Bônus, você pode realizar um Ataque Desarmado imediatamente após se teleportar.",
+      "subclasse": "Combatente das Sombras"
     },
     {
       "nivel": 17,
       "nome": "Manto da Sombra",
-      "descricao": "Como uma ação Usar Magia enquanto estiver inteiramente em Meia-luz ou Escuridão, você pode gastar 3 Pontos de Foco para envolver-se emsombras por 1 minuto, até ter a condição Incapacitado ou até encerrar seu turno em Luz Plena. Enquanto estiver envolto por essas sombras, você adquire os seguintes benefícios.\n**Invisibilidade.** Você tem a condição Invisível.\n**Parcialmente Incorpóreo.** Você pode se mover por espaços ocupados como se fossem Terrenos Difíceis. Se você encerrar seu turno em tal espaço, é deslocado para o último espaço desocupado em que estava.\n**Torrente de Sombras.** Você pode usar sua Torrente de Golpes sem gastar nenhum Ponto de Foco."
+      "descricao": "Como uma ação Usar Magia enquanto estiver inteiramente em Meia-luz ou Escuridão, você pode gastar 3 Pontos de Foco para envolver-se emsombras por 1 minuto, até ter a condição Incapacitado ou até encerrar seu turno em Luz Plena. Enquanto estiver envolto por essas sombras, você adquire os seguintes benefícios.\n**Invisibilidade.** Você tem a condição Invisível.\n**Parcialmente Incorpóreo.** Você pode se mover por espaços ocupados como se fossem Terrenos Difíceis. Se você encerrar seu turno em tal espaço, é deslocado para o último espaço desocupado em que estava.\n**Torrente de Sombras.** Você pode usar sua Torrente de Golpes sem gastar nenhum Ponto de Foco.",
+      "subclasse": "Combatente das Sombras"
     },
     {
       "nivel": 3,
       "nome": "Manipular Elementos",
-      "descricao": "Você conhece a magia *Elementalismo*. Sabedoria é seu atributo de conjuração para ela."
+      "descricao": "Você conhece a magia *Elementalismo*. Sabedoria é seu atributo de conjuração para ela.",
+      "subclasse": "Combatente dos Elementos"
     },
     {
       "nivel": 3,
       "nome": "Sintonia Elemental",
-      "descricao": "No início do seu turno, você pode gastar 1 Ponto de Foco para imbuir-se de energia elemental. A energia dura 10 minutos ou até você ter a condição Incapacitado. Você adquire os seguintes benefícios enquanto esta característica estiver ativa.\n**Ataques Elementais.** Ao acertar com seu Ataque Desarmado, você pode causar com ele, à sua escolha, dano Ácido, Elétrico, Gélido, Ígneo ou Trovejante, em vez de seu tipo de dano normal. Ao causar um desses tipos de dano, você também pode forçar o alvo a realizar uma salvaguarda de Força. Se ele falhar, você pode movê-lo até 3 metros em sua direção ou para longe de você, enquanto a energia elemental gira em torno dele.\n**Extensão.** Ao realizar um Ataque Desarmado, seu alcance aumenta em 3 metros à medida que a energia elemental se estende por você."
+      "descricao": "No início do seu turno, você pode gastar 1 Ponto de Foco para imbuir-se de energia elemental. A energia dura 10 minutos ou até você ter a condição Incapacitado. Você adquire os seguintes benefícios enquanto esta característica estiver ativa.\n**Ataques Elementais.** Ao acertar com seu Ataque Desarmado, você pode causar com ele, à sua escolha, dano Ácido, Elétrico, Gélido, Ígneo ou Trovejante, em vez de seu tipo de dano normal. Ao causar um desses tipos de dano, você também pode forçar o alvo a realizar uma salvaguarda de Força. Se ele falhar, você pode movê-lo até 3 metros em sua direção ou para longe de você, enquanto a energia elemental gira em torno dele.\n**Extensão.** Ao realizar um Ataque Desarmado, seu alcance aumenta em 3 metros à medida que a energia elemental se estende por você.",
+      "subclasse": "Combatente dos Elementos"
     },
     {
       "nivel": 6,
       "nome": "Explosão Elemental",
-      "descricao": "Como uma ação Usar Magia, você pode gastar 2 Pontos de Foco para fazer com que energia elemental exploda em uma Esfera de 6 metros de raio centrada em um ponto a até 36 metros de você. Escolha um tipo de dano: Ácido, Elétrico, Gélido, Ígneo ou Trovejante.\nCada criatura na Esfera deve realizar uma salvaguarda de Destreza. Se falhar, uma criatura sofre dano do tipo escolhido igual a três jogadas de seus dados de Artes Marciais. Em caso de sucesso, uma criatura sofre metade do dano."
+      "descricao": "Como uma ação Usar Magia, você pode gastar 2 Pontos de Foco para fazer com que energia elemental exploda em uma Esfera de 6 metros de raio centrada em um ponto a até 36 metros de você. Escolha um tipo de dano: Ácido, Elétrico, Gélido, Ígneo ou Trovejante.\nCada criatura na Esfera deve realizar uma salvaguarda de Destreza. Se falhar, uma criatura sofre dano do tipo escolhido igual a três jogadas de seus dados de Artes Marciais. Em caso de sucesso, uma criatura sofre metade do dano.",
+      "subclasse": "Combatente dos Elementos"
     },
     {
       "nivel": 11,
       "nome": "Passo dos Elementos",
-      "descricao": "Enquanto sua Sintonia Elemental estiver ativa, você também tem um Deslocamento de Natação e de Voo igual ao seu Deslocamento."
+      "descricao": "Enquanto sua Sintonia Elemental estiver ativa, você também tem um Deslocamento de Natação e de Voo igual ao seu Deslocamento.",
+      "subclasse": "Combatente dos Elementos"
     },
     {
       "nivel": 17,
       "nome": "Ápice Elemental",
-      "descricao": "Enquanto sua Sintonia Elemental estiver ativa, você também adquire os seguintes benefícios.\n**Golpes Potencializados.** Uma vez em cada um dos seus turnos, você pode causar dano adicional a um alvo igual a uma jogada de seu dado de Artes Marciais ao atingi-lo com um Ataque Desarmado. O dano adicional é do mesmo tipo causado por esse ataque.\n**Passo Destrutivo.** Ao usar seu Passo do Vento, seu Deslocamento aumenta em 6 metros até o final do turno. Pela duração, qualquer criatura à sua escolha sofre dano igual a uma jogada de seu dado de Artes Marciais quando você entra em um espaço a até 1,5 metro dela. O tipo de dano fica à sua escolha, entre Ácido, Elétrico, Gélido, Ígneo ou Trovejante. Uma criatura pode sofrer esse dano apenas uma vez por turno.\n**Resistência a Dano.** Você adquire Resistência a um dos seguintes tipos de dano à sua escolha: Ácido, Elétrico, Gélido, Ígneo ou Trovejante. No início de cada um dos seus turnos, você pode alterar essa escolha."
+      "descricao": "Enquanto sua Sintonia Elemental estiver ativa, você também adquire os seguintes benefícios.\n**Golpes Potencializados.** Uma vez em cada um dos seus turnos, você pode causar dano adicional a um alvo igual a uma jogada de seu dado de Artes Marciais ao atingi-lo com um Ataque Desarmado. O dano adicional é do mesmo tipo causado por esse ataque.\n**Passo Destrutivo.** Ao usar seu Passo do Vento, seu Deslocamento aumenta em 6 metros até o final do turno. Pela duração, qualquer criatura à sua escolha sofre dano igual a uma jogada de seu dado de Artes Marciais quando você entra em um espaço a até 1,5 metro dela. O tipo de dano fica à sua escolha, entre Ácido, Elétrico, Gélido, Ígneo ou Trovejante. Uma criatura pode sofrer esse dano apenas uma vez por turno.\n**Resistência a Dano.** Você adquire Resistência a um dos seguintes tipos de dano à sua escolha: Ácido, Elétrico, Gélido, Ígneo ou Trovejante. No início de cada um dos seus turnos, você pode alterar essa escolha.",
+      "subclasse": "Combatente dos Elementos"
     }
   ],
   "subclasses": [

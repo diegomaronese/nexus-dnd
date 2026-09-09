@@ -13,14 +13,6 @@
   },
   "tabela_caracteristicas": [
     {
-      "Nível": "1",
-      "Bônus de Proficiência": "+2",
-      "Características": "Invocações Místicas, Opções de Invocações Místicas, Magia de Pacto",
-      "Invocações": "1",
-      "Truques": "2",
-      "Magias Preparadas": "2",
-      "Espacos de Magia": "1",
-      "Nivel do Espaco": "1",
       "1": "1",
       "2": "—",
       "3": "—",
@@ -29,17 +21,17 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "1",
+      "Bônus de Proficiência": "+2",
+      "Características": "Invocações Místicas, Opções de Invocações Místicas, Magia de Pacto",
+      "Invocações": "1",
+      "Truques": "2",
+      "Magias Preparadas": "2",
+      "Espacos de Magia": "1",
+      "Nivel do Espaco": "1"
     },
     {
-      "Nível": "2",
-      "Bônus de Proficiência": "+2",
-      "Características": "Astúcia Mágica",
-      "Invocações": "3",
-      "Truques": "2",
-      "Magias Preparadas": "3",
-      "Espacos de Magia": "2",
-      "Nivel do Espaco": "1",
       "1": "2",
       "2": "—",
       "3": "—",
@@ -48,9 +40,26 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "2",
+      "Bônus de Proficiência": "+2",
+      "Características": "Astúcia Mágica",
+      "Invocações": "3",
+      "Truques": "2",
+      "Magias Preparadas": "3",
+      "Espacos de Magia": "2",
+      "Nivel do Espaco": "1"
     },
     {
+      "1": "—",
+      "2": "2",
+      "3": "—",
+      "4": "—",
+      "5": "—",
+      "6": "—",
+      "7": "—",
+      "8": "—",
+      "9": "—",
       "Nível": "3",
       "Bônus de Proficiência": "+2",
       "Características": "Subclasse de Bruxo",
@@ -58,7 +67,9 @@
       "Truques": "2",
       "Magias Preparadas": "4",
       "Espacos de Magia": "2",
-      "Nivel do Espaco": "2",
+      "Nivel do Espaco": "2"
+    },
+    {
       "1": "—",
       "2": "2",
       "3": "—",
@@ -67,9 +78,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "4",
       "Bônus de Proficiência": "+2",
       "Características": "Aumento no Valor de Atributo",
@@ -77,18 +86,18 @@
       "Truques": "3",
       "Magias Preparadas": "5",
       "Espacos de Magia": "2",
-      "Nivel do Espaco": "2",
+      "Nivel do Espaco": "2"
+    },
+    {
       "1": "—",
-      "2": "2",
-      "3": "—",
+      "2": "—",
+      "3": "2",
       "4": "—",
       "5": "—",
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "5",
       "Bônus de Proficiência": "+3",
       "Características": "—",
@@ -96,7 +105,9 @@
       "Truques": "3",
       "Magias Preparadas": "6",
       "Espacos de Magia": "2",
-      "Nivel do Espaco": "3",
+      "Nivel do Espaco": "3"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "2",
@@ -105,9 +116,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "6",
       "Bônus de Proficiência": "+3",
       "Características": "Característica de Subclasse",
@@ -115,18 +124,18 @@
       "Truques": "3",
       "Magias Preparadas": "7",
       "Espacos de Magia": "2",
-      "Nivel do Espaco": "3",
+      "Nivel do Espaco": "3"
+    },
+    {
       "1": "—",
       "2": "—",
-      "3": "2",
-      "4": "—",
+      "3": "—",
+      "4": "2",
       "5": "—",
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "7",
       "Bônus de Proficiência": "+3",
       "Características": "—",
@@ -134,7 +143,9 @@
       "Truques": "3",
       "Magias Preparadas": "8",
       "Espacos de Magia": "2",
-      "Nivel do Espaco": "4",
+      "Nivel do Espaco": "4"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
@@ -143,9 +154,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "8",
       "Bônus de Proficiência": "+3",
       "Características": "Aumento no Valor de Atributo",
@@ -153,18 +162,18 @@
       "Truques": "3",
       "Magias Preparadas": "9",
       "Espacos de Magia": "2",
-      "Nivel do Espaco": "4",
+      "Nivel do Espaco": "4"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
-      "4": "2",
-      "5": "—",
+      "4": "—",
+      "5": "2",
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "9",
       "Bônus de Proficiência": "+4",
       "Características": "Contatar Patrono",
@@ -172,7 +181,9 @@
       "Truques": "3",
       "Magias Preparadas": "10",
       "Espacos de Magia": "2",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
@@ -181,9 +192,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "10",
       "Bônus de Proficiência": "+4",
       "Características": "Característica de Subclasse",
@@ -191,18 +200,18 @@
       "Truques": "4",
       "Magias Preparadas": "10",
       "Espacos de Magia": "2",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
       "4": "—",
-      "5": "2",
+      "5": "3",
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "11",
       "Bônus de Proficiência": "+4",
       "Características": "Arcana Mística (6º círculo)",
@@ -210,7 +219,9 @@
       "Truques": "4",
       "Magias Preparadas": "11",
       "Espacos de Magia": "3",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
@@ -219,9 +230,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "12",
       "Bônus de Proficiência": "+4",
       "Características": "Aumento no Valor de Atributo",
@@ -229,7 +238,9 @@
       "Truques": "4",
       "Magias Preparadas": "11",
       "Espacos de Magia": "3",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
@@ -238,9 +249,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "13",
       "Bônus de Proficiência": "+5",
       "Características": "Arcana Mística (7º círculo)",
@@ -248,7 +257,9 @@
       "Truques": "4",
       "Magias Preparadas": "12",
       "Espacos de Magia": "3",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
@@ -257,9 +268,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "14",
       "Bônus de Proficiência": "+5",
       "Características": "Característica de Subclasse",
@@ -267,7 +276,9 @@
       "Truques": "4",
       "Magias Preparadas": "12",
       "Espacos de Magia": "3",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
@@ -276,9 +287,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "15",
       "Bônus de Proficiência": "+5",
       "Características": "Arcana Mística (8º círculo)",
@@ -286,7 +295,9 @@
       "Truques": "4",
       "Magias Preparadas": "13",
       "Espacos de Magia": "3",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
@@ -295,9 +306,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "16",
       "Bônus de Proficiência": "+5",
       "Características": "Aumento no Valor de Atributo",
@@ -305,18 +314,18 @@
       "Truques": "4",
       "Magias Preparadas": "13",
       "Espacos de Magia": "3",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
       "4": "—",
-      "5": "3",
+      "5": "4",
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "17",
       "Bônus de Proficiência": "+6",
       "Características": "Arcana Mística (9º círculo)",
@@ -324,7 +333,9 @@
       "Truques": "4",
       "Magias Preparadas": "14",
       "Espacos de Magia": "4",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
@@ -333,9 +344,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "18",
       "Bônus de Proficiência": "+6",
       "Características": "—",
@@ -343,7 +352,9 @@
       "Truques": "4",
       "Magias Preparadas": "14",
       "Espacos de Magia": "4",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
@@ -352,9 +363,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "19",
       "Bônus de Proficiência": "+6",
       "Características": "Dádiva Épica",
@@ -362,7 +371,9 @@
       "Truques": "4",
       "Magias Preparadas": "15",
       "Espacos de Magia": "4",
-      "Nivel do Espaco": "5",
+      "Nivel do Espaco": "5"
+    },
+    {
       "1": "—",
       "2": "—",
       "3": "—",
@@ -371,9 +382,7 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "20",
       "Bônus de Proficiência": "+6",
       "Características": "Mestre Místico",
@@ -381,16 +390,7 @@
       "Truques": "4",
       "Magias Preparadas": "15",
       "Espacos de Magia": "4",
-      "Nivel do Espaco": "5",
-      "1": "—",
-      "2": "—",
-      "3": "—",
-      "4": "—",
-      "5": "4",
-      "6": "—",
-      "7": "—",
-      "8": "—",
-      "9": "—"
+      "Nivel do Espaco": "5"
     }
   ],
   "caracteristicas": [
@@ -442,107 +442,134 @@
     {
       "nivel": 3,
       "nome": "Magias de Pacto da Arquifada",
-      "descricao": "A magia do seu patrono assegura que você sempre tenha algumas magias disponíveis; ao atingir um nível de Bruxo indicado na tabela Magias da Arquifada, você sempre tem essas magias preparadas.\n**Magias da Arquifada**\n| **Nível de Bruxo** | **Magias**                                                               |\n|--------------------|--------------------------------------------------------------------------|\n| 3                  | *Acalmar Emoções, Fogo das Fadas, Força Espectral, Passo Nebuloso, Sono* |\n| 5                  | *Crescimento de Plantas, Piscar*                                         |\n| 7                  | *Dominar Fera, Invisibilidade Maior*                                     |\n| 9                  | *Dominar Pessoa, Similaridade*                                           |"
+      "descricao": "A magia do seu patrono assegura que você sempre tenha algumas magias disponíveis; ao atingir um nível de Bruxo indicado na tabela Magias da Arquifada, você sempre tem essas magias preparadas.\n**Magias da Arquifada**\n| **Nível de Bruxo** | **Magias**                                                               |\n|--------------------|--------------------------------------------------------------------------|\n| 3                  | *Acalmar Emoções, Fogo das Fadas, Força Espectral, Passo Nebuloso, Sono* |\n| 5                  | *Crescimento de Plantas, Piscar*                                         |\n| 7                  | *Dominar Fera, Invisibilidade Maior*                                     |\n| 9                  | *Dominar Pessoa, Similaridade*                                           |",
+      "subclasse": "Patrono Arquifada"
     },
     {
       "nivel": 3,
       "nome": "Passos Feéricos",
-      "descricao": "Seu patrono lhe confere a habilidade de transitar entre os planos. Você pode conjurar *Passo Nebuloso* sem gastar um espaço de magia um número de vezes igual ao seu modificador de Carisma (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.\nAlém disso, ao conjurar essa magia, você pode escolher um dos seguintes efeitos adicionais.\n**Passo Provocante.** Criaturas a até 1,5 metro do espaço que você deixou devem ser bem-sucedidas em uma salvaguarda de Sabedoria contra a CD para evitar sua magia ou têm Desvantagem em jogadas de ataque contra criaturas diferentes de você até o início do seu próximo turno.\n**Passo Revigorante.** Imediatamente após você se teleportar, você ou uma criatura à sua vista a até 3 metros de você, adquire 1d10 Pontos de Vida Temporários."
+      "descricao": "Seu patrono lhe confere a habilidade de transitar entre os planos. Você pode conjurar *Passo Nebuloso* sem gastar um espaço de magia um número de vezes igual ao seu modificador de Carisma (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.\nAlém disso, ao conjurar essa magia, você pode escolher um dos seguintes efeitos adicionais.\n**Passo Provocante.** Criaturas a até 1,5 metro do espaço que você deixou devem ser bem-sucedidas em uma salvaguarda de Sabedoria contra a CD para evitar sua magia ou têm Desvantagem em jogadas de ataque contra criaturas diferentes de você até o início do seu próximo turno.\n**Passo Revigorante.** Imediatamente após você se teleportar, você ou uma criatura à sua vista a até 3 metros de você, adquire 1d10 Pontos de Vida Temporários.",
+      "subclasse": "Patrono Arquifada"
     },
     {
       "nivel": 6,
       "nome": "Fuga em Névoa",
-      "descricao": "Você pode conjurar *Passo Nebuloso* como uma Reação ao sofrer dano.\nAlém disso, os seguintes efeitos agora estão entre suas opções de Passos Feéricos.\n**Passo Desvanecedor.** Você tem a condição Invisível até o início do seu próximo turno ou até imediatamente após realizar uma jogada de ataque, causar dano ou conjurar uma magia.\n**Passo Terrível.** Criaturas a até 1,5 metro do espaço que você deixou ou do espaço em que você aparece (à sua escolha) devem ser bem-sucedidas em uma salvaguarda de Sabedoria contra a CD para evitar sua magia ou sofrem 2d10 pontos de dano Psíquico."
+      "descricao": "Você pode conjurar *Passo Nebuloso* como uma Reação ao sofrer dano.\nAlém disso, os seguintes efeitos agora estão entre suas opções de Passos Feéricos.\n**Passo Desvanecedor.** Você tem a condição Invisível até o início do seu próximo turno ou até imediatamente após realizar uma jogada de ataque, causar dano ou conjurar uma magia.\n**Passo Terrível.** Criaturas a até 1,5 metro do espaço que você deixou ou do espaço em que você aparece (à sua escolha) devem ser bem-sucedidas em uma salvaguarda de Sabedoria contra a CD para evitar sua magia ou sofrem 2d10 pontos de dano Psíquico.",
+      "subclasse": "Patrono Arquifada"
     },
     {
       "nivel": 10,
       "nome": "Defesas Sedutoras",
-      "descricao": "Seu patrono ensina como proteger sua mente e corpo. Você é imune à condição Enfeitiçado.\nAlém disso, imediatamente após uma criatura à sua vista acertar você com uma jogada de ataque, você pode executar uma Reação para reduzir o dano sofrido pela metade (arredondado para baixo) e pode forçar quem o atacou a realizar uma salvaguarda de Sabedoria contra a CD para evitar sua magia. Se falhar, o atacante sofre dano Psíquico igual ao dano que você sofreu. Após executar esta Reação, você não pode usá-la novamente até completar um Descanso Longo, a menos que gaste um espaço de Magia de Pacto (nenhuma ação é necessária) para restaurar seu uso."
+      "descricao": "Seu patrono ensina como proteger sua mente e corpo. Você é imune à condição Enfeitiçado.\nAlém disso, imediatamente após uma criatura à sua vista acertar você com uma jogada de ataque, você pode executar uma Reação para reduzir o dano sofrido pela metade (arredondado para baixo) e pode forçar quem o atacou a realizar uma salvaguarda de Sabedoria contra a CD para evitar sua magia. Se falhar, o atacante sofre dano Psíquico igual ao dano que você sofreu. Após executar esta Reação, você não pode usá-la novamente até completar um Descanso Longo, a menos que gaste um espaço de Magia de Pacto (nenhuma ação é necessária) para restaurar seu uso.",
+      "subclasse": "Patrono Arquifada"
     },
     {
       "nivel": 14,
       "nome": "Magia Sedutora",
-      "descricao": "Seu patrono concede a você a capacidade de tecer sua magia com teleporte. Imediatamente após conjurar uma magia de Encantamento ou Ilusão usando uma ação e um espaço de magia, você pode conjurar *Passo Nebuloso* como parte da mesma ação e sem gastar um espaço de magia."
+      "descricao": "Seu patrono concede a você a capacidade de tecer sua magia com teleporte. Imediatamente após conjurar uma magia de Encantamento ou Ilusão usando uma ação e um espaço de magia, você pode conjurar *Passo Nebuloso* como parte da mesma ação e sem gastar um espaço de magia.",
+      "subclasse": "Patrono Arquifada"
     },
     {
       "nivel": 3,
       "nome": "Luz Medicinal",
-      "descricao": "Você adquire a habilidade de canalizar energia celestial para curar feridas. Você tem uma reserva de d6s que podem ser gastos nessa cura. O número de dados na reserva é igual a 1 mais seu nível de Bruxo.\nComo uma Ação Bônus, você pode curar a si ou uma criatura à sua vista a até 18 metros de você, gastando dados da reserva. O número máximo de dados que você pode gastar de uma só vez é igual ao seu modificador de Carisma (mínimo de um dado). Jogue os dados que deseja e restaure um número de Pontos de Vida igual ao resultado. Sua reserva recupera todos os dados gastos ao completar um Descanso Longo."
+      "descricao": "Você adquire a habilidade de canalizar energia celestial para curar feridas. Você tem uma reserva de d6s que podem ser gastos nessa cura. O número de dados na reserva é igual a 1 mais seu nível de Bruxo.\nComo uma Ação Bônus, você pode curar a si ou uma criatura à sua vista a até 18 metros de você, gastando dados da reserva. O número máximo de dados que você pode gastar de uma só vez é igual ao seu modificador de Carisma (mínimo de um dado). Jogue os dados que deseja e restaure um número de Pontos de Vida igual ao resultado. Sua reserva recupera todos os dados gastos ao completar um Descanso Longo.",
+      "subclasse": "Patrono Celestial"
     },
     {
       "nivel": 3,
       "nome": "Magia de Pacto do Celestial",
-      "descricao": "A magia do seu patrono assegura que você sempre tenha algumas magias disponíveis; ao atingir um nível de Bruxo indicado na tabela Magias do Celestial, você sempre tem essas magias preparadas.\n**Magias do Celestial**\n| **Nível de Bruxo** | **Magias**                                                                    |\n|--------------------|-------------------------------------------------------------------------------|\n| 3                  | *Auxílio, Chama Sagrada, Curar Ferimentos, Luz, Raio Guia, Restauração Menor* |\n| 5                  | *Luz do Dia, Revivificar*                                                     |\n| 7                  | *Defensor da Fé, Muralha de Fogo*                                             |\n| 9                  | *Convocar Celestial, Restauração Maior*                                       |"
+      "descricao": "A magia do seu patrono assegura que você sempre tenha algumas magias disponíveis; ao atingir um nível de Bruxo indicado na tabela Magias do Celestial, você sempre tem essas magias preparadas.\n**Magias do Celestial**\n| **Nível de Bruxo** | **Magias**                                                                    |\n|--------------------|-------------------------------------------------------------------------------|\n| 3                  | *Auxílio, Chama Sagrada, Curar Ferimentos, Luz, Raio Guia, Restauração Menor* |\n| 5                  | *Luz do Dia, Revivificar*                                                     |\n| 7                  | *Defensor da Fé, Muralha de Fogo*                                             |\n| 9                  | *Convocar Celestial, Restauração Maior*                                       |",
+      "subclasse": "Patrono Celestial"
     },
     {
       "nivel": 6,
       "nome": "Alma Radiante",
-      "descricao": "Seu vínculo com seu patrono permite que você sirva como condutor de energia radiante. Você tem Resistência a Dano Radiante. Uma vez por turno, quando conjurar uma magia que cause dano Ígneo ou Radiante, você pode adicionar seu modificador de Carisma ao dano dessa magia contra um dos alvos da magia."
+      "descricao": "Seu vínculo com seu patrono permite que você sirva como condutor de energia radiante. Você tem Resistência a Dano Radiante. Uma vez por turno, quando conjurar uma magia que cause dano Ígneo ou Radiante, você pode adicionar seu modificador de Carisma ao dano dessa magia contra um dos alvos da magia.",
+      "subclasse": "Patrono Celestial"
     },
     {
       "nivel": 10,
       "nome": "Resiliência Celestial",
-      "descricao": "Você recebe Pontos de Vida Temporários sempre que usar sua característica Astúcia Mágica ou completar um Descanso Curto ou Longo. Esses Pontos de Vida Temporários são iguais ao seu nível de Bruxo mais seu modificador de Carisma. Além disso, escolha até cinco criaturas à sua vista quando receber os pontos. Cada uma dessas criaturas recebe Pontos de Vida Temporários iguais à metade do seu nível de Bruxo mais seu modificador de Carisma."
+      "descricao": "Você recebe Pontos de Vida Temporários sempre que usar sua característica Astúcia Mágica ou completar um Descanso Curto ou Longo. Esses Pontos de Vida Temporários são iguais ao seu nível de Bruxo mais seu modificador de Carisma. Além disso, escolha até cinco criaturas à sua vista quando receber os pontos. Cada uma dessas criaturas recebe Pontos de Vida Temporários iguais à metade do seu nível de Bruxo mais seu modificador de Carisma.",
+      "subclasse": "Patrono Celestial"
     },
     {
       "nivel": 14,
       "nome": "Vingança Calcinante",
-      "descricao": "Quando você ou um aliado a até 18 metros de você estiver prestes a realizar uma Salvaguarda Contra Morte, você pode liberar energia radiante para salvar a criatura. A criatura restaura Pontos de Vida iguais à metade de seus Pontos de Vida máximos e pode encerrar a condição Caído em si. Cada criatura à sua escolha que esteja a até 9 metros da criatura sofre dano Radiante igual a 2d8 mais seu modificador de Carisma e cada uma tem a condição Cego até o final do turno atual.\nVocê pode usar esta característica novamente após completar um Descanso Longo."
+      "descricao": "Quando você ou um aliado a até 18 metros de você estiver prestes a realizar uma Salvaguarda Contra Morte, você pode liberar energia radiante para salvar a criatura. A criatura restaura Pontos de Vida iguais à metade de seus Pontos de Vida máximos e pode encerrar a condição Caído em si. Cada criatura à sua escolha que esteja a até 9 metros da criatura sofre dano Radiante igual a 2d8 mais seu modificador de Carisma e cada uma tem a condição Cego até o final do turno atual.\nVocê pode usar esta característica novamente após completar um Descanso Longo.",
+      "subclasse": "Patrono Celestial"
+    },
+    {
+      "nivel": 3,
+      "nome": "Magias de Pacto do Grande Antigo",
+      "descricao": "A magia do seu patrono assegura que você sempre tenha algumas magias disponíveis; ao atingir um nível de Bruxo indicado na tabela Magias do Grande Antigo, você sempre tem essas magias preparadas.\n**Magias do Grande Antigo**\n| **Nível de Bruxo** | **Magias**                                                                                  |\n|--------------------|---------------------------------------------------------------------------------------------|\n| 3                  | *Detectar Pensamentos, Força Espectral, Gargalhada Nefasta de Tasha, Sussurros Dissonantes* |\n| 5                  | *Clarividência, Fome de Hadar*                                                              |\n| 7                  | *Confusão, Invocar Aberração*                                                               |\n| 9                  | *Modificar Memória, Telecinese*                                                             |",
+      "subclasse": "Patrono O Grande Antigo"
     },
     {
       "nivel": 3,
       "nome": "Magias Psíquicas",
-      "descricao": "Ao conjurar uma magia de Bruxo que cause dano, você pode mudar seu tipo de dano para Psíquico. Além disso, você pode conjurar uma magia de Bruxo que seja Encantamento ou Ilusão sem componentes Verbais ou Somáticos."
+      "descricao": "Ao conjurar uma magia de Bruxo que cause dano, você pode mudar seu tipo de dano para Psíquico. Além disso, você pode conjurar uma magia de Bruxo que seja Encantamento ou Ilusão sem componentes Verbais ou Somáticos.",
+      "subclasse": "Patrono O Grande Antigo"
     },
     {
       "nivel": 3,
       "nome": "Mente Desperta",
-      "descricao": "Você pode estabelecer uma conexão telepática com outra criatura. Como uma Ação Bônus, escolha uma criatura à sua vista a até 9 metros de você. Vocês podem se comunicar telepaticamente a uma distância máxima de 1,5 quilômetros vezes o seu modificador de Carisma (mínimo de 1,5 quilômetro). Para que a comunicação funcione, ambos devem usar mentalmente um idioma comum.\nA conexão telepática dura um número de minutos igual ao seu nível de Bruxo. Ela encerra mais cedo se você usar esta característica para se conectar com uma criatura diferente."
+      "descricao": "Você pode estabelecer uma conexão telepática com outra criatura. Como uma Ação Bônus, escolha uma criatura à sua vista a até 9 metros de você. Vocês podem se comunicar telepaticamente a uma distância máxima de 1,5 quilômetros vezes o seu modificador de Carisma (mínimo de 1,5 quilômetro). Para que a comunicação funcione, ambos devem usar mentalmente um idioma comum.\nA conexão telepática dura um número de minutos igual ao seu nível de Bruxo. Ela encerra mais cedo se você usar esta característica para se conectar com uma criatura diferente.",
+      "subclasse": "Patrono O Grande Antigo"
     },
     {
       "nivel": 6,
       "nome": "Combatente Clarividente",
-      "descricao": "Ao formar uma ligação telepática com uma criatura usando Mente Desperta, você pode forçar essa criatura a realizar uma salvaguarda de Sabedoria contra a CD para evitar sua magia. Se falhar, a criatura tem Desvantagem em jogadas de ataque contra você e você tem Vantagem em jogadas de ataque contra essa criatura pela duração da ligação.\nVocê pode usar esta característica novamente após completar um Descanso Curto ou Longo ou gastar um espaço de magia de Pacto (nenhuma ação é necessária) para restaurar seu uso."
+      "descricao": "Ao formar uma ligação telepática com uma criatura usando Mente Desperta, você pode forçar essa criatura a realizar uma salvaguarda de Sabedoria contra a CD para evitar sua magia. Se falhar, a criatura tem Desvantagem em jogadas de ataque contra você e você tem Vantagem em jogadas de ataque contra essa criatura pela duração da ligação.\nVocê pode usar esta característica novamente após completar um Descanso Curto ou Longo ou gastar um espaço de magia de Pacto (nenhuma ação é necessária) para restaurar seu uso.",
+      "subclasse": "Patrono O Grande Antigo"
     },
     {
       "nivel": 10,
       "nome": "Danação Mística",
-      "descricao": "Seu patrono alienígena lhe concede uma maldição poderosa. Você sempre tem a magia *Danação* preparada. Ao conjurar Danação e escolher um atributo, o alvo também tem Desvantagem nas salvaguardas do atributo escolhido pela duração da magia."
+      "descricao": "Seu patrono alienígena lhe concede uma maldição poderosa. Você sempre tem a magia *Danação* preparada. Ao conjurar Danação e escolher um atributo, o alvo também tem Desvantagem nas salvaguardas do atributo escolhido pela duração da magia.",
+      "subclasse": "Patrono O Grande Antigo"
     },
     {
       "nivel": 10,
       "nome": "Escudo Mental",
-      "descricao": "Seus pensamentos não podem ser lidos por telepatia ou outros meios, a menos que você permita. Você também tem Resistência a Dano Psíquico e sempre que uma criatura causar Dano Psíquico a você, essa criatura sofre a mesma quantidade de dano que você."
+      "descricao": "Seus pensamentos não podem ser lidos por telepatia ou outros meios, a menos que você permita. Você também tem Resistência a Dano Psíquico e sempre que uma criatura causar Dano Psíquico a você, essa criatura sofre a mesma quantidade de dano que você.",
+      "subclasse": "Patrono O Grande Antigo"
     },
     {
       "nivel": 14,
       "nome": "Criar Servo",
-      "descricao": "Ao conjurar *Invocar Aberração*, você pode modificá-la para não exigir Concentração. Ao fazer isso, a duração da magia se torna 1 minuto para essa conjuração e, quando invocada, a Aberração tem um número de Pontos de Vida Temporários igual ao seu nível de Bruxo mais seu modificador de Carisma.\nAlém disso, na primeira vez de cada turno que a Aberração atinge uma criatura sob o efeito da sua *Danação*, a Aberração causa um dano Psíquico adicional ao alvo igual ao dano bônus dessa magia."
+      "descricao": "Ao conjurar *Invocar Aberração*, você pode modificá-la para não exigir Concentração. Ao fazer isso, a duração da magia se torna 1 minuto para essa conjuração e, quando invocada, a Aberração tem um número de Pontos de Vida Temporários igual ao seu nível de Bruxo mais seu modificador de Carisma.\nAlém disso, na primeira vez de cada turno que a Aberração atinge uma criatura sob o efeito da sua *Danação*, a Aberração causa um dano Psíquico adicional ao alvo igual ao dano bônus dessa magia.",
+      "subclasse": "Patrono O Grande Antigo"
     },
     {
       "nivel": 3,
       "nome": "Bênção do Tenebroso",
-      "descricao": "Ao reduzir um inimigo a 0 Pontos de Vida, você adquire Pontos de Vida Temporários iguais ao seu modificador de Carisma mais seu nível de Bruxo (mínimo de 1 Ponto de Vida Temporário). Você também recebe esse benefício se outra pessoa reduzir um inimigo a até 3 metros de você a 0 Pontos de Vida."
+      "descricao": "Ao reduzir um inimigo a 0 Pontos de Vida, você adquire Pontos de Vida Temporários iguais ao seu modificador de Carisma mais seu nível de Bruxo (mínimo de 1 Ponto de Vida Temporário). Você também recebe esse benefício se outra pessoa reduzir um inimigo a até 3 metros de você a 0 Pontos de Vida.",
+      "subclasse": "Patrono Ínfero"
     },
     {
       "nivel": 3,
       "nome": "Magias de Pacto do Ínfero",
-      "descricao": "A magia do seu patrono assegura que você sempre tenha algumas magias disponíveis; ao atingir um nível de Bruxo indicado na tabela Magias do Ínfero, você sempre tem essas magias preparadas.\n**Magias do Ínfero**\n| **Nível de Bruxo** | **Magias**                                          |\n|--------------------|-----------------------------------------------------|\n| 3                  | *Comando, Mãos Flamejantes, Raio Ardente, Sugestão* |\n| 5                  | *Bola de Fogo, Nuvem Fétida*                        |\n| 7                  | *Escudo Ardente, Muralha de Fogo*                   |\n| 9                  | *Missão, Praga de Insetos*                          |"
+      "descricao": "A magia do seu patrono assegura que você sempre tenha algumas magias disponíveis; ao atingir um nível de Bruxo indicado na tabela Magias do Ínfero, você sempre tem essas magias preparadas.\n**Magias do Ínfero**\n| **Nível de Bruxo** | **Magias**                                          |\n|--------------------|-----------------------------------------------------|\n| 3                  | *Comando, Mãos Flamejantes, Raio Ardente, Sugestão* |\n| 5                  | *Bola de Fogo, Nuvem Fétida*                        |\n| 7                  | *Escudo Ardente, Muralha de Fogo*                   |\n| 9                  | *Missão, Praga de Insetos*                          |",
+      "subclasse": "Patrono Ínfero"
     },
     {
       "nivel": 6,
       "nome": "A Sorte do Próprio Tenebroso",
-      "descricao": "Você pode chamar seu patrono Ínfero para alterar o destino a seu favor. Ao realizar um teste de atributo ou uma salvaguarda, você pode usar essa característica para adicionar 1d10 à sua jogada. Você pode fazer isso após ver a jogada, mas antes que qualquer um dos efeitos da jogada ocorra.\nVocê pode usar essa característica um número de vezes igual ao seu modificador de Carisma (mínimo de uma vez), no máximo uma vez por jogada, e restaura todos os usos gastos ao completar um Descanso Longo."
+      "descricao": "Você pode chamar seu patrono Ínfero para alterar o destino a seu favor. Ao realizar um teste de atributo ou uma salvaguarda, você pode usar essa característica para adicionar 1d10 à sua jogada. Você pode fazer isso após ver a jogada, mas antes que qualquer um dos efeitos da jogada ocorra.\nVocê pode usar essa característica um número de vezes igual ao seu modificador de Carisma (mínimo de uma vez), no máximo uma vez por jogada, e restaura todos os usos gastos ao completar um Descanso Longo.",
+      "subclasse": "Patrono Ínfero"
     },
     {
       "nivel": 10,
       "nome": "Resistência Ínfera",
-      "descricao": "Ao completar um Descanso Curto ou Longo, escolha um tipo de dano, exceto Energético. Você tem Resistência a esse tipo de dano até escolher um tipo de dano diferente com esta característica."
+      "descricao": "Ao completar um Descanso Curto ou Longo, escolha um tipo de dano, exceto Energético. Você tem Resistência a esse tipo de dano até escolher um tipo de dano diferente com esta característica.",
+      "subclasse": "Patrono Ínfero"
     },
     {
       "nivel": 14,
       "nome": "Lançar no Inferno",
-      "descricao": "Uma vez por turno, ao atingir uma criatura com uma jogada de ataque, você pode tentar transportar instantaneamente o alvo para os Planos Inferiores. O alvo deve ser bem-sucedido em uma salvaguarda de Carisma contra a CD para evitar sua magia, ou ele desaparece e atravessa uma paisagem de pesadelo. O alvo sofre 8d10 pontos de dano Psíquico se não for um Ínfero e tem a condição Incapacitado até o final do seu próximo turno, quando retorna ao espaço que ocupava anteriormente ou ao espaço desocupado mais próximo.\nVocê pode usar esta característica novamente após completar um Descanso Longo, a menos que gaste um espaço de Magia de Pacto (nenhuma ação é necessária) para restaurar seu uso."
+      "descricao": "Uma vez por turno, ao atingir uma criatura com uma jogada de ataque, você pode tentar transportar instantaneamente o alvo para os Planos Inferiores. O alvo deve ser bem-sucedido em uma salvaguarda de Carisma contra a CD para evitar sua magia, ou ele desaparece e atravessa uma paisagem de pesadelo. O alvo sofre 8d10 pontos de dano Psíquico se não for um Ínfero e tem a condição Incapacitado até o final do seu próximo turno, quando retorna ao espaço que ocupava anteriormente ou ao espaço desocupado mais próximo.\nVocê pode usar esta característica novamente após completar um Descanso Longo, a menos que gaste um espaço de Magia de Pacto (nenhuma ação é necessária) para restaurar seu uso.",
+      "subclasse": "Patrono Ínfero"
     }
   ],
   "subclasses": [

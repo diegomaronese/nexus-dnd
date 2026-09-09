@@ -12,12 +12,6 @@
   },
   "tabela_caracteristicas": [
     {
-      "Nível": "1",
-      "Bônus de Proficiência": "+2",
-      "Características": "Conjuração, Idioma Druídico, Ordem Primal",
-      "Forma Selvagem": "—",
-      "Truques": "2",
-      "Magias Preparadas": "4",
       "1": "2",
       "2": "—",
       "3": "—",
@@ -26,15 +20,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "1",
+      "Bônus de Proficiência": "+2",
+      "Características": "Conjuração, Idioma Druídico, Ordem Primal",
+      "Forma Selvagem": "—",
+      "Truques": "2",
+      "Magias Preparadas": "4"
     },
     {
-      "Nível": "2",
-      "Bônus de Proficiência": "+2",
-      "Características": "Companheiro Selvagem, Forma Selvagem",
-      "Forma Selvagem": "2",
-      "Truques": "2",
-      "Magias Preparadas": "5",
       "1": "3",
       "2": "—",
       "3": "—",
@@ -43,15 +37,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
-      "Nível": "3",
+      "9": "—",
+      "Nível": "2",
       "Bônus de Proficiência": "+2",
-      "Características": "Subclasse de Druida",
+      "Características": "Companheiro Selvagem, Forma Selvagem",
       "Forma Selvagem": "2",
       "Truques": "2",
-      "Magias Preparadas": "6",
+      "Magias Preparadas": "5"
+    },
+    {
       "1": "4",
       "2": "2",
       "3": "—",
@@ -60,15 +54,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "3",
+      "Bônus de Proficiência": "+2",
+      "Características": "Subclasse de Druida",
+      "Forma Selvagem": "2",
+      "Truques": "2",
+      "Magias Preparadas": "6"
     },
     {
-      "Nível": "4",
-      "Bônus de Proficiência": "+2",
-      "Características": "Aumento no Valor de Atributo",
-      "Forma Selvagem": "2",
-      "Truques": "3",
-      "Magias Preparadas": "7",
       "1": "4",
       "2": "3",
       "3": "—",
@@ -77,15 +71,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
-      "Nível": "5",
-      "Bônus de Proficiência": "+3",
-      "Características": "Ressurgimento Selvagem",
+      "9": "—",
+      "Nível": "4",
+      "Bônus de Proficiência": "+2",
+      "Características": "Aumento no Valor de Atributo",
       "Forma Selvagem": "2",
       "Truques": "3",
-      "Magias Preparadas": "9",
+      "Magias Preparadas": "7"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "2",
@@ -94,15 +88,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "5",
+      "Bônus de Proficiência": "+3",
+      "Características": "Ressurgimento Selvagem",
+      "Forma Selvagem": "2",
+      "Truques": "3",
+      "Magias Preparadas": "9"
     },
     {
-      "Nível": "6",
-      "Bônus de Proficiência": "+3",
-      "Características": "Característica de Subclasse",
-      "Forma Selvagem": "3",
-      "Truques": "3",
-      "Magias Preparadas": "10",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -111,15 +105,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
-      "Nível": "7",
+      "9": "—",
+      "Nível": "6",
       "Bônus de Proficiência": "+3",
-      "Características": "Fúria Elemental",
+      "Características": "Característica de Subclasse",
       "Forma Selvagem": "3",
       "Truques": "3",
-      "Magias Preparadas": "11",
+      "Magias Preparadas": "10"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -128,15 +122,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
-      "Nível": "8",
+      "9": "—",
+      "Nível": "7",
       "Bônus de Proficiência": "+3",
-      "Características": "Aumento no Valor de Atributo",
+      "Características": "Fúria Elemental",
       "Forma Selvagem": "3",
       "Truques": "3",
-      "Magias Preparadas": "12",
+      "Magias Preparadas": "11"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -145,15 +139,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
-      "Nível": "9",
-      "Bônus de Proficiência": "+4",
-      "Características": "—",
+      "9": "—",
+      "Nível": "8",
+      "Bônus de Proficiência": "+3",
+      "Características": "Aumento no Valor de Atributo",
       "Forma Selvagem": "3",
       "Truques": "3",
-      "Magias Preparadas": "14",
+      "Magias Preparadas": "12"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -162,15 +156,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "9",
+      "Bônus de Proficiência": "+4",
+      "Características": "—",
+      "Forma Selvagem": "3",
+      "Truques": "3",
+      "Magias Preparadas": "14"
     },
     {
-      "Nível": "10",
-      "Bônus de Proficiência": "+4",
-      "Características": "Característica de Subclasse",
-      "Forma Selvagem": "3",
-      "Truques": "4",
-      "Magias Preparadas": "15",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -179,15 +173,32 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "10",
+      "Bônus de Proficiência": "+4",
+      "Características": "Característica de Subclasse",
+      "Forma Selvagem": "3",
+      "Truques": "4",
+      "Magias Preparadas": "15"
     },
     {
+      "1": "4",
+      "2": "3",
+      "3": "3",
+      "4": "3",
+      "5": "2",
+      "6": "1",
+      "7": "—",
+      "8": "—",
+      "9": "—",
       "Nível": "11",
       "Bônus de Proficiência": "+4",
       "Características": "—",
       "Forma Selvagem": "3",
       "Truques": "4",
-      "Magias Preparadas": "16",
+      "Magias Preparadas": "16"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -196,32 +207,32 @@
       "6": "1",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "12",
       "Bônus de Proficiência": "+4",
       "Características": "Aumento no Valor de Atributo",
       "Forma Selvagem": "3",
       "Truques": "4",
-      "Magias Preparadas": "16",
+      "Magias Preparadas": "16"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
       "4": "3",
       "5": "2",
       "6": "1",
-      "7": "—",
+      "7": "1",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "13",
       "Bônus de Proficiência": "+5",
       "Características": "—",
       "Forma Selvagem": "3",
       "Truques": "4",
-      "Magias Preparadas": "17",
+      "Magias Preparadas": "17"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -230,15 +241,15 @@
       "6": "1",
       "7": "1",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "14",
       "Bônus de Proficiência": "+5",
       "Características": "Característica de Subclasse",
       "Forma Selvagem": "3",
       "Truques": "4",
-      "Magias Preparadas": "17",
+      "Magias Preparadas": "17"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -246,16 +257,16 @@
       "5": "2",
       "6": "1",
       "7": "1",
-      "8": "—",
-      "9": "—"
-    },
-    {
+      "8": "1",
+      "9": "—",
       "Nível": "15",
       "Bônus de Proficiência": "+5",
       "Características": "Fúria Elemental Aprimorada",
       "Forma Selvagem": "3",
       "Truques": "4",
-      "Magias Preparadas": "18",
+      "Magias Preparadas": "18"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -264,15 +275,15 @@
       "6": "1",
       "7": "1",
       "8": "1",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "16",
       "Bônus de Proficiência": "+5",
       "Características": "Aumento no Valor de Atributo",
       "Forma Selvagem": "3",
       "Truques": "4",
-      "Magias Preparadas": "18",
+      "Magias Preparadas": "18"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -281,32 +292,15 @@
       "6": "1",
       "7": "1",
       "8": "1",
-      "9": "—"
-    },
-    {
+      "9": "1",
       "Nível": "17",
       "Bônus de Proficiência": "+6",
       "Características": "—",
       "Forma Selvagem": "4",
       "Truques": "4",
-      "Magias Preparadas": "19",
-      "1": "4",
-      "2": "3",
-      "3": "3",
-      "4": "3",
-      "5": "2",
-      "6": "1",
-      "7": "1",
-      "8": "1",
-      "9": "1"
+      "Magias Preparadas": "19"
     },
     {
-      "Nível": "18",
-      "Bônus de Proficiência": "+6",
-      "Características": "Magias Bestiais",
-      "Forma Selvagem": "4",
-      "Truques": "4",
-      "Magias Preparadas": "20",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -315,15 +309,15 @@
       "6": "1",
       "7": "1",
       "8": "1",
-      "9": "1"
-    },
-    {
-      "Nível": "19",
+      "9": "1",
+      "Nível": "18",
       "Bônus de Proficiência": "+6",
-      "Características": "Dádiva Épica",
+      "Características": "Magias Bestiais",
       "Forma Selvagem": "4",
       "Truques": "4",
-      "Magias Preparadas": "21",
+      "Magias Preparadas": "20"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -332,15 +326,15 @@
       "6": "2",
       "7": "1",
       "8": "1",
-      "9": "1"
-    },
-    {
-      "Nível": "20",
+      "9": "1",
+      "Nível": "19",
       "Bônus de Proficiência": "+6",
-      "Características": "Arquidruida",
+      "Características": "Dádiva Épica",
       "Forma Selvagem": "4",
       "Truques": "4",
-      "Magias Preparadas": "22",
+      "Magias Preparadas": "21"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -349,7 +343,13 @@
       "6": "2",
       "7": "2",
       "8": "1",
-      "9": "1"
+      "9": "1",
+      "Nível": "20",
+      "Bônus de Proficiência": "+6",
+      "Características": "Arquidruida",
+      "Forma Selvagem": "4",
+      "Truques": "4",
+      "Magias Preparadas": "22"
     }
   ],
   "caracteristicas": [
@@ -421,102 +421,122 @@
     {
       "nivel": 3,
       "nome": "Formas Animais dos Círculos Druídicos",
-      "descricao": "Você pode canalizar a magia lunar ao assumir uma Forma Selvagem, obtendo os seguintes benefícios.\n**Nível de Desafio.** O Nível de Desafio máximo para a forma é igual ao seu nível de Druida dividido por 3 (arredondado para baixo).\n**Classe de Armadura.** Até sair da forma, sua CA passa a ser 13 + seu modificador de Sabedoria, se esse valor for maior que a CA da Fera.\n**Pontos de Vida Temporários.** Você adquire um número de Pontos de Vida Temporários igual a três vezes o seu nível de Druida."
+      "descricao": "Você pode canalizar a magia lunar ao assumir uma Forma Selvagem, obtendo os seguintes benefícios.\n**Nível de Desafio.** O Nível de Desafio máximo para a forma é igual ao seu nível de Druida dividido por 3 (arredondado para baixo).\n**Classe de Armadura.** Até sair da forma, sua CA passa a ser 13 + seu modificador de Sabedoria, se esse valor for maior que a CA da Fera.\n**Pontos de Vida Temporários.** Você adquire um número de Pontos de Vida Temporários igual a três vezes o seu nível de Druida.",
+      "subclasse": "Círculo da Lua"
     },
     {
       "nivel": 3,
       "nome": "Magias do Círculo da Lua",
-      "descricao": "Ao atingir um nível de Druida detalhado na tabela Magias do Círculo da Lua, você tem a lista de magias preparadas.\nAlém disso, você pode conjurar as magias dessa característica enquanto estiver em uma Forma Selvagem.\n**Magias do Círculo da Lua**\n| **Nível de Druida** | **Magias de Círculo Druídico**                  |\n|---------------------|-------------------------------------------------|\n| 3                   | *Curar Ferimentos, Fagulha Estelar, Raio Lunar* |\n| 5                   | *Invocar Animais*                               |\n| 7                   | *Fonte do Luar*                                 |\n| 9                   | *Curar Ferimentos em Massa*                     |"
+      "descricao": "Ao atingir um nível de Druida detalhado na tabela Magias do Círculo da Lua, você tem a lista de magias preparadas.\nAlém disso, você pode conjurar as magias dessa característica enquanto estiver em uma Forma Selvagem.\n**Magias do Círculo da Lua**\n| **Nível de Druida** | **Magias de Círculo Druídico**                  |\n|---------------------|-------------------------------------------------|\n| 3                   | *Curar Ferimentos, Fagulha Estelar, Raio Lunar* |\n| 5                   | *Invocar Animais*                               |\n| 7                   | *Fonte do Luar*                                 |\n| 9                   | *Curar Ferimentos em Massa*                     |",
+      "subclasse": "Círculo da Lua"
     },
     {
       "nivel": 6,
       "nome": "Formas Animais dos Círculos Druídicos Aprimorada",
-      "descricao": "Enquanto estiver em uma Forma Selvagem, você adquire os seguintes benefícios.\n**Radiância Lunar.** Cada um de seus ataques na Forma Selvagem pode causar seu tipo de dano normal ou dano Radiante. Você escolhe cada vez que acerta com esses ataques.\n**Vigor Aumentado.** Você pode adicionar seu modificador de Sabedoria às suas salvaguardas de Constituição."
+      "descricao": "Enquanto estiver em uma Forma Selvagem, você adquire os seguintes benefícios.\n**Radiância Lunar.** Cada um de seus ataques na Forma Selvagem pode causar seu tipo de dano normal ou dano Radiante. Você escolhe cada vez que acerta com esses ataques.\n**Vigor Aumentado.** Você pode adicionar seu modificador de Sabedoria às suas salvaguardas de Constituição.",
+      "subclasse": "Círculo da Lua"
     },
     {
       "nivel": 10,
       "nome": "Passo Lunar",
-      "descricao": "Você se transporta magicamente, reaparecendo em meio a uma explosão de luar. Como uma Ação Bônus, você se teleporta até 9 metros para um espaço desocupado à sua vista e tem Vantagem na próxima jogada de ataque que realizar antes do final deste turno.\nVocê pode usar essa característica um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo. Você também pode recuperar usos gastando um espaço de magia de 2º círculo ou superior para cada uso que deseja recuperar (nenhuma ação é necessária)."
+      "descricao": "Você se transporta magicamente, reaparecendo em meio a uma explosão de luar. Como uma Ação Bônus, você se teleporta até 9 metros para um espaço desocupado à sua vista e tem Vantagem na próxima jogada de ataque que realizar antes do final deste turno.\nVocê pode usar essa característica um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo. Você também pode recuperar usos gastando um espaço de magia de 2º círculo ou superior para cada uso que deseja recuperar (nenhuma ação é necessária).",
+      "subclasse": "Círculo da Lua"
     },
     {
       "nivel": 14,
       "nome": "Forma Lunar",
-      "descricao": "O poder da lua permeia você, concedendo os seguintes benefícios.\n**Radiância Lunar Aprimorada.** Uma vez por turno, você pode causar 2d10 pontos de dano Radiante adicional a um alvo que você acerta com o ataque da Forma Selvagem.\n**Luar Compartilhado.** Sempre que usar Passo Lunar, você também pode teleportar uma criatura voluntária. Essa criatura deve estar a até 3 metros de você, e você a teleporta para um espaço desocupado à sua vista a até 3 metros do seu destino."
+      "descricao": "O poder da lua permeia você, concedendo os seguintes benefícios.\n**Radiância Lunar Aprimorada.** Uma vez por turno, você pode causar 2d10 pontos de dano Radiante adicional a um alvo que você acerta com o ataque da Forma Selvagem.\n**Luar Compartilhado.** Sempre que usar Passo Lunar, você também pode teleportar uma criatura voluntária. Essa criatura deve estar a até 3 metros de você, e você a teleporta para um espaço desocupado à sua vista a até 3 metros do seu destino.",
+      "subclasse": "Círculo da Lua"
     },
     {
       "nivel": 3,
       "nome": "Auxílio da Terra",
-      "descricao": "Como uma ação Usar Magia, você pode gastar um uso de sua Forma Selvagem e escolher um ponto a até 18 metros de você. Flores que concedem vitalidade e espinhos drenadores de vida surgem momentaneamente em uma Esfera de 3 metros de raio, centrada nesse ponto. Cada criatura à sua escolha na Esfera deve realizar uma salvaguarda de Constituição contra a CD para evitar sua magia, sofrendo 2d6 pontos de dano Necrótico se falhar ou metade desse dano em caso de sucesso. Uma criatura à sua escolha na área restaura 2d6 Pontos de Vida.\nO dano e cura aumentam em 1d6 quando você atinge o nível 10 (3d6) e 14 (4d6) de Druida."
+      "descricao": "Como uma ação Usar Magia, você pode gastar um uso de sua Forma Selvagem e escolher um ponto a até 18 metros de você. Flores que concedem vitalidade e espinhos drenadores de vida surgem momentaneamente em uma Esfera de 3 metros de raio, centrada nesse ponto. Cada criatura à sua escolha na Esfera deve realizar uma salvaguarda de Constituição contra a CD para evitar sua magia, sofrendo 2d6 pontos de dano Necrótico se falhar ou metade desse dano em caso de sucesso. Uma criatura à sua escolha na área restaura 2d6 Pontos de Vida.\nO dano e cura aumentam em 1d6 quando você atinge o nível 10 (3d6) e 14 (4d6) de Druida.",
+      "subclasse": "Círculo da Terra"
     },
     {
       "nivel": 3,
       "nome": "Magias do Círculo da Terra",
-      "descricao": "Sempre que completar um Descanso Longo, escolha um tipo de terreno: árido, polar, temperado ou tropical. Consulte a tabela abaixo correspondente ao tipo escolhido; você tem a lista de magias preparadas de seu nível de Druida e inferior.\n**Terreno Árido**\n| **Nível do Druida** | **Magias de Círculo Druídico**           |\n|---------------------|------------------------------------------|\n| 3                   | *Mãos Flamejantes, Raio de Fogo, Turvar* |\n| 5                   | *Bola de Fogo*                           |\n| 7                   | *Malogro*                                |\n| 9                   | *Muralha de Pedra*                       |\n**Terreno Polar**\n| **Nível do Druida** | **Magias de Círculo Druídico**                       |\n|---------------------|------------------------------------------------------|\n| 3                   | *Névoa Obscurecente, Paralisar Pessoa, Raio de Gelo* |\n| 5                   | *Nevasca*                                            |\n| 7                   | *Tempestade Glacial*                                 |\n| 9                   | *Cone de Frio*                                       |\n**Terreno Temperado**\n| **Nível do Druida** | **Magias de Círculo Druídico**         |\n|---------------------|----------------------------------------|\n| 3                   | *Passo Nebuloso, Sono, Toque Chocante* |\n| 5                   | *Relâmpago*                            |\n| 7                   | *Movimentação Livre*                   |\n| 9                   | *Passo Arbóreo*                        |\n**Terreno Tropical**\n| **Nível do Druida** | **Magias de Círculo Druídico**    |\n|---------------------|-----------------------------------|\n| 3                   | Bolha Ácida, Raio Nauseante, Teia |\n| 5                   | Nuvem Fétida                      |\n| 7                   | Polimorfia                        |\n| 9                   | Praga de Insetos                  |"
+      "descricao": "Sempre que completar um Descanso Longo, escolha um tipo de terreno: árido, polar, temperado ou tropical. Consulte a tabela abaixo correspondente ao tipo escolhido; você tem a lista de magias preparadas de seu nível de Druida e inferior.\n**Terreno Árido**\n| **Nível do Druida** | **Magias de Círculo Druídico**           |\n|---------------------|------------------------------------------|\n| 3                   | *Mãos Flamejantes, Raio de Fogo, Turvar* |\n| 5                   | *Bola de Fogo*                           |\n| 7                   | *Malogro*                                |\n| 9                   | *Muralha de Pedra*                       |\n**Terreno Polar**\n| **Nível do Druida** | **Magias de Círculo Druídico**                       |\n|---------------------|------------------------------------------------------|\n| 3                   | *Névoa Obscurecente, Paralisar Pessoa, Raio de Gelo* |\n| 5                   | *Nevasca*                                            |\n| 7                   | *Tempestade Glacial*                                 |\n| 9                   | *Cone de Frio*                                       |\n**Terreno Temperado**\n| **Nível do Druida** | **Magias de Círculo Druídico**         |\n|---------------------|----------------------------------------|\n| 3                   | *Passo Nebuloso, Sono, Toque Chocante* |\n| 5                   | *Relâmpago*                            |\n| 7                   | *Movimentação Livre*                   |\n| 9                   | *Passo Arbóreo*                        |\n**Terreno Tropical**\n| **Nível do Druida** | **Magias de Círculo Druídico**    |\n|---------------------|-----------------------------------|\n| 3                   | Bolha Ácida, Raio Nauseante, Teia |\n| 5                   | Nuvem Fétida                      |\n| 7                   | Polimorfia                        |\n| 9                   | Praga de Insetos                  |",
+      "subclasse": "Círculo da Terra"
     },
     {
       "nivel": 6,
       "nome": "Recuperação Natural",
-      "descricao": "Você pode conjurar uma das magias de 1º círculo ou superior que preparou de sua característica Magias de Círculo Druídico sem gastar um espaço de magia, e deve completar um Descanso Longo antes de fazê-lo novamente.\nAlém disso, ao completar um Descanso Curto, pode escolher recuperar espaços de magia gastos. A somatória dos círculos desses espaços deve ser menor ou igual à metade do seu nível como Druida (arredondado para cima), e nenhum deles pode ser de 6º círculo ou superior. Por exemplo, se você for um Druida de nível 6, pode recuperar até três círculos de espaços de magia. Você pode recuperar um espaço de magia de 3º círculo, ou um de 2º círculo e um de 1º círculo, ou três de 1º círculo. Após recuperar espaços de magia com esta característica, você não pode fazê-lo novamente até completar um Descanso Longo."
+      "descricao": "Você pode conjurar uma das magias de 1º círculo ou superior que preparou de sua característica Magias de Círculo Druídico sem gastar um espaço de magia, e deve completar um Descanso Longo antes de fazê-lo novamente.\nAlém disso, ao completar um Descanso Curto, pode escolher recuperar espaços de magia gastos. A somatória dos círculos desses espaços deve ser menor ou igual à metade do seu nível como Druida (arredondado para cima), e nenhum deles pode ser de 6º círculo ou superior. Por exemplo, se você for um Druida de nível 6, pode recuperar até três círculos de espaços de magia. Você pode recuperar um espaço de magia de 3º círculo, ou um de 2º círculo e um de 1º círculo, ou três de 1º círculo. Após recuperar espaços de magia com esta característica, você não pode fazê-lo novamente até completar um Descanso Longo.",
+      "subclasse": "Círculo da Terra"
     },
     {
       "nivel": 10,
       "nome": "Proteção Natural",
-      "descricao": "Você é imune à condição Envenenado e tem Resistência a um tipo de dano associado à sua escolha atual de terreno na característica Magias de Círculo Druídico, conforme mostrado na tabela Proteção Natural.\n**Proteção Natural**\n| **Tipo de Terreno** | **Resistência** |\n|---------------------|-----------------|\n| Árido               | Ígneo           |\n| Polar               | Gélido          |\n| Temperado           | Elétrico        |\n| Tropical            | Venenoso        |"
+      "descricao": "Você é imune à condição Envenenado e tem Resistência a um tipo de dano associado à sua escolha atual de terreno na característica Magias de Círculo Druídico, conforme mostrado na tabela Proteção Natural.\n**Proteção Natural**\n| **Tipo de Terreno** | **Resistência** |\n|---------------------|-----------------|\n| Árido               | Ígneo           |\n| Polar               | Gélido          |\n| Temperado           | Elétrico        |\n| Tropical            | Venenoso        |",
+      "subclasse": "Círculo da Terra"
     },
     {
       "nivel": 14,
       "nome": "Santuário Natural",
-      "descricao": "Como uma ação Usar Magia, você pode gastar um uso de sua Forma Selvagem e produzir árvores e vinhas espectrais que aparecem em um Cubo de 4,5 metros de lados no chão a até 36 metros de você. Elas permanecem por 1 minuto ou até você morrer, ou ter a condição Incapacitado. Você e seus aliados têm Cobertura Parcial enquanto estiverem nessa área, e seus aliados adquirem a Resistência atual da sua Proteção Natural enquanto estão lá.\nComo uma Ação Bônus, você pode mover o Cubo até 18 metros para o chão a até 36 metros de você."
+      "descricao": "Como uma ação Usar Magia, você pode gastar um uso de sua Forma Selvagem e produzir árvores e vinhas espectrais que aparecem em um Cubo de 4,5 metros de lados no chão a até 36 metros de você. Elas permanecem por 1 minuto ou até você morrer, ou ter a condição Incapacitado. Você e seus aliados têm Cobertura Parcial enquanto estiverem nessa área, e seus aliados adquirem a Resistência atual da sua Proteção Natural enquanto estão lá.\nComo uma Ação Bônus, você pode mover o Cubo até 18 metros para o chão a até 36 metros de você.",
+      "subclasse": "Círculo da Terra"
     },
     {
       "nivel": 3,
       "nome": "Forma Estrelada",
-      "descricao": "Como uma Ação Bônus, você pode gastar um uso de sua característica Forma Selvagem para assumir uma forma estrelada em vez de multimorfar.\nEnquanto em sua forma estrelada, você mantém suas estatísticas de jogo, mas seu corpo se torna luminoso, com articulações que brilham como estrelas e linhas brilhantes conectando-as, como em um mapa estelar. Essa forma emite Luz Plena em um raio de 3 metros e Meia-luz por mais 3 metros. A forma dura 10 minutos e encerra se você a dispensar (nenhuma ação é necessária), ter a condição Incapacitado ou se você usar essa característica novamente.\nSempre que você assumir sua forma estrelada, escolha qual das constelações a seguir brilha em seu corpo; sua escolha concede certos benefícios enquanto estiver na forma.\n**Arqueiro.** Uma constelação de um arqueiro aparece em você. Ao ativar e nos turnos subsequentes como uma Ação Bônus, você pode realizar um ataque mágico à distância, disparando uma flecha luminosa que atinge uma criatura a até 18 metros. Em caso de acerto, o ataque causa 1d8 pontos de dano Radiante + seu modificador de Sabedoria.\n**Dragão.** Uma constelação de um dragão sábio aparece em você. Quando realizar um teste de Inteligência ou Sabedoria, ou uma salvaguarda de Constituição para manter a Concentração, você trata um resultado 9 ou menor no d20 como um 10.\n**Taça.** Uma constelação de um cálice vivificante aparece em você. Sempre que você conjurar uma magia usando um espaço de magia que restaure Pontos de Vida em uma criatura, você ou outra criatura a até 9 metros de você pode restaurar Pontos de Vida iguais a 1d8 + seu modificador de Sabedoria."
+      "descricao": "Como uma Ação Bônus, você pode gastar um uso de sua característica Forma Selvagem para assumir uma forma estrelada em vez de multimorfar.\nEnquanto em sua forma estrelada, você mantém suas estatísticas de jogo, mas seu corpo se torna luminoso, com articulações que brilham como estrelas e linhas brilhantes conectando-as, como em um mapa estelar. Essa forma emite Luz Plena em um raio de 3 metros e Meia-luz por mais 3 metros. A forma dura 10 minutos e encerra se você a dispensar (nenhuma ação é necessária), ter a condição Incapacitado ou se você usar essa característica novamente.\nSempre que você assumir sua forma estrelada, escolha qual das constelações a seguir brilha em seu corpo; sua escolha concede certos benefícios enquanto estiver na forma.\n**Arqueiro.** Uma constelação de um arqueiro aparece em você. Ao ativar e nos turnos subsequentes como uma Ação Bônus, você pode realizar um ataque mágico à distância, disparando uma flecha luminosa que atinge uma criatura a até 18 metros. Em caso de acerto, o ataque causa 1d8 pontos de dano Radiante + seu modificador de Sabedoria.\n**Dragão.** Uma constelação de um dragão sábio aparece em você. Quando realizar um teste de Inteligência ou Sabedoria, ou uma salvaguarda de Constituição para manter a Concentração, você trata um resultado 9 ou menor no d20 como um 10.\n**Taça.** Uma constelação de um cálice vivificante aparece em você. Sempre que você conjurar uma magia usando um espaço de magia que restaure Pontos de Vida em uma criatura, você ou outra criatura a até 9 metros de você pode restaurar Pontos de Vida iguais a 1d8 + seu modificador de Sabedoria.",
+      "subclasse": "Círculo das Estrelas"
     },
     {
       "nivel": 3,
       "nome": "Mapa Estelar",
-      "descricao": "Você cria um mapa estelar como parte de seus estudos celestiais. Ele é um objeto Minúsculo, e você pode usá-lo como Foco de Conjuração para suas magias de Druida. Você determina sua forma jogando na tabela Mapa Estelar ou escolhendo uma.\nEnquanto estiver segurando o mapa, você tem as magias *Orientação* e *Raio Guia* preparadas, e pode conjurar *Raio Guia* sem gastar um espaço de magia. Você pode conjurá-la dessa forma um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez), e restaura todos os usos gastos ao completar um Descanso Longo.\nSe você perder o mapa, pode realizar uma cerimônia de 1 hora para criar magicamente um substituto. Essa cerimônia pode ser realizada durante um Descanso Curto ou Longo e destrói o mapa anterior.\n**Mapa Estelar**\n| **1d6** | **Formato do Mapa**                                        |\n|---------|------------------------------------------------------------|\n| 1       | Um pergaminho com representações das constelações          |\n| 2       | Uma tabuleta de pedra com pequenos buracos perfurados nela |\n| 3       | Uma pele de urso-coruja trabalhada com símbolos estelares  |\n| 4       | Uma coleção de mapas encadernados em uma capa de ébano     |\n| 5       | Um cristal incrustado com padrões estrelados               |\n| 6       | Um disco de vidro retratando constelações                  |"
+      "descricao": "Você cria um mapa estelar como parte de seus estudos celestiais. Ele é um objeto Minúsculo, e você pode usá-lo como Foco de Conjuração para suas magias de Druida. Você determina sua forma jogando na tabela Mapa Estelar ou escolhendo uma.\nEnquanto estiver segurando o mapa, você tem as magias *Orientação* e *Raio Guia* preparadas, e pode conjurar *Raio Guia* sem gastar um espaço de magia. Você pode conjurá-la dessa forma um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez), e restaura todos os usos gastos ao completar um Descanso Longo.\nSe você perder o mapa, pode realizar uma cerimônia de 1 hora para criar magicamente um substituto. Essa cerimônia pode ser realizada durante um Descanso Curto ou Longo e destrói o mapa anterior.\n**Mapa Estelar**\n| **1d6** | **Formato do Mapa**                                        |\n|---------|------------------------------------------------------------|\n| 1       | Um pergaminho com representações das constelações          |\n| 2       | Uma tabuleta de pedra com pequenos buracos perfurados nela |\n| 3       | Uma pele de urso-coruja trabalhada com símbolos estelares  |\n| 4       | Uma coleção de mapas encadernados em uma capa de ébano     |\n| 5       | Um cristal incrustado com padrões estrelados               |\n| 6       | Um disco de vidro retratando constelações                  |",
+      "subclasse": "Círculo das Estrelas"
     },
     {
       "nivel": 6,
       "nome": "Presságio Cósmico",
-      "descricao": "Sempre que você completar um Descanso Longo, pode consultar seu Mapa Estelar em busca de presságios e jogar um dado. Até completar o próximo Descanso Longo, você tem acesso a uma Reação especial com base no número que obteve:\n**Prosperidade (par)**. Sempre que uma criatura à sua vista a até 9 metros de você realizar um Teste de D20, você pode executar uma Reação para jogar 1d6 e adicionar o resultado jogado ao total.\n**Infortúnio (ímpar).** Sempre que uma criatura à sua vista a até 9 metros de você realizar um Teste de D20, você pode executar uma Reação para jogar 1d6 e subtrair o resultado jogado do total.\nVocê pode usar essa Reação um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo."
+      "descricao": "Sempre que você completar um Descanso Longo, pode consultar seu Mapa Estelar em busca de presságios e jogar um dado. Até completar o próximo Descanso Longo, você tem acesso a uma Reação especial com base no número que obteve:\n**Prosperidade (par)**. Sempre que uma criatura à sua vista a até 9 metros de você realizar um Teste de D20, você pode executar uma Reação para jogar 1d6 e adicionar o resultado jogado ao total.\n**Infortúnio (ímpar).** Sempre que uma criatura à sua vista a até 9 metros de você realizar um Teste de D20, você pode executar uma Reação para jogar 1d6 e subtrair o resultado jogado do total.\nVocê pode usar essa Reação um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.",
+      "subclasse": "Círculo das Estrelas"
     },
     {
       "nivel": 10,
       "nome": "Constelações Cintilantes",
-      "descricao": "As constelações da sua Forma Estrelada melhoram. O 1d8 do Arqueiro e da Taça torna-se 2d8, e enquanto o Dragão estiver ativo, você adquire um Deslocamento de Voo de 6 metros e pode pairar.\nAlém disso, no início de cada um dos seus turnos enquanto estiver na sua Forma Estrelada, você pode alterar qual constelação brilha em seu corpo."
+      "descricao": "As constelações da sua Forma Estrelada melhoram. O 1d8 do Arqueiro e da Taça torna-se 2d8, e enquanto o Dragão estiver ativo, você adquire um Deslocamento de Voo de 6 metros e pode pairar.\nAlém disso, no início de cada um dos seus turnos enquanto estiver na sua Forma Estrelada, você pode alterar qual constelação brilha em seu corpo.",
+      "subclasse": "Círculo das Estrelas"
     },
     {
       "nivel": 14,
       "nome": "Repleto de Estrelas",
-      "descricao": "Enquanto estiver em sua Forma Estrelada, você se torna parcialmente incorpóreo e tem Resistência a dano Contundente, Cortante e Perfurante."
+      "descricao": "Enquanto estiver em sua Forma Estrelada, você se torna parcialmente incorpóreo e tem Resistência a dano Contundente, Cortante e Perfurante.",
+      "subclasse": "Círculo das Estrelas"
     },
     {
       "nivel": 3,
       "nome": "Ira do Mar",
-      "descricao": "Como uma Ação Bônus, você pode gastar um uso da sua Forma Selvagem para manifestar uma Emanação de 1,5 metro, que toma a forma de respingos de água do oceano ao seu redor por 10 minutos. Ela se encerra caso você a disperse (nenhuma ação é necessária), manifeste-a novamente ou tenha a condição Incapacitado.\nAo manifestar a Emanação e como uma Ação Bônus em seus turnos subsequentes, você pode escolher outra criatura à sua vista na Emanação. O alvo deve ser bem-sucedido em uma salvaguarda de Constituição contra a sua CD para evitar magia ou sofre dano Gélido e, se a criatura for Grande ou menor, é empurrada até 4,5 metros para longe de você. Para determinar esse dano, jogue um número de d6s igual ao seu modificador de Sabedoria (mínimo de um dado)."
+      "descricao": "Como uma Ação Bônus, você pode gastar um uso da sua Forma Selvagem para manifestar uma Emanação de 1,5 metro, que toma a forma de respingos de água do oceano ao seu redor por 10 minutos. Ela se encerra caso você a disperse (nenhuma ação é necessária), manifeste-a novamente ou tenha a condição Incapacitado.\nAo manifestar a Emanação e como uma Ação Bônus em seus turnos subsequentes, você pode escolher outra criatura à sua vista na Emanação. O alvo deve ser bem-sucedido em uma salvaguarda de Constituição contra a sua CD para evitar magia ou sofre dano Gélido e, se a criatura for Grande ou menor, é empurrada até 4,5 metros para longe de você. Para determinar esse dano, jogue um número de d6s igual ao seu modificador de Sabedoria (mínimo de um dado).",
+      "subclasse": "Círculo do Mar"
     },
     {
       "nivel": 3,
       "nome": "Magias do Círculo do Mar",
-      "descricao": "Ao atingir um nível de Druida detalhado na tabela Magias do Círculo do Mar, você tem a lista de magias preparadas.\n**Magias do Círculo do Mar**\n| **Nível de Druida** | **Magias de Círculo Druídico**                                                   |\n|---------------------|----------------------------------------------------------------------------------|\n| 3                   | *Despedaçar, Lufada de Vento, Névoa Obscurecente, Onda Trovejante, Raio de Gelo* |\n| 5                   | *Relâmpago, Respirar na Água*                                                    |\n| 7                   | *Controlar Água, Tempestade Glacial*                                             |\n| 9                   | *Invocar Elemental, Paralisar Monstro*                                           |"
+      "descricao": "Ao atingir um nível de Druida detalhado na tabela Magias do Círculo do Mar, você tem a lista de magias preparadas.\n**Magias do Círculo do Mar**\n| **Nível de Druida** | **Magias de Círculo Druídico**                                                   |\n|---------------------|----------------------------------------------------------------------------------|\n| 3                   | *Despedaçar, Lufada de Vento, Névoa Obscurecente, Onda Trovejante, Raio de Gelo* |\n| 5                   | *Relâmpago, Respirar na Água*                                                    |\n| 7                   | *Controlar Água, Tempestade Glacial*                                             |\n| 9                   | *Invocar Elemental, Paralisar Monstro*                                           |",
+      "subclasse": "Círculo do Mar"
     },
     {
       "nivel": 6,
       "nome": "Afinidade Aquática",
-      "descricao": "O tamanho da Emanação criada pela sua Ira do Mar aumenta para 3 metros.\nAlém disso, você adquire um Deslocamento de Natação igual ao seu Deslocamento."
+      "descricao": "O tamanho da Emanação criada pela sua Ira do Mar aumenta para 3 metros.\nAlém disso, você adquire um Deslocamento de Natação igual ao seu Deslocamento.",
+      "subclasse": "Círculo do Mar"
     },
     {
       "nivel": 10,
       "nome": "Filho da Tempestade",
-      "descricao": "Sua Ira do Mar confere dois benefícios adicionais enquanto estiver ativa, conforme detalhado abaixo.\n**Voo.** Você adquire um Deslocamento de Voo igual ao seu Deslocamento.\n**Resistência.** Você tem Resistência a dano Elétrico, Gélido e Trovejante."
+      "descricao": "Sua Ira do Mar confere dois benefícios adicionais enquanto estiver ativa, conforme detalhado abaixo.\n**Voo.** Você adquire um Deslocamento de Voo igual ao seu Deslocamento.\n**Resistência.** Você tem Resistência a dano Elétrico, Gélido e Trovejante.",
+      "subclasse": "Círculo do Mar"
     },
     {
       "nivel": 14,
       "nome": "Manifestação Oceânica",
-      "descricao": "Em vez de manifestar a Emanação da Ira do Mar ao seu redor, você pode manifestá-la ao redor de uma criatura voluntária a até 18 metros de você. Essa criatura adquire todos os benefícios da Emanação, usando sua CD para evitar magia e seu modificador de Sabedoria.\nAlém disso, você pode manifestar a Emanação ao redor de si mesmo e da outra criatura ao gastar dois usos da sua Forma Selvagem, em vez de um, ao manifestá-la."
+      "descricao": "Em vez de manifestar a Emanação da Ira do Mar ao seu redor, você pode manifestá-la ao redor de uma criatura voluntária a até 18 metros de você. Essa criatura adquire todos os benefícios da Emanação, usando sua CD para evitar magia e seu modificador de Sabedoria.\nAlém disso, você pode manifestar a Emanação ao redor de si mesmo e da outra criatura ao gastar dois usos da sua Forma Selvagem, em vez de um, ao manifestá-la.",
+      "subclasse": "Círculo do Mar"
     }
   ],
   "subclasses": [

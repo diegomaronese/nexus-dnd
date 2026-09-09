@@ -13,11 +13,6 @@
   },
   "tabela_caracteristicas": [
     {
-      "Nível": "1",
-      "Bônus de Proficiência": "+2",
-      "Características de Classe": "Adepto de Ritual, Conjuração, Recuperação Arcana",
-      "Truques": "3",
-      "Magias Preparadas": "4",
       "1": "2",
       "2": "—",
       "3": "—",
@@ -26,14 +21,14 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "1",
+      "Bônus de Proficiência": "+2",
+      "Características de Classe": "Adepto de Ritual, Conjuração, Recuperação Arcana",
+      "Truques": "3",
+      "Magias Preparadas": "4"
     },
     {
-      "Nível": "2",
-      "Bônus de Proficiência": "+2",
-      "Características de Classe": "Acadêmico",
-      "Truques": "3",
-      "Magias Preparadas": "5",
       "1": "3",
       "2": "—",
       "3": "—",
@@ -42,14 +37,14 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "2",
+      "Bônus de Proficiência": "+2",
+      "Características de Classe": "Acadêmico",
+      "Truques": "3",
+      "Magias Preparadas": "5"
     },
     {
-      "Nível": "3",
-      "Bônus de Proficiência": "+2",
-      "Características de Classe": "Subclasse de Mago",
-      "Truques": "3",
-      "Magias Preparadas": "6",
       "1": "4",
       "2": "2",
       "3": "—",
@@ -58,14 +53,14 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "3",
+      "Bônus de Proficiência": "+2",
+      "Características de Classe": "Subclasse de Mago",
+      "Truques": "3",
+      "Magias Preparadas": "6"
     },
     {
-      "Nível": "4",
-      "Bônus de Proficiência": "+2",
-      "Características de Classe": "Aumento no Valor de Atributo",
-      "Truques": "4",
-      "Magias Preparadas": "7",
       "1": "4",
       "2": "3",
       "3": "—",
@@ -74,14 +69,14 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "4",
+      "Bônus de Proficiência": "+2",
+      "Características de Classe": "Aumento no Valor de Atributo",
+      "Truques": "4",
+      "Magias Preparadas": "7"
     },
     {
-      "Nível": "5",
-      "Bônus de Proficiência": "+3",
-      "Características de Classe": "Memorizar Magia",
-      "Truques": "4",
-      "Magias Preparadas": "9",
       "1": "4",
       "2": "3",
       "3": "2",
@@ -90,14 +85,14 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "5",
+      "Bônus de Proficiência": "+3",
+      "Características de Classe": "Memorizar Magia",
+      "Truques": "4",
+      "Magias Preparadas": "9"
     },
     {
-      "Nível": "6",
-      "Bônus de Proficiência": "+3",
-      "Características de Classe": "Característica de Subclasse",
-      "Truques": "4",
-      "Magias Preparadas": "10",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -106,14 +101,14 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "6",
+      "Bônus de Proficiência": "+3",
+      "Características de Classe": "Característica de Subclasse",
+      "Truques": "4",
+      "Magias Preparadas": "10"
     },
     {
-      "Nível": "7",
-      "Bônus de Proficiência": "+3",
-      "Características de Classe": "—",
-      "Truques": "4",
-      "Magias Preparadas": "11",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -122,14 +117,14 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "7",
+      "Bônus de Proficiência": "+3",
+      "Características de Classe": "—",
+      "Truques": "4",
+      "Magias Preparadas": "11"
     },
     {
-      "Nível": "8",
-      "Bônus de Proficiência": "+3",
-      "Características de Classe": "Aumento no Valor de Atributo",
-      "Truques": "4",
-      "Magias Preparadas": "12",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -138,14 +133,14 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "8",
+      "Bônus de Proficiência": "+3",
+      "Características de Classe": "Aumento no Valor de Atributo",
+      "Truques": "4",
+      "Magias Preparadas": "12"
     },
     {
-      "Nível": "9",
-      "Bônus de Proficiência": "+4",
-      "Características de Classe": "—",
-      "Truques": "4",
-      "Magias Preparadas": "14",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -154,14 +149,14 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "9",
+      "Bônus de Proficiência": "+4",
+      "Características de Classe": "—",
+      "Truques": "4",
+      "Magias Preparadas": "14"
     },
     {
-      "Nível": "10",
-      "Bônus de Proficiência": "+4",
-      "Características de Classe": "Característica de Subclasse",
-      "Truques": "5",
-      "Magias Preparadas": "15",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -170,14 +165,30 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "10",
+      "Bônus de Proficiência": "+4",
+      "Características de Classe": "Característica de Subclasse",
+      "Truques": "5",
+      "Magias Preparadas": "15"
     },
     {
+      "1": "4",
+      "2": "3",
+      "3": "3",
+      "4": "3",
+      "5": "2",
+      "6": "1",
+      "7": "—",
+      "8": "—",
+      "9": "—",
       "Nível": "11",
       "Bônus de Proficiência": "+4",
       "Características de Classe": "—",
       "Truques": "5",
-      "Magias Preparadas": "16",
+      "Magias Preparadas": "16"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -186,30 +197,30 @@
       "6": "1",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "12",
       "Bônus de Proficiência": "+4",
       "Características de Classe": "Aumento no Valor de Atributo",
       "Truques": "5",
-      "Magias Preparadas": "16",
+      "Magias Preparadas": "16"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
       "4": "3",
       "5": "2",
       "6": "1",
-      "7": "—",
+      "7": "1",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "13",
       "Bônus de Proficiência": "+5",
       "Características de Classe": "—",
       "Truques": "5",
-      "Magias Preparadas": "17",
+      "Magias Preparadas": "17"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -218,14 +229,14 @@
       "6": "1",
       "7": "1",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "14",
       "Bônus de Proficiência": "+5",
       "Características de Classe": "Característica de Subclasse",
       "Truques": "5",
-      "Magias Preparadas": "18",
+      "Magias Preparadas": "18"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -233,15 +244,15 @@
       "5": "2",
       "6": "1",
       "7": "1",
-      "8": "—",
-      "9": "—"
-    },
-    {
+      "8": "1",
+      "9": "—",
       "Nível": "15",
       "Bônus de Proficiência": "+5",
       "Características de Classe": "—",
       "Truques": "5",
-      "Magias Preparadas": "19",
+      "Magias Preparadas": "19"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -250,14 +261,14 @@
       "6": "1",
       "7": "1",
       "8": "1",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "16",
       "Bônus de Proficiência": "+5",
       "Características de Classe": "Aumento no Valor de Atributo",
       "Truques": "5",
-      "Magias Preparadas": "21",
+      "Magias Preparadas": "21"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -266,30 +277,14 @@
       "6": "1",
       "7": "1",
       "8": "1",
-      "9": "—"
-    },
-    {
+      "9": "1",
       "Nível": "17",
       "Bônus de Proficiência": "+6",
       "Características de Classe": "—",
       "Truques": "5",
-      "Magias Preparadas": "22",
-      "1": "4",
-      "2": "3",
-      "3": "3",
-      "4": "3",
-      "5": "2",
-      "6": "1",
-      "7": "1",
-      "8": "1",
-      "9": "1"
+      "Magias Preparadas": "22"
     },
     {
-      "Nível": "18",
-      "Bônus de Proficiência": "+6",
-      "Características de Classe": "Maestria de Magias",
-      "Truques": "5",
-      "Magias Preparadas": "23",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -298,14 +293,14 @@
       "6": "1",
       "7": "1",
       "8": "1",
-      "9": "1"
+      "9": "1",
+      "Nível": "18",
+      "Bônus de Proficiência": "+6",
+      "Características de Classe": "Maestria de Magias",
+      "Truques": "5",
+      "Magias Preparadas": "23"
     },
     {
-      "Nível": "19",
-      "Bônus de Proficiência": "+6",
-      "Características de Classe": "Dádiva Épica",
-      "Truques": "5",
-      "Magias Preparadas": "24",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -314,14 +309,14 @@
       "6": "2",
       "7": "1",
       "8": "1",
-      "9": "1"
+      "9": "1",
+      "Nível": "19",
+      "Bônus de Proficiência": "+6",
+      "Características de Classe": "Dádiva Épica",
+      "Truques": "5",
+      "Magias Preparadas": "24"
     },
     {
-      "Nível": "20",
-      "Bônus de Proficiência": "+6",
-      "Características de Classe": "Assinatura Mágica",
-      "Truques": "5",
-      "Magias Preparadas": "25",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -330,7 +325,12 @@
       "6": "2",
       "7": "2",
       "8": "1",
-      "9": "1"
+      "9": "1",
+      "Nível": "20",
+      "Bônus de Proficiência": "+6",
+      "Características de Classe": "Assinatura Mágica",
+      "Truques": "5",
+      "Magias Preparadas": "25"
     }
   ],
   "caracteristicas": [
@@ -387,102 +387,122 @@
     {
       "nivel": 3,
       "nome": "Proteção Arcana",
-      "descricao": "Você pode tecer magia ao seu redor para se proteger. Ao conjurar uma magia de Abjuração com um espaço de magia, você pode usar simultaneamente um fio da magia para criar uma proteção mágica em si que dura até você completar um Descanso Longo. A proteção tem Pontos de Vida máximos iguais ao dobro do seu nível de Mago mais seu modificador de Inteligência. Ao sofrer dano, a proteção o absorve em vez de você. Aplique qualquer Resistência ou Vulnerabilidade antes de reduzir os Pontos de Vida da proteção. Se o dano reduzir a proteção a 0 Pontos de Vida, você sofre o dano restante. Com 0 Pontos de Vida, a proteção não pode mais absorver dano, mas sua magia permanece.\nAo conjurar uma magia Abjuração com um espaço de magia, a proteção restaura um número de Pontos de Vida igual ao dobro do nível do espaço de magia. Você também pode, como uma Ação Bônus, gastar um espaço de magia, e a proteção recupera um número de Pontos de Vida igual ao dobro do nível do espaço de magia gasto.\nApós conjurar a proteção, você não pode conjurá-la novamente até completar um Descanso Longo."
+      "descricao": "Você pode tecer magia ao seu redor para se proteger. Ao conjurar uma magia de Abjuração com um espaço de magia, você pode usar simultaneamente um fio da magia para criar uma proteção mágica em si que dura até você completar um Descanso Longo. A proteção tem Pontos de Vida máximos iguais ao dobro do seu nível de Mago mais seu modificador de Inteligência. Ao sofrer dano, a proteção o absorve em vez de você. Aplique qualquer Resistência ou Vulnerabilidade antes de reduzir os Pontos de Vida da proteção. Se o dano reduzir a proteção a 0 Pontos de Vida, você sofre o dano restante. Com 0 Pontos de Vida, a proteção não pode mais absorver dano, mas sua magia permanece.\nAo conjurar uma magia Abjuração com um espaço de magia, a proteção restaura um número de Pontos de Vida igual ao dobro do nível do espaço de magia. Você também pode, como uma Ação Bônus, gastar um espaço de magia, e a proteção recupera um número de Pontos de Vida igual ao dobro do nível do espaço de magia gasto.\nApós conjurar a proteção, você não pode conjurá-la novamente até completar um Descanso Longo.",
+      "subclasse": "Abjurador"
     },
     {
       "nivel": 3,
       "nome": "Versado em Abjuração",
-      "descricao": "Escolha duas magias de Mago da escola de Abjuração, cada uma deve ser de 2º círculo ou inferior e adicione-as gratuitamente ao seu livro de magias.\nAlém disso, ao adquirir acesso a um novo círculo de espaços de magia nesta classe, você pode adicionar gratuitamente uma magia de Mago da escola de Abjuração ao seu livro de magias. A magia escolhida deve ser de um círculo para o qual você tenha espaços de magia."
+      "descricao": "Escolha duas magias de Mago da escola de Abjuração, cada uma deve ser de 2º círculo ou inferior e adicione-as gratuitamente ao seu livro de magias.\nAlém disso, ao adquirir acesso a um novo círculo de espaços de magia nesta classe, você pode adicionar gratuitamente uma magia de Mago da escola de Abjuração ao seu livro de magias. A magia escolhida deve ser de um círculo para o qual você tenha espaços de magia.",
+      "subclasse": "Abjurador"
     },
     {
       "nivel": 6,
       "nome": "Proteção Projetada",
-      "descricao": "Quando uma criatura à sua vista a até 9 metros de você sofrer dano, você pode executar uma Reação para que sua Proteção Arcana absorva esse dano. Caso isto reduza a proteção a 0 Pontos de Vida, a criatura protegida sofre qualquer dano restante. Se essa criatura tiver alguma Resistência ou Vulnerabilidade, aplique-as antes de reduzir os Pontos de Vida da proteção."
+      "descricao": "Quando uma criatura à sua vista a até 9 metros de você sofrer dano, você pode executar uma Reação para que sua Proteção Arcana absorva esse dano. Caso isto reduza a proteção a 0 Pontos de Vida, a criatura protegida sofre qualquer dano restante. Se essa criatura tiver alguma Resistência ou Vulnerabilidade, aplique-as antes de reduzir os Pontos de Vida da proteção.",
+      "subclasse": "Abjurador"
     },
     {
       "nivel": 10,
       "nome": "Rompe-Magia",
-      "descricao": "Você sempre tem as magias *Contramagia* e *Dissipar Magia* preparadas. Além disso, você pode conjurar *Dissipar Magia* como uma Ação Bônus e pode adicionar seu Bônus de Proficiência ao seu teste de atributo.\nAo conjurar uma das magias com um espaço de magia, esse espaço não é gasto se a magia falhar em interromper uma magia."
+      "descricao": "Você sempre tem as magias *Contramagia* e *Dissipar Magia* preparadas. Além disso, você pode conjurar *Dissipar Magia* como uma Ação Bônus e pode adicionar seu Bônus de Proficiência ao seu teste de atributo.\nAo conjurar uma das magias com um espaço de magia, esse espaço não é gasto se a magia falhar em interromper uma magia.",
+      "subclasse": "Abjurador"
     },
     {
       "nivel": 14,
       "nome": "Resistência à Magia",
-      "descricao": "Você tem Vantagem em salvaguardas contra magias e Resistência ao dano proveniente de magias."
+      "descricao": "Você tem Vantagem em salvaguardas contra magias e Resistência ao dano proveniente de magias.",
+      "subclasse": "Abjurador"
     },
     {
       "nivel": 3,
       "nome": "Prodígio",
-      "descricao": "Vislumbres do futuro começam a pressionar sua percepção. Ao completar um Descanso Longo, jogue dois d20s e registre os números obtidos. Você pode substituir qualquer Teste de D20 realizado por você ou por uma criatura à sua vista com uma dessas jogadas de previsão. Você deve escolher fazer isso antes da jogada do Teste de D20 e pode substituir uma jogada deste modo apenas uma vez por turno.\nCada jogada de previsão pode ser usada apenas uma vez. Ao completar um Descanso Longo você perde quaisquer jogadas de previsão não utilizadas."
+      "descricao": "Vislumbres do futuro começam a pressionar sua percepção. Ao completar um Descanso Longo, jogue dois d20s e registre os números obtidos. Você pode substituir qualquer Teste de D20 realizado por você ou por uma criatura à sua vista com uma dessas jogadas de previsão. Você deve escolher fazer isso antes da jogada do Teste de D20 e pode substituir uma jogada deste modo apenas uma vez por turno.\nCada jogada de previsão pode ser usada apenas uma vez. Ao completar um Descanso Longo você perde quaisquer jogadas de previsão não utilizadas.",
+      "subclasse": "Adivinhador"
     },
     {
       "nivel": 3,
       "nome": "Versado em Adivinhação",
-      "descricao": "Escolha duas magias de Mago da escola de Adivinhação, cada uma deve ser de 2º círculo ou inferior, e adicione-as gratuitamente ao seu livro de magias.\nAlém disso, ao adquirir acesso a um novo círculo de espaços de magia nesta classe, você pode adicionar gratuitamente uma magia de Mago da escola de Adivinhação ao seu livro de magias. A magia escolhida deve ser de um círculo para o qual você tenha espaços de magia."
+      "descricao": "Escolha duas magias de Mago da escola de Adivinhação, cada uma deve ser de 2º círculo ou inferior, e adicione-as gratuitamente ao seu livro de magias.\nAlém disso, ao adquirir acesso a um novo círculo de espaços de magia nesta classe, você pode adicionar gratuitamente uma magia de Mago da escola de Adivinhação ao seu livro de magias. A magia escolhida deve ser de um círculo para o qual você tenha espaços de magia.",
+      "subclasse": "Adivinhador"
     },
     {
       "nivel": 6,
       "nome": "Perito em Adivinhação",
-      "descricao": "Conjurar magias de Adivinhação é tão fácil para você que gasta apenas uma fração de seus esforços de conjuração. Ao conjurar uma magia de Adivinhação usando um espaço de magia de 2º círculo ou superior, você recupera um espaço de magia gasto. O espaço que você recupera deve ser de um círculo inferior ao espaço que você conjurou e não pode ser superior ao 5º círculo."
+      "descricao": "Conjurar magias de Adivinhação é tão fácil para você que gasta apenas uma fração de seus esforços de conjuração. Ao conjurar uma magia de Adivinhação usando um espaço de magia de 2º círculo ou superior, você recupera um espaço de magia gasto. O espaço que você recupera deve ser de um círculo inferior ao espaço que você conjurou e não pode ser superior ao 5º círculo.",
+      "subclasse": "Adivinhador"
     },
     {
       "nivel": 10,
       "nome": "O Terceiro Olho",
-      "descricao": "Você pode ampliar seus poderes de percepção. Como uma Ação Bônus, escolha um dos seguintes benefícios, que dura até você iniciar um Descanso Curto ou Longo. Você não pode usar essa característica novamente até completar um Descanso Curto ou Longo.\n**Compreensão Superior.** Você pode ler qualquer idioma.\n**Ver o Invisível.** Você pode conjurar *Ver o Invisível* sem gastar um espaço de magia.\n**Visão no Escuro.** Você adquire Visão no Escuro com um alcance de 36 metros."
+      "descricao": "Você pode ampliar seus poderes de percepção. Como uma Ação Bônus, escolha um dos seguintes benefícios, que dura até você iniciar um Descanso Curto ou Longo. Você não pode usar essa característica novamente até completar um Descanso Curto ou Longo.\n**Compreensão Superior.** Você pode ler qualquer idioma.\n**Ver o Invisível.** Você pode conjurar *Ver o Invisível* sem gastar um espaço de magia.\n**Visão no Escuro.** Você adquire Visão no Escuro com um alcance de 36 metros.",
+      "subclasse": "Adivinhador"
     },
     {
       "nivel": 14,
       "nome": "Prodígio Maior",
-      "descricao": "As visões em seus sonhos se intensificam e formam uma imagem mais precisa em sua mente do que está por vir. Jogue três d20s para sua característica Prodígio em vez de dois."
+      "descricao": "As visões em seus sonhos se intensificam e formam uma imagem mais precisa em sua mente do que está por vir. Jogue três d20s para sua característica Prodígio em vez de dois.",
+      "subclasse": "Adivinhador"
     },
     {
       "nivel": 3,
       "nome": "Truque Potente",
-      "descricao": "Seus truques que causam dano afetam até criaturas que evitam os efeitos deles. Ao conjurar um truque em uma criatura e errar o ataque ou o alvo ser bem-sucedido na salvaguarda contra o truque, ele sofre metade do dano (se houver), mas não sofre efeitos adicionais do truque."
+      "descricao": "Seus truques que causam dano afetam até criaturas que evitam os efeitos deles. Ao conjurar um truque em uma criatura e errar o ataque ou o alvo ser bem-sucedido na salvaguarda contra o truque, ele sofre metade do dano (se houver), mas não sofre efeitos adicionais do truque.",
+      "subclasse": "Evocador"
     },
     {
       "nivel": 3,
       "nome": "Versado em Evocação",
-      "descricao": "Escolha duas magias de Mago da escola de Evocação, cada uma deve ser de 2º círculo ou inferior, e adicione-as gratuitamente ao seu livro de magias.\nAlém disso, ao adquirir acesso a um novo círculo de espaços de magia nesta classe, você pode adicionar gratuitamente uma magia de Mago da escola de Evocação ao seu livro de magias. A magia escolhida deve ser de um círculo para o qual você tenha espaços de magia."
+      "descricao": "Escolha duas magias de Mago da escola de Evocação, cada uma deve ser de 2º círculo ou inferior, e adicione-as gratuitamente ao seu livro de magias.\nAlém disso, ao adquirir acesso a um novo círculo de espaços de magia nesta classe, você pode adicionar gratuitamente uma magia de Mago da escola de Evocação ao seu livro de magias. A magia escolhida deve ser de um círculo para o qual você tenha espaços de magia.",
+      "subclasse": "Evocador"
     },
     {
       "nivel": 6,
       "nome": "Esculpir Magias",
-      "descricao": "Você pode criar zonas de segurança nos efeitos das suas evocações. Ao conjurar uma magia de Evocação que afeta criaturas à sua vista, você pode escolher um número delas igual a 1 mais o círculo da magia. Criaturas escolhidas são bem-sucedidas automaticamente em suas salvaguardas e não sofrem dano se normalmente sofreriam metade do dano em caso de sucesso."
+      "descricao": "Você pode criar zonas de segurança nos efeitos das suas evocações. Ao conjurar uma magia de Evocação que afeta criaturas à sua vista, você pode escolher um número delas igual a 1 mais o círculo da magia. Criaturas escolhidas são bem-sucedidas automaticamente em suas salvaguardas e não sofrem dano se normalmente sofreriam metade do dano em caso de sucesso.",
+      "subclasse": "Evocador"
     },
     {
       "nivel": 10,
       "nome": "Evocação Potencializada",
-      "descricao": "Ao conjurar uma magia de Mago da escola de Evocação, você pode adicionar seu modificador de Inteligência a uma jogada de dano dessa magia."
+      "descricao": "Ao conjurar uma magia de Mago da escola de Evocação, você pode adicionar seu modificador de Inteligência a uma jogada de dano dessa magia.",
+      "subclasse": "Evocador"
     },
     {
       "nivel": 14,
       "nome": "Sobrecarga",
-      "descricao": "Você pode aumentar o poder de suas magias. Ao conjurar uma magia de Mago que cause dano com um espaço de magia de 1º a 5º círculo, você pode causar dano máximo com essa magia no turno no qual a conjurar.\nAo fazer isso pela primeira vez, você não sofre nenhum efeito adverso. Se usar esta característica novamente antes de completar um Descanso Longo, você sofre 2d12 pontos de dano Necrótico para cada círculo do espaço de magia imediatamente após conjurá-la. Esse dano ignora Resistência e Imunidade.\nToda vez que você usa esta característica novamente antes de completar um Descanso Longo, o dano Necrótico por círculo de magia aumenta em 1d12."
+      "descricao": "Você pode aumentar o poder de suas magias. Ao conjurar uma magia de Mago que cause dano com um espaço de magia de 1º a 5º círculo, você pode causar dano máximo com essa magia no turno no qual a conjurar.\nAo fazer isso pela primeira vez, você não sofre nenhum efeito adverso. Se usar esta característica novamente antes de completar um Descanso Longo, você sofre 2d12 pontos de dano Necrótico para cada círculo do espaço de magia imediatamente após conjurá-la. Esse dano ignora Resistência e Imunidade.\nToda vez que você usa esta característica novamente antes de completar um Descanso Longo, o dano Necrótico por círculo de magia aumenta em 1d12.",
+      "subclasse": "Evocador"
     },
     {
       "nivel": 3,
       "nome": "Ilusões Aprimoradas",
-      "descricao": "Você pode conjurar magias de Ilusão sem fornecer componentes Verbais e se uma magia de Ilusão que você conjurar tiver um alcance de 3 metros ou mais, o alcance aumenta em 18 metros.\nVocê também conhece o truque *Ilusão Menor*. Se já o conhece, você aprende um truque de Mago diferente à sua escolha. O truque não conta para o seu número de truques conhecidos. Você pode criar um som e uma imagem com uma única conjuração de *Ilusão Menor* e pode conjurá-la como uma Ação Bônus."
+      "descricao": "Você pode conjurar magias de Ilusão sem fornecer componentes Verbais e se uma magia de Ilusão que você conjurar tiver um alcance de 3 metros ou mais, o alcance aumenta em 18 metros.\nVocê também conhece o truque *Ilusão Menor*. Se já o conhece, você aprende um truque de Mago diferente à sua escolha. O truque não conta para o seu número de truques conhecidos. Você pode criar um som e uma imagem com uma única conjuração de *Ilusão Menor* e pode conjurá-la como uma Ação Bônus.",
+      "subclasse": "Ilusionista"
     },
     {
       "nivel": 3,
       "nome": "Versado em Ilusão",
-      "descricao": "Escolha duas magias de Mago da escola de Ilusão, cada uma deve ser de 2º círculo ou inferior e adicione-as gratuitamente ao seu livro de magias.\nAlém disso, ao adquirir acesso a um novo círculo de espaços de magia nesta classe, você pode adicionar gratuitamente uma magia de Mago da escola de Ilusão ao seu livro de magias. A magia escolhida deve ser de um círculo para o qual você tenha espaços de magia."
+      "descricao": "Escolha duas magias de Mago da escola de Ilusão, cada uma deve ser de 2º círculo ou inferior e adicione-as gratuitamente ao seu livro de magias.\nAlém disso, ao adquirir acesso a um novo círculo de espaços de magia nesta classe, você pode adicionar gratuitamente uma magia de Mago da escola de Ilusão ao seu livro de magias. A magia escolhida deve ser de um círculo para o qual você tenha espaços de magia.",
+      "subclasse": "Ilusionista"
     },
     {
       "nivel": 6,
       "nome": "Criaturas Espectrais",
-      "descricao": "Você sempre tem as magias *Convocar Feérico* e *Invocar Fera* preparadas. Ao conjurar qualquer uma das magias, você pode mudar sua escola para Ilusão, o que faz com que a criatura invocada pareça espectral. Você pode conjurar a versão Ilusão de cada magia sem gastar um espaço de magia, mas conjurá-la sem um espaço de magia reduz pela metade os Pontos de Vida da criatura. Após conjurar qualquer uma das magias sem um espaço de magia, você deve completar um Descanso Longo antes de conjurar novamente a magia desta forma."
+      "descricao": "Você sempre tem as magias *Convocar Feérico* e *Invocar Fera* preparadas. Ao conjurar qualquer uma das magias, você pode mudar sua escola para Ilusão, o que faz com que a criatura invocada pareça espectral. Você pode conjurar a versão Ilusão de cada magia sem gastar um espaço de magia, mas conjurá-la sem um espaço de magia reduz pela metade os Pontos de Vida da criatura. Após conjurar qualquer uma das magias sem um espaço de magia, você deve completar um Descanso Longo antes de conjurar novamente a magia desta forma.",
+      "subclasse": "Ilusionista"
     },
     {
       "nivel": 10,
       "nome": "Autoimagem Ilusória",
-      "descricao": "Ao ser atingido pela jogada de ataque de uma criatura, você pode usar uma Reação para criar uma duplicata ilusória de si entre você e o atacante. O ataque erra automaticamente e a ilusão se dissipa.\nApós usar esta característica, você não pode utilizá-la novamente até completar um Descanso Curto ou Longo. Você também pode restaurar seu uso gastando um espaço de magia de 2º círculo ou superior (nenhuma ação é necessária)."
+      "descricao": "Ao ser atingido pela jogada de ataque de uma criatura, você pode usar uma Reação para criar uma duplicata ilusória de si entre você e o atacante. O ataque erra automaticamente e a ilusão se dissipa.\nApós usar esta característica, você não pode utilizá-la novamente até completar um Descanso Curto ou Longo. Você também pode restaurar seu uso gastando um espaço de magia de 2º círculo ou superior (nenhuma ação é necessária).",
+      "subclasse": "Ilusionista"
     },
     {
       "nivel": 14,
       "nome": "Realidade Ilusória",
-      "descricao": "Você aprendeu a tecer magia sombria em suas ilusões para dar a elas uma semi-realidade. Ao conjurar uma magia Ilusão com um espaço de magia, você pode escolher um objeto inanimado e não mágico que faça parte da ilusão e tornar esse objeto real. Você pode executar isso no seu turno como uma Ação Bônus, enquanto a magia estiver em andamento. O objeto permanece real por 1 minuto, durante o qual não pode causar dano ou conferir quaisquer condições. Por exemplo, você pode criar uma ilusão de uma ponte sobre um abismo e, em seguida, torná-la real e atravessá-la."
+      "descricao": "Você aprendeu a tecer magia sombria em suas ilusões para dar a elas uma semi-realidade. Ao conjurar uma magia Ilusão com um espaço de magia, você pode escolher um objeto inanimado e não mágico que faça parte da ilusão e tornar esse objeto real. Você pode executar isso no seu turno como uma Ação Bônus, enquanto a magia estiver em andamento. O objeto permanece real por 1 minuto, durante o qual não pode causar dano ou conferir quaisquer condições. Por exemplo, você pode criar uma ilusão de uma ponte sobre um abismo e, em seguida, torná-la real e atravessá-la.",
+      "subclasse": "Ilusionista"
     }
   ],
   "subclasses": [

@@ -11,244 +11,244 @@
   },
   "tabela_caracteristicas": [
     {
+      "1": "2",
+      "2": "—",
+      "3": "—",
+      "4": "—",
+      "5": "—",
       "Nível": "1",
       "Bônus de Proficiência": "+2",
       "Características": "Conjuração, Inimigo Favorito, Maestria em Arma",
       "Inimigo Favorito": "2",
-      "Magias Preparadas": "2",
+      "Magias Preparadas": "2"
+    },
+    {
       "1": "2",
       "2": "—",
       "3": "—",
       "4": "—",
-      "5": "—"
-    },
-    {
+      "5": "—",
       "Nível": "2",
       "Bônus de Proficiência": "+2",
       "Características": "Estilo de Luta, Explorador Hábil",
       "Inimigo Favorito": "2",
-      "Magias Preparadas": "3",
-      "1": "2",
+      "Magias Preparadas": "3"
+    },
+    {
+      "1": "3",
       "2": "—",
       "3": "—",
       "4": "—",
-      "5": "—"
-    },
-    {
+      "5": "—",
       "Nível": "3",
       "Bônus de Proficiência": "+2",
       "Características": "Subclasse de Guardião",
       "Inimigo Favorito": "2",
-      "Magias Preparadas": "4",
+      "Magias Preparadas": "4"
+    },
+    {
       "1": "3",
       "2": "—",
       "3": "—",
       "4": "—",
-      "5": "—"
-    },
-    {
+      "5": "—",
       "Nível": "4",
       "Bônus de Proficiência": "+2",
       "Características": "Aumento no Valor de Atributo",
       "Inimigo Favorito": "2",
-      "Magias Preparadas": "5",
-      "1": "3",
-      "2": "—",
-      "3": "—",
-      "4": "—",
-      "5": "—"
+      "Magias Preparadas": "5"
     },
     {
+      "1": "4",
+      "2": "2",
+      "3": "—",
+      "4": "—",
+      "5": "—",
       "Nível": "5",
       "Bônus de Proficiência": "+3",
       "Características": "Ataque Extra",
       "Inimigo Favorito": "3",
-      "Magias Preparadas": "6",
+      "Magias Preparadas": "6"
+    },
+    {
       "1": "4",
       "2": "2",
       "3": "—",
       "4": "—",
-      "5": "—"
-    },
-    {
+      "5": "—",
       "Nível": "6",
       "Bônus de Proficiência": "+3",
       "Características": "Errante",
       "Inimigo Favorito": "3",
-      "Magias Preparadas": "6",
-      "1": "4",
-      "2": "2",
-      "3": "—",
-      "4": "—",
-      "5": "—"
+      "Magias Preparadas": "6"
     },
     {
+      "1": "4",
+      "2": "3",
+      "3": "—",
+      "4": "—",
+      "5": "—",
       "Nível": "7",
       "Bônus de Proficiência": "+3",
       "Características": "Característica de Subclasse",
       "Inimigo Favorito": "3",
-      "Magias Preparadas": "7",
+      "Magias Preparadas": "7"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "—",
       "4": "—",
-      "5": "—"
-    },
-    {
+      "5": "—",
       "Nível": "8",
       "Bônus de Proficiência": "+3",
       "Características": "Aumento no Valor de Atributo",
       "Inimigo Favorito": "3",
-      "Magias Preparadas": "7",
-      "1": "4",
-      "2": "3",
-      "3": "—",
-      "4": "—",
-      "5": "—"
+      "Magias Preparadas": "7"
     },
     {
+      "1": "4",
+      "2": "3",
+      "3": "2",
+      "4": "—",
+      "5": "—",
       "Nível": "9",
       "Bônus de Proficiência": "+4",
       "Características": "Especialista",
       "Inimigo Favorito": "4",
-      "Magias Preparadas": "9",
+      "Magias Preparadas": "9"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "2",
       "4": "—",
-      "5": "—"
-    },
-    {
+      "5": "—",
       "Nível": "10",
       "Bônus de Proficiência": "+4",
       "Características": "Incansável",
       "Inimigo Favorito": "4",
-      "Magias Preparadas": "9",
-      "1": "4",
-      "2": "3",
-      "3": "2",
-      "4": "—",
-      "5": "—"
+      "Magias Preparadas": "9"
     },
     {
+      "1": "4",
+      "2": "3",
+      "3": "3",
+      "4": "—",
+      "5": "—",
       "Nível": "11",
       "Bônus de Proficiência": "+4",
       "Características": "Característica de Subclasse",
       "Inimigo Favorito": "4",
-      "Magias Preparadas": "10",
+      "Magias Preparadas": "10"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
       "4": "—",
-      "5": "—"
-    },
-    {
+      "5": "—",
       "Nível": "12",
       "Bônus de Proficiência": "+4",
       "Características": "Aumento no Valor de Atributo",
       "Inimigo Favorito": "4",
-      "Magias Preparadas": "10",
+      "Magias Preparadas": "10"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
-      "4": "—",
-      "5": "—"
-    },
-    {
+      "4": "1",
+      "5": "—",
       "Nível": "13",
       "Bônus de Proficiência": "+5",
       "Características": "Predador Implacável",
       "Inimigo Favorito": "5",
-      "Magias Preparadas": "11",
+      "Magias Preparadas": "11"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
       "4": "1",
-      "5": "—"
-    },
-    {
+      "5": "—",
       "Nível": "14",
       "Bônus de Proficiência": "+5",
       "Características": "Véu da Natureza",
       "Inimigo Favorito": "5",
-      "Magias Preparadas": "11",
+      "Magias Preparadas": "11"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
-      "4": "1",
-      "5": "—"
-    },
-    {
+      "4": "2",
+      "5": "—",
       "Nível": "15",
       "Bônus de Proficiência": "+5",
       "Características": "Característica de Subclasse",
       "Inimigo Favorito": "5",
-      "Magias Preparadas": "12",
+      "Magias Preparadas": "12"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
       "4": "2",
-      "5": "—"
-    },
-    {
+      "5": "—",
       "Nível": "16",
       "Bônus de Proficiência": "+5",
       "Características": "Aumento no Valor de Atributo",
       "Inimigo Favorito": "5",
-      "Magias Preparadas": "12",
+      "Magias Preparadas": "12"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
-      "4": "2",
-      "5": "—"
-    },
-    {
+      "4": "3",
+      "5": "1",
       "Nível": "17",
       "Bônus de Proficiência": "+6",
       "Características": "Caçador Preciso",
       "Inimigo Favorito": "6",
-      "Magias Preparadas": "14",
+      "Magias Preparadas": "14"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
       "4": "3",
-      "5": "1"
-    },
-    {
+      "5": "1",
       "Nível": "18",
       "Bônus de Proficiência": "+6",
       "Características": "Sentidos Selvagens",
       "Inimigo Favorito": "6",
-      "Magias Preparadas": "14",
+      "Magias Preparadas": "14"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
       "4": "3",
-      "5": "1"
-    },
-    {
+      "5": "2",
       "Nível": "19",
       "Bônus de Proficiência": "+6",
       "Características": "Dádiva Épica",
       "Inimigo Favorito": "6",
-      "Magias Preparadas": "15",
+      "Magias Preparadas": "15"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
       "4": "3",
-      "5": "2"
-    },
-    {
+      "5": "2",
       "Nível": "20",
       "Bônus de Proficiência": "+6",
       "Características": "Matador de Inimigos Favoritos",
       "Inimigo Favorito": "6",
-      "Magias Preparadas": "15",
-      "1": "4",
-      "2": "3",
-      "3": "3",
-      "4": "3",
-      "5": "2"
+      "Magias Preparadas": "15"
     }
   ],
   "caracteristicas": [
@@ -340,107 +340,128 @@
     {
       "nivel": 3,
       "nome": "Glamour Transcendental",
-      "descricao": "Sempre que você realiza um teste de Carisma, recebe um bônus no teste igual ao seu modificador de Sabedoria (mínimo de +1).\nVocê também adquire proficiência em uma dessas perícias à sua escolha: Atuação, Enganação ou Persuasão."
+      "descricao": "Sempre que você realiza um teste de Carisma, recebe um bônus no teste igual ao seu modificador de Sabedoria (mínimo de +1).\nVocê também adquire proficiência em uma dessas perícias à sua escolha: Atuação, Enganação ou Persuasão.",
+      "subclasse": "Andarilho Feérico"
     },
     {
       "nivel": 3,
       "nome": "Golpes Terríveis",
-      "descricao": "Você pode potencializar seus golpes com arma com a magia traumatizante tirada dos cantos sombrios de Faéria. Uma vez por turno, ao atingir uma criatura com uma arma, você pode causar 1d4 pontos de dano Psíquico adicional ao alvo. O dano adicional aumenta para 1d6 quando você atinge o nível 11 de Guardião."
+      "descricao": "Você pode potencializar seus golpes com arma com a magia traumatizante tirada dos cantos sombrios de Faéria. Uma vez por turno, ao atingir uma criatura com uma arma, você pode causar 1d4 pontos de dano Psíquico adicional ao alvo. O dano adicional aumenta para 1d6 quando você atinge o nível 11 de Guardião.",
+      "subclasse": "Andarilho Feérico"
     },
     {
       "nivel": 3,
       "nome": "Magias do Andarilho Feérico",
-      "descricao": "Ao atingir um nível de Guardião detalhado na tabela Magias do Andarilho Feérico, você tem a lista de magias sempre preparadas.\n**Magias do Andarilho Feérico**\n| **Nível de Guardião** | **Magias**          |\n|-----------------------|---------------------|\n| 3                     | *Enfeitiçar Pessoa* |\n| 5                     | *Passo Nebuloso*    |\n| 9                     | *Convocar Feérico*  |\n| 13                    | *Porta Dimensional* |\n| 17                    | *Despistar*         |\nVocê também possui uma bênção feérica. Escolha-a na tabela de Dádivas de Faéria ou determine-a aleatoriamente.\n**Dádivas de Faéria**\n| **1d6** | **Dádiva**                                                                                  |\n|---------|---------------------------------------------------------------------------------------------|\n| 1       | Borboletas ilusórias flutuam ao seu redor enquanto você realiza um Descanso Curto ou Longo. |\n| 2       | Flores desabrocham do seu cabelo a cada amanhecer.                                          |\n| 3       | Você cheira levemente a canela, lavanda, noz-moscada ou outra erva ou fragrância natural.   |\n| 4       | Sua sombra dança enquanto ninguém está olhando diretamente para ela.                        |\n| 5       | Chifres ou galhadas brotam da sua cabeça.                                                   |\n| 6       | Sua pele e cabelo mudam de cor a cada amanhecer.                                            |"
+      "descricao": "Ao atingir um nível de Guardião detalhado na tabela Magias do Andarilho Feérico, você tem a lista de magias sempre preparadas.\n**Magias do Andarilho Feérico**\n| **Nível de Guardião** | **Magias**          |\n|-----------------------|---------------------|\n| 3                     | *Enfeitiçar Pessoa* |\n| 5                     | *Passo Nebuloso*    |\n| 9                     | *Convocar Feérico*  |\n| 13                    | *Porta Dimensional* |\n| 17                    | *Despistar*         |\nVocê também possui uma bênção feérica. Escolha-a na tabela de Dádivas de Faéria ou determine-a aleatoriamente.\n**Dádivas de Faéria**\n| **1d6** | **Dádiva**                                                                                  |\n|---------|---------------------------------------------------------------------------------------------|\n| 1       | Borboletas ilusórias flutuam ao seu redor enquanto você realiza um Descanso Curto ou Longo. |\n| 2       | Flores desabrocham do seu cabelo a cada amanhecer.                                          |\n| 3       | Você cheira levemente a canela, lavanda, noz-moscada ou outra erva ou fragrância natural.   |\n| 4       | Sua sombra dança enquanto ninguém está olhando diretamente para ela.                        |\n| 5       | Chifres ou galhadas brotam da sua cabeça.                                                   |\n| 6       | Sua pele e cabelo mudam de cor a cada amanhecer.                                            |",
+      "subclasse": "Andarilho Feérico"
     },
     {
       "nivel": 7,
       "nome": "Detalhe Sedutor",
-      "descricao": "A magia de Faéria protege sua mente. Você tem Vantagem nas salvaguardas para evitar ou encerrar a condição Amedrontado ou Enfeitiçado.\nAlém disso, sempre que você ou uma criatura à sua vista a até 36 metros de você for bem-sucedido em uma salvaguarda para evitar ou encerrar a condição Amedrontado ou Enfeitiçado, você pode executar uma Reação para forçar uma criatura diferente à sua vista a até 36 metros de você realizar uma salvaguarda de Sabedoria contra a CD para evitar sua magia. Se falhar, o alvo tem a condição Amedrontado ou Enfeitiçado (à sua escolha) por 1 minuto. O alvo repete a salvaguarda no final de cada um dos turnos dele, encerrando o efeito em si em caso de sucesso."
+      "descricao": "A magia de Faéria protege sua mente. Você tem Vantagem nas salvaguardas para evitar ou encerrar a condição Amedrontado ou Enfeitiçado.\nAlém disso, sempre que você ou uma criatura à sua vista a até 36 metros de você for bem-sucedido em uma salvaguarda para evitar ou encerrar a condição Amedrontado ou Enfeitiçado, você pode executar uma Reação para forçar uma criatura diferente à sua vista a até 36 metros de você realizar uma salvaguarda de Sabedoria contra a CD para evitar sua magia. Se falhar, o alvo tem a condição Amedrontado ou Enfeitiçado (à sua escolha) por 1 minuto. O alvo repete a salvaguarda no final de cada um dos turnos dele, encerrando o efeito em si em caso de sucesso.",
+      "subclasse": "Andarilho Feérico"
     },
     {
       "nivel": 11,
       "nome": "Reforços Feéricos",
-      "descricao": "Você pode conjurar a magia *Convocar Feérico* sem um componente Material. Você também pode conjurá-la uma vez sem um espaço de magia, e restaura a capacidade de conjurá-la deste modo ao completar um Descanso Longo.\nAo começar a conjurar a magia, você pode modificá-la para não exigir Concentração e a duração da magia se torna 1 minuto para esta conjuração."
+      "descricao": "Você pode conjurar a magia *Convocar Feérico* sem um componente Material. Você também pode conjurá-la uma vez sem um espaço de magia, e restaura a capacidade de conjurá-la deste modo ao completar um Descanso Longo.\nAo começar a conjurar a magia, você pode modificá-la para não exigir Concentração e a duração da magia se torna 1 minuto para esta conjuração.",
+      "subclasse": "Andarilho Feérico"
     },
     {
       "nivel": 15,
       "nome": "Andarilho Nebuloso",
-      "descricao": "Você pode conjurar *Passo Nebuloso* sem gastar um espaço de magia. Você pode fazer isso um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.\nAlém disso, sempre que você conjurar *Passo Nebuloso*, pode levar junto uma criatura voluntária à sua vista a até 1,5 metro de você. Essa criatura se teleporta para um espaço desocupado à sua escolha a até 1,5 metro do seu destino."
+      "descricao": "Você pode conjurar *Passo Nebuloso* sem gastar um espaço de magia. Você pode fazer isso um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.\nAlém disso, sempre que você conjurar *Passo Nebuloso*, pode levar junto uma criatura voluntária à sua vista a até 1,5 metro de você. Essa criatura se teleporta para um espaço desocupado à sua escolha a até 1,5 metro do seu destino.",
+      "subclasse": "Andarilho Feérico"
     },
     {
       "nivel": 3,
       "nome": "Conhecimento do Caçador",
-      "descricao": "Você pode recorrer às forças da natureza para revelar certos pontos fortes e fracos de sua presa. Enquanto uma criatura está marcada pela *Marca do Caçador*, você sabe se essa criatura tem Imunidades, Resistências ou Vulnerabilidades, e se a criatura tiver alguma, você sabe quais são."
+      "descricao": "Você pode recorrer às forças da natureza para revelar certos pontos fortes e fracos de sua presa. Enquanto uma criatura está marcada pela *Marca do Caçador*, você sabe se essa criatura tem Imunidades, Resistências ou Vulnerabilidades, e se a criatura tiver alguma, você sabe quais são.",
+      "subclasse": "Caçador"
     },
     {
       "nivel": 3,
       "nome": "Presa do Caçador",
-      "descricao": "Você recebe uma das seguintes opções de características à sua escolha. Ao completar um Descanso Curto ou Longo, você pode substituir a opção escolhida pela outra.\n**Assassino de Colossos.** Sua tenacidade pode derrubar até mesmo os inimigos mais poderosos. Ao atingir com arma uma criatura com os Pontos de Vida menor que o máximo, você causa 1d8 pontos de dano adicional. Você pode causar esse dano adicional apenas uma vez por turno.\n**Destruidor de Hordas.** Uma vez em cada um dos seus turnos, ao realizar um ataque com uma arma, você pode realizar outro ataque com a mesma arma contra uma criatura diferente que está a 1,5 metro do alvo original, que está dentro do alcance da arma e que você não atacou neste turno."
+      "descricao": "Você recebe uma das seguintes opções de características à sua escolha. Ao completar um Descanso Curto ou Longo, você pode substituir a opção escolhida pela outra.\n**Assassino de Colossos.** Sua tenacidade pode derrubar até mesmo os inimigos mais poderosos. Ao atingir com arma uma criatura com os Pontos de Vida menor que o máximo, você causa 1d8 pontos de dano adicional. Você pode causar esse dano adicional apenas uma vez por turno.\n**Destruidor de Hordas.** Uma vez em cada um dos seus turnos, ao realizar um ataque com uma arma, você pode realizar outro ataque com a mesma arma contra uma criatura diferente que está a 1,5 metro do alvo original, que está dentro do alcance da arma e que você não atacou neste turno.",
+      "subclasse": "Caçador"
     },
     {
       "nivel": 7,
       "nome": "Táticas Defensivas",
-      "descricao": "Você recebe uma das seguintes opções de características à sua escolha. Ao completar um Descanso Curto ou Longo, você pode substituir a opção escolhida pela outra.\n**Defesa Contra Ataques Múltiplos.** Ao ser atingido por uma criatura com uma jogada de ataque, essa criatura tem Desvantagem em todas as outras jogadas de ataque contra você neste turno.\n**Escapar de Hordas.** Ataques de Oportunidade têm Desvantagem contra você."
+      "descricao": "Você recebe uma das seguintes opções de características à sua escolha. Ao completar um Descanso Curto ou Longo, você pode substituir a opção escolhida pela outra.\n**Defesa Contra Ataques Múltiplos.** Ao ser atingido por uma criatura com uma jogada de ataque, essa criatura tem Desvantagem em todas as outras jogadas de ataque contra você neste turno.\n**Escapar de Hordas.** Ataques de Oportunidade têm Desvantagem contra você.",
+      "subclasse": "Caçador"
     },
     {
       "nivel": 11,
       "nome": "Presa do Caçador Superior",
-      "descricao": "Uma vez por turno, ao causar dano a uma criatura marcada pela *Marca do Caçador*, você também pode causar dano adicional dessa magia a uma criatura diferente à sua vista e a até 9 metros da primeira criatura."
+      "descricao": "Uma vez por turno, ao causar dano a uma criatura marcada pela *Marca do Caçador*, você também pode causar dano adicional dessa magia a uma criatura diferente à sua vista e a até 9 metros da primeira criatura.",
+      "subclasse": "Caçador"
     },
     {
       "nivel": 15,
       "nome": "Defesa do Caçador Superior",
-      "descricao": "Ao sofrer dano, você pode executar uma Reação para conceder a si mesmo Resistência a esse dano e a qualquer outro dano do mesmo tipo até o final do turno atual."
+      "descricao": "Ao sofrer dano, você pode executar uma Reação para conceder a si mesmo Resistência a esse dano e a qualquer outro dano do mesmo tipo até o final do turno atual.",
+      "subclasse": "Caçador"
     },
     {
       "nivel": 3,
       "nome": "Companheiro Primal",
-      "descricao": "Você invoca magicamente uma fera primal, que extrai força de seu vínculo com a natureza. Escolha o bloco de estatísticas da fera: **Fera da Terra**, **Fera do Céu** ou **Fera do Mar**. Você também determina o tipo de animal, escolhendo um tipo apropriado para o bloco de estatísticas. Seja qual for a fera que você escolher, ela apresenta sinais primais que indicam a origem sobrenatural dela.\nA fera é Amigável a você e seus aliados e obedece aos seus comandos. Ela desaparece se você morrer.\n**A Fera em Combate.** Em combate, a fera age durante seu turno. Ela pode se mover e usar a própria Reação, embora a única ação padrão que ela executa é Esquivar, a menos que você use uma Ação Bônus para comandá-la a executar uma ação do bloco de estatísticas dela ou alguma outra ação. Você também pode sacrificar um ataque ao executar a ação Atacar para ordenar a fera a realizar a ação Golpe da Fera. Se você tem a condição Incapacitado, a fera age sozinha e não se restringe à ação Esquivar.\n**Restaurar ou Substituir a Fera.** Se a fera morreu na última hora, você pode executar uma ação Usar Magia para tocá-la e gastar um espaço de magia. A fera retorna à vida após 1 minuto com todos os Pontos de Vida restaurados.\nSempre que completar um Descanso Longo, você pode invocar uma Fera primal diferente, que aparece em um espaço desocupado a até 1,5 metro de você. Você escolhe o bloco de estatísticas e aparência dela. Se você já tem uma fera devido a esta característica, a antiga desaparece quando a nova surge.\n#### *Fera do Céu*\n*Fera Pequena, Neutra*\n**CA** 13 mais seu modificador de Sabedoria\n**Iniciativa** +2 (12)\n**PV** 4 mais cinco vezes o seu nível de Guardião (a fera tem um número de Dados de Vida [d6s] igual ao seu nível de Guardião)\n**Deslocamento** 3 m, Voo 18 m\n|         |   | **Mod** | **SG** |         |    | **Mod** | **SG** |         |    | **Mod** | **SG** |\n|---------|---|---------|--------|---------|----|---------|--------|---------|----|---------|--------|\n| **For** | 6 | -2      | -2     | **Des** | 16 | +3      | +3     | **Con** | 13 | +1      | +1     |\n| **Int** | 8 | -1      | -1     | **Sab** | 14 | +2      | +2     | **Car** | 11 | +0      | +0     |\n**Sentidos** Visão no Escuro 18 m, Percepção Passiva 12\n**Idiomas** Compreende os idiomas que você fala\n**ND** Nenhum (XP 0; BP é igual ao seu Bônus de Proficiência)\nTraços\n**Sobrevoo.** A fera não provoca Ataques de Oportunidade quando voa para fora do alcance de um inimigo.\n**Vínculo Primal.** Adicione seu Bônus de Proficiência a qualquer teste de atributo ou salvaguarda que a fera realizar.\nAções\n**Golpe da Fera.** *Jogada de Ataque Corpo a Corpo:* Bônus é igual ao seu modificador de ataque mágico, alcance 1,5 m. *Dano:* 1d4 + 3 mais seu modificador de Sabedoria de pontos de dano Cortante.\n#### *Fera do Mar*\n*Fera Média, Neutra*\n**CA** 13 mais seu modificador de Sabedoria\n**Iniciativa** +3 (13)\n**PV** 5 mais cinco vezes o seu nível de Guardião (a fera tem um número de Dados de Vida [d8s] igual ao seu nível de Guardião)\n**Deslocamento** 1,5 m, natação 18 m\n**Sentidos:** Visão no Escuro 18 m, Percepção Passiva 12\n|         |    | **Mod** | **SG** |         |    | **Mod** | **SG** |         |    | **Mod** | **SG** |\n|---------|----|---------|--------|---------|----|---------|--------|---------|----|---------|--------|\n| **For** | 14 | +2      | +2     | **Des** | 14 | +2      | +2     | **Con** | 15 | +2      | +2     |\n| **Int** | 8  | -1      | -1     | **Sab** | 14 | +2      | +2     | **Car** | 11 | +0      | +0     |\n**Idiomas** Compreende os idiomas que você fala\n**ND** Nenhum (XP 0; BP é igual ao seu Bônus de Proficiência)\nTraços\n**Anfíbio.** A fera pode respirar ar e água.\n**Vínculo Primal.** Adicione seu Bônus de Proficiência a qualquer teste de atributo ou salvaguarda que a fera realizar.\nAções\n**Golpe da Fera.** *Jogada de Ataque Corpo a Corpo:* Bônus é igual ao seu modificador de ataque mágico, alcance 1,5 m. Dano: 1d6 + 2 mais seu modificador de Sabedoria de pontos de dano Contundente ou Perfurante (à sua escolha quando invocar a fera), e o alvo tem a condição Imobilizado (CD para escapar é igual à CD para evitar sua magia).\n#### *Fera da Terra*\n|         |    | **Mod** | **SG** |         |    | **Mod** | **SG** |         |    | **Mod** | **SG** |\n|---------|----|---------|--------|---------|----|---------|--------|---------|----|---------|--------|\n| **For** | 14 | +2      | +2     | **Des** | 14 | +2      | +2     | **Con** | 15 | +2      | +2     |\n| **Int** | 8  | -1      | -1     | **Sab** | 14 | +2      | +2     | **Car** | 11 | +0      | +0     |\n*Fera Média, Neutra*\n**CA** 13 mais seu modificador de Sabedoria\n**Iniciativa** +2 (12)\n**PV** 5 mais cinco vezes o seu nível de Guardião (a fera tem um número de Dados de Vida [d8s] igual ao seu nível de Guardião)\n**Deslocamento** 12 m, Escalada 12 m\n**Sentidos** Visão no Escuro 18 m, Percepção Passiva 12\n**Idiomas** Compreende os idiomas que você fala\n**ND** Nenhum (XP 0; BP é igual ao seu Bônus de Proficiência)\nTraços\n**Vínculo Primal.** Adicione seu Bônus de Proficiência a qualquer teste de atributo ou salvaguarda que a fera realizar.\nAções\n**Golpe da Fera.** *Jogada de Ataque Corpo a Corpo:* Bônus é igual ao seu modificador de ataque mágico, alcance 1,5 m. *Dano:* 1d8 + 2 mais seu modificador de Sabedoria de pontos de dano Contundente, Cortante ou Perfurante (à sua escolha quando invocar a fera). Se a fera se moveu pelo menos 6 metros em direção ao alvo antes do acerto, o alvo sofre 1d6 pontos de dano adicional do mesmo tipo, e tem a condição Caído se for uma criatura Grande ou menor."
+      "descricao": "Você invoca magicamente uma fera primal, que extrai força de seu vínculo com a natureza. Escolha o bloco de estatísticas da fera: **Fera da Terra**, **Fera do Céu** ou **Fera do Mar**. Você também determina o tipo de animal, escolhendo um tipo apropriado para o bloco de estatísticas. Seja qual for a fera que você escolher, ela apresenta sinais primais que indicam a origem sobrenatural dela.\nA fera é Amigável a você e seus aliados e obedece aos seus comandos. Ela desaparece se você morrer.\n**A Fera em Combate.** Em combate, a fera age durante seu turno. Ela pode se mover e usar a própria Reação, embora a única ação padrão que ela executa é Esquivar, a menos que você use uma Ação Bônus para comandá-la a executar uma ação do bloco de estatísticas dela ou alguma outra ação. Você também pode sacrificar um ataque ao executar a ação Atacar para ordenar a fera a realizar a ação Golpe da Fera. Se você tem a condição Incapacitado, a fera age sozinha e não se restringe à ação Esquivar.\n**Restaurar ou Substituir a Fera.** Se a fera morreu na última hora, você pode executar uma ação Usar Magia para tocá-la e gastar um espaço de magia. A fera retorna à vida após 1 minuto com todos os Pontos de Vida restaurados.\nSempre que completar um Descanso Longo, você pode invocar uma Fera primal diferente, que aparece em um espaço desocupado a até 1,5 metro de você. Você escolhe o bloco de estatísticas e aparência dela. Se você já tem uma fera devido a esta característica, a antiga desaparece quando a nova surge.\n#### *Fera do Céu*\n*Fera Pequena, Neutra*\n**CA** 13 mais seu modificador de Sabedoria\n**Iniciativa** +2 (12)\n**PV** 4 mais cinco vezes o seu nível de Guardião (a fera tem um número de Dados de Vida [d6s] igual ao seu nível de Guardião)\n**Deslocamento** 3 m, Voo 18 m\n|         |   | **Mod** | **SG** |         |    | **Mod** | **SG** |         |    | **Mod** | **SG** |\n|---------|---|---------|--------|---------|----|---------|--------|---------|----|---------|--------|\n| **For** | 6 | -2      | -2     | **Des** | 16 | +3      | +3     | **Con** | 13 | +1      | +1     |\n| **Int** | 8 | -1      | -1     | **Sab** | 14 | +2      | +2     | **Car** | 11 | +0      | +0     |\n**Sentidos** Visão no Escuro 18 m, Percepção Passiva 12\n**Idiomas** Compreende os idiomas que você fala\n**ND** Nenhum (XP 0; BP é igual ao seu Bônus de Proficiência)\nTraços\n**Sobrevoo.** A fera não provoca Ataques de Oportunidade quando voa para fora do alcance de um inimigo.\n**Vínculo Primal.** Adicione seu Bônus de Proficiência a qualquer teste de atributo ou salvaguarda que a fera realizar.\nAções\n**Golpe da Fera.** *Jogada de Ataque Corpo a Corpo:* Bônus é igual ao seu modificador de ataque mágico, alcance 1,5 m. *Dano:* 1d4 + 3 mais seu modificador de Sabedoria de pontos de dano Cortante.\n#### *Fera do Mar*\n*Fera Média, Neutra*\n**CA** 13 mais seu modificador de Sabedoria\n**Iniciativa** +3 (13)\n**PV** 5 mais cinco vezes o seu nível de Guardião (a fera tem um número de Dados de Vida [d8s] igual ao seu nível de Guardião)\n**Deslocamento** 1,5 m, natação 18 m\n**Sentidos:** Visão no Escuro 18 m, Percepção Passiva 12\n|         |    | **Mod** | **SG** |         |    | **Mod** | **SG** |         |    | **Mod** | **SG** |\n|---------|----|---------|--------|---------|----|---------|--------|---------|----|---------|--------|\n| **For** | 14 | +2      | +2     | **Des** | 14 | +2      | +2     | **Con** | 15 | +2      | +2     |\n| **Int** | 8  | -1      | -1     | **Sab** | 14 | +2      | +2     | **Car** | 11 | +0      | +0     |\n**Idiomas** Compreende os idiomas que você fala\n**ND** Nenhum (XP 0; BP é igual ao seu Bônus de Proficiência)\nTraços\n**Anfíbio.** A fera pode respirar ar e água.\n**Vínculo Primal.** Adicione seu Bônus de Proficiência a qualquer teste de atributo ou salvaguarda que a fera realizar.\nAções\n**Golpe da Fera.** *Jogada de Ataque Corpo a Corpo:* Bônus é igual ao seu modificador de ataque mágico, alcance 1,5 m. Dano: 1d6 + 2 mais seu modificador de Sabedoria de pontos de dano Contundente ou Perfurante (à sua escolha quando invocar a fera), e o alvo tem a condição Imobilizado (CD para escapar é igual à CD para evitar sua magia).\n#### *Fera da Terra*\n|         |    | **Mod** | **SG** |         |    | **Mod** | **SG** |         |    | **Mod** | **SG** |\n|---------|----|---------|--------|---------|----|---------|--------|---------|----|---------|--------|\n| **For** | 14 | +2      | +2     | **Des** | 14 | +2      | +2     | **Con** | 15 | +2      | +2     |\n| **Int** | 8  | -1      | -1     | **Sab** | 14 | +2      | +2     | **Car** | 11 | +0      | +0     |\n*Fera Média, Neutra*\n**CA** 13 mais seu modificador de Sabedoria\n**Iniciativa** +2 (12)\n**PV** 5 mais cinco vezes o seu nível de Guardião (a fera tem um número de Dados de Vida [d8s] igual ao seu nível de Guardião)\n**Deslocamento** 12 m, Escalada 12 m\n**Sentidos** Visão no Escuro 18 m, Percepção Passiva 12\n**Idiomas** Compreende os idiomas que você fala\n**ND** Nenhum (XP 0; BP é igual ao seu Bônus de Proficiência)\nTraços\n**Vínculo Primal.** Adicione seu Bônus de Proficiência a qualquer teste de atributo ou salvaguarda que a fera realizar.\nAções\n**Golpe da Fera.** *Jogada de Ataque Corpo a Corpo:* Bônus é igual ao seu modificador de ataque mágico, alcance 1,5 m. *Dano:* 1d8 + 2 mais seu modificador de Sabedoria de pontos de dano Contundente, Cortante ou Perfurante (à sua escolha quando invocar a fera). Se a fera se moveu pelo menos 6 metros em direção ao alvo antes do acerto, o alvo sofre 1d6 pontos de dano adicional do mesmo tipo, e tem a condição Caído se for uma criatura Grande ou menor.",
+      "subclasse": "Senhor das Feras"
     },
     {
       "nivel": 7,
       "nome": "Treinamento Excepcional",
-      "descricao": "Ao executar uma Ação Bônus para ordenar sua fera Companheira Primal, você também pode ordená-la executar a ação Ajudar, Correr, Desengajar ou Esquivar usando a Ação Bônus dela.\nAlém disso, sempre que a fera acertar com uma jogada de ataque e causar dano, ela pode causar dano Energético ou o tipo de dano normal dela, à sua escolha."
+      "descricao": "Ao executar uma Ação Bônus para ordenar sua fera Companheira Primal, você também pode ordená-la executar a ação Ajudar, Correr, Desengajar ou Esquivar usando a Ação Bônus dela.\nAlém disso, sempre que a fera acertar com uma jogada de ataque e causar dano, ela pode causar dano Energético ou o tipo de dano normal dela, à sua escolha.",
+      "subclasse": "Senhor das Feras"
     },
     {
       "nivel": 11,
       "nome": "Fúria Bestial",
-      "descricao": "Ao ordenar sua fera Companheira Primal a executar a ação Golpe da Fera, ela pode usá-la duas vezes.\nAlém disso, na primeira vez em cada turno que ela atinge uma criatura sob o efeito da magia *Marca do Caçador*, a fera causa dano Energético adicional igual ao dano bônus dessa magia."
+      "descricao": "Ao ordenar sua fera Companheira Primal a executar a ação Golpe da Fera, ela pode usá-la duas vezes.\nAlém disso, na primeira vez em cada turno que ela atinge uma criatura sob o efeito da magia *Marca do Caçador*, a fera causa dano Energético adicional igual ao dano bônus dessa magia.",
+      "subclasse": "Senhor das Feras"
     },
     {
       "nivel": 15,
       "nome": "Compartilhar Magias",
-      "descricao": "Ao conjurar uma magia em si, você também pode afetar sua fera Companheira Primal com a magia se a Fera estiver a até 9 metros de você."
+      "descricao": "Ao conjurar uma magia em si, você também pode afetar sua fera Companheira Primal com a magia se a Fera estiver a até 9 metros de você.",
+      "subclasse": "Senhor das Feras"
     },
     {
       "nivel": 3,
       "nome": "Emboscador das Sombras",
-      "descricao": "Você dominou a arte de criar emboscadas temíveis, concedendo-lhe os seguintes benefícios.\n**Bônus de Iniciativa.** Ao jogar Iniciativa, pode adicionar seu modificador de Sabedoria à jogada.\n**Golpe Terrível.** Ao atacar e atingir uma criatura com uma arma, você pode causar 2d6 pontos de dano Psíquico adicional. Você pode usar este benefício uma vez por turno e um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.\n**Impulso do Emboscador.** No início do seu primeiro turno de cada combate, seu Deslocamento aumenta em 3 metros até o final deste turno."
+      "descricao": "Você dominou a arte de criar emboscadas temíveis, concedendo-lhe os seguintes benefícios.\n**Bônus de Iniciativa.** Ao jogar Iniciativa, pode adicionar seu modificador de Sabedoria à jogada.\n**Golpe Terrível.** Ao atacar e atingir uma criatura com uma arma, você pode causar 2d6 pontos de dano Psíquico adicional. Você pode usar este benefício uma vez por turno e um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.\n**Impulso do Emboscador.** No início do seu primeiro turno de cada combate, seu Deslocamento aumenta em 3 metros até o final deste turno.",
+      "subclasse": "Vigilante das Sombras"
     },
     {
       "nivel": 3,
       "nome": "Magias do Vigilante das Sombras",
-      "descricao": "Ao atingir um nível de Guardião detalhado na tabela Magias do Vigilante das Sombras, você tem a lista de magias preparadas.\n**Magias do Vigilante das Sombras**\n| **Nível de Guardião** | **Magias**               |\n|-----------------------|--------------------------|\n| 3                     | *Disfarçar-se*           |\n| 5                     | *Corda Extradimensional* |\n| 9                     | *Medo*                   |\n| 13                    | *Invisibilidade Maior*   |\n| 17                    | *Similaridade*           |"
+      "descricao": "Ao atingir um nível de Guardião detalhado na tabela Magias do Vigilante das Sombras, você tem a lista de magias preparadas.\n**Magias do Vigilante das Sombras**\n| **Nível de Guardião** | **Magias**               |\n|-----------------------|--------------------------|\n| 3                     | *Disfarçar-se*           |\n| 5                     | *Corda Extradimensional* |\n| 9                     | *Medo*                   |\n| 13                    | *Invisibilidade Maior*   |\n| 17                    | *Similaridade*           |",
+      "subclasse": "Vigilante das Sombras"
     },
     {
       "nivel": 3,
       "nome": "Visão Umbrosa",
-      "descricao": "Você adquire Visão no Escuro com um alcance de 18 metros. Se você já tem Visão no Escuro, o alcance aumenta em 18 metros.\nVocê também se torna capaz de escapar de criaturas que utilizem Visão no Escuro. Enquanto estiver inteiramente na Escuridão, você tem a condição Invisível para qualquer criatura que dependa da Visão no Escuro para vê-lo nessa Escuridão."
+      "descricao": "Você adquire Visão no Escuro com um alcance de 18 metros. Se você já tem Visão no Escuro, o alcance aumenta em 18 metros.\nVocê também se torna capaz de escapar de criaturas que utilizem Visão no Escuro. Enquanto estiver inteiramente na Escuridão, você tem a condição Invisível para qualquer criatura que dependa da Visão no Escuro para vê-lo nessa Escuridão.",
+      "subclasse": "Vigilante das Sombras"
     },
     {
       "nivel": 7,
       "nome": "Mente de Ferro",
-      "descricao": "Você desenvolveu a capacidade de resistir a poderes que alteram a mente. Você adquire proficiência em salvaguardas de Sabedoria. Se você já tem essa proficiência, adquire proficiência em salvaguardas de Carisma ou Inteligência (à sua escolha)."
+      "descricao": "Você desenvolveu a capacidade de resistir a poderes que alteram a mente. Você adquire proficiência em salvaguardas de Sabedoria. Se você já tem essa proficiência, adquire proficiência em salvaguardas de Carisma ou Inteligência (à sua escolha).",
+      "subclasse": "Vigilante das Sombras"
     },
     {
       "nivel": 11,
       "nome": "Torrente do Vigilante",
-      "descricao": "O dano psíquico do seu Golpe Terrível se torna 2d8. Além disso, ao usar o efeito Golpe Terrível da sua característica Emboscador das Sombras, você pode causar um dos seguintes efeitos adicionais.\n**Golpe Repentino.** Você pode realizar outro ataque com a mesma arma contra uma criatura diferente que esteja a até 1,5 metro do alvo original e que esteja dentro do alcance da arma.\n**Medo em Massa.** O alvo e cada criatura a até 3 metros dele deve realizar uma salvaguarda de Sabedoria contra a CD para evitar sua magia. Ao falhar, uma criatura tem a condição Amedrontado até o início do seu próximo turno."
+      "descricao": "O dano psíquico do seu Golpe Terrível se torna 2d8. Além disso, ao usar o efeito Golpe Terrível da sua característica Emboscador das Sombras, você pode causar um dos seguintes efeitos adicionais.\n**Golpe Repentino.** Você pode realizar outro ataque com a mesma arma contra uma criatura diferente que esteja a até 1,5 metro do alvo original e que esteja dentro do alcance da arma.\n**Medo em Massa.** O alvo e cada criatura a até 3 metros dele deve realizar uma salvaguarda de Sabedoria contra a CD para evitar sua magia. Ao falhar, uma criatura tem a condição Amedrontado até o início do seu próximo turno.",
+      "subclasse": "Vigilante das Sombras"
     },
     {
       "nivel": 15,
       "nome": "Esquiva Sombria",
-      "descricao": "Quando uma criatura realiza uma jogada de ataque contra você, você pode executar uma Reação para impor Desvantagem nessa jogada. Se o ataque acertar ou errar, você pode se teleportar até 9 metros para um espaço desocupado à sua vista."
+      "descricao": "Quando uma criatura realiza uma jogada de ataque contra você, você pode executar uma Reação para impor Desvantagem nessa jogada. Se o ataque acertar ou errar, você pode se teleportar até 9 metros para um espaço desocupado à sua vista.",
+      "subclasse": "Vigilante das Sombras"
     }
   ],
   "subclasses": [

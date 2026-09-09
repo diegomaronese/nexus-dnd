@@ -437,44 +437,267 @@ async function _abrirModalClasse(nomeClasse, subAbaInicial = 'caracteristicas') 
 }
 
 /**
- * Renderiza características de classe com acordeões
+ * Renderiza características de classe com acordeões e indicador visual para características de subclasses
  */
 function _renderCaracteristicasClasse(container, dados) {
-  const caracteristicas = dados.caracteristicas || [];
-  if (caracteristicas.length === 0) {
+  const caracteristicasBrutas = dados.caracteristicas || [];
+  if (caracteristicasBrutas.length === 0) {
     container.innerHTML = `<div class="empty-state"><p>Nenhuma característica detalhada encontrada.</p></div>`;
     return;
   }
 
+  // Mapear características de subclasses
+  const mapSubclasses = new Map();
+  const nomesSubclasses = new Set();
+  if (Array.isArray(dados.subclasses)) {
+    dados.subclasses.forEach(sub => {
+      if (sub.nome) nomesSubclasses.add(sub.nome);
+      (sub.caracteristicas || []).forEach(sc => {
+        if (sc.nome && !mapSubclasses.has(sc.nome)) {
+          mapSubclasses.set(sc.nome, sub.nome);
+        }
+      });
+    });
+  }
+
+  // Enriquecer cada característica identificando se pertence a subclasse
+  const lista = caracteristicasBrutas.map((c, index) => {
+    const subclasseNome = c.subclasse || mapSubclasses.get(c.nome) || null;
+    return {
+      ...c,
+      index,
+      subclasseNome,
+      isSubclasse: Boolean(subclasseNome)
+    };
+  });
+
+  const totalGerais = lista.filter(c => !c.isSubclasse).length;
+  const totalSubclasses = lista.filter(c => c.isSubclasse).length;
+  const listaSubclassesArray = Array.from(nomesSubclasses);
+
   container.innerHTML = `
-    <div style="display: flex; flex-direction: column; gap: 8px;">
-      ${caracteristicas.map((c, i) => `
-        <div class="compendio-accordion">
-          <div class="compendio-accordion-header ${i === 0 ? 'aberto' : ''}" data-acc-index="${i}">
-            <span>
-              <strong>${escHtml(c.nome)}</strong>
-              <span class="c-badge c-badge-categoria" style="margin-left: 8px;">Nível ${c.nivel}</span>
-            </span>
-            <span class="acc-icon">${i === 0 ? '▲' : '▼'}</span>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <!-- Barra de Filtros e Busca de Características -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+          <!-- Filtro por Tipo (Pills) -->
+          <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
+            <button type="button" class="btn btn-sm btn-subtipo ativo" id="filtro-carac-todos" data-filtro-tipo="todos" style="font-size: 0.78rem; padding: 4px 10px; border-radius: 14px;">
+              Todas (${lista.length})
+            </button>
+            <button type="button" class="btn btn-sm btn-subtipo" id="filtro-carac-geral" data-filtro-tipo="geral" style="font-size: 0.78rem; padding: 4px 10px; border-radius: 14px;">
+              Gerais da Classe (${totalGerais})
+            </button>
+            <button type="button" class="btn btn-sm btn-subtipo" id="filtro-carac-subclasse" data-filtro-tipo="subclasse" style="font-size: 0.78rem; padding: 4px 10px; border-radius: 14px; color: #c084fc; border-color: rgba(168, 85, 247, 0.4);">
+              ✦ Subclasses (${totalSubclasses})
+            </button>
           </div>
-          <div class="compendio-accordion-body" id="acc-body-${i}" style="${i === 0 ? '' : 'display: none;'}">
-            ${mdParaHtml(c.descricao || '')}
+
+          <!-- Ações de Expandir/Recolher -->
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <button type="button" id="btn-expandir-todas-carac" class="btn btn-sm btn-ghost" style="font-size: 0.76rem; padding: 3px 8px;" title="Expandir todas as características">
+              Expandir Todas
+            </button>
+            <button type="button" id="btn-recolher-todas-carac" class="btn btn-sm btn-ghost" style="font-size: 0.76rem; padding: 3px 8px;" title="Recolher todas as características">
+              Recolher Todas
+            </button>
           </div>
         </div>
-      `).join('')}
+
+        <!-- Linha de Busca e Seleção de Subclasse Específica -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <div style="flex: 1; min-width: 200px; position: relative;">
+            <span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); opacity: 0.5; font-size: 0.82rem; pointer-events: none;">${ICONE_BUSCA_SVG}</span>
+            <input type="text" id="busca-carac-input" class="compendio-search-input" placeholder="Buscar por nome ou conteúdo..." style="height: 32px; font-size: 0.82rem; padding: 4px 10px 4px 30px; width: 100%;">
+          </div>
+
+          ${listaSubclassesArray.length > 0 ? `
+            <select id="select-filtro-subclasse" class="form-select" style="width: auto; min-width: 170px; height: 32px; font-size: 0.8rem; padding: 4px 28px 4px 10px;">
+              <option value="">Todas as Subclasses</option>
+              ${listaSubclassesArray.map(sub => `<option value="${escHtml(sub)}">Subclasse: ${escHtml(sub)}</option>`).join('')}
+            </select>
+          ` : ''}
+        </div>
+      </div>
+
+      <!-- Lista de Acordeões -->
+      <div id="lista-acordeoes-caracteristicas" style="display: flex; flex-direction: column; gap: 8px;">
+        ${_gerarHtmlAcordeoesCaracteristicas(lista)}
+      </div>
     </div>
   `;
 
-  container.querySelectorAll('.compendio-accordion-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const idx = header.dataset.accIndex;
-      const body = document.getElementById(`acc-body-${idx}`);
-      const icon = header.querySelector('.acc-icon');
-      const aberto = header.classList.toggle('aberto');
-      body.style.display = aberto ? 'block' : 'none';
-      icon.textContent = aberto ? '▲' : '▼';
+  // Bind dos eventos de acordeão e filtros
+  _vincularEventosCaracteristicas(container, lista);
+}
+
+/**
+ * Gera HTML dos acordeões de características
+ */
+function _gerarHtmlAcordeoesCaracteristicas(itensVisiveis) {
+  if (itensVisiveis.length === 0) {
+    return `<div class="empty-state" style="padding: 24px 16px; text-align: center;"><p>Nenhuma característica encontrada com os filtros selecionados.</p></div>`;
+  }
+
+  return itensVisiveis.map((c, i) => `
+    <div class="compendio-accordion ${c.isSubclasse ? 'compendio-accordion-subclasse' : ''}" data-acc-id="${c.index}">
+      <div class="compendio-accordion-header ${i === 0 ? 'aberto' : ''}" data-acc-target="${c.index}">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1;">
+          <strong style="${c.isSubclasse ? 'color: #e9d5ff;' : ''}">${escHtml(c.nome)}</strong>
+          <span class="c-badge c-badge-categoria">Nível ${c.nivel}</span>
+          ${c.isSubclasse ? `
+            <span class="c-badge c-badge-subclasse" title="Característica da Subclasse ${escHtml(c.subclasseNome)}">
+              <span style="opacity: 0.85; margin-right: 4px;">✦</span>Subclasse: ${escHtml(c.subclasseNome)}
+            </span>
+          ` : `
+            <span class="c-badge" style="background: rgba(255, 255, 255, 0.04); color: var(--text-muted); border: 1px solid var(--border-light); font-size: 0.68rem;">Classe</span>
+          `}
+        </div>
+        <span class="acc-icon">${i === 0 ? '▲' : '▼'}</span>
+      </div>
+      <div class="compendio-accordion-body" id="acc-body-carac-${c.index}" style="${i === 0 ? '' : 'display: none;'}">
+        ${c.isSubclasse ? `
+          <div class="carac-subclasse-banner">
+            <span class="carac-subclasse-icone">✦</span>
+            <div>
+              <span>Característica da subclasse <strong>${escHtml(c.subclasseNome)}</strong></span>
+              <span style="opacity: 0.8; font-size: 0.78rem; margin-left: 6px;">(Adquirida no Nível ${c.nivel})</span>
+            </div>
+          </div>
+        ` : ''}
+        ${mdParaHtml(c.descricao || '')}
+      </div>
+    </div>
+  `).join('');
+}
+
+/**
+ * Vincula lógica interativa de filtros e expansão/recolhimento dos acordeões
+ */
+function _vincularEventosCaracteristicas(container, listaCompleta) {
+  let filtroTipoAtivo = 'todos'; // 'todos' | 'geral' | 'subclasse'
+  let subclasseFiltro = '';
+  let termoBusca = '';
+
+  const listaContainer = container.querySelector('#lista-acordeoes-caracteristicas');
+  const buscaInput = container.querySelector('#busca-carac-input');
+  const selectSubclasse = container.querySelector('#select-filtro-subclasse');
+  const botoesTipo = container.querySelectorAll('[data-filtro-tipo]');
+  const btnExpandir = container.querySelector('#btn-expandir-todas-carac');
+  const btnRecolher = container.querySelector('#btn-recolher-todas-carac');
+
+  function aplicarFiltros() {
+    const termo = semAcento(termoBusca.trim());
+
+    const filtrados = listaCompleta.filter(c => {
+      // 1. Filtro por Tipo (todos / geral / subclasse)
+      if (filtroTipoAtivo === 'geral' && c.isSubclasse) return false;
+      if (filtroTipoAtivo === 'subclasse' && !c.isSubclasse) return false;
+
+      // 2. Filtro por subclasse específica no select
+      if (subclasseFiltro && c.subclasseNome !== subclasseFiltro) {
+        return false;
+      }
+
+      // 3. Filtro textual
+      if (termo) {
+        const matchNome = semAcento(c.nome || '').includes(termo);
+        const matchSub = semAcento(c.subclasseNome || '').includes(termo);
+        const matchDesc = semAcento(c.descricao || '').includes(termo);
+        const matchNivel = String(c.nivel || '').includes(termo);
+        if (!matchNome && !matchSub && !matchDesc && !matchNivel) return false;
+      }
+
+      return true;
+    });
+
+    listaContainer.innerHTML = _gerarHtmlAcordeoesCaracteristicas(filtrados);
+    bindHeaders();
+  }
+
+  function bindHeaders() {
+    listaContainer.querySelectorAll('.compendio-accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const targetId = header.dataset.accTarget;
+        const body = listaContainer.querySelector(`#acc-body-carac-${targetId}`);
+        const icon = header.querySelector('.acc-icon');
+        const aberto = header.classList.toggle('aberto');
+        if (body) {
+          body.style.display = aberto ? 'block' : 'none';
+        }
+        if (icon) {
+          icon.textContent = aberto ? '▲' : '▼';
+        }
+      });
+    });
+  }
+
+  // Eventos de botões de tipo
+  botoesTipo.forEach(btn => {
+    btn.addEventListener('click', () => {
+      botoesTipo.forEach(b => b.classList.remove('ativo'));
+      btn.classList.add('ativo');
+      filtroTipoAtivo = btn.dataset.filtroTipo;
+      if (filtroTipoAtivo === 'geral' && selectSubclasse) {
+        selectSubclasse.value = '';
+        subclasseFiltro = '';
+      }
+      aplicarFiltros();
     });
   });
+
+  // Evento do select de subclasse
+  if (selectSubclasse) {
+    selectSubclasse.addEventListener('change', (e) => {
+      subclasseFiltro = e.target.value;
+      if (subclasseFiltro && filtroTipoAtivo === 'geral') {
+        // Mudar para subclasse se o usuário escolheu uma subclasse específica
+        botoesTipo.forEach(b => {
+          b.classList.toggle('ativo', b.dataset.filtroTipo === 'subclasse');
+        });
+        filtroTipoAtivo = 'subclasse';
+      }
+      aplicarFiltros();
+    });
+  }
+
+  // Evento de busca textual
+  if (buscaInput) {
+    buscaInput.addEventListener('input', (e) => {
+      termoBusca = e.target.value;
+      aplicarFiltros();
+    });
+  }
+
+  // Expandir todas
+  if (btnExpandir) {
+    btnExpandir.addEventListener('click', () => {
+      listaContainer.querySelectorAll('.compendio-accordion-header').forEach(header => {
+        header.classList.add('aberto');
+        const icon = header.querySelector('.acc-icon');
+        if (icon) icon.textContent = '▲';
+      });
+      listaContainer.querySelectorAll('.compendio-accordion-body').forEach(body => {
+        body.style.display = 'block';
+      });
+    });
+  }
+
+  // Recolher todas
+  if (btnRecolher) {
+    btnRecolher.addEventListener('click', () => {
+      listaContainer.querySelectorAll('.compendio-accordion-header').forEach(header => {
+        header.classList.remove('aberto');
+        const icon = header.querySelector('.acc-icon');
+        if (icon) icon.textContent = '▼';
+      });
+      listaContainer.querySelectorAll('.compendio-accordion-body').forEach(body => {
+        body.style.display = 'none';
+      });
+    });
+  }
+
+  bindHeaders();
 }
 
 /**

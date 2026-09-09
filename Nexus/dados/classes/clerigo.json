@@ -11,12 +11,6 @@
   },
   "tabela_caracteristicas": [
     {
-      "Nível": "1",
-      "Bônus de Proficiência": "+2",
-      "Características": "Conjuração, Ordem Divina",
-      "Canalizar Divindade": "—",
-      "Truques": "3",
-      "Magias Preparadas": "4",
       "1": "2",
       "2": "—",
       "3": "—",
@@ -25,15 +19,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "1",
+      "Bônus de Proficiência": "+2",
+      "Características": "Conjuração, Ordem Divina",
+      "Canalizar Divindade": "—",
+      "Truques": "3",
+      "Magias Preparadas": "4"
     },
     {
-      "Nível": "2",
-      "Bônus de Proficiência": "+2",
-      "Características": "Canalizar Divindade",
-      "Canalizar Divindade": "2",
-      "Truques": "3",
-      "Magias Preparadas": "5",
       "1": "3",
       "2": "—",
       "3": "—",
@@ -42,15 +36,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
-      "Nível": "3",
+      "9": "—",
+      "Nível": "2",
       "Bônus de Proficiência": "+2",
-      "Características": "Subclasse Clérigo",
+      "Características": "Canalizar Divindade",
       "Canalizar Divindade": "2",
       "Truques": "3",
-      "Magias Preparadas": "6",
+      "Magias Preparadas": "5"
+    },
+    {
       "1": "4",
       "2": "2",
       "3": "—",
@@ -59,15 +53,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "3",
+      "Bônus de Proficiência": "+2",
+      "Características": "Subclasse Clérigo",
+      "Canalizar Divindade": "2",
+      "Truques": "3",
+      "Magias Preparadas": "6"
     },
     {
-      "Nível": "4",
-      "Bônus de Proficiência": "+2",
-      "Características": "Aumento no Valor de Atributo",
-      "Canalizar Divindade": "2",
-      "Truques": "4",
-      "Magias Preparadas": "7",
       "1": "4",
       "2": "3",
       "3": "—",
@@ -76,15 +70,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
-      "Nível": "5",
-      "Bônus de Proficiência": "+3",
-      "Características": "Fulminar Mortos-Vivos",
+      "9": "—",
+      "Nível": "4",
+      "Bônus de Proficiência": "+2",
+      "Características": "Aumento no Valor de Atributo",
       "Canalizar Divindade": "2",
       "Truques": "4",
-      "Magias Preparadas": "9",
+      "Magias Preparadas": "7"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "2",
@@ -93,15 +87,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "5",
+      "Bônus de Proficiência": "+3",
+      "Características": "Fulminar Mortos-Vivos",
+      "Canalizar Divindade": "2",
+      "Truques": "4",
+      "Magias Preparadas": "9"
     },
     {
-      "Nível": "6",
-      "Bônus de Proficiência": "+3",
-      "Características": "Característica de Subclasse",
-      "Canalizar Divindade": "3",
-      "Truques": "4",
-      "Magias Preparadas": "10",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -110,15 +104,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
-      "Nível": "7",
+      "9": "—",
+      "Nível": "6",
       "Bônus de Proficiência": "+3",
-      "Características": "Golpes Abençoados",
+      "Características": "Característica de Subclasse",
       "Canalizar Divindade": "3",
       "Truques": "4",
-      "Magias Preparadas": "11",
+      "Magias Preparadas": "10"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -127,15 +121,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
-      "Nível": "8",
+      "9": "—",
+      "Nível": "7",
       "Bônus de Proficiência": "+3",
-      "Características": "Aumento no Valor de Atributo",
+      "Características": "Golpes Abençoados",
       "Canalizar Divindade": "3",
       "Truques": "4",
-      "Magias Preparadas": "12",
+      "Magias Preparadas": "11"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -144,15 +138,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
-      "Nível": "9",
-      "Bônus de Proficiência": "+4",
-      "Características": "—",
+      "9": "—",
+      "Nível": "8",
+      "Bônus de Proficiência": "+3",
+      "Características": "Aumento no Valor de Atributo",
       "Canalizar Divindade": "3",
       "Truques": "4",
-      "Magias Preparadas": "14",
+      "Magias Preparadas": "12"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -161,15 +155,15 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "9",
+      "Bônus de Proficiência": "+4",
+      "Características": "—",
+      "Canalizar Divindade": "3",
+      "Truques": "4",
+      "Magias Preparadas": "14"
     },
     {
-      "Nível": "10",
-      "Bônus de Proficiência": "+4",
-      "Características": "Intervenção Divina",
-      "Canalizar Divindade": "3",
-      "Truques": "5",
-      "Magias Preparadas": "15",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -178,15 +172,32 @@
       "6": "—",
       "7": "—",
       "8": "—",
-      "9": "—"
+      "9": "—",
+      "Nível": "10",
+      "Bônus de Proficiência": "+4",
+      "Características": "Intervenção Divina",
+      "Canalizar Divindade": "3",
+      "Truques": "5",
+      "Magias Preparadas": "15"
     },
     {
+      "1": "4",
+      "2": "3",
+      "3": "3",
+      "4": "3",
+      "5": "2",
+      "6": "1",
+      "7": "—",
+      "8": "—",
+      "9": "—",
       "Nível": "11",
       "Bônus de Proficiência": "+4",
       "Características": "—",
       "Canalizar Divindade": "3",
       "Truques": "5",
-      "Magias Preparadas": "16",
+      "Magias Preparadas": "16"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -195,32 +206,32 @@
       "6": "1",
       "7": "—",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "12",
       "Bônus de Proficiência": "+4",
       "Características": "Aumento no Valor de Atributo",
       "Canalizar Divindade": "3",
       "Truques": "5",
-      "Magias Preparadas": "16",
+      "Magias Preparadas": "16"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
       "4": "3",
       "5": "2",
       "6": "1",
-      "7": "—",
+      "7": "1",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "13",
       "Bônus de Proficiência": "+5",
       "Características": "—",
       "Canalizar Divindade": "3",
       "Truques": "5",
-      "Magias Preparadas": "17",
+      "Magias Preparadas": "17"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -229,15 +240,15 @@
       "6": "1",
       "7": "1",
       "8": "—",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "14",
       "Bônus de Proficiência": "+5",
       "Características": "Golpes Abençoados Aprimorado",
       "Canalizar Divindade": "3",
       "Truques": "5",
-      "Magias Preparadas": "17",
+      "Magias Preparadas": "17"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -245,16 +256,16 @@
       "5": "2",
       "6": "1",
       "7": "1",
-      "8": "—",
-      "9": "—"
-    },
-    {
+      "8": "1",
+      "9": "—",
       "Nível": "15",
       "Bônus de Proficiência": "+5",
       "Características": "—",
       "Canalizar Divindade": "3",
       "Truques": "5",
-      "Magias Preparadas": "18",
+      "Magias Preparadas": "18"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -263,15 +274,15 @@
       "6": "1",
       "7": "1",
       "8": "1",
-      "9": "—"
-    },
-    {
+      "9": "—",
       "Nível": "16",
       "Bônus de Proficiência": "+5",
       "Características": "Aumento no Valor de Atributo",
       "Canalizar Divindade": "3",
       "Truques": "5",
-      "Magias Preparadas": "18",
+      "Magias Preparadas": "18"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -280,32 +291,15 @@
       "6": "1",
       "7": "1",
       "8": "1",
-      "9": "—"
-    },
-    {
+      "9": "1",
       "Nível": "17",
       "Bônus de Proficiência": "+6",
       "Características": "Característica de Subclasse",
       "Canalizar Divindade": "3",
       "Truques": "5",
-      "Magias Preparadas": "19",
-      "1": "4",
-      "2": "3",
-      "3": "3",
-      "4": "3",
-      "5": "2",
-      "6": "1",
-      "7": "1",
-      "8": "1",
-      "9": "1"
+      "Magias Preparadas": "19"
     },
     {
-      "Nível": "18",
-      "Bônus de Proficiência": "+6",
-      "Características": "—",
-      "Canalizar Divindade": "4",
-      "Truques": "5",
-      "Magias Preparadas": "20",
       "1": "4",
       "2": "3",
       "3": "3",
@@ -314,15 +308,15 @@
       "6": "1",
       "7": "1",
       "8": "1",
-      "9": "1"
-    },
-    {
-      "Nível": "19",
+      "9": "1",
+      "Nível": "18",
       "Bônus de Proficiência": "+6",
-      "Características": "Dádiva Épica",
+      "Características": "—",
       "Canalizar Divindade": "4",
       "Truques": "5",
-      "Magias Preparadas": "21",
+      "Magias Preparadas": "20"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -331,15 +325,15 @@
       "6": "2",
       "7": "1",
       "8": "1",
-      "9": "1"
-    },
-    {
-      "Nível": "20",
+      "9": "1",
+      "Nível": "19",
       "Bônus de Proficiência": "+6",
-      "Características": "Intervenção Divina Maior",
+      "Características": "Dádiva Épica",
       "Canalizar Divindade": "4",
       "Truques": "5",
-      "Magias Preparadas": "22",
+      "Magias Preparadas": "21"
+    },
+    {
       "1": "4",
       "2": "3",
       "3": "3",
@@ -348,7 +342,13 @@
       "6": "2",
       "7": "2",
       "8": "1",
-      "9": "1"
+      "9": "1",
+      "Nível": "20",
+      "Bônus de Proficiência": "+6",
+      "Características": "Intervenção Divina Maior",
+      "Canalizar Divindade": "4",
+      "Truques": "5",
+      "Magias Preparadas": "22"
     }
   ],
   "caracteristicas": [
@@ -410,102 +410,122 @@
     {
       "nivel": 3,
       "nome": "Magias de Domínio da Guerra",
-      "descricao": "Sua conexão com este domínio divino garante que você sempre tenha certas magias preparadas. Ao atingir um nível de Clérigo especificado na tabela Magias de Domínio da Guerra, você sempre tem as magias listadas preparadas.\n**Magias de Domínio da Guerra**\n| **Nível de Clérigo** | **Magias Preparadas**                                   |\n|----------------------|---------------------------------------------------------|\n| 3                    | *Arma Espiritual, Arma Mágica, Escudo da Fé, Raio Guia* |\n| 5                    | *Guardiões Espirituais, Manto do Cruzado*               |\n| 7                    | *Escudo Ardente, Movimentação Livre*                    |\n| 9                    | *Golpe de Arço, Paralisar Monstro*                      |"
+      "descricao": "Sua conexão com este domínio divino garante que você sempre tenha certas magias preparadas. Ao atingir um nível de Clérigo especificado na tabela Magias de Domínio da Guerra, você sempre tem as magias listadas preparadas.\n**Magias de Domínio da Guerra**\n| **Nível de Clérigo** | **Magias Preparadas**                                   |\n|----------------------|---------------------------------------------------------|\n| 3                    | *Arma Espiritual, Arma Mágica, Escudo da Fé, Raio Guia* |\n| 5                    | *Guardiões Espirituais, Manto do Cruzado*               |\n| 7                    | *Escudo Ardente, Movimentação Livre*                    |\n| 9                    | *Golpe de Arço, Paralisar Monstro*                      |",
+      "subclasse": "Domínio da Guerra"
     },
     {
       "nivel": 3,
       "nome": "Ataque Direcionado",
-      "descricao": "Quando você ou uma criatura a até 9 metros de você erra uma jogada de ataque, você pode gastar um uso de seu Canalizar Divindade e dar a essa jogada um bônus de +10, potencialmente fazendo-o acertar. Você usa sua Reação para conceder esse bônus a uma jogada de ataque a outra criatura."
+      "descricao": "Quando você ou uma criatura a até 9 metros de você erra uma jogada de ataque, você pode gastar um uso de seu Canalizar Divindade e dar a essa jogada um bônus de +10, potencialmente fazendo-o acertar. Você usa sua Reação para conceder esse bônus a uma jogada de ataque a outra criatura.",
+      "subclasse": "Domínio da Guerra"
     },
     {
       "nivel": 3,
       "nome": "Sacerdote da Guerra",
-      "descricao": "Como uma Ação Bônus, você pode realizar um ataque com uma arma ou um Ataque Desarmado. Você pode usar essa Ação Bônus um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez). Você restaura todos os usos gastos ao completar um Descanso Curto ou Longo."
+      "descricao": "Como uma Ação Bônus, você pode realizar um ataque com uma arma ou um Ataque Desarmado. Você pode usar essa Ação Bônus um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez). Você restaura todos os usos gastos ao completar um Descanso Curto ou Longo.",
+      "subclasse": "Domínio da Guerra"
     },
     {
       "nivel": 6,
       "nome": "Bênção do Deus da Guerra",
-      "descricao": "Você pode gastar um uso de seu Canalizar Divindade para conjurar *Arma Espiritual* ou *Escudo da Fé* em vez de gastar um espaço de magia. Uma magia conjurada dessa maneira não requer Concentração. Em vez disso, a magia permanece por 1 minuto, mas encerra se você conjurá-la novamente, ter a condição Incapacitado ou morrer."
+      "descricao": "Você pode gastar um uso de seu Canalizar Divindade para conjurar *Arma Espiritual* ou *Escudo da Fé* em vez de gastar um espaço de magia. Uma magia conjurada dessa maneira não requer Concentração. Em vez disso, a magia permanece por 1 minuto, mas encerra se você conjurá-la novamente, ter a condição Incapacitado ou morrer.",
+      "subclasse": "Domínio da Guerra"
     },
     {
       "nivel": 17,
       "nome": "Avatar da Guerra",
-      "descricao": "Você adquire Resistência a dano Contundente, Cortante e Perfurante."
+      "descricao": "Você adquire Resistência a dano Contundente, Cortante e Perfurante.",
+      "subclasse": "Domínio da Guerra"
     },
     {
       "nivel": 3,
       "nome": "Brilho do Amanhecer",
-      "descricao": "Como uma ação Usar Magia, você ergue seu Símbolo Sagrado e gasta o uso de seu Canalizar Divindade para emitir um feixe de luz em uma Emanação de 9 metros originada em você. Qualquer Escuridão mágica, como a criada pela magia *Escuridão*, nessa área é dissipada. Além disso, cada criatura à sua escolha nessa área deve realizar uma salvaguarda de Constituição, sofrendo dano Radiante igual a 2d10 mais seu nível de Clérigo se falhar ou metade desse dano em caso de sucesso."
+      "descricao": "Como uma ação Usar Magia, você ergue seu Símbolo Sagrado e gasta o uso de seu Canalizar Divindade para emitir um feixe de luz em uma Emanação de 9 metros originada em você. Qualquer Escuridão mágica, como a criada pela magia *Escuridão*, nessa área é dissipada. Além disso, cada criatura à sua escolha nessa área deve realizar uma salvaguarda de Constituição, sofrendo dano Radiante igual a 2d10 mais seu nível de Clérigo se falhar ou metade desse dano em caso de sucesso.",
+      "subclasse": "Domínio da Luz"
     },
     {
       "nivel": 3,
       "nome": "Labareda Protetora",
-      "descricao": "Quando uma criatura à sua vista a até 9 metros de você realiza uma jogada de ataque, você pode executar uma Reação para impor Desvantagem na jogada de ataque, fazendo com que a luz brilhe antes de acertar ou errar.\nVocê pode usar essa característica um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo."
+      "descricao": "Quando uma criatura à sua vista a até 9 metros de você realiza uma jogada de ataque, você pode executar uma Reação para impor Desvantagem na jogada de ataque, fazendo com que a luz brilhe antes de acertar ou errar.\nVocê pode usar essa característica um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.",
+      "subclasse": "Domínio da Luz"
     },
     {
       "nivel": 3,
       "nome": "Magias de Domínio da Luz",
-      "descricao": "Sua conexão com este domínio divino garante que você sempre tenha certas magias preparadas. Ao atingir um nível de Clérigo especificado na tabela Magias de Domínio da Luz, você sempre tem as magias listadas preparadas.\n**Magias de Domínio da Luz**\n| **Nível de Clérigo** | **Magias Preparadas**                                          |\n|----------------------|----------------------------------------------------------------|\n| 3                    | *Fogo das Fadas, Mãos Flamejantes, Raio Ardente, Ver o Invisível* |\n| 5                    | *Bola de Fogo, Luz do Dia*                                     |\n| 7                    | *Muralha de Fogo, Olho Arcano*                                 |\n| 9                    | *Coluna de Chamas, Vidência*                                   |"
+      "descricao": "Sua conexão com este domínio divino garante que você sempre tenha certas magias preparadas. Ao atingir um nível de Clérigo especificado na tabela Magias de Domínio da Luz, você sempre tem as magias listadas preparadas.\n**Magias de Domínio da Luz**\n| **Nível de Clérigo** | **Magias Preparadas**                                          |\n|----------------------|----------------------------------------------------------------|\n| 3                    | *Fogo das Fadas, Mãos Flamejantes, Raio Ardente, Ver o Invisível* |\n| 5                    | *Bola de Fogo, Luz do Dia*                                     |\n| 7                    | *Muralha de Fogo, Olho Arcano*                                 |\n| 9                    | *Coluna de Chamas, Vidência*                                   |",
+      "subclasse": "Domínio da Luz"
     },
     {
       "nivel": 6,
       "nome": "Labareda Protetora Aprimorada",
-      "descricao": "Você restaura todos os usos gastos da sua Labareda Protetora ao completar um Descanso Curto ou Longo.\nAlém disso, sempre que usar Labareda Protetora, você pode conceder ao alvo do ataque desencadeado um número de Pontos de Vida Temporários igual a 2d6 mais seu modificador de Sabedoria."
+      "descricao": "Você restaura todos os usos gastos da sua Labareda Protetora ao completar um Descanso Curto ou Longo.\nAlém disso, sempre que usar Labareda Protetora, você pode conceder ao alvo do ataque desencadeado um número de Pontos de Vida Temporários igual a 2d6 mais seu modificador de Sabedoria.",
+      "subclasse": "Domínio da Luz"
     },
     {
       "nivel": 17,
       "nome": "Coroa de Luz",
-      "descricao": "Como uma ação Usar Magia, você emite uma aura de luz solar que dura 1 minuto ou até que você a encerre (nenhuma ação é necessária). Você emite Luz Plena em um raio de 18 metros e Meia-luz por mais 9 metros. Seus inimigos na Luz Plena têm Desvantagem em salvaguardas contra seu Brilho do Amanhecer e qualquer magia que cause dano Ígneo ou Radiante.\nVocê pode usar esta característica um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo."
+      "descricao": "Como uma ação Usar Magia, você emite uma aura de luz solar que dura 1 minuto ou até que você a encerre (nenhuma ação é necessária). Você emite Luz Plena em um raio de 18 metros e Meia-luz por mais 9 metros. Seus inimigos na Luz Plena têm Desvantagem em salvaguardas contra seu Brilho do Amanhecer e qualquer magia que cause dano Ígneo ou Radiante.\nVocê pode usar esta característica um número de vezes igual ao seu modificador de Sabedoria (mínimo de uma vez) e restaura todos os usos gastos ao completar um Descanso Longo.",
+      "subclasse": "Domínio da Luz"
     },
     {
       "nivel": 3,
       "nome": "Magias de Domínio da Trapaça",
-      "descricao": "Sua conexão com este domínio divino garante que você sempre tenha certas magias preparadas. Ao atingir um nível de Clérigo especificado na tabela Magias de Domínio da Trapaça, você sempre tem as magias listadas preparadas.\n**Magias de Domínio da Trapaça**\n| **Nível de Clérigo** | **Magias Preparadas**                                               |\n|----------------------|---------------------------------------------------------------------|\n| 3                    | *Disfarçar-se, Enfeitiçar Pessoa, Invisibilidade, Passo Sem Rastro* |\n| 5                    | *Indetectável, Padrão Hipnótico*                                    |\n| 7                    | *Confusão, Porta Dimensional*                                       |\n| 9                    | *Dominar Pessoa, Modificar Memória*                                 |"
+      "descricao": "Sua conexão com este domínio divino garante que você sempre tenha certas magias preparadas. Ao atingir um nível de Clérigo especificado na tabela Magias de Domínio da Trapaça, você sempre tem as magias listadas preparadas.\n**Magias de Domínio da Trapaça**\n| **Nível de Clérigo** | **Magias Preparadas**                                               |\n|----------------------|---------------------------------------------------------------------|\n| 3                    | *Disfarçar-se, Enfeitiçar Pessoa, Invisibilidade, Passo Sem Rastro* |\n| 5                    | *Indetectável, Padrão Hipnótico*                                    |\n| 7                    | *Confusão, Porta Dimensional*                                       |\n| 9                    | *Dominar Pessoa, Modificar Memória*                                 |",
+      "subclasse": "Domínio da Trapaça"
     },
     {
       "nivel": 3,
       "nome": "Bênção do Trapaceiro",
-      "descricao": "Com uma ação Usar Magia, você pode escolher a si ou a uma criatura voluntária a até 9 metros de você para ter Vantagem em testes de Destreza (Furtividade). Essa bênção permanece até você completar um Descanso Longo ou usar esta característica novamente."
+      "descricao": "Com uma ação Usar Magia, você pode escolher a si ou a uma criatura voluntária a até 9 metros de você para ter Vantagem em testes de Destreza (Furtividade). Essa bênção permanece até você completar um Descanso Longo ou usar esta característica novamente.",
+      "subclasse": "Domínio da Trapaça"
     },
     {
       "nivel": 3,
       "nome": "Invocar Duplicidade",
-      "descricao": "Como uma Ação Bônus, você pode gastar um uso de seu Canalizar Divindade para criar uma ilusão visual perfeita de si em um espaço desocupado à sua vista a até 9 metros de si. A ilusão é intangível e não ocupa seu espaço. Ela permanece por 1 minuto e acaba se você tiver a condição Incapacitado ou a encerrar (nenhuma ação é necessária). A ilusão é animada e imita suas expressões e gestos. Enquanto ela persistir, você adquire os seguintes benefícios.\n**Conjurar Magias.** Você pode conjurar magias como se estivesse no espaço da ilusão, mas deve usar seus próprios sentidos.\n**Distração.** Quando você e sua ilusão estão a até 1,5 metro de uma criatura que pode ver a ilusão, você tem Vantagem em jogadas de ataque contra essa criatura, considerando quão perturbadora a ilusão é para o alvo.\n**Mover.** Como uma Ação Bônus, você pode mover a ilusão até 9 metros para um espaço desocupado que esteja a até 36 metros de você."
+      "descricao": "Como uma Ação Bônus, você pode gastar um uso de seu Canalizar Divindade para criar uma ilusão visual perfeita de si em um espaço desocupado à sua vista a até 9 metros de si. A ilusão é intangível e não ocupa seu espaço. Ela permanece por 1 minuto e acaba se você tiver a condição Incapacitado ou a encerrar (nenhuma ação é necessária). A ilusão é animada e imita suas expressões e gestos. Enquanto ela persistir, você adquire os seguintes benefícios.\n**Conjurar Magias.** Você pode conjurar magias como se estivesse no espaço da ilusão, mas deve usar seus próprios sentidos.\n**Distração.** Quando você e sua ilusão estão a até 1,5 metro de uma criatura que pode ver a ilusão, você tem Vantagem em jogadas de ataque contra essa criatura, considerando quão perturbadora a ilusão é para o alvo.\n**Mover.** Como uma Ação Bônus, você pode mover a ilusão até 9 metros para um espaço desocupado que esteja a até 36 metros de você.",
+      "subclasse": "Domínio da Trapaça"
     },
     {
       "nivel": 6,
       "nome": "Transposição do Trapaceiro",
-      "descricao": "Ao executar a Ação Bônus para criar ou mover a ilusão de seu Invocar Duplicidade, você pode se teleportar, trocando de lugar com a ilusão."
+      "descricao": "Ao executar a Ação Bônus para criar ou mover a ilusão de seu Invocar Duplicidade, você pode se teleportar, trocando de lugar com a ilusão.",
+      "subclasse": "Domínio da Trapaça"
     },
     {
       "nivel": 17,
       "nome": "Duplicidade Aprimorada",
-      "descricao": "A ilusão de seu Invocar Duplicidade ficou mais poderosa das seguintes maneiras.\n**Distração Compartilhada.** Quando você e seus aliados realizam jogadas de ataque contra uma criatura a até 1,5 metro da ilusão, as jogadas de ataque têm Vantagem.\n**Ilusão de Cura.** Quando a ilusão termina, você ou uma criatura à sua escolha a até 1,5 metro dela recupera um número de Pontos de Vida igual ao seu nível de Clérigo."
+      "descricao": "A ilusão de seu Invocar Duplicidade ficou mais poderosa das seguintes maneiras.\n**Distração Compartilhada.** Quando você e seus aliados realizam jogadas de ataque contra uma criatura a até 1,5 metro da ilusão, as jogadas de ataque têm Vantagem.\n**Ilusão de Cura.** Quando a ilusão termina, você ou uma criatura à sua escolha a até 1,5 metro dela recupera um número de Pontos de Vida igual ao seu nível de Clérigo.",
+      "subclasse": "Domínio da Trapaça"
     },
     {
       "nivel": 3,
       "nome": "Magias de Domínio da Vida",
-      "descricao": "Sua conexão com este domínio divino garante que você sempre tenha certas magias preparadas. Ao atingir um nível de Clérigo especificado na tabela Magias de Domínio da Vida, você sempre tem as magias listadas preparadas.\n**Magias de Domínio da Vida**\n| **Nível de Clérigo** | **Magias Preparadas**                                  |\n|----------------------|--------------------------------------------------------|\n| 3                    | *Auxílio, Bênção, Curar Ferimentos, Restauração Menor* |\n| 5                    | *Palavra Curativa em Massa, Revivificar*               |\n| 7                    | *Aura de Vida, Proteção Contra a Morte*                |\n| 9                    | *Curar Ferimentos em Massa, Restauração Maior*         |"
+      "descricao": "Sua conexão com este domínio divino garante que você sempre tenha certas magias preparadas. Ao atingir um nível de Clérigo especificado na tabela Magias de Domínio da Vida, você sempre tem as magias listadas preparadas.\n**Magias de Domínio da Vida**\n| **Nível de Clérigo** | **Magias Preparadas**                                  |\n|----------------------|--------------------------------------------------------|\n| 3                    | *Auxílio, Bênção, Curar Ferimentos, Restauração Menor* |\n| 5                    | *Palavra Curativa em Massa, Revivificar*               |\n| 7                    | *Aura de Vida, Proteção Contra a Morte*                |\n| 9                    | *Curar Ferimentos em Massa, Restauração Maior*         |",
+      "subclasse": "Domínio da Vida"
     },
     {
       "nivel": 3,
       "nome": "Discípulo da Vida",
-      "descricao": "Ao conjurar uma magia com um espaço de magia que restaura Pontos de Vida em uma criatura, essa criatura recupera Pontos de Vida adicionais no turno da conjuração. Os Pontos de Vida adicionais são iguais a 2 mais o nível do espaço de magia."
+      "descricao": "Ao conjurar uma magia com um espaço de magia que restaura Pontos de Vida em uma criatura, essa criatura recupera Pontos de Vida adicionais no turno da conjuração. Os Pontos de Vida adicionais são iguais a 2 mais o nível do espaço de magia.",
+      "subclasse": "Domínio da Vida"
     },
     {
       "nivel": 3,
       "nome": "Preservar a Vida",
-      "descricao": "Com uma ação Usar Magia, você exibe seu Símbolo Sagrado e usa seu Canalizar Divindade para evocar uma energia de cura que pode restaurar um número de Pontos de Vida igual a cinco vezes seu nível de Clérigo. Escolha criaturas Sangrando a até 9 metros de você (que pode incluir você) e divida esses Pontos de Vida entre elas. Esta característica pode restaurar uma criatura a não mais que a metade dos Pontos de Vida máximo dela."
+      "descricao": "Com uma ação Usar Magia, você exibe seu Símbolo Sagrado e usa seu Canalizar Divindade para evocar uma energia de cura que pode restaurar um número de Pontos de Vida igual a cinco vezes seu nível de Clérigo. Escolha criaturas Sangrando a até 9 metros de você (que pode incluir você) e divida esses Pontos de Vida entre elas. Esta característica pode restaurar uma criatura a não mais que a metade dos Pontos de Vida máximo dela.",
+      "subclasse": "Domínio da Vida"
     },
     {
       "nivel": 6,
       "nome": "Curandeiro Abençoado",
-      "descricao": "Magias de cura que você conjurar nos outros também o curam. Imediatamente após conjurar uma magia com um espaço de magia que restaure Pontos de Vida em uma criatura que não seja você, você recupera Pontos de Vida iguais a 2 mais o círculo do espaço de magia."
+      "descricao": "Magias de cura que você conjurar nos outros também o curam. Imediatamente após conjurar uma magia com um espaço de magia que restaure Pontos de Vida em uma criatura que não seja você, você recupera Pontos de Vida iguais a 2 mais o círculo do espaço de magia.",
+      "subclasse": "Domínio da Vida"
     },
     {
       "nivel": 17,
       "nome": "Cura Suprema",
-      "descricao": "Ao usar uma magia ou Canalizar Divindade para restaurar Pontos de Vida em uma criatura, não jogue os dados normalmente; em vez disso, utilize o maior resultado de cada dado. Por exemplo, ao restaurar 2d6 Pontos de Vida, você restaura 12."
+      "descricao": "Ao usar uma magia ou Canalizar Divindade para restaurar Pontos de Vida em uma criatura, não jogue os dados normalmente; em vez disso, utilize o maior resultado de cada dado. Por exemplo, ao restaurar 2d6 Pontos de Vida, você restaura 12.",
+      "subclasse": "Domínio da Vida"
     }
   ],
   "subclasses": [
