@@ -8,7 +8,7 @@
 import { CLASSES_INFO } from '../dados-classes.js';
 import { restaurarRecursosTalentos } from '../regras-cobertura.js';
 import { removerPersonagem } from '../store.js';
-import { abrirModal, calcMod, detectarRecarga, escHtml, getEspacosMagia, semAcento, toast } from '../utils.js';
+import { abrirModal, calcMod, calcPVPadraoPersonagem, detectarRecarga, escHtml, getEspacosMagia, semAcento, toast } from '../utils.js';
 import { gerarTracoSinteticoEspecie } from './caracteristicas.js';
 import { getEstadoRecursosArtifice } from './classes/artifice.js';
 import { getEstadoFuria } from './classes/barbaro.js';
@@ -29,26 +29,38 @@ import { abrirModalTrocaMaestriaDescanso } from './maestrias.js';
 import { ehSubclasseConjuradora, getConcentracaoAtiva } from './magias.js';
 
 export function sincronizarBonusPvDraconico() {
-  if (char?.classe !== 'Feiticeiro') return;
+  const ehFeit = char?.classe === 'Feiticeiro' || (Array.isArray(char?.classes) && char.classes.some(c => c.classe === 'Feiticeiro'));
+  if (!ehFeit) return;
   const estado = getEstadoRecursosFeiticeiro();
   if (!estado) return;
 
-  const ehDraconica = semAcento(char.subclasse || '') === semAcento('Feitiçaria Dracônica');
-  const esperado = ehDraconica && (char.nivel || 1) >= 3 ? ((char.nivel || 1) + 2) : 0;
-  const aplicado = char.recursos.feiticeiro.subclasses.draconica.bonus_pv_aplicado || 0;
+  const ehDraconica = semAcento(char.subclasse || '').toLowerCase() === semAcento('Feitiçaria Dracônica').toLowerCase();
+  let nivelFeit = 0;
+  if (Array.isArray(char.classes) && char.classes.length > 0) {
+    const c = char.classes.find(cl => semAcento(cl.classe || '').toLowerCase() === 'feiticeiro');
+    if (c) nivelFeit = Number(c.nivel) || 0;
+  } else {
+    nivelFeit = Number(char.nivel) || 1;
+  }
+  const esperado = ehDraconica && nivelFeit >= 1 ? (nivelFeit + 2) : 0;
+  const aplicado = char.recursos?.feiticeiro?.subclasses?.draconica?.bonus_pv_aplicado || 0;
 
   if (esperado === aplicado) return;
 
   const diff = esperado - aplicado;
   char.pv_max = Math.max(1, (char.pv_max || 1) + diff);
   char.pv_atual = Math.max(0, Math.min((char.pv_max_override || char.pv_max), (char.pv_atual || 0) + diff));
+  if (!char.recursos) char.recursos = {};
+  if (!char.recursos.feiticeiro) char.recursos.feiticeiro = {};
+  if (!char.recursos.feiticeiro.subclasses) char.recursos.feiticeiro.subclasses = {};
+  if (!char.recursos.feiticeiro.subclasses.draconica) char.recursos.feiticeiro.subclasses.draconica = {};
   char.recursos.feiticeiro.subclasses.draconica.bonus_pv_aplicado = esperado;
   salvar();
 }
 
 /** Sincroniza bonus de PV da Tenacidade Anã (+1 por nivel) */
 export function sincronizarBonusPvAnao() {
-  const ehAnao = semAcento(char?.especie || '') === 'Anao' || char?.especie === 'Anão';
+  const ehAnao = semAcento(char?.especie || '').toLowerCase() === 'anao';
   const esperado = ehAnao ? (char.nivel || 1) : 0;
   const aplicado = char.bonus_pv_anao_aplicado || 0;
 
@@ -63,7 +75,10 @@ export function sincronizarBonusPvAnao() {
 
 /** Sincroniza bonus de PV do talento Vigoroso (+2 por nivel) */
 export function sincronizarBonusPvVigoroso() {
-  const temVigoroso = (char.talentos || []).some(t => (typeof t === 'string' ? t : t.nome) === 'Vigoroso');
+  const temVigoroso = (char.talentos || []).some(t => {
+    const nome = typeof t === 'string' ? t : t?.nome;
+    return semAcento(nome || '').toLowerCase() === 'vigoroso';
+  });
   const esperado = temVigoroso ? (char.nivel || 1) * 2 : 0;
   const aplicado = char.bonus_pv_vigoroso_aplicado || 0;
 
@@ -250,24 +265,66 @@ export function setupEventosHP() {
   });
 
   document.getElementById('hp-max-override')?.addEventListener('click', () => {
-    const pvBase = char.pv_max;
+    const pvPadrao = calcPVPadraoPersonagem(char);
+    const pvBase = char.pv_max || pvPadrao;
     const pvAtual = char.pv_max_override || pvBase;
+    const baseDiferentePadrao = pvBase !== pvPadrao;
+
     abrirModal('Sobrescrever PV Máximo',
-      `<div style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:8px">PV Máximo Base (fixo): <strong>${pvBase}</strong></div>` +
-      numberPickerHtml('input-pv-max', pvAtual, 1, Math.max(pvBase + 50, pvAtual + 20), 'PV Máximo Atual') +
+      `<div style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:8px">
+        PV Máximo Base Atual: <strong>${pvBase}</strong>
+        ${baseDiferentePadrao ? `<div style="font-size:0.78rem;color:var(--info, #38bdf8);margin-top:2px;">(Padrão calculado: <strong>${pvPadrao} PV</strong>)</div>` : ''}
+       </div>` +
+      numberPickerHtml('input-pv-max', pvAtual, 1, Math.max(pvPadrao + 50, pvAtual + 20), 'PV Máximo Atual') +
       `<div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;text-align:center">
-          Use para magias que aumentam PV máximo temporariamente (ex: Ajuda, Heróis do Banquete).
+          Use para magias que aumentam PV máximo temporariamente (ex: Ajuda, Heróis do Banquete) ou para personalizar. O botão <strong>Resetar</strong> restaura o PV Máximo ao valor padrão calculado pela classe, atributos e talentos (${pvPadrao} PV).
         </div>`,
       `<button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
-       <button class="btn btn-warning" id="btn-resetar-pv-max">Resetar</button>
+       <button class="btn btn-warning" id="btn-resetar-pv-max">Resetar Padrão (${pvPadrao} PV)</button>
        <button class="btn btn-primary" id="btn-aplicar-pv-max">Aplicar</button>`
     );
     setupNumberPicker('input-pv-max');
     document.getElementById('btn-resetar-pv-max')?.addEventListener('click', () => {
+      const padrao = calcPVPadraoPersonagem(char);
+      char.pv_max = padrao;
       delete char.pv_max_override;
-      char.pv_atual = Math.min(char.pv_atual, char.pv_max);
+
+      // Sincronizar rastreadores de bônus aplicados com o padrão exato recalculado
+      const nivelTotal = Math.max(1, Number(char.nivel) || 1);
+      const ehAnao = semAcento(char.especie || '').toLowerCase() === 'anao';
+      char.bonus_pv_anao_aplicado = ehAnao ? nivelTotal : 0;
+
+      const temVigoroso = (char.talentos || []).some(t => {
+        const nome = typeof t === 'string' ? t : t?.nome;
+        return semAcento(nome || '').toLowerCase() === 'vigoroso';
+      });
+      char.bonus_pv_vigoroso_aplicado = temVigoroso ? nivelTotal * 2 : 0;
+
+      const ehDraconica = semAcento(char.subclasse || '').toLowerCase() === semAcento('Feitiçaria Dracônica').toLowerCase();
+      let nivelFeiticeiro = 0;
+      if (Array.isArray(char.classes) && char.classes.length > 0) {
+        const cFeit = char.classes.find(c => semAcento(c.classe || '').toLowerCase() === 'feiticeiro');
+        if (cFeit) nivelFeiticeiro = Number(cFeit.nivel) || 0;
+      } else if (semAcento(char.classe || '').toLowerCase() === 'feiticeiro') {
+        nivelFeiticeiro = nivelTotal;
+      }
+      if (char.recursos?.feiticeiro?.subclasses?.draconica) {
+        char.recursos.feiticeiro.subclasses.draconica.bonus_pv_aplicado = (ehDraconica && nivelFeiticeiro >= 1) ? (nivelFeiticeiro + 2) : 0;
+      }
+
+      // Se houver efeitos mágicos ativos que fornecem bônus de PV máximo (ex: Ajuda), reaplica somente eles como override
+      const efsBonusPV = (char.efeitos_magicos || []).filter(e => e.tipo === 'bonus_pv_max');
+      if (efsBonusPV.length > 0) {
+        const bonusMagico = efsBonusPV.reduce((acc, ef) => acc + (ef.valor || 0), 0);
+        if (bonusMagico > 0) {
+          char.pv_max_override = padrao + bonusMagico;
+        }
+      }
+
+      char.pv_atual = Math.min(char.pv_atual, char.pv_max_override || char.pv_max);
       salvar();
       window.fecharModal();
+      toast(`PV Máximo restaurado para o padrão (${char.pv_max} PV)`, 'success');
       renderFichaCompleta();
     });
     document.getElementById('btn-aplicar-pv-max')?.addEventListener('click', () => {
@@ -277,6 +334,7 @@ export function setupEventosHP() {
       } else {
         delete char.pv_max_override;
       }
+      char.pv_atual = Math.min(char.pv_atual, char.pv_max_override || char.pv_max);
       salvar();
       window.fecharModal();
       renderFichaCompleta();

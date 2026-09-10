@@ -524,4 +524,102 @@ test('Tenacidade Anã: adiciona +1 PV por nível no cálculo de PV e no level up
   assert.equal(charAnao.bonus_pv_anao_aplicado, 3, 'bonus_pv_anao_aplicado deve ser 3');
 });
 
+test('calcPVPadraoPersonagem calcula corretamente PV padrão com todos os bônus ativos', () => {
+  // 1. Exemplo do Usuário 1: Anão Paladino nível 5, CON +3 (16)
+  // d10 (10) + CON (3) + Tenacidade Anã (1) = 14 PV por nível -> 14 * 5 = 70 PV
+  const anaoPaladino5 = {
+    classe: 'Paladino',
+    especie: 'Anão',
+    nivel: 5,
+    atributos: { constituicao: 16 }
+  };
+  assert.equal(utils.calcPVPadraoPersonagem(anaoPaladino5), 70, 'Anão Paladino nível 5 com CON +3 deve ter 70 PV');
+
+  // 2. Exemplo do Usuário 2: Humano Feiticeiro (Feitiçaria Dracônica), nível 5, CON +2 (14)
+  // Nv 1: 6 + 2 + 3 = 11. Níveis seguintes: + (6 + 2 + 1) = 9 por nível (4 * 9 = 36) -> 11 + 36 = 47 PV
+  const feiticeiroDraconico5 = {
+    classe: 'Feiticeiro',
+    subclasse: 'Feitiçaria Dracônica',
+    especie: 'Humano',
+    nivel: 5,
+    atributos: { constituicao: 14 }
+  };
+  assert.equal(utils.calcPVPadraoPersonagem(feiticeiroDraconico5), 47, 'Feiticeiro Dracônico nível 5 com CON +2 deve ter 47 PV');
+
+  // 3. Feiticeiro Dracônico nível 1, CON +2: 6 + 2 + 3 = 11 PV
+  const feiticeiroDraconico1 = {
+    classe: 'Feiticeiro',
+    subclasse: 'Feitiçaria Dracônica',
+    especie: 'Humano',
+    nivel: 1,
+    atributos: { constituicao: 14 }
+  };
+  assert.equal(utils.calcPVPadraoPersonagem(feiticeiroDraconico1), 11, 'Feiticeiro Dracônico nível 1 com CON +2 deve ter 11 PV');
+
+  // 4. Anão Guerreiro nível 5 com Vigoroso, CON 14 (+2)
+  // Por nível: 10 (d10) + 2 (CON) + 1 (Anão) + 2 (Vigoroso) = 15 -> 15 * 5 = 75 PV
+  const g5AnaoVigoroso = {
+    classe: 'Guerreiro',
+    especie: 'Anão',
+    nivel: 5,
+    talentos: ['Vigoroso'],
+    atributos: { constituicao: 14 }
+  };
+  assert.equal(utils.calcPVPadraoPersonagem(g5AnaoVigoroso), 75);
+
+  // 5. Feiticeiro Dracônico nível 5 com Dádiva da Fortitude (+40 PV): 47 + 40 = 87 PV
+  const feit5Fortitude = {
+    classe: 'Feiticeiro',
+    subclasse: 'Feitiçaria Dracônica',
+    nivel: 5,
+    talentos: ['Dádiva da Fortitude'],
+    atributos: { constituicao: 14 }
+  };
+  assert.equal(utils.calcPVPadraoPersonagem(feit5Fortitude), 87);
+
+  // 6. Multiclasse: Guerreiro 3 / Mago 2, CON 14 (+2)
+  // Guerreiro 3: 3 * (10 + 2) = 36; Mago 2: 2 * (6 + 2) = 16 -> 36 + 16 = 52 PV
+  const multi = {
+    classe: 'Guerreiro',
+    nivel: 5,
+    classes: [{ classe: 'Guerreiro', nivel: 3 }, { classe: 'Mago', nivel: 2 }],
+    atributos: { constituicao: 14 }
+  };
+  assert.equal(utils.calcPVPadraoPersonagem(multi), 52);
+});
+
+test('Reset de PV Máximo e sincronização não causam inflação de PV', () => {
+  const charTeste = {
+    classe: 'Guerreiro',
+    especie: 'Anão',
+    nivel: 5,
+    atributos: { constituicao: 14 },
+    talentos: ['Vigoroso'],
+    pv_max: 75,
+    pv_atual: 75,
+    bonus_pv_anao_aplicado: 5,
+    bonus_pv_vigoroso_aplicado: 10,
+    pv_max_override: 100 // Sobrescrito com valor temporário
+  };
+
+  // Simula o reset para o padrão
+  const padrao = utils.calcPVPadraoPersonagem(charTeste);
+  assert.equal(padrao, 75);
+
+  charTeste.pv_max = padrao;
+  delete charTeste.pv_max_override;
+  charTeste.bonus_pv_anao_aplicado = 5;
+  charTeste.bonus_pv_vigoroso_aplicado = 10;
+  charTeste.pv_atual = Math.min(charTeste.pv_atual, charTeste.pv_max);
+
+  assert.equal(charTeste.pv_max, 75);
+  assert.equal(charTeste.pv_max_override, undefined);
+
+  // Executa a sincronização múltiplas vezes (como ocorre nas renderizações da ficha)
+  for (let i = 0; i < 5; i++) {
+    utils.sincronizarCamposVinculadosNivel(charTeste, { dado_vida: 10 });
+    assert.equal(charTeste.pv_max, 75, `pv_max não deve aumentar na sincronização passo ${i + 1}`);
+  }
+});
+
 

@@ -9,7 +9,7 @@ import { ATRIBUTOS_KEYS, ATRIBUTOS_NOMES, ATRIBUTO_NOME_PARA_KEY, CLASSES_INFO, 
 import { formatarClasses, calcularReservaDadosVida, ehMulticlasse } from '../multiclasse.js';
 import { XP_POR_NIVEL } from '../levelup.js';
 import { _renderSyncIndicadorHtml } from '../pages/sheet.js';
-import { bonusProficiencia, calcAtaqueMagia, calcBonusPericia, calcBonusSalvaguarda, calcCA, calcCDMagia, calcMod, calcPVTotal, escHtml, fmtMod, getDeslocamento, getTamanho, isSalvaguardaProficiente, semAcento, sincronizarCamposVinculadosNivel } from '../utils.js';
+import { bonusProficiencia, calcAtaqueMagia, calcBonusPericia, calcBonusSalvaguarda, calcCA, calcCDMagia, calcMod, calcPVPadraoPersonagem, calcPVTotal, escHtml, fmtMod, getDeslocamento, getTamanho, isSalvaguardaProficiente, semAcento, sincronizarCamposVinculadosNivel } from '../utils.js';
 import { renderSecaoCaracteristicas, renderSecaoSubclasse, renderSecaoTracosEspecie } from './caracteristicas.js';
 import { getEstadoRecursosArtifice, getProgressaoArtifice } from './classes/artifice.js';
 import { getEstadoFuria, setupEventosSubclasseBarbaro } from './classes/barbaro.js';
@@ -169,11 +169,13 @@ export function renderFichaCompleta() {
   const progArtifice = getProgressaoArtifice();
 
   // Recalcular PV max se necessário
-  if ((!char.pv_max || char.pv_max <= 0) && info.dado_vida) {
-    char.pv_max = calcPVTotal(info.dado_vida, char.nivel, modCon);
+  if (!char.pv_max || char.pv_max <= 0) {
+    char.pv_max = calcPVPadraoPersonagem(char);
     char.pv_atual = char.pv_max;
-    delete char.bonus_pv_anao_aplicado;
-    delete char.bonus_pv_vigoroso_aplicado;
+    const ehAnao = semAcento(char.especie || '').toLowerCase() === 'anao';
+    char.bonus_pv_anao_aplicado = ehAnao ? (char.nivel || 1) : 0;
+    const temVigoroso = (char.talentos || []).some(t => semAcento(typeof t === 'string' ? t : t?.nome || '').toLowerCase() === 'vigoroso');
+    char.bonus_pv_vigoroso_aplicado = temVigoroso ? (char.nivel || 1) * 2 : 0;
     salvar();
   }
 

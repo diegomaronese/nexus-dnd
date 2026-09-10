@@ -37,6 +37,8 @@ function instalarStubs() {
       appendChild() {}, setAttribute() {},
     }),
     body: { appendChild() {} },
+    addEventListener: () => {},
+    removeEventListener: () => {},
   };
   // site/js/db.js:15 carrega dados/ por `fetch('../dados/...')`. Em Node o
   // fetch global existe, mas rejeita caminho relativo -- sem este stub,

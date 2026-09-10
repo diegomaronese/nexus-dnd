@@ -34,6 +34,79 @@ export function calcPVTotal(dadoVida, nivel, modCon) {
 }
 
 /**
+ * Calcula o PV Máximo padrão canônico de um personagem considerando:
+ * - Dados de vida das classes (nível 1 máximo, níveis subsequentes média; suporte a multiclasse)
+ * - Modificador de Constituição aplicado a todos os níveis
+ * - Tenacidade Anã (+1 PV por nível)
+ * - Feitiçaria Dracônica (+1 PV por nível de Feiticeiro a partir do 3º)
+ * - Talento Vigoroso (+2 PV por nível)
+ * - Dádiva da Fortitude (+40 PV)
+ * @param {object} personagem
+ * @returns {number}
+ */
+export function calcPVPadraoPersonagem(personagem) {
+  if (!personagem || typeof personagem !== 'object') return 10;
+
+  const modCon = calcMod(personagem.atributos?.constituicao ?? 10);
+  let pvTotal = 0;
+
+  if (Array.isArray(personagem.classes) && personagem.classes.length > 0) {
+    personagem.classes.forEach((c) => {
+      const info = CLASSES_INFO[c.classe] || {};
+      const dadoVida = info.dado_vida || 8;
+      const nivelClasse = Math.max(1, Number(c.nivel) || 1);
+      pvTotal += nivelClasse * Math.max(1, dadoVida + modCon);
+    });
+  } else {
+    const info = CLASSES_INFO[personagem.classe] || {};
+    const dadoVida = info.dado_vida || 8;
+    const nivel = Math.max(1, Number(personagem.nivel) || 1);
+    pvTotal = nivel * Math.max(1, dadoVida + modCon);
+  }
+
+  const nivelTotal = Math.max(1, Number(personagem.nivel) || 1);
+
+  // Bônus de espécie: Anão (Tenacidade Anã: +1 PV por nível)
+  const ehAnao = semAcento(personagem.especie || '').toLowerCase() === 'anao';
+  if (ehAnao) {
+    pvTotal += nivelTotal;
+  }
+
+  // Bônus de subclasse: Feiticeiro (Feitiçaria Dracônica / Resiliência Dracônica: +3 no nível 1 e +1 nos seguintes -> nivel + 2)
+  const ehDraconica = semAcento(personagem.subclasse || '').toLowerCase() === semAcento('Feitiçaria Dracônica').toLowerCase();
+  let nivelFeiticeiro = 0;
+  if (Array.isArray(personagem.classes) && personagem.classes.length > 0) {
+    const cFeit = personagem.classes.find(c => semAcento(c.classe || '').toLowerCase() === 'feiticeiro');
+    if (cFeit) nivelFeiticeiro = Number(cFeit.nivel) || 0;
+  } else if (semAcento(personagem.classe || '').toLowerCase() === 'feiticeiro') {
+    nivelFeiticeiro = nivelTotal;
+  }
+  if (ehDraconica && nivelFeiticeiro >= 1) {
+    pvTotal += (nivelFeiticeiro + 2);
+  }
+
+  // Bônus de talento: Vigoroso (+2 PV por nível)
+  const temVigoroso = (personagem.talentos || []).some(t => {
+    const nome = typeof t === 'string' ? t : t?.nome;
+    return semAcento(nome || '').toLowerCase() === 'vigoroso';
+  });
+  if (temVigoroso) {
+    pvTotal += nivelTotal * 2;
+  }
+
+  // Bônus de talento: Dádiva da Fortitude (+40 PV)
+  const temFortitude = (personagem.talentos || []).some(t => {
+    const nome = typeof t === 'string' ? t : t?.nome;
+    return semAcento(nome || '').toLowerCase() === semAcento('Dádiva da Fortitude').toLowerCase();
+  });
+  if (temFortitude) {
+    pvTotal += 40;
+  }
+
+  return Math.max(1, pvTotal);
+}
+
+/**
  * Verifica se uma magia registrada pelo nome pertence ao grimório do mago.
  * @param {object} personagem
  * @param {string} nome
@@ -958,38 +1031,39 @@ export function sincronizarCamposVinculadosNivel(personagem, classeData = null) 
   // 3. Pontos de Vida (pv_max e pv_atual)
   const infoClasse = CLASSES_INFO[personagem.classe];
   const dadoVida = infoClasse?.dado_vida;
-  if (dadoVida) {
-    const modCon = calcMod(personagem.atributos?.constituicao ?? 10);
-    let pvCalculadoBase = calcPVTotal(dadoVida, nivel, modCon);
+  if (dadoVida || (Array.isArray(personagem.classes) && personagem.classes.length > 0)) {
+    const pvCalculadoBase = calcPVPadraoPersonagem(personagem);
 
-    // Bônus de espécie: Anão (+1 por nível)
-    if (personagem.especie === 'Anão') {
-      pvCalculadoBase += nivel;
-      personagem.bonus_pv_anao_aplicado = nivel;
+    const ehAnao = semAcento(personagem.especie || '').toLowerCase() === 'anao';
+    personagem.bonus_pv_anao_aplicado = ehAnao ? nivel : 0;
+
+    const ehDraconica = semAcento(personagem.subclasse || '').toLowerCase() === semAcento('Feitiçaria Dracônica').toLowerCase();
+    let nivelFeiticeiro = 0;
+    if (Array.isArray(personagem.classes) && personagem.classes.length > 0) {
+      const cFeit = personagem.classes.find(c => semAcento(c.classe || '').toLowerCase() === 'feiticeiro');
+      if (cFeit) nivelFeiticeiro = Number(cFeit.nivel) || 0;
+    } else if (semAcento(personagem.classe || '').toLowerCase() === 'feiticeiro') {
+      nivelFeiticeiro = nivel;
     }
-
-    // Feitiçaria Dracônica: +1 por nível para nível >= 3
-    const ehDraconica = semAcento(personagem.subclasse || '') === semAcento('Feitiçaria Dracônica');
-    if (personagem.classe === 'Feiticeiro' && ehDraconica && nivel >= 3) {
-      pvCalculadoBase += nivel;
+    if (personagem.classe === 'Feiticeiro' || nivelFeiticeiro > 0) {
       if (!personagem.recursos) personagem.recursos = {};
       if (!personagem.recursos.feiticeiro) personagem.recursos.feiticeiro = {};
       if (!personagem.recursos.feiticeiro.subclasses) personagem.recursos.feiticeiro.subclasses = {};
       if (!personagem.recursos.feiticeiro.subclasses.draconica) personagem.recursos.feiticeiro.subclasses.draconica = {};
-      personagem.recursos.feiticeiro.subclasses.draconica.bonus_pv_aplicado = nivel;
+      personagem.recursos.feiticeiro.subclasses.draconica.bonus_pv_aplicado = (ehDraconica && nivelFeiticeiro >= 1) ? (nivelFeiticeiro + 2) : 0;
     }
 
-    // Vigoroso: +2 por nível
-    const temVigoroso = (personagem.talentos || []).some(t => (typeof t === 'string' ? t : t?.nome) === 'Vigoroso');
-    if (temVigoroso) {
-      pvCalculadoBase += nivel * 2;
-      personagem.bonus_pv_vigoroso_aplicado = nivel * 2;
-    }
+    const temVigoroso = (personagem.talentos || []).some(t => {
+      const nome = typeof t === 'string' ? t : t?.nome;
+      return semAcento(nome || '').toLowerCase() === 'vigoroso';
+    });
+    personagem.bonus_pv_vigoroso_aplicado = temVigoroso ? nivel * 2 : 0;
 
-    // Dádiva da Fortitude: +40
-    const temFortitude = (personagem.talentos || []).some(t => (typeof t === 'string' ? t : t?.nome) === 'Dádiva da Fortitude');
+    const temFortitude = (personagem.talentos || []).some(t => {
+      const nome = typeof t === 'string' ? t : t?.nome;
+      return semAcento(nome || '').toLowerCase() === semAcento('Dádiva da Fortitude').toLowerCase();
+    });
     if (temFortitude) {
-      pvCalculadoBase += 40;
       personagem.bonus_pv_dadiva_fortitude = 40;
     }
 
@@ -1000,7 +1074,7 @@ export function sincronizarCamposVinculadosNivel(personagem, classeData = null) 
       if (personagem.pv_atual === undefined || personagem.pv_atual === null) {
         personagem.pv_atual = personagem.pv_max;
       } else {
-        personagem.pv_atual = Math.min(personagem.pv_max, Math.max(0, personagem.pv_atual));
+        personagem.pv_atual = Math.min(personagem.pv_max_override || personagem.pv_max, Math.max(0, personagem.pv_atual));
       }
     }
   }
