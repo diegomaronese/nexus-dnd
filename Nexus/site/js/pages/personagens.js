@@ -326,26 +326,50 @@ function renderCharCard(p) {
   const iconeClasse = getIconeClasse(p.classe);
 
   const avatarHtml = p.imagem
-    ? `<img src="${p.imagem}" alt="">`
-    : (iconeClasse
-      ? `<img src="${iconeClasse}" class="classe-icon-avatar" alt="">`
-      : escHtml(inicial));
+    ? `<img src="${p.imagem}" alt="${escHtml(p.nome || '')}">`
+    : `<span class="char-avatar-txt">${escHtml(inicial)}</span>`;
+
+  const iconeClasseLinha1 = iconeClasse
+    ? `<img src="${iconeClasse}" class="char-classe-icon" alt="${escHtml(p.classe || '')}" title="${escHtml(p.classe || '')}">`
+    : '';
+
+  const especieClasseTexto = [
+    p.especie ? escHtml(p.especie) : '',
+    p.classe ? escHtml(p.classe) : '',
+    p.subclasse ? `(${escHtml(p.subclasse)})` : '',
+    dadoVida ? `&middot; ${dadoVida}` : ''
+  ].filter(Boolean).join(' ');
 
   return `
     <div class="card char-card" data-id="${escHtml(p.id)}">
-      <div class="char-avatar">${avatarHtml}</div>
-      <div class="char-info">
-        <div class="char-nome">${escHtml(p.nome) || 'Sem nome'}</div>
-        <div class="char-detalhe" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;">
-          ${iconeClasse ? `<img src="${iconeClasse}" class="classe-icon-inline" alt="">` : ''}
-          <span>${escHtml(p.especie || '')} ${escHtml(p.classe || '')} ${p.subclasse ? `(${escHtml(p.subclasse)})` : ''} ${dadoVida ? `&middot; ${dadoVida}` : ''}</span>
+      <div class="char-card-main">
+        <!-- 1ª linha: foto, ícone e nome -->
+        <div class="char-card-row char-card-row-1">
+          <div class="char-avatar">${avatarHtml}</div>
+          ${iconeClasseLinha1}
+          <div class="char-nome" title="${escHtml(p.nome) || 'Sem nome'}">${escHtml(p.nome) || 'Sem nome'}</div>
+        </div>
+        <!-- 2ª linha: espécie e classe/subclasse -->
+        <div class="char-card-row char-card-row-2">
+          <div class="char-detalhe">
+            <span>${especieClasseTexto || 'Sem classe definida'}</span>
+          </div>
         </div>
       </div>
-      <div class="char-nivel">Nv. ${escHtml(p.nivel ?? 1)}</div>
-      <div class="char-actions" style="display:flex;gap:4px;margin-left:8px;">
-        <button class="btn btn-sm btn-secondary" data-action="exportar-individual" title="Exportar este personagem (arquivo só com ele)"><img src="img/icons/ico-acao-exportar.png" class="btn-icon-sm-img" alt="Exportar"></button>
-        <button class="btn btn-sm btn-secondary" data-action="duplicar" title="Duplicar"><img src="img/icons/ico-acao-duplicar.png" class="btn-icon-sm-img" alt="Duplicar"></button>
-        <button class="btn btn-sm btn-danger" data-action="excluir" title="Excluir"><img src="img/icons/ico-acao-excluir.png" class="btn-icon-sm-img" alt="Excluir"></button>
+      <!-- 3ª linha: nível e botões (exportar, duplicar e excluir) -->
+      <div class="char-card-row char-card-row-3">
+        <div class="char-nivel"><span class="char-nivel-badge">Nv. ${escHtml(p.nivel ?? 1)}</span></div>
+        <div class="char-actions">
+          <button class="btn btn-sm btn-secondary btn-action-card" data-action="exportar-individual" title="Exportar este personagem (arquivo só com ele)">
+            <img src="img/icons/ico-acao-exportar.png" class="btn-icon-sm-img" alt="Exportar">
+          </button>
+          <button class="btn btn-sm btn-secondary btn-action-card" data-action="duplicar" title="Duplicar">
+            <img src="img/icons/ico-acao-duplicar.png" class="btn-icon-sm-img" alt="Duplicar">
+          </button>
+          <button class="btn btn-sm btn-danger btn-action-card" data-action="excluir" title="Excluir">
+            <img src="img/icons/ico-acao-excluir.png" class="btn-icon-sm-img" alt="Excluir">
+          </button>
+        </div>
       </div>
     </div>
   `;

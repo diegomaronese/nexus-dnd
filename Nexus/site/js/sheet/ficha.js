@@ -196,48 +196,56 @@ export function renderFichaCompleta() {
   const container = containerRef;
   const iconeClasse = getIconeClasse(char.classe);
   const avatarHeaderHtml = char.imagem
-    ? `<div class="char-avatar"><img src="${char.imagem}" alt="${escHtml(char.nome || 'Personagem')}"></div>`
-    : (iconeClasse
-      ? `<div class="char-avatar"><img src="${iconeClasse}" style="width:40px;height:40px;object-fit:contain;" alt=""></div>`
-      : `<div class="char-avatar">${(char.nome || 'P').charAt(0).toUpperCase()}</div>`);
+    ? `<img src="${char.imagem}" alt="${escHtml(char.nome || 'Personagem')}">`
+    : `<span class="char-avatar-txt">${escHtml((char.nome || 'P').charAt(0).toUpperCase())}</span>`;
 
   container.innerHTML = `
     <!-- Cabeçalho do personagem -->
     <div class="card char-header-card">
       <div class="char-header-main">
-        <div class="char-header-identity">
+        <!-- 1ª Linha: Foto, Ícone e Nome -->
+        <div class="char-header-row char-header-row-1">
           <div class="char-header-avatar is-interactive" id="char-avatar-btn" title="Clique para editar a foto do personagem" role="button" tabindex="0">
-            ${avatarHeaderHtml}
+            <div class="char-avatar">${avatarHeaderHtml}</div>
             <div class="char-header-avatar-badge" title="Editar foto">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             </div>
           </div>
-          <div class="char-header-meta">
-            <h2 class="char-header-name" id="char-nome-display">${escHtml(char.nome) || 'Sem Nome'}</h2>
-            <div class="char-header-subtitle">
-              ${iconeClasse ? `<img src="${iconeClasse}" class="classe-icon-inline" alt="">` : ''}
-              <span class="char-header-class-text">
-                ${escHtml(char.especie || '')} <strong>${escHtml(formatarClasses(char))}</strong>
-              </span>
-              <span class="char-header-level-badge">Nível ${char.nivel}</span>
-            </div>
+          ${iconeClasse ? `<img src="${iconeClasse}" class="char-header-class-icon" alt="${escHtml(char.classe || '')}" title="${escHtml(char.classe || '')}">` : ''}
+          <h2 class="char-header-name" id="char-nome-display" title="${escHtml(char.nome) || 'Sem Nome'}">${escHtml(char.nome) || 'Sem Nome'}</h2>
+        </div>
+
+        <!-- 2ª Linha: Espécie e Classe/Subclasse -->
+        <div class="char-header-row char-header-row-2">
+          <div class="char-header-subtitle">
+            <span class="char-header-class-text">
+              ${escHtml(char.especie || '')} <strong>${escHtml(formatarClasses(char))}</strong>
+            </span>
           </div>
         </div>
-        <div class="char-header-actions no-print">
-          <div class="char-header-btn-row">
-            <button class="btn btn-sm btn-secondary" id="btn-editar-ficha" title="Editar ficha">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Editar ficha
-            </button>
-            <button class="btn btn-sm btn-primary" id="btn-print" title="Gerar PDF da ficha">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 18h6M9 12h2"/></svg> Gerar PDF
-            </button>
+
+        <!-- 3ª Linha: Nível e Botões -->
+        <div class="char-header-row char-header-row-3">
+          <div class="char-header-level-wrap">
+            <span class="char-header-level-badge">Nível ${char.nivel}</span>
+            ${_renderSyncIndicadorHtml()}
           </div>
-          ${char.nivel < 20 ? `
-            <button class="btn btn-sm btn-accent char-btn-levelup" id="btn-levelup">
-              ⬆ Subir de Nível (Nível ${char.nivel + 1})
-            </button>
-          ` : ''}
-          ${_renderSyncIndicadorHtml()}
+          <div class="char-header-actions no-print">
+            <div class="char-header-btn-row">
+              <button class="btn btn-sm btn-secondary" id="btn-editar-ficha" title="Editar ficha">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> <span>Editar ficha</span>
+              </button>
+              <button class="btn btn-sm btn-primary" id="btn-print" title="Gerar PDF da ficha">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 18h6M9 12h2"/></svg> <span>Gerar PDF</span>
+              </button>
+              ${char.nivel < 20 ? `
+                <button class="btn btn-sm btn-accent char-btn-levelup" id="btn-levelup" title="Subir para o Nível ${char.nivel + 1}">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                  <span>Subir de Nível (${char.nivel + 1})</span>
+                </button>
+              ` : ''}
+            </div>
+          </div>
         </div>
       </div>
 
