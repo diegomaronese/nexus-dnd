@@ -644,57 +644,93 @@ export function renderFichaCompleta() {
         </div>
       ` : ''}
 
-      <div class="stats-row">
-        <div class="stat-box">
-          <div class="stat-label">CA</div>
-          <div class="stat-value">${ca}</div>
-          ${(() => {
-            const efs = char.efeitos_magicos || [];
-            // Deduplicar por nome base (compostos geram filhos com " (Reativo)" etc.)
-            // Excluir concentracao_generica (so aparece no indicador de condicoes)
-            const vistos = new Set();
-            const unicos = efs.filter(ef => {
-              if (ef.tipo === 'concentracao_generica') return false;
-              const base = ef.nome.replace(/ \(.*\)$/, ''); if (vistos.has(base)) return false; vistos.add(base); return true;
-            });
-            if (unicos.length === 0) return '';
-            return `<div style="font-size:0.6rem;margin-top:2px">${unicos.map(ef => {
-              const base = ef.nome.replace(/ \(.*\)$/, '');
-              const tooltip = ef.rotulo || ef.nome;
-              return `<span class="no-print" style="display:inline-flex;align-items:center;gap:2px;background:var(--accent);color:#fff;padding:1px 5px;border-radius:8px;margin:1px;cursor:pointer;font-size:0.6rem" data-remover-efeito="${base}" title="${tooltip}">${base}${ef.concentracao ? ' (C)' : ''} &times;</span>`;
-            }).join('')}</div>`;
-          })()}
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">Iniciativa</div>
-          <div class="stat-value">${fmtMod(iniciativa.valor)}</div>
-          ${iniciativa.vantagem ? '<div style="font-size:0.65rem;color:var(--success);font-weight:700">Vantagem</div>' : ''}
-        </div>
-        <div class="stat-box" ${_deslSobrecarga ? 'style="cursor:pointer;position:relative" onclick="window.avisarSobrecargaDeslocamento()"' : ''}>
-          <div class="stat-label">Deslocamento</div>
-          <div class="stat-value">${_deslNumero}<br><span class="stat-unit">metros</span></div>
-          ${_deslExtra ? `<div style="font-size:0.6rem;color:var(--text-muted)">${_deslExtra}</div>` : ''}
-          ${_deslSobrecarga ? '<div class="no-print" style="position:absolute;bottom:2px;left:0;right:0;font-size:0.55rem;color:var(--danger);font-weight:700">&#9888; Sobrecarga</div>' : ''}
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">Ataques</div>
-          <div class="stat-value">${ataquesPorAcao}</div>
-          <div style="font-size:0.65rem;color:var(--text-muted)">por Ação Atacar</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">Prof.</div>
-          <div class="stat-value">+${prof}</div>
-        </div>
-        ${info.conjurador ? `
-          <div class="stat-box">
-            <div class="stat-label">CD Magia</div>
-            <div class="stat-value">${calcCDMagia(char)}</div>
+      <div class="stats-row combat-overview-row">
+        <!-- Tríade Primária: CA, Iniciativa, Deslocamento (3 colunas harmoniosas) -->
+        <div class="combat-primary-grid">
+          <div class="stat-box stat-box-primary stat-box-ca" title="Classe de Armadura">
+            <div class="stat-header">
+              <svg class="stat-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span class="stat-label">CA</span>
+            </div>
+            <div class="stat-value">${ca}</div>
+            ${(() => {
+              const efs = char.efeitos_magicos || [];
+              // Deduplicar por nome base (compostos geram filhos com " (Reativo)" etc.)
+              // Excluir concentracao_generica (so aparece no indicador de condicoes)
+              const vistos = new Set();
+              const unicos = efs.filter(ef => {
+                if (ef.tipo === 'concentracao_generica') return false;
+                const base = ef.nome.replace(/ \(.*\)$/, ''); if (vistos.has(base)) return false; vistos.add(base); return true;
+              });
+              if (unicos.length === 0) return '';
+              return `<div class="stat-efs-container">${unicos.map(ef => {
+                const base = ef.nome.replace(/ \(.*\)$/, '');
+                const tooltip = ef.rotulo || ef.nome;
+                return `<span class="no-print stat-ef-chip" data-remover-efeito="${base}" title="${tooltip}">${base}${ef.concentracao ? ' (C)' : ''} &times;</span>`;
+              }).join('')}</div>`;
+            })()}
           </div>
-          <div class="stat-box">
-            <div class="stat-label">Atq. Magia</div>
-            <div class="stat-value">${fmtMod(calcAtaqueMagia(char))}</div>
+
+          <div class="stat-box stat-box-primary stat-box-iniciativa" title="Modificador de Iniciativa">
+            <div class="stat-header">
+              <svg class="stat-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span class="stat-label">Iniciativa</span>
+            </div>
+            <div class="stat-value">${fmtMod(iniciativa.valor)}</div>
+            ${iniciativa.vantagem ? '<div class="stat-sub-tag stat-tag-vantagem">Vantagem</div>' : ''}
           </div>
-        ` : ''}
+
+          <div class="stat-box stat-box-primary stat-box-deslocamento ${_deslSobrecarga ? 'stat-sobrecarregado' : ''}" ${_deslSobrecarga ? 'style="cursor:pointer;position:relative" onclick="window.avisarSobrecargaDeslocamento()"' : ''} title="Deslocamento base e modos de movimento">
+            <div class="stat-header">
+              <svg class="stat-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 16h16M7 11h13M10 6h10"/></svg>
+              <span class="stat-label">Desloc.</span>
+            </div>
+            <div class="stat-value">${_deslNumero}<span class="stat-unit">m</span></div>
+            ${_deslExtra ? `<div class="stat-sub-extra" title="${_deslExtra}">${_deslExtra}</div>` : ''}
+            ${_deslSobrecarga ? '<div class="no-print stat-sub-tag stat-tag-danger">&#9888; Sobrecarga</div>' : ''}
+          </div>
+        </div>
+
+        <!-- Grade Secundária: Ataques, Proficiência e (se Conjurador) CD e Atq. Magia -->
+        <div class="combat-secondary-grid ${info.conjurador ? 'has-magic' : 'no-magic'}">
+          <div class="stat-box stat-box-secondary stat-box-ataques" title="Ataques por ação Atacar">
+            <div class="stat-header">
+              <svg class="stat-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"/><path d="m13 19 6 2 2-6-2-2-4 4Z"/><path d="M9.5 6.5 18 15"/></svg>
+              <span class="stat-label">Ataques</span>
+            </div>
+            <div class="stat-value">${ataquesPorAcao}</div>
+            <div class="stat-sub-text">por Ação</div>
+          </div>
+
+          <div class="stat-box stat-box-secondary stat-box-prof" title="Bônus de Proficiência">
+            <div class="stat-header">
+              <svg class="stat-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span class="stat-label">Proficiência</span>
+            </div>
+            <div class="stat-value">+${prof}</div>
+            <div class="stat-sub-text">bônus base</div>
+          </div>
+
+          ${info.conjurador ? `
+            <div class="stat-box stat-box-secondary stat-box-magic stat-box-cd" title="Classe de Dificuldade de Magia (salvaguarda dos alvos)">
+              <div class="stat-header">
+                <svg class="stat-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+                <span class="stat-label">CD Magia</span>
+              </div>
+              <div class="stat-value">${calcCDMagia(char)}</div>
+              <div class="stat-sub-text">salvaguarda</div>
+            </div>
+
+            <div class="stat-box stat-box-secondary stat-box-magic stat-box-atq-magia" title="Modificador de Ataque Mágico">
+              <div class="stat-header">
+                <svg class="stat-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
+                <span class="stat-label">Atq. Magia</span>
+              </div>
+              <div class="stat-value">${fmtMod(calcAtaqueMagia(char))}</div>
+              <div class="stat-sub-text">acerto mágico</div>
+            </div>
+          ` : ''}
+        </div>
       </div>
 
       <!-- Proficiencias de Armas e Armaduras -->
@@ -819,8 +855,11 @@ export function renderFichaCompleta() {
 
     <!-- Atributos -->
     <div class="card" id="secao-atributos">
-      <div class="card-header"><h2>Atributos</h2></div>
-      <div class="atributos-grid">
+      <div class="card-header">
+        <h2>Atributos</h2>
+        <span class="card-header-sub" style="font-size:0.75rem;color:var(--text-muted);font-weight:600">Modificadores & Valores Base</span>
+      </div>
+      <div class="atributos-grid ficha-atributos-grid">
         ${ATRIBUTOS_KEYS.map(key => {
           const nome = ATRIBUTOS_NOMES[key];
           const val = char.atributos[key];
@@ -829,11 +868,22 @@ export function renderFichaCompleta() {
           const isConjuracao = info.conjurador && info.atributo_conjuracao === nome;
           const attrStyle = ATRIBUTO_ESTILO[key] || {};
           return `
-            <div class="atributo-box ${isPrimario ? 'destaque' : ''}" style="border-color:${attrStyle.cor || 'var(--border)'}">
-              <div class="atributo-nome" style="color:${attrStyle.cor || 'var(--text-muted)'}">${attrStyle.emoji || ''} ${nome}${seloEdicao(`atributos.${key}`)}</div>
-              <div class="atributo-mod" style="color:${attrStyle.cor || 'var(--primary)'}">${fmtMod(mod)}</div>
-              <div class="atributo-valor">${val}</div>
-              ${isConjuracao ? '<div style="font-size:0.6rem;font-weight:700;color:var(--accent);margin-top:2px">🔮 Conjuração</div>' : ''}
+            <div class="atributo-box ficha-attr-box attr-${key} ${isPrimario ? 'destaque' : ''}" style="--attr-cor:${attrStyle.cor || 'var(--primary)'}">
+              <div class="ficha-attr-header">
+                <div class="ficha-attr-ident">
+                  <span class="ficha-attr-emoji">${attrStyle.emoji || ''}</span>
+                  <span class="ficha-attr-nome">${nome}</span>
+                </div>
+                <div class="ficha-attr-badges">
+                  ${seloEdicao(`atributos.${key}`)}
+                  ${isPrimario ? '<span class="ficha-attr-badge-primario" title="Atributo primário da classe">★ Primário</span>' : ''}
+                </div>
+              </div>
+              <div class="ficha-attr-mod">${fmtMod(mod)}</div>
+              <div class="ficha-attr-footer">
+                <span class="ficha-attr-score" title="Valor base do atributo"><span class="ficha-attr-score-lbl">Base</span> <strong>${val}</strong></span>
+                ${isConjuracao ? '<span class="ficha-attr-badge-conjuracao" title="Atributo de conjuração de magias">🔮 Magia</span>' : ''}
+              </div>
             </div>`;
         }).join('')}
       </div>
@@ -935,21 +985,13 @@ export function renderFichaCompleta() {
     <!-- Sentidos Passivos -->
     ${renderSecaoSentidos()}
 
-    <!-- Pericias em ordem customizada -->
+    <!-- Perícias em ordem alfabética -->
     <div class="card" id="secao-pericias">
       <div class="card-header"><h2>Perícias</h2></div>
       <div class="pericias-lista-custom">
         ${(() => {
-          // Ordem customizada de exibicao das pericias
-          const ordemPericias = [
-            'Percepção', 'Intuição', 'Investigação', 'Religião', 'História',
-            'Prestidigitação', 'Furtividade', 'Persuasão', 'Atletismo', 'Medicina',
-            'Acrobacia', 'Enganação', 'Arcanismo', 'Sobrevivência', 'Natureza',
-            'Atuação', 'Intimidação', 'Lidar com Animais'
-          ];
-          return ordemPericias.map(nome => {
-            const p = PERICIAS.find(x => x.nome === nome);
-            if (!p) return '';
+          const periciasOrdenadas = [...PERICIAS].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+          return periciasOrdenadas.map(p => {
             const key = ATRIBUTO_NOME_PARA_KEY[p.atributo];
             const estilo = ATRIBUTO_ESTILO[key] || {};
             const proficiente = (char.pericias_proficientes || []).includes(p.nome);

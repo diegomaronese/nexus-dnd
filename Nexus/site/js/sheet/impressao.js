@@ -339,9 +339,7 @@ export async function gerarHtmlImpressao() {
     <div class="print-section">
       <div class="print-section-title">Perícias</div>
       <div class="print-skills-grid">
-        ${['Percepção','Intuição','Investigação','Religião','História','Prestidigitação','Furtividade','Persuasão','Atletismo','Medicina','Acrobacia','Enganação','Arcanismo','Sobrevivência','Natureza','Atuação','Intimidação','Lidar com Animais'].map(nome => {
-          const p = PERICIAS.find(x => x.nome === nome);
-          if (!p) return '';
+        ${[...PERICIAS].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(p => {
           const proficiente = (char.pericias_proficientes || []).includes(p.nome);
           const expertise = (char.pericias_expertise || []).includes(p.nome);
           const bonus = calcBonusPericia(char, p.nome, {

@@ -2,7 +2,7 @@
 // Geracao do PDF da ficha (cartao + blocos de detalhe)
 // Extraido de site/js/pages/sheet.js sem alteracao de comportamento.
 // ============================================================
-import { ATRIBUTOS_KEYS, ATRIBUTOS_NOMES, CLASSES_INFO } from '../dados-classes.js';
+import { ATRIBUTOS_KEYS, ATRIBUTOS_NOMES, CLASSES_INFO, PERICIAS } from '../dados-classes.js';
 import { bonusProficiencia, calcAtaqueMagia, calcBonusPericia, calcBonusSalvaguarda, calcCA, calcCDMagia, calcIntuicaoPassiva, calcInvestigacaoPassiva, calcMod, calcPercepcaoPassiva, fmtMod, getDeslocamento, isSalvaguardaProficiente, toast } from '../utils.js';
 import { forcaPrimordialAtiva, getDeslocamentoFinal, getModIniciativa } from './combate.js';
 import { char, especiesCache, passivosTalentosCache } from './estado.js';
@@ -85,8 +85,8 @@ function _montarDadosCartao() {
     return { nome: ATRIBUTOS_NOMES[k], bonus: fmtMod(bonus), prof: p };
   });
 
-  const listaBase = ['Percepção','Intuição','Investigação','Religião','História','Prestidigitação','Furtividade','Persuasão','Atletismo','Medicina','Acrobacia','Enganação','Arcanismo','Sobrevivência','Natureza','Atuação','Intimidação','Lidar com Animais'];
-  const pericias = listaBase.map(n => {
+  const pericias = [...PERICIAS].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(pItem => {
+    const n = pItem.nome;
     const p = (char.pericias_proficientes || []).includes(n);
     const e = (char.pericias_expertise || []).includes(n);
     const bn = calcBonusPericia(char, n, { emFuria: false, forcaPrimordialAtiva: false });

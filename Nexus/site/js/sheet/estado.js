@@ -1,14 +1,14 @@
 import { salvarPersonagem } from '../store.js';
 import { escHtml } from '../utils.js';
 
-// Estilos visuais (cor e emoji) para cada atributo
+// Estilos visuais (cor e emoji) para cada atributo com alta legibilidade em temas escuros e claros
 export const ATRIBUTO_ESTILO = {
-  forca:        { emoji: '💪', cor: '#b71c1c' },
-  destreza:     { emoji: '🏹', cor: '#1b5e20' },
-  constituicao: { emoji: '🛡️', cor: '#e65100' },
-  inteligencia: { emoji: '📖', cor: '#0d47a1' },
-  sabedoria:    { emoji: '🔮', cor: '#4a148c' },
-  carisma:      { emoji: '✨', cor: '#c62828' }
+  forca:        { emoji: '💪', cor: '#ef5350' },
+  destreza:     { emoji: '🏹', cor: '#4caf50' },
+  constituicao: { emoji: '🛡️', cor: '#ffa726' },
+  inteligencia: { emoji: '📖', cor: '#42a5f5' },
+  sabedoria:    { emoji: '🔮', cor: '#ab47bc' },
+  carisma:      { emoji: '✨', cor: '#ec407a' }
 };
 
 export let char = null;
