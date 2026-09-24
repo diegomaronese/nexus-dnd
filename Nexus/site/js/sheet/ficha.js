@@ -32,6 +32,7 @@ import { ATRIBUTO_ESTILO, char, classeData, containerRef, especiesCache, passivo
 import { setupEventosHabilidades } from './habilidades.js';
 import { setupEventosDescanso, setupEventosHP, sincronizarBonusPvAnao, sincronizarBonusPvDraconico, sincronizarBonusPvVigoroso } from './hp-descanso.js';
 import { setupEventosRolagemRapida } from './quick-dice.js';
+import { setupEventosRolagemTestes } from './rolagem-teste.js';
 import { getEstadoCarga, renderSecaoInventario, setupEventosInventarioSheet } from './inventario.js';
 import { ehSubclasseConjuradora, renderSecaoMagias, setupEventosEspacosMagia } from './magias.js';
 import { abrirModalRecuperarDadivaEpica, precisaRecuperarDadivaEpica, renderSecaoTalentos } from './talentos.js';
@@ -671,7 +672,7 @@ export function renderFichaCompleta() {
             })()}
           </div>
 
-          <div class="stat-box stat-box-primary stat-box-iniciativa" title="Modificador de Iniciativa">
+          <div class="stat-box stat-box-primary stat-box-iniciativa is-clickable" data-rolagem-tipo="iniciativa" title="Clique para rolar Iniciativa" role="button" tabindex="0">
             <div class="stat-header">
               <svg class="stat-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               <span class="stat-label">Iniciativa</span>
@@ -868,7 +869,7 @@ export function renderFichaCompleta() {
           const isConjuracao = info.conjurador && info.atributo_conjuracao === nome;
           const attrStyle = ATRIBUTO_ESTILO[key] || {};
           return `
-            <div class="atributo-box ficha-attr-box attr-${key} ${isPrimario ? 'destaque' : ''}" style="--attr-cor:${attrStyle.cor || 'var(--primary)'}">
+            <div class="atributo-box ficha-attr-box attr-${key} ${isPrimario ? 'destaque' : ''} is-clickable" data-rolagem-tipo="atributo" data-atributo-key="${key}" title="Clique para rolar Teste de ${nome}" role="button" tabindex="0" style="--attr-cor:${attrStyle.cor || 'var(--primary)'}">
               <div class="ficha-attr-header">
                 <div class="ficha-attr-ident">
                   <span class="ficha-attr-emoji">${attrStyle.emoji || ''}</span>
@@ -966,7 +967,7 @@ export function renderFichaCompleta() {
             indicadorSalv = `<span class="pericia-vd-badge desvantagem" data-vd-info="Desvantagem: ${fontsDesv.join(', ')}">D</span>`;
           }
           return `
-            <div class="salva-item ${proficiente ? 'proficiente' : ''}" title="${breakdown}">
+            <div class="salva-item ${proficiente ? 'proficiente' : ''} is-clickable" data-rolagem-tipo="salvaguarda" data-salvaguarda-key="${key}" title="Clique para rolar Salvaguarda de ${nome} (${breakdown})" role="button" tabindex="0">
               <div class="pericia-prof ${proficiente ? 'ativo' : ''}"></div>
               <span class="pericia-bonus">${fmtMod(bonus)}</span>
               <span class="pericia-nome" style="flex:1">${nome}</span>
@@ -1012,7 +1013,7 @@ export function renderFichaCompleta() {
               indicador = `<span class="pericia-vd-badge desvantagem" data-vd-info="Desvantagem: ${vd.desvantagens.join(', ')}">D</span>`;
             }
             return `
-            <div class="pericia-item" style="border-left:3px solid ${estilo.cor || 'var(--border)'}">
+            <div class="pericia-item is-clickable" data-rolagem-tipo="pericia" data-pericia-nome="${p.nome}" title="Clique para rolar Teste de ${p.nome}" role="button" tabindex="0" style="border-left:3px solid ${estilo.cor || 'var(--border)'}">
               <div class="pericia-prof ${proficiente ? (expertise ? 'expertise' : 'ativo') : ''}"></div>
               <span class="pericia-bonus">${fmtMod(bonus)}</span>
               <span class="pericia-nome">${p.nome}</span>
@@ -1075,6 +1076,7 @@ export function renderFichaCompleta() {
   setupEventosHP();
   setupEventosDescanso();
   setupEventosRolagemRapida();
+  setupEventosRolagemTestes();
   setupEventosEdicao();
   setupEventosInventarioSheet();
   setupEventosEspacosMagia();

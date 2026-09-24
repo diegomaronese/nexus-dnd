@@ -301,7 +301,8 @@ export function ataqueImprudenteAtivo() {
 /** Setup de eventos para badges de Vantagem/Desvantagem (toque mobile) */
 export function setupEventosVantagemDesvantagem() {
   document.querySelectorAll('[data-vd-info]').forEach(el => {
-    el.addEventListener('click', () => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
       toast(el.dataset.vdInfo, 'info');
     });
   });
