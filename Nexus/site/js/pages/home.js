@@ -142,7 +142,23 @@ function _renderMenuPrincipal(container, personagens, usuario) {
           </div>
         </div>
 
-        <!-- 4º BOTÃO / SEÇÃO: Entrar com Google -->
+        <!-- 4º BOTÃO: Arcane Craft Compendium -->
+        <div class="home-menu-card home-card-arcanecraft" id="btn-home-arcanecraft" role="button" tabindex="0" onclick="navegar('arcanecraft')">
+          <div class="home-menu-icon-wrap" style="background: rgba(200, 160, 81, 0.14); border-color: rgba(200, 160, 81, 0.3);">
+            <img src="img/icons/ico-classe-artifice.png" alt="Arcane Craft Compendium" class="home-menu-icon-img">
+          </div>
+          <div class="home-menu-text">
+            <div class="home-menu-title" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span>Arcane Craft Compendium</span>
+              <span class="badge-beta">BETA</span>
+            </div>
+            <div class="home-menu-desc">
+              Criação de itens, forja, alquimia e encantamento arcano.
+            </div>
+          </div>
+        </div>
+
+        <!-- 5º BOTÃO / SEÇÃO: Entrar com Google -->
         ${secaoGoogleHtml}
 
       </div>

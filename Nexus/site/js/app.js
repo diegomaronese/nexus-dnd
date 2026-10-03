@@ -7,6 +7,7 @@ import { renderCreator } from './pages/creator.js';
 import { renderSheet } from './pages/sheet.js';
 import { renderCompendio } from './pages/compendio.js';
 import { renderDados } from './pages/dados.js';
+import { renderArcaneCraft } from './pages/arcanecraft.js';
 import { inicializarSync } from './sync.js';
 import { carregarTaxasMoeda } from './store.js';
 import { toast, abrirModal, fecharModal, temModalAberto, consumeModalHistoryBack } from './utils.js';
@@ -18,7 +19,8 @@ const routes = {
   'criar': renderCreator,
   'ficha': renderSheet,
   'compendio': renderCompendio,
-  'dados': renderDados
+  'dados': renderDados,
+  'arcanecraft': renderArcaneCraft
 };
 
 let _ultimaRota = '';
@@ -110,7 +112,7 @@ window.voltarHierarquico = voltarHierarquico;
 
 /** Navegar para uma rota */
 export function navegar(rota, opcoes = {}) {
-  const rotaLimpa = (rota || 'home').replace(/^#/, '');
+  const rotaLimpa = (rota || 'home').replace(/^#\/?/, '').replace(/^\//, '');
   const rotaAtual = (window.location.hash.slice(1) || 'home').replace(/^#/, '');
   const scrollAtual = window.scrollY || document.documentElement?.scrollTop || document.body?.scrollTop || 0;
   
@@ -187,7 +189,7 @@ window.definirTituloHeader = definirTituloHeader;
 
 /** Processa a rota atual do hash */
 function processarRota() {
-  const hash = window.location.hash.slice(1) || 'home';
+  const hash = (window.location.hash.slice(1) || 'home').replace(/^\/+/, '') || 'home';
   const partes = hash.split('/');
   const pagina = partes[0];
   const param = partes.slice(1).join('/');
@@ -251,7 +253,8 @@ function processarRota() {
     'criar': 'Novo Personagem',
     'ficha': 'Ficha',
     'compendio': 'Compêndio D&D 5.5e',
-    'dados': 'Mesa de Dados'
+    'dados': 'Mesa de Dados',
+    'arcanecraft': 'Arcane Craft Compendium'
   };
   definirTituloHeader(titulos[pagina] !== undefined ? titulos[pagina] : 'Nexus D&D');
 
@@ -422,7 +425,7 @@ function init() {
 
   // Listener de rota para mudanças diretas de hash
   window.addEventListener('hashchange', () => {
-    const hashAtual = (window.location.hash.slice(1) || 'home').replace(/^#/, '');
+    const hashAtual = (window.location.hash.slice(1) || 'home').replace(/^#\/?/, '').replace(/^\//, '') || 'home';
     if (!temModalAberto() && hashAtual !== _ultimaRota) {
       processarRota();
     }
