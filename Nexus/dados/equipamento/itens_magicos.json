@@ -3771,6 +3771,18 @@
     "nome_original": "Mirror of Life Trapping"
   },
   {
+    "nome": "Estandarte da Runa Krig",
+    "tipo": "Item Maravilhoso",
+    "subtipo": "",
+    "tipo_linha": "Item Maravilhoso, Raro (Requer Sintonização)",
+    "raridade": "Raro",
+    "sintonizacao": true,
+    "detalhe_sintonizacao": "Requer Sintonização",
+    "resumo": "Estandarte rúnico montável em haste de 3 m. Concede imunidade a Amedrontado (20 pés), visão de invisibilidade (20 pés), desvantagem em ataques à distância inimigos (20 pés) e o poder de transferir sua bênção permanentemente para um local em um raio de 150 m.",
+    "descricao": "Este estandarte, com pelo menos 1,5 metro de altura por 90 centímetros de largura, é feito de tecido vermelho espesso bordado com a runa *krig* (guerra) usando discos redondos de aço. O estandarte pode ser montado em uma haste de 3 metros para servir como estandarte militar. Enrolar ou desenrolar o estandarte exige uma ação.\n\nO estandarte possui as seguintes propriedades mágicas:\n\n• **Marca da Coragem (Mark of Courage):** Como uma ação bônus, você pode tocar o estandarte desenrolado para fazê-lo emanar coragem. Você e seus aliados a até 6 metros (20 pés) do estandarte tornam-se imunes à condição Amedrontado por 10 minutos ou até que o estandarte seja enrolado. Depois de usar essa propriedade, você não pode usá-la novamente até terminar um descanso curto ou longo.\n\n• **Estandarte Sentinela (Sentinel Standard):** Enquanto o estandarte estiver desenrolado, você pode ver criaturas invisíveis a até 6 metros (20 pés) dele como se fossem visíveis, desde que você tenha linha de visão para elas.\n\n• **Escudo do Estandarte (Standard's Shield):** Como uma ação bônus, você pode tocar o estandarte desenrolado para evocar sua proteção. Qualquer jogada de ataque à distância direcionada a você ou a um aliado a até 6 metros (20 pés) do estandarte desenrolado sofre desvantagem. Esse efeito dura por 1 minuto ou até que o estandarte seja enrolado. Depois de usar essa propriedade, você não pode usá-la novamente até terminar um descanso curto ou longo.\n\n• **Dádiva da Batalha (Gift of Battle):** Você pode transferir a magia do estandarte permanentemente para um local traçando a runa *krig* no chão com seu dedo. A transferência exige 8 horas de trabalho contínuo com o estandarte a até 1,5 metro de você, e você deve escolher criaturas específicas, tipos de criaturas ou ambos para se beneficiarem da magia. Ao final do ritual, o estandarte é destruído e a magia é transferida para uma esfera de 150 metros (500 pés) de raio centrada no ponto onde a runa foi traçada. As criaturas escolhidas dentro da esfera tornam-se imunes à condição Amedrontado e recebem um bônus de +1 em jogadas de ataque e na Classe de Armadura (CA).",
+    "nome_original": "Banner of the Krig Rune"
+  },
+  {
     "nome": "Estatueta de Poder Maravilhoso",
     "tipo": "Item Maravilhoso",
     "subtipo": "",
